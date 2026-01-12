@@ -3,12 +3,11 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import Image from 'next/image';
 
 export default function GlobalTradeAI() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const imagePrompt = "A cinematic global trade command center with large screens showing shipping routes, contracts, AI data analysis, and world maps. Futuristic but realistic office with holographic UI.";
 
   return (
     <section ref={ref} className="relative py-24 px-6 overflow-hidden border-b border-white/5">
@@ -17,21 +16,20 @@ export default function GlobalTradeAI() {
 
       <div className="relative z-10 container mx-auto max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left: Large Image Placeholder */}
+          {/* Left: Project Image */}
           <motion.div
             className="relative aspect-video bg-gradient-to-br from-[#7c3aed] to-[#1a1a3f] rounded-2xl overflow-hidden"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {/* Image Placeholder - Replace with NanoBanana generated image */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center p-12">
-                <div className="text-6xl mb-4">🌍</div>
-                <p className="text-gray-400 text-sm">이미지 생성용 프롬프트:</p>
-                <p className="text-gray-500 text-xs mt-2 line-clamp-2">{imagePrompt}</p>
-              </div>
-            </div>
+            <Image
+              src="/images/projects/global-trade-ai.jpg"
+              alt="Global Trade AI"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
 
             {/* Holographic Overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-transparent via-purple-500/10 to-transparent" />
