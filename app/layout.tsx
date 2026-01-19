@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono } from "next/font/google"; // Using Google Font for Mono
+import { Poppins } from "next/font/google"; // Switch to Poppins
 import "./globals.css";
 import clsx from "clsx";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
 import Background from "@/components/ui/Background";
 
-const jetbrainsMono = JetBrains_Mono({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-jetbrains",
+  weight: ["300", "400", "500", "600", "700", "900"],
+  variable: "--font-poppins",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "DMS TECH LAB",
-  description: "기술을 만드는 회사가 아니라, 결과를 만드는 회사. DMS Solution.",
+  title: "DMS | Innovation Through AI",
+  description: "Automotive Retail AI & 3D Engineering Solutions.",
 };
 
 export default function RootLayout({
@@ -24,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className="dark scroll-smooth">
-      <body className={clsx(jetbrainsMono.variable, "antialiased bg-deep-space text-white select-none")}>
+      <body className={clsx(poppins.variable, "antialiased bg-deep-space text-white select-none")}>
         <Background />
         <Navbar />
         {children}

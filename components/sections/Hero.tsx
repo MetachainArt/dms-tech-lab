@@ -1,59 +1,74 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative z-10 flex min-h-screen w-full flex-col justify-between px-6 py-32 overflow-hidden pointer-events-none">
+    <section className="relative z-10 flex min-h-screen w-full flex-col justify-center px-6 overflow-hidden pointer-events-none">
       
-      {/* Top Left: Massive Typography */}
-      <div className="flex flex-col items-start mt-20 pointer-events-auto">
-        <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="text-neon-sky font-mono text-sm tracking-[0.3em] ml-2 mb-4"
-        >
-            EST. 2024
-        </motion.h2>
-        <motion.h1 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="font-black text-[15vw] leading-[0.8] tracking-tighter text-white mix-blend-difference"
-        >
-            DMS<br />
-            <span className="text-[15vw] text-transparent bg-clip-text bg-gradient-to-r from-white/50 to-transparent">
-                LAB
-            </span>
-        </motion.h1>
+      {/* Centered Content */}
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pointer-events-auto mt-20">
+        
+        {/* Left Text */}
+        <div className="flex flex-col items-start gap-8 z-20">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+            >
+                <span className="px-4 py-2 rounded-full bg-neon-sky/10 text-neon-sky text-sm font-semibold tracking-wide border border-neon-sky/20">
+                    AUTOMOTIVE RETAIL AI
+                </span>
+            </motion.div>
+
+            <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="font-bold text-5xl md:text-7xl lg:text-8xl leading-[1.1] tracking-tight text-white"
+            >
+                Innovation<br />
+                <span className="text-neon-sky">Through AI.</span>
+            </motion.h1>
+
+            <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-lg text-white/60 max-w-lg leading-relaxed"
+            >
+                We architect the unseen. From abstract ideas to concrete reality.<br />
+                Experience the next generation of automotive retail solutions.
+            </motion.p>
+            
+            <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="flex flex-wrap gap-4"
+            >
+                <button className="px-8 py-4 bg-neon-sky text-[#050B1B] font-semibold rounded-full hover:bg-white transition-colors duration-300 flex items-center gap-2 group">
+                    Start Your Project
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </button>
+                <button className="px-8 py-4 border border-white/20 text-white font-semibold rounded-full hover:bg-white/10 transition-colors duration-300">
+                    View Solutions
+                </button>
+            </motion.div>
+        </div>
+
+        {/* Right Visual (Abstract placeholder for now that interacts with Crystal) */}
+        <div className="relative h-full min-h-[50vh] flex items-center justify-center pointer-events-none">
+             {/* The HeroCrystal component in the background serves as the main visual. 
+                 We add a subtle gradient here to blend it. */}
+             <div className="absolute inset-0 bg-gradient-to-l from-[#050B1B]/20 to-transparent z-10" />
+        </div>
+
       </div>
 
-      {/* Bottom Right: Description */}
-      <div className="flex flex-col md:flex-row items-end justify-between w-full pointer-events-auto">
-         <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5, duration: 1 }}
-            className="hidden md:flex flex-col gap-2"
-         >
-             <span className="h-[1px] w-24 bg-white/20" />
-             <span className="text-xs font-mono text-white/40">SCROLL TO EXPLORE</span>
-         </motion.div>
-
-         <motion.p
-           initial={{ opacity: 0, x: 20 }}
-           animate={{ opacity: 1, x: 0 }}
-           transition={{ delay: 0.8, duration: 1 }}
-           className="max-w-xl text-right text-lg md:text-2xl text-white/80 font-light leading-relaxed"
-         >
-           We architect the <span className="text-neon-indigo font-normal">unseen</span>.<br /> 
-           From abstract ideas to concrete reality.
-         </motion.p>
-      </div>
-
-      {/* Background Abstract Blur (Extra accent) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] bg-neon-indigo/5 blur-[150px] rounded-full pointer-events-none -z-10" />
+      {/* Decorative Elements */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] h-[100vw] bg-neon-sky/5 blur-[120px] rounded-full pointer-events-none -z-10 mix-blend-screen" />
     </section>
   );
 }

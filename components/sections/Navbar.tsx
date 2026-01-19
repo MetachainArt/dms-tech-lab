@@ -30,41 +30,52 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
-        className="fixed top-6 left-0 right-0 z-50 flex justify-center pointer-events-none"
+        className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none"
       >
-        <div className={`pointer-events-auto transition-all duration-300 ${
+        <div className={`w-full pointer-events-auto transition-all duration-300 ${
             isScrolled 
-            ? "bg-[#0a0a1f]/60 backdrop-blur-xl border border-white/10 rounded-full px-8 py-3 shadow-[0_8px_32px_rgba(0,0,0,0.2)]" 
-            : "bg-transparent px-6 py-4"
+            ? "bg-[#050B1B]/90 backdrop-blur-md border-b border-white/5 py-4 shadow-lg" 
+            : "bg-transparent py-6"
         }`}>
-            <div className="flex items-center gap-12">
+            <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
             
-            {/* Logo */}
-            <Link href="/" className="text-lg font-bold tracking-tight text-white group">
-                DMS<span className="text-neon-indigo group-hover:text-neon-cyan transition-colors">.</span>LAB
+            {/* Logo - Left */}
+            <Link href="/" className="text-xl font-bold tracking-tight text-white group flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-neon-sky group-hover:shadow-[0_0_10px_#00D1FF] transition-shadow duration-300" />
+                DMS<span className="text-white/40 font-light">.LAB</span>
             </Link>
 
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center gap-8">
+            {/* Desktop Menu - Center */}
+            <div className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
                 {navLinks.map((link) => (
                 <Link
                     key={link.name}
                     href={link.href}
-                    className="relative text-xs font-mono text-white/70 hover:text-white transition-colors uppercase tracking-widest group"
+                    className="text-sm font-medium text-white/70 hover:text-white transition-colors"
                 >
                     {link.name}
-                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all group-hover:w-full" />
                 </Link>
                 ))}
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-                className="md:hidden text-white ml-auto"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-                {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
+            {/* Right Group: Contact Button & Mobile Menu */}
+            <div className="flex items-center gap-4">
+                <Link 
+                    href="/#contact"
+                    className="hidden md:flex px-6 py-2 rounded-full border border-white/20 text-sm font-medium text-white hover:bg-white hover:text-[#050B1B] transition-all duration-300"
+                >
+                    Get in Touch
+                </Link>
+
+                {/* Mobile Menu Button */}
+                <button
+                    className="md:hidden text-white ml-auto"
+                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                >
+                    {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                </button>
+            </div>
+
             </div>
         </div>
       </motion.nav>
