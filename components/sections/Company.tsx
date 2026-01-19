@@ -1,145 +1,129 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Cpu, BookOpen, Cuboid, Globe } from "lucide-react";
-import OrbIcon from "@/components/ui/OrbIcon";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import Image from "next/image";
 
 const features = [
   {
-    icon: Cpu,
-    title: "AI Automation",
-    description: "반복 업무를 0으로. AI 에이전트와 자동화 시스템 구축.",
-    color: "text-neon-cyan",
+    title: "AI-Powered Automation",
+    subtitle: "REVOLUTIONIZE OPERATIONS",
+    description: "Empower your business with cutting-edge AI agents that handle complex workflows autonomously. From customer engagement to backend logic, we automate the impossible.",
+    points: ["Autonomous Agents", "Workflow Optimization", "Real-time Analytics"],
+    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2670&auto=format&fit=crop"
   },
   {
-    icon: BookOpen,
-    title: "Tech Education",
-    description: "생성형 AI부터 개발까지. 실무 중심의 기술 교육 및 컨설팅.",
-    color: "text-neon-purple",
+    title: "3D Engineering & Design",
+    subtitle: "IMMERSIVE EXPERIENCES",
+    description: "Bridge the gap between digital and physical. Our 3D engineering solutions provide photorealistic visualizations and interactive product configurators that convert.",
+    points: ["Product Visualization", "Interactive WebGL", "Digital Twins"],
+    image: "https://images.unsplash.com/photo-1617791160505-6f00504e3519?q=80&w=2670&auto=format&fit=crop"
   },
   {
-    icon: Cuboid,
-    title: "3D Engineering",
-    description: "제품 디자인 및 3D 설계. 가상과 현실을 잇는 엔지니어링.",
-    color: "text-neon-indigo",
-  },
-  {
-    icon: Globe,
-    title: "SaaS Solution",
-    description: "웹 기반 소프트웨어 개발. 비즈니스 맞춤형 통합 플랫폼.",
-    color: "text-pink-500",
-  },
-];
-
-const history = [
-  {
-    year: "2023",
-    title: "DMS Solution 설립",
-    desc: "기술 중심 스타트업 시작",
-  },
-  {
-    year: "2024",
-    title: "3D & Design 확장",
-    desc: "3D 제품 개발 및 디자인 사업 진출",
-  },
-  {
-    year: "2026",
-    title: "AI & Education 도약",
-    desc: "AI 자동화 및 교육 사업 진출",
-    current: true,
-  },
+    title: "Tech Education & Consulting",
+    subtitle: "FUTURE READY TEAMS",
+    description: "Equip your team with the skills to leverage Generative AI. We provide specialized training and consulting to transform your workforce into AI-native experts.",
+    points: ["GenAI Workshops", "Technical Consulting", "Custom Curriculums"],
+    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2670&auto=format&fit=crop"
+  }
 ];
 
 export default function Company() {
   return (
-    <section id="company" className="relative w-full py-40 px-6">
-      <div className="max-w-7xl mx-auto">
-        {/* Top Section: Manifesto & Features */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start mb-40">
-            
-            {/* Left: Manifesto */}
-            <motion.div
-                initial={{ opacity: 0, x: -50 }}
+    <section id="company" className="relative w-full py-32 px-6 overflow-hidden">
+      <div className="max-w-7xl mx-auto space-y-40">
+        
+        {/* Intro Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+             <motion.div
+                initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="sticky top-32" 
-            >
+             >
                 <div className="flex items-center gap-3 mb-6">
-                    <span className="h-[1px] w-12 bg-neon-indigo" />
-                    <h3 className="text-neon-indigo font-mono tracking-widest text-sm">WHAT WE DO</h3>
+                    <span className="h-[1px] w-12 bg-neon-sky" />
+                    <h3 className="text-neon-sky font-poppins font-semibold tracking-widest text-sm uppercase">About DMS</h3>
                 </div>
-                
-                <h2 className="text-5xl md:text-7xl font-bold leading-[1.1] mb-8 tracking-tight">
-                    <span className="block text-white">Innovation</span>
-                    <span className="block text-white/30">Through AI.</span>
+                <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-8 text-white">
+                    Driving Innovation at the<br />
+                    Intersection of <span className="text-neon-sky">AI & Design.</span>
                 </h2>
-                
-                <div className="space-y-6 text-xl text-white/60 font-light leading-relaxed max-w-md">
-                    <p>
-                        DMS Solution은 <span className="text-white font-normal">AI와 자동화</span>기술을 통해
-                        기업의 업무 방식을 혁신합니다.
-                    </p>
-                    <p className="text-base text-white/40">
-                        단순 개발을 넘어, 3D 엔지니어링과 기술 교육까지.
-                        디지털 전환(DX)에 필요한 모든 솔루션을 제공합니다.
-                    </p>
-                </div>
-            </motion.div>
+                <p className="text-lg text-white/60 leading-relaxed mb-8">
+                    We don't just build software; we architect the future. 
+                    Merging advanced 3D visualization with intelligent AI systems to create 
+                    unmatched digital experiences.
+                </p>
+                <button className="text-white border-b border-neon-sky pb-1 hover:text-neon-sky transition-colors flex items-center gap-2">
+                    Learn more about us <ArrowRight className="w-4 h-4" />
+                </button>
+             </motion.div>
 
-            {/* Right: Feature Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {features.map((feature, index) => (
-                    <motion.div
-                        key={feature.title}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 }}
-                        className="group flex flex-col items-start gap-4 p-8 rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-sm hover:bg-white/[0.05] hover:border-neon-indigo/30 transition-all duration-300"
-                    >
-                        <OrbIcon icon={feature.icon} color={feature.color} size={28} />
-                        <div className="mt-2">
-                            <h4 className="text-xl font-bold text-white mb-2 group-hover:text-neon-cyan transition-colors">{feature.title}</h4>
-                            <p className="text-white/50 text-sm leading-relaxed">{feature.description}</p>
-                        </div>
-                    </motion.div>
-                ))}
-            </div>
+             <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8 }}
+                className="relative h-[400px] rounded-3xl overflow-hidden"
+             >
+                 {/* Abstract visual representation */}
+                 <div className="absolute inset-0 bg-gradient-to-tr from-[#050B1B] to-transparent z-10 opacity-60" />
+                 <img 
+                    src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop" 
+                    alt="Innovation" 
+                    className="object-cover w-full h-full opacity-50 hover:scale-105 transition-transform duration-700"
+                 />
+             </motion.div>
         </div>
 
-        {/* Bottom Section: History Timeline */}
-        <div className="relative">
-            <div className="absolute left-[19px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-white/20 to-transparent transform md:-translate-x-1/2" />
-            
-            <div className="space-y-20">
-                {history.map((item, index) => (
-                    <motion.div 
-                        key={item.year}
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        className={`relative flex md:items-center gap-10 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+        {/* Feature Blocks (Image Left / Text Right pattern) */}
+        <div className="space-y-32">
+            {features.map((feature, index) => (
+                <div key={feature.title} className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    
+                    {/* Image Side (Always Left as per reference) */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 0.1 }}
+                        className="relative aspect-[4/3] rounded-3xl overflow-hidden group"
                     >
-                        {/* Timeline Node */}
-                        <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 w-10 h-10 flex items-center justify-center z-10">
-                            <div className={`w-4 h-4 rounded-full border-2 ${item.current ? 'bg-neon-sky border-white shadow-[0_0_15px_rgba(14,165,233,0.8)]' : 'bg-[#0a0a1f] border-white/30'}`} />
-                        </div>
-
-                        {/* Content Card */}
-                        <div className={`w-full md:w-[calc(50%-40px)] pl-12 md:pl-0 ${index % 2 === 0 ? 'md:text-right md:pr-10' : 'md:text-left md:pl-10'}`}>
-                            <div className="inline-block px-4 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-neon-sky font-mono font-bold mb-3">
-                                {item.year}
-                            </div>
-                            <h3 className="text-2xl font-bold text-white mb-2">{item.title}</h3>
-                            <p className="text-white/50">{item.desc}</p>
-                        </div>
-                        
-                        {/* Spacer for alternating layout */}
-                        <div className="hidden md:block w-[calc(50%-40px)]" />
+                        <div className="absolute inset-0 bg-[#050B1B]/20 group-hover:bg-transparent transition-colors z-10" />
+                        <img 
+                            src={feature.image} 
+                            alt={feature.title}
+                            className="object-cover w-full h-full opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
+                        />
+                        {/* Decorative Overlay */}
+                        <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-[#050B1B] to-transparent opacity-80" />
                     </motion.div>
-                ))}
-            </div>
+
+                    {/* Text Side (Always Right) */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="flex flex-col items-start"
+                    >
+                        <span className="text-neon-sky font-mono text-xs tracking-widest mb-4 uppercase">{feature.subtitle}</span>
+                        <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">{feature.title}</h3>
+                        <p className="text-white/60 text-lg leading-relaxed mb-8">
+                            {feature.description}
+                        </p>
+                        
+                        <ul className="space-y-4 mb-8">
+                            {feature.points.map((point) => (
+                                <li key={point} className="flex items-center gap-3 text-white/80">
+                                    <CheckCircle2 className="w-5 h-5 text-neon-sky" />
+                                    {point}
+                                </li>
+                            ))}
+                        </ul>
+
+                        <button className="px-8 py-3 rounded-full border border-white/20 hover:bg-white hover:text-black transition-all duration-300 font-medium">
+                            Explore Solution
+                        </button>
+                    </motion.div>
+                </div>
+            ))}
         </div>
       </div>
     </section>
