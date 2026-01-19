@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, Terminal, Box, BrainCircuit, Activity, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
@@ -42,13 +42,6 @@ const projects = [
 
 export default function Apps() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Parallax / Spread Effect
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
 
   return (
     <section id="projects" ref={containerRef} className="w-full py-32 px-6 flex flex-col items-center bg-[#050B1B] overflow-hidden relative">
@@ -72,25 +65,23 @@ export default function Apps() {
             </h2>
         </div>
 
-        {/* 3D Card Scroller */}
+        {/* Horizontal Flat Scroller */}
         <div className="relative w-full overflow-visible">
             <motion.div 
                 className="flex gap-8 px-4 pb-12 cursor-grab active:cursor-grabbing overflow-x-auto no-scrollbar snap-x snap-mandatory"
-                style={{ x: 0 }} // Horizontal scroll handled by native overflow for robustness, Framer for entry
             >
                 {projects.map((project, index) => (
                     <motion.div
                         key={project.title}
-                        initial={{ opacity: 0, x: 100, rotateY: -15 }}
-                        whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
-                        viewport={{ once: true, margin: "-100px" }}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
                         transition={{ 
-                            duration: 0.8, 
-                            delay: index * 0.15, 
-                            type: "spring", 
-                            stiffness: 50 
+                            duration: 0.6, 
+                            delay: index * 0.1, 
+                            ease: "easeOut"
                         }}
-                        className="min-w-[320px] md:min-w-[400px] snap-center group relative bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-[0_0_40px_rgba(14,165,233,0.3)] transition-all duration-500"
+                        className="min-w-[320px] md:min-w-[400px] snap-center group relative bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-[0_0_40px_rgba(14,165,233,0.3)] transition-all duration-300 hover:-translate-y-2"
                     >
                         {/* Card Content */}
                         <div className="h-full flex flex-col">
