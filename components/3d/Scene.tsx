@@ -3,7 +3,7 @@
 import { Canvas } from "@react-three/fiber";
 import { Environment, PerspectiveCamera } from "@react-three/drei";
 import { Suspense } from "react";
-import HeroCrystal from "./HeroCrystal";
+import HeroProduct from "./HeroProduct";
 
 export default function Scene() {
   return (
@@ -41,7 +41,9 @@ export default function Scene() {
         />
 
         <Suspense fallback={null}>
-          <HeroCrystal />
+          <group position={[2, 0, 0]}>
+             <HeroProduct />
+          </group>
           <Environment preset="city" />
         </Suspense>
       </Canvas>
