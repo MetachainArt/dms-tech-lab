@@ -1,6 +1,5 @@
 import Hero from "@/components/sections/Hero";
 import Company from "@/components/sections/Company";
-import Services from "@/components/sections/Services";
 import Apps from "@/components/sections/Apps";
 import Proof from "@/components/sections/Proof";
 import Contact from "@/components/sections/Contact";
@@ -12,7 +11,6 @@ export default function Home() {
       <Scene />
       <Hero />
       <Company />
-      <Services />
       <Apps />
       <Proof />
       <Contact />

@@ -5,15 +5,15 @@ import { Terminal, Box, BrainCircuit, Activity } from "lucide-react";
 
 export default function Apps() {
   return (
-    <section id="apps" className="w-full py-32 px-6 flex flex-col items-center">
+    <section id="projects" className="w-full py-32 px-6 flex flex-col items-center">
       <div className="max-w-7xl w-full">
         {/* Header */}
         <div className="mb-20">
-          <h3 className="text-neon-sky font-mono tracking-widest mb-4">APPS & TOOLS</h3>
+          <h3 className="text-neon-sky font-mono tracking-widest mb-4">PROJECTS</h3>
           <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tight">
-            Digital<br />
+            Selected<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-sky to-neon-purple opacity-80">
-              Artifacts
+              Works
             </span>
           </h2>
         </div>
