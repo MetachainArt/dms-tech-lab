@@ -1,99 +1,97 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
-
-// Mock Data for Apps
-const apps = [
-  {
-    id: "vibe-coder",
-    name: "Vibe Coder",
-    desc: "AI Pair Programming Assistant",
-    stack: ["Next.js", "OpenAI"],
-    status: "LIVE",
-  },
-  {
-    id: "closure",
-    name: "Project Closure",
-    desc: "Automated Project Wrapper",
-    stack: ["Python", "Rust"],
-    status: "BETA",
-  },
-  {
-    id: "mind-map",
-    name: "Idea Flow",
-    desc: "3D Brainstorming Canvas",
-    stack: ["Three.js", "Socket.io"],
-    status: "DEV",
-  },
-];
+import BentoCard from "@/components/ui/BentoCard";
+import { Terminal, Box, BrainCircuit, Activity } from "lucide-react";
 
 export default function Apps() {
   return (
-    <section id="apps" className="relative w-full py-32 px-6 flex flex-col items-center bg-black/20 backdrop-blur-sm">
+    <section id="apps" className="w-full py-32 px-6 flex flex-col items-center">
       <div className="max-w-7xl w-full">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-          <div>
-            <h3 className="text-neon-sky font-mono tracking-widest mb-2">WHAT WE BUILD</h3>
-            <h2 className="text-4xl md:text-5xl font-bold text-white">Featured Apps</h2>
-          </div>
-          <button className="px-6 py-3 rounded-full border border-white/20 hover:bg-white/10 transition-all font-mono text-sm flex items-center gap-2 group">
-            VIEW ALL APPS
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </button>
+        {/* Header */}
+        <div className="mb-20">
+          <h3 className="text-neon-sky font-mono tracking-widest mb-4">APPS & TOOLS</h3>
+          <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tight">
+            Digital<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-sky to-neon-purple opacity-80">
+              Artifacts
+            </span>
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {apps.map((app, index) => (
-            <motion.div
-              key={app.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="group relative aspect-[4/3] rounded-2xl border border-white/10 bg-white/5 overflow-hidden hover:border-neon-sky/50 transition-colors cursor-pointer"
-            >
-              {/* Holographic Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-10" />
-
-              {/* Content Overlay */}
-              <div className="absolute inset-0 p-8 flex flex-col justify-between z-20">
-                <div className="flex justify-between items-start">
-                  <span className={`px-2 py-1 rounded text-[10px] font-mono border ${app.status === 'LIVE' ? 'border-neon-sky text-neon-sky' : 'border-white/30 text-white/50'}`}>
-                    {app.status}
-                  </span>
-                  <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all transform translate-y-4 group-hover:translate-y-0">
-                    <ArrowUpRight className="w-5 h-5" />
-                  </div>
-                </div>
-
-                <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  <h3 className="text-2xl font-bold mb-1">{app.name}</h3>
-                  <p className="text-white/60 text-sm mb-4">{app.desc}</p>
-                  
-                  {/* Stack Badges */}
-                  <div className="flex gap-2">
-                    {app.stack.map((tech) => (
-                      <span key={tech} className="textxs text-white/40 font-mono bg-white/5 px-2 py-1 rounded">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Background Image/Preview Placeholder */}
-              <div className="absolute inset-0 bg-[#0a0a0a] group-hover:scale-105 transition-transform duration-700 z-0">
-                {/* Will be replaced by <video> or <Image> */}
-                <div className="w-full h-full bg-gradient-to-b from-transparent to-black/80" />
-              </div>
-            </motion.div>
-          ))}
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[400px]">
           
-          {/* Coming Soon Slot */}
-          <div className="relative aspect-[4/3] rounded-2xl border border-white/5 bg-white/[0.02] flex items-center justify-center border-dashed">
-            <span className="text-white/20 font-mono animate-pulse">COMING SOON</span>
-          </div>
+          {/* Card 1: Vibe Coder (Wide) */}
+          <BentoCard
+            title="Vibe Coder"
+            subtitle="AI Pair Programmer"
+            className="md:col-span-2"
+            cta="Try Beta"
+            href="#"
+            background={
+              <div className="absolute inset-0 bg-gradient-to-br from-neon-indigo/20 via-transparent to-transparent">
+                 <div className="absolute right-0 bottom-0 w-3/4 h-3/4 bg-[url('https://cdn.dribbble.com/userupload/3635799/file/original-46ba012b13ed87563d7756f7000b0d3e.png?resize=1024x768')] opacity-20 bg-no-repeat bg-cover mix-blend-overlay" />
+              </div>
+            }
+          >
+            <Terminal className="w-6 h-6 text-white" />
+          </BentoCard>
+
+          {/* Card 2: Idea Flow */}
+          <BentoCard
+            title="Idea Flow"
+            subtitle="3D Canvas"
+            className="md:col-span-1"
+            cta="Explore"
+            href="#"
+            background={
+               <div className="absolute inset-0 bg-gradient-to-bl from-neon-purple/20 via-transparent to-transparent">
+                   {/* Abstract Shape or 3D element placeholder */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-30">
+                        <div className="w-32 h-32 rounded-full border border-white/20 animate-spin-slow" />
+                        <div className="absolute w-48 h-48 rounded-full border border-white/10 animate-reverse-spin" />
+                    </div>
+               </div>
+            }
+          >
+            <BrainCircuit className="w-6 h-6 text-white" />
+          </BentoCard>
+
+          {/* Card 3: Project Closure */}
+          <BentoCard
+            title="Closure"
+            subtitle="Auto-Wrapper"
+            className="md:col-span-1"
+            cta="View Docs"
+            href="#"
+            background={
+                <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 via-transparent to-transparent" />
+            }
+          >
+            <Box className="w-6 h-6 text-white" />
+          </BentoCard>
+
+          {/* Card 4: System Monitor (Wide) */}
+          <BentoCard
+            title="DMS Monitor"
+            subtitle="System Status"
+            className="md:col-span-2"
+            cta="Check Status"
+            href="#"
+            background={
+                <div className="absolute inset-0 bg-gradient-to-tl from-rose-500/10 via-transparent to-transparent">
+                     {/* Mock Graph */}
+                     <div className="absolute bottom-0 left-0 right-0 h-32 flex items-end justify-around px-8 opacity-20">
+                        {[40, 70, 45, 90, 60, 80, 50].map((h, i) => (
+                            <div key={i} className="w-4 bg-white" style={{ height: `${h}%`}} />
+                        ))}
+                     </div>
+                </div>
+            }
+          >
+            <Activity className="w-6 h-6 text-white" />
+          </BentoCard>
+
         </div>
       </div>
     </section>
