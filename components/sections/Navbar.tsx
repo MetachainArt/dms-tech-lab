@@ -9,7 +9,6 @@ const navLinks = [
   { name: "Home", href: "/" },
   { name: "Company", href: "/#company" },
   { name: "Projects", href: "/#projects" },
-  { name: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -40,18 +39,28 @@ export default function Navbar() {
             <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
             
             {/* Logo - Left */}
-            <Link href="/" className="text-xl font-bold tracking-tight text-white group flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-neon-sky group-hover:shadow-[0_0_10px_#00D1FF] transition-shadow duration-300" />
-                DMS<span className="text-white/40 font-light">.LAB</span>
+            <Link href="/" className="text-2xl font-bold tracking-tight text-white group flex items-center gap-2">
+                {/* Logo mark similar to reference dots */}
+                <div className="flex flex-col gap-[2px]">
+                    <div className="flex gap-[2px]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-neon-sky" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
+                    </div>
+                    <div className="flex gap-[2px]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-neon-sky" />
+                    </div>
+                </div>
+                <span className="font-poppins">DMS<span className="text-neon-sky">.LAB</span></span>
             </Link>
 
             {/* Desktop Menu - Center */}
-            <div className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
+            <div className="hidden md:flex items-center gap-12 absolute left-1/2 -translate-x-1/2">
                 {navLinks.map((link) => (
                 <Link
                     key={link.name}
                     href={link.href}
-                    className="text-sm font-medium text-white/70 hover:text-white transition-colors"
+                    className="text-[15px] font-medium text-white/80 hover:text-white transition-colors"
                 >
                     {link.name}
                 </Link>
@@ -62,9 +71,9 @@ export default function Navbar() {
             <div className="flex items-center gap-4">
                 <Link 
                     href="/#contact"
-                    className="hidden md:flex px-6 py-2 rounded-full border border-white/20 text-sm font-medium text-white hover:bg-white hover:text-[#050B1B] transition-all duration-300"
+                    className="hidden md:flex px-8 py-2.5 rounded text-sm font-medium text-white border border-white/30 hover:border-neon-sky hover:text-neon-sky transition-all duration-300"
                 >
-                    Get in Touch
+                    Contact
                 </Link>
 
                 {/* Mobile Menu Button */}
