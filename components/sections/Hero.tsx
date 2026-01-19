@@ -28,8 +28,8 @@ export default function Hero() {
                 transition={{ duration: 0.8, delay: 0.1 }}
                 className="font-bold text-5xl md:text-7xl lg:text-8xl leading-[1.1] tracking-tight text-white"
             >
-                Innovation<br />
-                <span className="text-neon-sky">Through AI.</span>
+                혁신,<br />
+                <span className="text-neon-sky">AI를 만나다.</span>
             </motion.h1>
 
             <motion.p
@@ -38,8 +38,8 @@ export default function Hero() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-lg text-white/60 max-w-lg leading-relaxed"
             >
-                We architect the unseen. From abstract ideas to concrete reality.<br />
-                Experience the next generation of automotive retail solutions.
+                우리는 보이지 않는 것을 설계합니다. 추상적인 아이디어를 구체적인 현실로.<br />
+                차세대 오토모티브 리테일 솔루션을 경험해보세요.
             </motion.p>
             
             <motion.div 
@@ -49,11 +49,11 @@ export default function Hero() {
                 className="flex flex-wrap gap-4"
             >
                 <button className="px-8 py-4 bg-neon-sky text-[#050B1B] font-semibold rounded-full hover:bg-white transition-colors duration-300 flex items-center gap-2 group">
-                    Start Your Project
+                    프로젝트 시작하기
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
                 <button className="px-8 py-4 border border-white/20 text-white font-semibold rounded-full hover:bg-white/10 transition-colors duration-300">
-                    View Solutions
+                    솔루션 보기
                 </button>
             </motion.div>
         </div>

@@ -6,24 +6,24 @@ import Image from "next/image";
 
 const features = [
   {
-    title: "AI-Powered Automation",
+    title: "AI 기반 업무 자동화",
     subtitle: "REVOLUTIONIZE OPERATIONS",
-    description: "Empower your business with cutting-edge AI agents that handle complex workflows autonomously. From customer engagement to backend logic, we automate the impossible.",
-    points: ["Autonomous Agents", "Workflow Optimization", "Real-time Analytics"],
+    description: "복잡한 비즈니스 워크플로우를 자율적으로 처리하는 최첨단 AI 에이전트로 업무 효율을 극대화하세요. 고객 응대부터 백엔드 로직까지, 불가능을 자동화합니다.",
+    points: ["자율 AI 에이전트", "워크플로우 최적화", "실시간 데이터 분석"],
     image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2670&auto=format&fit=crop"
   },
   {
-    title: "3D Engineering & Design",
+    title: "3D 엔지니어링 & 디자인",
     subtitle: "IMMERSIVE EXPERIENCES",
-    description: "Bridge the gap between digital and physical. Our 3D engineering solutions provide photorealistic visualizations and interactive product configurators that convert.",
-    points: ["Product Visualization", "Interactive WebGL", "Digital Twins"],
+    description: "디지털과 물리적 세계의 경계를 허무세요. 포토리얼리스틱 시각화와 인터랙티브 3D 제품 컨피규레이터로 고객 경험을 혁신합니다.",
+    points: ["제품 시각화 (Visualization)", "인터랙티브 WebGL", "디지털 트윈"],
     image: "https://images.unsplash.com/photo-1617791160505-6f00504e3519?q=80&w=2670&auto=format&fit=crop"
   },
   {
-    title: "Tech Education & Consulting",
+    title: "기술 교육 & 컨설팅",
     subtitle: "FUTURE READY TEAMS",
-    description: "Equip your team with the skills to leverage Generative AI. We provide specialized training and consulting to transform your workforce into AI-native experts.",
-    points: ["GenAI Workshops", "Technical Consulting", "Custom Curriculums"],
+    description: "생성형 AI를 활용할 수 있는 기술력을 팀에 장착하세요. 실무 중심의 맞춤형 교육과 컨설팅으로 귀사의 인력을 AI 네이티브 전문가로 육성합니다.",
+    points: ["GenAI 워크샵", "기술 컨설팅", "맞춤형 커리큘럼"],
     image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2670&auto=format&fit=crop"
   }
 ];
@@ -45,16 +45,16 @@ export default function Company() {
                     <h3 className="text-neon-sky font-poppins font-semibold tracking-widest text-sm uppercase">About DMS</h3>
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-8 text-white">
-                    Driving Innovation at the<br />
-                    Intersection of <span className="text-neon-sky">AI & Design.</span>
+                    데이터와 디자인의 교차점에서<br />
+                    <span className="text-neon-sky">혁신을 설계하다.</span>
                 </h2>
                 <p className="text-lg text-white/60 leading-relaxed mb-8">
-                    We don't just build software; we architect the future. 
-                    Merging advanced 3D visualization with intelligent AI systems to create 
-                    unmatched digital experiences.
+                    우리는 단순한 소프트웨어가 아닌, 미래를 건축합니다. 
+                    고도화된 3D 시각화 기술과 지능형 AI 시스템을 결합하여
+                    대체 불가능한 디지털 경험을 창조합니다.
                 </p>
                 <button className="text-white border-b border-neon-sky pb-1 hover:text-neon-sky transition-colors flex items-center gap-2">
-                    Learn more about us <ArrowRight className="w-4 h-4" />
+                    DMS 소개 더보기 <ArrowRight className="w-4 h-4" />
                 </button>
              </motion.div>
 
@@ -119,7 +119,7 @@ export default function Company() {
                         </ul>
 
                         <button className="px-8 py-3 rounded-full border border-white/20 hover:bg-white hover:text-black transition-all duration-300 font-medium">
-                            Explore Solution
+                            솔루션 살펴보기
                         </button>
                     </motion.div>
                 </div>

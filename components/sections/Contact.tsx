@@ -31,12 +31,12 @@ export default function Contact() {
                     whileInView={{ opacity: 1, y: 0 }}
                     className="text-4xl md:text-5xl font-bold text-white tracking-tight"
                 >
-                    Partner with<br />
-                    <span className="text-neon-sky">Future Tech.</span>
+                    고객의 비즈니스를<br />
+                    <span className="text-neon-sky">미래와 연결합니다.</span>
                 </motion.h2>
                 <p className="text-white/60 text-lg leading-relaxed">
-                    Ready to transform your automotive retail experience? 
-                    Connect with our solution architects today.
+                    오토모티브 리테일 경험을 혁신할 준비가 되셨나요?<br/>
+                    DMS 솔루션 아키텍트와 상담하세요.
                 </p>
                 
                 <div className="flex flex-col gap-4 mt-8">
@@ -60,13 +60,13 @@ export default function Contact() {
                     <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mb-4">
                         <CheckCircle2 className="w-8 h-8 text-green-400" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white">Message Sent</h3>
-                    <p className="text-white/50">We will get back to you shortly.</p>
+                    <h3 className="text-2xl font-bold text-white">문의가 접수되었습니다.</h3>
+                    <p className="text-white/50">담당자가 24시간 내에 연락드리겠습니다.</p>
                 </motion.div>
                 ) : (
                 <form onSubmit={handleSubmit} className="space-y-5 text-left">
                     <div className="space-y-1">
-                        <label className="text-xs font-semibold text-white/60 uppercase tracking-wider ml-1">Work Email</label>
+                        <label className="text-xs font-semibold text-white/60 uppercase tracking-wider ml-1">이메일 (Work Email)</label>
                         <input 
                             type="email" 
                             required
@@ -77,17 +77,17 @@ export default function Contact() {
                     
                     <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-1">
-                            <label className="text-xs font-semibold text-white/60 uppercase tracking-wider ml-1">First Name</label>
+                            <label className="text-xs font-semibold text-white/60 uppercase tracking-wider ml-1">성 (Last Name)</label>
                             <input type="text" className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon-sky focus:bg-white/10 transition-all font-light" />
                         </div>
                         <div className="space-y-1">
-                            <label className="text-xs font-semibold text-white/60 uppercase tracking-wider ml-1">Last Name</label>
+                            <label className="text-xs font-semibold text-white/60 uppercase tracking-wider ml-1">이름 (First Name)</label>
                             <input type="text" className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon-sky focus:bg-white/10 transition-all font-light" />
                         </div>
                     </div>
 
                     <div className="space-y-1">
-                        <label className="text-xs font-semibold text-white/60 uppercase tracking-wider ml-1">Message</label>
+                        <label className="text-xs font-semibold text-white/60 uppercase tracking-wider ml-1">문의 내용 (Message)</label>
                         <textarea 
                             rows={4}
                             className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon-sky focus:bg-white/10 transition-all font-light resize-none"
@@ -102,7 +102,7 @@ export default function Contact() {
                     {status === "sending" ? (
                         <span className="w-5 h-5 border-2 border-[#050B1B]/30 border-t-[#050B1B] rounded-full animate-spin" />
                     ) : (
-                        "Submit Request"
+                        "문의 보내기"
                     )}
                     </button>
                 </form>

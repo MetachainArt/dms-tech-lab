@@ -6,9 +6,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
 const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "Company", href: "/#company" },
-  { name: "Projects", href: "/#projects" },
+  { name: "홈", href: "/" },
+  { name: "회사 소개", href: "/#company" },
+  { name: "프로젝트", href: "/#projects" },
 ];
 
 export default function Navbar() {
@@ -73,7 +73,7 @@ export default function Navbar() {
                     href="/#contact"
                     className="hidden md:flex px-8 py-2.5 rounded text-sm font-medium text-white border border-white/30 hover:border-neon-sky hover:text-neon-sky transition-all duration-300"
                 >
-                    Contact
+                    문의하기
                 </Link>
 
                 {/* Mobile Menu Button */}
