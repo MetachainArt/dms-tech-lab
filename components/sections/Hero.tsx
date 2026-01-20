@@ -58,11 +58,17 @@ export default function Hero() {
             </motion.div>
         </div>
 
-        {/* Right Visual (Abstract placeholder for now that interacts with Crystal) */}
-        <div className="relative h-full min-h-[50vh] flex items-center justify-center pointer-events-none">
-             {/* The HeroCrystal component in the background serves as the main visual. 
-                 We add a subtle gradient here to blend it. */}
-             <div className="absolute inset-0 bg-gradient-to-l from-[#050B1B]/20 to-transparent z-10" />
+        {/* Right Visual: Spline 3D Robot */}
+        <div className="relative h-[500px] md:h-[700px] w-full flex items-center justify-center pointer-events-auto">
+             <iframe 
+                src='https://my.spline.design/genkubgreetingrobot-T6QP9XxYq3CAHKCX7Kp8Hsbs/' 
+                frameBorder='0' 
+                width='100%' 
+                height='100%'
+                className="w-full h-full scale-110 md:scale-125" 
+             />
+             {/* Gradient Overlay for blending */}
+             <div className="absolute inset-0 bg-gradient-to-t from-[#050B1B] via-transparent to-transparent pointer-events-none" />
         </div>
 
       </div>
