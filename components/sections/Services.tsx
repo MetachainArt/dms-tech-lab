@@ -1,118 +1,98 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
-import { Layers, Cpu, BookOpen, Globe } from "lucide-react";
+import { motion } from "framer-motion";
+import { Cpu, Palette, GraduationCap, Globe } from "lucide-react";
 
 const services = [
   {
-    id: "design",
-    title: "DESIGN",
-    subtitle: "Architecture & Blueprint",
-    description: "제품, 구조, 시스템까지 처음부터 끝까지 설계합니다. 당신의 상상을 실행 가능한 청사진으로 만듭니다.",
-    icon: Layers,
-    color: "text-neon-sky",
-    bg: "bg-neon-sky/10",
-  },
-  {
-    id: "dev",
-    title: "DEVELOPMENT",
-    subtitle: "AI & Execution",
-    description: "AI·자동화·웹·툴을 실제로 동작하는 시스템으로 만듭니다. 기술을 만드는 것이 아니라 결과를 만듭니다.",
     icon: Cpu,
-    color: "text-neon-indigo",
-    bg: "bg-neon-indigo/10",
+    title: "DEV",
+    subtitle: "자동화 & 개발",
+    description: "N8N, AI Agent 기반 워크플로우 자동화. 반복 업무를 시스템으로.",
+    color: "from-blue-500 to-cyan-400",
   },
   {
-    id: "education",
-    title: "EDUCATION",
-    subtitle: "Practical Tech",
-    description: "실무자가 바로 쓸 수 있는 기술을 가르칩니다. 이론보다 'Vibe'를 전달합니다.",
-    icon: BookOpen,
-    color: "text-neon-purple",
-    bg: "bg-neon-purple/10",
+    icon: Palette,
+    title: "DESIGN",
+    subtitle: "3D & 시각화",
+    description: "제품 시각화, WebGL, 인터랙티브 3D 경험 설계.",
+    color: "from-purple-500 to-pink-400",
   },
   {
-    id: "trade",
-    title: "TRADE",
-    subtitle: "Global Connection",
-    description: "기술 제품을 글로벌로 연결합니다. OEM부터 B2B 무역까지 확장합니다.",
+    icon: GraduationCap,
+    title: "EDU",
+    subtitle: "기술 교육",
+    description: "GenAI 워크샵, 프롬프트 엔지니어링, 맞춤형 커리큘럼.",
+    color: "from-green-500 to-emerald-400",
+  },
+  {
     icon: Globe,
-    color: "text-white",
-    bg: "bg-white/10",
+    title: "TRADE",
+    subtitle: "해외 무역",
+    description: "글로벌 네트워크 기반 기술 제품 수출입 지원.",
+    color: "from-orange-500 to-amber-400",
   },
 ];
 
-const container: Variants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const item: Variants = {
-  hidden: { opacity: 0, y: 50, rotateX: -10 },
-  show: { opacity: 1, y: 0, rotateX: 0, transition: { type: "spring", stiffness: 50 } },
-};
-
 export default function Services() {
   return (
-    <section id="services" className="relative w-full py-32 px-6 flex flex-col items-center">
-      <div className="absolute inset-0 bg-transparent z-0 pointer-events-none" />
-      
-      {/* Section Header */}
-      <div className="relative z-10 mb-20 text-center">
-        <h3 className="text-neon-indigo font-mono tracking-widest mb-4">WHAT WE DO</h3>
-        <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent">
-          Comprehensive Solution
-        </h2>
-      </div>
+    <section className="w-full py-24 px-6 bg-[#050B1B]">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <span className="h-[1px] w-12 bg-neon-sky" />
+            <h3 className="text-neon-sky font-semibold tracking-widest text-sm uppercase">
+              What We Do
+            </h3>
+            <span className="h-[1px] w-12 bg-neon-sky" />
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
+            Services
+          </h2>
+        </div>
 
-      {/* Cards Grid */}
-      <motion.div
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-100px" }}
-        className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl w-full"
-      >
-        {services.map((service) => (
-          <motion.div
-            key={service.id}
-            variants={item}
-            whileHover={{ y: -10, transition: { duration: 0.3 } }}
-            className="group relative h-[400px] p-8 glass-panel rounded-2xl flex flex-col justify-between overflow-hidden cursor-pointer"
-          >
-            {/* Background Hover Glow */}
-            <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-gradient-to-b ${service.color.replace('text', 'from')} to-transparent`} />
-            
-            {/* Watermark Text */}
-            <div className="absolute -bottom-4 -right-4 text-6xl font-black text-white/5 md:text-7xl select-none z-0">
-              {service.title.substring(0, 3)}
-            </div>
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.1,
+                ease: "easeOut",
+              }}
+              className="group relative p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+            >
+              {/* Icon */}
+              <div
+                className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+              >
+                <service.icon className="w-7 h-7 text-white" />
+              </div>
 
-            {/* Icon Mockup (Will be 3D later) */}
-            <div className={`relative z-10 w-16 h-16 rounded-xl ${service.bg} flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300`}>
-              <service.icon className={`w-8 h-8 ${service.color}`} />
-            </div>
+              {/* Title */}
+              <h4 className="text-2xl font-bold text-white mb-1">
+                {service.title}
+              </h4>
+              <p className="text-neon-sky text-sm font-medium mb-4">
+                {service.subtitle}
+              </p>
 
-            {/* Content */}
-            <div className="relative z-10 space-y-4">
-              <h4 className={`text-xl font-bold ${service.color}`}>{service.title}</h4>
-              <p className="text-sm font-light text-white/60 leading-relaxed">
+              {/* Description */}
+              <p className="text-white/60 text-sm leading-relaxed">
                 {service.description}
               </p>
-              
-              <div className="pt-4 flex items-center gap-2 text-xs font-mono text-white/40 group-hover:text-white transition-colors">
-                <span>EXPLORE</span>
-                <span className="block h-[1px] w-8 bg-current" />
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+
+              {/* Hover Glow */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-sky/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

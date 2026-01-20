@@ -26,27 +26,17 @@ export default function AboutPage() {
                 </div>
                 
                 <h1 className="text-5xl md:text-6xl font-bold leading-tight tracking-tight text-[#050B1B]">
-                    데이터와 디자인의 교차점에서,<br/>
-                    <span className="text-neon-sky">작은 팀으로 큰 결과를 설계합니다.</span>
+                    Engineering the Invisible,<br/>
+                    <span className="text-neon-sky">보이지 않는 가치를 설계합니다.</span>
                 </h1>
 
                 <div className="space-y-4 text-lg text-gray-700 leading-relaxed max-w-lg">
+                    <p className="text-xl font-medium text-[#050B1B]">
+                        3D · Hardware · AI
+                    </p>
                     <p>
-                        DMS는 20년의 설계·개발 경험을 바탕으로 
-                        3D 설계, 통신 하드웨어, 그리고 AI 기반 자동화를 연결합니다.
+                        20년의 경험이 만드는 차이.
                     </p>
-                    <p className="font-semibold text-[#050B1B]">
-                        우리는 “적은 인원, 높은 효율”을 시스템으로 만드는 팀입니다.
-                    </p>
-                </div>
-
-                <div className="flex items-center gap-6 pt-4">
-                    <Link href="#projects" className="px-8 py-4 bg-[#050B1B] text-white font-medium rounded-full hover:bg-neon-sky hover:text-[#050B1B] transition-all flex items-center gap-2 shadow-lg">
-                        프로젝트 보기 <ArrowRight className="w-4 h-4" />
-                    </Link>
-                    <Link href="#contact" className="text-[#050B1B] font-medium border-b border-gray-300 pb-1 hover:border-[#050B1B] transition-colors">
-                        협업 문의
-                    </Link>
                 </div>
 
                 <div className="pt-8 text-xs text-gray-500 font-mono flex items-center gap-2">

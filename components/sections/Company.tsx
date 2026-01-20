@@ -11,7 +11,7 @@ const features = [
     subtitle: "REVOLUTIONIZE OPERATIONS",
     description: "복잡한 비즈니스 워크플로우를 자율적으로 처리하는 최첨단 AI 에이전트로 업무 효율을 극대화하세요. 고객 응대부터 백엔드 로직까지, 불가능을 자동화합니다.",
     points: ["자율 AI 에이전트", "워크플로우 최적화", "실시간 데이터 분석"],
-    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2670&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2670&auto=format&fit=crop"
   },
   {
     title: "3D 엔지니어링 & 디자인",

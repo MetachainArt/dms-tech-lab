@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import NeuralBackground from "@/components/ui/NeuralBackground";
 
 export default function Hero() {
@@ -11,9 +10,9 @@ export default function Hero() {
       {/* Neural Network Background - Full Screen */}
       <div className="absolute inset-0 z-0">
         <NeuralBackground />
-        {/* Gradient overlays for depth and text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#050B1B]/90 via-[#050B1B]/50 to-transparent pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050B1B] via-transparent to-[#050B1B]/30 pointer-events-none" />
+        {/* Gradient overlays for depth and text readability - Reduced opacity for visibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#050B1B]/50 via-[#050B1B]/20 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050B1B] via-transparent to-transparent pointer-events-none" />
       </div>
 
       {/* Centered Content */}
@@ -35,10 +34,10 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 }}
-                className="font-bold text-5xl md:text-7xl lg:text-8xl leading-[1.1] tracking-tight text-white"
+                className="font-bold text-4xl md:text-6xl lg:text-7xl leading-[1.2] tracking-tight text-white"
             >
-                혁신,<br />
-                <span className="text-neon-sky">AI를 만나다.</span>
+                Design the Unseen,<br />
+                <span className="text-neon-sky whitespace-nowrap">보이지 않는 것을 현실로.</span>
             </motion.h1>
 
             <motion.p
@@ -47,24 +46,19 @@ export default function Hero() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-lg text-white/60 max-w-lg leading-relaxed"
             >
-                우리는 보이지 않는 것을 설계합니다. 추상적인 아이디어를 구체적인 현실로.<br />
-                차세대 오토모티브 리테일 솔루션을 경험해보세요.
+                아이디어에서 시스템으로, 개념에서 경험으로.<br />
+                기술의 본질을 설계합니다.
             </motion.p>
 
-            <motion.div
+            <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="flex flex-wrap gap-4"
+                className="text-base text-white/50 max-w-xl leading-relaxed"
             >
-                <button className="px-8 py-4 bg-neon-sky text-[#050B1B] font-semibold rounded-full hover:bg-white transition-colors duration-300 flex items-center gap-2 group">
-                    프로젝트 시작하기
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
-                <button className="px-8 py-4 border border-white/20 text-white font-semibold rounded-full hover:bg-white/10 transition-colors duration-300">
-                    솔루션 보기
-                </button>
-            </motion.div>
+                복잡한 비즈니스 로직을 자동화하고, AI와 함께 새로운 가능성을 탐색합니다.<br />
+                우리는 기술을 통해 문제를 해결하고, 더 나은 미래를 설계합니다.
+            </motion.p>
         </div>
 
         {/* Right side - Neural network visible through transparent area */}

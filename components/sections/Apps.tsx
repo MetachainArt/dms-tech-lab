@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Settings2, FileText, AppWindow } from "lucide-react";
 import Link from "next/link";
+import NeuralBackground from "@/components/ui/NeuralBackground";
 
 // Project Data (Synced with Projects Page)
 const projects = [
@@ -35,10 +36,11 @@ const projects = [
 export default function Apps() {
   return (
     <section id="projects" className="w-full py-32 px-6 flex flex-col items-center bg-[#050B1B] overflow-hidden relative">
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 mix-blend-overlay"></div>
-      
-      {/* 3D Geometric Decoration */}
-      <div className="absolute right-[-10%] top-[20%] w-[600px] h-[600px] bg-gradient-to-br from-neon-purple/30 to-neon-sky/30 blur-3xl rounded-full opacity-40 pointer-events-none" />
+      {/* Neural Network Background */}
+      <div className="absolute inset-0 z-0">
+        <NeuralBackground />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050B1B] via-transparent to-[#050B1B] pointer-events-none" />
+      </div>
 
       <div className="max-w-7xl w-full relative z-10">
         {/* Header */}
@@ -55,7 +57,7 @@ export default function Apps() {
             </h2>
         </div>
 
-        {/* Grid Layout (Replaced Horizontal Scroller) */}
+        {/* Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {projects.map((project, index) => (
                 <motion.div
@@ -63,37 +65,37 @@ export default function Apps() {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
-                    transition={{ 
-                        duration: 0.6, 
-                        delay: index * 0.1, 
+                    transition={{
+                        duration: 0.6,
+                        delay: index * 0.1,
                         ease: "easeOut"
                     }}
-                    className="group relative bg-white rounded-[2rem] overflow-hidden shadow-2xl hover:shadow-[0_0_40px_rgba(14,165,233,0.3)] transition-all duration-300 hover:-translate-y-2 flex flex-col"
+                    className="group relative bg-white rounded-[2rem] overflow-hidden shadow-2xl hover:shadow-[0_0_40px_rgba(14,165,233,0.3)] transition-all duration-300 hover:-translate-y-2"
                 >
                     {/* Image Area */}
-                    <div className="h-64 w-full relative overflow-hidden">
-                         <img 
-                            src={project.image} 
-                            alt={project.title} 
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                    <div className="h-48 w-full relative overflow-hidden flex-shrink-0">
+                         <img
+                            src={project.image}
+                            alt={project.title}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                          />
                          <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300" />
-                         
+
                          {/* Icon - Top Right */}
                          <div className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg z-10">
                             <project.icon className={`w-5 h-5 ${project.color}`} />
                          </div>
                     </div>
 
-                    {/* Content */}
-                    <div className="p-8 flex flex-col flex-grow bg-white relative z-20">
-                        <span className="text-xs font-mono font-bold text-gray-400 uppercase tracking-widest mb-2">{project.category}</span>
-                        <h3 className="text-2xl font-bold text-[#050B1B] mb-4 group-hover:text-neon-sky transition-colors">{project.title}</h3>
-                        <p className="text-gray-500 text-sm leading-relaxed mb-8 flex-grow">
+                    {/* Content - Always visible */}
+                    <div className="p-6 bg-white">
+                        <span className="text-xs font-mono font-bold text-gray-400 uppercase tracking-widest mb-2 block">{project.category}</span>
+                        <h3 className="text-xl font-bold text-[#050B1B] mb-3 group-hover:text-neon-sky transition-colors">{project.title}</h3>
+                        <p className="text-gray-500 text-sm leading-relaxed mb-6">
                             {project.desc}
                         </p>
-                        
-                        <Link href="/projects" className="self-start px-6 py-2 rounded-full border border-gray-200 text-sm font-semibold text-[#050B1B] hover:bg-[#050B1B] hover:text-white transition-all flex items-center gap-2">
+
+                        <Link href="/projects" className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-[#050B1B] hover:bg-[#050B1B] hover:text-white transition-all">
                             자세히 보기 <ArrowRight className="w-4 h-4" />
                         </Link>
                     </div>
