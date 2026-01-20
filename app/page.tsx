@@ -8,7 +8,6 @@ import Scene from "@/components/3d/Scene";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between overflow-x-hidden select-none">
-      <Scene />
       <Hero />
       <Company />
       <Apps />
