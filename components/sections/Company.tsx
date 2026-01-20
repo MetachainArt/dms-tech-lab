@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const features = [
   {
@@ -53,9 +54,9 @@ export default function Company() {
                     고도화된 3D 시각화 기술과 지능형 AI 시스템을 결합하여
                     대체 불가능한 디지털 경험을 창조합니다.
                 </p>
-                <button className="text-[#050B1B] font-medium border-b border-neon-sky pb-1 hover:text-neon-sky transition-colors flex items-center gap-2">
+                <Link href="/about" className="text-[#050B1B] font-medium border-b border-neon-sky pb-1 hover:text-neon-sky transition-colors flex items-center gap-2 inline-flex">
                     DMS 소개 더보기 <ArrowRight className="w-4 h-4" />
-                </button>
+                </Link>
              </motion.div>
 
              <motion.div

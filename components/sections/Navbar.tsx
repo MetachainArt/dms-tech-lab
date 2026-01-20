@@ -7,8 +7,8 @@ import Link from "next/link";
 
 const navLinks = [
   { name: "홈", href: "/" },
-  { name: "회사 소개", href: "/#company" },
-  { name: "프로젝트", href: "/#projects" },
+  { name: "회사 소개", href: "/about" },
+  { name: "프로젝트", href: "#projects" },
 ];
 
 export default function Navbar() {
