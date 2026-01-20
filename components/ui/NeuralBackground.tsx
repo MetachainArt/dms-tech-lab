@@ -11,33 +11,38 @@ export default function NeuralBackground() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
+    // Use container dimensions instead of window
+    const updateSize = () => {
+        const parent = canvas.parentElement;
+        if (parent) {
+            canvas.width = parent.clientWidth;
+            canvas.height = parent.clientHeight;
+        } else {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+    };
+    
+    updateSize();
+    window.addEventListener("resize", updateSize);
 
     // Mouse interactions
-    const mouse = { x: -1000, y: -1000, radius: 200 };
+    const mouse = { x: -1000, y: -1000, radius: 250 }; // Increased radius
 
     const handleMouseMove = (e: MouseEvent) => {
-        // Adjust mouse coordinates relative to canvas if needed, 
-        // but for full screen canvas, clientX/Y is fine.
-        // Since this canvas is inside a relative div, we might need bounding rect.
         const rect = canvas.getBoundingClientRect();
         mouse.x = e.clientX - rect.left;
         mouse.y = e.clientY - rect.top;
     };
-    
-    // Add event listener to the CANVAS parent or window? 
-    // Ideally to the window for smoother feeling if it's a background
     window.addEventListener("mousemove", handleMouseMove);
 
-
     // Configuration
-    const particleCount = 80; // Increased count
+    const particleCount = 60; // Slightly reduced count for cleaner look on smaller canvases, but effectively denser
     const connectionDistance = 150;
     const particles: Particle[] = [];
     
-    // Colors
-    const colors = ["#00D1FF", "#8B5CF6", "#FFFFFF"]; // Neon Sky, Purple, White
+    // Colors - Brighter
+    const colors = ["#00D1FF", "#A78BFA", "#FFFFFF"]; 
 
     class Particle {
       x: number;
@@ -48,11 +53,11 @@ export default function NeuralBackground() {
       color: string;
 
       constructor() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 1.5; // Faster movement
-        this.vy = (Math.random() - 0.5) * 1.5;
-        this.size = Math.random() * 2.5 + 1;
+        this.x = Math.random() * canvas!.width;
+        this.y = Math.random() * canvas!.height;
+        this.vx = (Math.random() - 0.5) * 1.0; 
+        this.vy = (Math.random() - 0.5) * 1.0;
+        this.size = Math.random() * 3 + 2; // Min size 2, Max 5 (Larger)
         this.color = colors[Math.floor(Math.random() * colors.length)];
       }
 
@@ -61,8 +66,8 @@ export default function NeuralBackground() {
         this.y += this.vy;
 
         // Bounce
-        if (this.x < 0 || this.x > width) this.vx *= -1;
-        if (this.y < 0 || this.y > height) this.vy *= -1;
+        if (this.x < 0 || this.x > canvas!.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas!.height) this.vy *= -1;
         
         // Mouse Interaction
         const dx = mouse.x - this.x;
@@ -74,8 +79,8 @@ export default function NeuralBackground() {
             const forceDirectionY = dy / distance;
             const maxDistance = mouse.radius;
             const force = (maxDistance - distance) / maxDistance;
-            const directionX = forceDirectionX * force * 2; // Push strength
-            const directionY = forceDirectionY * force * 2;
+            const directionX = forceDirectionX * force * 3; 
+            const directionY = forceDirectionY * force * 3;
             
             this.x -= directionX;
             this.y -= directionY;
@@ -87,30 +92,46 @@ export default function NeuralBackground() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fillStyle = this.color;
-        // Glow effect
-        ctx.shadowBlur = 10;
+        
+        ctx.shadowBlur = 15;
         ctx.shadowColor = this.color;
         ctx.fill();
-        ctx.shadowBlur = 0; // Reset for lines
+        ctx.shadowBlur = 0;
       }
     }
 
     // Initialize
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
+    const initParticles = () => {
+        particles.length = 0;
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+    };
+    initParticles();
+    
+    // Re-init on resize to redistribute
+    const handleResizeReinit = () => {
+        updateSize();
+        initParticles();
     }
+    window.addEventListener("resize", handleResizeReinit);
+
 
     // Animation Loop
     const animate = () => {
         if (!ctx) return;
-        ctx.clearRect(0, 0, width, height);
         
-        // Update and Draw Particles
+        // Clear with slight trail effect? No, clean clear for now.
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Lighter blend mode for glowing effect
+        ctx.globalCompositeOperation = 'screen'; 
+
         particles.forEach((p, index) => {
             p.update();
             p.draw();
 
-            // Connect particles
+            // Connect
             for (let j = index + 1; j < particles.length; j++) {
                 const p2 = particles[j];
                 const dx = p.x - p2.x;
@@ -119,9 +140,8 @@ export default function NeuralBackground() {
 
                 if (distance < connectionDistance) {
                     ctx.beginPath();
-                    // Gradient Line
-                    const opacity = 0.3 * (1 - distance / connectionDistance);
-                    ctx.strokeStyle = `rgba(100, 200, 255, ${opacity})`; 
+                    const opacity = 1 - (distance / connectionDistance);
+                    ctx.strokeStyle = `rgba(100, 200, 255, ${opacity * 0.5})`; // Brighter lines
                     ctx.lineWidth = 1;
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(p2.x, p2.y);
@@ -129,21 +149,17 @@ export default function NeuralBackground() {
                 }
             }
         });
-
+        
+        ctx.globalCompositeOperation = 'source-over'; // Reset
         requestAnimationFrame(animate);
     };
 
-    animate();
+    const animationId = requestAnimationFrame(animate);
 
-    const handleResize = () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-        // Re-init particles on resize to avoid clustering? Or just let them float.
-    };
-
-    window.addEventListener("resize", handleResize);
     return () => {
-        window.removeEventListener("resize", handleResize);
+        cancelAnimationFrame(animationId);
+        window.removeEventListener("resize", updateSize);
+        window.removeEventListener("resize", handleResizeReinit);
         window.removeEventListener("mousemove", handleMouseMove);
     };
 
@@ -152,7 +168,8 @@ export default function NeuralBackground() {
   return (
     <canvas 
         ref={canvasRef} 
-        className="absolute inset-0 w-full h-full pointer-events-auto z-0"
+        className="absolute inset-0 w-full h-full pointer-events-auto"
     />
   );
 }
+
