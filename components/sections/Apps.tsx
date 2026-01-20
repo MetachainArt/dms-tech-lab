@@ -95,7 +95,7 @@ export default function Apps() {
                             {project.desc}
                         </p>
 
-                        <Link href="/projects" className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-[#050B1B] hover:bg-[#050B1B] hover:text-white transition-all">
+                        <Link href="/services" className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-[#050B1B] hover:bg-[#050B1B] hover:text-white transition-all">
                             자세히 보기 <ArrowRight className="w-4 h-4" />
                         </Link>
                     </div>

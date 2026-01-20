@@ -9,7 +9,9 @@ import { usePathname } from "next/navigation";
 const navLinks = [
   { name: "홈", href: "/" },
   { name: "회사 소개", href: "/about" },
-  { name: "프로젝트", href: "/projects" },
+  { name: "서비스", href: "/services" },
+  { name: "교육", href: "/education" },
+  { name: "블로그", href: "/blog" },
 ];
 
 export default function Navbar() {
