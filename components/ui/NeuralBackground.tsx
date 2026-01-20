@@ -14,10 +14,30 @@ export default function NeuralBackground() {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
+    // Mouse interactions
+    const mouse = { x: -1000, y: -1000, radius: 200 };
+
+    const handleMouseMove = (e: MouseEvent) => {
+        // Adjust mouse coordinates relative to canvas if needed, 
+        // but for full screen canvas, clientX/Y is fine.
+        // Since this canvas is inside a relative div, we might need bounding rect.
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+    };
+    
+    // Add event listener to the CANVAS parent or window? 
+    // Ideally to the window for smoother feeling if it's a background
+    window.addEventListener("mousemove", handleMouseMove);
+
+
     // Configuration
-    const particleCount = 60; // Affordable count
+    const particleCount = 80; // Increased count
     const connectionDistance = 150;
     const particles: Particle[] = [];
+    
+    // Colors
+    const colors = ["#00D1FF", "#8B5CF6", "#FFFFFF"]; // Neon Sky, Purple, White
 
     class Particle {
       x: number;
@@ -25,30 +45,53 @@ export default function NeuralBackground() {
       vx: number;
       vy: number;
       size: number;
+      color: string;
 
       constructor() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.5; // Slow movement
-        this.vy = (Math.random() - 0.5) * 0.5;
-        this.size = Math.random() * 2 + 1;
+        this.vx = (Math.random() - 0.5) * 1.5; // Faster movement
+        this.vy = (Math.random() - 0.5) * 1.5;
+        this.size = Math.random() * 2.5 + 1;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
       }
 
       update() {
         this.x += this.vx;
         this.y += this.vy;
 
-        // Bounce off edges
+        // Bounce
         if (this.x < 0 || this.x > width) this.vx *= -1;
         if (this.y < 0 || this.y > height) this.vy *= -1;
+        
+        // Mouse Interaction
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < mouse.radius) {
+            const forceDirectionX = dx / distance;
+            const forceDirectionY = dy / distance;
+            const maxDistance = mouse.radius;
+            const force = (maxDistance - distance) / maxDistance;
+            const directionX = forceDirectionX * force * 2; // Push strength
+            const directionY = forceDirectionY * force * 2;
+            
+            this.x -= directionX;
+            this.y -= directionY;
+        }
       }
 
       draw() {
         if (!ctx) return;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(0, 209, 255, 0.5)"; // Neon Sky color
+        ctx.fillStyle = this.color;
+        // Glow effect
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = this.color;
         ctx.fill();
+        ctx.shadowBlur = 0; // Reset for lines
       }
     }
 
@@ -76,7 +119,9 @@ export default function NeuralBackground() {
 
                 if (distance < connectionDistance) {
                     ctx.beginPath();
-                    ctx.strokeStyle = `rgba(0, 209, 255, ${0.2 * (1 - distance / connectionDistance)})`;
+                    // Gradient Line
+                    const opacity = 0.3 * (1 - distance / connectionDistance);
+                    ctx.strokeStyle = `rgba(100, 200, 255, ${opacity})`; 
                     ctx.lineWidth = 1;
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(p2.x, p2.y);
@@ -93,17 +138,21 @@ export default function NeuralBackground() {
     const handleResize = () => {
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
+        // Re-init particles on resize to avoid clustering? Or just let them float.
     };
 
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+        window.removeEventListener("resize", handleResize);
+        window.removeEventListener("mousemove", handleMouseMove);
+    };
 
   }, []);
 
   return (
     <canvas 
         ref={canvasRef} 
-        className="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-60"
+        className="absolute inset-0 w-full h-full pointer-events-auto z-0"
     />
   );
 }
