@@ -64,10 +64,10 @@ export default function ProjectsPage() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: idx * 0.1 }}
-                    className="group bg-white rounded-[2rem] overflow-hidden hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full shadow-xl"
+                    className="group bg-white rounded-[2rem] overflow-hidden hover:-translate-y-2 transition-transform duration-300 flex flex-col shadow-xl border border-gray-200"
                 >
                     {/* Image Area */}
-                    <div className="h-64 w-full relative overflow-hidden">
+                    <div className="h-64 w-full relative overflow-hidden flex-shrink-0">
                          {/* Background Image */}
                          <img 
                             src={project.image} 
@@ -83,14 +83,14 @@ export default function ProjectsPage() {
                     </div>
 
                     {/* Content */}
-                    <div className="p-8 flex flex-col flex-grow">
+                    <div className="p-8 flex flex-col bg-white h-full relative z-20">
                         <div className="text-xs font-bold text-gray-400 tracking-widest uppercase mb-3">{project.category}</div>
-                        <h3 className="text-2xl font-bold text-[#050B1B] mb-4 group-hover:text-neon-sky transition-colors">{project.title}</h3>
-                        <p className="text-gray-600 text-sm leading-relaxed mb-8 flex-grow line-clamp-3">
+                        <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-neon-sky transition-colors">{project.title}</h3>
+                        <p className="text-gray-600 text-sm leading-relaxed mb-8 line-clamp-3">
                             {project.desc}
                         </p>
                         
-                        <button className="self-start px-6 py-3 rounded-full border border-gray-200 text-[#050B1B] font-bold text-sm flex items-center gap-2 hover:bg-[#050B1B] hover:text-white hover:border-[#050B1B] transition-all">
+                        <button className="self-start px-6 py-3 rounded-full border border-gray-200 text-slate-900 font-bold text-sm flex items-center gap-2 hover:bg-[#050B1B] hover:text-white hover:border-[#050B1B] transition-all">
                             자세히 보기 <ArrowRight className="w-4 h-4" />
                         </button>
                     </div>
