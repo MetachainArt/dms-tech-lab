@@ -7,7 +7,8 @@ import Image from "next/image";
 
 export default function AboutPage() {
   return (
-    <main className="w-full bg-white text-[#050B1B] overflow-x-hidden font-poppins selection:bg-neon-sky selection:text-white">
+    <main className="w-full !bg-white bg-white text-[#050B1B] overflow-x-hidden font-poppins selection:bg-neon-sky selection:text-white min-h-screen relative z-10">
+      <div className="absolute inset-0 bg-white -z-10" /> {/* Backup Background Layer */}
       
       {/* 1. HERO SECTION */}
       <section className="relative w-full min-h-screen flex items-center justify-center px-6 pt-20 bg-white">
