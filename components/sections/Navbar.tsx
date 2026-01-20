@@ -27,12 +27,14 @@ export default function Navbar() {
   }, []);
 
   // Dynamic colors based on page and scroll state
-  const currentTextColor = isLightPage && !isScrolled ? "text-[#050B1B]" : "text-white";
-  const currentLinkTextColor = isLightPage && !isScrolled ? "text-[#050B1B]/80" : "text-white/80";
-  const currentLinkHoverColor = isLightPage && !isScrolled ? "hover:text-[#050B1B]" : "hover:text-white";
-  const currentBorderColor = isLightPage && !isScrolled ? "border-[#050B1B]/30" : "border-white/30";
-  const logoDotColor = isLightPage && !isScrolled ? "bg-[#050B1B]/20" : "bg-white/20";
-
+  // User requested "Like the first image" -> Always White text, Dark Background on About.
+  // We remove the "Light Page" text color logic and instead force the Background to be dark on About.
+  
+  const currentTextColor = "text-white";
+  const currentLinkTextColor = "text-white/80";
+  const currentLinkHoverColor = "hover:text-white";
+  const currentBorderColor = "border-white/30";
+  const logoDotColor = "bg-white/20";
 
   return (
     <>
@@ -43,22 +45,22 @@ export default function Navbar() {
         className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none"
       >
         <div className={`w-full pointer-events-auto transition-all duration-300 ${
-            isScrolled 
-            ? "bg-[#050B1B]/90 backdrop-blur-md border-b border-white/5 py-4 shadow-lg" 
-            : `bg-transparent py-6`
+            isScrolled || isLightPage // On scroll OR on About page (Light Page), make bg Dark
+            ? "bg-[#050B1B] border-b border-white/5 py-4 shadow-lg" 
+            : "bg-transparent py-6"
         }`}>
             <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
             
             {/* Logo - Left */}
-            <Link href="/" className={`text-2xl font-bold tracking-tight group flex items-center gap-2 ${currentTextColor}`}>
+            <Link href="/" className="text-2xl font-bold tracking-tight text-white group flex items-center gap-2">
                 {/* Logo mark similar to reference dots */}
                 <div className="flex flex-col gap-[2px]">
                     <div className="flex gap-[2px]">
                         <span className="w-1.5 h-1.5 rounded-full bg-neon-sky" />
-                        <span className={`w-1.5 h-1.5 rounded-full ${logoDotColor}`} />
+                        <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
                     </div>
                     <div className="flex gap-[2px]">
-                        <span className={`w-1.5 h-1.5 rounded-full ${logoDotColor}`} />
+                        <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
                         <span className="w-1.5 h-1.5 rounded-full bg-neon-sky" />
                     </div>
                 </div>
