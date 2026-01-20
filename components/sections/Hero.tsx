@@ -2,6 +2,18 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import NeuralBackground from "@/components/ui/NeuralBackground";
+
+// ... existing imports ...
+
+// Inside Hero component ...
+
+        {/* Right Visual: Neural Network Visualization */}
+        <div className="relative h-[500px] md:h-full min-h-[50vh] flex items-center justify-center w-full">
+             <NeuralBackground />
+             {/* Gradient Overlay for blending at bottom */}
+             <div className="absolute inset-0 bg-gradient-to-t from-[#050B1B] via-transparent to-transparent z-10 pointer-events-none" />
+        </div>
 
 export default function Hero() {
   return (
