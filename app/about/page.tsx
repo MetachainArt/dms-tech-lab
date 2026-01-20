@@ -10,7 +10,7 @@ export default function AboutPage() {
     <main className="w-full bg-white text-[#050B1B] overflow-x-hidden font-poppins selection:bg-neon-sky selection:text-white">
       
       {/* 1. HERO SECTION */}
-      <section className="relative w-full min-h-screen flex items-center justify-center px-6 pt-20">
+      <section className="relative w-full min-h-screen flex items-center justify-center px-6 pt-20 bg-white">
         <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Text Side */}
             <motion.div 
@@ -26,10 +26,10 @@ export default function AboutPage() {
                 
                 <h1 className="text-5xl md:text-6xl font-bold leading-tight tracking-tight text-[#050B1B]">
                     데이터와 디자인의 교차점에서,<br/>
-                    <span className="text-neon-sky">혁신을 설계하다.</span>
+                    <span className="text-neon-sky">작은 팀으로 큰 결과를 설계합니다.</span>
                 </h1>
 
-                <div className="space-y-4 text-lg text-gray-600 leading-relaxed max-w-lg">
+                <div className="space-y-4 text-lg text-gray-700 leading-relaxed max-w-lg">
                     <p>
                         DMS는 20년의 설계·개발 경험을 바탕으로 
                         3D 설계, 통신 하드웨어, 그리고 AI 기반 자동화를 연결합니다.
@@ -40,7 +40,7 @@ export default function AboutPage() {
                 </div>
 
                 <div className="flex items-center gap-6 pt-4">
-                    <Link href="#projects" className="px-8 py-4 bg-[#050B1B] text-white font-medium rounded-full hover:bg-neon-sky hover:text-[#050B1B] transition-all flex items-center gap-2">
+                    <Link href="#projects" className="px-8 py-4 bg-[#050B1B] text-white font-medium rounded-full hover:bg-neon-sky hover:text-[#050B1B] transition-all flex items-center gap-2 shadow-lg">
                         프로젝트 보기 <ArrowRight className="w-4 h-4" />
                     </Link>
                     <Link href="#contact" className="text-[#050B1B] font-medium border-b border-gray-300 pb-1 hover:border-[#050B1B] transition-colors">
@@ -48,7 +48,7 @@ export default function AboutPage() {
                     </Link>
                 </div>
 
-                <div className="pt-8 text-xs text-gray-400 font-mono flex items-center gap-2">
+                <div className="pt-8 text-xs text-gray-500 font-mono flex items-center gap-2">
                     <span>Founded 2023</span>
                     <span>•</span>
                     <span>Engineering + Design + AI Workflow</span>
@@ -60,9 +60,9 @@ export default function AboutPage() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1 }}
-                className="relative h-[600px] w-full"
+                className="relative h-[500px] md:h-[600px] w-full"
             >
-                <div className="absolute inset-0 rounded-[24px] overflow-hidden shadow-2xl">
+                <div className="absolute inset-0 rounded-[24px] overflow-hidden shadow-2xl bg-gray-100">
                     <Image 
                         src="/about/hero.png" 
                         alt="Engineering Studio" 
@@ -70,16 +70,14 @@ export default function AboutPage() {
                         className="object-cover"
                     />
                 </div>
-                {/* Floating UI Overlay Decoration */}
-                <div className="absolute -bottom-10 -left-10 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 hidden md:block">
-                    <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center">
-                            <Cpu className="w-6 h-6 text-neon-sky" />
-                        </div>
-                        <div>
-                            <div className="text-xs text-gray-400 uppercase tracking-wider">System Status</div>
-                            <div className="text-lg font-bold text-[#050B1B]">Optimization: 98%</div>
-                        </div>
+                {/* Floating UI Overlay Decoration - Simplified visual element */}
+                <div className="absolute -bottom-6 -right-6 md:-bottom-10 md:-left-10 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 hidden md:flex items-center gap-4 z-20">
+                    <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center">
+                        <Cpu className="w-6 h-6 text-neon-sky" />
+                    </div>
+                    <div>
+                        <div className="text-xs text-gray-400 uppercase tracking-wider">System Status</div>
+                        <div className="text-lg font-bold text-[#050B1B]">Optimization: 98%</div>
                     </div>
                 </div>
             </motion.div>
@@ -87,29 +85,38 @@ export default function AboutPage() {
       </section>
 
       {/* 2. MISSION STRIP */}
-      <section className="w-full border-y border-gray-100 bg-gray-50/50 py-12">
+      <section className="w-full border-y border-gray-100 bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="flex items-center gap-4">
-                <span className="text-sm font-semibold text-gray-400 uppercase tracking-widest">우리가 하는 일</span>
+                <span className="text-sm font-semibold text-gray-500 uppercase tracking-widest">우리가 하는 일</span>
                 <span className="h-[1px] w-16 bg-gray-300" />
             </div>
             
             <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-                {["설계 (Design Engineering)", "검증 (Proof & Build)", "자동화 (AI Workflow)"].map((keyword) => (
-                    <span key={keyword} className="text-lg md:text-xl font-bold text-[#050B1B]">{keyword}</span>
+                {[
+                    { kor: "설계", eng: "Design Engineering" }, 
+                    { kor: "검증", eng: "Proof & Build" }, 
+                    { kor: "자동화", eng: "AI Workflow" }
+                ].map((item) => (
+                    <div key={item.kor} className="flex flex-col items-center md:items-start text-[#050B1B]">
+                        <span className="text-2xl md:text-3xl font-bold">{item.kor}</span>
+                        <span className="text-sm text-gray-500 font-medium">{item.eng}</span>
+                    </div>
                 ))}
             </div>
         </div>
-        <div className="text-center mt-8 text-gray-500 font-medium">
-            아이디어를 “작동하는 결과물”로 만드는 과정 전체를 설계합니다.
+        <div className="text-center mt-12">
+             <p className="text-xl md:text-2xl font-medium text-gray-800">
+                아이디어를 “작동하는 결과물”로 만드는 과정 전체를 설계합니다.
+             </p>
         </div>
       </section>
 
       {/* 3. FOUNDER STORY */}
-      <section className="w-full py-32 px-6">
+      <section className="w-full py-32 px-6 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Image Side */}
-            <div className="relative h-[600px] rounded-[24px] overflow-hidden shadow-xl lg:order-1">
+            <div className="relative h-[600px] rounded-[24px] overflow-hidden shadow-2xl lg:order-1 bg-gray-100">
                  <Image 
                     src="/about/founder.png" 
                     alt="Founder" 
@@ -120,11 +127,15 @@ export default function AboutPage() {
 
             {/* Text Side */}
             <div className="space-y-8 lg:order-2">
-                <h2 className="text-3xl md:text-4xl font-bold text-[#050B1B] leading-tight">
-                    20년의 현장, 30개국의 경험,<br/>
-                    그리고 다음 10년
-                </h2>
-                <div className="space-y-6 text-gray-600 leading-relaxed text-lg">
+                <div>
+                    <h5 className="text-neon-sky font-semibold tracking-widest text-sm uppercase mb-2">FOUNDER STORY</h5>
+                    <h2 className="text-3xl md:text-4xl font-bold text-[#050B1B] leading-tight">
+                        20년의 현장, 30개국의 경험,<br/>
+                        그리고 다음 10년
+                    </h2>
+                </div>
+                
+                <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
                     <p>
                         저는 20년 동안 3D 설계와 하드웨어 디자인을 해왔습니다.<br/>
                         컴퓨터공학을 전공했고, 회사에서 일하며 정보통신공학을 공부했습니다.
@@ -134,18 +145,13 @@ export default function AboutPage() {
                         “현장에 통하는 설계”를 배웠습니다.
                     </p>
                     <p>
-                        고등학교 때는 작곡을, 대학 때는 에세이 책을 쓰며<br/> 
-                        ‘표현하는 능력’을 길렀고,<br/>
+                        고등학교 때는 작곡을, 대학 때는 에세이 책을 쓰며 ‘표현하는 능력’을 길렀고,<br/>
                         사진은 20년 동안 취미로, 봉사는 10년 동안 삶의 중심으로 이어왔습니다.
                     </p>
-                    <p className="font-semibold text-[#050B1B]">
+                    <p className="font-semibold text-[#050B1B] text-xl pt-4">
                         이 경험들은 결국 한 가지 결론으로 모였습니다.<br/> 
                         시스템을 만들자. 더 많은 사람에게 도움이 되도록.
                     </p>
-                </div>
-                <div className="pt-4">
-                     {/* Signature or Name could go here */}
-                     <span className="font-mono text-neon-sky">Founder / Chief Architect</span>
                 </div>
             </div>
         </div>
@@ -160,23 +166,36 @@ export default function AboutPage() {
          
          <div className="max-w-6xl mx-auto relative z-10">
             <div className="text-center mb-20">
+                <h5 className="text-neon-sky font-semibold tracking-widest text-sm uppercase mb-4">HISTORY</h5>
                 <h2 className="text-3xl md:text-4xl font-bold">DMS는 이렇게 진화해왔습니다</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
                 {/* Connecting Line (Desktop) */}
-                <div className="hidden md:block absolute top-8 left-0 right-0 h-[2px] bg-gradient-to-r from-gray-700 via-neon-sky to-gray-700 -z-10 opacity-50" />
+                <div className="hidden md:block absolute top-[28px] left-10 right-10 h-[2px] bg-gradient-to-r from-gray-800 via-neon-sky to-gray-800 -z-10 opacity-30" />
 
                 {[
-                    { year: "2023", title: "설립", desc: "설계 및 부품 개발 중심으로 시작\n현장 요구를 빠르게 반영하는 개발 방식 구축" },
-                    { year: "2025", title: "AI 학습과 확장", desc: "AI 기반 교육 진행\n설계 컨설팅 + 자동화 관점의 문제 해결" },
-                    { year: "2026", title: "바이브 코딩과 사회적 임팩트", desc: "장애 아동을 위한 웹앱 프로그램\n자동화 워크플로우 제품화\n해외 무역 확장 + AI Agent 기반 소수정예 운영" }
+                    { 
+                        year: "2023", 
+                        title: "설립", 
+                        desc: "설계 및 부품 개발 중심으로 시작\n현장 요구를 빠르게 반영하는 개발 방식 구축" 
+                    },
+                    { 
+                        year: "2025", 
+                        title: "AI 학습과 확장", 
+                        desc: "AI 기반 교육 진행\n설계 컨설팅 + 자동화 관점의 문제 해결" 
+                    },
+                    { 
+                        year: "2026", 
+                        title: "바이브 코딩과 사회적 임팩트", 
+                        desc: "장애 아동을 위한 웹앱 프로그램\n자동화 워크플로우 제품화\n해외 무역 확장 + AI Agent 기반 소수정예 운영" 
+                    }
                 ].map((item, idx) => (
                     <div key={item.year} className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl relative group hover:-translate-y-2 transition-transform duration-300">
-                        <div className="w-4 h-4 rounded-full bg-neon-sky absolute -top-[34px] left-1/2 -translate-x-1/2 hidden md:block ring-4 ring-[#050B1B]" />
-                        <div className="text-neon-sky font-mono font-bold text-xl mb-2">{item.year}</div>
-                        <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
-                        <p className="text-gray-400 whitespace-pre-line leading-relaxed">{item.desc}</p>
+                        <div className="w-4 h-4 rounded-full bg-neon-sky absolute -top-[34px] left-1/2 -translate-x-1/2 hidden md:block ring-4 ring-[#050B1B] shadow-[0_0_20px_rgba(0,209,255,0.5)]" />
+                        <div className="text-neon-sky font-mono font-bold text-xl mb-4">{item.year}</div>
+                        <h3 className="text-2xl font-bold mb-4 text-white">{item.title}</h3>
+                        <p className="text-gray-300 whitespace-pre-line leading-relaxed">{item.desc}</p>
                     </div>
                 ))}
             </div>
@@ -187,22 +206,39 @@ export default function AboutPage() {
       <section className="w-full py-32 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
+                 <h5 className="text-neon-sky font-semibold tracking-widest text-sm uppercase mb-4">HOW WE WORK</h5>
                 <h2 className="text-3xl md:text-4xl font-bold text-[#050B1B]">적은 인원으로 고효율을 만드는 방법</h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {[
-                    { title: "문제를 잘 정의합니다", desc: "무엇을 만들지보다 “왜 만드는지”를 먼저 정리합니다.", icon: CheckCircle2 },
-                    { title: "빠르게 형태로 만듭니다", desc: "초안 → 피드백 → 개선을 짧게 반복합니다.", icon: ArrowUpRight },
-                    { title: "자동화로 시간을 되찾습니다", desc: "반복 업무는 시스템이, 사람은 창의와 판단에 집중합니다.", icon: Network },
-                    { title: "기록이 팀의 실력입니다", desc: "결정과 근거를 남겨, 다음 실행을 더 빠르게 만듭니다.", icon: Monitor }
+                    { 
+                        title: "문제를 잘 정의합니다", 
+                        desc: "무엇을 만들지보다 “왜 만드는지”를 먼저 정리합니다.", 
+                        icon: CheckCircle2 
+                    },
+                    { 
+                        title: "빠르게 형태로 만듭니다", 
+                        desc: "초안 → 피드백 → 개선을 짧게 반복합니다.", 
+                        icon: ArrowUpRight 
+                    },
+                    { 
+                        title: "자동화로 시간을 되찾습니다", 
+                        desc: "반복 업무는 시스템이, 사람은 창의와 판단에 집중합니다.", 
+                        icon: Network 
+                    },
+                    { 
+                        title: "기록이 팀의 실력입니다", 
+                        desc: "결정과 근거를 남겨, 다음 실행을 더 빠르게 만듭니다.", 
+                        icon: Monitor 
+                    }
                 ].map((card) => (
-                    <div key={card.title} className="p-8 border border-gray-100 rounded-2xl bg-gray-50 hover:bg-white hover:shadow-lg transition-all duration-300 group">
-                        <div className="w-12 h-12 rounded-xl bg-white border border-gray-200 flex items-center justify-center mb-6 group-hover:border-neon-sky transition-colors">
-                            <card.icon className="w-6 h-6 text-[#050B1B] group-hover:text-neon-sky transition-colors" />
+                    <div key={card.title} className="p-10 border border-gray-100 rounded-[2rem] bg-gray-50 hover:bg-white hover:shadow-xl transition-all duration-300 group">
+                        <div className="w-14 h-14 rounded-2xl bg-white border border-gray-200 flex items-center justify-center mb-6 group-hover:border-neon-sky transition-colors shadow-sm">
+                            <card.icon className="w-7 h-7 text-[#050B1B] group-hover:text-neon-sky transition-colors" />
                         </div>
-                        <h3 className="text-xl font-bold text-[#050B1B] mb-3">{card.title}</h3>
-                        <p className="text-gray-600">{card.desc}</p>
+                        <h3 className="text-2xl font-bold text-[#050B1B] mb-4">{card.title}</h3>
+                        <p className="text-gray-600 text-lg">{card.desc}</p>
                     </div>
                 ))}
             </div>
@@ -210,26 +246,30 @@ export default function AboutPage() {
       </section>
 
       {/* 6. 2026 FOCUS */}
-      <section className="w-full py-24 px-6 bg-gray-50">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#050B1B]">2026년에 집중하는 것</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+      <section className="w-full py-24 px-6 bg-gray-50 border-t border-gray-200">
+        <div className="max-w-4xl mx-auto text-center space-y-10">
+            <div>
+                <h5 className="text-neon-sky font-semibold tracking-widest text-sm uppercase mb-4">2026 FOCUS</h5>
+                <h2 className="text-3xl md:text-4xl font-bold text-[#050B1B]">2026년에 집중하는 것</h2>
+            </div>
+            
+            <p className="text-2xl text-gray-700 max-w-2xl mx-auto font-medium leading-relaxed">
                 DMS는 바이브 코딩과 AI Agent 운영을 통해,<br/> 
                 작지만 강한 제품과 사회적 가치를 동시에 만듭니다.
             </p>
             
-            <div className="flex flex-wrap justify-center gap-4 py-4">
+            <div className="flex flex-wrap justify-center gap-4 py-8">
                 {["장애아동 웹앱", "업무 자동화 워크플로우", "AI 교육·컨설팅", "해외 무역"].map(tag => (
-                    <span key={tag} className="px-6 py-3 rounded-full bg-white border border-gray-200 text-[#050B1B] font-medium shadow-sm">
+                    <span key={tag} className="px-8 py-4 rounded-full bg-white border border-gray-200 text-[#050B1B] font-bold text-lg shadow-sm hover:shadow-md transition-shadow">
                         {tag}
                     </span>
                 ))}
             </div>
 
-            <div className="pt-8">
-                <span className="inline-block relative">
-                    <span className="absolute -inset-1 bg-neon-sky/20 transform -skew-x-12" />
-                    <span className="relative text-2xl font-bold text-[#050B1B] italic">"우리가 만드는 건 ‘기능’이 아니라, 지속 가능한 실행 시스템입니다."</span>
+            <div className="pt-8 border-t border-gray-200">
+                <span className="inline-block relative mt-8">
+                    <span className="absolute -inset-2 bg-neon-sky/10 rounded-lg transform -skew-x-6" />
+                    <span className="relative text-2xl md:text-3xl font-bold text-[#050B1B]">"우리가 만드는 건 ‘기능’이 아니라,<br/>지속 가능한 실행 시스템입니다."</span>
                 </span>
             </div>
         </div>
@@ -238,90 +278,114 @@ export default function AboutPage() {
       {/* 7. AI AGENT TEAM */}
       <section className="w-full py-32 px-6 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-[#050B1B] mb-6">AI Agent와 함께 일하는 소수정예 팀</h2>
-                <div className="space-y-6 text-gray-600 text-lg">
+            <div className="order-2 lg:order-1">
+                 <h5 className="text-neon-sky font-semibold tracking-widest text-sm uppercase mb-4">ONE TEAM</h5>
+                <h2 className="text-3xl md:text-4xl font-bold text-[#050B1B] mb-8">AI Agent와 함께 일하는<br/>소수정예 팀</h2>
+                <div className="space-y-8 text-gray-700 text-lg leading-relaxed">
                     <p>
                         우리는 사람이 모든 일을 떠안지 않습니다.<br/>
-                        AI Agent가 반복 업무를 돕고, 사람은 설계·판단·품질에 집중합니다.
+                        AI Agent가 반복 업무를 돕고,<br/> 
+                        사람은 <span className="font-bold text-[#050B1B] underline decoration-neon-sky underline-offset-4">설계·판단·품질</span>에 집중합니다.
                     </p>
-                    <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
-                        <ul className="flex flex-col gap-3 font-medium text-sm text-[#050B1B]">
-                            <li className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-neon-sky"/>업무 분해</li>
-                            <li className="flex items-center gap-2 ml-4"><div className="w-2 h-2 rounded-full bg-gray-300"/>체크리스트화</li>
-                            <li className="flex items-center gap-2 ml-8"><div className="w-2 h-2 rounded-full bg-gray-300"/>자동화</li>
-                            <li className="flex items-center gap-2 ml-12"><div className="w-2 h-2 rounded-full bg-gray-300"/>검증 → 개선</li>
+                    
+                    <div className="bg-gray-50 p-8 rounded-2xl border border-gray-200 shadow-inner">
+                        <ul className="flex flex-col gap-4 font-bold text-[#050B1B]">
+                            <li className="flex items-center gap-4">
+                                <div className="w-3 h-3 rounded-full bg-neon-sky shadow-[0_0_10px_rgba(0,209,255,0.8)]"/>
+                                업무 분해
+                            </li>
+                            <li className="flex items-center gap-4 ml-8">
+                                <ArrowRight className="w-4 h-4 text-gray-400" />
+                                체크리스트화
+                            </li>
+                            <li className="flex items-center gap-4 ml-16">
+                                <ArrowRight className="w-4 h-4 text-gray-400" />
+                                자동화
+                            </li>
+                            <li className="flex items-center gap-4 ml-24">
+                                <ArrowRight className="w-4 h-4 text-gray-400" />
+                                검증 → 개선
+                            </li>
                         </ul>
                     </div>
-                    <p className="text-xs text-gray-400">* 민감한 개인정보는 최소 수집 원칙을 지킵니다.</p>
+                    <p className="text-sm text-gray-400 flex items-center gap-2">
+                        <CheckCircle2 className="w-4 h-4" />
+                        민감한 개인정보는 최소 수집 원칙을 지킵니다.
+                    </p>
                 </div>
             </div>
             
             {/* Visual Diagram */}
-            <div className="relative h-[400px] bg-[#050B1B] rounded-[24px] p-8 flex items-center justify-center overflow-hidden">
+            <div className="relative h-[500px] bg-[#050B1B] rounded-[32px] p-8 flex items-center justify-center overflow-hidden order-1 lg:order-2 shadow-2xl">
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
                 <div className="absolute inset-0 bg-grid-white/[0.05]" />
-                <div className="relative z-10 flex flex-col items-center gap-4">
-                    <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center shadow-lg">
+                
+                <div className="relative z-10 flex flex-col items-center gap-8">
+                    <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.3)] z-10">
                         <span className="font-bold text-[#050B1B]">HUMAN</span>
                     </div>
-                    <ArrowRight className="text-white/30 rotate-90 w-6 h-6" />
-                    <div className="w-32 h-32 rounded-full bg-neon-sky/10 border border-neon-sky flex items-center justify-center backdrop-blur-md animate-pulse">
-                        <span className="font-bold text-white">AI AGENT</span>
+                    
+                    <div className="h-20 w-[2px] bg-gradient-to-b from-white to-neon-sky animate-pulse" />
+                    
+                    <div className="w-36 h-36 rounded-full bg-neon-sky/10 border-2 border-neon-sky flex items-center justify-center backdrop-blur-md animate-pulse shadow-[0_0_50px_rgba(0,209,255,0.4)] z-10 relative">
+                        <span className="font-bold text-white text-lg">AI AGENT</span>
+                        {/* Orbiting particles */}
+                        <div className="absolute w-full h-full rounded-full border border-dashed border-white/20 animate-spin-slow scale-125" />
+                        <div className="absolute w-[120%] h-[120%] rounded-full border border-dotted border-white/10 animate-reverse-spin scale-150" />
                     </div>
-                    <div className="absolute w-full h-full border-2 border-dashed border-white/10 rounded-full animate-spin-slow scale-150" />
                 </div>
             </div>
         </div>
       </section>
 
       {/* 8. PROOF */}
-      <section className="w-full py-20 bg-gray-50 border-y border-gray-100">
+      <section className="w-full py-24 bg-gray-50 border-y border-gray-200">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-around items-center gap-12 text-center md:text-left">
             {[
                 { val: "20년", label: "3D 설계 & 개발 경험" },
                 { val: "30+개국", label: "데모·교육·현장 커뮤니케이션" },
                 { val: "10년", label: "지속적인 봉사활동" }
             ].map((stat) => (
-                <div key={stat.label}>
-                    <div className="text-5xl font-bold text-[#050B1B] mb-2">{stat.val}</div>
-                    <div className="text-gray-500 font-medium">{stat.label}</div>
+                <div key={stat.label} className="transform hover:scale-105 transition-transform duration-300">
+                    <div className="text-6xl font-black text-[#050B1B] mb-2 font-poppins tracking-tighter">{stat.val}</div>
+                    <div className="text-gray-500 font-bold text-lg uppercase tracking-wide">{stat.label}</div>
                 </div>
             ))}
         </div>
-        <div className="text-center mt-12 text-gray-400">
+        <div className="text-center mt-16 text-gray-500 font-medium">
             기술은 결국 사람을 돕기 위해 존재한다고 믿습니다.
         </div>
       </section>
 
       {/* 9. FINAL CTA */}
       <section className="w-full py-32 bg-white px-6">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-            <h2 className="text-4xl font-bold text-[#050B1B]">함께 만들고 싶다면</h2>
-            <p className="text-xl text-gray-600">
+        <div className="max-w-4xl mx-auto text-center space-y-10">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#050B1B] leading-tight">함께 만들고 싶다면</h2>
+            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed">
                 프로젝트, 협업, 교육, 자동화 구축까지.<br/> 
                 DMS가 현실적인 실행 플랜으로 연결해드립니다.
             </p>
-            <div className="flex justify-center gap-6 pt-6">
-                 <Link href="#contact" className="px-10 py-4 bg-[#050B1B] text-white font-bold rounded-full hover:bg-neon-sky hover:text-[#050B1B] transition-all shadow-lg hover:shadow-neon-sky/50">
+            <div className="flex flex-col sm:flex-row justify-center gap-6 pt-8">
+                 <Link href="#contact" className="px-12 py-5 bg-[#050B1B] text-white font-bold text-lg rounded-full hover:bg-neon-sky hover:text-[#050B1B] transition-all shadow-xl hover:shadow-neon-sky/50 hover:-translate-y-1">
                     협업 문의하기
                 </Link>
-                <Link href="#projects" className="px-10 py-4 bg-white border border-[#050B1B] text-[#050B1B] font-bold rounded-full hover:bg-gray-50 transition-all">
+                <Link href="#projects" className="px-12 py-5 bg-white border-2 border-[#050B1B] text-[#050B1B] font-bold text-lg rounded-full hover:bg-gray-50 transition-all hover:-translate-y-1">
                     프로젝트 보기
                 </Link>
             </div>
             
-            <div className="pt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-left max-w-2xl mx-auto border-t border-gray-100 mt-12">
-                <div>
+            <div className="pt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-left max-w-3xl mx-auto border-t border-gray-100 mt-16">
+                <div className="p-6 bg-gray-50 rounded-2xl">
                      <div className="text-xs font-bold text-gray-400 uppercase mb-2">Email</div>
-                     <div className="text-[#050B1B]">support@dmssolution.co.kr</div>
+                     <div className="text-[#050B1B] font-medium truncate">support@dmssolution.co.kr</div>
                 </div>
-                <div>
+                <div className="p-6 bg-gray-50 rounded-2xl">
                      <div className="text-xs font-bold text-gray-400 uppercase mb-2">Location</div>
-                     <div className="text-[#050B1B]">Korea</div>
+                     <div className="text-[#050B1B] font-medium">Korea</div>
                 </div>
-                <div>
+                <div className="p-6 bg-gray-50 rounded-2xl">
                      <div className="text-xs font-bold text-gray-400 uppercase mb-2">Response Time</div>
-                     <div className="text-[#050B1B]">24~48 Hours</div>
+                     <div className="text-[#050B1B] font-medium">24~48 Hours</div>
                 </div>
             </div>
         </div>
