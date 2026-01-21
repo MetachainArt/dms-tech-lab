@@ -5,6 +5,7 @@ import clsx from "clsx";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
 import Background from "@/components/ui/Background";
+import NextAuthProvider from "@/components/providers/NextAuthProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -27,9 +28,11 @@ export default function RootLayout({
     <html lang="ko" className="dark scroll-smooth">
       <body className={clsx(poppins.variable, "antialiased bg-deep-space text-white select-none")}>
         <Background />
-        <Navbar />
-        {children}
-        <Footer />
+        <NextAuthProvider>
+            <Navbar />
+            {children}
+            <Footer />
+        </NextAuthProvider>
       </body>
     </html>
   );

@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const navLinks = [
   { name: "홈", href: "/" },
@@ -18,6 +19,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { data: session } = useSession();
   const isLightPage = pathname === "/about";
 
   useEffect(() => {
@@ -82,15 +84,44 @@ export default function Navbar() {
                 ))}
             </div>
 
-            {/* Right Group: Contact Button & Mobile Menu */}
+            {/* Right Group: Auth & Contact */}
             <div className="flex items-center gap-4">
-            {/* Contact CTA - Right */}
-            <Link 
-                href="/about#contact"
-                className={`hidden md:flex items-center gap-2 px-5 py-2 rounded-full border ${currentBorderColor} ${currentTextColor} font-medium text-sm hover:bg-neon-sky hover:text-[#050B1B] hover:border-neon-sky transition-all`}
-            >
-                Contact
-            </Link>
+            
+            {/* Auth Button (Desktop) */}
+            <div className="hidden md:flex items-center gap-4">
+                {session ? (
+                    <div className="flex items-center gap-3">
+                        {session.user?.image && (
+                            <img 
+                                src={session.user.image} 
+                                alt="Profile" 
+                                className="w-8 h-8 rounded-full border border-white/20"
+                            />
+                        )}
+                        <button 
+                            onClick={() => signOut()}
+                            className="text-sm font-medium text-white/70 hover:text-white transition-colors"
+                        >
+                            Logout
+                        </button>
+                    </div>
+                ) : (
+                    <button 
+                        onClick={() => signIn("google")}
+                        className="text-sm font-medium text-white/70 hover:text-white transition-colors"
+                    >
+                        Login
+                    </button>
+                )}
+
+                {/* Contact CTA */}
+                <Link 
+                    href="/about#contact"
+                    className={`flex items-center gap-2 px-5 py-2 rounded-full border ${currentBorderColor} ${currentTextColor} font-medium text-sm hover:bg-neon-sky hover:text-[#050B1B] hover:border-neon-sky transition-all`}
+                >
+                    무료 상담 신청
+                </Link>
+            </div>
 
             {/* Mobile Menu Toggle */}
             <button 
@@ -137,7 +168,7 @@ export default function Navbar() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="mt-8 px-8 py-4 bg-neon-sky text-[#050B1B] font-bold rounded-full text-lg"
               >
-                Contact Us
+                무료 상담 신청
               </Link>
             </div>
           </motion.div>
