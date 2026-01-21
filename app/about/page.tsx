@@ -360,10 +360,10 @@ export default function AboutPage() {
                 DMS가 현실적인 실행 플랜으로 연결해드립니다.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-6 pt-8">
-                 <Link href="#contact" className="px-12 py-5 bg-[#050B1B] text-white font-bold text-lg rounded-full hover:bg-neon-sky hover:text-[#050B1B] transition-all shadow-xl hover:shadow-neon-sky/50 hover:-translate-y-1">
+                 <a href="https://open.kakao.com/o/sSPHn33g" target="_blank" rel="noopener noreferrer" className="px-12 py-5 bg-[#050B1B] text-white font-bold text-lg rounded-full hover:bg-neon-sky hover:text-[#050B1B] transition-all shadow-xl hover:shadow-neon-sky/50 hover:-translate-y-1">
                     협업 문의하기
-                </Link>
-                <Link href="#projects" className="px-12 py-5 bg-white border-2 border-[#050B1B] text-[#050B1B] font-bold text-lg rounded-full hover:bg-gray-50 transition-all hover:-translate-y-1">
+                </a>
+                <Link href="/services" className="px-12 py-5 bg-white border-2 border-[#050B1B] text-[#050B1B] font-bold text-lg rounded-full hover:bg-gray-50 transition-all hover:-translate-y-1">
                     프로젝트 보기
                 </Link>
             </div>

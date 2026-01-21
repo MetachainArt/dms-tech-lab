@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, Cpu, Code2, Database, Globe } from "lucide-react";
+import Link from "next/link";
 import NeuralBackground from "@/components/ui/NeuralBackground";
 
 // Curriculum Data
@@ -61,8 +62,8 @@ export default function EducationPage() {
                     GLOBAL FIELD ENGINEERING
                 </div>
                 <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-8">
-                    30개국 현장에서<br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">검증된 기술 교육.</span>
+                    글로벌 엔지니어링의 정점,<br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">차원이 다른 기술 교육.</span>
                 </h1>
                 <p className="text-xl text-white/60 max-w-2xl leading-relaxed mb-10 md:mx-0 mx-auto">
                     이론이 아닌 '동작하는' 지식을 전수합니다.<br />
@@ -84,7 +85,7 @@ export default function EducationPage() {
                 <div className="h-1 w-20 bg-neon-sky rounded-full" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
                 {tracks.map((track, idx) => (
                     <motion.div
                         key={track.title}
@@ -117,6 +118,8 @@ export default function EducationPage() {
                     </motion.div>
                 ))}
             </div>
+
+            {/* Featured Article Moved to Blog */}
         </div>
       </section>
 
@@ -132,10 +135,10 @@ export default function EducationPage() {
                     className="relative"
                 >
                     <div className="aspect-[4/5] rounded-[2rem] overflow-hidden bg-gray-800 relative z-10">
-                         {/* Placeholder for Founder Image - Using Unsplash for now */}
+                         {/* Founder Image - Tech/Engineering Vibe (Portrait) */}
                          <img 
-                            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=2500&auto=format&fit=crop" 
-                            alt="Instructor"
+                            src="/images/instructor_portrait.jpg"
+                            alt="Instructor Portrait"
                             className="w-full h-full object-cover grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-500"
                          />
                     </div>
@@ -143,13 +146,9 @@ export default function EducationPage() {
                     <div className="absolute top-10 -left-10 w-full h-full border border-neon-sky/20 rounded-[2rem] -z-0" />
                 </motion.div>
 
-                {/* Text Side */}
-                <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                >
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-6">
+                {/* Text Side - Added z-10 and relative to ensure visibility */}
+                <div className="flex flex-col justify-center relative z-10">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-6 w-fit">
                         <Globe className="w-4 h-4 text-neon-sky" />
                         <span className="text-xs font-bold text-white/80 tracking-wide uppercase">Head Instructor</span>
                     </div>
@@ -171,10 +170,10 @@ export default function EducationPage() {
                         </div>
                         <div className="bg-[#0A1124] p-5 rounded-2xl border border-white/5">
                             <span className="block text-3xl font-bold text-white mb-1">30+</span>
-                            <span className="text-sm text-gray-500">Countries Global Project</span>
+                            <span className="text-sm text-gray-500">Global Projects</span>
                         </div>
                     </div>
-                </motion.div>
+                </div>
             </div>
         </div>
       </section>
