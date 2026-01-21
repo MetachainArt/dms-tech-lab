@@ -1,11 +1,8 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import KakaoProvider from "next-auth/providers/kakao";
-import { PrismaAdapter } from "@auth/prisma-adapter";
-import { prisma } from "@/lib/prisma";
 
 const handler = NextAuth({
-  adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID ?? "",
@@ -20,19 +17,18 @@ const handler = NextAuth({
     signIn: '/auth/signin',
   },
   session: {
-    strategy: "database",
+    strategy: "jwt",
   },
   callbacks: {
-    async signIn({ account }) {
-      // Remove Kakao-specific fields not in Prisma schema
-      if (account && "refresh_token_expires_in" in account) {
-        delete (account as Record<string, unknown>).refresh_token_expires_in;
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
       }
-      return true;
+      return token;
     },
-    async session({ session, user }) {
-      if (session.user) {
-        session.user.id = user.id;
+    async session({ session, token }) {
+      if (session.user && token.id) {
+        session.user.id = token.id as string;
       }
       return session;
     },
