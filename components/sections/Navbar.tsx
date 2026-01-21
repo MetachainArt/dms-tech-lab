@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useSession, signOut } from "next-auth/react";
+// import { useSession, signOut } from "next-auth/react"; // 임시로 숨김
 
 const navLinks = [
   { name: "홈", href: "/" },
@@ -19,7 +19,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const { data: session } = useSession();
+  // const { data: session } = useSession(); // 임시로 숨김
   const isLightPage = pathname === "/about";
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export default function Navbar() {
   const currentLinkTextColor = "text-white/80";
   const currentLinkHoverColor = "hover:text-white";
   const currentBorderColor = "border-white/30";
-  const logoDotColor = "bg-white/20";
+  // const logoDotColor = "bg-white/20"; // 미사용
 
   return (
     <>
@@ -87,18 +87,19 @@ export default function Navbar() {
             {/* Right Group: Auth & Contact */}
             <div className="flex items-center gap-4">
             
-            {/* Auth Button (Desktop) */}
+            {/* Auth Button (Desktop) - 임시로 숨김 (Hostinger 환경변수 이슈) */}
             <div className="hidden md:flex items-center gap-4">
+                {/* 소셜 로그인 버튼 숨김 처리
                 {session ? (
                     <div className="flex items-center gap-3">
                         {session.user?.image && (
-                            <img 
-                                src={session.user.image} 
-                                alt="Profile" 
+                            <img
+                                src={session.user.image}
+                                alt="Profile"
                                 className="w-8 h-8 rounded-full border border-white/20"
                             />
                         )}
-                        <button 
+                        <button
                             onClick={() => signOut()}
                             className="text-sm font-medium text-white/70 hover:text-white transition-colors"
                         >
@@ -113,6 +114,7 @@ export default function Navbar() {
                         Login
                     </Link>
                 )}
+                */}
 
                 {/* Contact CTA */}
                 <a
