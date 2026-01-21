@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 
 const navLinks = [
   { name: "홈", href: "/" },
@@ -106,21 +106,23 @@ export default function Navbar() {
                         </button>
                     </div>
                 ) : (
-                    <button 
-                        onClick={() => signIn("google")}
+                    <Link
+                        href="/auth/signin"
                         className="text-sm font-medium text-white/70 hover:text-white transition-colors"
                     >
                         Login
-                    </button>
+                    </Link>
                 )}
 
                 {/* Contact CTA */}
-                <Link 
-                    href="/about#contact"
+                <a
+                    href="https://open.kakao.com/o/sSPHn33g"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`flex items-center gap-2 px-5 py-2 rounded-full border ${currentBorderColor} ${currentTextColor} font-medium text-sm hover:bg-neon-sky hover:text-[#050B1B] hover:border-neon-sky transition-all`}
                 >
                     무료 상담 신청
-                </Link>
+                </a>
             </div>
 
             {/* Mobile Menu Toggle */}
@@ -163,13 +165,15 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
-              <Link
-                  href="/about#contact"
+              <a
+                  href="https://open.kakao.com/o/sSPHn33g"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="mt-8 px-8 py-4 bg-neon-sky text-[#050B1B] font-bold rounded-full text-lg"
               >
                 무료 상담 신청
-              </Link>
+              </a>
             </div>
           </motion.div>
         )}

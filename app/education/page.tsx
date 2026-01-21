@@ -59,20 +59,20 @@ export default function EducationPage() {
                 transition={{ duration: 0.6 }}
             >
                 <div className="inline-block px-4 py-2 rounded-full border border-neon-sky/30 bg-neon-sky/10 text-neon-sky text-sm font-bold tracking-widest mb-6 backdrop-blur-sm">
-                    GLOBAL FIELD ENGINEERING
+                    PROFESSIONAL ENGINEERING ACADEMY
                 </div>
                 <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-8">
-                    글로벌 엔지니어링의 정점,<br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">차원이 다른 기술 교육.</span>
+                    현장 중심의<br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">프로페셔널 기술 교육.</span>
                 </h1>
                 <p className="text-xl text-white/60 max-w-2xl leading-relaxed mb-10 md:mx-0 mx-auto">
-                    이론이 아닌 '동작하는' 지식을 전수합니다.<br />
-                    글로벌 엔지니어링 경험을 바탕으로 실전형 인재를 양성합니다.
+                    이론이 아닌 실무에서 바로 적용 가능한 기술을 전수합니다.<br />
+                    산업 현장의 노하우를 담은 맞춤형 커리큘럼으로 전문가를 양성합니다.
                 </p>
-                
-                <button className="px-8 py-4 bg-white text-[#050B1B] font-bold rounded-full hover:bg-neon-sky transition-colors flex items-center gap-2 mx-auto md:mx-0">
+
+                <a href="https://open.kakao.com/o/sSPHn33g" target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-white text-[#050B1B] font-bold rounded-full hover:bg-neon-sky transition-colors flex items-center gap-2 mx-auto md:mx-0 inline-flex">
                     수강 문의하기 <ArrowRight className="w-4 h-4" />
-                </button>
+                </a>
             </motion.div>
         </div>
       </section>
