@@ -48,13 +48,13 @@ export default function BlogPage() {
     },
     {
       id: "today-me",
-      title: "오늘의 나",
+      title: "에필로그. 매일을 채우는 작은 시작",
       subtitle: "DAILY ESSAY",
-      description: "가장 개인적인 것이 가장 창의적인 것이다. AI 시대를 살아가는 한 엔지니어의 일상과 단상.",
+      description: "나의 하루가 곧 나의 미래가 된다. 아침의 물 한 잔부터 잠들기 전의 회고까지, 매일을 채우는 엔지니어의 작지만 단단한 루틴에 대하여.",
       coverImage: "/images/series/today_me.png",
-      color: "amber",
+      color: "emerald",
       postCount: 1,
-      tags: ["Essay", "Life", "Reflection"]
+      tags: ["Essay", "Growth", "Routine"]
     },
     {
       id: "ai-fantasy-life",

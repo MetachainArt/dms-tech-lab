@@ -1,22 +1,22 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowLeft, Clock, Calendar, Share2, Bookmark, Coffee, Moon, Terminal } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, Share2, Bookmark, Droplets, Footprints, Utensils, Mic, ListTodo, Sun } from "lucide-react";
 import Link from "next/link";
 import NeuralBackground from "@/components/ui/NeuralBackground";
 
 export default function TodayMePage() {
   return (
-    <main className="w-full min-h-screen bg-[#050B1B] text-white font-poppins selection:bg-amber-500 selection:text-white">
+    <main className="w-full min-h-screen bg-[#050B1B] text-white font-poppins selection:bg-emerald-500 selection:text-white">
       
       {/* Soft Ambient Background */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[120px]" />
-           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px]" />
+           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px] opacity-40" />
+           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] opacity-40" />
       </div>
 
       <motion.div 
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 origin-left z-50"
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 via-teal-500 to-blue-500 origin-left z-50"
         initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}
         viewport={{ once: false }} 
@@ -25,11 +25,12 @@ export default function TodayMePage() {
       {/* Hero Section */}
       <section className="relative w-full h-[60vh] flex flex-col justify-end pb-20 px-6 overflow-hidden">
         <div className="absolute inset-0 z-0">
-             <div className="absolute inset-0 bg-gradient-to-t from-[#050B1B] via-[#050B1B]/60 to-transparent z-10" />
+             <div className="absolute inset-0 bg-gradient-to-t from-[#050B1B] via-[#050B1B]/40 to-transparent z-10" />
+             {/* Unsplash Image: Morning Sunlight / Growth */}
              <img 
-                src="/images/series/post_engineer_diary.png" 
-                alt="Engineer Desk"
-                className="w-full h-full object-cover opacity-70 scale-105 animate-slow-zoom"
+                src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?q=80&w=2670&auto=format&fit=crop" 
+                alt="Morning Sunlight"
+                className="w-full h-full object-cover opacity-80 scale-105 animate-slow-zoom"
              />
         </div>
 
@@ -44,24 +45,23 @@ export default function TodayMePage() {
                 transition={{ duration: 0.8 }}
             >
                 <div className="flex items-center gap-4 mb-6">
-                    <span className="px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold border border-amber-500/30">
-                        Essay
+                    <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold border border-emerald-500/30">
+                        Growth Diary
                     </span>
                     <span className="flex items-center text-gray-400 text-sm">
                         <Calendar className="w-4 h-4 mr-2" /> 2026. 01. 22
                     </span>
+                    <span className="flex items-center text-gray-400 text-sm">
+                        <Clock className="w-4 h-4 mr-2" /> 15 min read
+                    </span>
                 </div>
 
                 <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-8">
-                    새벽 3시의 디버깅:<br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-orange-200 to-rose-200">
-                        침묵 속의 논리
+                    에필로그. 매일을 채우는 작은 시작<br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-300 to-blue-300">
+                        "나의 하루가, 나의 미래가 된다"
                     </span>
                 </h1>
-
-                <p className="text-xl text-gray-300 max-w-2xl leading-relaxed italic border-l-4 border-amber-500 pl-6">
-                    "세상이 잠들 때, 엔지니어의 세계는 비로소 깨어난다."
-                </p>
             </motion.div>
         </div>
       </section>
@@ -71,32 +71,75 @@ export default function TodayMePage() {
         <div className="max-w-3xl mx-auto">
             <article className="prose prose-lg prose-invert prose-p:text-gray-300 prose-headings:text-white max-w-none font-serif">
                 
-                <p className="lead text-2xl text-white/90 font-sans font-medium mb-12">
-                    커서가 깜빡인다. 적막한 방 안, 들리는 것은 기계식 키보드의 타건음과 팬이 돌아가는 미세한 소음뿐이다.
-                </p>
-
+                <h2 className="text-2xl font-sans font-bold text-emerald-400 mb-6 flex items-center gap-3">
+                    <Droplets className="w-6 h-6" /> 깨어남의 의식
+                </h2>
                 <p className="mb-6">
-                    새벽 3시. 모두가 꿈을 꾸는 시간이지만, 개발자에게는 가장 명료한 논리의 시간이다. 낮 동안 쏟아지던 슬랙 알림도, 끝없는 회의도 없다. 오직 나와 코드, 그리고 모니터 속의 푸른 빛만이 존재한다.
+                    아침은 늘 물 한 잔에서 시작된다. 투명한 잔을 들고 맑고 차가운 물이 목구멍을 타고 내려갈 때면, 내 안에서 새벽이 눈을 뜨는 소리가 난다. 밤 사이 눌러두었던 작은 용기 하나가 물방울처럼 맺혀 다시 하루를 향해 고개를 든다.
                 </p>
 
-                <div className="my-12 p-8 bg-black/40 rounded-xl border border-white/5 flex items-center justify-center gap-8">
-                    <Coffee className="w-12 h-12 text-amber-500/50" />
-                    <div className="h-16 w-px bg-white/10" />
-                    <Terminal className="w-12 h-12 text-green-500/50" />
+                <div className="my-12 relative rounded-2xl overflow-hidden h-80 group">
+                    <img src="https://images.unsplash.com/photo-1548839140-29a749e1cf4d?q=80&w=2524&auto=format&fit=crop" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" alt="Morning Water" />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
+                </div>
+
+                <h2 className="text-2xl font-sans font-bold text-teal-400 mb-6 mt-16 flex items-center gap-3">
+                    <Footprints className="w-6 h-6" /> 나를 이기는 시간
+                </h2>
+                <p className="mb-6">
+                    런닝복을 꺼내 입는다. 몸을 깨우는 첫 걸음은 언제나 귀찮고 조금 두렵다. 겨울이면 문턱을 넘는 바람이 차갑고, 여름이면 뜨거운 햇살이 부담스럽다. 비가 오는 날은 젖은 거리의 냄새가 날카롭게 다가온다.
+                </p>
+                <p className="mb-6">
+                    그래도 뛰기 시작하면, 처음 5분 동안 내 안의 나태함이 천천히 사라진다. 다음 10분은 점점 몸이 가벼워지고, 그 이후의 시간은 세상과 내가 하나가 되는 순간이다. 달리는 동안 귀를 스치는 바람 소리, 나뭇잎이 흔들리는 소리, 새벽 공기를 가르는 작은 새들의 지저귐이 온전히 내 안으로 들어와 따뜻하고 아름다운 교향곡을 연주한다.
+                </p>
+
+                <div className="my-12 relative rounded-2xl overflow-hidden h-64 group">
+                     {/* Unsplash: Running shoes / Park */}
+                    <img src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?q=80&w=2670&auto=format&fit=crop" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" alt="Running" />
+                </div>
+
+                <h2 className="text-2xl font-sans font-bold text-blue-400 mb-6 mt-16 flex items-center gap-3">
+                    <Utensils className="w-6 h-6" /> 소박한 축복
+                </h2>
+                <p className="mb-6">
+                    땀에 젖은 몸으로 집에 돌아와 샤워를 하면, 흐르는 물줄기가 피로와 걱정을 씻어내 준다. 간단하게 준비한 우유 한 잔과 사과 한 조각은 하루의 시작을 상징하는 소박한 축복 같다.
+                </p>
+                <p className="mb-6">
+                    삶은 계란 두 개는 주머니에 넣고 출근길을 나선다. 문을 열고 세상 밖으로 걸어 나가는 발걸음이 가벼운 이유는, 오늘 하루를 어떻게 보낼지 이미 마음속에 작은 설렘이 있기 때문이다.
+                </p>
+
+                <h2 className="text-2xl font-sans font-bold text-indigo-400 mb-6 mt-16 flex items-center gap-3">
+                     <Mic className="w-6 h-6" /> 영감의 기록
+                </h2>
+                <p className="mb-6">
+                    출근하는 길에 듣기 좋은 유튜브 영상 하나를 고른다. 가벼운 마음으로 귀에 이어폰을 꽂으면, 들려오는 목소리와 이야기가 내 마음의 지평을 조금씩 넓혀준다. 가끔은 문득 떠오르는 작은 아이디어가 있다. 그것은 꼭 내 귀에만 속삭이듯 아주 희미하게 나타나는데, 그 찰나를 놓치지 않기 위해 나는 언제나 휴대폰을 꺼내 곧바로 녹음 버튼을 누른다.
+                </p>
+
+                <h2 className="text-2xl font-sans font-bold text-purple-400 mb-6 mt-16 flex items-center gap-3">
+                    <ListTodo className="w-6 h-6" /> 오늘의 나를 만드는 습관
+                </h2>
+                <p className="mb-6">
+                    회사에 도착하면 그 아이디어는 곧바로 나만의 버킷리스트가 된다. 그 작은 목표를 이루기 위한 날짜를 정하고, 실천 계획을 짜고, 하나씩 하나씩 체크하는 것이 나의 삶을 이루는 작은 습관이자 소중한 루틴이다. 언젠가는 이 리스트의 항목들이 모두 지워지고 다시 새로운 것들로 채워질 것이다. 그렇게 매일 아침, 내일의 나를 위한 작은 선물을 준비하는 마음으로 나는 오늘을 채운다.
+                </p>
+
+                <div className="my-12 p-8 bg-[#1A1F36] rounded-xl border border-white/5 flex flex-col items-center justify-center text-center">
+                    <Sun className="w-12 h-12 text-amber-400 mb-4" />
+                    <p className="text-lg text-gray-200 italic mb-4">
+                        "나의 하루는 이렇게 작은 관심과 호기심, <br/>그것을 실천에 옮기는 용기, <br/>그리고 성취의 기쁨이 만드는 작은 사이클 속에서 계속 반복된다."
+                    </p>
                 </div>
 
                 <p className="mb-6">
-                    디버깅은 마치 범인을 찾는 형사의 수사와 같다. 로그를 뒤지고, 변수를 추적하고, 가설을 세운다. '왜 여기서 null이 뜨는 거지?' 수십 번의 실패 끝에 마침내 원인을 찾아냈을 때의 그 짜릿함. 꼬여있던 실타래가 스르륵 풀리는 그 순간의 쾌감은 겪어보지 않은 사람은 모른다.
+                    어느 날은 큰 목표를 이루고 환희를 느끼기도 하지만, 대부분의 날들은 작은 것들을 쌓아가는 것에서 행복을 찾는다. 그렇게 만들어가는 하루가 모여 나의 삶을 이루고, 그 삶은 조금씩 내가 꿈꾸는 방향으로 흘러간다.
                 </p>
-                
                 <p className="mb-6">
-                    가끔은 화면 너머의 세상이 비현실적으로 느껴진다. 0과 1로 이루어진 이 논리의 성이, 창밖의 불 꺼진 도시보다 더 견고하고 따뜻하게 느껴질 때가 있다.
+                    나는 이것을 '오늘의 나'라고 부른다. 오늘 내가 선택하는 작은 행동들이 내일의 나를 만든다는 확신. 그것이 내가 오늘도 물 한 잔을 마시고, 밖으로 나가 달리고, 작은 계획을 세우는 이유다.
                 </p>
-
-                <p className="mb-12">
-                    커피가 식었다. 이제 마지막 커밋을 날리고 자야겠다. 내일 아침, 이 코드가 무사히 배포되어 누군가의 불편함을 해결해 주기를 바라며.
-                    <br/><br/>
-                    오늘도 밤을 새운 모든 동료들에게, silent push를 보낸다.
+                <p className="mb-6">
+                    매일 아침이 특별한 이유는 거창한 꿈 때문이 아니라, 나만의 리듬을 따라 꾸준히 나아가는 작은 실천 때문이다. 어느새 이 작은 습관들이 쌓여 큰 변화를 만들어 낼 것이라 믿기에, 나는 오늘의 나를, 그리고 내일의 나를 소중히 가꾼다.
+                </p>
+                <p className="mb-12 border-l-4 border-emerald-500 pl-6 text-xl font-medium text-white/90">
+                    그렇게 나는 또다시 내일의 아침을 기다린다.
                 </p>
 
             </article>

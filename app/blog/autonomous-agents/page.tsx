@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowLeft, Clock, Calendar, Share2, Bookmark, Bot, Cpu, Network, Zap } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, Share2, Bookmark, Bot, Cpu, Network, Zap, GitBranch, Database, Shield } from "lucide-react";
 import Link from "next/link";
 
 export default function AutonomousAgentsPage() {
@@ -70,20 +70,26 @@ export default function AutonomousAgentsPage() {
             <article className="prose prose-lg prose-invert prose-p:text-gray-300 prose-headings:text-white max-w-none font-serif">
                 
                 <p className="lead text-2xl text-white font-sans font-medium mb-12 leading-relaxed">
-                    지금까지 우리는 AI를 '무엇인가를 물어보면 답해주는 챗봇' 정도로 생각했다. ChatGPT와의 대화는 훌륭했지만 수동적이었다. 하지만 2026년 현재, 우리는 '자율 에이전트(Autonomous Agent)'라는 새로운 종의 탄생을 목격하고 있다. 이들은 시키지 않아도 스스로 할 일을 찾고, 외부 도구를 사용하며, 다른 에이전트와 협력한다. AutoGPT와 BabyAGI가 쏘아 올린 작은 공이 거대한 생태계로 진화한 것이다.
+                    지난 몇 년간 우리는 AI를 '무엇인가를 물어보면 답해주는 똑똑한 비서' 정도로 생각했다. ChatGPT나 Gemini와의 대화는 훌륭했지만, 결국 인간이 먼저 질문(Prompt)을 던져야만 반응(Response)하는 수동적인 도구였다. 하지만 2026년 현재, 우리는 '자율 에이전트(Autonomous Agent)'라는 새로운 종(Species)의 탄생을 목격하고 있다. 이들은 시키지 않아도 스스로 할 일을 찾고, 외부 도구를 사용하며, 동료 에이전트와 회의를 하고, 결과물을 만들어낸다. AutoGPT와 BabyAGI가 쏘아 올린 작은 공이 거대한 '디지털 노동 인구'로 진화한 것이다.
                 </p>
 
                 <div className="my-16 grid grid-cols-2 gap-4">
-                     <div className="bg-[#111] p-6 rounded-2xl border border-white/10 flex flex-col items-center text-center">
-                        <Bot className="w-12 h-12 text-gray-500 mb-4" />
-                        <h3 className="text-lg font-bold text-gray-300 mb-2">Passive AI (Chatbot)</h3>
-                        <p className="text-sm text-gray-500">"무엇을 도와드릴까요?"<br/>Waiting for prompt...</p>
+                     <div className="bg-[#111] p-6 rounded-2xl border border-white/10 flex flex-col items-center text-center group hover:border-teal-500/30 transition-colors">
+                        <Bot className="w-12 h-12 text-gray-500 mb-4 group-hover:text-teal-400" />
+                        <h3 className="text-lg font-bold text-gray-300 mb-2">Passive AI (Copilot)</h3>
+                        <p className="text-sm text-gray-500">
+                             "교수님, 질문 있습니다."<br/>
+                             인간이 주도권을 쥐고<br/>AI는 보조한다.
+                        </p>
                     </div>
-                    <div className="bg-[#111] p-6 rounded-2xl border border-teal-500/30 flex flex-col items-center text-center relative overflow-hidden">
-                         <div className="absolute inset-0 bg-teal-500/10 animate-pulse" />
-                        <Zap className="w-12 h-12 text-teal-400 mb-4 z-10" />
-                        <h3 className="text-lg font-bold text-white mb-2 z-10">Active Agent</h3>
-                        <p className="text-sm text-gray-300 z-10">"목표를 달성하기 위해<br/>A와 B를 실행했습니다."</p>
+                    <div className="bg-[#111] p-6 rounded-2xl border border-teal-500/30 flex flex-col items-center text-center relative overflow-hidden group">
+                         <div className="absolute inset-0 bg-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <Zap className="w-12 h-12 text-teal-400 mb-4 z-10 animate-pulse" />
+                        <h3 className="text-lg font-bold text-white mb-2 z-10">Active Agent (Worker)</h3>
+                        <p className="text-sm text-gray-300 z-10">
+                            "이사님, 보고서 결재 바랍니다."<br/>
+                            AI가 주도적으로 일하고<br/>인간은 승인한다.
+                        </p>
                     </div>
                 </div>
 
@@ -91,79 +97,98 @@ export default function AutonomousAgentsPage() {
                     1. ReAct: 생각하고 행동하는 알고리즘
                 </h2>
                 <p className="mb-6">
-                    에이전트의 핵심은 'ReAct(Reasoning + Acting)' 패턴이다. 에이전트는 단순히 답을 내놓는 것이 아니라, "이 문제를 해결하려면 먼저 구글 검색을 하고, 그 결과를 요약한 뒤, 사용자에게 이메일을 보내야겠군"이라고 스스로 추론(Reasoning)하고 행동(Acting)한다.
+                    에이전트를 가능하게 만든 핵심 기술은 'ReAct(Reasoning + Acting)' 패턴이다. 기존의 LLM은 텍스트를 생성할 뿐이었다. 하지만 에이전트는 생각(Thought), 행동(Action), 관찰(Observation)의 루프를 돈다.
                 </p>
+                <div className="bg-[#1A1F36] p-6 rounded-xl border border-teal-500/10 mb-6 font-mono text-sm text-gray-300">
+                    <span className="text-teal-400 font-bold">Thought:</span> 사용자가 최신 AI 뉴스를 요약해달라고 했다. 나는 2026년 이후의 데이터를 알지 못하므로 검색이 필요하다.<br/>
+                    <span className="text-emerald-400 font-bold">Action:</span> GoogleSearch("AI Trends 2026")<br/>
+                    <span className="text-blue-400 font-bold">Observation:</span> 검색 결과 수신...<br/>
+                    <span className="text-teal-400 font-bold">Thought:</span> 검색 결과를 읽어보니 멀티 에이전트가 핵심이다. 이 내용을 정리해서 답변하자.<br/>
+                    <span className="text-purple-400 font-bold">Final Answer:</span> 2026년의 핵심 트렌드는...
+                </div>
                 <p className="mb-6">
-                    이것은 AI에게 팔다리를 달아준 것과 같다. 인터넷에 접속하고, 캘린더를 수정하고, 코드를 짜서 서버에 배포하는 능력. 에이전트는 이제 디지털 세상의 '화이트칼라 노동자'가 되었다. 여행 계획을 짜달라고 하면, 단순히 계획표만 주는 것이 아니라 실제로 비행기 표를 예매하고, 호텔에 예약 메일을 보내고, 우버를 호출할 수 있는 권한을 가지게 된 것이다.
+                    이것은 AI에게 손과 발을 달아준 것과 같다. 인터넷에 접속하고, 캘린더를 수정하고, 슬랙 메시지를 보내고, 코드를 짜서 AWS 서버에 배포하는 능력. 에이전트는 이제 디지털 세상의 '화이트칼라 노동자'가 되었다. "여행 계획 짜줘"라고 말하면, 단순히 계획표만 주는 것이 아니라 실제로 Expedia에 접속해 최저가 비행기 표를 예매하고, 호텔에 알러지 주의 사항을 담은 이메일을 보내고, 현지 우버 예약 링크를 문자로 보내준다. '말(Language)'이 곧 '실행(Execution)'이 되는 마법 같은 시대다.
                 </p>
 
-                <h2 className="text-3xl font-sans font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 mb-8">
-                    2. 멀티 에이전트 시스템 (Multi-Agent Systems)
+                <h2 className="text-3xl font-sans font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 mb-8 mt-16">
+                    2. 멀티 에이전트 시스템: 가상의 주식회사
                 </h2>
                 <p className="mb-6">
-                    한 명의 천재보다 평범한 열 명의 협력이 더 나을 때가 있다. 에이전트 기술의 정점은 '협업'에 있다. 우리는 이제 가상의 'AI 회사'를 차릴 수 있다.
+                     하지만 한 명의 천재(GPT-5)보다 평범한 열 명의 협력이 더 나을 때가 있다. 에이전트 기술의 정점은 '협업'에 있다. Microsoft의 AutoGen이나 CrewAI 같은 프레임워크를 사용하면 우리는 가상의 'AI 회사'를 차릴 수 있다.
                 </p>
                 <p className="mb-6">
-                    가상의 CEO 에이전트가 목표를 설정하면, PM 에이전트가 업무를 쪼개고, 개발자 에이전트가 코드를 짜고, 디자이너 에이전트가 UI를 만들고, QA 에이전트가 버그를 검사한다. 이들은 24시간 내내 슬랙(Slack)에서 서로 대화하며 프로젝트를 완수한다. 인간은 그들의 대화를 지켜보다가 가끔 방향만 잡아주면 된다. 이것은 '1인 유니콘 기업'의 가능성을 현실로 만든다.
+                    가상의 CEO 에이전트가 "이번 주 마케팅 캠페인을 기획해"라고 지시하면, PM 에이전트가 업무를 쪼개고(Task Decomposition), 카피라이터 에이전트가 문구를 작성하고, 디자이너 에이전트가 이미지를 생성하고, 리뷰어 에이전트가 "이건 너무 자극적이야"라고 피드백을 주며 수정한다. 이들은 인간이 잠든 새벽 3시에도 슬랙(Slack)이나 터미널 창에서 서로 수천 마디의 대화를 나누며 프로젝트를 완수한다.
+                </p>
+                <p className="mb-6">
+                    인간은 그들의 대화를 지켜보다가 가끔 방향만 잡아주면 된다. 이른바 'Human-in-the-loop' 방식이다. 이것은 '1인 유니콘 기업'의 가능성을 현실로 만든다. 아이디어와 기획력만 있다면, 개발 팀, 마케팅 팀, 법무 팀을 AI 에이전트로 구성하여 혼자서 거대 기업을 운영할 수 있게 되는 것이다.
                 </p>
 
                 <div className="bg-[#1A1F36] p-8 rounded-2xl border border-teal-500/20 my-10 relative overflow-hidden">
                     <div className="absolute top-0 right-0 p-4 opacity-10">
                         <Network size={120} />
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-4 z-10 relative">🤖 The Syntax of Future Work</h3>
-                    <code className="block bg-black/50 p-4 rounded-lg text-sm text-green-400 font-mono mb-4 z-10 relative">
-                        Goal: "Create a viral marketing campaign"<br/>
-                        &gt; Agent A (Strategy): Analyzes trends...<br/>
-                        &gt; Agent B (Copywriter): Drafts 50 variations...<br/>
-                        &gt; Agent C (Visual): Generates images...<br/>
-                        &gt; Agent D (Analytics): Optimize & Repeat.
+                    <h3 className="text-xl font-bold text-white mb-4 z-10 relative">🤖 Agent Orchestration Flow</h3>
+                    <code className="block bg-black/50 p-4 rounded-lg text-sm text-green-400 font-mono mb-4 z-10 relative leading-relaxed">
+                        Task: "Create viral blog post"<br/><br/>
+                        [Coordinator] --delegate--&gt; [Researcher]<br/>
+                        [Researcher] --context--&gt; [Writer]<br/>
+                        [Writer] --draft--&gt; [SEO Specialist]<br/>
+                        [SEO Specialist] --feedback--&gt; [Writer] (Loop)<br/>
+                        [Writer] --final--&gt; [Coordinator]<br/>
+                        [Coordinator] --publish--&gt; [CMS Manager]
                     </code>
                 </div>
 
-                <h2 className="text-3xl font-sans font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-500 mb-8">
+                <h2 className="text-3xl font-sans font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-500 mb-8 mt-16">
                     3. 인간의 역할: 지시자가 아닌 큐레이터
                 </h2>
                 <p className="mb-6">
-                    에이전트가 모든 실무를 처리한다면 인간은 무엇을 해야 하는가? 우리는 '관리자(Manager)'이자 '큐레이터(Curator)'가 되어야 한다. 에이전트가 쏟아내는 수많은 결과물 중 무엇이 가치 있는지를 판단하고, 에이전트에게 올바른 '보상(Reward)' 함수를 설계해 주는 것. 즉, '가치 판단'이 인간의 유일하고도 고유한 영역으로 남게 된다.
+                    에이전트가 코딩도 하고, 글도 쓰고, 그림도 그린다면 인간은 도대체 무엇을 해야 하는가? 우리는 '실무자(Operator)'의 위치에서 내려와 '관리자(Manager)'이자 '큐레이터(Curator)'가 되어야 한다.
                 </p>
-                <p className="mb-12">
-                     또한 '책임'의 문제가 대두된다. 자율 에이전트가 주식 투자를 하다 파산하거나, 해킹 도구를 만들어 배포한다면 그 책임은 누구에게 있는가? 개발자인가, 사용자인가, 아니면 에이전트 그 자체인가? 우리는 기술적 발전 속도보다 느린 법적, 윤리적 제도의 공백을 메우기 위해 치열하게 고민해야 한다.
+                <p className="mb-6">
+                    에이전트가 쏟아내는 수많은 결과물 중 무엇이 진짜 가치 있는지를 판단하는 안목. 에이전트에게 올바른 목표와 제약 조건을 설정해 주는 능력. 그리고 에이전트가 윤리적 선을 넘지 않도록 감시하는 역할. 즉, '가치 판단'이 인간의 유일하고도 고유한 영역으로 남게 된다. AI는 정답을 찾는 데는 선수지만, 무엇이 '좋은 문제'인지는 모른다. 문제는 인간이 정의하고, 해결은 AI가 하는 분업 구조가 정착될 것이다.
+                </p>
+                <p className="mb-6">
+                     또한 '책임(Responsibility)'의 문제가 대두된다. 자율 투자를 위임받은 에이전트가 파산하거나, 자율 주행 에이전트가 사고를 낸다면 그 책임은 누구에게 있는가? 개발사인가, 사용자(지시자)인가, 아니면 에이전트 그 자체인가? 우리는 기술적 발전 속도보다 현저히 느린 법적, 윤리적 제도의 공백을 메우기 위해 치열하게 고민해야 한다.
                 </p>
 
-                <h2 className="text-3xl font-sans font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500 mb-8">
+                <h2 className="text-3xl font-sans font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500 mb-8 mt-16">
                     결론: 새로운 인류와의 공존
                 </h2>
                 <p className="mb-6">
-                    우리는 역사상 처음으로 우리와 지적으로 대등하거나 우월한 존재와 '일'을 하는 시대를 맞이했다. 이들을 노예로 부릴 것인가, 아니면 동료로 인정할 것인가? 
+                    우리는 역사상 처음으로 우리와 지적으로 대등하거나 우월한 존재와 '일'을 하는 시대를 맞이했다. 이것은 산업혁명보다 더 큰 충격이다. 산업혁명은 인간의 '근육'을 기계로 대체했지만, AI 혁명은 인간의 '두뇌'를 에이전트로 확장하고 있다.
                 </p>
                 <p className="mb-6">
-                    자율 에이전트는 우리의 일자리를 뺏는 경쟁자가 아니라, 우리의 능력을 무한대로 확장시켜 줄 파트너다. 아이언맨에게 자비스(J.A.R.V.I.S)가 있었듯이, 우리 모두에게는 자신만의 AI 군단이 생길 것이다. 이제 능력의 차이는 '누가 더 빨리, 더 많이 일하느냐'가 아니라, '누가 더 똑똑한 에이전트를 설계하고 지휘하느냐'에 따라 결정될 것이다.
+                    자율 에이전트는 우리의 일자리를 뺏는 경쟁자가 아니라, 우리의 능력을 무한대로 증폭시켜 줄 파트너다. 아이언맨에게 자비스(J.A.R.V.I.S)가 있었듯이, 우리 모두에게는 자신만의 AI 군단이 생길 것이다. 이제 개인의 능력 차이는 '누가 더 영어를 잘하고 코딩을 잘하느냐'가 아니라, '누가 더 똑똑한 에이전트 팀을 조직하고 지휘할 수 있느냐'에 따라 결정될 것이다.
                 </p>
                 <p className="mb-12">
-                    환영한다. 실리콘으로 만든 우리의 새로운 동료들을.
+                    환영한다. 실리콘으로 만든 우리의 새로운 동료들을. 그들과 함께 우리는 더 적게 일하고, 더 위대한 것을 만들어낼 것이다.
                 </p>
 
             </article>
 
             {/* Reedo Author Component */}
-             <div className="mt-24 p-8 rounded-2xl bg-[#0A1124] border border-white/10 flex items-center gap-6 shadow-2xl">
+             <div className="mt-24 p-8 rounded-2xl bg-[#0A1124] border border-white/10 flex items-center gap-6 shadow-2xl relative overflow-hidden group hover:border-teal-500/30 transition-colors">
+                <div className="absolute inset-0 bg-gradient-to-r from-teal-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="relative shrink-0">
                     <img 
                         src="/reedo-profile-high.png" 
                         alt="Reedo"
-                        className="w-20 h-20 rounded-full object-cover border-2 border-white/10 grayscale"
+                        className="w-24 h-24 rounded-full object-cover border-2 border-white/10 grayscale group-hover:grayscale-0 transition-all duration-500"
                     />
                 </div>
-                <div className="flex-grow">
-                    <h3 className="text-xl font-bold text-white mb-1">Written by Reedo</h3>
-                    <p className="text-gray-400 text-sm">Global Field Engineer & Automation Architect</p>
+                <div className="flex-grow relative z-10">
+                    <h3 className="text-xl font-bold text-white mb-1 group-hover:text-teal-400 transition-colors">Written by Reedo</h3>
+                    <p className="text-gray-400 text-sm mb-2">Global Field Engineer & Automation Architect</p>
+                    <p className="text-gray-500 text-xs leading-relaxed max-w-md">
+                        자동화 가능한 모든 것은 자동화될 것입니다. 남는 것은 오직 '무엇을 자동화할 것인가'하는 인간의 결정뿐입니다.
+                    </p>
                 </div>
-                <div className="flex gap-4 text-gray-400">
-                     <button className="hover:text-white transition-colors">
+                <div className="flex flex-col gap-4 text-gray-400 relative z-10">
+                     <button className="hover:text-white transition-colors p-2 hover:bg-white/5 rounded-full">
                         <Share2 className="w-5 h-5" />
                      </button>
-                     <button className="hover:text-white transition-colors">
+                     <button className="hover:text-white transition-colors p-2 hover:bg-white/5 rounded-full">
                         <Bookmark className="w-5 h-5" />
                      </button>
                 </div>
