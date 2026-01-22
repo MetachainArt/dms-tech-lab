@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, memo } from "react";
+import { cn } from "@/lib/utils";
 
 interface Particle {
     x: number;
@@ -24,7 +25,12 @@ interface EnergyPulse {
     color: string;
 }
 
-export default function NeuralBackground() {
+interface NeuralBackgroundProps {
+    className?: string;
+    particleCount?: number;
+}
+
+function NeuralBackgroundComponent({ className, particleCount: customParticleCount }: NeuralBackgroundProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
@@ -43,8 +49,9 @@ export default function NeuralBackground() {
         resize();
         window.addEventListener("resize", resize);
 
-        // Config
-        const particleCount = 120;
+        // Config - 모바일에서 파티클 수 줄이기
+        const isMobile = window.innerWidth < 768;
+        const particleCount = customParticleCount ?? (isMobile ? 60 : 120);
         const connectDistance = 180;
         const mouseRadius = 250;
         const mouseAttractionRadius = 350;
@@ -129,8 +136,9 @@ export default function NeuralBackground() {
             // Wave motion parameters
             const waveTime = time * 0.5;
 
-            // Update and draw particles
-            particles.forEach((p, i) => {
+            // Update and draw particles (성능 최적화: 범위 제한)
+            for (let i = 0; i < particles.length; i++) {
+                const p = particles[i];
                 // Wave motion
                 const waveOffsetX = Math.sin(waveTime + p.y * 0.005) * 0.3;
                 const waveOffsetY = Math.cos(waveTime + p.x * 0.005) * 0.3;
@@ -212,7 +220,7 @@ export default function NeuralBackground() {
 
                 ctx.globalAlpha = 1;
 
-                // Draw connections
+                // Draw connections (성능 최적화: 이중 루프 범위 제한)
                 for (let j = i + 1; j < particles.length; j++) {
                     const p2 = particles[j];
                     const cdx = p.x - p2.x;
@@ -252,7 +260,7 @@ export default function NeuralBackground() {
                         ctx.globalAlpha = 1;
                     }
                 }
-            });
+            }
 
             // Update and draw energy pulses
             spawnEnergyPulse();
@@ -324,8 +332,11 @@ export default function NeuralBackground() {
     return (
         <canvas
             ref={canvasRef}
-            className="block absolute inset-0 w-full h-full"
+            className={cn("block absolute inset-0 w-full h-full", className)}
             style={{ pointerEvents: "auto" }}
         />
     );
 }
+
+// React.memo로 리렌더링 최적화
+export default memo(NeuralBackgroundComponent);

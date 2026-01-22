@@ -5,7 +5,7 @@ import NeuralBackground from "@/components/ui/NeuralBackground";
 
 export default function Hero() {
   return (
-    <section className="relative z-10 flex min-h-screen w-full flex-col justify-center px-6 overflow-hidden">
+    <section className="relative z-10 flex min-h-screen w-full flex-col justify-center px-6 overflow-hidden" aria-labelledby="hero-heading">
 
       {/* Neural Network Background - Full Screen */}
       <div className="absolute inset-0 z-0">
@@ -31,6 +31,7 @@ export default function Hero() {
             </motion.div>
 
             <motion.h1
+                id="hero-heading"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 }}

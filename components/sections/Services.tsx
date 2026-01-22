@@ -1,38 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Cpu, Palette, GraduationCap, Globe } from "lucide-react";
-
-const services = [
-  {
-    icon: Cpu,
-    title: "DEV",
-    subtitle: "자동화 & 개발",
-    description: "N8N, AI Agent 기반 워크플로우 자동화. 반복 업무를 시스템으로.",
-    color: "from-blue-500 to-cyan-400",
-  },
-  {
-    icon: Palette,
-    title: "DESIGN",
-    subtitle: "3D & 시각화",
-    description: "제품 시각화, WebGL, 인터랙티브 3D 경험 설계.",
-    color: "from-purple-500 to-pink-400",
-  },
-  {
-    icon: GraduationCap,
-    title: "EDU",
-    subtitle: "기술 교육",
-    description: "GenAI 워크샵, 프롬프트 엔지니어링, 맞춤형 커리큘럼.",
-    color: "from-green-500 to-emerald-400",
-  },
-  {
-    icon: Globe,
-    title: "TRADE",
-    subtitle: "해외 무역",
-    description: "글로벌 네트워크 기반 기술 제품 수출입 지원.",
-    color: "from-orange-500 to-amber-400",
-  },
-];
+import { services } from "@/constants/data";
 
 export default function Services() {
   return (

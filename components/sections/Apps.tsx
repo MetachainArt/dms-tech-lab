@@ -1,37 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Settings2, FileText, AppWindow } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import NeuralBackground from "@/components/ui/NeuralBackground";
-
-// Project Data (Synced with Projects Page)
-const projects = [
-  {
-    category: "BUSINESS AUTOMATION",
-    title: "워크플로우 자동화",
-    desc: "24시간 멈추지 않는 비즈니스. N8N, Opal 등 최적의 도구를 조합해 반복 업무를 완벽하게 자동화합니다.",
-    icon: Settings2,
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop", 
-    color: "text-blue-500",
-  },
-  {
-    category: "AI ENGINEERING",
-    title: "프롬프트 라이브러리",
-    desc: "시행착오를 줄여주는 솔루션. 개발과 비즈니스 효율을 극대화하는 검증된 프롬프트 모음입니다.",
-    icon: FileText,
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2574&auto=format&fit=crop", 
-    color: "text-purple-500",
-  },
-  {
-    category: "VIBE CODING APPS",
-    title: "바이브 코딩 웹앱",
-    desc: "상상을 현실로. 뮤즈캔버스를 비롯해 바이브 코딩으로 제작된 다양한 웹 애플리케이션을 소개합니다.",
-    icon: AppWindow,
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop", 
-    color: "text-green-500",
-  }
-];
+import { projects } from "@/constants/data";
 
 export default function Apps() {
   return (
@@ -74,16 +48,18 @@ export default function Apps() {
                 >
                     {/* Image Area */}
                     <div className="h-48 w-full relative overflow-hidden flex-shrink-0">
-                         <img
-                            src={project.image}
-                            alt={project.title}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                         />
+                         <Image
+                             src={project.image}
+                             alt={project.title}
+                             fill
+                             className="object-cover group-hover:scale-110 transition-transform duration-700"
+                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          />
                          <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300" />
 
                          {/* Icon - Top Right */}
                          <div className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg z-10">
-                            <project.icon className={`w-5 h-5 ${project.color}`} />
+                             <project.icon className={`w-5 h-5 ${project.color}`} />
                          </div>
                     </div>
 

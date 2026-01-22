@@ -6,18 +6,23 @@ import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
 import Background from "@/components/ui/Background";
 import NextAuthProvider from "@/components/providers/NextAuthProvider";
+import { generateMetadata as generateSeoMetadata, generateStructuredData } from "@/lib/metadata";
+import { SITE_CONFIG } from "@/lib/seo";
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "900"],
   variable: "--font-poppins",
   display: "swap",
+  preload: true,
+  fallback: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
 });
 
-export const metadata: Metadata = {
-  title: "DMS | Innovation Through AI",
-  description: "Automotive Retail AI & 3D Engineering Solutions.",
-};
+export const metadata = generateSeoMetadata({
+  title: SITE_CONFIG.title,
+  description: SITE_CONFIG.description,
+  path: "/",
+});
 
 export default function RootLayout({
   children,
@@ -26,6 +31,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className="dark scroll-smooth" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+        {/* 구조화된 데이터 (JSON-LD) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateStructuredData("Organization")),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateStructuredData("WebSite")),
+          }}
+        />
+      </head>
       <body className={clsx(poppins.variable, "antialiased bg-deep-space text-white select-none")} suppressHydrationWarning>
         <Background />
         <NextAuthProvider>
