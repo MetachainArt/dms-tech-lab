@@ -332,7 +332,7 @@ function NeuralBackgroundComponent({ className, particleCount: customParticleCou
     return (
         <canvas
             ref={canvasRef}
-            className={cn("block absolute inset-0 w-full h-full", className)}
+            className={cn("block fixed inset-0 w-full h-full z-0", className)}
             style={{ pointerEvents: "auto" }}
         />
     );

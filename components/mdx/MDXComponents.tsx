@@ -1,6 +1,7 @@
-import { 
-  ArrowLeft, Calendar, Clock, Share2, Bookmark, 
-  Bot, Workflow, Users, Zap, Terminal, Network, Battery 
+import {
+  ArrowLeft, Calendar, Clock, Share2, Bookmark,
+  Bot, Workflow, Users, Zap, Terminal, Network, Battery,
+  Cpu, Lightbulb, Brain, TrendingUp, AlertTriangle, DollarSign
 } from "lucide-react";
 import Link from 'next/link';
 import Image from 'next/image';
@@ -22,9 +23,15 @@ export const MDXComponents = {
   Zap,
   Terminal,
   Network,
-  Battery,  // Added Battery
+  Battery,
   Clock,
   Calendar,
+  Cpu,
+  Lightbulb,
+  Brain,
+  TrendingUp,
+  AlertTriangle,
+  DollarSign,
   Link,
   Image,
   

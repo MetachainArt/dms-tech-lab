@@ -41,18 +41,20 @@ export default async function SeriesDetailPage(props: { params: Promise<{ id: st
   }));
 
   return (
-    <main className="w-full min-h-screen bg-[#050B1B] text-white font-poppins selection:bg-neon-sky selection:text-[#050B1B]">
+    <main className="w-full min-h-screen bg-[#050B1B] text-white font-poppins selection:bg-neon-sky selection:text-[#050B1B] relative">
       <NeuralBackground />
-      
-      {/* Header Section (Client Component for Animations) */}
-      <SeriesHeader series={data} postCount={posts.length} />
 
-      {/* Post List Section */}
-      <section className="px-6 pb-32">
-        <div className="max-w-4xl mx-auto">
-             <SeriesPostList posts={formattedPosts} color={data.color} />
-        </div>
-      </section>
+      {/* Header Section (Client Component for Animations) */}
+      <div className="relative z-10">
+        <SeriesHeader series={data} postCount={posts.length} />
+
+        {/* Post List Section */}
+        <section className="px-6 pb-32">
+          <div className="max-w-4xl mx-auto">
+              <SeriesPostList posts={formattedPosts} color={data.color} />
+          </div>
+        </section>
+      </div>
 
     </main>
   );
