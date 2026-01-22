@@ -52,7 +52,7 @@ export default function BlogPage() {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-5xl md:text-7xl font-bold mb-6"
             >
-                DMS <span className="text-neon-sky">Insights</span>
+                Reedo <span className="text-neon-sky">Insights</span>
             </motion.h1>
             <motion.p 
                 initial={{ opacity: 0, y: 20 }}
@@ -62,7 +62,7 @@ export default function BlogPage() {
             >
                 기술과 예술, 그리고 인간의 경계에서.
                 <br />
-                깊이 있는 시선을 담은 3가지 연재 시리즈.
+                깊이 있는 시선을 담은 연재 시리즈.
             </motion.p>
         </div>
       </section>
