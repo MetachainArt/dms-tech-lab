@@ -14,7 +14,8 @@
       "Bash(npx prisma -v)",
       "Bash(Get-Process -Name node -ErrorAction SilentlyContinue)",
       "Bash(Stop-Process -Force)",
-      "Bash(npm ls:*)"
+      "Bash(npm ls:*)",
+      "Bash(cmd /c \"taskkill /PID 9260 /F\")"
     ]
   }
 }

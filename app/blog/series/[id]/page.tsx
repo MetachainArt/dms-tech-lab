@@ -115,6 +115,30 @@ const seriesData: Record<string, any> = {
         readTime: "50 min"
       }
     ]
+  },
+  "ai-tech-trends": {
+    title: "AI Tech Trends",
+    subtitle: "LATEST NEWS",
+    description: "매일 쏟아지는 AI 기술 뉴스. 핵심만 요약하여 전해드립니다. RAG부터 멀티모달 모델까지.",
+    coverImage: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2532&auto=format&fit=crop",
+    color: "blue",
+    posts: []
+  },
+  "today-me": {
+    title: "오늘의 나",
+    subtitle: "DAILY ESSAY",
+    description: "가장 개인적인 것이 가장 창의적인 것이다. AI 시대를 살아가는 한 엔지니어의 일상과 단상.",
+    coverImage: "/images/today_Me.jpg",
+    color: "amber",
+    posts: []
+  },
+  "ai-fantasy-life": {
+    title: "AI Fantasy Life",
+    subtitle: "VIRTUAL FICTION",
+    description: "현실과 가상의 경계가 무너진 세상. AI와 함께 써 내려가는 몽환적이고 기묘한 이야기.",
+    coverImage: "/images/AI_Life.jpg",
+    color: "pink",
+    posts: []
   }
 };
 

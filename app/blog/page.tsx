@@ -11,9 +11,9 @@ export default function BlogPage() {
       title: "Future Arts",
       subtitle: "AI & AESTHETICS",
       description: "기계의 눈으로 본 세상, 알고리즘이 빚어낸 건축, 그리고 합성된 시네마. AI 시대의 예술과 미학을 탐구합니다.",
-      coverImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop",
+      coverImage: "/images/series/future_arts.png",
       color: "purple",
-      postCount: 5,
+      postCount: 4,
       tags: ["AI Art", "Cinema", "Architecture"]
     },
     {
@@ -21,9 +21,9 @@ export default function BlogPage() {
       title: "Homo Technicus",
       subtitle: "HUMAN & TECH",
       description: "기술적 포스트휴머니즘. 디지털 페르소나와 이식된 기억. 기술과 결합하여 진화하는 인류의 철학적 질문들.",
-      coverImage: "https://images.unsplash.com/photo-1522252234503-e356532cafd5?q=80&w=2525&auto=format&fit=crop",
+      coverImage: "/images/series/homo_technicus.png",
       color: "rose",
-      postCount: 4,
+      postCount: 3,
       tags: ["Philosophy", "Identity", "Memory"]
     },
     {
@@ -31,10 +31,40 @@ export default function BlogPage() {
       title: "Agentic Era",
       subtitle: "AUTONOMY & CODE",
       description: "도구를 넘어 동료가 된 AI. 자율 에이전트와 자동화가 바꾸는 일의 미래, 그리고 창작의 민주화.",
-      coverImage: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=2612&auto=format&fit=crop",
+      coverImage: "/images/series/agentic_era.png",
       color: "teal",
       postCount: 3,
       tags: ["Agents", "Automation", "N8N"]
+    },
+    {
+      id: "ai-tech-trends",
+      title: "AI Tech Trends",
+      subtitle: "LATEST NEWS",
+      description: "매일 쏟아지는 AI 기술 뉴스. 핵심만 요약하여 전해드립니다. RAG부터 멀티모달 모델까지.",
+      coverImage: "/images/series/ai_tech_trends.png",
+      color: "blue",
+      postCount: 1,
+      tags: ["News", "LLM", "Trends"]
+    },
+    {
+      id: "today-me",
+      title: "오늘의 나",
+      subtitle: "DAILY ESSAY",
+      description: "가장 개인적인 것이 가장 창의적인 것이다. AI 시대를 살아가는 한 엔지니어의 일상과 단상.",
+      coverImage: "/images/series/today_me.png",
+      color: "amber",
+      postCount: 1,
+      tags: ["Essay", "Life", "Reflection"]
+    },
+    {
+      id: "ai-fantasy-life",
+      title: "AI Fantasy Life",
+      subtitle: "VIRTUAL FICTION",
+      description: "현실과 가상의 경계가 무너진 세상. AI와 함께 써 내려가는 몽환적이고 기묘한 이야기.",
+      coverImage: "/images/series/ai_fantasy.png",
+      color: "pink",
+      postCount: 1,
+      tags: ["Fiction", "Story", "Dream"]
     }
   ];
 
