@@ -2,9 +2,6 @@ import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import KakaoProvider from "next-auth/providers/kakao";
 
-// ✅ 호스팅어 환경변수 무시 문제 해결: URL 강제 주입
-process.env.NEXTAUTH_URL = "https://dmssolution.co.kr";
-
 const handler = NextAuth({
   debug: true,
   providers: [
@@ -23,9 +20,7 @@ const handler = NextAuth({
   session: {
     strategy: "jwt",
   },
-  // ✅ env 대신 하드코딩 테스트
-  secret: "ks8fJ2l0pA9qZ1C7wX3nV5yR6uT8bL0",
-  // secret: process.env.NEXTAUTH_SECRET || process.env.AUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
