@@ -1,28 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowLeft, Clock, Calendar, Share2, Bookmark, BarChart3, Globe, Zap, Cpu, Network, Bot, Layers, TrendingUp } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Share2, Bookmark, Bot, Workflow, Users, Zap, Terminal, Network } from "lucide-react";
 import Link from "next/link";
+import NeuralBackground from "@/components/ui/NeuralBackground";
 
-export default function AITechTrendsPage() {
+export default function AITechTrendsOldPage() {
   return (
-    <main className="w-full min-h-screen bg-[#050B1B] text-white font-poppins selection:bg-blue-500 selection:text-white">
+    <main className="w-full min-h-screen bg-[#050B1B] text-white font-poppins selection:bg-neon-sky selection:text-[#050B1B]">
+      <NeuralBackground />
       
-      <motion.div 
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 origin-left z-50"
-        initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: false }} 
-      />
-
       {/* Hero Section */}
       <section className="relative w-full h-[60vh] flex flex-col justify-end pb-20 px-6 overflow-hidden">
         <div className="absolute inset-0 z-0">
              <div className="absolute inset-0 bg-gradient-to-t from-[#050B1B] via-[#050B1B]/40 to-transparent z-10" />
              <img 
-                src="/images/series/post_ai_news.png" 
-                alt="AI News"
-                className="w-full h-full object-cover opacity-60 scale-105 animate-slow-zoom"
+                src="/images/series/ai_tech_trends.png" 
+                alt="AI Tech Trends"
+                className="w-full h-full object-cover opacity-60 scale-105"
              />
         </div>
 
@@ -38,13 +33,13 @@ export default function AITechTrendsPage() {
             >
                 <div className="flex items-center gap-4 mb-6">
                     <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-xs font-bold border border-blue-500/30">
-                        Global Trends
+                        Trend Report
                     </span>
                     <span className="flex items-center text-gray-400 text-sm">
                         <Calendar className="w-4 h-4 mr-2" /> 2026. 01. 22
                     </span>
                     <span className="flex items-center text-gray-400 text-sm">
-                        <Clock className="w-4 h-4 mr-2" /> 45 min read
+                        <Clock className="w-4 h-4 mr-2" /> 10 min read
                     </span>
                 </div>
 
@@ -55,9 +50,8 @@ export default function AITechTrendsPage() {
                     </span>
                 </h1>
 
-                <p className="text-xl text-gray-300 max-w-2xl leading-relaxed italic border-l-4 border-blue-500 pl-6">
-                    "단일 모델의 시대는 끝났다. <br/>
-                    이제 AI 팀(Team)이 일하는 방식이 비즈니스의 표준이 된다."
+                <p className="text-xl text-gray-300 max-w-2xl leading-relaxed">
+                   단일 모델의 시대는 끝났다. 이제 AI 팀(Team)이 일하는 방식이 온다. AutoGen과 Swarm으로 보는 미래.
                 </p>
             </motion.div>
         </div>
@@ -69,91 +63,136 @@ export default function AITechTrendsPage() {
             <article className="prose prose-lg prose-invert prose-p:text-gray-300 prose-headings:text-white max-w-none font-serif">
                 
                 <p className="lead text-2xl text-white font-sans font-medium mb-12 leading-relaxed">
-                    2025년이 GPT-5와 Claude 4.5 같은 초거대언어모델(LLM)들의 성능 경쟁, 즉 '누가 더 똑똑한가'를 겨루는 해였다면, 2026년은 이 똑똑한 모델들을 어떻게 '조직화'하느냐의 싸움입니다. 마이크로소프트의 AutoGen, OpenAI의 Swarm, 그리고 오픈소스 진영의 CrewAI 등 멀티 에이전트 프레임워크가 실험실을 벗어나 엔터프라이즈 실무의 표준으로 자리 잡고 있습니다.
+                    2025년이 '성능 경쟁'의 해였다면, 2026년은 '협업'의 해가 될 것입니다. 하지만 인간 간의 협업이 아닙니다. 바로 AI와 AI, 즉 '멀티 에이전트 시스템(Multi-Agent Systems)'의 본격적인 도래입니다. 이제 우리는 더 이상 하나의 천재적인 모델에게 모든 것을 묻지 않습니다. 대신, 서로 다른 전문성을 가진 에이전트들로 구성된 '가상의 팀(Virtual Team)'을 고용하게 될 것입니다.
                 </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-16">
-                    <div className="bg-[#1A1F36] p-6 rounded-2xl border border-white/10 flex flex-col items-center text-center group hover:border-blue-500/50 transition-all">
-                        <Bot className="w-10 h-10 text-blue-400 mb-4" />
-                        <h3 className="font-bold text-white mb-2">Specialization</h3>
-                        <p className="text-sm text-gray-400">범용 모델보다 특정 업무에 특화된 소형 에이전트의 효율성 입증</p>
-                    </div>
-                    <div className="bg-[#1A1F36] p-6 rounded-2xl border border-white/10 flex flex-col items-center text-center group hover:border-cyan-500/50 transition-all">
-                        <Network className="w-10 h-10 text-cyan-400 mb-4" />
-                        <h3 className="font-bold text-white mb-2">Orchestration</h3>
-                        <p className="text-sm text-gray-400">복잡한 워크플로우를 자율적으로 조율하는 매니저 AI의 등장</p>
-                    </div>
-                    <div className="bg-[#1A1F36] p-6 rounded-2xl border border-white/10 flex flex-col items-center text-center group hover:border-teal-500/50 transition-all">
-                        <Zap className="w-10 h-10 text-teal-400 mb-4" />
-                        <h3 className="font-bold text-white mb-2">Autonomy</h3>
-                        <p className="text-sm text-gray-400">인간의 개입을 최소화한 완전 자율 실행 루프(Loop) 실현</p>
-                    </div>
-                </div>
-
-                <h2 className="text-3xl font-sans font-bold text-blue-400 mb-8 flex items-center gap-3">
-                    <Globe className="w-8 h-8" /> 1. 협업하는 지능 (Collaborative Intelligence)
+                <h2 className="text-3xl font-sans font-bold text-blue-400 mb-8 mt-16 flex items-center gap-3">
+                    <Bot className="w-8 h-8" /> 1. 단일 모델(Single Model)의 한계
                 </h2>
+                
                 <p className="mb-6">
-                    하나의 슈퍼 AI에게 모든 것을 맡기는 것보다, 전문화된 작은 AI들이 협업하는 것이 훨씬 효율적임이 증명되었습니다. 코딩 담당 에이전트, 기획 담당 에이전트, 그리고 이를 감수하는 리뷰어 에이전트가 가상 공간에서 회의를 하며 결과물을 만들어냅니다.
+                    지난 3년간 우리는 GPT-4나 Claude 3.5 같은 거대언어모델(LLM)의 능력에 감탄해왔습니다. 그러나 복잡한 현실 세계의 문제를 해결하려 할 때, 단일 모델은 명확한 한계에 부딪혔습니다.
                 </p>
+                <div className="bg-[#0A1124] p-6 rounded-xl border border-white/10 mb-8">
+                    <ul className="list-disc pl-6 text-gray-300 space-y-2">
+                        <li><strong>Context Window의 압박:</strong> 아무리 긴 문맥을 기억해도, 수백 개의 파일과 문서를 동시에 완벽하게 이해하고 처리하기엔 역부족입니다.</li>
+                        <li><strong>환각(Hallucination)의 증폭:</strong> 모델이 모르는 영역까지 답하려다 보니, 복잡한 추론 과정에서 오류가 누적됩니다.</li>
+                        <li><strong>전문성의 부족:</strong> 코딩도 잘하고, 글도 잘 쓰고, 법률도 잘 아는 '만능 모델'은 존재하지만, 각 분야의 '초전문가'를 이기기는 어렵습니다.</li>
+                    </ul>
+                </div>
                 <p className="mb-6">
-                    실제 프로덕션 사례를 봅시다. 핀테크 기업 A사는 대출 심사 과정을 멀티 에이전트로 전환했습니다. '신용 분석 에이전트'가 고객의 재무 상태를 1차로 파악하면, '리스크 관리 에이전트'가 잠재적 위험 요소를 태깅하고, 최종적으로 '승인 에이전트'가 내부 규정에 맞춰 결정을 내립니다. 이 모든 과정이 0.5초 안에 이루어집니다. 과거에는 한 명의 직원이 하거나, 하나의 거대 모델이 처리하기엔 복잡했던 일입니다.
+                    마치 회사에서 한 명의 천재 직원이 기획, 디자인, 개발, 영업을 모두 할 수 없는 것과 같습니다. 그래서 우리는 '조직'을 만듭니다. AI 생태계도 이와 똑같은 진화 과정을 겪고 있습니다.
                 </p>
-                <p className="mb-6">
-                    이는 인간 조직론과 놀랍도록 닮아 있습니다. "백지장도 맞들면 낫다"는 속담이 AI 세계에서도 통하는 것입니다. 우리는 이제 AI를 '개발'하는 것이 아니라, AI 팀을 '매니지먼트'하는 능력을 길러야 합니다. 어떤 에이전트에게 어떤 페르소나와 권한을 부여할지, 에이전트 간의 소통 방식은 민주적으로 할지 수직적으로 할지 설계하는 'AI 조직 설계자'가 유망 직종으로 떠오르고 있습니다.
-                </p>
+
 
                 <h2 className="text-3xl font-sans font-bold text-cyan-400 mb-8 mt-16 flex items-center gap-3">
-                    <Cpu className="w-8 h-8" /> 2. 온디바이스 AI의 폭발적 성장
+                    <Network className="w-8 h-8" /> 2. 멀티 에이전트 시스템이란?
                 </h2>
+
                 <p className="mb-6">
-                    클라우드 비용의 증가와 데이터 프라이버시 이슈로 인해, 내 노트북과 폰에서 돌아가는 sLLM(소형언어모델)이 주류로 부상했습니다. Phi-5, Llama-4-7B와 같은 최신 모델들은 5년 전의 슈퍼컴퓨터에서나 가능했던 성능을 일반 소비자용 GPU에서 구현합니다.
+                    멀티 에이전트 시스템은 하나의 거대한 과제를 수행하기 위해 여러 개의 특화된 AI 에이전트들이 서로 대화하고 협력하는 구조를 말합니다. 예를 들어, 소프트웨어 개발을 한다고 가정해 봅시다.
                 </p>
+
+                <div className="bg-[#1A1F36] p-8 rounded-xl border-l-4 border-blue-500 my-8">
+                    <h4 className="font-bold text-white mb-4 text-lg">가상의 개발 팀 시나리오</h4>
+                    <ul className="space-y-4">
+                        <li className="flex gap-3">
+                            <span className="text-blue-400 font-bold min-w-[100px]">PM 에이전트:</span>
+                            <span className="text-gray-300">사용자의 요구사항을 분석하고, 필요한 기능 명세(Spec)를 작성하여 개발자에게 전달합니다.</span>
+                        </li>
+                        <li className="flex gap-3">
+                            <span className="text-blue-400 font-bold min-w-[100px]">Dev 에이전트:</span>
+                            <span className="text-gray-300">명세를 바탕으로 실제 코드를 작성합니다. 코드가 완성되면 리뷰어에게 넘깁니다.</span>
+                        </li>
+                        <li className="flex gap-3">
+                            <span className="text-blue-400 font-bold min-w-[100px]">QA 에이전트:</span>
+                            <span className="text-gray-300">작성된 코드를 실행하고 테스트 케이스를 돌립니다. 버그가 발견되면, 로그와 함께 다시 Dev 에이전트에게 수정을 요청합니다.</span>
+                        </li>
+                    </ul>
+                </div>
+
                 <p className="mb-6">
-                    애플의 'Private Cloud Compute'와 삼성의 'Gauss 2'는 기기 자체에서 민감한 데이터를 처리하고, 정말 필요한 경우에만 클라우드를 호출하는 하이브리드 방식을 채택했습니다. 이제 내 일기장, 내 금융 기록, 내 건강 데이터가 외부 서버로 나가지 않아도 AI의 도움을 받을 수 있습니다.
-                </p>
-                <p className="mb-6">
-                    이는 단순히 비용 절감의 문제가 아닙니다. 'AI 민주화'의 핵심입니다. 인터넷이 끊긴 비행기 안에서도, 오지의 현장에서도 고성능 AI를 사용할 수 있다는 것은 인류의 생산성을 물리적 제약으로부터 해방시키는 혁명입니다. 이제 개발자들의 관심사는 "얼마나 큰 모델을 쓰느냐"에서 "얼마나 최적화된 모델을 엣지(Edge)에 올리느냐"로 이동하고 있습니다.
+                    이 모든 과정이 인간의 개입 없이(Autonomous), 에이전트들 간의 채팅이나 API 호출로 이루어집니다. 인간은 그저 "이런 웹사이트를 만들어줘"라는 한 문장의 지시(Prompt)만 내리면 됩니다. 이것이 바로 마이크로소프트의 <strong>AutoGen</strong>이나 OpenAI의 <strong>Swarm</strong>이 그리는 미래입니다.
                 </p>
 
                 <h2 className="text-3xl font-sans font-bold text-teal-400 mb-8 mt-16 flex items-center gap-3">
-                    <BarChart3 className="w-8 h-8" /> 3. 행동하는 AI (Actionable AI)
+                    <Workflow className="w-8 h-8" /> 3. 주요 프레임워크: AutoGen과 Swarm
                 </h2>
+
+                <h3 className="text-2xl font-bold text-white mb-4">Microsoft AutoGen: 대화형 오케스트레이션</h3>
                 <p className="mb-6">
-                    '말만 하는' 챗봇은 이제 지루합니다. 2026년의 AI는 직접 API를 호출하고, 이메일을 보내고, 문서를 작성하여 결재를 올립니다. RAG(검색 증강 생성)를 넘어 LAM(Large Action Model)으로의 진화가 가속화되고 있습니다.
+                    가장 먼저 시장을 선점한 것은 마이크로소프트의 AutoGen입니다. AutoGen의 핵심은 '에이전트 간의 대화(Conversation)'입니다. 각 에이전트를 '시스템 프롬프트'와 '도구(Tool)'를 가진 객체로 정의하고, 이들이 마치 슬랙(Slack)에서 대화하듯 문제를 해결해 나갑니다.
                 </p>
+                <div className="my-8 relative rounded-xl overflow-hidden h-48 border border-white/10 group">
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-900/40 to-cyan-900/40" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <Terminal className="w-16 h-16 text-blue-400 opacity-50" />
+                    </div>
+                </div>
                 <p className="mb-6">
-                    Rabbit R1과 같은 전용 디바이스의 실패는 오히려 소프트웨어 중심의 에이전트 시장을 열었습니다. 사용자가 컴퓨터 화면에서 하는 마우스 클릭, 스크롤, 타이핑을 AI가 학습하여 그대로 따라 합니다. "지난달 영수증 다 모아서 엑셀로 정리하고 회계팀에 메일 보내줘"라는 명령을 내리면, AI 에이전트는 크롬 브라우저를 열고, 국세청 사이트에 로그인하고, PDF를 다운받아 OCR로 읽고, 엑셀을 켜서 입력한 뒤 아웃룩으로 메일을 보냅니다.
-                </p>
-                <p className="mb-12">
-                     우리는 곧 "이거 알아봐 줘"가 아니라, "이거 해결해 둬"라고 말하게 될 것입니다. 이는 UI/UX의 패러다임이 GUI(Graphic User Interface)에서 LUI(Language User Interface), 더 나아가 Intent-UI(의도 기반 인터페이스)로 바뀌는 것을 의미합니다. 버튼을 찾아서 누르는 것이 아니라, 원하는 결과를 말하면 과정은 AI가 알아서 수행하는 세상입니다.
+                    특히 'User Proxy Agent'라는 개념이 있어, 필요할 때만 인간에게 "승인해주시겠습니까?"라고 묻고, 승인이 떨어지면 다시 자동으로 작업을 이어가는 히먼-인-더-루프(Human-in-the-loop) 구조가 강력합니다.
                 </p>
 
-                <div className="bg-gradient-to-r from-blue-900/30 to-teal-900/30 p-8 rounded-2xl border-l-4 border-blue-500 mt-12 mb-20">
-                    <div className="flex items-start gap-4">
-                        <TrendingUp className="w-8 h-8 text-blue-400 flex-shrink-0 mt-1" />
-                        <div>
-                             <h4 className="text-xl font-bold text-white mb-2">Reedo's Prediction for 2026 Q3</h4>
-                             <ul className="text-gray-300 space-y-2 list-disc list-inside">
-                                <li>에이전트 간의 경제 활동(M2M Economy) 시작: AI가 다른 AI에게 API 사용료를 코인으로 지불.</li>
-                                <li>'프롬프트 엔지니어' 직군의 소멸, '에이전트 아키텍트'로의 전환.</li>
-                                <li>법적 인격체로서의 AI 권리에 대한 논의 본격화 (저작권, 책임 소재).</li>
-                             </ul>
-                        </div>
+                <h3 className="text-2xl font-bold text-white mb-4 mt-8">OpenAI Swarm: 가볍고 통제 가능한 패턴</h3>
+                <p className="mb-6">
+                    2024년 말 공개된 OpenAI의 Swarm은 조금 다른 접근을 취합니다. AutoGen이 복잡하고 자율적인 상호작용을 지향한다면, Swarm은 '핸드오프(Handoff)'라는 개념을 중심으로 더 통제 가능하고 가벼운 패턴을 제시합니다.
+                </p>
+                <p className="mb-6">
+                    "상담원 A가 고객의 문제를 해결하지 못하면, 즉시 기술지원팀 B에게 전화기를 넘겨준다." <br/>
+                    Swarm은 이처럼 명시적인 루틴(Routine)을 정의하여, 에이전트가 무한 루프에 빠지거나 엉뚱한 행동을 하는 것을 방지합니다. 엔터프라이즈 환경에서 더 선호될 수 있는 구조입니다.
+                </p>
+
+                <h2 className="text-3xl font-sans font-bold text-indigo-400 mb-8 mt-16 flex items-center gap-3">
+                    <Users className="w-8 h-8" /> 4. 변화할 일의 미래: 1인 유니콘의 시대
+                </h2>
+
+                <p className="mb-6">
+                    멀티 에이전트 시스템이 상용화되면, '1인 기업'의 생산성은 기하급수적으로 폭발할 것입니다. 
+                    지금까지 1인 창업가는 기획, 마케팅, 개발, CS를 혼자서 감당해야 했습니다. 하지만 2026년에는 나를 위해 24시간 일하는 'AI 마케팅 팀', 'AI 개발 팀'을 소유하게 됩니다.
+                </p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-12">
+                    <div className="bg-[#0A1124] p-6 rounded-xl border border-white/10 hover:border-blue-500/50 transition-colors group">
+                         <div className="bg-blue-500/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-500/20 transition-colors">
+                            <Bot className="w-6 h-6 text-blue-400" />
+                         </div>
+                        <h4 className="font-bold text-white mb-2">Before: Copilot</h4>
+                        <p className="text-sm text-gray-400">
+                            "이 코드 짜줘." <br/>
+                            인간이 주도하고 AI가 보조하는 1:1 관계.
+                        </p>
+                    </div>
+                    <div className="bg-[#0A1124] p-6 rounded-xl border border-white/10 hover:border-teal-500/50 transition-colors group">
+                         <div className="bg-teal-500/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:bg-teal-500/20 transition-colors">
+                            <Zap className="w-6 h-6 text-teal-400" />
+                         </div>
+                        <h4 className="font-bold text-white mb-2">After: Manager</h4>
+                        <p className="text-sm text-gray-400">
+                            "이번 주 마케팅 성과 분석해서 보고해." <br/>
+                            인간은 지시하고, AI 팀이 자율적으로 수행하는 1:N 관계.
+                        </p>
                     </div>
                 </div>
 
-                <div className="border-t border-white/10 pt-12 mt-20">
-                     <p className="text-xl font-bold text-white mb-4">Reedo's Insight</p>
-                     <p className="text-gray-400 italic leading-relaxed">
-                        기술의 속도가 현기증이 날 정도지만, 본질은 변하지 않습니다. 도구는 강력해지고, 인간은 더 자유로워져야 합니다. 쏟아지는 트렌드 용어에 매몰되지 말고, "그래서 이것이 내 삶과 비즈니스를 어떻게 더 낫게 만드는가?"라는 질문을 놓지 말아야 합니다. AI 트렌드를 쫓는 것을 넘어, 그것을 우리 삶의 도구로 길들이는 지혜가 필요한 시점입니다.
-                     </p>
-                </div>
+                <p className="mb-6">
+                    샘 알트먼이 예견했던 "직원 없는 유니콘 기업"은 바로 이 멀티 에이전트 시스템 위에서 탄생할 것입니다. 우리는 이제 '작업자'가 아니라 '관리자'로서의 역량을 길러야 합니다. 어떻게 팀을 구성하고, 어떤 권한을 부여하며, 결과물을 어떻게 평가할 것인가. 이것이 새로운 시대의 핵심 스킬이 될 것입니다.
+                </p>
+
+                <h2 className="text-3xl font-sans font-bold text-white mb-8 mt-16">
+                    맺음말: 두려움 대신 지휘봉을 잡으라
+                </h2>
+                <p className="mb-6">
+                    나보다 똑똑한 AI가 나온다는 것은 두려운 일일 수 있습니다. 하지만 나보다 똑똑한 AI '팀'을 내가 부릴 수 있다는 것은 엄청난 기회입니다. 2026년, 멀티 에이전트 시스템은 기술 트렌드를 넘어 우리의 '일하는 방식' 그 자체를 송두리째 바꿀 것입니다.
+                </p>
+                <p className="mb-12 text-lg text-blue-200 font-medium">
+                     준비하십시오. 당신의 새로운 동료들이 출근을 기다리고 있습니다.
+                </p>
 
             </article>
 
             {/* Reedo Author Component */}
-             <div className="mt-24 p-8 rounded-2xl bg-[#0A1124] border border-white/10 flex items-center gap-6 shadow-2xl group hover:border-blue-500/30 transition-all duration-300">
+             <div className="mt-24 p-8 rounded-2xl bg-[#0A1124] border border-white/10 flex items-center gap-6 shadow-2xl relative overflow-hidden group hover:border-blue-500/30 transition-colors">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="relative shrink-0">
                     <img 
                         src="/reedo-profile-high.png" 
@@ -161,18 +200,18 @@ export default function AITechTrendsPage() {
                         className="w-24 h-24 rounded-full object-cover border-2 border-white/10 grayscale group-hover:grayscale-0 transition-all duration-500"
                     />
                 </div>
-                <div className="flex-grow">
+                <div className="flex-grow relative z-10">
                     <h3 className="text-xl font-bold text-white mb-1 group-hover:text-blue-400 transition-colors">Written by Reedo</h3>
                     <p className="text-gray-400 text-sm mb-2">Global Field Engineer & Automation Architect</p>
-                    <p className="text-sm text-gray-400 leading-relaxed">
-                        최신 기술의 파도 위에서 균형을 잡는 법을 연구합니다. 복잡한 기술을 명쾌한 인사이트로 변환합니다.
+                    <p className="text-gray-500 text-xs leading-relaxed max-w-md">
+                        AI 에이전트와 인간의 공진화를 연구합니다. 자동화가 가져올 해방과 그 이면의 책임에 대해 이야기합니다.
                     </p>
                 </div>
-                <div className="flex gap-4 text-gray-400">
-                     <button className="hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full">
+                <div className="flex flex-col gap-4 text-gray-400 relative z-10">
+                     <button className="hover:text-white transition-colors p-2 hover:bg-white/5 rounded-full">
                         <Share2 className="w-5 h-5" />
                      </button>
-                     <button className="hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full">
+                     <button className="hover:text-white transition-colors p-2 hover:bg-white/5 rounded-full">
                         <Bookmark className="w-5 h-5" />
                      </button>
                 </div>

@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className="dark scroll-smooth" suppressHydrationWarning>
-      <body className={clsx(poppins.variable, "antialiased bg-deep-space text-white select-none")}>
+      <body className={clsx(poppins.variable, "antialiased bg-deep-space text-white select-none")} suppressHydrationWarning>
         <Background />
         <NextAuthProvider>
             <Navbar />

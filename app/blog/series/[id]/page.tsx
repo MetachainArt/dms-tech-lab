@@ -130,6 +130,14 @@ const seriesData: Record<string, any> = {
             excerpt: "단일 모델의 시대는 끝났다. 이제 AI 팀(Team)이 일하는 방식이 온다. AutoGen과 Swarm으로 보는 미래.",
             date: "2026. 01. 22",
             readTime: "10 min"
+        },
+        {
+            slug: "ai-survival-2025",
+            chapter: "02",
+            title: "청구서가 도착했다: 2025 AI 생존기",
+            excerpt: "DeepSeek 쇼크, 온디바이스 AI, 그리고 바이브 코딩. 2025년 AI 시장의 명암과 2026년의 전망.",
+            date: "2026. 01. 22",
+            readTime: "50 min"
         }
     ]
   },
