@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-// import { useSession, signOut } from "next-auth/react"; // 임시로 숨김
+import { useSession, signOut } from "next-auth/react";
 
 const navLinks = [
   { name: "홈", href: "/" },
@@ -19,7 +19,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  // const { data: session } = useSession(); // 임시로 숨김
+  const { data: session } = useSession();
   const isLightPage = pathname === "/about";
 
   useEffect(() => {
@@ -87,9 +87,8 @@ export default function Navbar() {
             {/* Right Group: Auth & Contact */}
             <div className="flex items-center gap-4">
             
-            {/* Auth Button (Desktop) - 임시로 숨김 (Hostinger 환경변수 이슈) */}
+            {/* Auth Button (Desktop) */}
             <div className="hidden md:flex items-center gap-4">
-                {/* 소셜 로그인 버튼 숨김 처리
                 {session ? (
                     <div className="flex items-center gap-3">
                         {session.user?.image && (
@@ -114,7 +113,6 @@ export default function Navbar() {
                         Login
                     </Link>
                 )}
-                */}
 
                 {/* Contact CTA */}
                 <a
