@@ -15,7 +15,9 @@
       "Bash(Get-Process -Name node -ErrorAction SilentlyContinue)",
       "Bash(Stop-Process -Force)",
       "Bash(npm ls:*)",
-      "Bash(cmd /c \"taskkill /PID 9260 /F\")"
+      "Bash(cmd /c \"taskkill /PID 9260 /F\")",
+      "Bash(tasklist:*)",
+      "Bash(findstr:*)"
     ]
   }
 }

@@ -38,12 +38,12 @@ export default function BlogPage() {
     },
     {
       id: "ai-tech-trends",
-      title: "2025 AI 생존기",
-      subtitle: "2025 RETROSPECTIVE",
-      description: "광기(Hype)에서 현실(Reality)로. 모델은 똑똑해졌지만, 기업은 더 어려운 숙제를 받았다. 2025년 AI 기술과 시장의 명암을 회고합니다.",
+      title: "AI Tech Trends",
+      subtitle: "LATEST NEWS",
+      description: "매일 쏟아지는 AI 기술 뉴스. 핵심만 요약하여 전해드립니다. RAG부터 멀티모달 모델까지.",
       coverImage: "/images/series/ai_tech_trends.png",
       color: "red",
-      postCount: 1,
+      postCount: 3,
       tags: ["Retrospective", "News", "Insight"]
     },
     {

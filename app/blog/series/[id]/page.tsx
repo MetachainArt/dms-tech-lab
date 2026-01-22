@@ -131,13 +131,21 @@ const seriesData: Record<string, any> = {
             date: "2026. 01. 22",
             readTime: "10 min"
         },
-        {
+         {
             slug: "ai-survival-2025",
             chapter: "02",
             title: "청구서가 도착했다: 2025 AI 생존기",
             excerpt: "DeepSeek 쇼크, 온디바이스 AI, 그리고 바이브 코딩. 2025년 AI 시장의 명암과 2026년의 전망.",
             date: "2026. 01. 22",
             readTime: "50 min"
+        },
+        {
+            slug: "ai-hardware-revolution",
+            chapter: "03",
+            title: "AI-하드웨어 혁명: 전력의 역설과 신칩의 도래",
+            excerpt: "더 똑똑해질수록 더 배고파진다. NPU, 퓨전 칩, 3D 나노칩으로 보는 에너지 효율의 혁명.",
+            date: "2026. 01. 22",
+            readTime: "35 min"
         }
     ]
   },
