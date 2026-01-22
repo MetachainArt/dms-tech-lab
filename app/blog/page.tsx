@@ -48,7 +48,7 @@ export default function BlogPage() {
     },
     {
       id: "today-me",
-      title: "에필로그. 매일을 채우는 작은 시작",
+      title: "Today's Me",
       subtitle: "DAILY ESSAY",
       description: "나의 하루가 곧 나의 미래가 된다. 아침의 물 한 잔부터 잠들기 전의 회고까지, 매일을 채우는 엔지니어의 작지만 단단한 루틴에 대하여.",
       coverImage: "/images/series/today_me.png",
