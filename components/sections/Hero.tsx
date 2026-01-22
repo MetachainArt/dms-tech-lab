@@ -5,7 +5,7 @@ import NeuralBackground from "@/components/ui/NeuralBackground";
 
 export default function Hero() {
   return (
-    <section className="relative z-10 flex min-h-screen w-full flex-col justify-center px-6 overflow-hidden" aria-labelledby="hero-heading">
+    <section className="relative z-10 flex h-screen max-h-[900px] w-full flex-col justify-center px-6 overflow-hidden" aria-labelledby="hero-heading">
 
       {/* Neural Network Background - Full Screen */}
       <div className="absolute inset-0 z-0">
@@ -63,7 +63,7 @@ export default function Hero() {
         </div>
 
         {/* Right side - Neural network visible through transparent area */}
-        <div className="hidden lg:block relative h-full min-h-[50vh]" />
+        <div className="hidden lg:block relative h-full min-h-[300px]" />
 
       </div>
 
