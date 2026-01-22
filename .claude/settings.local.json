@@ -20,7 +20,8 @@
       "Bash(findstr:*)",
       "Bash(git diff:*)",
       "Bash(git status:*)",
-      "Bash(git grep:*)"
+      "Bash(git grep:*)",
+      "Bash(npm run build:*)"
     ]
   }
 }

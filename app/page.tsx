@@ -21,7 +21,7 @@ const Contact = dynamic(() => import("@/components/sections/Contact"), {
   loading: () => <div className="h-[50vh] w-full bg-white animate-pulse" aria-label="로딩 중" />,
 });
 
-const Footer = dynamic(() => import("@/components/sections/Footer"));
+
 
 export default function Home() {
   return (
@@ -41,7 +41,7 @@ export default function Home() {
       <section id="contact" className="w-full" aria-label="연락처 섹션">
         <Contact />
       </section>
-      <Footer />
+
     </main>
   );
 }
