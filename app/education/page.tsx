@@ -137,7 +137,7 @@ export default function EducationPage() {
                     <div className="aspect-[4/5] rounded-[2rem] overflow-hidden bg-gray-800 relative z-10">
                          {/* Founder Image - Tech/Engineering Vibe (Portrait) */}
                          <img 
-                            src="/images/instructor_portrait.jpg"
+                            src="/reedo-profile-high.png"
                             alt="Instructor Portrait"
                             className="w-full h-full object-cover grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-500"
                          />

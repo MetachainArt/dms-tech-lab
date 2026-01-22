@@ -197,12 +197,12 @@ export default function N8NMasterclassPage() {
             {/* Author Bio */}
             <div className="mt-20 p-8 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-6">
                 <img 
-                    src="https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=2500&auto=format&fit=crop" 
-                    alt="Author"
+                    src="/reedo-profile-high.png" 
+                    alt="Reedo"
                     className="w-16 h-16 rounded-full object-cover"
                 />
                 <div>
-                    <h3 className="text-lg font-bold text-white">Written by Lead Instructor</h3>
+                    <h3 className="text-lg font-bold text-white">Written by Reedo</h3>
                     <p className="text-gray-400 text-sm">Global Field Engineer & Automation Architect</p>
                 </div>
                 <div className="ml-auto flex gap-3">

@@ -111,7 +111,7 @@ export default function CreativityPage() {
              <div className="mt-24 p-8 rounded-2xl bg-[#0A1124] border border-white/10 flex items-center gap-6 shadow-2xl">
                 <div className="relative shrink-0">
                     <img 
-                        src="/images/instructor_portrait.jpg" 
+                        src="/reedo-profile-high.png" 
                         alt="Reedo"
                         className="w-20 h-20 rounded-full object-cover border-2 border-white/10 grayscale"
                     />
