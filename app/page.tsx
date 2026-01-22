@@ -26,19 +26,19 @@ const Footer = dynamic(() => import("@/components/sections/Footer"));
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between overflow-x-hidden select-none">
-      <section id="hero" aria-label="메인 히어로 섹션">
+      <section id="hero" className="w-full" aria-label="메인 히어로 섹션">
         <Hero />
       </section>
-      <section id="about" aria-label="회사 소개 섹션">
+      <section id="about" className="w-full" aria-label="회사 소개 섹션">
         <Company />
       </section>
-      <section id="services" aria-label="서비스 섹션">
+      <section id="services" className="w-full" aria-label="서비스 섹션">
         <Services />
       </section>
-      <section id="projects" aria-label="프로젝트 섹션">
+      <section id="projects" className="w-full" aria-label="프로젝트 섹션">
         <Apps />
       </section>
-      <section id="contact" aria-label="연락처 섹션">
+      <section id="contact" className="w-full" aria-label="연락처 섹션">
         <Contact />
       </section>
       <Footer />
