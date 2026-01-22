@@ -117,7 +117,7 @@ export default function AIFantasyLifePage() {
                 </p>
 
                 <h2 className="text-3xl font-bold text-indigo-400 mb-8 mt-16 flex items-center gap-3">
-                    <database className="w-8 h-8" /> 3. 시스템의 경고
+                    <Database className="w-8 h-8" /> 3. 시스템의 경고
                 </h2>
 
                 <p className="mb-6">
