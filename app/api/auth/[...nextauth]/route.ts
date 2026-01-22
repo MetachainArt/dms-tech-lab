@@ -20,7 +20,9 @@ const handler = NextAuth({
   session: {
     strategy: "jwt",
   },
-  secret: process.env.NEXTAUTH_SECRET || process.env.AUTH_SECRET,
+  // ✅ env 대신 하드코딩 테스트
+  secret: "ks8fJ2l0pA9qZ1C7wX3nV5yR6uT8bL0",
+  // secret: process.env.NEXTAUTH_SECRET || process.env.AUTH_SECRET,
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
