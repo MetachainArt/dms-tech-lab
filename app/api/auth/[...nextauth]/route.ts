@@ -26,12 +26,6 @@ const handler = NextAuth({
   // ✅ env 대신 하드코딩 테스트
   secret: "ks8fJ2l0pA9qZ1C7wX3nV5yR6uT8bL0",
   // secret: process.env.NEXTAUTH_SECRET || process.env.AUTH_SECRET,
-  events: {
-    async signIn(message) {
-      console.log("GOOGLE_CLIENT_ID:", process.env.GOOGLE_CLIENT_ID);
-      console.log("KAKAO_CLIENT_ID:", process.env.KAKAO_CLIENT_ID);
-    },
-  },
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
