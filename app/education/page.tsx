@@ -13,7 +13,7 @@ const tracks = [
     desc: "N8N과 Opal로 만드는 24시간 무인 비즈니스. 워크플로우 자동화의 모든 것.",
     level: "초급 ~ 중급",
     duration: "4주 완성",
-    icon: Database,
+    image: "/icons/3d-curriculum-ai.png", // Updated to 3D Image
     color: "text-blue-500",
     bg: "bg-blue-500/10",
     border: "border-blue-500/20",
@@ -23,7 +23,7 @@ const tracks = [
     desc: "코딩 없이 감각으로 완성하는 웹 앱 개발. 아이디어를 즉시 프로덕트로.",
     level: "입문",
     duration: "4주 완성",
-    icon: Code2,
+    image: "/icons/3d-curriculum-code.png", // Updated to 3D Image
     color: "text-purple-500",
     bg: "bg-purple-500/10",
     border: "border-purple-500/20",
@@ -33,7 +33,7 @@ const tracks = [
     desc: "하드웨어와 AI의 융합 설계. 피지컬 컴퓨팅과 제어 시스템의 기초.",
     level: "중급",
     duration: "6주 완성",
-    icon: Cpu,
+    image: "/icons/3d-curriculum-hw.png", // Updated to 3D Image
     color: "text-teal-500",
     bg: "bg-teal-500/10",
     border: "border-teal-500/20",
@@ -91,9 +91,14 @@ export default function EducationPage() {
                         transition={{ delay: idx * 0.1 }}
                         className={`group relative p-8 rounded-[2rem] border ${track.border} bg-[#0A1124] hover:bg-[#0F1830] transition-colors duration-300 flex flex-col`}
                     >
-                        {/* Icon */}
-                        <div className={`w-14 h-14 rounded-2xl ${track.bg} ${track.color} flex items-center justify-center mb-6`}>
-                            <track.icon className="w-7 h-7" />
+                        {/* 3D Icon Image */}
+                        <div className="relative w-20 h-20 mb-6 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] group-hover:drop-shadow-[0_0_25px_rgba(255,255,255,0.3)] transition-all duration-300">
+                             <Image 
+                                src={track.image}
+                                alt={track.title}
+                                fill
+                                className="object-contain"
+                             />
                         </div>
 
                         {/* Title */}

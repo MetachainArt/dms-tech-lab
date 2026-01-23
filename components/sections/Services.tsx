@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { services } from "@/constants/data";
 
 export default function Services() {
@@ -29,10 +30,14 @@ export default function Services() {
               className="group relative p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
             >
               {/* Icon */}
-              <div
-                className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
-              >
-                <service.icon className="w-7 h-7 text-white" />
+              {/* Icon */}
+              <div className="relative w-20 h-20 mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Image 
+                    src={service.image} 
+                    alt={service.title}
+                    fill
+                    className="object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]" 
+                  />
               </div>
 
               {/* Title */}

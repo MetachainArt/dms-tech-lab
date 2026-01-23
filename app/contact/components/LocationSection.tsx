@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function LocationSection() {
   return (
@@ -41,67 +42,29 @@ export default function LocationSection() {
 
               {/* Map Placeholder */}
               <div className="lg:w-2/3 w-full">
-                <div className="relative w-full h-[300px] lg:h-[400px] rounded-xl overflow-hidden bg-[#0A1628] border border-white/10">
-                  {/* Decorative Grid */}
-                  <div 
-                    className="absolute inset-0 opacity-20"
-                    style={{
-                      backgroundImage: `
-                        linear-gradient(rgba(79, 70, 229, 0.1) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(79, 70, 229, 0.1) 1px, transparent 1px)
-                      `,
-                      backgroundSize: '40px 40px'
-                    }}
+                <div className="relative w-full h-[300px] lg:h-[400px] rounded-xl overflow-hidden bg-[#0A1628] border border-white/10 group">
+                  <Image
+                    src="/images/map-3d.png"
+                    alt="3D Holographic Map of Location"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   
-                  {/* Korea Map Outline (Simplified) */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.8 }}
-                      className="relative"
-                    >
-                      {/* Glow Effect */}
-                      <div className="absolute inset-0 blur-3xl bg-neon-sky/20 rounded-full" />
-                      
-                      {/* Map Pin Icon */}
-                      <div className="relative z-10 flex flex-col items-center">
-                        <motion.div
-                          animate={{ y: [0, -10, 0] }}
-                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                          className="w-16 h-16 rounded-full bg-gradient-to-br from-neon-sky to-cyan-400 flex items-center justify-center shadow-lg shadow-neon-sky/30"
-                        >
-                          <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                          </svg>
-                        </motion.div>
-                        
-                        {/* Pulse Rings */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                          <motion.div
-                            className="w-24 h-24 rounded-full border border-neon-sky/30"
-                            animate={{ scale: [1, 1.5], opacity: [0.5, 0] }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                          />
-                          <motion.div
-                            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full border border-neon-sky/30"
-                            animate={{ scale: [1, 1.5], opacity: [0.5, 0] }}
-                            transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                          />
-                        </div>
-                        
-                        <span className="mt-4 text-white/80 font-medium">Republic of Korea</span>
-                      </div>
-                    </motion.div>
+                  {/* Interactive Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050B1B]/80 via-transparent to-transparent flex items-end justify-center pb-6">
+                      <a 
+                        href="https://www.google.com/maps/search/?api=1&query=Icheon-si,+Gyeonggi-do,+South+Korea" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="px-6 py-2 rounded-full bg-white/10 hover:bg-neon-sky/20 border border-white/20 hover:border-neon-sky text-white backdrop-blur-md transition-all duration-300 flex items-center gap-2 group/btn"
+                      >
+                         <svg className="w-4 h-4 text-neon-sky group-hover/btn:scale-125 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                         <span className="text-sm font-medium">View on Google Maps</span>
+                      </a>
                   </div>
-
-                  {/* Corner Decorations */}
-                  <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-neon-sky/30" />
-                  <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-neon-sky/30" />
-                  <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-neon-sky/30" />
-                  <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-neon-sky/30" />
+                  
+                  {/* Overlay for inactive state (optional, helps with dark mode integration) */}
+                  <div className="absolute inset-0 bg-[#050B1B]/20 pointer-events-none group-hover:bg-transparent transition-colors duration-500" />
                 </div>
               </div>
             </div>

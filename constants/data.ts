@@ -7,6 +7,7 @@ export const services = [
     subtitle: "자동화 & 개발",
     description: "N8N, AI Agent 기반 워크플로우 자동화. 반복 업무를 시스템으로.",
     color: "from-blue-500 to-cyan-400",
+    image: "/icons/3d-dev.png",
   },
   {
     icon: Palette,
@@ -14,6 +15,7 @@ export const services = [
     subtitle: "3D & 시각화",
     description: "제품 시각화, WebGL, 인터랙티브 3D 경험 설계.",
     color: "from-purple-500 to-pink-400",
+    image: "/icons/3d-design.png",
   },
   {
     icon: GraduationCap,
@@ -21,6 +23,7 @@ export const services = [
     subtitle: "기술 교육",
     description: "GenAI 워크샵, 프롬프트 엔지니어링, 맞춤형 커리큘럼.",
     color: "from-green-500 to-emerald-400",
+    image: "/icons/3d-edu.png",
   },
   {
     icon: Globe,
@@ -28,6 +31,7 @@ export const services = [
     subtitle: "해외 무역",
     description: "글로벌 네트워크 기반 기술 제품 수출입 지원.",
     color: "from-orange-500 to-amber-400",
+    image: "/icons/3d-trade.png",
   },
 ] as const;
 
@@ -63,7 +67,7 @@ export const projects = [
     title: "워크플로우 자동화",
     desc: "24시간 멈추지 않는 비즈니스. N8N, Opal 등 최적의 도구를 조합해 반복 업무를 완벽하게 자동화합니다.",
     icon: Settings2,
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop",
+    image: "/projects/project-automation.png",
     color: "text-blue-500",
   },
   {
@@ -71,7 +75,7 @@ export const projects = [
     title: "프롬프트 라이브러리",
     desc: "시행착오를 줄여주는 솔루션. 개발과 비즈니스 효율을 극대화하는 검증된 프롬프트 모음입니다.",
     icon: FileText,
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2574&auto=format&fit=crop",
+    image: "/projects/project-ai.png",
     color: "text-purple-500",
   },
   {
@@ -79,7 +83,7 @@ export const projects = [
     title: "바이브 코딩 웹앱",
     desc: "상상을 현실로. 뮤즈캔버스를 비롯해 바이브 코딩으로 제작된 다양한 웹 애플리케이션을 소개합니다.",
     icon: AppWindow,
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop",
+    image: "/projects/project-apps.png",
     color: "text-green-500",
   }
 ] as const;
