@@ -2,6 +2,7 @@ import ContactHero from './components/ContactHero';
 import ContactMainSection from './components/ContactMainSection';
 import LocationSection from './components/LocationSection';
 import ContactCTA from './components/ContactCTA';
+import NeuralBackground from '@/components/ui/NeuralBackground';
 
 export const metadata = {
   title: 'Contact | DMS Solution',
@@ -10,11 +11,14 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-[#0a0a1f]">
-      <ContactHero />
-      <ContactMainSection />
-      <LocationSection />
-      <ContactCTA />
+    <main className="min-h-screen bg-[#050B1B] text-white font-poppins selection:bg-neon-sky selection:text-[#050B1B] relative">
+      <NeuralBackground />
+      <div className="relative z-10">
+        <ContactHero />
+        <ContactMainSection />
+        <LocationSection />
+        <ContactCTA />
+      </div>
     </main>
   );
 }

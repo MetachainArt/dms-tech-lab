@@ -45,7 +45,7 @@ export default function ContactMainSection() {
   };
 
   const handleEmailClick = () => {
-    window.location.href = 'mailto:Reedo.dev@dmssolution.co.kr';
+    window.location.href = 'mailto:reedo.dev@dmssolution.co.kr';
   };
 
   return (
@@ -67,17 +67,17 @@ export default function ContactMainSection() {
               <div className="mb-8">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-neon-sky" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
                   <span className="text-gray-400 text-sm">이메일</span>
                 </div>
                 <a 
-                  href="mailto:Reedo.dev@dmssolution.co.kr"
-                  className="text-white hover:text-blue-400 transition-colors font-mono text-lg"
+                  href="mailto:reedo.dev@dmssolution.co.kr"
+                  className="text-white hover:text-neon-sky transition-colors font-mono text-lg"
                 >
-                  Reedo.dev@dmssolution.co.kr
+                  reedo.dev@dmssolution.co.kr
                 </a>
               </div>
 
@@ -119,7 +119,7 @@ export default function ContactMainSection() {
               {/* Quick Email Button */}
               <motion.button
                 onClick={handleEmailClick}
-                className="mt-8 w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
+                className="mt-8 w-full py-4 rounded-xl bg-gradient-to-r from-neon-sky to-cyan-400 text-[#050B1B] font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -153,7 +153,7 @@ export default function ContactMainSection() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-blue-500/50 focus:outline-none focus:ring-1 focus:ring-blue-500/50 transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-neon-sky focus:outline-none focus:ring-1 focus:ring-neon-sky/50 transition-all"
                       placeholder="홍길동"
                     />
                   </div>
@@ -165,7 +165,7 @@ export default function ContactMainSection() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-blue-500/50 focus:outline-none focus:ring-1 focus:ring-blue-500/50 transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-neon-sky focus:outline-none focus:ring-1 focus:ring-neon-sky/50 transition-all"
                       placeholder="example@email.com"
                     />
                   </div>
@@ -179,7 +179,7 @@ export default function ContactMainSection() {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-blue-500/50 focus:outline-none focus:ring-1 focus:ring-blue-500/50 transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-neon-sky focus:outline-none focus:ring-1 focus:ring-neon-sky/50 transition-all"
                     placeholder="(선택) 소속 회사 또는 팀명"
                   />
                 </div>
@@ -193,12 +193,12 @@ export default function ContactMainSection() {
                       value={formData.inquiryType}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-blue-500/50 focus:outline-none focus:ring-1 focus:ring-blue-500/50 transition-all appearance-none cursor-pointer"
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-neon-sky focus:outline-none focus:ring-1 focus:ring-neon-sky/50 transition-all appearance-none cursor-pointer"
                       style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '1.5em 1.5em' }}
                     >
-                      <option value="" className="bg-[#1a1a3f]">선택해 주세요</option>
+                      <option value="" className="bg-[#050B1B]">선택해 주세요</option>
                       {inquiryTypes.map((type) => (
-                        <option key={type} value={type} className="bg-[#1a1a3f]">{type}</option>
+                        <option key={type} value={type} className="bg-[#050B1B]">{type}</option>
                       ))}
                     </select>
                   </div>
@@ -208,12 +208,12 @@ export default function ContactMainSection() {
                       name="budget"
                       value={formData.budget}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-blue-500/50 focus:outline-none focus:ring-1 focus:ring-blue-500/50 transition-all appearance-none cursor-pointer"
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-neon-sky focus:outline-none focus:ring-1 focus:ring-neon-sky/50 transition-all appearance-none cursor-pointer"
                       style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '1.5em 1.5em' }}
                     >
-                      <option value="" className="bg-[#1a1a3f]">(선택) 예산 범위</option>
+                      <option value="" className="bg-[#050B1B]">(선택) 예산 범위</option>
                       {budgetRanges.map((range) => (
-                        <option key={range} value={range} className="bg-[#1a1a3f]">{range}</option>
+                        <option key={range} value={range} className="bg-[#050B1B]">{range}</option>
                       ))}
                     </select>
                   </div>
@@ -227,7 +227,7 @@ export default function ContactMainSection() {
                     name="timeline"
                     value={formData.timeline}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-blue-500/50 focus:outline-none focus:ring-1 focus:ring-blue-500/50 transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-neon-sky focus:outline-none focus:ring-1 focus:ring-neon-sky/50 transition-all"
                     placeholder="(선택) 예: 2024년 3월까지, 최대한 빨리 등"
                   />
                 </div>
@@ -241,7 +241,7 @@ export default function ContactMainSection() {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-blue-500/50 focus:outline-none focus:ring-1 focus:ring-blue-500/50 transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-neon-sky focus:outline-none focus:ring-1 focus:ring-neon-sky/50 transition-all resize-none"
                     placeholder="프로젝트에 대해 자세히 알려주세요. 목적, 기능, 참고 사례 등을 포함해 주시면 더욱 정확한 답변이 가능합니다."
                   />
                 </div>
@@ -249,7 +249,7 @@ export default function ContactMainSection() {
                 {/* Privacy Notice */}
                 <div className="p-4 rounded-xl bg-white/5 border border-white/10">
                   <p className="text-gray-400 text-sm">
-                    <span className="text-blue-400">*</span> 입력하신 정보는 문의 답변 목적으로만 사용되며, 답변 완료 후 안전하게 삭제됩니다.
+                    <span className="text-neon-sky">*</span> 입력하신 정보는 문의 답변 목적으로만 사용되며, 답변 완료 후 안전하게 삭제됩니다.
                   </p>
                 </div>
 
@@ -257,7 +257,7 @@ export default function ContactMainSection() {
                 <div className="flex gap-4">
                   <motion.button
                     type="submit"
-                    className="flex-1 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold hover:opacity-90 transition-opacity"
+                    className="flex-1 py-4 rounded-xl bg-gradient-to-r from-neon-sky to-cyan-400 text-[#050B1B] font-semibold hover:opacity-90 transition-opacity"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >

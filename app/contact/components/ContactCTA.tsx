@@ -6,11 +6,8 @@ import Link from 'next/link';
 export default function ContactCTA() {
   return (
     <section className="relative py-20 px-6 overflow-hidden">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a1f] via-[#1a1a3f]/50 to-[#0a0a1f]" />
-      
       {/* Decorative Elements */}
-      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -translate-y-1/2" />
+      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-neon-sky/10 rounded-full blur-3xl -translate-y-1/2" />
       <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl -translate-y-1/2" />
 
       <div className="relative z-10 container mx-auto max-w-4xl">
@@ -53,8 +50,8 @@ export default function ContactCTA() {
             transition={{ delay: 0.4 }}
           >
             <motion.a
-              href="mailto:Reedo.dev@dmssolution.co.kr"
-              className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold flex items-center gap-2 hover:opacity-90 transition-opacity"
+              href="mailto:reedo.dev@dmssolution.co.kr"
+              className="px-8 py-4 rounded-xl bg-gradient-to-r from-neon-sky to-cyan-400 text-[#050B1B] font-semibold flex items-center gap-2 hover:opacity-90 transition-opacity"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -64,7 +61,7 @@ export default function ContactCTA() {
               이메일로 문의하기
             </motion.a>
             
-            <Link href="/projects">
+            <Link href="/services">
               <motion.span
                 className="px-8 py-4 rounded-xl glass-button text-gray-300 font-semibold flex items-center gap-2 cursor-pointer"
                 whileHover={{ scale: 1.05 }}
@@ -73,7 +70,7 @@ export default function ContactCTA() {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                 </svg>
-                Projects 보기
+                서비스 보기
               </motion.span>
             </Link>
           </motion.div>
