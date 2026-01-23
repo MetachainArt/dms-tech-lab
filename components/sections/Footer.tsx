@@ -57,8 +57,8 @@ export default function Footer() {
             © {new Date().getFullYear()} DMS Solution. All rights reserved.
           </p>
           <div className="flex gap-6 text-white/40 text-xs font-mono">
-            <a href="#" className="hover:text-white transition-colors">PRIVACY</a>
-            <a href="#" className="hover:text-white transition-colors">TERMS</a>
+            <Link href="/privacy" className="hover:text-white transition-colors">PRIVACY</Link>
+            <Link href="/terms" className="hover:text-white transition-colors">TERMS</Link>
           </div>
         </div>
       </div>
