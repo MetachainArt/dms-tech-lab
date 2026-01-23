@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Send, CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Mail, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { isValidEmail, LoadingState } from "@/lib/utils";
 import type { ContactForm } from "@/types/content";
@@ -18,14 +18,12 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validation
     if (!isValidEmail(formData.email)) {
       alert("유효한 이메일을 입력해주세요.");
       return;
     }
 
     setStatus("loading");
-    // Simulate API call
     setTimeout(() => {
       setStatus("success");
       setFormData({
@@ -48,134 +46,153 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative w-full min-h-[80vh] flex flex-col items-center justify-center p-6 pb-20 bg-white" aria-labelledby="contact-heading">
-      {/* Background (Clean White) */}
-      <div className="absolute inset-0 bg-white z-0" />
+    <section id="contact" className="relative w-full py-24 px-6 bg-[#050B1B] overflow-hidden" aria-labelledby="contact-heading">
+      {/* Background Effects */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-neon-sky/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[100px]" />
+      </div>
 
-      <div className="relative z-10 max-w-4xl w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            
-            {/* Text Side */}
-            <div className="text-left space-y-6">
-                <motion.h2
-                    id="contact-heading"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    className="text-4xl md:text-5xl font-bold text-[#050B1B] tracking-tight"
-                >
-                    고객의 비즈니스를<br />
-                    <span className="text-neon-sky">미래와 연결합니다.</span>
-                </motion.h2>
-                <p className="text-gray-600 text-lg leading-relaxed">
-                    오토모티브 리테일 경험을 혁신할 준비가 되셨나요?<br/>
-                    DMS 솔루션 아키텍트와 상담하세요.
-                </p>
-                
-                <div className="flex flex-col gap-4 mt-8">
-                    <div className="flex items-center gap-4 text-gray-700">
-                        <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center border border-gray-200" aria-hidden="true">
-                            <Send className="w-4 h-4 text-neon-sky" />
-                        </div>
-                        <a
-                          href="mailto:support@dmssolution.co.kr"
-                          className="font-mono text-sm hover:text-neon-sky transition-colors"
-                        >
-                          support@dmssolution.co.kr
-                        </a>
-                    </div>
+      <div className="relative z-10 max-w-5xl mx-auto">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neon-sky/10 border border-neon-sky/20 mb-6">
+            <Mail className="w-4 h-4 text-neon-sky" />
+            <span className="text-neon-sky text-sm font-medium">Get in Touch</span>
+          </div>
+          <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold text-white mb-4">
+            프로젝트를 <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-sky to-purple-400">시작하세요</span>
+          </h2>
+          <p className="text-white/60 text-lg max-w-xl mx-auto">
+            AI와 자동화로 비즈니스를 혁신할 준비가 되셨나요?
+          </p>
+        </motion.div>
+
+        {/* Form Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="relative"
+        >
+          {/* Glow Effect */}
+          <div className="absolute -inset-1 bg-gradient-to-r from-neon-sky/20 via-purple-500/20 to-neon-sky/20 rounded-3xl blur-xl opacity-50" />
+
+          <div
+            className="relative bg-[#0A1628]/80 backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-10"
+            role="region"
+            aria-label="문의 폼"
+            onKeyDown={handleKeyDown}
+          >
+            {status === "success" ? (
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                className="flex flex-col items-center gap-4 py-12 text-center"
+                role="status"
+                aria-live="polite"
+              >
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center mb-4 shadow-lg shadow-green-500/30">
+                  <CheckCircle2 className="w-10 h-10 text-white" />
                 </div>
-            </div>
+                <h3 className="text-2xl font-bold text-white">감사합니다!</h3>
+                <p className="text-white/60">담당자가 24시간 내에 연락드리겠습니다.</p>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Name Fields */}
+                  <div className="space-y-2">
+                    <label htmlFor="lastName" className="text-sm font-medium text-white/80">성</label>
+                    <input
+                      id="lastName"
+                      type="text"
+                      name="lastName"
+                      placeholder="홍"
+                      value={formData.lastName}
+                      onChange={(e) => handleInputChange("lastName", e.target.value)}
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-white/30 focus:outline-none focus:border-neon-sky focus:bg-white/10 focus:ring-1 focus:ring-neon-sky/50 transition-all"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="firstName" className="text-sm font-medium text-white/80">이름</label>
+                    <input
+                      id="firstName"
+                      type="text"
+                      name="firstName"
+                      placeholder="길동"
+                      value={formData.firstName}
+                      onChange={(e) => handleInputChange("firstName", e.target.value)}
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-white/30 focus:outline-none focus:border-neon-sky focus:bg-white/10 focus:ring-1 focus:ring-neon-sky/50 transition-all"
+                    />
+                  </div>
+                </div>
 
-            {/* Form Side */}
-            <div className="bg-white border border-gray-200 p-8 rounded-2xl shadow-xl" role="region" aria-label="문의 폼" onKeyDown={handleKeyDown}>
-                {status === "success" ? (
-                <motion.div
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    className="flex flex-col items-center gap-4 py-12 text-center"
-                    role="status"
-                    aria-live="polite"
+                {/* Email */}
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-sm font-medium text-white/80">이메일</label>
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="name@company.com"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange("email", e.target.value)}
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-white/30 focus:outline-none focus:border-neon-sky focus:bg-white/10 focus:ring-1 focus:ring-neon-sky/50 transition-all"
+                  />
+                </div>
+
+                {/* Message */}
+                <div className="space-y-2">
+                  <label htmlFor="message" className="text-sm font-medium text-white/80">문의 내용</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    placeholder="프로젝트에 대해 알려주세요..."
+                    value={formData.message}
+                    onChange={(e) => handleInputChange("message", e.target.value)}
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-white/30 focus:outline-none focus:border-neon-sky focus:bg-white/10 focus:ring-1 focus:ring-neon-sky/50 transition-all resize-none"
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  disabled={status === "loading"}
+                  className="group w-full bg-gradient-to-r from-neon-sky to-cyan-400 hover:from-cyan-400 hover:to-neon-sky text-[#050B1B] font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-neon-sky/20 hover:shadow-neon-sky/40 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                    <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-4" aria-hidden="true">
-                        <CheckCircle2 className="w-8 h-8 text-green-600" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-[#050B1B]">문의가 접수되었습니다.</h3>
-                    <p className="text-gray-500">담당자가 24시간 내에 연락드리겠습니다.</p>
-                </motion.div>
-                ) : (
-                <form onSubmit={handleSubmit} className="space-y-5 text-left" noValidate>
-                    <div className="space-y-1">
-                        <label htmlFor="email" className="text-xs font-semibold text-gray-500 uppercase tracking-wider ml-1">이메일 (Work Email)</label>
-                        <input
-                            id="email"
-                            type="email"
-                            name="email"
-                            required
-                            placeholder="name@company.com"
-                            value={formData.email}
-                            onChange={(e) => handleInputChange("email", e.target.value)}
-                            aria-required="true"
-                            aria-describedby="email-error"
-                            className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-[#050B1B] placeholder:text-gray-400 focus:outline-none focus:border-neon-sky focus:bg-white focus:ring-2 focus:ring-neon-sky/20 transition-all font-light"
-                        />
-                    </div>
-                    
-                    <div className="grid grid-cols-2 gap-4">
-                        <div className="space-y-1">
-                            <label htmlFor="lastName" className="text-xs font-semibold text-gray-500 uppercase tracking-wider ml-1">성 (Last Name)</label>
-                            <input
-                                id="lastName"
-                                type="text"
-                                name="lastName"
-                                value={formData.lastName}
-                                onChange={(e) => handleInputChange("lastName", e.target.value)}
-                                aria-required="true"
-                                className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-[#050B1B] focus:outline-none focus:border-neon-sky focus:bg-white focus:ring-2 focus:ring-neon-sky/20 transition-all font-light"
-                            />
-                        </div>
-                        <div className="space-y-1">
-                            <label htmlFor="firstName" className="text-xs font-semibold text-gray-500 uppercase tracking-wider ml-1">이름 (First Name)</label>
-                            <input
-                                id="firstName"
-                                type="text"
-                                name="firstName"
-                                value={formData.firstName}
-                                onChange={(e) => handleInputChange("firstName", e.target.value)}
-                                aria-required="true"
-                                className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-[#050B1B] focus:outline-none focus:border-neon-sky focus:bg-white focus:ring-2 focus:ring-neon-sky/20 transition-all font-light"
-                            />
-                        </div>
-                    </div>
+                  {status === "loading" ? (
+                    <span className="w-5 h-5 border-2 border-[#050B1B]/30 border-t-[#050B1B] rounded-full animate-spin" />
+                  ) : (
+                    <>
+                      문의하기
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
+                </button>
+              </form>
+            )}
 
-                    <div className="space-y-1">
-                        <label htmlFor="message" className="text-xs font-semibold text-gray-500 uppercase tracking-wider ml-1">문의 내용 (Message)</label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            rows={4}
-                            value={formData.message}
-                            onChange={(e) => handleInputChange("message", e.target.value)}
-                            aria-required="true"
-                            className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-[#050B1B] focus:outline-none focus:border-neon-sky focus:bg-white focus:ring-2 focus:ring-neon-sky/20 transition-all font-light resize-none"
-                        />
-                    </div>
-
-                    <button
-                    type="submit"
-                    disabled={status === "loading"}
-                    className="w-full bg-[#050B1B] hover:bg-neon-sky hover:text-[#050B1B] text-white font-bold py-4 rounded-lg transition-all flex items-center justify-center gap-2 mt-2 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-neon-sky/50 focus:ring-offset-2"
-                    aria-busy={status === "loading"}
-                    >
-                    {status === "loading" ? (
-                        <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" aria-hidden="true" />
-                    ) : (
-                        "문의 보내기"
-                    )}
-                    </button>
-                </form>
-                )}
+            {/* Contact Info */}
+            <div className="mt-8 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-center gap-6 text-white/50 text-sm">
+              <a
+                href="mailto:support@dmssolution.co.kr"
+                className="flex items-center gap-2 hover:text-neon-sky transition-colors"
+              >
+                <Mail className="w-4 h-4" />
+                support@dmssolution.co.kr
+              </a>
             </div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
