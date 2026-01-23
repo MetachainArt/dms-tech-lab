@@ -17,7 +17,7 @@ export default function Services() {
             <span className="h-[1px] w-12 bg-neon-sky" />
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
-            Services
+            Our Business
           </h2>
         </div>
 
