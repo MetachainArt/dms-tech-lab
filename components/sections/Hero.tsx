@@ -9,7 +9,7 @@ export default function Hero() {
 
       {/* Neural Network Background - Full Screen */}
       <div className="absolute inset-0 z-0">
-        <NeuralBackground />
+        <NeuralBackground className="absolute" />
         {/* Gradient overlays for depth and text readability - Reduced opacity for visibility */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#050B1B]/50 via-[#050B1B]/20 to-transparent pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#050B1B] via-transparent to-transparent pointer-events-none" />

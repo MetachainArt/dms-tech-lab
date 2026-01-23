@@ -54,8 +54,10 @@ export default function RootLayout({
         <Background />
         <NextAuthProvider>
             <Navbar />
-            {children}
-            <Footer />
+            <div className="relative z-10 w-full">
+                {children}
+                <Footer />
+            </div>
         </NextAuthProvider>
       </body>
     </html>
