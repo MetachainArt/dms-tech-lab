@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Settings2, FileText, AppWindow } from "lucide-react";
+import NeuralBackground from "@/components/ui/NeuralBackground";
 
 // Service Data (Formerly Projects)
 const services = [
@@ -35,10 +36,11 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <main className="w-full min-h-screen bg-[#050B1B] text-white font-poppins selection:bg-neon-sky selection:text-[#050B1B] pt-32 pb-20">
-      
+    <main className="w-full min-h-screen bg-[#050B1B] text-white font-poppins selection:bg-neon-sky selection:text-[#050B1B] pt-32 pb-20 relative">
+      <NeuralBackground />
+
       {/* Header Section */}
-      <section className="max-w-7xl mx-auto px-6 mb-24">
+      <section className="max-w-7xl mx-auto px-6 mb-24 relative z-10">
         <motion.div
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
@@ -56,7 +58,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="max-w-7xl mx-auto px-6">
+      <section className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, idx) => (
                 <motion.div
