@@ -93,7 +93,7 @@ export function generateStructuredData(type: "Organization" | "WebSite", data?: 
       ],
       contactPoint: {
         "@type": "ContactPoint",
-        email: "support@dmssolution.co.kr",
+        email: "reedo.dev@dmssolution.co.kr",
         contactType: "customer service",
         availableLanguage: ["Korean", "English"],
       },

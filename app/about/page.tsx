@@ -109,7 +109,7 @@ export default function AboutPage() {
             {/* Image Side */}
             <div className="relative h-[600px] rounded-[24px] overflow-hidden shadow-2xl lg:order-1 bg-gray-100">
                  <Image 
-                    src="/about/founder.png" 
+                    src="/about/founder-new.png" 
                     alt="Founder" 
                     fill
                     className="object-cover"
@@ -126,27 +126,42 @@ export default function AboutPage() {
                     </h2>
                 </div>
                 
-                <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
-                    <p>
-                        20년 이상 3D 설계와 하드웨어 디자인을 기반으로<br/>
-                        기술과 현장을 연결하는 엔지니어로 활동해왔습니다.
-                    </p>
-                    <p>
-                        컴퓨터공학 전공을 바탕으로 정보통신공학까지 아우르며,<br/>
-                        제품 설계, 시스템 이해, 양산 및 현장 적용까지<br/>
-                        전 과정을 고려한 설계를 강점으로 삼고 있습니다.
-                    </p>
-                    <p>
-                        전 세계 30여 개국에서의 데모 및 교육 경험을 통해<br/>
-                        ‘설계는 도면이 아니라 현장에서 완성된다’는 철학을 체득했고,<br/>
-                        이러한 경험을 바탕으로 현재까지 10건의 특허를 보유하고 있습니다.
-                    </p>
-                    <p className="font-semibold text-[#050B1B] text-xl pt-4">
-                        기술적 완성도와 더불어<br/>
-                        20년간 이어온 사진 작업, 10년간의 봉사 활동을 통해<br/>
-                        사람 중심의 기술, 지속 가능한 가치를 추구하고 있습니다.
-                    </p>
-                </div>
+                    <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
+                        <p>
+                            20년 이상 3D 설계와 하드웨어 디자인을 기반으로 기술과 현장을 연결하는 엔지니어로 활동해왔습니다.
+                            컴퓨터공학 전공을 바탕으로 정보통신공학까지 아우르며, 제품 설계, 시스템 이해, 양산 및 현장 적용까지 전 과정을 고려한 설계를 강점으로 삼고 있습니다.
+                        </p>
+                        <p>
+                            전 세계 30여 개국에서의 데모 및 교육 경험을 통해 ‘설계는 도면이 아니라 현장에서 완성된다’는 철학을 체득했고, 이러한 경험을 바탕으로 현재까지 <span className="font-bold text-[#050B1B]">17건의 특허와 11건의 디자인 등록</span>을 보유하고 있습니다.
+                        </p>
+                        <p className="font-semibold text-[#050B1B] text-xl pt-4">
+                            기술적 완성도와 더불어<br/>
+                            20년간 이어온 사진 작업, 10년간의 봉사 활동을 통해<br/>
+                            사람 중심의 기술, 지속 가능한 가치를 추구하고 있습니다.
+                        </p>
+                    </div>
+
+                    {/* Stats Grid */}
+                    <div className="grid grid-cols-2 gap-4 mt-8">
+                        <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 hover:border-neon-sky/50 transition-colors group">
+                            <div className="flex items-center gap-3 mb-2">
+                                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm">
+                                    <span className="text-neon-sky">★</span> 
+                                </div>
+                                <span className="text-gray-500 text-sm font-medium">특허 보유</span>
+                            </div>
+                            <div className="text-4xl font-bold text-[#050B1B] font-mono">17<span className="text-lg text-gray-400 ml-1">건</span></div>
+                        </div>
+                        <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 hover:border-purple-400/50 transition-colors group">
+                             <div className="flex items-center gap-3 mb-2">
+                                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm">
+                                    <span className="text-purple-500">❖</span>
+                                </div>
+                                <span className="text-gray-500 text-sm font-medium">디자인 등록</span>
+                            </div>
+                            <div className="text-4xl font-bold text-[#050B1B] font-mono">11<span className="text-lg text-gray-400 ml-1">건</span></div>
+                        </div>
+                    </div>
             </div>
         </div>
       </section>
@@ -371,7 +386,7 @@ export default function AboutPage() {
             <div className="pt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-left max-w-3xl mx-auto border-t border-gray-100 mt-16">
                 <div className="p-6 bg-gray-50 rounded-2xl">
                      <div className="text-xs font-bold text-gray-400 uppercase mb-2">Email</div>
-                     <div className="text-[#050B1B] font-medium truncate">support@dmssolution.co.kr</div>
+                     <div className="text-[#050B1B] font-medium truncate">reedo.dev@dmssolution.co.kr</div>
                 </div>
                 <div className="p-6 bg-gray-50 rounded-2xl">
                      <div className="text-xs font-bold text-gray-400 uppercase mb-2">Location</div>
