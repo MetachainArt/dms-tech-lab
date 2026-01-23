@@ -20,9 +20,9 @@ export default function Footer() {
             <h5 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider">Navigation</h5>
             <ul className="space-y-3 text-white/50 text-sm">
               <li><Link href="/about" className="hover:text-neon-sky transition-colors">About</Link></li>
-              <li><Link href="/projects" className="hover:text-neon-sky transition-colors">Projects</Link></li>
-              <li><Link href="#contact" className="hover:text-neon-sky transition-colors">Contact</Link></li>
-              <li><Link href="/insights" className="hover:text-neon-sky transition-colors">Insights</Link></li>
+              <li><Link href="/services" className="hover:text-neon-sky transition-colors">Services</Link></li>
+              <li><Link href="/#contact" className="hover:text-neon-sky transition-colors">Contact</Link></li>
+              <li><Link href="/blog" className="hover:text-neon-sky transition-colors">Blog</Link></li>
             </ul>
           </div>
 
