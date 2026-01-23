@@ -4,19 +4,12 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import NeuralBackground from "@/components/ui/NeuralBackground";
 import { projects } from "@/constants/data";
 
 export default function Apps() {
   return (
-    <section id="projects" className="w-full py-32 px-6 flex flex-col items-center bg-[#050B1B] overflow-hidden relative">
-      {/* Neural Network Background */}
-      <div className="absolute inset-0 z-0">
-        <NeuralBackground />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050B1B] via-transparent to-[#050B1B] pointer-events-none" />
-      </div>
-
-      <div className="max-w-7xl w-full relative z-10">
+    <section id="projects" className="w-full py-16 px-6 flex flex-col items-center bg-[#050B1B] overflow-hidden relative z-10">
+      <div className="max-w-7xl w-full relative">
         {/* Header */}
         <div className="mb-20 flex flex-col items-start gap-4">
             <div className="flex items-center gap-3">

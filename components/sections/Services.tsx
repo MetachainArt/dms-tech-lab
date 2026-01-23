@@ -5,7 +5,7 @@ import { services } from "@/constants/data";
 
 export default function Services() {
   return (
-    <section className="w-full py-24 px-6 bg-[#050B1B]">
+    <section className="w-full py-16 px-6 bg-[#050B1B] relative z-10">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
@@ -26,14 +26,6 @@ export default function Services() {
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.1,
-                ease: "easeOut",
-              }}
               className="group relative p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
             >
               {/* Icon */}
