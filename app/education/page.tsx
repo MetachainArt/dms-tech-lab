@@ -42,17 +42,13 @@ const tracks = [
 
 export default function EducationPage() {
   return (
-    <main className="w-full min-h-screen bg-[#050B1B] text-white font-poppins selection:bg-neon-sky selection:text-[#050B1B]">
-      
-      {/* 1. Hero Section */}
-      <section className="relative w-full min-h-[60vh] flex flex-col justify-center px-6 overflow-hidden pt-32">
-        {/* Background - Reusing Neural for tech feel, lower opacity */}
-        <div className="absolute inset-0 z-0 opacity-40">
-            <NeuralBackground />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#050B1B] via-[#050B1B]/80 to-[#050B1B]" />
-        </div>
+    <main className="w-full min-h-screen bg-[#050B1B] text-white font-poppins selection:bg-neon-sky selection:text-[#050B1B] relative">
+      {/* Global Neural Background */}
+      <NeuralBackground />
 
-        <div className="max-w-7xl mx-auto w-full relative z-10 text-center md:text-left">
+      {/* 1. Hero Section */}
+      <section className="relative w-full min-h-[60vh] flex flex-col justify-center px-6 overflow-hidden pt-32 z-10">
+        <div className="max-w-7xl mx-auto w-full relative text-center md:text-left">
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -78,7 +74,7 @@ export default function EducationPage() {
       </section>
 
       {/* 2. Curriculum Grid */}
-      <section className="py-24 px-6 bg-[#050B1B]">
+      <section className="py-24 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
             <div className="mb-16">
                 <h2 className="text-3xl font-bold text-white mb-4">Curriculum Tracks</h2>
@@ -124,7 +120,7 @@ export default function EducationPage() {
       </section>
 
       {/* 3. Instructor Profile */}
-      <section className="py-20 px-6 bg-[#030712] border-t border-white/5">
+      <section className="py-20 px-6 bg-[#030712]/80 border-t border-white/5 relative z-10">
         <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 {/* Image Side */}
