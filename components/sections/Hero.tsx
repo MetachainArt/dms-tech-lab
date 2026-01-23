@@ -5,7 +5,7 @@ import NeuralBackground from "@/components/ui/NeuralBackground";
 
 export default function Hero() {
   return (
-    <section className="relative z-10 flex h-screen max-h-[900px] w-full flex-col justify-center px-6 overflow-hidden" aria-labelledby="hero-heading">
+    <section className="relative z-10 flex w-full min-h-screen flex-col justify-center px-6 overflow-hidden" aria-labelledby="hero-heading">
 
       {/* Neural Network Background - Full Screen */}
       <div className="absolute inset-0 z-0">
@@ -16,10 +16,10 @@ export default function Hero() {
       </div>
 
       {/* Centered Content */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-20">
+      <div className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
         {/* Left Text */}
-        <div className="flex flex-col items-start gap-8">
+        <div className="flex flex-col items-start gap-10">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
