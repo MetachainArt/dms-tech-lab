@@ -32,6 +32,7 @@ export default function RootLayout({
   return (
     <html lang="ko" className="dark scroll-smooth" suppressHydrationWarning>
       <head>
+        <meta name="naver-site-verification" content="b8ab729a0b0dbcfe3400052a6f192884926e93e4" />
         <link rel="preconnect" href="https://images.unsplash.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
