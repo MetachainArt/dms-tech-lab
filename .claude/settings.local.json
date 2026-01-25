@@ -22,7 +22,12 @@
       "Bash(git status:*)",
       "Bash(git grep:*)",
       "Bash(npm run build:*)",
-      "Bash(nslookup:*)"
+      "Bash(nslookup:*)",
+      "Bash(start https://vercel.com/dashboard)",
+      "Bash(start https://search.google.com/search-console)",
+      "Bash(start https://searchadvisor.naver.com/)",
+      "Bash(start https://www.bing.com/webmasters)",
+      "Bash(start https://searchadvisor.naver.com/console/board?siteUrl=https://dmssolution.co.kr)"
     ]
   }
 }
