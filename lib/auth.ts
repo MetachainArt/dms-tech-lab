@@ -7,8 +7,8 @@ import { compare } from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 
 export const authOptions: NextAuthOptions = {
-  // Only use adapter for OAuth providers, not for credentials
-  adapter: PrismaAdapter(prisma) as any,
+  // TEMPORARILY DISABLED: adapter causes issues with CredentialsProvider
+  // adapter: PrismaAdapter(prisma) as any,
   debug: true, // Enable debug logging
   providers: [
     CredentialsProvider({
