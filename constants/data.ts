@@ -8,6 +8,7 @@ export const services = [
     description: "N8N, AI Agent 기반 워크플로우 자동화. 반복 업무를 시스템으로.",
     color: "from-blue-500 to-cyan-400",
     image: "/icons/3d-dev.png",
+    link: "/automation",
   },
   {
     icon: Palette,
@@ -16,6 +17,7 @@ export const services = [
     description: "제품 시각화, WebGL, 인터랙티브 3D 경험 설계.",
     color: "from-purple-500 to-pink-400",
     image: "/icons/3d-design.png",
+    link: "/vibe-coding",
   },
   {
     icon: GraduationCap,
@@ -24,6 +26,7 @@ export const services = [
     description: "GenAI 워크샵, 프롬프트 엔지니어링, 맞춤형 커리큘럼.",
     color: "from-green-500 to-emerald-400",
     image: "/icons/3d-edu.png",
+    link: "/prompts",
   },
   {
     icon: Globe,
@@ -69,6 +72,7 @@ export const projects = [
     icon: Settings2,
     image: "/images/Service/real_automation_server.png",
     color: "text-blue-500",
+    link: "/automation",
   },
   {
     category: "AI ENGINEERING",
@@ -77,6 +81,7 @@ export const projects = [
     icon: FileText,
     image: "/images/Service/real_ai_code_macro.png",
     color: "text-purple-500",
+    link: "/prompts",
   },
   {
     category: "VIBE CODING APPS",
@@ -85,6 +90,7 @@ export const projects = [
     icon: AppWindow,
     image: "/images/Service/real_modern_workspace.png",
     color: "text-green-500",
+    link: "/vibe-coding",
   }
 ] as const;
 

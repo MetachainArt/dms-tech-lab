@@ -118,6 +118,7 @@ export default function Contact() {
                       value={formData.lastName}
                       onChange={(e) => handleInputChange("lastName", e.target.value)}
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-white/30 focus:outline-none focus:border-neon-sky focus:bg-white/10 focus:ring-1 focus:ring-neon-sky/50 transition-all"
+                      suppressHydrationWarning
                     />
                   </div>
                   <div className="space-y-2">
@@ -130,6 +131,7 @@ export default function Contact() {
                       value={formData.firstName}
                       onChange={(e) => handleInputChange("firstName", e.target.value)}
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-white/30 focus:outline-none focus:border-neon-sky focus:bg-white/10 focus:ring-1 focus:ring-neon-sky/50 transition-all"
+                      suppressHydrationWarning
                     />
                   </div>
                 </div>
@@ -146,6 +148,7 @@ export default function Contact() {
                     value={formData.email}
                     onChange={(e) => handleInputChange("email", e.target.value)}
                     className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-white/30 focus:outline-none focus:border-neon-sky focus:bg-white/10 focus:ring-1 focus:ring-neon-sky/50 transition-all"
+                    suppressHydrationWarning
                   />
                 </div>
 
@@ -160,6 +163,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={(e) => handleInputChange("message", e.target.value)}
                     className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-white/30 focus:outline-none focus:border-neon-sky focus:bg-white/10 focus:ring-1 focus:ring-neon-sky/50 transition-all resize-none"
+                    suppressHydrationWarning
                   />
                 </div>
 
@@ -168,6 +172,7 @@ export default function Contact() {
                   type="submit"
                   disabled={status === "loading"}
                   className="group w-full bg-gradient-to-r from-neon-sky to-cyan-400 hover:from-cyan-400 hover:to-neon-sky text-[#050B1B] font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-neon-sky/20 hover:shadow-neon-sky/40 disabled:opacity-50 disabled:cursor-not-allowed"
+                  suppressHydrationWarning
                 >
                   {status === "loading" ? (
                     <span className="w-5 h-5 border-2 border-[#050B1B]/30 border-t-[#050B1B] rounded-full animate-spin" />

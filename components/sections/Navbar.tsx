@@ -14,6 +14,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const { data: session } = useSession();
   const isLightPage = pathname === "/about";
+  const isAdminPage = pathname?.startsWith("/admin");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,6 +40,9 @@ export default function Navbar() {
   // 메모이제이션: 이벤트 핸들러
   const handleMenuOpen = useCallback(() => setIsMobileMenuOpen(true), []);
   const handleMenuClose = useCallback(() => setIsMobileMenuOpen(false), []);
+
+  // Hide Navbar on Admin pages (after all hooks)
+  if (isAdminPage) return null;
 
   // Dynamic colors based on page and scroll state
   // User requested "Like the first image" -> Always White text, Dark Background on About.

@@ -39,35 +39,37 @@ export default function Apps() {
                     }}
                     className="group relative bg-white rounded-[2rem] overflow-hidden shadow-2xl hover:shadow-[0_0_40px_rgba(14,165,233,0.3)] transition-all duration-300 hover:-translate-y-2"
                 >
-                    {/* Image Area */}
-                    <div className="h-48 w-full relative overflow-hidden flex-shrink-0">
-                         <Image
-                             src={project.image}
-                             alt={project.title}
-                             fill
-                             className="object-cover group-hover:scale-110 transition-transform duration-700"
-                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          />
-                         <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300" />
+                    <Link href={(project as any).link || "/services"} className="block w-full h-full">
+                        {/* Image Area */}
+                        <div className="h-48 w-full relative overflow-hidden flex-shrink-0">
+                             <Image
+                                 src={project.image}
+                                 alt={project.title}
+                                 fill
+                                 className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                              />
+                             <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300" />
 
-                         {/* Icon - Top Right */}
-                         <div className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg z-10">
-                             <project.icon className={`w-5 h-5 ${project.color}`} />
-                         </div>
-                    </div>
+                             {/* Icon - Top Right */}
+                             <div className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg z-10">
+                                 <project.icon className={`w-5 h-5 ${project.color}`} />
+                             </div>
+                        </div>
 
-                    {/* Content - Always visible */}
-                    <div className="p-6 bg-white">
-                        <span className="text-xs font-mono font-bold text-gray-400 uppercase tracking-widest mb-2 block">{project.category}</span>
-                        <h3 className="text-xl font-bold text-[#050B1B] mb-3 group-hover:text-neon-sky transition-colors">{project.title}</h3>
-                        <p className="text-gray-500 text-sm leading-relaxed mb-6">
-                            {project.desc}
-                        </p>
+                        {/* Content - Always visible */}
+                        <div className="p-6 bg-white relative z-20 h-full">
+                            <span className="text-xs font-mono font-bold text-gray-400 uppercase tracking-widest mb-2 block">{project.category}</span>
+                            <h3 className="text-xl font-bold text-[#050B1B] mb-3 group-hover:text-neon-sky transition-colors">{project.title}</h3>
+                            <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                                {project.desc}
+                            </p>
 
-                        <Link href="/services" className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-[#050B1B] hover:bg-[#050B1B] hover:text-white transition-all">
-                            자세히 보기 <ArrowRight className="w-4 h-4" />
-                        </Link>
-                    </div>
+                            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-[#050B1B] group-hover:bg-[#050B1B] group-hover:text-white transition-all">
+                                자세히 보기 <ArrowRight className="w-4 h-4" />
+                            </div>
+                        </div>
+                    </Link>
                 </motion.div>
             ))}
         </div>

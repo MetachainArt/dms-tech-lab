@@ -5,7 +5,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { compare } from "bcryptjs";
 import { prisma } from "@/lib/prisma";
-import { checkRateLimit } from "@/lib/rate-limit";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -17,16 +16,8 @@ export const authOptions: NextAuthOptions = {
         email: { label: "Email", type: "email", placeholder: "admin@dmslab.com" },
         password: { label: "Password", type: "password" }
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
-          return null;
-        }
-
-        // Rate limiting for login attempts
-        const ip = (req as any)?.headers?.get("x-forwarded-for") || "unknown";
-        const result = await checkRateLimit(`auth:${ip}`, "auth");
-        if (!result.success) {
-          console.error(`Rate limit exceeded for ${ip}`);
           return null;
         }
 

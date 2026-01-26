@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import NeuralBackground from "@/components/ui/NeuralBackground";
 
 export default async function AdminLayout({
@@ -9,7 +10,7 @@ export default async function AdminLayout({
   children: React.ReactNode;
 }) {
   // Server-side authentication check
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
 
   // Redirect to login if not authenticated or not admin
   if (!session || (session.user as any)?.role !== "admin") {

@@ -27,6 +27,12 @@ git push
 - **Start Command**: `npm start`
 - **Environment Variables**:
   - `NODE_ENV`: `production`
+  - `ADMIN_EMAIL`: (e.g. `admin@dmslab.com`)
+  - `ADMIN_PASSWORD_HASH`: (Copy from your local .env)
+
+### ⚠️ 주의사항 (Important)
+- **파일 업로드**: 현재 이미지 직접 업로드는 서버의 `public/uploads` 폴더에 저장됩니다. 호스팅 환경에 따라 배포 시 파일이 초기화될 수 있으므로, **중요한 이미지는 외부 이미지 호스팅(imgur 등)을 권장**하거나, 서버 설정을 확인하세요.
+- **데이터베이스**: 배포 전 로컬에서 `npx prisma db push`를 실행하여 스키마를 최신 상태로 유지하세요.
 
 ### DNS 설정 (Cafe24)
 Hostinger 네임서버로 연결되어 있습니다.

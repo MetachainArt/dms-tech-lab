@@ -1,4 +1,4 @@
-import PromptContainer from "@/components/prompts/PromptContainer";
+import PromptContainer from "@/components/prompts/PromptMain";
 import NeuralBackground from "@/components/ui/NeuralBackground";
 import { getAllPromptsFromFiles } from "@/lib/prompt-content";
 import { PROMPTS as STATIC_PROMPTS } from "@/lib/prompt-data";

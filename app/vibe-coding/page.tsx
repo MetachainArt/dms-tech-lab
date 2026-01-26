@@ -1,4 +1,4 @@
-import VibeContainer from "@/components/vibe/VibeContainer";
+import VibeContainer from "@/components/vibe/VibeMain";
 import NeuralBackground from "@/components/ui/NeuralBackground";
 
 export default function VibeCodingPage() {

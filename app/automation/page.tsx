@@ -1,4 +1,4 @@
-import AutomationContainer from "@/components/automation/AutomationContainer";
+import AutomationContainer from "@/components/automation/AutomationMain";
 import NeuralBackground from "@/components/ui/NeuralBackground";
 
 export default function AutomationPage() {

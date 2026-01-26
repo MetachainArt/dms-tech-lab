@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { services } from "@/constants/data";
 
 export default function Services() {
@@ -29,29 +30,58 @@ export default function Services() {
               key={service.title}
               className="group relative p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
             >
-              {/* Icon */}
-              {/* Icon */}
-              <div className="relative w-20 h-20 mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Image 
-                    src={service.image} 
-                    alt={service.title}
-                    fill
-                    className="object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]" 
-                  />
-              </div>
+              {/* Conditional Link Wrapper */}
+              {(service as any).link ? (
+                 <Link href={(service as any).link} className="block h-full">
+                    {/* Icon */}
+                    <div className="relative w-20 h-20 mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <Image 
+                          src={service.image} 
+                          alt={service.title}
+                          fill
+                          className="object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]" 
+                        />
+                    </div>
 
-              {/* Title */}
-              <h4 className="text-2xl font-bold text-white mb-1">
-                {service.title}
-              </h4>
-              <p className="text-neon-sky text-sm font-medium mb-4">
-                {service.subtitle}
-              </p>
+                    {/* Title */}
+                    <h4 className="text-2xl font-bold text-white mb-1">
+                      {service.title}
+                    </h4>
+                    <p className="text-neon-sky text-sm font-medium mb-4">
+                      {service.subtitle}
+                    </p>
 
-              {/* Description */}
-              <p className="text-white/60 text-sm leading-relaxed">
-                {service.description}
-              </p>
+                    {/* Description */}
+                    <p className="text-white/60 text-sm leading-relaxed">
+                      {service.description}
+                    </p>
+                 </Link>
+              ) : (
+                <>
+                  {/* Icon */}
+                  <div className="relative w-20 h-20 mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <Image 
+                        src={service.image} 
+                        alt={service.title}
+                        fill
+                        className="object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]" 
+                      />
+                  </div>
+
+                  {/* Title */}
+                  <h4 className="text-2xl font-bold text-white mb-1">
+                    {service.title}
+                  </h4>
+                  <p className="text-neon-sky text-sm font-medium mb-4">
+                    {service.subtitle}
+                  </p>
+
+                  {/* Description */}
+                  <p className="text-white/60 text-sm leading-relaxed">
+                    {service.description}
+                  </p>
+                </>
+              )}
 
               {/* Hover Glow */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-sky/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
