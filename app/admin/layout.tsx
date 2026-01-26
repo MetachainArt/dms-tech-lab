@@ -4,6 +4,9 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import NeuralBackground from "@/components/ui/NeuralBackground";
 
+// Disable caching to always check session
+export const dynamic = 'force-dynamic';
+
 export default async function AdminLayout({
   children,
 }: {
