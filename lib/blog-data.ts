@@ -62,5 +62,14 @@ export const BLOG_SERIES: Record<string, BlogSeries> = {
     coverImage: "/series/ai-fantasy-life.png",
     color: "pink",
     tags: ["Fiction", "Story", "Dream"],
+  },
+  "daily-record": {
+    id: "daily-record",
+    title: "일상의 기록",
+    subtitle: "SEASONAL MEMORY",
+    description: "스쳐 지나가는 계절의 틈새에서 마주한 찰나의 순간들. 그 속에 담긴 감정과 기억을 기록합니다.",
+    coverImage: "/series/daily-record.png",
+    color: "orange",
+    tags: ["Essay", "Season", "Memory"],
   }
 };

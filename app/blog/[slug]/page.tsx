@@ -8,6 +8,45 @@ import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { notFound } from "next/navigation";
 
+
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
+  const post = getPostBySlug(params.slug);
+
+  if (!post) {
+      return;
+  }
+
+  const { title, excerpt, coverImage, date, tags } = post.frontMatter;
+
+  return {
+    title: `${title} | DMS Future Arts`,
+    description: excerpt,
+    keywords: tags,
+    openGraph: {
+      title: title,
+      description: excerpt,
+      type: 'article',
+      publishedTime: date,
+      authors: ['DMS Solution'],
+      images: [
+        {
+          url: coverImage || '/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: title,
+      description: excerpt,
+      images: [coverImage || '/og-image.png'],
+    },
+  };
+}
+
 export async function generateStaticParams() {
   const posts = getAllPosts();
   return posts.map((post) => ({
