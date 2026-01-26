@@ -1,10 +1,50 @@
-import NextAuth from "next-auth";
+import NextAuth, { type NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import KakaoProvider from "next-auth/providers/kakao";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import { compare } from "bcryptjs";
+import { prisma } from "@/lib/prisma";
+import { checkRateLimit } from "@/lib/rate-limit";
+import { NextResponse } from "next/server";
 
-const handler = NextAuth({
-  debug: true,
+export const authOptions: NextAuthOptions = {
+  adapter: PrismaAdapter(prisma),
+  debug: process.env.NODE_ENV === 'development',
   providers: [
+    CredentialsProvider({
+      name: "Admin Login",
+      credentials: {
+        email: { label: "Email", type: "email", placeholder: "admin@dmslab.com" },
+        password: { label: "Password", type: "password" }
+      },
+      async authorize(credentials, req) {
+        if (!credentials?.email || !credentials?.password) {
+          return null;
+        }
+
+        // Rate limiting for login attempts
+        const ip = (req as any)?.headers?.get("x-forwarded-for") || "unknown";
+        const result = await checkRateLimit(`auth:${ip}`, "auth");
+        if (!result.success) {
+          console.error(`Rate limit exceeded for ${ip}`);
+          return null;
+        }
+
+        const isValidPassword = await compare(
+            credentials.password,
+            process.env.ADMIN_PASSWORD_HASH || ""
+        );
+
+        if (
+          credentials.email === process.env.ADMIN_EMAIL &&
+          isValidPassword
+        ) {
+          return { id: "admin", name: "Administrator", email: process.env.ADMIN_EMAIL, role: "admin" };
+        }
+        return null;
+      }
+    }),
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || "",
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
@@ -19,22 +59,64 @@ const handler = NextAuth({
   },
   session: {
     strategy: "jwt",
+    maxAge: 30 * 60, // 30 minutes
+  },
+  jwt: {
+    maxAge: 30 * 60, // 30 minutes
   },
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
+        token.role = (user as any).role;
       }
       return token;
     },
     async session({ session, token }) {
-      if (session.user && token.id) {
+      if (session.user) {
         session.user.id = token.id as string;
+        (session.user as any).role = token.role;
       }
       return session;
     },
+    async redirect({ url, baseUrl }) {
+      // Admin redirect
+      if (url.includes("/admin")) {
+        return url;
+      }
+      // Default redirect
+      if (url.startsWith("/")) return `${baseUrl}${url}`;
+      if (new URL(url).origin === baseUrl) return url;
+      return baseUrl;
+    },
   },
-});
+  events: {
+    async signIn({ user, account }) {
+      // Skip login history for admin (credentials) - admin user doesn't exist in DB
+      if (account?.provider === "credentials") {
+        return;
+      }
+
+      // Record login history for OAuth users only
+      if (user.id && user.email) {
+        try {
+          await prisma.loginHistory.create({
+            data: {
+              userId: user.id,
+              email: user.email,
+              name: user.name || null,
+              provider: account?.provider || "unknown",
+            },
+          });
+        } catch (error) {
+          console.error("Failed to record login history:", error);
+        }
+      }
+    },
+  },
+};
+
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
