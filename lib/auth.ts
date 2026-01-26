@@ -9,7 +9,7 @@ import { prisma } from "@/lib/prisma";
 export const authOptions: NextAuthOptions = {
   // Only use adapter for OAuth providers, not for credentials
   adapter: PrismaAdapter(prisma) as any,
-  debug: process.env.NODE_ENV === 'development',
+  debug: true, // Enable debug logging
   providers: [
     CredentialsProvider({
       name: "Admin Login",
@@ -72,6 +72,8 @@ export const authOptions: NextAuthOptions = {
   useSecureCookies: process.env.NEXTAUTH_URL?.startsWith('https://'),
   callbacks: {
     async jwt({ token, user }) {
+      console.log("JWT Callback - user:", user);
+      console.log("JWT Callback - token before:", token);
       if (user) {
         token.id = user.id;
         token.role = (user as any).role;
@@ -80,13 +82,16 @@ export const authOptions: NextAuthOptions = {
       if (token.email === process.env.ADMIN_EMAIL) {
         token.role = "admin";
       }
+      console.log("JWT Callback - token after:", token);
       return token;
     },
     async session({ session, token }) {
+      console.log("Session Callback - token:", token);
       if (session.user) {
         session.user.id = token.id as string;
         (session.user as any).role = token.role;
       }
+      console.log("Session Callback - session:", session);
       return session;
     },
     async redirect({ url, baseUrl }) {

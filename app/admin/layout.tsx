@@ -15,14 +15,22 @@ export default async function AdminLayout({
   // Server-side authentication check
   const session = await getServerSession(authOptions);
 
+  // Debug logging
+  console.log("Admin Layout - Session:", JSON.stringify(session, null, 2));
+  console.log("Admin Layout - ADMIN_EMAIL:", process.env.ADMIN_EMAIL);
+  console.log("Admin Layout - User email:", session?.user?.email);
+
   // Check if user is admin (by role OR by email matching ADMIN_EMAIL)
   const isAdmin = session?.user && (
     (session.user as any)?.role === "admin" ||
     session.user.email === process.env.ADMIN_EMAIL
   );
 
+  console.log("Admin Layout - isAdmin:", isAdmin);
+
   // Redirect to login if not authenticated or not admin
   if (!session || !isAdmin) {
+    console.log("Admin Layout - Redirecting to signin");
     redirect("/auth/signin");
   }
 
