@@ -145,10 +145,10 @@ export default function NewPromptPage() {
                 <div className="flex flex-col gap-4">
                     {/* File Drop Area */}
                     <div className="border border-dashed border-white/20 rounded-2xl p-10 text-center hover:bg-white/5 transition-all relative group bg-black/20">
-                        <input 
-                            type="file" 
+                        <input
+                            type="file"
                             accept="image/*"
-                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20"
+                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                             onChange={async (e) => {
                                 const file = e.target.files?.[0];
                                 if (!file) return;
