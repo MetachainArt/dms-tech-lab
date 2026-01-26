@@ -189,8 +189,8 @@ export default function SignInPage() {
 
         {/* Footer */}
         <p className="text-center text-white/30 text-xs mt-8">
-          로그인 시 <span className="text-white/50 hover:text-neon-sky cursor-pointer transition-colors">이용약관</span> 및{" "}
-          <span className="text-white/50 hover:text-neon-sky cursor-pointer transition-colors">개인정보처리방침</span>에 동의합니다.
+          로그인 시 <Link href="/terms" className="text-white/50 hover:text-neon-sky transition-colors underline underline-offset-2">이용약관</Link> 및{" "}
+          <Link href="/privacy" className="text-white/50 hover:text-neon-sky transition-colors underline underline-offset-2">개인정보처리방침</Link>에 동의합니다.
         </p>
       </motion.div>
     </main>
