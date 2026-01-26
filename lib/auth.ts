@@ -42,6 +42,18 @@ export const authOptions: NextAuthOptions = {
     KakaoProvider({
       clientId: process.env.KAKAO_CLIENT_ID || "",
       clientSecret: process.env.KAKAO_CLIENT_SECRET || "",
+      profile(profile) {
+        // Kakao doesn't always provide email (requires business app verification)
+        // Generate a fallback email using kakao ID if email is not available
+        const kakaoEmail = profile.kakao_account?.email || `kakao_${profile.id}@kakao.user`;
+
+        return {
+          id: profile.id.toString(),
+          name: profile.kakao_account?.profile?.nickname || profile.properties?.nickname || "카카오 사용자",
+          email: kakaoEmail,
+          image: profile.kakao_account?.profile?.profile_image_url || profile.properties?.profile_image,
+        };
+      },
     }),
   ],
   pages: {
@@ -89,12 +101,12 @@ export const authOptions: NextAuthOptions = {
       }
 
       // Record login history for OAuth users only
-      if (user.id && user.email) {
+      if (user.id) {
         try {
           await prisma.loginHistory.create({
             data: {
               userId: user.id,
-              email: user.email,
+              email: user.email || `${account?.provider}_${user.id}@oauth.user`,
               name: user.name || null,
               provider: account?.provider || "unknown",
             },
