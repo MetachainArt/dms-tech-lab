@@ -15,8 +15,14 @@ export default async function AdminLayout({
   // Server-side authentication check
   const session = await getServerSession(authOptions);
 
+  // Check if user is admin (by role OR by email matching ADMIN_EMAIL)
+  const isAdmin = session?.user && (
+    (session.user as any)?.role === "admin" ||
+    session.user.email === process.env.ADMIN_EMAIL
+  );
+
   // Redirect to login if not authenticated or not admin
-  if (!session || (session.user as any)?.role !== "admin") {
+  if (!session || !isAdmin) {
     redirect("/auth/signin");
   }
 
