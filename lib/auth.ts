@@ -101,18 +101,26 @@ export const authOptions: NextAuthOptions = {
       }
 
       // Record login history for OAuth users only
-      if (user.id) {
+      if (user.email) {
         try {
-          await prisma.loginHistory.create({
-            data: {
-              userId: user.id,
-              email: user.email || `${account?.provider}_${user.id}@oauth.user`,
-              name: user.name || null,
-              provider: account?.provider || "unknown",
-            },
+          // Find the user by email to get the correct database ID
+          const dbUser = await prisma.user.findUnique({
+            where: { email: user.email },
           });
+
+          if (dbUser) {
+            await prisma.loginHistory.create({
+              data: {
+                userId: dbUser.id,
+                email: user.email,
+                name: user.name || null,
+                provider: account?.provider || "unknown",
+              },
+            });
+          }
         } catch (error) {
           console.error("Failed to record login history:", error);
+          // Don't throw - allow login to proceed even if history fails
         }
       }
     },

@@ -1,18 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { signIn } from "next-auth/react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function SignInPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [showAdmin, setShowAdmin] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // Check for OAuth errors in URL
+  useEffect(() => {
+    const urlError = searchParams.get("error");
+    if (urlError === "OAuthCallback") {
+      setError("로그인 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+    } else if (urlError === "OAuthAccountNotLinked") {
+      setError("이미 다른 방법으로 가입된 이메일입니다. 기존 로그인 방식을 사용해주세요.");
+    } else if (urlError) {
+      setError("로그인 중 문제가 발생했습니다. 다시 시도해주세요.");
+    }
+  }, [searchParams]);
 
   const handleAdminLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,6 +71,13 @@ export default function SignInPage() {
 
         {/* Login Card */}
         <div className="glass-panel rounded-2xl p-8 space-y-4 relative z-20">
+          {/* OAuth Error Message */}
+          {error && !showAdmin && (
+            <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm mb-4">
+              {error}
+            </div>
+          )}
+
           {/* Google Login */}
           <button
             onClick={() => signIn("google", { callbackUrl: "/" })}
