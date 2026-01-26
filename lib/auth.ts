@@ -61,10 +61,10 @@ export const authOptions: NextAuthOptions = {
   },
   session: {
     strategy: "jwt",
-    maxAge: 30 * 60, // 30 minutes
+    maxAge: 24 * 60 * 60, // 24 hours
   },
   jwt: {
-    maxAge: 30 * 60, // 30 minutes
+    maxAge: 24 * 60 * 60, // 24 hours
   },
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
@@ -72,6 +72,10 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         token.id = user.id;
         token.role = (user as any).role;
+      }
+      // Ensure admin role is always set for admin email
+      if (token.email === process.env.ADMIN_EMAIL) {
+        token.role = "admin";
       }
       return token;
     },
