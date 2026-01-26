@@ -6,7 +6,6 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { compare } from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 import { checkRateLimit } from "@/lib/rate-limit";
-import { NextResponse } from "next/server";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),

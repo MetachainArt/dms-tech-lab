@@ -1,5 +1,4 @@
 import { withAuth } from "next-auth/middleware";
-import { NextRequest, NextResponse } from "next/server";
 import { checkRateLimit } from "@/lib/rate-limit";
 
 export default withAuth({
