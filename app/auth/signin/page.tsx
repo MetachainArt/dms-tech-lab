@@ -1,10 +1,39 @@
 "use client";
 
+import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function SignInPage() {
+  const router = useRouter();
+  const [showAdmin, setShowAdmin] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleAdminLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    const result = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+
+    setLoading(false);
+
+    if (result?.error) {
+      setError("이메일 또는 비밀번호가 올바르지 않습니다.");
+    } else if (result?.ok) {
+      router.push("/admin/users");
+    }
+  };
+
   return (
     <main className="min-h-screen bg-deep-space flex items-center justify-center px-6 relative overflow-hidden z-10">
       {/* Background Effects */}
@@ -89,6 +118,53 @@ export default function SignInPage() {
             </svg>
             <span>홈으로 돌아가기</span>
           </Link>
+          
+          {/* Admin Login Toggle */}
+          <div className="pt-4 text-center">
+            <button 
+                onClick={() => setShowAdmin(!showAdmin)}
+                className="text-xs text-white/20 hover:text-white/50 transition-colors"
+            >
+                {showAdmin ? "소셜 로그인으로 돌아가기" : "관리자 로그인"}
+            </button>
+          </div>
+          
+          {/* Admin Login Form */}
+          {showAdmin && (
+            <form onSubmit={handleAdminLogin} className="space-y-4 pt-4 border-t border-white/10 animate-in fade-in slide-in-from-top-2">
+                {error && (
+                  <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
+                    {error}
+                  </div>
+                )}
+                <div>
+                    <input
+                        type="email"
+                        placeholder="Admin Email"
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-neon-sky/50"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-neon-sky/50"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
+                <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-3 rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50"
+                >
+                    {loading ? "로그인 중..." : "Admin Login"}
+                </button>
+            </form>
+          )}
+
         </div>
 
         {/* Footer */}

@@ -7,6 +7,7 @@ import { ArrowRight, Settings2, FileText, AppWindow } from "lucide-react";
 import NeuralBackground from "@/components/ui/NeuralBackground";
 
 // Service Data (Formerly Projects)
+// Service Data (Formerly Projects)
 const services = [
   {
     category: "BUSINESS AUTOMATION",
@@ -15,6 +16,7 @@ const services = [
     icon: Settings2,
     image: "/images/Service/real_automation_server.png",
     color: "text-blue-500",
+    link: "/automation",
   },
   {
     category: "AI ENGINEERING",
@@ -23,6 +25,7 @@ const services = [
     icon: FileText,
     image: "/images/Service/real_ai_code_macro.png",
     color: "text-purple-500",
+    link: "/prompts",
   },
   {
     category: "VIBE CODING APPS",
@@ -31,6 +34,7 @@ const services = [
     icon: AppWindow,
     image: "/images/Service/real_modern_workspace.png",
     color: "text-green-500",
+    link: "/vibe-coding",
   }
 ];
 
@@ -66,34 +70,36 @@ export default function ServicesPage() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: idx * 0.1 }}
-                    className="group bg-white rounded-[2rem] overflow-hidden hover:-translate-y-2 transition-transform duration-300 flex flex-col shadow-xl border border-gray-200"
+                    className="group bg-white rounded-[2rem] overflow-hidden hover:-translate-y-2 transition-transform duration-300 shadow-xl border border-gray-200"
                 >
-                    {/* Image Area */}
-                    <div className="h-64 w-full relative overflow-hidden flex-shrink-0">
-                         <img 
-                            src={service.image} 
-                            alt={service.title}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                         />
-                         <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300" />
-                         
-                         <div className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg z-10">
-                            <service.icon className={`w-5 h-5 ${service.color}`} />
-                         </div>
-                    </div>
+                    <Link href={service.link} className="flex flex-col h-full">
+                        {/* Image Area */}
+                        <div className="h-64 w-full relative overflow-hidden flex-shrink-0">
+                             <img 
+                                src={service.image} 
+                                alt={service.title}
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                             />
+                             <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300" />
+                             
+                             <div className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg z-10">
+                                <service.icon className={`w-5 h-5 ${service.color}`} />
+                             </div>
+                        </div>
 
-                    {/* Content */}
-                    <div className="p-8 flex flex-col bg-white h-full relative z-20">
-                        <div className="text-xs font-bold text-gray-400 tracking-widest uppercase mb-3">{service.category}</div>
-                        <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-neon-sky transition-colors">{service.title}</h3>
-                        <p className="text-gray-600 text-sm leading-relaxed mb-8 line-clamp-3">
-                            {service.desc}
-                        </p>
-                        
-                        <button className="self-start px-6 py-3 rounded-full border border-gray-200 text-slate-900 font-bold text-sm flex items-center gap-2 hover:bg-[#050B1B] hover:text-white hover:border-[#050B1B] transition-all">
-                            자세히 보기 <ArrowRight className="w-4 h-4" />
-                        </button>
-                    </div>
+                        {/* Content */}
+                        <div className="p-8 flex flex-col bg-white h-full relative z-20">
+                            <div className="text-xs font-bold text-gray-400 tracking-widest uppercase mb-3">{service.category}</div>
+                            <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-neon-sky transition-colors">{service.title}</h3>
+                            <p className="text-gray-600 text-sm leading-relaxed mb-8 line-clamp-3">
+                                {service.desc}
+                            </p>
+                            
+                            <div className="mt-auto self-start px-6 py-3 rounded-full border border-gray-200 text-slate-900 font-bold text-sm flex items-center gap-2 group-hover:bg-[#050B1B] group-hover:text-white group-hover:border-[#050B1B] transition-all">
+                                자세히 보기 <ArrowRight className="w-4 h-4" />
+                            </div>
+                        </div>
+                    </Link>
                 </motion.div>
             ))}
         </div>
