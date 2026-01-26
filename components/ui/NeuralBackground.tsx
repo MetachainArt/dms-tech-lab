@@ -49,12 +49,15 @@ function NeuralBackgroundComponent({ className, particleCount: customParticleCou
         resize();
         window.addEventListener("resize", resize);
 
-        // Config - 모바일에서 파티클 수 줄이기
+        // Config - 모바일에서 대폭 최적화
         const isMobile = window.innerWidth < 768;
-        const particleCount = customParticleCount ?? (isMobile ? 60 : 120);
-        const connectDistance = 180;
+        const isLowPower = isMobile || navigator.hardwareConcurrency <= 4;
+        const particleCount = customParticleCount ?? (isLowPower ? 30 : 100);
+        const connectDistance = isLowPower ? 120 : 180;
         const mouseRadius = 250;
         const mouseAttractionRadius = 350;
+        const skipFrames = isLowPower ? 2 : 1; // 모바일에서 프레임 스킵
+        let frameCount = 0;
 
         const particles: Particle[] = [];
         const energyPulses: EnergyPulse[] = [];
@@ -127,7 +130,14 @@ function NeuralBackgroundComponent({ className, particleCount: customParticleCou
         };
 
         const animate = () => {
-            time += 0.016;
+            // 모바일에서 프레임 스킵으로 성능 향상
+            frameCount++;
+            if (frameCount % skipFrames !== 0) {
+                animId = requestAnimationFrame(animate);
+                return;
+            }
+
+            time += 0.016 * skipFrames;
 
             // Clear with slight trail for motion blur
             ctx.fillStyle = "rgba(5, 11, 27, 0.25)";
@@ -191,34 +201,45 @@ function NeuralBackgroundComponent({ className, particleCount: customParticleCou
                 const pulseFactor = 0.7 + 0.5 * Math.sin(p.pulsePhase);
                 const currentSize = p.baseSize * pulseFactor;
 
-                // Draw glow
-                const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, currentSize * 4);
-                gradient.addColorStop(0, p.color);
-                gradient.addColorStop(0.3, p.color + "80");
-                gradient.addColorStop(0.6, p.color + "20");
-                gradient.addColorStop(1, "transparent");
+                // 모바일에서는 간단한 렌더링
+                if (isLowPower) {
+                    // 간단한 원만 그리기
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, currentSize, 0, Math.PI * 2);
+                    ctx.fillStyle = p.color;
+                    ctx.globalAlpha = pulseFactor * 0.8;
+                    ctx.fill();
+                    ctx.globalAlpha = 1;
+                } else {
+                    // Draw glow
+                    const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, currentSize * 4);
+                    gradient.addColorStop(0, p.color);
+                    gradient.addColorStop(0.3, p.color + "80");
+                    gradient.addColorStop(0.6, p.color + "20");
+                    gradient.addColorStop(1, "transparent");
 
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, currentSize * 4, 0, Math.PI * 2);
-                ctx.fillStyle = gradient;
-                ctx.globalAlpha = pulseFactor * 0.4;
-                ctx.fill();
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, currentSize * 4, 0, Math.PI * 2);
+                    ctx.fillStyle = gradient;
+                    ctx.globalAlpha = pulseFactor * 0.4;
+                    ctx.fill();
 
-                // Draw core
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, currentSize, 0, Math.PI * 2);
-                ctx.fillStyle = p.color;
-                ctx.globalAlpha = pulseFactor;
-                ctx.fill();
+                    // Draw core
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, currentSize, 0, Math.PI * 2);
+                    ctx.fillStyle = p.color;
+                    ctx.globalAlpha = pulseFactor;
+                    ctx.fill();
 
-                // Bright center
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, currentSize * 0.4, 0, Math.PI * 2);
-                ctx.fillStyle = "#FFFFFF";
-                ctx.globalAlpha = pulseFactor * 0.8;
-                ctx.fill();
+                    // Bright center
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, currentSize * 0.4, 0, Math.PI * 2);
+                    ctx.fillStyle = "#FFFFFF";
+                    ctx.globalAlpha = pulseFactor * 0.8;
+                    ctx.fill();
 
-                ctx.globalAlpha = 1;
+                    ctx.globalAlpha = 1;
+                }
 
                 // Draw connections (성능 최적화: 이중 루프 범위 제한)
                 for (let j = i + 1; j < particles.length; j++) {
@@ -262,8 +283,15 @@ function NeuralBackgroundComponent({ className, particleCount: customParticleCou
                 }
             }
 
-            // Update and draw energy pulses
-            spawnEnergyPulse();
+            // Update and draw energy pulses (모바일에서 비활성화)
+            if (!isLowPower) {
+                spawnEnergyPulse();
+            }
+
+            // 모바일에서는 에너지 펄스 렌더링 스킵
+            if (isLowPower) {
+                energyPulses.length = 0;
+            }
 
             energyPulses.forEach((pulse, index) => {
                 pulse.progress += pulse.speed;
