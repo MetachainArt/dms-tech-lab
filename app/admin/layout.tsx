@@ -26,9 +26,15 @@ export default async function AdminLayout({
     session.user.email === process.env.ADMIN_EMAIL
   );
 
-  // Redirect to login if not authenticated or not admin
-  if (!session || !isAdmin) {
-    redirect("/auth/signin?callbackUrl=/admin/prompts");
+  console.log(`[AdminLayout] User: ${session?.user?.email}, Role: ${(session?.user as any)?.role}, IsAdmin: ${isAdmin}`);
+
+  // Redirect Logic
+  if (!session) {
+     // If not logged in at all, go to login
+     redirect("/auth/signin?callbackUrl=/admin/prompts");
+  } else if (!isAdmin) {
+     // If logged in BUT not admin, go to unauthorized page (stop the loop)
+     redirect("/admin/unauthorized");
   }
 
   return (
