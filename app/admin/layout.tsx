@@ -34,7 +34,7 @@ export default async function AdminLayout({
      redirect("/auth/signin?callbackUrl=/admin/prompts");
   } else if (!isAdmin) {
      // If logged in BUT not admin, go to unauthorized page (stop the loop)
-     redirect("/admin/unauthorized");
+     redirect("/unauthorized");
   }
 
   return (
