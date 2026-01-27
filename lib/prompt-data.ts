@@ -54,6 +54,14 @@ export const IMAGE_SUBCATEGORIES = [
     "예술", "공예", "패션", "건축", "음식", "사진", "배경", "로고", "기타"
 ];
 
+export const VIDEO_SUBCATEGORIES = [
+  "영화", "숏폼", "광고", "애니메이션", "모션그래픽", "드론", "다큐멘터리", "뮤직비디오", "기타"
+];
+
+export const VIBE_CODING_SUBCATEGORIES = [
+  "웹개발", "앱개발", "게임", "데이터", "알고리즘", "자동화", "UI/UX", "기타"
+];
+
 export const GENERATION_TOOLS = [
   "Midjourney", "Nanobanana", "GPT", "Zimage", "Grok", 
   "DALL-E 3", "Stable Diffusion", "Runway", "Pika", "Sora", 
