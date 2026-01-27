@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect } from "react";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { PromptCategory, PromptItem, IMAGE_SUBCATEGORIES, TEXT_SUBCATEGORIES, VIDEO_SUBCATEGORIES, VIBE_CODING_SUBCATEGORIES } from "@/lib/prompt-data";
 import PromptCard from "./PromptCard";
 import TextPromptDetail from "./text/TextPromptDetail";
-import { Search, Type, ImageIcon, Video, Code2, ArrowRight } from "lucide-react";
+import { Search, Type, ImageIcon, Video, Code2 } from "lucide-react";
 
 interface PromptContainerProps {
   initialPrompts: PromptItem[];

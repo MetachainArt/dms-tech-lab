@@ -27,7 +27,15 @@ const nextConfig: NextConfig = {
     optimizePackageImports: [
       "lucide-react",
       "framer-motion",
+      "@prisma/client",
+      "clsx",
+      "date-fns",
     ],
+  },
+
+  // 컴파일러 최적화
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
   },
 
   // Turbopack 설정 (Next.js 16 기본값)

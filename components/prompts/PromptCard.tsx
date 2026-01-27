@@ -1,7 +1,7 @@
 "use client";
 
 import { PromptItem } from "@/lib/prompt-data";
-import { Copy, Check, Hash, Image as ImageIcon, Play, Crown } from "lucide-react";
+import { Copy, Check, Hash } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -40,10 +40,11 @@ export default function PromptCard({ prompt, index, onSelect }: PromptCardProps)
             className="relative h-80 rounded-xl overflow-hidden cursor-pointer group border-2 border-white/20 hover:border-white/40 transition-all shadow-lg"
         >
             {/* Background Image */}
-            <Image 
-                src={prompt.image} 
-                alt={prompt.title} 
-                fill 
+            <Image
+                src={prompt.image}
+                alt={prompt.title}
+                fill
+                loading="lazy"
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
