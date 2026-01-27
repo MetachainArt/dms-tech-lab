@@ -42,7 +42,7 @@ export default async function AdminAutomationPage() {
                 </td>
               </tr>
             ) : (
-            {automations.map(automation => (
+              automations.map(automation => (
                 <tr key={automation.id} className="hover:bg-white/5 transition-colors group">
                   <td className="px-8 py-5">
                     <a href={`/admin/automation/${automation.id}`} className="block group-hover:text-neon-sky transition-colors">
@@ -66,7 +66,7 @@ export default async function AdminAutomationPage() {
                     {formatDate(automation.createdAt)}
                   </td>
                 </tr>
-              ))}
+              ))
           </tbody>
         </table>
       </div>
