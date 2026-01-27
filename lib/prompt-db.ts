@@ -1,11 +1,21 @@
 import { prisma } from "@/lib/prisma";
 import { PromptItem } from "@/lib/prompt-data";
+import { unstable_cache } from "next/cache";
+
+// Cached database query - revalidates every 60 seconds
+const getCachedPrompts = unstable_cache(
+  async () => {
+    return prisma.prompt.findMany({
+      orderBy: { createdAt: "desc" }
+    });
+  },
+  ["prompts-list"],
+  { revalidate: 60 }
+);
 
 export async function getPromptsFromDB(): Promise<PromptItem[]> {
   try {
-    const dbPrompts = await prisma.prompt.findMany({
-      orderBy: { createdAt: "desc" }
-    });
+    const dbPrompts = await getCachedPrompts();
 
     return dbPrompts.map(p => {
       const tips = p.tips || [];
