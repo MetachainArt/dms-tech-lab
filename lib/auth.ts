@@ -9,7 +9,7 @@ import { prisma } from "@/lib/prisma";
 export const authOptions: NextAuthOptions = {
   // TEMPORARILY DISABLED: adapter causes issues with CredentialsProvider
   // adapter: PrismaAdapter(prisma) as any,
-  debug: true, // Enable debug logging
+  debug: process.env.NODE_ENV === "development", // Only enable debug in development
   providers: [
     CredentialsProvider({
       name: "Admin Login",
@@ -46,13 +46,14 @@ export const authOptions: NextAuthOptions = {
       profile(profile) {
         // Kakao doesn't always provide email (requires business app verification)
         // Generate a fallback email using kakao ID if email is not available
-        const kakaoEmail = profile.kakao_account?.email || `kakao_${profile.id}@kakao.user`;
+        const kakaoId = profile.id?.toString() || `unknown_${Date.now()}`;
+        const kakaoEmail = profile.kakao_account?.email || `kakao_${kakaoId}@kakao.user`;
 
         return {
-          id: profile.id.toString(),
+          id: kakaoId,
           name: profile.kakao_account?.profile?.nickname || profile.properties?.nickname || "카카오 사용자",
           email: kakaoEmail,
-          image: profile.kakao_account?.profile?.profile_image_url || profile.properties?.profile_image,
+          image: profile.kakao_account?.profile?.profile_image_url || profile.properties?.profile_image || null,
         };
       },
     }),
@@ -68,12 +69,8 @@ export const authOptions: NextAuthOptions = {
     maxAge: 24 * 60 * 60, // 24 hours
   },
   secret: process.env.NEXTAUTH_SECRET,
-  // Use secure cookies only when NEXTAUTH_URL starts with https://
-  useSecureCookies: process.env.NEXTAUTH_URL?.startsWith('https://'),
   callbacks: {
     async jwt({ token, user }) {
-      console.log("JWT Callback - user:", user);
-      console.log("JWT Callback - token before:", token);
       if (user) {
         token.id = user.id;
         token.role = (user as any).role;
@@ -82,16 +79,13 @@ export const authOptions: NextAuthOptions = {
       if (token.email === process.env.ADMIN_EMAIL) {
         token.role = "admin";
       }
-      console.log("JWT Callback - token after:", token);
       return token;
     },
     async session({ session, token }) {
-      console.log("Session Callback - token:", token);
       if (session.user) {
         session.user.id = token.id as string;
         (session.user as any).role = token.role;
       }
-      console.log("Session Callback - session:", session);
       return session;
     },
     async redirect({ url, baseUrl }) {

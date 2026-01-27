@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Settings2, FileText, AppWindow } from "lucide-react";
-import NeuralBackground from "@/components/ui/NeuralBackground";
 
 // Service Data (Formerly Projects)
 // Service Data (Formerly Projects)
@@ -41,10 +40,9 @@ const services = [
 export default function ServicesPage() {
   return (
     <main className="w-full min-h-screen bg-[#050B1B] text-white font-poppins selection:bg-neon-sky selection:text-[#050B1B] pt-32 pb-20 relative">
-      <NeuralBackground />
-
       {/* Header Section */}
       <section className="max-w-7xl mx-auto px-6 mb-24 relative z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,209,255,0.1),transparent_70%)] -z-10" />
         <motion.div
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
@@ -54,9 +52,9 @@ export default function ServicesPage() {
                 <span className="h-[2px] w-12 bg-neon-sky" />
                 <span className="text-neon-sky font-semibold tracking-widest text-sm uppercase">OUR SERVICES</span>
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+            <h1 className="text-5xl md:text-6xl font-bold leading-tight drop-shadow-lg">
                 디지털 혁신을 위한<br />
-                <span className="text-neon-sky">맞춤형 솔루션.</span>
+                <span className="text-neon-sky drop-shadow-[0_0_20px_rgba(0,209,255,0.5)]">맞춤형 솔루션.</span>
             </h1>
         </motion.div>
       </section>

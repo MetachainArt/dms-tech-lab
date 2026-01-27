@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, Cpu, Code2, Database, Globe } from "lucide-react";
 import Link from "next/link";
-import NeuralBackground from "@/components/ui/NeuralBackground";
 
 // Curriculum Data
 const tracks = [
@@ -43,9 +42,6 @@ const tracks = [
 export default function EducationPage() {
   return (
     <main className="w-full min-h-screen bg-[#050B1B] text-white font-poppins selection:bg-neon-sky selection:text-[#050B1B] relative">
-      {/* Global Neural Background */}
-      <NeuralBackground />
-
       {/* 1. Hero Section */}
       <section className="relative w-full min-h-[60vh] flex flex-col justify-center px-6 overflow-hidden pt-32 z-10">
         <div className="max-w-7xl mx-auto w-full relative text-center md:text-left">

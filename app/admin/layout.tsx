@@ -2,7 +2,6 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-import NeuralBackground from "@/components/ui/NeuralBackground";
 
 // Disable caching to always check session
 export const dynamic = 'force-dynamic';
@@ -15,32 +14,19 @@ export default async function AdminLayout({
   // Server-side authentication check
   const session = await getServerSession(authOptions);
 
-  // Debug logging
-  console.log("Admin Layout - Session:", JSON.stringify(session, null, 2));
-  console.log("Admin Layout - ADMIN_EMAIL:", process.env.ADMIN_EMAIL);
-  console.log("Admin Layout - User email:", session?.user?.email);
-
   // Check if user is admin (by role OR by email matching ADMIN_EMAIL)
   const isAdmin = session?.user && (
     (session.user as any)?.role === "admin" ||
     session.user.email === process.env.ADMIN_EMAIL
   );
 
-  console.log("Admin Layout - isAdmin:", isAdmin);
-
   // Redirect to login if not authenticated or not admin
   if (!session || !isAdmin) {
-    console.log("Admin Layout - Redirecting to signin");
     redirect("/auth/signin");
   }
 
   return (
     <div className="flex h-screen bg-[#050B1B] text-white overflow-hidden relative font-poppins">
-      {/* Background Effect */}
-      <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
-         <NeuralBackground />
-      </div>
-
       {/* Admin Sidebar */}
       <aside className="w-64 backdrop-blur-xl bg-white/5 border-r border-white/10 relative z-20 flex flex-col">
         <div className="p-8">

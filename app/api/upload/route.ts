@@ -171,6 +171,6 @@ export async function POST(req: Request) {
     }, { headers: corsHeaders() });
   } catch (error) {
     console.error("Upload failed:", error);
-    return NextResponse.json({ error: "Upload failed." }, { status: 500, headers: corsHeaders() });
+    return NextResponse.json({ error: `Upload failed: ${error instanceof Error ? error.message : String(error)}` }, { status: 500, headers: corsHeaders() });
   }
 }

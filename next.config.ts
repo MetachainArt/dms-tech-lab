@@ -33,17 +33,17 @@ const nextConfig: NextConfig = {
   async headers() {
     const cspDirectives = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com",
+      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: https://images.unsplash.com https://www.google-analytics.com https://*.google.com",
+      "img-src 'self' data: blob: https://images.unsplash.com https://www.google-analytics.com https://*.google.com https://*.googleusercontent.com",
       "font-src 'self' data: https://fonts.gstatic.com https://fonts.googleapis.com",
-      "connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com",
+      "connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.supabase.co",
       "frame-src 'self' https://accounts.google.com https://kauth.kakao.com",
       "base-uri 'self'",
       "form-action 'self'",
       "object-src 'none'",
       "media-src 'self'",
-      "frame-ancestors 'none'",
+      "frame-ancestors 'self'",
       "worker-src 'self' blob:",
     ];
 

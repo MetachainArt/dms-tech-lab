@@ -1,8 +1,6 @@
-
 import { getPostBySlug, getAllPosts } from "@/lib/mdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { MDXComponents } from "@/components/mdx/MDXComponents";
-import NeuralBackground from "@/components/ui/NeuralBackground";
 import AuthorCard from "@/components/blog/AuthorCard";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
@@ -64,8 +62,6 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
   
   return (
     <main className="w-full min-h-screen bg-[#050B1B] text-white font-poppins selection:bg-neon-sky selection:text-[#050B1B]">
-      <NeuralBackground />
-      
       {/* Hero Section */}
       <section className="relative w-full h-[60vh] flex flex-col justify-end pb-20 px-6 overflow-hidden">
         <div className="absolute inset-0 z-0">

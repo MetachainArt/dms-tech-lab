@@ -28,9 +28,10 @@ interface EnergyPulse {
 interface NeuralBackgroundProps {
     className?: string;
     particleCount?: number;
+    simpleMode?: boolean;
 }
 
-function NeuralBackgroundComponent({ className, particleCount: customParticleCount }: NeuralBackgroundProps) {
+function NeuralBackgroundComponent({ className, particleCount: customParticleCount, simpleMode = true }: NeuralBackgroundProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
@@ -51,8 +52,8 @@ function NeuralBackgroundComponent({ className, particleCount: customParticleCou
 
         // Config - 모바일에서 대폭 최적화
         const isMobile = window.innerWidth < 768;
-        const isLowPower = isMobile || navigator.hardwareConcurrency <= 4;
-        const particleCount = customParticleCount ?? (isLowPower ? 30 : 100);
+        const isLowPower = simpleMode || isMobile || navigator.hardwareConcurrency <= 4;
+        const particleCount = customParticleCount ?? (simpleMode ? 50 : (isLowPower ? 30 : 100)); // Half particles in simpleMode
         const connectDistance = isLowPower ? 120 : 180;
         const mouseRadius = 250;
         const mouseAttractionRadius = 350;
@@ -201,13 +202,13 @@ function NeuralBackgroundComponent({ className, particleCount: customParticleCou
                 const pulseFactor = 0.7 + 0.5 * Math.sin(p.pulsePhase);
                 const currentSize = p.baseSize * pulseFactor;
 
-                // 모바일에서는 간단한 렌더링
+                // 모바일/최적화 모드에서는 간단한 렌더링
                 if (isLowPower) {
                     // 간단한 원만 그리기
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, currentSize, 0, Math.PI * 2);
                     ctx.fillStyle = p.color;
-                    ctx.globalAlpha = pulseFactor * 0.8;
+                    ctx.globalAlpha = pulseFactor * (simpleMode ? 0.6 : 0.8); // Slightly dimmer in simple mode
                     ctx.fill();
                     ctx.globalAlpha = 1;
                 } else {
@@ -266,17 +267,25 @@ function NeuralBackgroundComponent({ className, particleCount: customParticleCou
 
                         // Gradient line
                         const alpha = Math.min(1, opacity * lineBoost);
-                        const lineGradient = ctx.createLinearGradient(p.x, p.y, p2.x, p2.y);
-                        lineGradient.addColorStop(0, p.color);
-                        lineGradient.addColorStop(1, p2.color);
-
-                        ctx.globalAlpha = alpha;
-
+                        
                         ctx.beginPath();
                         ctx.moveTo(p.x, p.y);
                         ctx.lineTo(p2.x, p2.y);
-                        ctx.strokeStyle = lineGradient;
-                        ctx.lineWidth = 1 + (lineBoost - 1) * 0.5;
+                        
+                        if (simpleMode || isLowPower) {
+                            // 단순 모드: 단색 라인 (그라데이션 계산 생략)
+                            ctx.strokeStyle = p.color;
+                            ctx.globalAlpha = alpha * 0.6;
+                        } else {
+                            // 고품질: 그라데이션 라인
+                            const lineGradient = ctx.createLinearGradient(p.x, p.y, p2.x, p2.y);
+                            lineGradient.addColorStop(0, p.color);
+                            lineGradient.addColorStop(1, p2.color);
+                            ctx.strokeStyle = lineGradient;
+                            ctx.globalAlpha = alpha;
+                        }
+
+                        ctx.lineWidth = (simpleMode ? 0.5 : 1) + (lineBoost - 1) * 0.5;
                         ctx.stroke();
                         ctx.globalAlpha = 1;
                     }

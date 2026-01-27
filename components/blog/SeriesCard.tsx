@@ -33,14 +33,14 @@ export default function SeriesCard({
         <div className={`absolute left-0 top-0 bottom-0 w-3 rounded-l-[20px] bg-gradient-to-r from-white/20 to-transparent z-20 pointer-events-none`} />
         
         {/* Cover Image */}
-        <div className="absolute inset-0 rounded-[20px] overflow-hidden bg-[#0A1124] border border-white/10 group-hover:border-white/30 transition-colors">
+        <div className="absolute inset-0 rounded-[20px] overflow-hidden bg-[#0A1124] border-2 border-white/20 group-hover:border-white/40 transition-colors shadow-lg">
           <img
             src={coverImage}
             alt={title}
-            className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
+            className="w-full h-full object-cover opacity-70 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700"
           />
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050B1B]/60 to-[#050B1B] z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050B1B]/70 to-[#050B1B]/90 z-10" />
         </div>
 
         {/* Content */}
@@ -48,7 +48,7 @@ export default function SeriesCard({
             {/* Top Badge */}
             <div className="absolute top-6 left-6 flex flex-wrap gap-2">
                 {tags.map((tag, i) => (
-                    <span key={i} className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-white/80">
+                    <span key={i} className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white shadow-md">
                         {tag}
                     </span>
                 ))}
@@ -69,7 +69,7 @@ export default function SeriesCard({
                     {title}
                 </h3>
                 <div className="h-0 group-hover:h-auto overflow-hidden transition-all duration-500 opacity-0 group-hover:opacity-100">
-                    <p className="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
+                    <p className="text-gray-300 text-sm leading-relaxed mb-4 line-clamp-3">
                         {description}
                     </p>
                     <div className="flex items-center text-white font-semibold text-sm">

@@ -166,7 +166,7 @@ export default function NewPromptPage() {
                                     if(json.success) {
                                         setFormData(prev => ({ ...prev, image: json.url }));
                                     } else {
-                                        alert("Upload failed");
+                                        alert(`Upload failed: ${json.error || 'Unknown error'}`);
                                     }
                                 } catch (err) {
                                     console.error(err);

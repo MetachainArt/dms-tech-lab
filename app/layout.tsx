@@ -11,7 +11,7 @@ import { SITE_CONFIG } from "@/lib/seo";
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "900"],
+  weight: ["400", "500", "600", "700"], // 필요한 weight만 로드 (300, 900 제거)
   variable: "--font-poppins",
   display: "swap",
   preload: true,
@@ -37,15 +37,26 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
-        {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-BYBW33N77V" />
+        {/* Google Analytics - 지연 로드 */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-BYBW33N77V');
+              // Google Analytics 지연 로드
+              window.addEventListener('load', function() {
+                setTimeout(function() {
+                  var script = document.createElement('script');
+                  script.async = true;
+                  script.src = 'https://www.googletagmanager.com/gtag/js?id=G-BYBW33N77V';
+                  document.head.appendChild(script);
+                  
+                  script.onload = function() {
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', 'G-BYBW33N77V');
+                  };
+                }, 1000); // 페이지 로드 후 1초 지연
+              });
             `,
           }}
         />

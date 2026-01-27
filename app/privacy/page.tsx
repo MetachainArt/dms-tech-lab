@@ -3,14 +3,11 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, Shield } from "lucide-react";
-import NeuralBackground from "@/components/ui/NeuralBackground";
 
 export default function PrivacyPage() {
   return (
     <main className="w-full min-h-screen bg-[#050B1B] text-white font-poppins selection:bg-neon-sky selection:text-[#050B1B] relative">
-      <NeuralBackground />
-
-      <div className="relative z-10 max-w-4xl mx-auto px-6 pt-32 pb-20">
+      <div className="max-w-4xl mx-auto px-6 pt-32 pb-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

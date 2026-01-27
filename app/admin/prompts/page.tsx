@@ -3,7 +3,9 @@ import { Plus } from "lucide-react";
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
 
-// Make this a Server Component
+// Force dynamic rendering to always check session
+export const dynamic = 'force-dynamic';
+
 export default async function AdminPromptsPage() {
   // Fetch prompts from DB
   const prompts = await prisma.prompt.findMany({

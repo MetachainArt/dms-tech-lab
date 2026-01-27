@@ -1,10 +1,8 @@
 import dynamic from "next/dynamic";
+import Hero from "@/components/sections/Hero";
 
-// 동적 import로 코드 스플리팅
-const Hero = dynamic(() => import("@/components/sections/Hero"), {
-  loading: () => <div className="h-screen w-full bg-[#050B1B]" aria-label="로딩 중" />,
-});
-
+// Hero는 초기 로딩 필수이므로 정적 import
+// 나머지 섹션은 동적 import로 코드 스플리팅
 const Services = dynamic(() => import("@/components/sections/Services"), {
   loading: () => <div className="h-[50vh] w-full bg-[#050B1B] animate-pulse" aria-label="로딩 중" />,
 });

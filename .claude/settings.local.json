@@ -27,7 +27,8 @@
       "Bash(start https://search.google.com/search-console)",
       "Bash(start https://searchadvisor.naver.com/)",
       "Bash(start https://www.bing.com/webmasters)",
-      "Bash(start https://searchadvisor.naver.com/console/board?siteUrl=https://dmssolution.co.kr)"
+      "Bash(start https://searchadvisor.naver.com/console/board?siteUrl=https://dmssolution.co.kr)",
+      "Bash(node -e:*)"
     ]
   }
 }

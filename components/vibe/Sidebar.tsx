@@ -23,23 +23,23 @@ export default function Sidebar({ selectedCategory, onSelectCategory }: SidebarP
               key={category}
               onClick={() => onSelectCategory(category)}
               className={cn(
-                "w-full text-left px-4 py-3 rounded-xl transition-all duration-300 flex items-center justify-between group",
+                "w-full text-left px-4 py-3 rounded-xl transition-all duration-300 flex items-center justify-between group backdrop-blur-sm",
                 selectedCategory === category
-                  ? "bg-gradient-to-r from-neon-sky/20 to-transparent text-white font-bold border-l-4 border-neon-sky"
-                  : "text-gray-400 hover:text-white hover:bg-white/5 border-l-4 border-transparent"
+                  ? "bg-gradient-to-r from-neon-sky/30 to-neon-sky/10 text-white font-bold border-l-4 border-neon-sky shadow-lg shadow-neon-sky/20"
+                  : "text-gray-300 hover:text-white hover:bg-white/10 border-l-4 border-transparent"
               )}
             >
               <span className="text-lg tracking-wide">{category}</span>
               {selectedCategory === category && (
-                 <span className="w-2 h-2 rounded-full bg-neon-sky animate-pulse" />
+                 <span className="w-2 h-2 rounded-full bg-neon-sky animate-pulse shadow-sm shadow-neon-sky" />
               )}
             </button>
           ))}
         </nav>
 
         {/* Decorative Element */}
-        <div className="mt-12 p-6 rounded-2xl bg-white/5 border border-white/5 text-center">
-            <p className="text-sm text-gray-500 italic">
+        <div className="mt-12 p-6 rounded-2xl bg-white/10 backdrop-blur-sm border-2 border-white/20 text-center shadow-lg">
+            <p className="text-sm text-gray-300 italic font-medium">
                 "Code with Vibe,<br/>Create with Soul."
             </p>
         </div>

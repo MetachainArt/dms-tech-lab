@@ -72,19 +72,23 @@ model Prompt {
   subcategory String?
   tags        String[]
   author      String   @default("DMS Lab")
-  
+
   useCase     String?  @db.Text
   exampleOutput String? @db.Text
   tips        String[]
-  
+
   isPremium   Boolean  @default(false)
   viewCount   Int      @default(0)
   likeCount   Int      @default(0)
-  
+
   image       String?  @db.Text
-  
+
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
+  @@index([category])
+  @@index([createdAt])
+  @@index([author])
 }
 
 model Automation {
@@ -99,6 +103,9 @@ model Automation {
 
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
+  @@index([category])
+  @@index([createdAt])
 }
 
 model LoginHistory {
@@ -111,4 +118,7 @@ model LoginHistory {
   ip        String?
   userAgent String?
   createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([createdAt])
 }
