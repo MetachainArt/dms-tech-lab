@@ -40,10 +40,10 @@ export default function TextPromptDetail({ prompt, onBack }: TextPromptDetailPro
                 </span>
             )}
         </div>
-        <h1 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+        <h1 className="text-3xl md:text-4xl font-bold text-white mb-2 leading-tight">
             {prompt.title}
         </h1>
-        <p className="text-xl text-gray-400 leading-relaxed max-w-2xl">
+        <p className="text-base text-gray-400 leading-relaxed max-w-3xl">
             {prompt.description}
         </p>
       </div>
