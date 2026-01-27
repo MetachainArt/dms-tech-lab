@@ -66,7 +66,7 @@ export default async function AdminAutomationPage() {
                     {formatDate(automation.createdAt)}
                   </td>
                 </tr>
-              ))
+              )))}
           </tbody>
         </table>
       </div>
