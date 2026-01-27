@@ -5,10 +5,12 @@ import Hero from "@/components/sections/Hero";
 // 나머지 섹션은 동적 import로 코드 스플리팅
 const Services = dynamic(() => import("@/components/sections/Services"), {
   loading: () => <div className="h-[50vh] w-full bg-[#050B1B] animate-pulse" aria-label="로딩 중" />,
+  ssr: false, // Client-side only rendering for better TTI
 });
 
 const Apps = dynamic(() => import("@/components/sections/Apps"), {
   loading: () => <div className="h-[50vh] w-full bg-[#050B1B] animate-pulse" aria-label="로딩 중" />,
+  ssr: false,
 });
 
 const FounderProfile = dynamic(() => import("@/components/sections/FounderProfile"), {

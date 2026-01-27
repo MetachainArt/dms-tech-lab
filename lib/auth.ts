@@ -63,11 +63,22 @@ export const authOptions: NextAuthOptions = {
   },
   session: {
     strategy: "jwt",
-    maxAge: 7 * 24 * 60 * 60, // 7 days (일반 사용자)
-    updateAge: 24 * 60 * 60, // 24 hours (세션 갱신 주기)
+    maxAge: 2 * 60 * 60, // 2 hours (Security improvement)
+    updateAge: 30 * 60, // 30 minutes
   },
   jwt: {
-    maxAge: 7 * 24 * 60 * 60, // 7 days
+    maxAge: 2 * 60 * 60, // 2 hours
+  },
+  cookies: {
+    sessionToken: {
+      name: `next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: process.env.NODE_ENV === 'production',
+      },
+    },
   },
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {

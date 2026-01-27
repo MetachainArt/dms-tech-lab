@@ -53,12 +53,20 @@ function NeuralBackgroundComponent({ className, particleCount: customParticleCou
         // Config - 모바일에서 대폭 최적화
         const isMobile = window.innerWidth < 768;
         const isLowPower = simpleMode || isMobile || navigator.hardwareConcurrency <= 4;
-        const particleCount = customParticleCount ?? (simpleMode ? 50 : (isLowPower ? 30 : 100)); // Half particles in simpleMode
+        // Reduced particle count for performance
+        const particleCount = customParticleCount ?? (simpleMode ? 30 : (isLowPower ? 20 : 60)); 
         const connectDistance = isLowPower ? 120 : 180;
         const mouseRadius = 250;
         const mouseAttractionRadius = 350;
-        const skipFrames = isLowPower ? 2 : 1; // 모바일에서 프레임 스킵
+        const skipFrames = isLowPower ? 2 : 1; 
         let frameCount = 0;
+
+        // Intersection Observer logic
+        let isVisible = true;
+        const observer = new IntersectionObserver(([entry]) => {
+            isVisible = entry.isIntersecting;
+        });
+        if (canvas) observer.observe(canvas);
 
         const particles: Particle[] = [];
         const energyPulses: EnergyPulse[] = [];
@@ -135,6 +143,12 @@ function NeuralBackgroundComponent({ className, particleCount: customParticleCou
             frameCount++;
             if (frameCount % skipFrames !== 0) {
                 animId = requestAnimationFrame(animate);
+                return;
+            }
+
+            // Optimization: Skip rendering if not visible
+            if (!isVisible) {
+                animId = requestAnimationFrame(animate); 
                 return;
             }
 
@@ -363,6 +377,7 @@ function NeuralBackgroundComponent({ className, particleCount: customParticleCou
             window.removeEventListener("resize", resize);
             window.removeEventListener("mousemove", onMouseMove);
             canvas.removeEventListener("mouseleave", onMouseLeave);
+            observer.disconnect();
         };
     }, []);
 
