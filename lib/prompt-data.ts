@@ -43,6 +43,11 @@ export const TEXT_SUBCATEGORIES = [
   { id: "Education", name: "교육", description: "내 몸값 올리는 가장 똑똑한 공부법", count: 546, icon: GraduationCap },
 ];
 
+export const IMAGE_SUBCATEGORIES = [
+    "3D", "일러스트", "사물", "동물", "인물", "캐릭터", "게임", "디자인", 
+    "예술", "공예", "패션", "건축", "음식", "사진", "배경", "로고", "기타"
+];
+
 export const PROMPTS: PromptItem[] = [
   // Text Prompts - Marketing
   {

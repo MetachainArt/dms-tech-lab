@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, Save, Loader2, Image as ImageIcon } from "lucide-react";
 import Link from "next/link";
+import { IMAGE_SUBCATEGORIES } from "@/lib/prompt-data";
 
 export default function NewPromptPage() {
   const router = useRouter();
@@ -104,13 +105,31 @@ export default function NewPromptPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-3">
                     <label className="text-sm font-medium text-white/70">상세분류 (Subcategory)</label>
-                    <input 
-                        type="text" 
-                        className="w-full p-4 bg-black/20 border border-white/10 rounded-xl text-white placeholder:text-white/20 focus:outline-none focus:border-neon-sky/50 transition-all"
-                        placeholder="예: Marketing, Business, SEO"
-                        value={formData.subcategory}
-                        onChange={(e) => setFormData({...formData, subcategory: e.target.value})}
-                    />
+                    {formData.category === "Image" ? (
+                        <div className="relative">
+                            <select 
+                                className="w-full p-4 bg-black/20 border border-white/10 rounded-xl text-white outline-none appearance-none cursor-pointer hover:bg-white/5 transition-colors font-medium"
+                                value={formData.subcategory}
+                                onChange={(e) => setFormData({...formData, subcategory: e.target.value})}
+                            >
+                                <option value="" className="bg-gray-800">선택 안함</option>
+                                {IMAGE_SUBCATEGORIES.map(sub => (
+                                    <option key={sub} value={sub} className="bg-gray-800">{sub}</option>
+                                ))}
+                            </select>
+                            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-white/40">
+                                ▼
+                            </div>
+                        </div>
+                    ) : (
+                        <input 
+                            type="text" 
+                            className="w-full p-4 bg-black/20 border border-white/10 rounded-xl text-white placeholder:text-white/20 focus:outline-none focus:border-neon-sky/50 transition-all"
+                            placeholder="예: Marketing, Business, SEO"
+                            value={formData.subcategory}
+                            onChange={(e) => setFormData({...formData, subcategory: e.target.value})}
+                        />
+                    )}
                 </div>
                 <div className="space-y-3">
                     <label className="text-sm font-medium text-white/70">태그 (Tags)</label>

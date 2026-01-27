@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { PromptCategory, PromptItem } from "@/lib/prompt-data";
+import { PromptCategory, PromptItem, IMAGE_SUBCATEGORIES } from "@/lib/prompt-data";
 import PromptSidebar from "./PromptSidebar";
 import PromptCard from "./PromptCard";
 import TextCategoryGrid from "./text/TextCategoryGrid";
@@ -9,6 +9,7 @@ import TextPromptList from "./text/TextPromptList";
 import TextPromptDetail from "./text/TextPromptDetail";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 type ViewStage = "categories" | "list" | "detail";
 
@@ -20,7 +21,7 @@ export default function PromptContainer({ initialPrompts }: PromptContainerProps
   const [selectedCategory, setSelectedCategory] = useState<PromptCategory>("All");
   const [searchQuery, setSearchQuery] = useState("");
   
-  // Text Prompt Navigation State
+  // Text & Image Prompt Navigation State
   const [viewState, setViewState] = useState<{ 
     stage: ViewStage; 
     subCategory?: string; 
@@ -29,15 +30,20 @@ export default function PromptContainer({ initialPrompts }: PromptContainerProps
 
   // Reset drill-down when main category changes
   useEffect(() => {
-    setViewState({ stage: "categories" });
+    setViewState({ stage: "categories", subCategory: undefined });
   }, [selectedCategory]);
 
   const filteredPrompts = initialPrompts.filter(p => {
       const matchesCategory = selectedCategory === "All" || p.category === selectedCategory;
+      const matchesSubCategory = !viewState.subCategory || p.subcategory === viewState.subCategory;
       const matchesSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                             p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
                             p.promptContent.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesCategory && matchesSearch;
+      
+      // For Text, subcategory filtering happens in TextPromptList, not here in the main filter if stage is categories
+      if (selectedCategory === "Text") return matchesCategory && matchesSearch;
+
+      return matchesCategory && matchesSubCategory && matchesSearch;
   });
 
   // State for non-text prompt details (Image, Video, etc.)
