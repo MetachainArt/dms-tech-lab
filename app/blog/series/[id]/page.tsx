@@ -1,5 +1,4 @@
 
-import NeuralBackground from "@/components/ui/NeuralBackground";
 import SeriesPostList from "@/components/blog/SeriesPostList";
 import SeriesHeader from "@/components/blog/SeriesHeader";
 import Link from "next/link";
@@ -42,7 +41,6 @@ export default async function SeriesDetailPage(props: { params: Promise<{ id: st
 
   return (
     <main className="w-full min-h-screen bg-[#050B1B] text-white font-poppins selection:bg-neon-sky selection:text-[#050B1B] relative">
-      <NeuralBackground />
 
       {/* Header Section (Client Component for Animations) */}
       <div className="relative z-10">

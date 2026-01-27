@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, Clock, Calendar, Share2, Bookmark } from "lucide-react";
 import Link from "next/link";
-import NeuralBackground from "@/components/ui/NeuralBackground";
 
 export default function N8NMasterclassPage() {
   return (

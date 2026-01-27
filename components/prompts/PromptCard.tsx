@@ -8,10 +8,11 @@ import Image from "next/image";
 
 interface PromptCardProps {
   prompt: PromptItem;
-  onSelect?: () => void;
+  index?: number;
+  onSelect?: (prompt: PromptItem) => void;
 }
 
-export default function PromptCard({ prompt, onSelect }: PromptCardProps) {
+export default function PromptCard({ prompt, index, onSelect }: PromptCardProps) {
   const [copied, setCopied] = useState(false);
   const [isRevealed, setIsRevealed] = useState(false);
 
@@ -31,7 +32,7 @@ export default function PromptCard({ prompt, onSelect }: PromptCardProps) {
             onClick={() => {
               // onSelect가 있으면 상세 화면으로 이동, 없으면 토글
               if (onSelect) {
-                onSelect();
+                onSelect(prompt);
               } else {
                 setIsRevealed(!isRevealed);
               }
@@ -116,7 +117,7 @@ export default function PromptCard({ prompt, onSelect }: PromptCardProps) {
   // Text/Code Card Style (Standard) - 이미지가 없을 때
   return (
     <div 
-        onClick={() => onSelect && onSelect()}
+        onClick={() => onSelect && onSelect(prompt)}
         className="h-full bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-xl border-2 border-white/20 hover:border-neon-purple/50 transition-all duration-300 flex flex-col group overflow-hidden relative p-6 shadow-lg cursor-pointer"
     >
             {/* Background Pattern */}

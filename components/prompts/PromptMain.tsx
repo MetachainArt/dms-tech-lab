@@ -3,20 +3,27 @@
 import { useState, useEffect } from "react";
 import { PromptCategory, PromptItem, IMAGE_SUBCATEGORIES, TEXT_SUBCATEGORIES, VIDEO_SUBCATEGORIES, VIBE_CODING_SUBCATEGORIES } from "@/lib/prompt-data";
 import PromptCard from "./PromptCard";
-import PromptDetail from "./text/TextPromptDetail";
 import TextPromptDetail from "./text/TextPromptDetail";
-import { cn } from "@/lib/utils";
-
-type ViewStage = "categories" | "list" | "detail";
+import { Search, Type, ImageIcon, Video, Code2, ArrowRight } from "lucide-react";
 
 interface PromptContainerProps {
   initialPrompts: PromptItem[];
 }
 
+// Category icons mapping
+const categoryIcons: Record<PromptCategory, React.ReactNode> = {
+  "All": <Type className="w-4 h-4" />,
+  "Text": <Type className="w-4 h-4" />,
+  "Image": <ImageIcon className="w-4 h-4" />,
+  "Video": <Video className="w-4 h-4" />,
+  "Vibe Coding": <Code2 className="w-4 h-4" />,
+};
+
 export default function PromptContainer({ initialPrompts }: PromptContainerProps) {
   const [selectedCategory, setSelectedCategory] = useState<PromptCategory>("All");
   const [subCategory, setSubCategory] = useState<string | null>(null);
-  
+  const [searchQuery, setSearchQuery] = useState("");
+
   // Detail States
   const [selectedVisualPrompt, setSelectedVisualPrompt] = useState<PromptItem | null>(null);
   const [selectedTextPrompt, setSelectedTextPrompt] = useState<PromptItem | null>(null);
@@ -28,143 +35,213 @@ export default function PromptContainer({ initialPrompts }: PromptContainerProps
 
   // Filter Prompts
   const filteredPrompts = initialPrompts.filter(p => {
-      // 1. Category Filter
-      const matchesCategory = selectedCategory === "All" || p.category === selectedCategory;
-      
-      // 2. Subcategory Filter
-      // Note: Text subcategories might use ID or Name, we should check both or standardize.
-      // In the data, Text subs have English IDs (e.g. "writing"). The prompt data should have "writing".
-      const matchesSubCategory = !subCategory || p.subcategory === subCategory;
-      
-      return matchesCategory && matchesSubCategory;
+    const matchesCategory = selectedCategory === "All" || p.category === selectedCategory;
+    const matchesSubCategory = !subCategory || p.subcategory === subCategory;
+    const matchesSearch = !searchQuery ||
+      p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (p.tags && p.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())));
+
+    return matchesCategory && matchesSubCategory && matchesSearch;
   });
 
   const categories: PromptCategory[] = ["All", "Text", "Image", "Video", "Vibe Coding"];
 
-  // Determine available subcategories based on active category
-  let activeSubCategories: string[] | { id: string; name: string }[] = [];
-  if (selectedCategory === "Image") activeSubCategories = IMAGE_SUBCATEGORIES;
-  else if (selectedCategory === "Video") activeSubCategories = VIDEO_SUBCATEGORIES;
-  else if (selectedCategory === "Vibe Coding") activeSubCategories = VIBE_CODING_SUBCATEGORIES;
-  else if (selectedCategory === "Text") activeSubCategories = TEXT_SUBCATEGORIES;
+  // Check if we should show subcategory cards (for Text category without subcategory selected)
+  const showSubcategoryCards = selectedCategory === "Text" && !subCategory && !searchQuery;
 
   return (
-    <div className="space-y-8">
-        
-        {/* Category Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
-            {categories.map((category) => {
-                const isSelected = selectedCategory === category;
-                return (
-                    <button
-                        key={category}
-                        onClick={() => setSelectedCategory(category)}
-                        className={`
-                            relative px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300
-                            ${isSelected 
-                                ? "bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.3)] scale-105" 
-                                : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white"
-                            }
-                        `}
-                    >
-                        {category}
-                    </button>
-                );
-            })}
+    <div className="flex flex-col lg:flex-row gap-8">
+
+      {/* Left Sidebar */}
+      <aside className="lg:w-56 flex-shrink-0">
+        <h3 className="text-neon-sky font-bold text-lg mb-4">카테고리</h3>
+        <nav className="space-y-1">
+          {categories.map((category) => {
+            const isSelected = selectedCategory === category;
+            return (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`
+                  w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200
+                  ${isSelected
+                    ? "bg-neon-sky/20 text-neon-sky border-l-2 border-neon-sky"
+                    : "text-gray-400 hover:bg-white/5 hover:text-white"
+                  }
+                `}
+              >
+                {categoryIcons[category]}
+                <span>{category}</span>
+                {isSelected && (
+                  <span className="ml-auto w-2 h-2 rounded-full bg-neon-sky" />
+                )}
+              </button>
+            );
+          })}
+        </nav>
+      </aside>
+
+      {/* Right Content */}
+      <div className="flex-1 min-w-0">
+        {/* Search Bar */}
+        <div className="relative mb-6">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
+          <input
+            type="text"
+            placeholder="Search prompts..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-12 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-neon-sky/50 focus:bg-white/10 transition-all"
+          />
         </div>
-        
-        {/* Subcategory Filter Buttons (Unified for ALL categories) */}
-        {activeSubCategories.length > 0 && (
-             <div className="relative group">
-                <div className="flex flex-wrap gap-2 justify-center max-w-5xl mx-auto px-4 py-6 bg-[#050B1B]/50 backdrop-blur-xl rounded-3xl border border-white/5">
-                    <button
-                        onClick={() => setSubCategory(null)}
-                        className={`
-                            px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 border
-                            ${!subCategory 
-                                ? "bg-neon-sky text-[#050B1B] border-neon-sky shadow-[0_0_15px_rgba(0,240,255,0.3)]" 
-                                : "bg-white/5 text-gray-400 border-transparent hover:bg-white/10 hover:text-white"
-                            }
-                        `}
-                    >
-                        전체 (All)
-                    </button>
-                    {activeSubCategories.map((sub: any) => {
-                        // Handle both string arrays and object arrays (for Text)
-                        const subName = typeof sub === 'string' ? sub : sub.name;
-                        const subId = typeof sub === 'string' ? sub : sub.id;
-                        
-                        const isActive = subCategory === subId;
-                        return (
-                            <button
-                                key={subId}
-                                onClick={() => setSubCategory(subId)}
-                                className={`
-                                    px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 border
-                                    ${isActive 
-                                        ? "bg-white text-black border-white shadow-[0_0_15px_rgba(255,255,255,0.15)] scale-105" 
-                                        : "bg-white/5 text-gray-400 border-white/5 hover:bg-white/10 hover:text-white hover:border-white/20"
-                                    }
-                                `}
-                            >
-                                {subName}
-                            </button>
-                        );
-                    })}
-                </div>
-            </div>
-        )}
 
-      {/* Prompts Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
-        {filteredPrompts.map((prompt, idx) => (
-             <PromptCard
-                key={prompt.id}
-                prompt={prompt}
-                onSelect={() => {
-                    // Decide which detail view to show based on category or content
-                    if (prompt.category === "Text" || prompt.category === "Vibe Coding") {
-                        setSelectedTextPrompt(prompt);
-                    } else {
-                        setSelectedVisualPrompt(prompt);
+        {/* Show Subcategory Cards for Text */}
+        {showSubcategoryCards ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+            {TEXT_SUBCATEGORIES.map((sub) => {
+              const IconComponent = sub.icon;
+              return (
+                <button
+                  key={sub.id}
+                  onClick={() => setSubCategory(sub.id)}
+                  className="group p-5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-neon-sky/30 rounded-2xl text-left transition-all duration-300"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-neon-sky/20 flex items-center justify-center">
+                      <IconComponent className="w-6 h-6 text-neon-sky" />
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-neon-sky group-hover:translate-x-1 transition-all" />
+                  </div>
+                  <h3 className="text-white font-bold text-lg mb-1">{sub.name}</h3>
+                  <p className="text-gray-400 text-sm mb-3">{sub.description}</p>
+                  <p className="text-gray-500 text-xs">{sub.count}개 프롬프트</p>
+                </button>
+              );
+            })}
+          </div>
+        ) : (
+          <>
+            {/* Header with back button if subcategory selected */}
+            <div className="mb-6">
+              {subCategory && (
+                <button
+                  onClick={() => setSubCategory(null)}
+                  className="text-gray-400 hover:text-white text-sm mb-2 flex items-center gap-1"
+                >
+                  ← 카테고리로 돌아가기
+                </button>
+              )}
+              <h2 className="text-2xl font-bold text-white">
+                {subCategory
+                  ? TEXT_SUBCATEGORIES.find(s => s.id === subCategory)?.name || "Prompt Collection"
+                  : "Prompt Collection"
+                }
+              </h2>
+              <p className="text-neon-sky text-sm">{filteredPrompts.length} prompts available</p>
+            </div>
+
+            {/* Subcategory Filter Pills (for Image, Video, Vibe Coding) */}
+            {selectedCategory !== "Text" && selectedCategory !== "All" && (
+              <div className="flex flex-wrap gap-2 mb-6">
+                <button
+                  onClick={() => setSubCategory(null)}
+                  className={`
+                    px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200
+                    ${!subCategory
+                      ? "bg-neon-sky text-[#050B1B]"
+                      : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white"
                     }
-                }}
-            />
-        ))}
+                  `}
+                >
+                  전체
+                </button>
+                {(selectedCategory === "Image" ? IMAGE_SUBCATEGORIES :
+                  selectedCategory === "Video" ? VIDEO_SUBCATEGORIES :
+                  selectedCategory === "Vibe Coding" ? VIBE_CODING_SUBCATEGORIES : []
+                ).map((sub: string) => {
+                  const isActive = subCategory === sub;
+                  return (
+                    <button
+                      key={sub}
+                      onClick={() => setSubCategory(sub)}
+                      className={`
+                        px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200
+                        ${isActive
+                          ? "bg-white text-black"
+                          : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white"
+                        }
+                      `}
+                    >
+                      {sub}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
 
-        {filteredPrompts.length === 0 && (
-            <div className="col-span-full py-20 text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/5 mb-4">
+            {/* Prompts Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+              {filteredPrompts.map((prompt) => (
+                <PromptCard
+                  key={prompt.id}
+                  prompt={prompt}
+                  onSelect={(p) => {
+                    if (prompt.category === "Text" || prompt.category === "Vibe Coding") {
+                      setSelectedTextPrompt(p);
+                    } else {
+                      setSelectedVisualPrompt(p);
+                    }
+                  }}
+                />
+              ))}
+
+              {filteredPrompts.length === 0 && (
+                <div className="col-span-full py-20 text-center">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/5 mb-4">
                     <span className="text-2xl text-white/20">?</span>
+                  </div>
+                  <p className="text-white/40">해당하는 프롬프트가 없습니다.</p>
                 </div>
-                <p className="text-white/40">해당하는 프롬프트가 없습니다.</p>
+              )}
             </div>
+          </>
         )}
       </div>
 
       {/* Visual Prompt Detail Modal (Image / Video) */}
       {selectedVisualPrompt && (
-        <PromptDetail
-          prompt={selectedVisualPrompt}
-          onBack={() => setSelectedVisualPrompt(null)}
-        />
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/90 backdrop-blur-md overflow-y-auto">
+             <div className="relative w-full max-w-5xl my-auto">
+                <TextPromptDetail
+                  prompt={selectedVisualPrompt}
+                  onBack={() => setSelectedVisualPrompt(null)}
+                />
+                <button
+                    onClick={() => setSelectedVisualPrompt(null)}
+                    className="absolute -top-12 right-0 text-white/50 hover:text-white transition-colors"
+                >
+                    닫기 [ESC]
+                </button>
+             </div>
+        </div>
       )}
-      
+
       {/* Text Prompt Detail Modal (Text / Vibe Coding) */}
       {selectedTextPrompt && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/90 backdrop-blur-md overflow-y-auto">
-             <div className="relative w-full max-w-5xl my-auto">
-                 <TextPromptDetail 
-                    prompt={selectedTextPrompt}
-                    onBack={() => setSelectedTextPrompt(null)}
-                 />
-                 <button 
-                    onClick={() => setSelectedTextPrompt(null)}
-                    className="absolute -top-12 right-0 text-white/50 hover:text-white transition-colors"
-                 >
-                    닫기 [ESC]
-                 </button>
-             </div>
+          <div className="relative w-full max-w-5xl my-auto">
+            <TextPromptDetail
+              prompt={selectedTextPrompt}
+              onBack={() => setSelectedTextPrompt(null)}
+            />
+            <button
+              onClick={() => setSelectedTextPrompt(null)}
+              className="absolute -top-12 right-0 text-white/50 hover:text-white transition-colors"
+            >
+              닫기 [ESC]
+            </button>
+          </div>
         </div>
       )}
     </div>
