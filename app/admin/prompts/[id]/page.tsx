@@ -26,6 +26,23 @@ export default function EditPromptPage({ params }: { params: Promise<{ id: strin
     exampleOutput: "",
     tips: ""
   });
+  
+  const [selectedTool, setSelectedTool] = useState("");
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  // Handle Tool Change: Sync with Tags
+  useEffect(() => {
+    if (!isInitialized || !selectedTool) return;
+
+    const currentTags = formData.tags.split(",").map(t => t.trim()).filter(Boolean);
+    const cleanTags = currentTags.filter(t => !GENERATION_TOOLS.includes(t));
+    cleanTags.push(selectedTool);
+    
+    setFormData(prev => ({
+        ...prev,
+        tags: cleanTags.join(", ")
+    }));
+  }, [selectedTool]);
 
   // Fetch data on mount
   useEffect(() => {
@@ -55,6 +72,13 @@ export default function EditPromptPage({ params }: { params: Promise<{ id: strin
             exampleOutput: data.exampleOutput || "",
             tips: Array.isArray(data.tips) ? data.tips.join("\n") : ""
         });
+
+        // Extract tool from tags
+        const tools = (data.tags || []).filter((t: string) => GENERATION_TOOLS.includes(t));
+        if (tools.length > 0) {
+            setSelectedTool(tools[0]);
+        }
+        setIsInitialized(true);
       } catch (error) {
         console.error("Error fetching prompt:", error);
         alert("Failed to load prompt data");

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, Save, Loader2, Image as ImageIcon } from "lucide-react";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import { IMAGE_SUBCATEGORIES, TEXT_SUBCATEGORIES, GENERATION_TOOLS } from "@/lib
 export default function NewPromptPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [selectedTool, setSelectedTool] = useState("");
   const [formData, setFormData] = useState({
     title: "",
     category: "Text",
@@ -22,6 +23,26 @@ export default function NewPromptPage() {
     exampleOutput: "",
     tips: "" // 입력받을 땐 문자열로 받고, 전송 시 배열로 변환
   });
+
+  // Handle Tool Change: Sync with Tags
+  useEffect(() => {
+    if (!selectedTool) return;
+
+    // Get current tags array
+    const currentTags = formData.tags.split(",").map(t => t.trim()).filter(Boolean);
+    
+    // Remove any existing tool tags
+    const cleanTags = currentTags.filter(t => !GENERATION_TOOLS.includes(t));
+    
+    // Add new tool tag
+    cleanTags.push(selectedTool);
+    
+    // Update formData
+    setFormData(prev => ({
+        ...prev,
+        tags: cleanTags.join(", ")
+    }));
+  }, [selectedTool]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
