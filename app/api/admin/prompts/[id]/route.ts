@@ -18,7 +18,7 @@ async function checkAdmin() {
 // GET: Fetch single prompt
 export async function GET(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const error = await checkAdmin();
@@ -43,7 +43,7 @@ export async function GET(
 // PUT: Update prompt
 export async function PUT(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const error = await checkAdmin();
@@ -97,7 +97,7 @@ export async function PUT(
 // DELETE: Remove prompt
 export async function DELETE(
     req: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
   ) {
     try {
       const error = await checkAdmin();
