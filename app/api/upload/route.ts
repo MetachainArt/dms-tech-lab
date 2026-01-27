@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-import { writeFile, mkdir } from "fs/promises";
-import path from "path";
+import { put } from '@vercel/blob';
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 
@@ -28,50 +27,6 @@ function corsHeaders() {
     "Access-Control-Allow-Headers": "Content-Type",
     "Access-Control-Allow-Credentials": "true",
   };
-}
-
-// 파일 매직 바이트 검증
-async function validateFileContent(buffer: Buffer, expectedMimeType: string): Promise<boolean> {
-  const magicBytes: { [key: string]: number[][] } = {
-    'image/jpeg': [[0xFF, 0xD8, 0xFF]],
-    'image/png': [[0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A]],
-    'image/gif': [[0x47, 0x49, 0x46, 0x38, 0x37, 0x61], [0x47, 0x49, 0x46, 0x38, 0x39, 0x61]],
-    'image/webp': [[0x52, 0x49, 0x46, 0x46]], // RIFF header, need to check for WEBP
-    'image/svg+xml': [], // SVG는 텍스트 기반이라 매직 바이트 검증 어려움
-  };
-
-  const signatures = magicBytes[expectedMimeType];
-  if (!signatures || signatures.length === 0) {
-    // SVG는 텍스트 검증
-    if (expectedMimeType === 'image/svg+xml') {
-      const text = buffer.toString('utf-8', 0, Math.min(100, buffer.length));
-      return text.trim().startsWith('<svg') || text.includes('<svg');
-    }
-    return true; // 알 수 없는 타입은 통과 (하지만 이미 MIME type 검증 완료)
-  }
-
-  for (const signature of signatures) {
-    if (buffer.length < signature.length) continue;
-    
-    let matches = true;
-    for (let i = 0; i < signature.length; i++) {
-      if (buffer[i] !== signature[i]) {
-        matches = false;
-        break;
-      }
-    }
-    
-    if (matches) {
-      // WebP의 경우 추가 검증
-      if (expectedMimeType === 'image/webp') {
-        const text = buffer.toString('ascii', 8, 12);
-        return text === 'WEBP';
-      }
-      return true;
-    }
-  }
-
-  return false;
 }
 
 export async function OPTIONS() {
@@ -128,47 +83,16 @@ export async function POST(req: Request) {
       }, { status: 400, headers: corsHeaders() });
     }
 
-    // Validate file extension
-    const extension = path.extname(file.name).toLowerCase();
-    if (!ALLOWED_EXTENSIONS.includes(extension)) {
-      return NextResponse.json({
-        error: "Invalid file extension."
-      }, { status: 400, headers: corsHeaders() });
-    }
-
-    // Read file buffer for content validation
-    const buffer = Buffer.from(await file.arrayBuffer());
-    
-    // Validate actual file content (magic bytes)
-    const isValidContent = await validateFileContent(buffer, file.type);
-    if (!isValidContent) {
-      return NextResponse.json({
-        error: "File content does not match file type."
-      }, { status: 400, headers: corsHeaders() });
-    }
-
-    // Sanitize filename
-    const timestamp = Date.now();
-    const sanitizedFilename = file.name
-      .replace(/[^a-zA-Z0-9.-]/g, '_')
-      .toLowerCase();
-    const filename = `${timestamp}_${sanitizedFilename}`;
-
-    // Ensure uploads directory exists
-    const uploadDir = path.join(process.cwd(), "public/uploads");
-    try {
-      await mkdir(uploadDir, { recursive: true });
-    } catch (e) {
-      // Ignore if exists
-    }
-
-    const filePath = path.join(uploadDir, filename);
-    await writeFile(filePath, buffer);
+    // Vercel Blob에 업로드
+    const blob = await put(file.name, file, {
+      access: 'public',
+    });
 
     return NextResponse.json({
-      url: `/uploads/${filename}`,
+      url: blob.url,
       success: true
     }, { headers: corsHeaders() });
+
   } catch (error) {
     console.error("Upload failed:", error);
     return NextResponse.json({ error: `Upload failed: ${error instanceof Error ? error.message : String(error)}` }, { status: 500, headers: corsHeaders() });
