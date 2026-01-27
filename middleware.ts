@@ -6,6 +6,12 @@ import { NextResponse } from "next/server";
 export default withAuth(
   async function middleware(req) {
     const { pathname } = req.nextUrl;
+
+    // Login page - skip rate limiting and other checks
+    if (pathname === "/auth/signin") {
+      return NextResponse.next();
+    }
+
     const ip = req.headers.get("x-forwarded-for") || req.headers.get("x-real-ip") || "unknown";
 
     // Robust cookie detection

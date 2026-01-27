@@ -30,15 +30,18 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
+        // 1. Email check (Fast)
+        if (credentials.email !== process.env.ADMIN_EMAIL) {
+          return null;
+        }
+
+        // 2. Password comparison (Slow - bcrypt)
         const isValidPassword = await compare(
             credentials.password,
             process.env.ADMIN_PASSWORD_HASH || ""
         );
 
-        if (
-          credentials.email === process.env.ADMIN_EMAIL &&
-          isValidPassword
-        ) {
+        if (isValidPassword) {
           return { id: "admin", name: "Administrator", email: process.env.ADMIN_EMAIL, role: "admin" };
         }
         return null;

@@ -46,14 +46,19 @@ function SignInContent() {
       }
 
       if (result?.ok) {
-        // Wait for session to be established logic could go here if we had getSession
-        // For now, relying on the hard reload which forces a server check
-        
         // Get callbackUrl from URL or default to /admin/users
         const callbackUrl = searchParams.get("callbackUrl") || "/admin/users";
         
-        // Force full page reload to ensure session cookies are recognized by server
-        window.location.href = callbackUrl;
+        // Refresh session ensuring cookies are set
+        try {
+            await fetch("/api/auth/session");
+        } catch (e) {
+            // ignore session fetch error
+        }
+        
+        // Use client-side navigation instead of full reload for speed
+        router.push(callbackUrl);
+        router.refresh();
       }
     } catch (err) {
       console.error("Login error:", err);
