@@ -51,6 +51,14 @@ export default function TextPromptDetail({ prompt, onBack }: TextPromptDetailPro
         
         {/* Left Column: Prompt Box */}
         <div className="lg:col-span-8 space-y-8">
+            
+            {/* Description Card */}
+            <div className="bg-white/5 rounded-xl p-6 border border-white/10">
+                <p className="text-gray-300 leading-relaxed">
+                    {prompt.description}
+                </p>
+            </div>
+
             {/* 결과 예시 - 이미지와 텍스트 모두 표시 */}
             {(prompt.detail?.exampleOutput || prompt.image) && (
                 <div className="bg-[#1A1D24] rounded-xl border border-white/5 p-6 space-y-4">
@@ -148,15 +156,7 @@ export default function TextPromptDetail({ prompt, onBack }: TextPromptDetailPro
                 </div>
             )}
 
-            {/* Description (Moved to Sidebar) */}
-            <div className="pt-6 border-t border-white/10">
-                <h3 className="text-sm font-bold text-gray-500 uppercase mb-3 flex items-center gap-2">
-                    Description
-                </h3>
-                <p className="text-sm text-gray-400 leading-relaxed">
-                    {prompt.description}
-                </p>
-            </div>
+
 
         </div>
       </div>

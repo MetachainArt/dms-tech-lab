@@ -1,4 +1,5 @@
 import PromptContainer from "@/components/prompts/PromptMain";
+import { Suspense } from "react";
 import { getAllPromptsFromFiles } from "@/lib/prompt-content";
 import { PROMPTS as STATIC_PROMPTS } from "@/lib/prompt-data";
 import { getPromptsFromDB } from "@/lib/prompt-db";
@@ -42,7 +43,9 @@ export default async function PromptLibraryPage() {
       <section className="px-6 pb-32 relative z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050B1B]/50 to-[#050B1B] pointer-events-none" />
         <div className="max-w-7xl mx-auto relative">
-            <PromptContainer initialPrompts={allPrompts} />
+            <Suspense fallback={<div className="text-white text-center py-20">Loading prompts...</div>}>
+                <PromptContainer initialPrompts={allPrompts} />
+            </Suspense>
         </div>
       </section>
     </main>
