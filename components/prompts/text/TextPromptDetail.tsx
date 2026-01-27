@@ -70,14 +70,26 @@ export default function TextPromptDetail({ prompt, onBack }: TextPromptDetailPro
             </div>
 
             {/* Application Example */}
-            {prompt.detail?.exampleOutput && (
+            {(prompt.detail?.exampleOutput || prompt.image) && (
                 <div className="bg-[#1A1D24] rounded-xl border border-white/5 p-6">
                     <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
                         <ExternalLink className="w-4 h-4 text-gray-400" /> 결과 예시
                     </h3>
-                    <div className="bg-white/5 rounded-lg p-4 text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans">
-                        {prompt.detail.exampleOutput}
-                    </div>
+                    
+                    {prompt.image ? (
+                        <div className="rounded-lg overflow-hidden border border-white/10 relative h-[400px] w-full">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img 
+                                src={prompt.image} 
+                                alt={prompt.title} 
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+                    ) : (
+                        <div className="bg-white/5 rounded-lg p-4 text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans">
+                            {prompt.detail?.exampleOutput}
+                        </div>
+                    )}
                 </div>
             )}
         </div>

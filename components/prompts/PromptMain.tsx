@@ -40,6 +40,9 @@ export default function PromptContainer({ initialPrompts }: PromptContainerProps
       return matchesCategory && matchesSearch;
   });
 
+  // State for non-text prompt details (Image, Video, etc.)
+  const [selectedVisualPrompt, setSelectedVisualPrompt] = useState<PromptItem | null>(null);
+
   // Text Prompt Specific Logic
   const renderTextContent = () => {
     if (viewState.stage === "categories") {
@@ -73,11 +76,26 @@ export default function PromptContainer({ initialPrompts }: PromptContainerProps
     return null;
   };
 
+  // Render Visual Detail View
+  if (selectedVisualPrompt) {
+    return (
+        <div className="w-full">
+            <TextPromptDetail 
+                prompt={selectedVisualPrompt}
+                onBack={() => setSelectedVisualPrompt(null)}
+            />
+        </div>
+    );
+  }
+
   return (
     <div className="flex flex-col md:flex-row gap-8">
       <PromptSidebar 
         selectedCategory={selectedCategory} 
-        onSelectCategory={setSelectedCategory} 
+        onSelectCategory={(cat) => {
+            setSelectedCategory(cat);
+            setSelectedVisualPrompt(null);
+        }} 
       />
 
       <div className="flex-1 min-h-[600px]">
@@ -124,7 +142,10 @@ export default function PromptContainer({ initialPrompts }: PromptContainerProps
                             transition={{ duration: 0.2 }}
                             className="h-full"
                         >
-                            <PromptCard prompt={prompt} />
+                            <PromptCard 
+                                prompt={prompt} 
+                                onSelect={() => setSelectedVisualPrompt(prompt)}
+                            />
                         </motion.div>
                     ))}
                 </AnimatePresence>

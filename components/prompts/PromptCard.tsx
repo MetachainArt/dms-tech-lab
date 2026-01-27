@@ -8,9 +8,10 @@ import Image from "next/image";
 
 interface PromptCardProps {
   prompt: PromptItem;
+  onSelect?: () => void;
 }
 
-export default function PromptCard({ prompt }: PromptCardProps) {
+export default function PromptCard({ prompt, onSelect }: PromptCardProps) {
   const [copied, setCopied] = useState(false);
   const [isRevealed, setIsRevealed] = useState(false);
 
@@ -26,7 +27,7 @@ export default function PromptCard({ prompt }: PromptCardProps) {
   if (isVisual && prompt.image) {
     return (
         <div 
-            onClick={() => setIsRevealed(!isRevealed)}
+            onClick={() => onSelect ? onSelect() : setIsRevealed(!isRevealed)}
             className="relative h-80 rounded-xl overflow-hidden cursor-pointer group border-2 border-white/20 hover:border-white/40 transition-all shadow-lg"
         >
             {/* Background Image */}
