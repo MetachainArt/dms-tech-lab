@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { PromptCategory, PromptItem, IMAGE_SUBCATEGORIES, TEXT_SUBCATEGORIES, VIDEO_SUBCATEGORIES, VIBE_CODING_SUBCATEGORIES } from "@/lib/prompt-data";
 import PromptCard from "./PromptCard";
-import PromptDetail from "./PromptDetail";
+import PromptDetail from "./text/TextPromptDetail";
 import TextPromptDetail from "./text/TextPromptDetail";
 import { cn } from "@/lib/utils";
 
