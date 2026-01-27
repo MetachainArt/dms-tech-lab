@@ -11,9 +11,17 @@ export default async function AdminAutomationPage() {
 
   return (
     <div className="space-y-8">
-      <div>
-        <h1 className="text-3xl font-bold text-white mb-2">자동화 관리</h1>
-        <p className="text-white/50 text-sm">등록된 자동화 템플릿을 조회합니다.</p>
+      <div className="flex items-center justify-between">
+        <div>
+            <h1 className="text-3xl font-bold text-white mb-2">자동화 관리</h1>
+            <p className="text-white/50 text-sm">등록된 자동화 템플릿을 조회합니다.</p>
+        </div>
+        <a 
+            href="/admin/automation/new"
+            className="px-4 py-2 bg-gradient-to-r from-neon-sky to-blue-600 text-black font-bold rounded-xl hover:opacity-90 transition-opacity flex items-center gap-2"
+        >
+            + New Template
+        </a>
       </div>
 
       <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden">
@@ -34,15 +42,17 @@ export default async function AdminAutomationPage() {
                 </td>
               </tr>
             ) : (
-              automations.map(automation => (
-                <tr key={automation.id} className="hover:bg-white/5 transition-colors">
+            {automations.map(automation => (
+                <tr key={automation.id} className="hover:bg-white/5 transition-colors group">
                   <td className="px-8 py-5">
-                    <div className="font-bold text-white text-lg">
-                      {automation.title}
-                    </div>
-                    <div className="text-white/40 text-xs mt-1">
-                      {automation.description}
-                    </div>
+                    <a href={`/admin/automation/${automation.id}`} className="block group-hover:text-neon-sky transition-colors">
+                        <div className="font-bold text-white text-lg">
+                        {automation.title}
+                        </div>
+                        <div className="text-white/40 text-xs mt-1 line-clamp-1">
+                        {automation.description}
+                        </div>
+                    </a>
                   </td>
                   <td className="px-8 py-5">
                     <span className="px-3 py-1 rounded-full bg-white/5 text-white/70 border border-white/10">
@@ -57,7 +67,7 @@ export default async function AdminAutomationPage() {
                   </td>
                 </tr>
               ))
-            )}
+            }}
           </tbody>
         </table>
       </div>
