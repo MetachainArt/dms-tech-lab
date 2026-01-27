@@ -43,7 +43,8 @@ function SignInContent() {
     if (result?.error) {
       setError("이메일 또는 비밀번호가 올바르지 않습니다.");
     } else if (result?.ok) {
-      router.push("/admin/users");
+      // Force full page reload to ensure session cookies are recognized by server
+      window.location.href = "/admin/users";
     }
   };
 
