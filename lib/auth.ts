@@ -77,9 +77,6 @@ export const authOptions: NextAuthOptions = {
   jwt: {
     maxAge: 2 * 60 * 60, // 2 hours
   },
-  jwt: {
-    maxAge: 2 * 60 * 60, // 2 hours
-  },
   // Reverting manual cookie config to use NextAuth defaults for better compatibility
   // cookies: { ... },
   secret: process.env.NEXTAUTH_SECRET,
