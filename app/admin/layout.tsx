@@ -20,6 +20,12 @@ export default async function AdminLayout({
     redirect("/auth/signin?callbackUrl=/admin/prompts");
   }
 
+  // Debug logging
+  if (!session) {
+      console.log("[AdminLayout] Session is null/undefined");
+      // Optional: Log headers to see if cookie exists (be careful with PII)
+  }
+
   // Check if user is admin (by role OR by email matching ADMIN_EMAIL)
   const isAdmin = session?.user && (
     (session.user as any)?.role === "admin" ||

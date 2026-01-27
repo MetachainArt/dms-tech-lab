@@ -77,17 +77,11 @@ export const authOptions: NextAuthOptions = {
   jwt: {
     maxAge: 2 * 60 * 60, // 2 hours
   },
-  cookies: {
-    sessionToken: {
-      name: `next-auth.session-token`,
-      options: {
-        httpOnly: true,
-        sameSite: 'lax',
-        path: '/',
-        secure: process.env.NODE_ENV === 'production',
-      },
-    },
+  jwt: {
+    maxAge: 2 * 60 * 60, // 2 hours
   },
+  // Reverting manual cookie config to use NextAuth defaults for better compatibility
+  // cookies: { ... },
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async jwt({ token, user }) {
