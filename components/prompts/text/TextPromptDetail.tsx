@@ -53,28 +53,6 @@ export default function TextPromptDetail({ prompt, onBack }: TextPromptDetailPro
         
         {/* Left Column: Prompt Box */}
         <div className="lg:col-span-8 space-y-8">
-            <div className="bg-[#1A1D24] rounded-xl border border-white/10 overflow-hidden shadow-2xl">
-                <div className="bg-black/20 p-4 border-b border-white/5 flex justify-between items-center">
-                    <span className="text-xs font-bold text-gray-500 uppercase flex items-center gap-2">
-                        <Zap className="w-3 h-3 text-amber-400" /> Prompt Code
-                    </span>
-                    <div className="flex gap-2">
-                        <button 
-                            onClick={handleCopy} 
-                            className="flex items-center gap-2 px-3 py-1.5 rounded bg-amber-400 text-black text-xs font-bold hover:bg-amber-300 transition-colors"
-                        >
-                            {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
-                            {copied ? "복사됨" : "복사하기"}
-                        </button>
-                    </div>
-                </div>
-                <div className="p-6 bg-black/10">
-                    <pre className="font-mono text-sm text-gray-300 whitespace-pre-wrap leading-relaxed">
-                        {prompt.promptContent}
-                    </pre>
-                </div>
-            </div>
-
             {/* 결과 예시 - 이미지와 텍스트 모두 표시 */}
             {(prompt.detail?.exampleOutput || prompt.image) && (
                 <div className="bg-[#1A1D24] rounded-xl border border-white/5 p-6 space-y-4">
@@ -103,6 +81,28 @@ export default function TextPromptDetail({ prompt, onBack }: TextPromptDetailPro
                     )}
                 </div>
             )}
+
+            <div className="bg-[#1A1D24] rounded-xl border border-white/10 overflow-hidden shadow-2xl">
+                <div className="bg-black/20 p-4 border-b border-white/5 flex justify-between items-center">
+                    <span className="text-xs font-bold text-gray-500 uppercase flex items-center gap-2">
+                        <Zap className="w-3 h-3 text-amber-400" /> Prompt Code
+                    </span>
+                    <div className="flex gap-2">
+                        <button 
+                            onClick={handleCopy} 
+                            className="flex items-center gap-2 px-3 py-1.5 rounded bg-amber-400 text-black text-xs font-bold hover:bg-amber-300 transition-colors"
+                        >
+                            {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                            {copied ? "복사됨" : "복사하기"}
+                        </button>
+                    </div>
+                </div>
+                <div className="p-6 bg-black/10">
+                    <pre className="font-mono text-sm text-gray-300 whitespace-pre-wrap leading-relaxed">
+                        {prompt.promptContent}
+                    </pre>
+                </div>
+            </div>
         </div>
 
         {/* Right Sidebar: Meta & Tips */}
