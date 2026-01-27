@@ -1,14 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { PromptCategory, PromptItem, IMAGE_SUBCATEGORIES } from "@/lib/prompt-data";
-import PromptSidebar from "./PromptSidebar";
+import { PromptCategory, PromptItem, IMAGE_SUBCATEGORIES, TEXT_SUBCATEGORIES, VIDEO_SUBCATEGORIES, VIBE_CODING_SUBCATEGORIES } from "@/lib/prompt-data";
 import PromptCard from "./PromptCard";
-import TextCategoryGrid from "./text/TextCategoryGrid";
-import TextPromptList from "./text/TextPromptList";
+import PromptDetail from "./PromptDetail";
 import TextPromptDetail from "./text/TextPromptDetail";
-import { motion, AnimatePresence } from "framer-motion";
-import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type ViewStage = "categories" | "list" | "detail";
@@ -19,182 +15,159 @@ interface PromptContainerProps {
 
 export default function PromptContainer({ initialPrompts }: PromptContainerProps) {
   const [selectedCategory, setSelectedCategory] = useState<PromptCategory>("All");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [subCategory, setSubCategory] = useState<string | null>(null);
   
-  // Text & Image Prompt Navigation State
-  const [viewState, setViewState] = useState<{ 
-    stage: ViewStage; 
-    subCategory?: string; 
-    selectedPrompt?: PromptItem 
-  }>({ stage: "categories" });
+  // Detail States
+  const [selectedVisualPrompt, setSelectedVisualPrompt] = useState<PromptItem | null>(null);
+  const [selectedTextPrompt, setSelectedTextPrompt] = useState<PromptItem | null>(null);
 
-  // Reset drill-down when main category changes
+  // Reset subcategory when main category changes
   useEffect(() => {
-    setViewState({ stage: "categories", subCategory: undefined });
+    setSubCategory(null);
   }, [selectedCategory]);
 
+  // Filter Prompts
   const filteredPrompts = initialPrompts.filter(p => {
+      // 1. Category Filter
       const matchesCategory = selectedCategory === "All" || p.category === selectedCategory;
-      const matchesSubCategory = !viewState.subCategory || p.subcategory === viewState.subCategory;
-      const matchesSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                            p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                            p.promptContent.toLowerCase().includes(searchQuery.toLowerCase());
       
-      // For Text, subcategory filtering happens in TextPromptList, not here in the main filter if stage is categories
-      if (selectedCategory === "Text") return matchesCategory && matchesSearch;
-
-      return matchesCategory && matchesSubCategory && matchesSearch;
+      // 2. Subcategory Filter
+      // Note: Text subcategories might use ID or Name, we should check both or standardize.
+      // In the data, Text subs have English IDs (e.g. "writing"). The prompt data should have "writing".
+      const matchesSubCategory = !subCategory || p.subcategory === subCategory;
+      
+      return matchesCategory && matchesSubCategory;
   });
 
-  // State for non-text prompt details (Image, Video, etc.)
-  const [selectedVisualPrompt, setSelectedVisualPrompt] = useState<PromptItem | null>(null);
+  const categories: PromptCategory[] = ["All", "Text", "Image", "Video", "Vibe Coding"];
 
-  // Text Prompt Specific Logic
-  const renderTextContent = () => {
-    if (viewState.stage === "categories") {
-        return (
-            <TextCategoryGrid 
-                onSelectCategory={(id) => setViewState({ stage: "list", subCategory: id })} 
-            />
-        );
-    }
-    if (viewState.stage === "list") {
-        // Filter prompts by subcategory
-        const subCatPrompts = initialPrompts.filter(p => p.category === "Text" && p.subcategory === viewState.subCategory);
-        
-        return (
-            <TextPromptList 
-                category={viewState.subCategory || ""}
-                prompts={subCatPrompts}
-                onSelectPrompt={(p) => setViewState({ ...viewState, stage: "detail", selectedPrompt: p })}
-                onBack={() => setViewState({ stage: "categories" })}
-            />
-        );
-    }
-    if (viewState.stage === "detail" && viewState.selectedPrompt) {
-        return (
-            <TextPromptDetail 
-                prompt={viewState.selectedPrompt}
-                onBack={() => setViewState({ ...viewState, stage: "list" })}
-            />
-        );
-    }
-    return null;
-  };
-
-  // Render Visual Detail View
-  if (selectedVisualPrompt) {
-    return (
-        <div className="w-full">
-            <TextPromptDetail 
-                prompt={selectedVisualPrompt}
-                onBack={() => setSelectedVisualPrompt(null)}
-            />
-        </div>
-    );
-  }
+  // Determine available subcategories based on active category
+  let activeSubCategories: string[] | { id: string; name: string }[] = [];
+  if (selectedCategory === "Image") activeSubCategories = IMAGE_SUBCATEGORIES;
+  else if (selectedCategory === "Video") activeSubCategories = VIDEO_SUBCATEGORIES;
+  else if (selectedCategory === "Vibe Coding") activeSubCategories = VIBE_CODING_SUBCATEGORIES;
+  else if (selectedCategory === "Text") activeSubCategories = TEXT_SUBCATEGORIES;
 
   return (
-    <div className="flex flex-col md:flex-row gap-8">
-      <PromptSidebar 
-        selectedCategory={selectedCategory} 
-        onSelectCategory={(cat) => {
-            setSelectedCategory(cat);
-            setSelectedVisualPrompt(null);
-        }} 
-      />
-
-      <div className="flex-1 min-h-[600px]">
-        {/* Search Bar - Hide in Detail view */}
-        {viewState.stage !== "detail" && (
-            <div className="relative mb-8">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
-                <input 
-                    type="text" 
-                    placeholder="Search prompts..." 
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full bg-[#1A1D24] border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-neon-purple transition-colors"
-                />
-            </div>
-        )}
-
-        {/* Section Header */}
-        {selectedCategory !== "Text" && (
-            <div className="mb-6 flex justify-between items-end">
-                <div>
-                    <h2 className="text-2xl font-bold text-white">Prompt Collection</h2>
-                    <p className="text-gray-400 text-sm">{filteredPrompts.length} prompts available</p>
+    <div className="space-y-8">
+        
+        {/* Category Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
+            {categories.map((category) => {
+                const isSelected = selectedCategory === category;
+                return (
+                    <button
+                        key={category}
+                        onClick={() => setSelectedCategory(category)}
+                        className={`
+                            relative px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300
+                            ${isSelected 
+                                ? "bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.3)] scale-105" 
+                                : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white"
+                            }
+                        `}
+                    >
+                        {category}
+                    </button>
+                );
+            })}
+        </div>
+        
+        {/* Subcategory Filter Buttons (Unified for ALL categories) */}
+        {activeSubCategories.length > 0 && (
+             <div className="relative group">
+                <div className="flex flex-wrap gap-2 justify-center max-w-5xl mx-auto px-4 py-6 bg-[#050B1B]/50 backdrop-blur-xl rounded-3xl border border-white/5">
+                    <button
+                        onClick={() => setSubCategory(null)}
+                        className={`
+                            px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 border
+                            ${!subCategory 
+                                ? "bg-neon-sky text-[#050B1B] border-neon-sky shadow-[0_0_15px_rgba(0,240,255,0.3)]" 
+                                : "bg-white/5 text-gray-400 border-transparent hover:bg-white/10 hover:text-white"
+                            }
+                        `}
+                    >
+                        전체 (All)
+                    </button>
+                    {activeSubCategories.map((sub: any) => {
+                        // Handle both string arrays and object arrays (for Text)
+                        const subName = typeof sub === 'string' ? sub : sub.name;
+                        const subId = typeof sub === 'string' ? sub : sub.id;
+                        
+                        const isActive = subCategory === subId;
+                        return (
+                            <button
+                                key={subId}
+                                onClick={() => setSubCategory(subId)}
+                                className={`
+                                    px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 border
+                                    ${isActive 
+                                        ? "bg-white text-black border-white shadow-[0_0_15px_rgba(255,255,255,0.15)] scale-105" 
+                                        : "bg-white/5 text-gray-400 border-white/5 hover:bg-white/10 hover:text-white hover:border-white/20"
+                                    }
+                                `}
+                            >
+                                {subName}
+                            </button>
+                        );
+                    })}
                 </div>
             </div>
         )}
 
-        {/* Image Subcategories Filters */}
-        {selectedCategory === "Image" && (
-            <div className="mb-8 flex flex-wrap gap-2">
-                <button
-                    onClick={() => setViewState(prev => ({ ...prev, subCategory: undefined }))}
-                    className={cn(
-                        "px-4 py-2 rounded-lg text-sm font-medium transition-all border",
-                        !viewState.subCategory 
-                            ? "bg-neon-purple/20 text-neon-purple border-neon-purple/50 shadow-[0_0_10px_rgba(139,92,246,0.2)]" 
-                            : "bg-[#1A1D24] text-gray-400 border-white/10 hover:border-white/30 hover:text-white"
-                    )}
-                >
-                    All
-                </button>
-                {IMAGE_SUBCATEGORIES.map(sub => (
-                    <button
-                        key={sub}
-                        onClick={() => setViewState(prev => ({ ...prev, subCategory: sub }))}
-                        className={cn(
-                            "px-4 py-2 rounded-lg text-sm font-medium transition-all border",
-                            viewState.subCategory === sub
-                                ? "bg-neon-purple/20 text-neon-purple border-neon-purple/50 shadow-[0_0_10px_rgba(139,92,246,0.2)]" 
-                                : "bg-[#1A1D24] text-gray-400 border-white/10 hover:border-white/30 hover:text-white"
-                        )}
-                    >
-                        {sub}
-                    </button>
-                ))}
-            </div>
-        )}
+      {/* Prompts Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+        {filteredPrompts.map((prompt, idx) => (
+             <PromptCard
+                key={prompt.id}
+                prompt={prompt}
+                index={idx}
+                onSelect={(p) => {
+                    // Decide which detail view to show based on category or content
+                    if (prompt.category === "Text" || prompt.category === "Vibe Coding") {
+                        setSelectedTextPrompt(p);
+                    } else {
+                        setSelectedVisualPrompt(p);
+                    }
+                }}
+            />
+        ))}
 
-        {/* Content Area */}
-        {selectedCategory === "Text" ? (
-            renderTextContent()
-        ) : (
-            <motion.div 
-                layout
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6"
-            >
-                <AnimatePresence mode='popLayout'>
-                    {filteredPrompts.map((prompt) => (
-                        <motion.div
-                            key={prompt.id}
-                            layout
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.95 }}
-                            transition={{ duration: 0.2 }}
-                            className="h-full"
-                        >
-                            <PromptCard 
-                                prompt={prompt} 
-                                onSelect={() => setSelectedVisualPrompt(prompt)}
-                            />
-                        </motion.div>
-                    ))}
-                </AnimatePresence>
-            </motion.div>
-        )}
-
-        {selectedCategory !== "Text" && filteredPrompts.length === 0 && (
-            <div className="w-full h-64 flex flex-col items-center justify-center text-gray-500">
-                <p>No prompts found matching your criteria.</p>
+        {filteredPrompts.length === 0 && (
+            <div className="col-span-full py-20 text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/5 mb-4">
+                    <span className="text-2xl text-white/20">?</span>
+                </div>
+                <p className="text-white/40">해당하는 프롬프트가 없습니다.</p>
             </div>
         )}
       </div>
+
+      {/* Visual Prompt Detail Modal (Image / Video) */}
+      {selectedVisualPrompt && (
+        <PromptDetail
+          prompt={selectedVisualPrompt}
+          onClose={() => setSelectedVisualPrompt(null)}
+        />
+      )}
+      
+      {/* Text Prompt Detail Modal (Text / Vibe Coding) */}
+      {selectedTextPrompt && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/90 backdrop-blur-md overflow-y-auto">
+             <div className="relative w-full max-w-5xl my-auto">
+                 <TextPromptDetail 
+                    prompt={selectedTextPrompt}
+                    onBack={() => setSelectedTextPrompt(null)}
+                 />
+                 <button 
+                    onClick={() => setSelectedTextPrompt(null)}
+                    className="absolute -top-12 right-0 text-white/50 hover:text-white transition-colors"
+                 >
+                    닫기 [ESC]
+                 </button>
+             </div>
+        </div>
+      )}
     </div>
   );
 }
