@@ -21,7 +21,7 @@ export default function PromptCard({ prompt, onSelect }: PromptCardProps) {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const isVisual = prompt.category === "Image" || prompt.category === "Video";
+  const isVisual = !!prompt.image;
 
   // Visual Card (Image/Video) Style
   if (isVisual && prompt.image) {
