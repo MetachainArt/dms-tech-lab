@@ -1,5 +1,5 @@
 
-import { Type, Image as ImageIcon, Video, Code, ShoppingBag, Megaphone, User, Search, Zap, PenTool, Briefcase, DollarSign, GraduationCap } from "lucide-react";
+import { Type, Image as ImageIcon, Video, Code, ShoppingBag, Megaphone, User, Search, Zap, PenTool, Briefcase, DollarSign, GraduationCap, Image, Share2, MessageCircle, Coffee, Smile, Grid } from "lucide-react";
 
 export type PromptCategory = "All" | "Text" | "Image" | "Video" | "Vibe Coding";
 
@@ -31,16 +31,22 @@ export const PROMPT_CATEGORIES: PromptCategory[] = [
 ];
 
 // Text Prompt Subcategories (Level 1)
+// Text Prompt Subcategories (Level 1)
 export const TEXT_SUBCATEGORIES = [
-  { id: "Marketing", name: "마케팅", description: "돈 안 들이고 입소문 내는 마케팅 필살기", count: 556, icon: Megaphone },
-  { id: "Ecommerce", name: "이커머스", description: "상세페이지 5분 컷, 주문 폭주 준비되셨나요?", count: 323, icon: ShoppingBag },
-  { id: "Solopreneur", name: "1인 창업가", description: "혼자서 10명 몫 해내는 슈퍼 사장의 비밀", count: 473, icon: User },
-  { id: "SEO", name: "SEO", description: "구글 & 네이버 자리를 선점하는 비법", count: 469, icon: Search },
-  { id: "Productivity", name: "생산성", description: "오후 4시에 업무 끝내고 퇴근 준비 완료", count: 494, icon: Zap },
   { id: "Writing", name: "글쓰기", description: "빈 화면 멍 때리기 끝! 글이 술술 나오는 마법", count: 624, icon: PenTool },
-  { id: "Business", name: "비즈니스", description: "대기업 전략팀 안 부러운 사업 계획 짜기", count: 652, icon: Briefcase },
-  { id: "Finance", name: "금융", description: "복잡한 숫자 굴리기, 엑셀 지옥 탈출!", count: 261, icon: DollarSign },
-  { id: "Education", name: "교육", description: "내 몸값 올리는 가장 똑똑한 공부법", count: 546, icon: GraduationCap },
+  { id: "Development", name: "개발", description: "코드 작성부터 디버깅까지", count: 342, icon: Code },
+  { id: "Education", name: "교육", description: "쉽고 빠르게 배우는 학습 가이드", count: 546, icon: GraduationCap },
+  { id: "Marketing", name: "마케팅", description: "고객의 마음을 사로잡는 전략", count: 556, icon: Megaphone },
+  { id: "Research", name: "연구", description: "복잡한 자료 조사와 요약", count: 215, icon: Search },
+  { id: "Business", name: "업무", description: "보고서, 이메일, 기획안 작성", count: 652, icon: Briefcase },
+  { id: "Content", name: "콘텐츠", description: "유튜브, 블로그 아이디어 발굴", count: 489, icon: Video },
+  { id: "Productivity", name: "생산성", description: "시간 관리와 효율적인 워크플로우", count: 494, icon: Zap },
+  { id: "Travel", name: "여행", description: "완벽한 여행 계획과 맛집 추천", count: 128, icon: Image }, // Using Image momentarily as map icon substitute
+  { id: "SNS", name: "SNS", description: "인스타그램, 틱톡 핫한 포스팅", count: 890, icon: Share2 },
+  { id: "ProblemSolving", name: "고민해결", description: "현명한 조언과 상담", count: 334, icon: MessageCircle },
+  { id: "Life", name: "생활", description: "요리, 건강, 취미 생활 꿀팁", count: 445, icon: Coffee },
+  { id: "Fun", name: "재미", description: "유머, 퀴즈, 창작 활동", count: 221, icon: Smile },
+  { id: "Other", name: "기타", description: "그 외 다양한 프롬프트", count: 156, icon: Grid },
 ];
 
 export const IMAGE_SUBCATEGORIES = [
