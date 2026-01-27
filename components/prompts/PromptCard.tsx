@@ -97,9 +97,12 @@ export default function PromptCard({ prompt, onSelect }: PromptCardProps) {
     );
   }
 
-  // Text/Code Card Style (Standard)
+  // Text/Code Card Style (Standard) - 이미지가 없을 때
   return (
-    <div className="h-full bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-xl border-2 border-white/20 hover:border-neon-purple/50 transition-all duration-300 flex flex-col group overflow-hidden relative p-6 shadow-lg">
+    <div 
+        onClick={() => onSelect && onSelect()}
+        className="h-full bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-xl border-2 border-white/20 hover:border-neon-purple/50 transition-all duration-300 flex flex-col group overflow-hidden relative p-6 shadow-lg cursor-pointer"
+    >
             {/* Background Pattern */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px] opacity-50" />
             
