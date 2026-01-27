@@ -99,26 +99,28 @@ export default function TextPromptDetail({ prompt, onBack }: TextPromptDetailPro
             
             {/* Use Case */}
             {prompt.detail?.useCase && (
-                <div className="bg-[#1A1D24] rounded-xl p-6 border border-white/5">
-                    <h3 className="text-sm font-bold text-gray-400 uppercase mb-3">
-                        언제 쓰나요?
-                    </h3>
-                    <p className="text-gray-300 text-sm leading-relaxed">
-                        {prompt.detail.useCase}
-                    </p>
+                <div className="group relative rounded-xl p-[1px] bg-gradient-to-br from-white/10 to-transparent hover:from-neon-sky/50 transition-all duration-500">
+                    <div className="bg-[#1A1D24] rounded-xl p-6 h-full relative z-10">
+                        <h3 className="text-sm font-bold text-neon-sky uppercase mb-3 flex items-center gap-2">
+                            <Zap className="w-4 h-4" /> 언제 쓰나요?
+                        </h3>
+                        <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap">
+                            {prompt.detail.useCase}
+                        </p>
+                    </div>
                 </div>
             )}
 
             {/* Tips */}
             {prompt.detail?.tips && (
-                <div className="bg-amber-400/5 rounded-xl p-6 border border-amber-400/10">
+                <div className="bg-gradient-to-br from-amber-400/5 to-transparent rounded-xl p-6 border border-amber-400/10 hover:border-amber-400/30 transition-colors">
                     <h3 className="text-sm font-bold text-amber-400 uppercase mb-4 flex items-center gap-2">
                         <Lightbulb className="w-4 h-4" /> 실전 노하우
                     </h3>
-                    <ul className="space-y-3">
+                    <ul className="space-y-4">
                         {prompt.detail.tips.map((tip, i) => (
                             <li key={i} className="flex items-start gap-3 text-sm text-gray-300">
-                                <span className="mt-1.5 w-1 h-1 rounded-full bg-amber-400 shrink-0" />
+                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
                                 <span className="leading-relaxed">{tip}</span>
                             </li>
                         ))}

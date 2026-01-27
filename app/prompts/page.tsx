@@ -3,7 +3,7 @@ import { getAllPromptsFromFiles } from "@/lib/prompt-content";
 import { PROMPTS as STATIC_PROMPTS } from "@/lib/prompt-data";
 import { getPromptsFromDB } from "@/lib/prompt-db";
 
-export const revalidate = 60; // Revalidate every 60 seconds for fresh DB entries
+export const dynamic = 'force-dynamic';
 
 export default async function PromptLibraryPage() {
   // 1. Fetch File-based Prompts (Text Prompts from content/prompts)
