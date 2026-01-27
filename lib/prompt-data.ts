@@ -54,6 +54,16 @@ export const IMAGE_SUBCATEGORIES = [
     "예술", "공예", "패션", "건축", "음식", "사진", "배경", "로고", "기타"
 ];
 
+export const GENERATION_TOOLS = [
+  "Midjourney", "Nanobanana", "GPT", "Zimage", "Grok", 
+  "DALL-E 3", "Stable Diffusion", "Runway", "Pika", "Sora", 
+  "Claude", "Gemini", "Other"
+];
+
+export function getGenerationTool(tags: string[] = []): string | undefined {
+    return tags.find(tag => GENERATION_TOOLS.includes(tag));
+}
+
 export const PROMPTS: PromptItem[] = [
   // Text Prompts - Marketing
   {

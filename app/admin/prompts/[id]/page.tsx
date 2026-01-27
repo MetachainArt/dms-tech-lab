@@ -4,7 +4,7 @@ import { useState, useEffect, use } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, Save, Loader2, Image as ImageIcon, Trash2 } from "lucide-react";
 import Link from "next/link";
-import { IMAGE_SUBCATEGORIES, TEXT_SUBCATEGORIES } from "@/lib/prompt-data";
+import { IMAGE_SUBCATEGORIES, TEXT_SUBCATEGORIES, GENERATION_TOOLS, getGenerationTool } from "@/lib/prompt-data";
 
 export default function EditPromptPage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();

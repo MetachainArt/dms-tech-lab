@@ -1,6 +1,6 @@
 "use client";
 
-import { PromptItem } from "@/lib/prompt-data";
+import { PromptItem, getGenerationTool } from "@/lib/prompt-data";
 import { ArrowLeft, Copy, Share2, Check, ExternalLink, Zap, Lightbulb } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
@@ -34,6 +34,11 @@ export default function TextPromptDetail({ prompt, onBack }: TextPromptDetailPro
                 {prompt.subcategory || prompt.category || "General"}
             </span>
             <span className="text-gray-500 text-sm">{prompt.author}</span>
+            {getGenerationTool(prompt.tags) && (
+                <span className="ml-2 px-2 py-0.5 rounded bg-white/10 text-white text-xs border border-white/10 flex items-center gap-1">
+                    ⚡ Created with <strong>{getGenerationTool(prompt.tags)}</strong>
+                </span>
+            )}
         </div>
         <h1 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
             {prompt.title}
