@@ -8,18 +8,21 @@ export default withAuth(
     const { pathname } = req.nextUrl;
     const ip = req.headers.get("x-forwarded-for") || req.headers.get("x-real-ip") || "unknown";
 
-    // Get token directly from JWT to ensure we read the cookie properly
+    // Robust cookie detection
+    const secureCookie = req.cookies.get('__Secure-next-auth.session-token');
+    const standardCookie = req.cookies.get('next-auth.session-token');
+    const cookieName = secureCookie ? '__Secure-next-auth.session-token' : 'next-auth.session-token';
+
+    // Get token directly from JWT
     const token = await getToken({ 
       req, 
       secret: process.env.NEXTAUTH_SECRET,
-      cookieName: process.env.NODE_ENV === 'production' 
-        ? '__Secure-next-auth.session-token' 
-        : 'next-auth.session-token'
+      cookieName: cookieName
     });
 
-    // Rate limiting for admin routes
+    // Rate limiting for admin routes - Use 'api' type for admin pages for more generous limits
     if (pathname.startsWith("/admin")) {
-      const result = await checkRateLimit(ip, "auth");
+      const result = await checkRateLimit(ip, "api");
       if (!result.success) {
         return NextResponse.json(
           { error: "Rate limit exceeded" },

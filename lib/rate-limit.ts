@@ -16,7 +16,7 @@ export const ratelimit = new Ratelimit({
 
 export const authRatelimit = new Ratelimit({
   redis,
-  limiter: Ratelimit.slidingWindow(5, "60 s"), // 5 requests per 60 seconds
+  limiter: Ratelimit.slidingWindow(60, "60 s"), // Increased to 60 requests per 60 seconds
   analytics: true,
 });
 
