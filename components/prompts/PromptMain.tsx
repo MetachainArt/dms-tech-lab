@@ -121,13 +121,12 @@ export default function PromptContainer({ initialPrompts }: PromptContainerProps
              <PromptCard
                 key={prompt.id}
                 prompt={prompt}
-                index={idx}
-                onSelect={(p) => {
+                onSelect={() => {
                     // Decide which detail view to show based on category or content
                     if (prompt.category === "Text" || prompt.category === "Vibe Coding") {
-                        setSelectedTextPrompt(p);
+                        setSelectedTextPrompt(prompt);
                     } else {
-                        setSelectedVisualPrompt(p);
+                        setSelectedVisualPrompt(prompt);
                     }
                 }}
             />
@@ -147,7 +146,7 @@ export default function PromptContainer({ initialPrompts }: PromptContainerProps
       {selectedVisualPrompt && (
         <PromptDetail
           prompt={selectedVisualPrompt}
-          onClose={() => setSelectedVisualPrompt(null)}
+          onBack={() => setSelectedVisualPrompt(null)}
         />
       )}
       
