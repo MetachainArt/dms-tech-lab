@@ -41,3 +41,29 @@ yarn-error.log*
 next-env.d.ts
 
 /lib/generated/prisma
+
+# Cache and tool directories
+.cache/
+.agent/
+.antigravity/
+.antigravity_cockpit/
+.bun/
+.cagent/
+.claude/
+.clawdbot/
+.conda/
+.config/
+.cursor-sandbox/
+.cursor/
+.docker/
+.gemini/
+.local/
+.matplotlib/
+.n8n-mcp/
+.opencode/
+.pinokio/
+.pm2/
+.redhat/
+.sbx-denybin/
+.claude.json
+.claude.json.backup
