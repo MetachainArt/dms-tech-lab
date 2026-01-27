@@ -37,6 +37,7 @@ const nextConfig: NextConfig = {
 
   // 보안 헤더 설정
   async headers() {
+    const cspDirectives = [
       "default-src 'self'",
       "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
       "style-src 'self' 'unsafe-inline'",
