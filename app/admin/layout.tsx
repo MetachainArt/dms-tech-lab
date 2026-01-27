@@ -11,8 +11,14 @@ export default async function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Server-side authentication check
-  const session = await getServerSession(authOptions);
+  // Server-side authentication check with better error handling
+  let session;
+  try {
+    session = await getServerSession(authOptions);
+  } catch (error) {
+    console.error("Session check failed:", error);
+    redirect("/auth/signin?callbackUrl=/admin/prompts");
+  }
 
   // Check if user is admin (by role OR by email matching ADMIN_EMAIL)
   const isAdmin = session?.user && (
@@ -22,7 +28,7 @@ export default async function AdminLayout({
 
   // Redirect to login if not authenticated or not admin
   if (!session || !isAdmin) {
-    redirect("/auth/signin");
+    redirect("/auth/signin?callbackUrl=/admin/prompts");
   }
 
   return (
@@ -40,7 +46,11 @@ export default async function AdminLayout({
                 <span className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-green-500 transition-colors" />
                 Users
             </Link>
-            <Link href="/admin/prompts" className="flex items-center gap-3 px-4 py-3 hover:bg-white/5 rounded-xl text-white/70 hover:text-white transition-all group">
+            <Link 
+                href="/admin/prompts" 
+                className="flex items-center gap-3 px-4 py-3 hover:bg-white/5 rounded-xl text-white/70 hover:text-white transition-all group"
+                prefetch={true}
+            >
                 <span className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-neon-sky transition-colors" />
                 Prompts
             </Link>
