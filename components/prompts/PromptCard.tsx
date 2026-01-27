@@ -15,7 +15,8 @@ export default function PromptCard({ prompt, onSelect }: PromptCardProps) {
   const [copied, setCopied] = useState(false);
   const [isRevealed, setIsRevealed] = useState(false);
 
-  const handleCopy = () => {
+  const handleCopy = (e: React.MouseEvent) => {
+    e.stopPropagation(); // 클릭 이벤트 전파 방지
     navigator.clipboard.writeText(prompt.promptContent);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -27,7 +28,14 @@ export default function PromptCard({ prompt, onSelect }: PromptCardProps) {
   if (isVisual && prompt.image) {
     return (
         <div 
-            onClick={() => onSelect ? onSelect() : setIsRevealed(!isRevealed)}
+            onClick={() => {
+              // onSelect가 있으면 상세 화면으로 이동, 없으면 토글
+              if (onSelect) {
+                onSelect();
+              } else {
+                setIsRevealed(!isRevealed);
+              }
+            }}
             className="relative h-80 rounded-xl overflow-hidden cursor-pointer group border-2 border-white/20 hover:border-white/40 transition-all shadow-lg"
         >
             {/* Background Image */}
@@ -36,10 +44,9 @@ export default function PromptCard({ prompt, onSelect }: PromptCardProps) {
                 alt={prompt.title} 
                 fill 
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
             
-
-
             {/* Default Overlay (Title) */}
             <div className={cn(
                 "absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 transition-opacity duration-300",
@@ -50,49 +57,58 @@ export default function PromptCard({ prompt, onSelect }: PromptCardProps) {
                     <h3 className="text-xl font-bold text-white mb-1 leading-tight">{prompt.title}</h3>
                     <p className="text-gray-300 text-xs line-clamp-1">{prompt.description}</p>
                     
-                    <div className="mt-4 flex items-center text-xs text-gray-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity delay-100">
-                        클릭하여 프롬프트 확인
-                    </div>
+                    {onSelect && (
+                      <div className="mt-4 flex items-center text-xs text-gray-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity delay-100">
+                          클릭하여 상세 정보 확인
+                      </div>
+                    )}
+                    {!onSelect && (
+                      <div className="mt-4 flex items-center text-xs text-gray-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity delay-100">
+                          클릭하여 프롬프트 확인
+                      </div>
+                    )}
                 </div>
             </div>
 
-            {/* Revealed Overlay (Prompt Text) */}
-            <div className={cn(
-                "absolute inset-0 bg-[#0E0C15]/95 p-6 flex flex-col justify-between transition-opacity duration-300 backdrop-blur-sm",
-                isRevealed ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-            )}>
-                <div className="overflow-y-auto custom-scrollbar pr-2 h-full">
-                    <p className="text-gray-300 text-sm font-mono leading-relaxed whitespace-pre-wrap">
-                        {prompt.promptContent}
-                    </p>
-                </div>
-                
-                <div className="mt-4 pt-4 border-t border-white/10 flex justify-between items-center shrink-0">
-                    <span className="text-xs text-gray-500">English Prompt</span>
-                    <button 
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            handleCopy();
-                        }}
-                        className={cn(
-                            "flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all",
-                            copied 
-                                ? "bg-green-500/20 text-green-400 border border-green-500/50" 
-                                : "bg-white text-black hover:bg-gray-200"
-                        )}
-                    >
-                        {copied ? (
-                            <>
-                                <Check className="w-4 h-4" /> 복사됨
-                            </>
-                        ) : (
-                            <>
-                                <Copy className="w-4 h-4" /> 프롬프트 복사
-                            </>
-                        )}
-                    </button>
-                </div>
-            </div>
+            {/* Revealed Overlay (Prompt Text) - onSelect가 없을 때만 표시 */}
+            {!onSelect && (
+              <div className={cn(
+                  "absolute inset-0 bg-[#0E0C15]/95 p-6 flex flex-col justify-between transition-opacity duration-300 backdrop-blur-sm",
+                  isRevealed ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+              )}>
+                  <div className="overflow-y-auto custom-scrollbar pr-2 h-full">
+                      <p className="text-gray-300 text-sm font-mono leading-relaxed whitespace-pre-wrap">
+                          {prompt.promptContent}
+                      </p>
+                  </div>
+                  
+                  <div className="mt-4 pt-4 border-t border-white/10 flex justify-between items-center shrink-0">
+                      <span className="text-xs text-gray-500">English Prompt</span>
+                      <button 
+                          onClick={(e) => {
+                              e.stopPropagation();
+                              handleCopy(e);
+                          }}
+                          className={cn(
+                              "flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all",
+                              copied 
+                                  ? "bg-green-500/20 text-green-400 border border-green-500/50" 
+                                  : "bg-white text-black hover:bg-gray-200"
+                          )}
+                      >
+                          {copied ? (
+                              <>
+                                  <Check className="w-4 h-4" /> 복사됨
+                              </>
+                          ) : (
+                              <>
+                                  <Copy className="w-4 h-4" /> 프롬프트 복사
+                              </>
+                          )}
+                      </button>
+                  </div>
+              </div>
+            )}
         </div>
     );
   }
@@ -112,7 +128,10 @@ export default function PromptCard({ prompt, onSelect }: PromptCardProps) {
                     {prompt.category}
                 </span>
                 <button 
-                    onClick={handleCopy}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        handleCopy(e);
+                    }}
                     className="text-gray-300 hover:text-white transition-colors p-1.5 hover:bg-white/20 rounded-md backdrop-blur-sm"
                     title="Copy Prompt"
                 >

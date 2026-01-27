@@ -30,7 +30,7 @@ export default function TextPromptDetail({ prompt, onBack }: TextPromptDetailPro
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
             <span className="px-3 py-1 rounded-full bg-amber-400/10 text-amber-400 text-xs font-bold uppercase tracking-wider border border-amber-400/20">
-                {prompt.subcategory || "General"}
+                {prompt.subcategory || prompt.category || "General"}
             </span>
             <span className="text-gray-500 text-sm">{prompt.author}</span>
         </div>
@@ -69,25 +69,30 @@ export default function TextPromptDetail({ prompt, onBack }: TextPromptDetailPro
                 </div>
             </div>
 
-            {/* Application Example */}
+            {/* 결과 예시 - 이미지와 텍스트 모두 표시 */}
             {(prompt.detail?.exampleOutput || prompt.image) && (
-                <div className="bg-[#1A1D24] rounded-xl border border-white/5 p-6">
+                <div className="bg-[#1A1D24] rounded-xl border border-white/5 p-6 space-y-4">
                     <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
                         <ExternalLink className="w-4 h-4 text-gray-400" /> 결과 예시
                     </h3>
                     
-                    {prompt.image ? (
-                        <div className="rounded-lg overflow-hidden border border-white/10 relative h-[400px] w-full">
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img 
+                    {/* 이미지가 있으면 먼저 표시 */}
+                    {prompt.image && (
+                        <div className="rounded-lg overflow-hidden border border-white/10 relative w-full aspect-video bg-black/20">
+                            <Image 
                                 src={prompt.image} 
                                 alt={prompt.title} 
-                                className="w-full h-full object-cover"
+                                fill 
+                                className="object-cover"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 800px"
                             />
                         </div>
-                    ) : (
-                        <div className="bg-white/5 rounded-lg p-4 text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans">
-                            {prompt.detail?.exampleOutput}
+                    )}
+                    
+                    {/* 텍스트 예시도 함께 표시 (이미지가 있어도) */}
+                    {prompt.detail?.exampleOutput && (
+                        <div className="bg-white/5 rounded-lg p-4 text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans border border-white/10">
+                            {prompt.detail.exampleOutput}
                         </div>
                     )}
                 </div>
@@ -112,7 +117,7 @@ export default function TextPromptDetail({ prompt, onBack }: TextPromptDetailPro
             )}
 
             {/* Tips */}
-            {prompt.detail?.tips && (
+            {prompt.detail?.tips && prompt.detail.tips.length > 0 && (
                 <div className="bg-gradient-to-br from-amber-400/5 to-transparent rounded-xl p-6 border border-amber-400/10 hover:border-amber-400/30 transition-colors">
                     <h3 className="text-sm font-bold text-amber-400 uppercase mb-4 flex items-center gap-2">
                         <Lightbulb className="w-4 h-4" /> 실전 노하우
@@ -129,13 +134,15 @@ export default function TextPromptDetail({ prompt, onBack }: TextPromptDetailPro
             )}
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-2">
-                {prompt.tags.map(tag => (
-                    <span key={tag} className="px-3 py-1 rounded-full bg-white/5 text-xs text-gray-400 border border-white/5">
-                        #{tag}
-                    </span>
-                ))}
-            </div>
+            {prompt.tags && prompt.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                    {prompt.tags.map(tag => (
+                        <span key={tag} className="px-3 py-1 rounded-full bg-white/5 text-xs text-gray-400 border border-white/5">
+                            #{tag}
+                        </span>
+                    ))}
+                </div>
+            )}
 
         </div>
       </div>
