@@ -75,7 +75,7 @@ async function PromptsList() {
                   {formatDate(prompt.createdAt)}
                 </td>
                 <td className="px-8 py-5 text-right">
-                  <Link href={`/admin/prompts/${prompt.id}`} className="text-white/50 hover:text-white transition-colors underline decoration-white/30 hover:decoration-white underline-offset-4">
+                  <Link href={`/admin/prompts/${prompt.id}`} prefetch={false} className="text-white/50 hover:text-white transition-colors underline decoration-white/30 hover:decoration-white underline-offset-4">
                     수정
                   </Link>
                 </td>
