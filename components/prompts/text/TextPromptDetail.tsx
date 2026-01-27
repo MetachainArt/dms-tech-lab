@@ -4,6 +4,7 @@ import { PromptItem } from "@/lib/prompt-data";
 import { ArrowLeft, Copy, Share2, Check, ExternalLink, Zap, Lightbulb } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import NextImage from "next/image";
 
 interface TextPromptDetailProps {
   prompt: PromptItem;
@@ -79,7 +80,7 @@ export default function TextPromptDetail({ prompt, onBack }: TextPromptDetailPro
                     {/* 이미지가 있으면 먼저 표시 */}
                     {prompt.image && (
                         <div className="rounded-lg overflow-hidden border border-white/10 relative w-full aspect-video bg-black/20">
-                            <Image 
+                            <NextImage 
                                 src={prompt.image} 
                                 alt={prompt.title} 
                                 fill 
