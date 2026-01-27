@@ -49,7 +49,7 @@ export default async function AdminLayout({
             <Link 
                 href="/admin/prompts" 
                 className="flex items-center gap-3 px-4 py-3 hover:bg-white/5 rounded-xl text-white/70 hover:text-white transition-all group"
-                prefetch={true}
+                prefetch={false}
             >
                 <span className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-neon-sky transition-colors" />
                 Prompts

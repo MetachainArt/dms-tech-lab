@@ -92,14 +92,12 @@ export default async function AdminPromptsPage() {
   // Check session first before any DB operations
   const session = await getServerSession(authOptions);
   
-  const isAdmin = session?.user && (
-    (session.user as any)?.role === "admin" ||
-    session.user.email === process.env.ADMIN_EMAIL
-  );
-
-  if (!session || !isAdmin) {
-    redirect("/auth/signin?callbackUrl=/admin/prompts");
-  }
+// Layout already handles auth check, but we keep session for any user-specific logic if needed
+  // If session is missing here (which is unlikely due to layout), we just render the page cleanly or could show an error
+  
+  // if (!session || !isAdmin) {
+  //   redirect("/auth/signin?callbackUrl=/admin/prompts");
+  // }
 
   return (
     <div className="space-y-8">

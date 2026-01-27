@@ -106,7 +106,7 @@ export default function Navbar() {
                             />
                         )}
                         <button
-                            onClick={() => signOut()}
+                            onClick={() => signOut({ callbackUrl: "/", redirect: true })}
                             className="text-sm font-medium text-white/70 hover:text-white transition-colors"
                         >
                             Logout
