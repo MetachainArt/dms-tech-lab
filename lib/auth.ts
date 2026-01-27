@@ -6,6 +6,14 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { compare } from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 
+// Validate essential environment variables
+if (!process.env.ADMIN_EMAIL || !process.env.ADMIN_PASSWORD_HASH) {
+  throw new Error("Missing Admin Credentials in environment variables");
+}
+if (!process.env.NEXTAUTH_SECRET) {
+  throw new Error("Missing NEXTAUTH_SECRET environment variable");
+}
+
 export const authOptions: NextAuthOptions = {
   // TEMPORARILY DISABLED: adapter causes issues with CredentialsProvider
   // adapter: PrismaAdapter(prisma) as any,

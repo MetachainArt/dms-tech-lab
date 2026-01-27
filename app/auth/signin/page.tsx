@@ -32,19 +32,33 @@ function SignInContent() {
     setError("");
     setLoading(true);
 
-    const result = await signIn("credentials", {
-      email,
-      password,
-      redirect: false,
-    });
+    try {
+      const result = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
 
-    setLoading(false);
+      if (result?.error) {
+        setLoading(false);
+        setError("이메일 또는 비밀번호가 올바르지 않습니다.");
+        return;
+      }
 
-    if (result?.error) {
-      setError("이메일 또는 비밀번호가 올바르지 않습니다.");
-    } else if (result?.ok) {
-      // Force full page reload to ensure session cookies are recognized by server
-      window.location.href = "/admin/users";
+      if (result?.ok) {
+        // Wait for session to be established logic could go here if we had getSession
+        // For now, relying on the hard reload which forces a server check
+        
+        // Get callbackUrl from URL or default to /admin/users
+        const callbackUrl = searchParams.get("callbackUrl") || "/admin/users";
+        
+        // Force full page reload to ensure session cookies are recognized by server
+        window.location.href = callbackUrl;
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      setError("로그인 처리 중 오류가 발생했습니다.");
+      setLoading(false);
     }
   };
 
