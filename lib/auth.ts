@@ -142,4 +142,5 @@ export const authOptions: NextAuthOptions = {
       }
     },
   },
+  trustHost: true, // Essential for Vercel/Proxy environments to correctly detect protocol/cookies
 };
