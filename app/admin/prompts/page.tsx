@@ -2,8 +2,10 @@ import { prisma } from "@/lib/prisma";
 import { Plus } from "lucide-react";
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
+import { Plus } from "lucide-react";
+import Link from "next/link";
+import { formatDate } from "@/lib/utils";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import type { Prompt } from "@prisma/client";
@@ -89,15 +91,8 @@ async function PromptsList() {
 }
 
 export default async function AdminPromptsPage() {
-  // Check session first before any DB operations
-  const session = await getServerSession(authOptions);
-  
-// Layout already handles auth check, but we keep session for any user-specific logic if needed
-  // If session is missing here (which is unlikely due to layout), we just render the page cleanly or could show an error
-  
-  // if (!session || !isAdmin) {
-  //   redirect("/auth/signin?callbackUrl=/admin/prompts");
-  // }
+  // Layout guard is sufficient (admin/layout.tsx)
+  // No need to fetch session again here, reducing TTFB
 
   return (
     <div className="space-y-8">
