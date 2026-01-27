@@ -52,8 +52,7 @@ export default function PromptContainer({ initialPrompts }: PromptContainerProps
 
   const categories: PromptCategory[] = ["All", "Text", "Image", "Video", "Vibe Coding"];
 
-  // Check if we should show subcategory cards (for Text category without subcategory selected)
-  const showSubcategoryCards = selectedCategory === "Text" && !subCategory && !searchQuery;
+
 
   // Navigation Handlers
   const handlePromptSelect = (prompt: PromptItem) => {
@@ -127,111 +126,90 @@ export default function PromptContainer({ initialPrompts }: PromptContainerProps
                   />
                 </div>
 
-                {/* Show Subcategory Cards for Text */}
-                {showSubcategoryCards ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                    {TEXT_SUBCATEGORIES.map((sub) => {
-                      const IconComponent = sub.icon;
+                {/* Header with back button if subcategory selected */}
+                <div className="mb-6">
+                  {subCategory && (
+                    <button
+                      onClick={() => setSubCategory(null)}
+                      className="text-gray-400 hover:text-white text-sm mb-2 flex items-center gap-1"
+                    >
+                      ← 카테고리로 돌아가기
+                    </button>
+                  )}
+                  <h2 className="text-2xl font-bold text-white">
+                    {subCategory
+                      ? (selectedCategory === "Text" 
+                          ? TEXT_SUBCATEGORIES.find(s => s.id === subCategory)?.name 
+                          : subCategory) || "Prompt Collection"
+                      : "Prompt Collection"
+                    }
+                  </h2>
+                  <p className="text-neon-sky text-sm">{filteredPrompts.length} prompts available</p>
+                </div>
+
+                {/* Subcategory Filter Pills (Unified for ALL categories) */}
+                {selectedCategory !== "All" && (
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    <button
+                      onClick={() => setSubCategory(null)}
+                      className={`
+                        px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200
+                        ${!subCategory
+                          ? "bg-neon-sky text-[#050B1B]"
+                          : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white"
+                        }
+                      `}
+                    >
+                      전체
+                    </button>
+                    {(selectedCategory === "Text" ? TEXT_SUBCATEGORIES :
+                      selectedCategory === "Image" ? IMAGE_SUBCATEGORIES :
+                      selectedCategory === "Video" ? VIDEO_SUBCATEGORIES :
+                      selectedCategory === "Vibe Coding" ? VIBE_CODING_SUBCATEGORIES : []
+                    ).map((sub: any) => {
+                      // Handle both string arrays and object arrays (for Text)
+                      const subName = typeof sub === 'string' ? sub : sub.name;
+                      const subId = typeof sub === 'string' ? sub : sub.id;
+                      
+                      const isActive = subCategory === subId;
                       return (
                         <button
-                          key={sub.id}
-                          onClick={() => setSubCategory(sub.id)}
-                          className="group p-5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-neon-sky/30 rounded-2xl text-left transition-all duration-300"
-                        >
-                          <div className="flex items-start justify-between mb-4">
-                            <div className="w-12 h-12 rounded-xl bg-neon-sky/20 flex items-center justify-center">
-                              <IconComponent className="w-6 h-6 text-neon-sky" />
-                            </div>
-                            <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-neon-sky group-hover:translate-x-1 transition-all" />
-                          </div>
-                          <h3 className="text-white font-bold text-lg mb-1">{sub.name}</h3>
-                          <p className="text-gray-400 text-sm mb-3">{sub.description}</p>
-                          <p className="text-gray-500 text-xs">{sub.count}개 프롬프트</p>
-                        </button>
-                      );
-                    })}
-                  </div>
-                ) : (
-                  <>
-                    {/* Header with back button if subcategory selected */}
-                    <div className="mb-6">
-                      {subCategory && (
-                        <button
-                          onClick={() => setSubCategory(null)}
-                          className="text-gray-400 hover:text-white text-sm mb-2 flex items-center gap-1"
-                        >
-                          ← 카테고리로 돌아가기
-                        </button>
-                      )}
-                      <h2 className="text-2xl font-bold text-white">
-                        {subCategory
-                          ? TEXT_SUBCATEGORIES.find(s => s.id === subCategory)?.name || "Prompt Collection"
-                          : "Prompt Collection"
-                        }
-                      </h2>
-                      <p className="text-neon-sky text-sm">{filteredPrompts.length} prompts available</p>
-                    </div>
-
-                    {/* Subcategory Filter Pills (for Image, Video, Vibe Coding) */}
-                    {selectedCategory !== "Text" && selectedCategory !== "All" && (
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        <button
-                          onClick={() => setSubCategory(null)}
+                          key={subId}
+                          onClick={() => setSubCategory(subId)}
                           className={`
                             px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200
-                            ${!subCategory
-                              ? "bg-neon-sky text-[#050B1B]"
+                            ${isActive
+                              ? "bg-white text-black"
                               : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white"
                             }
                           `}
                         >
-                          전체
+                          {subName}
                         </button>
-                        {(selectedCategory === "Image" ? IMAGE_SUBCATEGORIES :
-                          selectedCategory === "Video" ? VIDEO_SUBCATEGORIES :
-                          selectedCategory === "Vibe Coding" ? VIBE_CODING_SUBCATEGORIES : []
-                        ).map((sub: string) => {
-                          const isActive = subCategory === sub;
-                          return (
-                            <button
-                              key={sub}
-                              onClick={() => setSubCategory(sub)}
-                              className={`
-                                px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200
-                                ${isActive
-                                  ? "bg-white text-black"
-                                  : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white"
-                                }
-                              `}
-                            >
-                              {sub}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    )}
-
-                    {/* Prompts Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                      {filteredPrompts.map((prompt) => (
-                        <PromptCard
-                          key={prompt.id}
-                          prompt={prompt}
-                          onSelect={() => handlePromptSelect(prompt)}
-                        />
-                      ))}
-
-                      {filteredPrompts.length === 0 && (
-                        <div className="col-span-full py-20 text-center">
-                          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/5 mb-4">
-                            <span className="text-2xl text-white/20">?</span>
-                          </div>
-                          <p className="text-white/40">해당하는 프롬프트가 없습니다.</p>
-                        </div>
-                      )}
-                    </div>
-                  </>
+                      );
+                    })}
+                  </div>
                 )}
+
+                {/* Prompts Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                  {filteredPrompts.map((prompt) => (
+                    <PromptCard
+                      key={prompt.id}
+                      prompt={prompt}
+                      onSelect={() => handlePromptSelect(prompt)}
+                    />
+                  ))}
+
+                  {filteredPrompts.length === 0 && (
+                    <div className="col-span-full py-20 text-center">
+                      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/5 mb-4">
+                        <span className="text-2xl text-white/20">?</span>
+                      </div>
+                      <p className="text-white/40">해당하는 프롬프트가 없습니다.</p>
+                    </div>
+                  )}
+                </div>
              </div>
         )}
       </div>
