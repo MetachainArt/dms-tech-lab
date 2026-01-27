@@ -6,20 +6,23 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
+import type { Prompt } from "@prisma/client";
 
 // Force dynamic rendering to always check session
 export const dynamic = 'force-dynamic';
 
 async function PromptsList() {
   // Fetch prompts from DB with error handling
-  let prompts = [];
+  let prompts: Prompt[] = [];
   try {
-    prompts = await prisma.prompt.findMany({
+    const result = await prisma.prompt.findMany({
       orderBy: { createdAt: "desc" },
     });
+    prompts = result;
   } catch (error) {
     console.error("Failed to fetch prompts:", error);
     // Continue with empty array instead of crashing
+    prompts = [];
   }
 
   return (
