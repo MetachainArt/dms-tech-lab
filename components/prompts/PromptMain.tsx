@@ -129,6 +129,37 @@ export default function PromptContainer({ initialPrompts }: PromptContainerProps
             </div>
         )}
 
+        {/* Image Subcategories Filters */}
+        {selectedCategory === "Image" && (
+            <div className="mb-8 flex flex-wrap gap-2">
+                <button
+                    onClick={() => setViewState(prev => ({ ...prev, subCategory: undefined }))}
+                    className={cn(
+                        "px-4 py-2 rounded-lg text-sm font-medium transition-all border",
+                        !viewState.subCategory 
+                            ? "bg-neon-purple/20 text-neon-purple border-neon-purple/50 shadow-[0_0_10px_rgba(139,92,246,0.2)]" 
+                            : "bg-[#1A1D24] text-gray-400 border-white/10 hover:border-white/30 hover:text-white"
+                    )}
+                >
+                    All
+                </button>
+                {IMAGE_SUBCATEGORIES.map(sub => (
+                    <button
+                        key={sub}
+                        onClick={() => setViewState(prev => ({ ...prev, subCategory: sub }))}
+                        className={cn(
+                            "px-4 py-2 rounded-lg text-sm font-medium transition-all border",
+                            viewState.subCategory === sub
+                                ? "bg-neon-purple/20 text-neon-purple border-neon-purple/50 shadow-[0_0_10px_rgba(139,92,246,0.2)]" 
+                                : "bg-[#1A1D24] text-gray-400 border-white/10 hover:border-white/30 hover:text-white"
+                        )}
+                    >
+                        {sub}
+                    </button>
+                ))}
+            </div>
+        )}
+
         {/* Content Area */}
         {selectedCategory === "Text" ? (
             renderTextContent()
