@@ -37,13 +37,12 @@ const nextConfig: NextConfig = {
 
   // 보안 헤더 설정
   async headers() {
-    const cspDirectives = [
       "default-src 'self'",
       "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob: https://images.unsplash.com https://*.public.blob.vercel-storage.com https://www.google-analytics.com https://*.google.com https://*.googleusercontent.com",
+      "img-src 'self' data: blob: https://images.unsplash.com https://www.google-analytics.com https://*.google.com https://*.googleusercontent.com https://*.public.blob.vercel-storage.com",
       "font-src 'self' data: https://fonts.gstatic.com https://fonts.googleapis.com",
-      "connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.supabase.co",
+      "connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.supabase.co https://*.public.blob.vercel-storage.com",
       "frame-src 'self' https://accounts.google.com https://kauth.kakao.com",
       "base-uri 'self'",
       "form-action 'self'",
