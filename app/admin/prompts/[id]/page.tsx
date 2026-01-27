@@ -213,6 +213,17 @@ export default function EditPromptPage({ params }: { params: Promise<{ id: strin
                 </label>
                 
                 <div className="flex flex-col gap-4">
+                    {/* URL Input Method */}
+                    <div className="flex gap-2">
+                        <input 
+                            type="url" 
+                            className="flex-1 p-4 bg-black/20 border border-white/10 rounded-xl text-white placeholder:text-white/20 focus:outline-none focus:border-neon-sky/50 transition-all font-mono text-sm"
+                            placeholder="이미지 URL을 직접 입력하거나 아래에 파일을 드래그하세요"
+                            value={formData.image}
+                            onChange={(e) => setFormData({...formData, image: e.target.value})}
+                        />
+                    </div>
+
                     {/* File Drop Area */}
                     <div className="border border-dashed border-white/20 rounded-2xl p-10 text-center hover:bg-white/5 transition-all relative group bg-black/20">
                         <input
@@ -232,6 +243,14 @@ export default function EditPromptPage({ params }: { params: Promise<{ id: strin
                                         method: "POST",
                                         body: data
                                     });
+                                    
+                                    // 응답 상태 확인
+                                    if (!res.ok) {
+                                        const errorData = await res.json().catch(() => ({ error: 'Unknown error' }));
+                                        alert(`업로드 실패 (${res.status}): ${errorData.error || '알 수 없는 오류'}\n\n팁: Vercel 배포 환경에서는 파일 직접 업로드가 제한될 수 있습니다. 위쪽 입력창에 이미지 URL을 직접 입력해주세요.`);
+                                        return;
+                                    }
+
                                     const json = await res.json();
                                     if(json.success) {
                                         setFormData(prev => ({ ...prev, image: json.url }));
@@ -239,8 +258,8 @@ export default function EditPromptPage({ params }: { params: Promise<{ id: strin
                                         alert(`Upload failed: ${json.error || 'Unknown error'}`);
                                     }
                                 } catch (err) {
-                                    console.error(err);
-                                    alert("Upload error");
+                                    console.error("Upload error:", err);
+                                    alert(`업로드 중 오류 발생: ${err instanceof Error ? err.message : '알 수 없는 오류'}`);
                                 } finally {
                                     setLoading(false);
                                 }
