@@ -25,6 +25,7 @@ export async function getPromptsFromDB(): Promise<PromptItem[]> {
           tips: tips
         } : undefined,
         // Map other fields
+        image: p.image || undefined,
         // isPremium is not in PromptItem yet, but good to have in DB
       };
     });
