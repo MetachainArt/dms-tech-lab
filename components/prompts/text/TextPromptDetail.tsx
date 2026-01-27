@@ -43,9 +43,7 @@ export default function TextPromptDetail({ prompt, onBack }: TextPromptDetailPro
         <h1 className="text-3xl md:text-4xl font-bold text-white mb-2 leading-tight">
             {prompt.title}
         </h1>
-        <p className="text-base text-gray-400 leading-relaxed max-w-3xl">
-            {prompt.description}
-        </p>
+
       </div>
 
       {/* Main Content Area */}
@@ -149,6 +147,16 @@ export default function TextPromptDetail({ prompt, onBack }: TextPromptDetailPro
                     ))}
                 </div>
             )}
+
+            {/* Description (Moved to Sidebar) */}
+            <div className="pt-6 border-t border-white/10">
+                <h3 className="text-sm font-bold text-gray-500 uppercase mb-3 flex items-center gap-2">
+                    Description
+                </h3>
+                <p className="text-sm text-gray-400 leading-relaxed">
+                    {prompt.description}
+                </p>
+            </div>
 
         </div>
       </div>
