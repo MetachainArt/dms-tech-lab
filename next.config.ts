@@ -48,8 +48,8 @@ const nextConfig: NextConfig = {
     const cspDirectives = [
       "default-src 'self'",
       "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
-      "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob: https://images.unsplash.com https://www.google-analytics.com https://*.google.com https://*.googleusercontent.com https://*.public.blob.vercel-storage.com",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "img-src 'self' data: blob: https://images.unsplash.com https://www.google-analytics.com https://*.google.com https://*.googleusercontent.com https://*.public.blob.vercel-storage.com https://k.kakaocdn.net https://avatars.githubusercontent.com https://lh3.googleusercontent.com",
       "font-src 'self' data: https://fonts.gstatic.com https://fonts.googleapis.com",
       "connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.supabase.co https://*.public.blob.vercel-storage.com",
       "frame-src 'self' https://accounts.google.com https://kauth.kakao.com",
