@@ -76,11 +76,11 @@ export default function AboutPage() {
       </section>
 
       {/* 2. MISSION STRIP */}
-      <section className="w-full border-y border-gray-100 bg-gray-50 py-16">
+      <section className="w-full border-y border-white/10 bg-[#050B1B] py-16">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="flex items-center gap-4">
-                <span className="text-sm font-semibold text-gray-500 uppercase tracking-widest">우리가 하는 일</span>
-                <span className="h-[1px] w-16 bg-gray-300" />
+                <span className="text-sm font-semibold text-white/60 uppercase tracking-widest">우리가 하는 일</span>
+                <span className="h-[1px] w-16 bg-white/30" />
             </div>
             
             <div className="flex flex-wrap justify-center gap-8 md:gap-16">
@@ -89,15 +89,15 @@ export default function AboutPage() {
                     { kor: "검증", eng: "Proof & Build" }, 
                     { kor: "자동화", eng: "AI Workflow" }
                 ].map((item) => (
-                    <div key={item.kor} className="flex flex-col items-center md:items-start text-[#050B1B]">
+                    <div key={item.kor} className="flex flex-col items-center md:items-start text-white">
                         <span className="text-2xl md:text-3xl font-bold">{item.kor}</span>
-                        <span className="text-sm text-gray-500 font-medium">{item.eng}</span>
+                        <span className="text-sm text-white/60 font-medium">{item.eng}</span>
                     </div>
                 ))}
             </div>
         </div>
         <div className="text-center mt-12">
-             <p className="text-xl md:text-2xl font-medium text-gray-800">
+             <p className="text-xl md:text-2xl font-medium text-white">
                 아이디어를 “작동하는 결과물”로 만드는 과정 전체를 설계합니다.
              </p>
         </div>
@@ -255,30 +255,30 @@ export default function AboutPage() {
       </section>
 
       {/* 6. 2026 FOCUS */}
-      <section className="w-full py-24 px-6 bg-gray-50 border-t border-gray-200">
+      <section className="w-full py-24 px-6 bg-[#050B1B] border-t border-white/10">
         <div className="max-w-4xl mx-auto text-center space-y-10">
             <div>
                 <h5 className="text-neon-sky font-semibold tracking-widest text-sm uppercase mb-4">2026 FOCUS</h5>
-                <h2 className="text-3xl md:text-4xl font-bold text-[#050B1B]">2026년에 집중하는 것</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-white">2026년에 집중하는 것</h2>
             </div>
             
-            <p className="text-2xl text-gray-700 max-w-2xl mx-auto font-medium leading-relaxed">
+            <p className="text-2xl text-gray-300 max-w-2xl mx-auto font-medium leading-relaxed">
                 DMS는 바이브 코딩과 AI Agent 운영을 통해,<br/> 
                 작지만 강한 제품과 사회적 가치를 동시에 만듭니다.
             </p>
             
             <div className="flex flex-wrap justify-center gap-4 py-8">
                 {["장애아동 웹앱", "업무 자동화 워크플로우", "AI 교육·컨설팅", "해외 무역"].map(tag => (
-                    <span key={tag} className="px-8 py-4 rounded-full bg-white border border-gray-200 text-[#050B1B] font-bold text-lg shadow-sm hover:shadow-md transition-shadow">
+                    <span key={tag} className="px-8 py-4 rounded-full bg-white/10 border border-white/20 text-white font-bold text-lg hover:bg-white/20 transition-colors">
                         {tag}
                     </span>
                 ))}
             </div>
 
-            <div className="pt-8 border-t border-gray-200">
+            <div className="pt-8 border-t border-white/20">
                 <span className="inline-block relative mt-8">
-                    <span className="absolute -inset-2 bg-neon-sky/10 rounded-lg transform -skew-x-6" />
-                    <span className="relative text-2xl md:text-3xl font-bold text-[#050B1B]">"우리가 만드는 건 ‘기능’이 아니라,<br/>지속 가능한 실행 시스템입니다."</span>
+                    <span className="absolute -inset-4 bg-neon-sky/20 rounded-xl transform -skew-x-3" />
+                    <span className="relative text-xl md:text-2xl font-bold text-white leading-relaxed">"우리가 만드는 건 ‘기능’이 아니라,<br/>지속 가능한 실행 시스템입니다."</span>
                 </span>
             </div>
         </div>

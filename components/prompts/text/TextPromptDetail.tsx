@@ -54,7 +54,7 @@ export default function TextPromptDetail({ prompt, onBack }: TextPromptDetailPro
             
             {/* Description Card */}
             <div className="bg-white/5 rounded-xl p-6 border border-white/10">
-                <p className="text-gray-300 leading-relaxed">
+                <p className="text-gray-300 leading-relaxed whitespace-pre-wrap">
                     {prompt.description}
                 </p>
             </div>

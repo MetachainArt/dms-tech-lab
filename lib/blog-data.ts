@@ -71,5 +71,14 @@ export const BLOG_SERIES: Record<string, BlogSeries> = {
     coverImage: "/series/daily-record.png",
     color: "orange",
     tags: ["Essay", "Season", "Memory"],
+  },
+  "passive-income": {
+    id: "passive-income",
+    title: "Passive Income",
+    subtitle: "WEALTH & FREEDOM",
+    description: "잠자는 동안에도 가치가 자라나는 시스템. 디지털 자산, 자동화 수익, 그리고 경제적 자유를 향한 여정.",
+    coverImage: "/series/passive-income.png",
+    color: "yellow",
+    tags: ["Money", "Asset", "Freedom"],
   }
 };

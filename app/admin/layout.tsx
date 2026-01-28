@@ -70,6 +70,14 @@ export default async function AdminLayout({
                  <span className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-purple-500 transition-colors" />
                 Automation
             </Link>
+            <Link href="/admin/education" className="flex items-center gap-3 px-4 py-3 hover:bg-white/5 rounded-xl text-white/70 hover:text-white transition-all group">
+                 <span className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-teal-500 transition-colors" />
+                Education
+            </Link>
+            <Link href="/admin/blog" className="flex items-center gap-3 px-4 py-3 hover:bg-white/5 rounded-xl text-white/70 hover:text-white transition-all group">
+                 <span className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-orange-500 transition-colors" />
+                Blog
+            </Link>
         </nav>
 
         <div className="p-4 border-t border-white/10">
