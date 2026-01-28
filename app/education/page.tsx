@@ -13,7 +13,8 @@ const tracks = [
     desc: "Midjourney, Stable Diffusion, Runway 등 최신 생성형 AI 도구의 심화 활용법. 상상을 압도적인 퀄리티의 비주얼과 영상으로 구현하는 프로페셔널 가이드.",
     image: "/icons/3d-curriculum-ai.png", // Updated to 3D Image
     color: "text-blue-600",
-    bg: "bg-[#030712]", // Dark background for icon visibility
+    bg: "bg-gradient-to-br from-blue-950 to-slate-900", // Deep Gradient
+    accent: "shadow-blue-500/20",
   },
   {
     category: "VIBE CODING",
@@ -21,7 +22,8 @@ const tracks = [
     desc: "Cursor, Bolt, V0 등 AI 코딩 툴을 마스터하여 아이디어를 즉시 배포 가능한 웹 서비스로 전환. 코딩 지식이 없어도 감각만으로 개발하는 로우코드/노코드 혁명.",
     image: "/icons/3d-curriculum-code.png", // Updated to 3D Image
     color: "text-purple-600",
-    bg: "bg-[#030712]", // Dark background for icon visibility
+    bg: "bg-gradient-to-br from-purple-950 to-slate-900", // Deep Gradient
+    accent: "shadow-purple-500/20",
   },
   {
     category: "BUSINESS AUTOMATION",
@@ -29,7 +31,8 @@ const tracks = [
     desc: "N8N, Zapier, LangChain을 활용한 업무 자동화 설계. 반복적인 업무를 AI 에이전트에게 위임하고, 24시간 멈추지 않는 무인 비즈니스 시스템을 구축하는 노하우.",
     image: "/icons/3d-curriculum-hw.png", // Updated to 3D Image
     color: "text-teal-600",
-    bg: "bg-[#030712]", // Dark background for icon visibility
+    bg: "bg-gradient-to-br from-teal-950 to-slate-900", // Deep Gradient
+    accent: "shadow-teal-500/20",
   },
 ];
 
@@ -82,11 +85,15 @@ export default function EducationPage() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: idx * 0.1 }}
-                        className="group relative rounded-[1.5rem] bg-white text-slate-800 overflow-hidden hover:-translate-y-2 transition-transform duration-300 shadow-xl"
+                        className="group relative rounded-[1.5rem] bg-white text-slate-800 overflow-hidden hover:-translate-y-2 transition-transform duration-300 shadow-xl flex flex-col"
                     >
-                        {/* Top Image Area - Darkened for Icon Visibility */}
-                        <div className={`h-48 w-full ${track.bg} relative flex items-center justify-center overflow-hidden`}>
-                             <div className="relative w-24 h-24 drop-shadow-xl group-hover:scale-110 transition-transform duration-500">
+                        {/* Top Image Area - Deep Gradient */}
+                        <div className={`h-56 w-full ${track.bg} relative flex items-center justify-center overflow-hidden`}>
+                             
+                             {/* Inner Glow/Accent */}
+                             <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-white/5 blur-2xl ${track.accent}`} />
+
+                             <div className="relative w-28 h-28 drop-shadow-2xl group-hover:scale-110 transition-transform duration-500 z-10">
                                  <Image 
                                     src={track.image}
                                     alt={track.title}
@@ -94,19 +101,23 @@ export default function EducationPage() {
                                     className="object-contain"
                                  />
                              </div>
-                             {/* Decorative Shine */}
-                             <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform" />
+                             
+                             {/* Decorative Grid Pattern */}
+                             <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
+
+                             {/* Decorative Shine Overlay */}
+                             <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform pointer-events-none" />
                         </div>
 
                         {/* Content Body */}
-                        <div className="p-8 flex flex-col h-full min-h-[320px]">
+                        <div className="p-8 flex flex-col flex-grow">
                             {/* Category */}
-                            <span className="text-[11px] font-bold tracking-widest text-gray-500 uppercase mb-3 block">
+                            <span className={`text-[11px] font-extrabold tracking-widest uppercase mb-3 block ${track.color.replace('text-', 'text-').replace('600', '500')}`}>
                                 {track.category}
                             </span>
 
                             {/* Title */}
-                            <h3 className="text-2xl font-bold mb-4 text-slate-900 leading-tight">
+                            <h3 className="text-2xl font-bold mb-4 text-slate-900 leading-tight group-hover:text-black transition-colors">
                                 {track.title}
                             </h3>
 
@@ -115,12 +126,12 @@ export default function EducationPage() {
                                 {track.desc}
                             </p>
 
-                            {/* Button */}
-                            <div className="mt-auto pt-6 border-t border-slate-100">
-                                <button className="px-6 py-2.5 rounded-full border border-slate-200 text-sm font-bold text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center gap-2 group/btn w-fit">
-                                    자세히 보기
-                                    <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
-                                </button>
+                            {/* Button - Minimal & Clean */}
+                            <div className="mt-auto pt-6 border-t border-slate-100 flex justify-between items-center group/btn">
+                                <span className="text-sm font-bold text-slate-700 group-hover/btn:text-black transition-colors">Learn more</span>
+                                <div className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center bg-slate-50 group-hover/btn:bg-slate-100 group-hover/btn:border-slate-300 transition-all">
+                                    <ArrowRight className="w-3.5 h-3.5 text-slate-600 group-hover/btn:text-black group-hover/btn:translate-x-0.5 transition-all" />
+                                </div>
                             </div>
                         </div>
                     </motion.div>
