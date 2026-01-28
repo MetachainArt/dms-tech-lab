@@ -28,7 +28,9 @@
       "Bash(start https://searchadvisor.naver.com/)",
       "Bash(start https://www.bing.com/webmasters)",
       "Bash(start https://searchadvisor.naver.com/console/board?siteUrl=https://dmssolution.co.kr)",
-      "Bash(node -e:*)"
+      "Bash(node -e:*)",
+      "WebFetch(domain:pagespeed.web.dev)",
+      "WebFetch(domain:dmssolution.co.kr)"
     ]
   }
 }

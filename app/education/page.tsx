@@ -8,10 +8,8 @@ import Link from "next/link";
 // Curriculum Data
 const tracks = [
   {
-    title: "AI & Automation",
-    desc: "N8N과 Opal로 만드는 24시간 무인 비즈니스. 워크플로우 자동화의 모든 것.",
-    level: "초급 ~ 중급",
-    duration: "4주 완성",
+    title: "Generative AI",
+    desc: "생성형 AI 이미지, 영상, LLM 관련 전문 자료 및 가이드.",
     image: "/icons/3d-curriculum-ai.png", // Updated to 3D Image
     color: "text-blue-500",
     bg: "bg-blue-500/10",
@@ -19,19 +17,15 @@ const tracks = [
   },
   {
     title: "Vibe Coding",
-    desc: "코딩 없이 감각으로 완성하는 웹 앱 개발. 아이디어를 즉시 프로덕트로.",
-    level: "입문",
-    duration: "4주 완성",
+    desc: "AI를 활용한 차세대 코딩 방식 및 웹 개발 실전 노하우.",
     image: "/icons/3d-curriculum-code.png", // Updated to 3D Image
     color: "text-purple-500",
     bg: "bg-purple-500/10",
     border: "border-purple-500/20",
   },
   {
-    title: "H/W Interface",
-    desc: "하드웨어와 AI의 융합 설계. 피지컬 컴퓨팅과 제어 시스템의 기초.",
-    level: "중급",
-    duration: "6주 완성",
+    title: "AI Automation",
+    desc: "업무 효율화를 위한 다양한 Automation 관련 교육 자료.",
     image: "/icons/3d-curriculum-hw.png", // Updated to 3D Image
     color: "text-teal-500",
     bg: "bg-teal-500/10",
@@ -54,8 +48,8 @@ export default function EducationPage() {
                     PROFESSIONAL ENGINEERING ACADEMY
                 </div>
                 <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-8">
-                    현장 중심의<br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">프로페셔널 기술 교육.</span>
+                    다양한 AI & 엔지니어링<br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">교육자료를 제공합니다.</span>
                 </h1>
                 <p className="text-xl text-white/60 max-w-2xl leading-relaxed mb-10 md:mx-0 mx-auto">
                     이론이 아닌 실무에서 바로 적용 가능한 기술을 전수합니다.<br />
@@ -103,15 +97,7 @@ export default function EducationPage() {
                             {track.desc}
                         </p>
 
-                        {/* Badges */}
-                        <div className="flex flex-wrap gap-2 pt-6 border-t border-white/5">
-                            <span className="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-white/70 border border-white/10">
-                                {track.level}
-                            </span>
-                            <span className="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-white/70 border border-white/10">
-                                {track.duration}
-                            </span>
-                        </div>
+
                     </motion.div>
                 ))}
             </div>
