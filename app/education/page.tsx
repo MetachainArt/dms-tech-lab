@@ -8,28 +8,28 @@ import Link from "next/link";
 // Curriculum Data
 const tracks = [
   {
+    category: "AI CREATIVE",
     title: "Generative AI",
-    desc: "생성형 AI 이미지, 영상, LLM 관련 전문 자료 및 가이드.",
+    desc: "Midjourney, Stable Diffusion, Runway 등 최신 생성형 AI 도구의 심화 활용법. 상상을 압도적인 퀄리티의 비주얼과 영상으로 구현하는 프로페셔널 가이드.",
     image: "/icons/3d-curriculum-ai.png", // Updated to 3D Image
-    color: "text-blue-500",
-    bg: "bg-blue-500/10",
-    border: "border-blue-500/20",
+    color: "text-blue-600",
+    bg: "bg-blue-50",
   },
   {
+    category: "VIBE CODING",
     title: "Vibe Coding",
-    desc: "AI를 활용한 차세대 코딩 방식 및 웹 개발 실전 노하우.",
+    desc: "Cursor, Bolt, V0 등 AI 코딩 툴을 마스터하여 아이디어를 즉시 배포 가능한 웹 서비스로 전환. 코딩 지식이 없어도 감각만으로 개발하는 로우코드/노코드 혁명.",
     image: "/icons/3d-curriculum-code.png", // Updated to 3D Image
-    color: "text-purple-500",
-    bg: "bg-purple-500/10",
-    border: "border-purple-500/20",
+    color: "text-purple-600",
+    bg: "bg-purple-50",
   },
   {
+    category: "BUSINESS AUTOMATION",
     title: "AI Automation",
-    desc: "업무 효율화를 위한 다양한 Automation 관련 교육 자료.",
+    desc: "N8N, Zapier, LangChain을 활용한 업무 자동화 설계. 반복적인 업무를 AI 에이전트에게 위임하고, 24시간 멈추지 않는 무인 비즈니스 시스템을 구축하는 노하우.",
     image: "/icons/3d-curriculum-hw.png", // Updated to 3D Image
-    color: "text-teal-500",
-    bg: "bg-teal-500/10",
-    border: "border-teal-500/20",
+    color: "text-teal-600",
+    bg: "bg-teal-50",
   },
 ];
 
@@ -67,8 +67,11 @@ export default function EducationPage() {
       <section className="py-24 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
             <div className="mb-16">
-                <h2 className="text-3xl font-bold text-white mb-4">Curriculum Tracks</h2>
-                <div className="h-1 w-20 bg-neon-sky rounded-full" />
+                <span className="text-neon-sky font-bold tracking-widest text-sm uppercase mb-2 block">Our Services</span>
+                <h2 className="text-4xl font-bold text-white mb-4">
+                    디지털 혁신을 위한<br />
+                    <span className="text-neon-sky">맞춤형 솔루션.</span>
+                </h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
@@ -79,85 +82,51 @@ export default function EducationPage() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: idx * 0.1 }}
-                        className={`group relative p-8 rounded-[2rem] border ${track.border} bg-[#0A1124] hover:bg-[#0F1830] transition-colors duration-300 flex flex-col`}
+                        className="group relative rounded-[1.5rem] bg-white text-slate-800 overflow-hidden hover:-translate-y-2 transition-transform duration-300 shadow-xl"
                     >
-                        {/* 3D Icon Image */}
-                        <div className="relative w-20 h-20 mb-6 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)] group-hover:drop-shadow-[0_0_25px_rgba(255,255,255,0.3)] transition-all duration-300">
-                             <Image 
-                                src={track.image}
-                                alt={track.title}
-                                fill
-                                className="object-contain"
-                             />
+                        {/* Top Image Area */}
+                        <div className={`h-48 w-full ${track.bg} relative flex items-center justify-center overflow-hidden`}>
+                             <div className="relative w-24 h-24 drop-shadow-xl group-hover:scale-110 transition-transform duration-500">
+                                 <Image 
+                                    src={track.image}
+                                    alt={track.title}
+                                    fill
+                                    className="object-contain"
+                                 />
+                             </div>
+                             {/* Decorative Shine */}
+                             <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform" />
                         </div>
 
-                        {/* Title */}
-                        <h3 className="text-2xl font-bold mb-3 group-hover:text-neon-sky transition-colors">{track.title}</h3>
-                        <p className="text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
-                            {track.desc}
-                        </p>
+                        {/* Content Body */}
+                        <div className="p-8 flex flex-col h-full min-h-[320px]">
+                            {/* Category */}
+                            <span className="text-[11px] font-bold tracking-widest text-gray-500 uppercase mb-3 block">
+                                {track.category}
+                            </span>
 
+                            {/* Title */}
+                            <h3 className="text-2xl font-bold mb-4 text-slate-900 leading-tight">
+                                {track.title}
+                            </h3>
 
+                            {/* Description */}
+                            <p className="text-slate-500 text-[15px] leading-relaxed mb-8 line-clamp-4 flex-grow">
+                                {track.desc}
+                            </p>
+
+                            {/* Button */}
+                            <div className="mt-auto pt-6 border-t border-slate-100">
+                                <button className="px-6 py-2.5 rounded-full border border-slate-200 text-sm font-bold text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center gap-2 group/btn w-fit">
+                                    자세히 보기
+                                    <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                                </button>
+                            </div>
+                        </div>
                     </motion.div>
                 ))}
             </div>
-
-            {/* Featured Article Moved to Blog */}
-        </div>
-      </section>
-
-      {/* 3. Instructor Profile */}
-      <section className="py-20 px-6 bg-[#030712]/80 border-t border-white/5 relative z-10">
-        <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                {/* Image Side */}
-                <motion.div 
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="relative"
-                >
-                    <div className="aspect-[4/5] rounded-[2rem] overflow-hidden bg-gray-800 relative z-10">
-                         {/* Founder Image - Tech/Engineering Vibe (Portrait) */}
-                         <img 
-                            src="/reedo-profile-high.png"
-                            alt="Instructor Portrait"
-                            className="w-full h-full object-cover grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-500"
-                         />
-                    </div>
-                    {/* Decorative Blob */}
-                    <div className="absolute top-10 -left-10 w-full h-full border border-neon-sky/20 rounded-[2rem] -z-0" />
-                </motion.div>
-
-                {/* Text Side - Added z-10 and relative to ensure visibility */}
-                <div className="flex flex-col justify-center relative z-10">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-6 w-fit">
-                        <Globe className="w-4 h-4 text-neon-sky" />
-                        <span className="text-xs font-bold text-white/80 tracking-wide uppercase">Head Instructor</span>
-                    </div>
-                    <h2 className="text-4xl font-bold mb-6 leading-tight">
-                        20년의 엔지니어링,<br />
-                        <span className="text-neon-sky">경험을 공유합니다.</span>
-                    </h2>
-                    <p className="text-white/60 mb-8 leading-relaxed">
-                        전 세계 30개국 이상의 현장에서 다양한 기술 문제를 해결해왔습니다.
-                        단순한 코딩 기술이 아닌, 실제 비즈니스 환경에서 살아남는
-                        엔지니어링 마인드셋과 실전 노하우를 가르칩니다.
-                    </p>
-                    
-                    {/* Stats/Badges */}
-                    <div className="grid grid-cols-2 gap-6">
-                        <div className="bg-[#0A1124] p-5 rounded-2xl border border-white/5">
-                            <span className="block text-3xl font-bold text-white mb-1">20+</span>
-                            <span className="text-sm text-gray-500">Years Experience</span>
-                        </div>
-                        <div className="bg-[#0A1124] p-5 rounded-2xl border border-white/5">
-                            <span className="block text-3xl font-bold text-white mb-1">30+</span>
-                            <span className="text-sm text-gray-500">Global Projects</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
       </section>
 
