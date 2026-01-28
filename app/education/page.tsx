@@ -13,7 +13,7 @@ const tracks = [
     desc: "Midjourney, Stable Diffusion, Runway 등 최신 생성형 AI 도구의 심화 활용법. 상상을 압도적인 퀄리티의 비주얼과 영상으로 구현하는 프로페셔널 가이드.",
     image: "/icons/3d-curriculum-ai.png", // Updated to 3D Image
     color: "text-blue-600",
-    bg: "bg-blue-50",
+    bg: "bg-[#030712]", // Dark background for icon visibility
   },
   {
     category: "VIBE CODING",
@@ -21,7 +21,7 @@ const tracks = [
     desc: "Cursor, Bolt, V0 등 AI 코딩 툴을 마스터하여 아이디어를 즉시 배포 가능한 웹 서비스로 전환. 코딩 지식이 없어도 감각만으로 개발하는 로우코드/노코드 혁명.",
     image: "/icons/3d-curriculum-code.png", // Updated to 3D Image
     color: "text-purple-600",
-    bg: "bg-purple-50",
+    bg: "bg-[#030712]", // Dark background for icon visibility
   },
   {
     category: "BUSINESS AUTOMATION",
@@ -29,7 +29,7 @@ const tracks = [
     desc: "N8N, Zapier, LangChain을 활용한 업무 자동화 설계. 반복적인 업무를 AI 에이전트에게 위임하고, 24시간 멈추지 않는 무인 비즈니스 시스템을 구축하는 노하우.",
     image: "/icons/3d-curriculum-hw.png", // Updated to 3D Image
     color: "text-teal-600",
-    bg: "bg-teal-50",
+    bg: "bg-[#030712]", // Dark background for icon visibility
   },
 ];
 
@@ -67,7 +67,7 @@ export default function EducationPage() {
       <section className="py-24 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
             <div className="mb-16">
-                <span className="text-neon-sky font-bold tracking-widest text-sm uppercase mb-2 block">Our Services</span>
+                {/* Removed Our Services Label */}
                 <h2 className="text-4xl font-bold text-white mb-4">
                     디지털 혁신을 위한<br />
                     <span className="text-neon-sky">맞춤형 솔루션.</span>
@@ -84,7 +84,7 @@ export default function EducationPage() {
                         transition={{ delay: idx * 0.1 }}
                         className="group relative rounded-[1.5rem] bg-white text-slate-800 overflow-hidden hover:-translate-y-2 transition-transform duration-300 shadow-xl"
                     >
-                        {/* Top Image Area */}
+                        {/* Top Image Area - Darkened for Icon Visibility */}
                         <div className={`h-48 w-full ${track.bg} relative flex items-center justify-center overflow-hidden`}>
                              <div className="relative w-24 h-24 drop-shadow-xl group-hover:scale-110 transition-transform duration-500">
                                  <Image 
@@ -95,7 +95,7 @@ export default function EducationPage() {
                                  />
                              </div>
                              {/* Decorative Shine */}
-                             <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform" />
+                             <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform" />
                         </div>
 
                         {/* Content Body */}
