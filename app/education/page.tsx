@@ -11,28 +11,28 @@ const tracks = [
     category: "AI CREATIVE",
     title: "Generative AI",
     desc: "Midjourney, Stable Diffusion, Runway 등 최신 생성형 AI 도구의 심화 활용법. 상상을 압도적인 퀄리티의 비주얼과 영상으로 구현하는 프로페셔널 가이드.",
-    image: "/icons/3d-curriculum-ai.png", // Updated to 3D Image
-    color: "text-blue-600",
-    bg: "bg-gradient-to-br from-blue-950 to-slate-900", // Deep Gradient
-    accent: "shadow-blue-500/20",
+    image: "/icons/3d-curriculum-ai.png", 
+    color: "blue", // Simplified for template usage
+    tags: ["Midjourney", "Stable Diffusion", "Runway"],
+    vol: "01"
   },
   {
     category: "VIBE CODING",
     title: "Vibe Coding",
     desc: "Cursor, Bolt, V0 등 AI 코딩 툴을 마스터하여 아이디어를 즉시 배포 가능한 웹 서비스로 전환. 코딩 지식이 없어도 감각만으로 개발하는 로우코드/노코드 혁명.",
-    image: "/icons/3d-curriculum-code.png", // Updated to 3D Image
-    color: "text-purple-600",
-    bg: "bg-gradient-to-br from-purple-950 to-slate-900", // Deep Gradient
-    accent: "shadow-purple-500/20",
+    image: "/icons/3d-curriculum-code.png", 
+    color: "purple",
+    tags: ["Cursor", "Bolt", "V0"],
+    vol: "02"
   },
   {
     category: "BUSINESS AUTOMATION",
     title: "AI Automation",
     desc: "N8N, Zapier, LangChain을 활용한 업무 자동화 설계. 반복적인 업무를 AI 에이전트에게 위임하고, 24시간 멈추지 않는 무인 비즈니스 시스템을 구축하는 노하우.",
-    image: "/icons/3d-curriculum-hw.png", // Updated to 3D Image
-    color: "text-teal-600",
-    bg: "bg-gradient-to-br from-teal-950 to-slate-900", // Deep Gradient
-    accent: "shadow-teal-500/20",
+    image: "/icons/3d-curriculum-hw.png", 
+    color: "teal",
+    tags: ["N8N", "Zapier", "LangChain"],
+    vol: "03"
   },
 ];
 
@@ -66,74 +66,86 @@ export default function EducationPage() {
         </div>
       </section>
 
-      {/* 2. Curriculum Grid */}
-      <section className="py-24 px-6 relative z-10">
+      {/* 2. Curriculum Grid (Blog Style) */}
+      <section className="px-6 pb-32 relative z-10">
         <div className="max-w-7xl mx-auto">
-            <div className="mb-16">
-                {/* Removed Our Services Label */}
-                <h2 className="text-4xl font-bold text-white mb-4">
-                    디지털 혁신을 위한<br />
-                    <span className="text-neon-sky">맞춤형 솔루션.</span>
-                </h2>
-            </div>
+            
+            {/* Removed "Our Services" Header Section */}
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
                 {tracks.map((track, idx) => (
                     <motion.div
                         key={track.title}
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: idx * 0.1 }}
-                        className="group relative rounded-[1.5rem] bg-white text-slate-800 overflow-hidden hover:-translate-y-2 transition-transform duration-300 shadow-xl flex flex-col"
+                        transition={{ delay: idx * 0.2 }}
+                        className="group relative block w-full"
                     >
-                        {/* Top Image Area - Deep Gradient */}
-                        <div className={`h-56 w-full ${track.bg} relative flex items-center justify-center overflow-hidden`}>
+                        <div className="relative aspect-[3/4] w-full rounded-[20px] transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl hover:shadow-neon-sky/20 perspective-1000">
                              
-                             {/* Inner Glow/Accent */}
-                             <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-white/5 blur-2xl ${track.accent}`} />
-
-                             <div className="relative w-28 h-28 drop-shadow-2xl group-hover:scale-110 transition-transform duration-500 z-10">
-                                 <Image 
-                                    src={track.image}
-                                    alt={track.title}
-                                    fill
-                                    className="object-contain"
-                                 />
-                             </div>
+                             {/* Book Spine Effect (Left Side) */}
+                             <div className="absolute left-0 top-0 bottom-0 w-3 rounded-l-[20px] bg-gradient-to-r from-white/20 to-transparent z-20 pointer-events-none" />
                              
-                             {/* Decorative Grid Pattern */}
-                             <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
-
-                             {/* Decorative Shine Overlay */}
-                             <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform pointer-events-none" />
-                        </div>
-
-                        {/* Content Body */}
-                        <div className="p-8 flex flex-col flex-grow">
-                            {/* Category */}
-                            <span className={`text-[11px] font-extrabold tracking-widest uppercase mb-3 block ${track.color.replace('text-', 'text-').replace('600', '500')}`}>
-                                {track.category}
-                            </span>
-
-                            {/* Title */}
-                            <h3 className="text-2xl font-bold mb-4 text-slate-900 leading-tight group-hover:text-black transition-colors">
-                                {track.title}
-                            </h3>
-
-                            {/* Description */}
-                            <p className="text-slate-500 text-[15px] leading-relaxed mb-8 line-clamp-4 flex-grow">
-                                {track.desc}
-                            </p>
-
-                            {/* Button - Minimal & Clean */}
-                            <div className="mt-auto pt-6 border-t border-slate-100 flex justify-between items-center group/btn">
-                                <span className="text-sm font-bold text-slate-700 group-hover/btn:text-black transition-colors">Learn more</span>
-                                <div className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center bg-slate-50 group-hover/btn:bg-slate-100 group-hover/btn:border-slate-300 transition-all">
-                                    <ArrowRight className="w-3.5 h-3.5 text-slate-600 group-hover/btn:text-black group-hover/btn:translate-x-0.5 transition-all" />
+                             {/* Cover Image/Background */}
+                             <div className="absolute inset-0 rounded-[20px] overflow-hidden bg-[#0A1124] border-2 border-white/20 group-hover:border-white/40 transition-colors shadow-lg flex items-center justify-center">
+                                {/* Use icon as the main visual, centered like the blog covers often do or just distinct */}
+                                <div className={`absolute inset-0 bg-gradient-to-input from-${track.color}-900/50 to-slate-900 z-0`} /> 
+                                <div className="relative w-40 h-40 drop-shadow-[0_0_30px_rgba(255,255,255,0.2)] z-0 transition-transform duration-700 group-hover:scale-110">
+                                     <Image 
+                                        src={track.image}
+                                        alt={track.title}
+                                        fill
+                                        className="object-contain"
+                                     />
                                 </div>
-                            </div>
+
+                                {/* Gradient Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050B1B]/60 to-[#050B1B]/95 z-10" />
+                             </div>
+
+                             {/* Content */}
+                             <div className="absolute inset-0 p-8 flex flex-col justify-end z-20">
+                                 {/* Top Badge (Tags) */}
+                                 <div className="absolute top-6 left-6 flex flex-wrap gap-2">
+                                     {track.tags.map((tag, i) => (
+                                         <span key={i} className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/90 shadow-sm">
+                                             {tag}
+                                         </span>
+                                     ))}
+                                 </div>
+
+                                 {/* Vol Badge */}
+                                 <div className={`absolute top-6 right-6 w-12 h-16 bg-${track.color}-500 rounded-b-lg shadow-lg flex flex-col items-center justify-center text-white font-bold opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 delay-100`}>
+                                     <span className="text-xs opacity-80">Vol.</span>
+                                     <span className="text-lg">{track.vol}</span>
+                                 </div>
+
+                                 {/* Title Section */}
+                                 <div className="transform transition-transform duration-300 group-hover:translate-y-[-10px]">
+                                     <span className={`block text-${track.color}-400 text-sm font-bold tracking-widest uppercase mb-2 opacity-90`}>
+                                         {track.category}
+                                     </span>
+                                     <h3 className="text-3xl font-bold text-white mb-4 leading-tight group-hover:text-neon-sky transition-colors">
+                                         {track.title}
+                                     </h3>
+                                     <div className="h-0 group-hover:h-auto overflow-hidden transition-all duration-500 opacity-0 group-hover:opacity-100">
+                                         <p className="text-gray-300 text-sm leading-relaxed mb-4 line-clamp-3">
+                                             {track.desc}
+                                         </p>
+                                         <button className="flex items-center text-white font-semibold text-sm hover:text-neon-sky transition-colors">
+                                             View Curriculum <ArrowRight className="w-4 h-4 ml-2" />
+                                         </button>
+                                     </div>
+                                 </div>
+                             </div>
+
+                             {/* Hover Glow Effect */}
+                             <div className={`absolute -inset-1 rounded-[24px] bg-gradient-to-br from-${track.color}-500/20 to-transparent blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10`} />
                         </div>
+                        
+                        {/* Reflection */}
+                        <div className="absolute -bottom-4 left-4 right-4 h-4 bg-black/50 blur-lg rounded-[100%] opacity-0 group-hover:opacity-40 transition-opacity duration-500 transform scale-x-90" />
                     </motion.div>
                 ))}
             </div>
