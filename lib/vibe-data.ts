@@ -30,7 +30,7 @@ export const VIBE_APPS: VibeApp[] = [
     category: "Creative",
     url: "https://promptblocks.dmssolution.co.kr/",
     icon: Palette,
-    status: "Beta",
+    status: "Live",
     tags: ["AI", "Canvas", "Ideation"],
   },
 
@@ -41,7 +41,7 @@ export const VIBE_APPS: VibeApp[] = [
     category: "Utility",
     url: "/apps/prompt-library",
     icon: Terminal,
-    status: "Live",
+    status: "Coming Soon",
     tags: ["Prompt", "AI", "Dev"],
   },
   {
@@ -61,7 +61,7 @@ export const VIBE_APPS: VibeApp[] = [
     category: "Creative",
     url: "/odyssey",
     icon: Sparkles,
-    status: "Live",
+    status: "Coming Soon",
     tags: ["Video", "GenAI", "Odyssey"],
   },
   {
