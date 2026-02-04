@@ -25,10 +25,10 @@ export const VIBE_CATEGORIES: VibeCategory[] = [
 export const VIBE_APPS: VibeApp[] = [
   {
     id: "muse-canvas",
-    title: "Muse Canvas",
-    description: "AI 기반 무한 캔버스 창작 도구. 아이디어를 시각화하고 확장하세요.",
+    title: "PromptBlocks",
+    description: "AI가 프롬프트를 13가지 요소로 분해하고, 저장된 블록을 레고처럼 조립해 새로운 프롬프트를 만들어보세요.",
     category: "Creative",
-    url: "/apps/muse-canvas", // Placeholder
+    url: "https://promptblocks.dmssolution.co.kr/",
     icon: Palette,
     status: "Beta",
     tags: ["AI", "Canvas", "Ideation"],
