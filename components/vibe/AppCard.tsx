@@ -10,7 +10,11 @@ interface AppCardProps {
 
 export default function AppCard({ app }: AppCardProps) {
   return (
-    <Link href={app.url} className="group block h-full">
+    <Link 
+      href={app.url} 
+      className="group block h-full"
+      {...(app.url.startsWith('http') ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+    >
       <div className="h-full relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-3xl p-6 border-2 border-white/20 hover:border-neon-sky/60 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(14,165,233,0.25)] overflow-hidden shadow-lg">
         
         {/* Background Pattern */}
