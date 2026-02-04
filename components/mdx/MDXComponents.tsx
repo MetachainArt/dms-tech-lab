@@ -11,7 +11,7 @@ export const MDXComponents = {
   h1: (props: any) => <h1 className="text-4xl md:text-5xl font-bold text-white mb-8 mt-12" {...props} />,
   h2: (props: any) => <h2 className="text-3xl font-bold text-white mb-6 mt-12 flex items-center gap-3" {...props} />,
   h3: (props: any) => <h3 className="text-2xl font-bold text-white mb-4 mt-8" {...props} />,
-  p: (props: any) => <p className="text-gray-300 leading-relaxed mb-6" {...props} />,
+  p: (props: any) => <p className="text-gray-300 leading-relaxed mb-6 whitespace-pre-line" {...props} />,
   ul: (props: any) => <ul className="list-disc pl-6 text-gray-300 space-y-2 mb-6" {...props} />,
   li: (props: any) => <li className="" {...props} />,
   strong: (props: any) => <strong className="font-bold text-white" {...props} />,

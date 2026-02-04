@@ -3,8 +3,8 @@ import { Redis } from "@upstash/redis";
 
 // Initialize Redis client
 const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL || "",
-  token: process.env.UPSTASH_REDIS_REST_TOKEN || "",
+  url: process.env.UPSTASH_REDIS_REST_URL || "https://example.com",
+  token: process.env.UPSTASH_REDIS_REST_TOKEN || "mock",
 });
 
 // Create rate limiter with sliding window algorithm
