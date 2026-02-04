@@ -46,10 +46,8 @@ export function getAllPosts(): MDXPost[] {
   const files = fs.readdirSync(postsDirectory);
   const posts = files
     .filter((fileName) => !fileName.startsWith('_') && fileName.endsWith('.mdx'))
-    .map((fileName) => {
-    const slug = fileName.replace(/\.mdx$/, '');
-    return getPostBySlug(slug);
-  });
+    .map((fileName) => getPostBySlug(fileName.replace(/\.mdx$/, '')))
+    .filter((post): post is MDXPost => post !== null);
 
   return posts.sort((post1, post2) => (post1.frontMatter.date > post2.frontMatter.date ? -1 : 1));
 }
