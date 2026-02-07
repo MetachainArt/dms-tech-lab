@@ -25,10 +25,14 @@ const ALLOWED_MIME_TYPES = [
   'text/csv',
   'application/pdf',
   'application/zip',
+  'application/x-zip-compressed', // Added for Windows compatibility
   'application/x-rar-compressed',
   'application/x-7z-compressed',
+  'application/octet-stream', // Fallback for unknown binary types
   'video/mp4',
   'video/webm',
+  'audio/mpeg',
+  'audio/wav',
 ];
 
 // Max file size: 50MB

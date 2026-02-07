@@ -18,8 +18,11 @@ export default function NewAutomationPage() {
 
   // Upload loading states
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [progressImage, setProgressImage] = useState(0);
   const [uploadingResource, setUploadingResource] = useState(false);
+  const [progressResource, setProgressResource] = useState(0);
   const [uploadingVideo, setUploadingVideo] = useState(false);
+  const [progressVideo, setProgressVideo] = useState(0);
 
   // Main Form State
   const [formData, setFormData] = useState({
@@ -180,7 +183,7 @@ export default function NewAutomationPage() {
                     {/* Simple File Upload Helper */}
                     <div className="relative overflow-hidden inline-block mt-2">
                         <button type="button" disabled={uploadingImage} className="bg-white/10 hover:bg-white/20 text-white px-3 py-1 rounded text-xs disabled:opacity-50">
-                            {uploadingImage ? "Uploading..." : "Upload File"}
+                            {uploadingImage ? `Uploading... ${progressImage}%` : "Upload File"}
                         </button>
                         <input 
                             type="file" 
@@ -191,10 +194,12 @@ export default function NewAutomationPage() {
                                 const file = e.target.files?.[0];
                                 if(!file) return;
                                 setUploadingImage(true);
+                                setProgressImage(0);
                                 try {
                                     const newBlob = await upload(file.name, file, {
                                         access: 'public',
                                         handleUploadUrl: '/api/upload',
+                                        onUploadProgress: (progress) => setProgressImage(progress.percentage),
                                     });
                                     setLinks(prev => ({...prev, previewImage: newBlob.url}));
                                 } catch(err: any) { 
@@ -224,7 +229,7 @@ export default function NewAutomationPage() {
                          {/* Resource File Upload Helper */}
                          <div className="relative overflow-hidden inline-block mt-2">
                             <button type="button" disabled={uploadingResource} className="bg-white/10 hover:bg-white/20 text-white px-3 py-1 rounded text-xs disabled:opacity-50">
-                                {uploadingResource ? "Uploading..." : "Upload Resource File"}
+                                {uploadingResource ? `Uploading... ${progressResource}%` : "Upload Resource File"}
                             </button>
                             <input 
                                 type="file" 
@@ -235,10 +240,13 @@ export default function NewAutomationPage() {
                                     const file = e.target.files?.[0];
                                     if(!file) return;
                                     setUploadingResource(true);
+                                    setProgressResource(0);
+                                    console.log("Uploading file type:", file.type);
                                     try {
                                         const newBlob = await upload(file.name, file, {
                                             access: 'public',
                                             handleUploadUrl: '/api/upload',
+                                            onUploadProgress: (progress) => setProgressResource(progress.percentage),
                                         });
                                         setLinks(prev => ({...prev, jsonUrl: newBlob.url}));
                                     } catch(err: any) { 
@@ -264,7 +272,7 @@ export default function NewAutomationPage() {
                         {/* Video File Upload Helper */}
                         <div className="relative overflow-hidden inline-block mt-2">
                             <button type="button" disabled={uploadingVideo} className="bg-white/10 hover:bg-white/20 text-white px-3 py-1 rounded text-xs disabled:opacity-50">
-                                {uploadingVideo ? "Uploading..." : "Upload Video File"}
+                                {uploadingVideo ? `Uploading... ${progressVideo}%` : "Upload Video File"}
                             </button>
                             <input 
                                 type="file" 
@@ -275,10 +283,12 @@ export default function NewAutomationPage() {
                                     const file = e.target.files?.[0];
                                     if(!file) return;
                                     setUploadingVideo(true);
+                                    setProgressVideo(0);
                                     try {
                                         const newBlob = await upload(file.name, file, {
                                             access: 'public',
                                             handleUploadUrl: '/api/upload',
+                                            onUploadProgress: (progress) => setProgressVideo(progress.percentage),
                                         });
                                         setLinks(prev => ({...prev, videoUrl: newBlob.url}));
                                     } catch(err: any) { 
