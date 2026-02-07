@@ -6,6 +6,9 @@ import Image from "next/image";
 import Background from "@/components/ui/Background";
 import { ArrowLeft, Share2, CornerUpRight, Download, CheckCircle, Copy } from "lucide-react";
 
+// ... imports remain the same
+import { formatDate } from "@/lib/utils"; // Using utility for date formatting
+
 export const dynamic = 'force-dynamic';
 
 export default async function TemplateDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -29,7 +32,12 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
 
   const template = {
     ...automation,
-    detail,
+    detail: {
+        ...detail,
+        keyFeatures: detail.keyFeatures || [], // Default to empty array
+        prerequisites: detail.prerequisites || [],
+        steps: detail.steps || [],
+    },
     category: automation.category,
     author: {
         name: automation.author,
@@ -89,10 +97,10 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
             
             {/* Visual / Screenshot Area */}
             <div className="w-full md:w-1/2 aspect-video bg-[#1A1D24] rounded-xl border border-white/10 overflow-hidden relative group">
-                {template.detail.diagramImage ? (
+                {template.detail.previewImage ? (
                     <div className="w-full h-full relative">
                          <Image 
-                            src={template.detail.diagramImage} 
+                            src={template.detail.previewImage} 
                             alt={template.title + " Diagram"}
                             fill
                             className="object-cover"
@@ -127,7 +135,7 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
 
                 <div>
                     <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">Last Update</h3>
-                    <p className="text-sm text-gray-300">{template.detail.lastUpdate}</p>
+                    <p className="text-sm text-gray-300">{formatDate(template.updatedAt)}</p>
                 </div>
 
 
@@ -142,7 +150,7 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
                         How it works
                     </h2>
                     <p className="text-gray-300 leading-relaxed text-lg whitespace-pre-wrap">
-                        {template.detail.descriptionLong}
+                        {template.detail.howItWorks || template.description}
                     </p>
                 </section>
 
@@ -150,7 +158,7 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
                 <section>
                     <h2 className="text-xl font-bold mb-6">Key Features</h2>
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {template.detail.features.map((feature: any, i: number) => (
+                        {template.detail.keyFeatures.map((feature: any, i: number) => (
                             <li key={i} className="flex items-start gap-3 p-4 rounded-lg bg-white/5 border border-white/5">
                                 <div className="mt-1 w-1.5 h-1.5 rounded-full bg-purple-500 shrink-0" />
                                 <div>
@@ -165,7 +173,7 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
                 </section>
 
                 {/* Prerequisites */}
-                {template.detail.prerequisites && (
+                {template.detail.prerequisites && template.detail.prerequisites.length > 0 && (
                     <section>
                         <h2 className="text-xl font-bold mb-6">Prerequisites (선행 지식)</h2>
                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -193,7 +201,7 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
                                 <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-gray-600 ring-4 ring-[#0E0C15]" />
                                 <h3 className="text-lg font-bold text-white mb-2">{step.title}</h3>
                                 <p className="text-gray-400 leading-relaxed text-sm">
-                                    {step.desc}
+                                    {step.description || step.desc}
                                 </p>
                             </div>
                         ))}
