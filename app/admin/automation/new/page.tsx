@@ -16,6 +16,11 @@ export default function NewAutomationPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
+  // Upload loading states
+  const [uploadingImage, setUploadingImage] = useState(false);
+  const [uploadingResource, setUploadingResource] = useState(false);
+  const [uploadingVideo, setUploadingVideo] = useState(false);
+
   // Main Form State
   const [formData, setFormData] = useState({
     title: "",
@@ -174,25 +179,29 @@ export default function NewAutomationPage() {
                     </div>
                     {/* Simple File Upload Helper */}
                     <div className="relative overflow-hidden inline-block mt-2">
-                        <button type="button" className="bg-white/10 hover:bg-white/20 text-white px-3 py-1 rounded text-xs">
-                            Upload File
+                        <button type="button" disabled={uploadingImage} className="bg-white/10 hover:bg-white/20 text-white px-3 py-1 rounded text-xs disabled:opacity-50">
+                            {uploadingImage ? "Uploading..." : "Upload File"}
                         </button>
                         <input 
                             type="file" 
                             accept="image/*"
-                            className="absolute inset-0 opacity-0 cursor-pointer"
+                            disabled={uploadingImage}
+                            className="absolute inset-0 opacity-0 cursor-pointer disabled:cursor-not-allowed"
                             onChange={async (e) => {
                                 const file = e.target.files?.[0];
                                 if(!file) return;
+                                setUploadingImage(true);
                                 try {
                                     const newBlob = await upload(file.name, file, {
                                         access: 'public',
                                         handleUploadUrl: '/api/upload',
                                     });
                                     setLinks(prev => ({...prev, previewImage: newBlob.url}));
-                                } catch(err) { 
-                                    alert("Upload failed"); 
+                                } catch(err: any) { 
+                                    alert(`Upload failed: ${err.message}`); 
                                     console.error(err);
+                                } finally {
+                                    setUploadingImage(false);
                                 }
                             }}
                         />
@@ -209,30 +218,34 @@ export default function NewAutomationPage() {
                                 className="flex-1 p-3 bg-black/20 border border-white/10 rounded-xl text-white outline-none focus:border-neon-sky/50"
                                 value={links.jsonUrl}
                                 onChange={e => setLinks({...links, jsonUrl: e.target.value})}
-                                placeholder="Link to file (JSON, ZIP, etc.)"
+                                placeholder="Paste Google Drive/Dropbox/etc. Link Here"
                             />
                         </div>
                          {/* Resource File Upload Helper */}
                          <div className="relative overflow-hidden inline-block mt-2">
-                            <button type="button" className="bg-white/10 hover:bg-white/20 text-white px-3 py-1 rounded text-xs">
-                                Upload Resource File
+                            <button type="button" disabled={uploadingResource} className="bg-white/10 hover:bg-white/20 text-white px-3 py-1 rounded text-xs disabled:opacity-50">
+                                {uploadingResource ? "Uploading..." : "Upload Resource File"}
                             </button>
                             <input 
                                 type="file" 
                                 accept=".json,.zip,.rar,.7z,.pdf,.csv,.txt,.xml,.yaml"
-                                className="absolute inset-0 opacity-0 cursor-pointer"
+                                disabled={uploadingResource}
+                                className="absolute inset-0 opacity-0 cursor-pointer disabled:cursor-not-allowed"
                                 onChange={async (e) => {
                                     const file = e.target.files?.[0];
                                     if(!file) return;
+                                    setUploadingResource(true);
                                     try {
                                         const newBlob = await upload(file.name, file, {
                                             access: 'public',
                                             handleUploadUrl: '/api/upload',
                                         });
                                         setLinks(prev => ({...prev, jsonUrl: newBlob.url}));
-                                    } catch(err) { 
-                                        alert("Upload failed"); 
+                                    } catch(err: any) { 
+                                        alert(`Upload failed: ${err.message}`); 
                                         console.error(err);
+                                    } finally {
+                                        setUploadingResource(false);
                                     }
                                 }}
                             />
@@ -245,30 +258,34 @@ export default function NewAutomationPage() {
                                 className="w-full p-3 bg-black/20 border border-white/10 rounded-xl text-white outline-none focus:border-neon-sky/50"
                                 value={links.videoUrl}
                                 onChange={e => setLinks({...links, videoUrl: e.target.value})}
-                                placeholder="Link to YouTube/Video or Upload"
+                                placeholder="Paste YouTube Link or Upload Video"
                             />
                         </div>
                         {/* Video File Upload Helper */}
                         <div className="relative overflow-hidden inline-block mt-2">
-                            <button type="button" className="bg-white/10 hover:bg-white/20 text-white px-3 py-1 rounded text-xs">
-                                Upload Video File
+                            <button type="button" disabled={uploadingVideo} className="bg-white/10 hover:bg-white/20 text-white px-3 py-1 rounded text-xs disabled:opacity-50">
+                                {uploadingVideo ? "Uploading..." : "Upload Video File"}
                             </button>
                             <input 
                                 type="file" 
                                 accept="video/mp4,video/webm"
-                                className="absolute inset-0 opacity-0 cursor-pointer"
+                                disabled={uploadingVideo}
+                                className="absolute inset-0 opacity-0 cursor-pointer disabled:cursor-not-allowed"
                                 onChange={async (e) => {
                                     const file = e.target.files?.[0];
                                     if(!file) return;
+                                    setUploadingVideo(true);
                                     try {
                                         const newBlob = await upload(file.name, file, {
                                             access: 'public',
                                             handleUploadUrl: '/api/upload',
                                         });
                                         setLinks(prev => ({...prev, videoUrl: newBlob.url}));
-                                    } catch(err) { 
-                                        alert("Upload failed"); 
+                                    } catch(err: any) { 
+                                        alert(`Upload failed: ${err.message}`); 
                                         console.error(err);
+                                    } finally {
+                                        setUploadingVideo(false);
                                     }
                                 }}
                             />
