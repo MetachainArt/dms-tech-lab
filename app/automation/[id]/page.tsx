@@ -1,44 +1,42 @@
-"use client";
-
-import { use, useState, useEffect } from "react";
-import { useSession, signIn } from "next-auth/react";
-import { AUTOMATION_TEMPLATES } from "@/lib/automation-data";
-import { ArrowLeft, Share2, CornerUpRight, Download, CheckCircle, Copy } from "lucide-react";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import Image from "next/image";
 import Background from "@/components/ui/Background";
+import { ArrowLeft, Share2, CornerUpRight, Download, CheckCircle, Copy } from "lucide-react";
 
-// Mocking use params for Client Component in Next.js 15+ (using React.use if needed, or props)
-// Standard Next.js 15 App Router page receives params as promise
-export default function TemplateDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const { data: session } = useSession();
-  const [template, setTemplate] = useState<typeof AUTOMATION_TEMPLATES[0] | null>(null);
-  const [loading, setLoading] = useState(true);
+export const dynamic = 'force-dynamic';
 
-  // Unwrap params using React.use()
-  const { id } = use(params);
+export default async function TemplateDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const session = await getServerSession(authOptions);
+  const { id } = await params;
 
-  useEffect(() => {
-    const found = AUTOMATION_TEMPLATES.find(t => t.id === id);
-    setTemplate(found || null);
-    setLoading(false);
-  }, [id]);
+  const automation = await prisma.automation.findUnique({
+    where: { id }
+  });
 
-  if (loading) {
-    return (
-      <main className="w-full min-h-screen bg-[#0E0C15] text-white flex items-center justify-center">
-        <div className="animate-pulse">Loading...</div>
-      </main>
-    );
-  }
-
-  if (!template) {
+  if (!automation) {
     return (
       <main className="w-full min-h-screen bg-[#0E0C15] text-white flex items-center justify-center">
         <div>Template not found</div>
       </main>
     );
   }
+
+  // Cast JSON detail to any for access
+  const detail: any = automation.detail || {};
+
+  const template = {
+    ...automation,
+    detail,
+    category: automation.category,
+    author: {
+        name: automation.author,
+        avatar: "", 
+        verified: true
+    }
+  };
 
   return (
     <main className="w-full min-h-screen bg-[#0E0C15] text-white font-sans selection:bg-purple-500 selection:text-white">
@@ -63,21 +61,23 @@ export default function TemplateDetailPage({ params }: { params: Promise<{ id: s
                 <div className="flex flex-wrap gap-4">
                     {session ? (
                          <a 
-                            href="/downloads/SNS Shortform Auto WorkFlow.zip" 
+                            href={template.detail.jsonUrl || "/"} 
                             download
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg font-bold text-white hover:opacity-90 transition-opacity shadow-lg shadow-orange-500/20 flex items-center gap-2"
                         >
                             <Download className="w-4 h-4" />
-                            JSON Download
+                            Resource Download
                         </a>
                     ) : (
-                        <button 
-                            onClick={() => signIn()}
+                        <Link 
+                            href="/auth/signin"
                             className="px-6 py-3 bg-white/10 border border-white/10 rounded-lg font-bold text-white hover:bg-white/20 transition-all flex items-center gap-2"
                         >
                             <Download className="w-4 h-4" />
                             Login to Download
-                        </button>
+                        </Link>
                     )}
 
                     {/* Tags */}
@@ -150,7 +150,7 @@ export default function TemplateDetailPage({ params }: { params: Promise<{ id: s
                 <section>
                     <h2 className="text-xl font-bold mb-6">Key Features</h2>
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {template.detail.features.map((feature, i) => (
+                        {template.detail.features.map((feature: any, i: number) => (
                             <li key={i} className="flex items-start gap-3 p-4 rounded-lg bg-white/5 border border-white/5">
                                 <div className="mt-1 w-1.5 h-1.5 rounded-full bg-purple-500 shrink-0" />
                                 <div>
@@ -169,7 +169,7 @@ export default function TemplateDetailPage({ params }: { params: Promise<{ id: s
                     <section>
                         <h2 className="text-xl font-bold mb-6">Prerequisites (선행 지식)</h2>
                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            {template.detail.prerequisites.map((req, i) => (
+                            {template.detail.prerequisites.map((req: any, i: number) => (
                                 <li key={i} className="flex items-start gap-3 p-4 rounded-lg bg-white/5 border border-white/5 text-gray-300">
                                     <div className="mt-1.5 w-2 h-2 rounded-full bg-blue-500 shrink-0" />
                                     <div>
@@ -188,7 +188,7 @@ export default function TemplateDetailPage({ params }: { params: Promise<{ id: s
                 <section>
                     <h2 className="text-xl font-bold mb-8">Step-by-step</h2>
                     <div className="relative border-l border-white/10 ml-3 space-y-12">
-                        {template.detail.steps.map((step, i) => (
+                        {template.detail.steps.map((step: any, i: number) => (
                             <div key={i} className="pl-8 relative">
                                 <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-gray-600 ring-4 ring-[#0E0C15]" />
                                 <h3 className="text-lg font-bold text-white mb-2">{step.title}</h3>

@@ -1,6 +1,32 @@
 import AutomationContainer from "@/components/automation/AutomationMain";
+import { prisma } from "@/lib/prisma";
+import { AutomationTemplate } from "@/lib/automation-data";
 
-export default function AutomationPage() {
+export const dynamic = 'force-dynamic';
+
+export default async function AutomationPage() {
+  const automations = await prisma.automation.findMany({
+    orderBy: { createdAt: "desc" }
+  });
+
+  // Convert DB model to UI model if fields match loosely, or map explicitly if needed.
+  // Assuming strict type compatibility for now, but we verify fields.
+  // Prisma Automation `detail` is Json, so we might need type casting.
+  const formattedAutomations = automations.map(a => ({
+    ...a,
+    detail: a.detail as any, // Cast Json to required type structure
+    // Ensure category matches valid union types if stored as string
+    category: a.category as any,
+    author: {
+        name: a.author,
+        avatar: "", // Placeholder or fetch if available
+        verified: true
+    },
+    // Add missing fields or defaults
+    stats: { complexity: "Beginner", ...((a.detail as any)?.stats || {}) },
+    icons: (a.detail as any)?.icons || [],
+  })) as AutomationTemplate[];
+
   return (
     <main className="w-full min-h-screen bg-[#050B1B] text-white font-poppins relative selection:bg-blue-500 selection:text-white">
       
@@ -24,7 +50,7 @@ export default function AutomationPage() {
       <section className="px-6 pb-32 relative z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050B1B]/50 to-[#050B1B] pointer-events-none" />
         <div className="max-w-7xl mx-auto relative">
-            <AutomationContainer />
+            <AutomationContainer initialTemplates={formattedAutomations} />
         </div>
       </section>
     </main>

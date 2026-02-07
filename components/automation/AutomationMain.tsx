@@ -1,17 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { AUTOMATION_TEMPLATES, AutomationCategory } from "@/lib/automation-data";
+import { AutomationCategory, AutomationTemplate } from "@/lib/automation-data";
 import AutomationSidebar from "./AutomationSidebar";
 import TemplateCard from "./TemplateCard";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function AutomationContainer() {
+interface AutomationContainerProps {
+  initialTemplates?: AutomationTemplate[];
+}
+
+export default function AutomationContainer({ initialTemplates = [] }: AutomationContainerProps) {
   const [selectedCategory, setSelectedCategory] = useState<AutomationCategory>("All");
 
+  const templatesToDisplay = initialTemplates;
+
   const filteredTemplates = selectedCategory === "All"
-    ? AUTOMATION_TEMPLATES
-    : AUTOMATION_TEMPLATES.filter(t => t.category === selectedCategory);
+    ? templatesToDisplay
+    : templatesToDisplay.filter(t => t.category === selectedCategory);
 
   return (
     <div className="flex flex-col md:flex-row gap-8 relative">

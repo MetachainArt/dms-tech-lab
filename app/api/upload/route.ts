@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { put } from '@vercel/blob';
+
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 
@@ -52,65 +52,52 @@ export async function OPTIONS() {
   });
 }
 
-export async function POST(req: Request) {
+// Handle upload (client-side token generation)
+import { handleUpload, type HandleUploadBody } from '@vercel/blob/client';
+
+export async function POST(request: Request): Promise<NextResponse> {
+  const body = (await request.json()) as HandleUploadBody;
+
   try {
-    // 인증 확인
-    const session = await getServerSession(authOptions);
-    if (!session?.user) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401, headers: corsHeaders() }
-      );
-    }
+    const jsonResponse = await handleUpload({
+      body,
+      request,
+      onBeforeGenerateToken: async (pathname: string, clientPayload: string | null) => {
+        // 인증 확인
+        const session = await getServerSession(authOptions);
+        if (!session?.user) {
+          throw new Error('Unauthorized');
+        }
 
-    // Admin 권한 확인
-    const userEmail = session.user.email;
-    if (userEmail !== process.env.ADMIN_EMAIL) {
-      return NextResponse.json(
-        { error: "Forbidden" },
-        { status: 403, headers: corsHeaders() }
-      );
-    }
+        // Admin 권한 확인
+        if (session.user.email !== process.env.ADMIN_EMAIL) {
+            throw new Error('Forbidden');
+        }
 
-    const formData = await req.formData();
-    const file = formData.get("file") as File;
+        // 파일 확장자 검증 (Optional: more strict checks can be added here if needed)
+        // const extension = pathname.split('.').pop()?.toLowerCase();
+        // if (!extension || !ALLOWED_EXTENSIONS.includes(`.${extension}`)) {
+        //     throw new Error('Invalid file extension');
+        // }
 
-    if (!file) {
-      return NextResponse.json({ error: "No file received." }, { status: 400, headers: corsHeaders() });
-    }
-
-    // Validate file size
-    if (file.size > MAX_FILE_SIZE) {
-      return NextResponse.json({
-        error: "File size exceeds the limit."
-      }, { status: 400, headers: corsHeaders() });
-    }
-
-    if (file.size === 0) {
-      return NextResponse.json({
-        error: "File is empty."
-      }, { status: 400, headers: corsHeaders() });
-    }
-
-    // Validate MIME type
-    if (!ALLOWED_MIME_TYPES.includes(file.type)) {
-      return NextResponse.json({
-        error: "Invalid file type."
-      }, { status: 400, headers: corsHeaders() });
-    }
-
-    // Vercel Blob에 업로드
-    const blob = await put(file.name, file, {
-      access: 'public',
+        return {
+          allowedContentTypes: ALLOWED_MIME_TYPES,
+          tokenPayload: JSON.stringify({
+            userId: session.user.email,
+          }),
+        };
+      },
+      onUploadCompleted: async ({ blob, tokenPayload }) => {
+        // 업로드 완료 후 로직 (예: DB 저장 등) - 현재는 불필요
+        console.log('Upload completed:', blob.url);
+      },
     });
 
-    return NextResponse.json({
-      url: blob.url,
-      success: true
-    }, { headers: corsHeaders() });
-
+    return NextResponse.json(jsonResponse);
   } catch (error) {
-    console.error("Upload failed:", error);
-    return NextResponse.json({ error: `Upload failed: ${error instanceof Error ? error.message : String(error)}` }, { status: 500, headers: corsHeaders() });
+    return NextResponse.json(
+      { error: (error as Error).message },
+      { status: 400 }, // The webhook will retry 5 times automatically if you return 400-599
+    );
   }
 }

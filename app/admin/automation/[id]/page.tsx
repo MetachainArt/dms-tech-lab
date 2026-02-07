@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, use } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, Save, Loader2, Plus, Trash2, Image as ImageIcon } from "lucide-react";
 import Link from "next/link";
@@ -12,9 +12,11 @@ interface DynamicField {
     description: string;
 }
 
-export default function NewAutomationPage() {
+export default function EditAutomationPage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
+  const { id } = use(params);
   const [loading, setLoading] = useState(false);
+  const [fetching, setFetching] = useState(true);
 
   // Main Form State
   const [formData, setFormData] = useState({
@@ -33,6 +35,41 @@ export default function NewAutomationPage() {
       videoUrl: "",
       previewImage: ""
   });
+
+  // Fetch Existing Data
+  useEffect(() => {
+    const fetchData = async () => {
+        try {
+            const res = await fetch(`/api/admin/automation/${id}`);
+            if (!res.ok) throw new Error("Failed to fetch");
+            const data = await res.json();
+            
+            setFormData({
+                title: data.title,
+                description: data.description,
+                category: data.category
+            });
+
+            const detail = data.detail || {};
+            setHowItWorks(detail.howItWorks || "");
+            setFeatures(detail.keyFeatures || []);
+            setPrerequisites(detail.prerequisites || []);
+            setSteps(detail.steps || []);
+            setLinks({
+                jsonUrl: detail.jsonUrl || "",
+                videoUrl: detail.videoUrl || "",
+                previewImage: detail.previewImage || ""
+            });
+        } catch (error) {
+            console.error(error);
+            alert("불러오기 실패");
+            router.push("/admin/automation");
+        } finally {
+            setFetching(false);
+        }
+    };
+    fetchData();
+  }, [id, router]);
 
   // Handler for adding dynamic fields
   const addField = (setter: React.Dispatch<React.SetStateAction<DynamicField[]>>) => {
@@ -75,8 +112,8 @@ export default function NewAutomationPage() {
     };
 
     try {
-      const res = await fetch("/api/admin/automation", {
-        method: "POST",
+      const res = await fetch(`/api/admin/automation/${id}`, {
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
             ...formData,
@@ -84,29 +121,63 @@ export default function NewAutomationPage() {
         }),
       });
 
-      if (!res.ok) throw new Error("Failed to create automation");
+      if (!res.ok) throw new Error("Failed to update automation");
       
       router.push("/admin/automation");
       router.refresh();
     } catch (error) {
-      alert("생성 실패");
+      alert("수정 실패");
       console.error(error);
     } finally {
       setLoading(false);
     }
   };
 
+  const handleDelete = async () => {
+      if (!confirm("정말 삭제하시겠습니까? 복구할 수 없습니다.")) return;
+      setLoading(true);
+      try {
+          const res = await fetch(`/api/admin/automation/${id}`, { method: "DELETE" });
+          if (!res.ok) throw new Error("Failed to delete");
+          router.push("/admin/automation");
+          router.refresh();
+      } catch (error) {
+          alert("삭제 실패");
+          console.error(error);
+          setLoading(false);
+      }
+  };
+
+  if (fetching) {
+      return (
+          <div className="w-full h-screen flex items-center justify-center">
+              <Loader2 className="w-8 h-8 animate-spin text-neon-sky" />
+          </div>
+      );
+  }
+
   return (
     <div className="max-w-5xl mx-auto space-y-8 pb-32">
        {/* Header */}
-      <div className="flex items-center gap-4">
-        <Link href="/admin/automation" className="p-3 hover:bg-white/10 rounded-full text-white/50 transition-colors">
-            <ArrowLeft className="w-6 h-6" />
-        </Link>
-        <div>
-            <h1 className="text-3xl font-bold text-white">새 자동화 템플릿</h1>
-            <p className="text-white/50 text-sm">Create a new automation workflow template.</p>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-4">
+            <Link href="/admin/automation" className="p-3 hover:bg-white/10 rounded-full text-white/50 transition-colors">
+                <ArrowLeft className="w-6 h-6" />
+            </Link>
+            <div>
+                <h1 className="text-3xl font-bold text-white">자동화 수정</h1>
+                <p className="text-white/50 text-sm">Edit existing automation workflow template.</p>
+            </div>
         </div>
+        <button 
+            type="button"
+            onClick={handleDelete}
+            disabled={loading}
+            className="px-4 py-2 bg-red-500/10 text-red-500 hover:bg-red-500/20 rounded-xl flex items-center gap-2 transition-colors disabled:opacity-50"
+        >
+            <Trash2 className="w-4 h-4" />
+            Delete Template
+        </button>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-8">
@@ -172,8 +243,8 @@ export default function NewAutomationPage() {
                             placeholder="Image URL..."
                         />
                     </div>
-                    {/* Simple File Upload Helper */}
-                    <div className="relative overflow-hidden inline-block mt-2">
+                     {/* Simple File Upload Helper */}
+                     <div className="relative overflow-hidden inline-block mt-2">
                         <button type="button" className="bg-white/10 hover:bg-white/20 text-white px-3 py-1 rounded text-xs">
                             Upload File
                         </button>
@@ -248,8 +319,8 @@ export default function NewAutomationPage() {
                                 placeholder="Link to YouTube/Video or Upload"
                             />
                         </div>
-                        {/* Video File Upload Helper */}
-                        <div className="relative overflow-hidden inline-block mt-2">
+                         {/* Video File Upload Helper */}
+                         <div className="relative overflow-hidden inline-block mt-2">
                             <button type="button" className="bg-white/10 hover:bg-white/20 text-white px-3 py-1 rounded text-xs">
                                 Upload Video File
                             </button>
@@ -417,7 +488,7 @@ export default function NewAutomationPage() {
                 className="px-8 py-4 bg-gradient-to-r from-neon-sky to-blue-600 text-[#050B1B] rounded-xl hover:opacity-90 disabled:opacity-50 flex items-center gap-2 font-bold shadow-lg shadow-neon-sky/20 transition-all hover:-translate-y-0.5"
             >
                 {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Save className="w-5 h-5" />}
-                Save Automation
+                Update Automation
             </button>
         </div>
 
