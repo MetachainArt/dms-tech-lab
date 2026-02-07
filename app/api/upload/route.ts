@@ -4,7 +4,12 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 
 // Allowed file extensions
-const ALLOWED_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.json'];
+const ALLOWED_EXTENSIONS = [
+  '.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', 
+  '.json', '.xml', '.yaml', '.txt', '.csv', 
+  '.pdf', '.zip', '.rar', '.7z', 
+  '.mp4', '.webm'
+];
 
 // Allowed MIME types
 const ALLOWED_MIME_TYPES = [
@@ -14,10 +19,20 @@ const ALLOWED_MIME_TYPES = [
   'image/webp',
   'image/svg+xml',
   'application/json',
+  'text/xml',
+  'text/yaml',
+  'text/plain',
+  'text/csv',
+  'application/pdf',
+  'application/zip',
+  'application/x-rar-compressed',
+  'application/x-7z-compressed',
+  'video/mp4',
+  'video/webm',
 ];
 
-// Max file size: 5MB
-const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+// Max file size: 50MB
+const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
 
 // CORS 헤더 설정 함수
 function corsHeaders() {

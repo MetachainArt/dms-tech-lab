@@ -198,24 +198,24 @@ export default function NewAutomationPage() {
                 <div className="space-y-4">
                      <div className="space-y-2">
                         <label className="text-white/70 text-sm flex items-center gap-2">
-                           JSON Download URL <span className="text-neon-sky text-xs">(Direct Link or Upload)</span>
+                           Resource Download URL <span className="text-neon-sky text-xs">(Direct Link or Upload)</span>
                         </label>
                         <div className="flex gap-2">
                             <input 
                                 className="flex-1 p-3 bg-black/20 border border-white/10 rounded-xl text-white outline-none focus:border-neon-sky/50"
                                 value={links.jsonUrl}
                                 onChange={e => setLinks({...links, jsonUrl: e.target.value})}
-                                placeholder="Link to n8n JSON file"
+                                placeholder="Link to file (JSON, ZIP, etc.)"
                             />
                         </div>
-                         {/* JSON File Upload Helper */}
+                         {/* Resource File Upload Helper */}
                          <div className="relative overflow-hidden inline-block mt-2">
                             <button type="button" className="bg-white/10 hover:bg-white/20 text-white px-3 py-1 rounded text-xs">
-                                Upload JSON File
+                                Upload Resource File
                             </button>
                             <input 
                                 type="file" 
-                                accept=".json,application/json"
+                                accept=".json,.zip,.rar,.7z,.pdf,.csv,.txt,.xml,.yaml"
                                 className="absolute inset-0 opacity-0 cursor-pointer"
                                 onChange={async (e) => {
                                     const file = e.target.files?.[0];
@@ -233,12 +233,36 @@ export default function NewAutomationPage() {
                     </div>
                     <div className="space-y-2">
                         <label className="text-white/70 text-sm">Video Demo URL</label>
-                        <input 
-                            className="w-full p-3 bg-black/20 border border-white/10 rounded-xl text-white outline-none focus:border-neon-sky/50"
-                            value={links.videoUrl}
-                            onChange={e => setLinks({...links, videoUrl: e.target.value})}
-                            placeholder="Link to YouTube/Video"
-                        />
+                        <div className="flex gap-2">
+                            <input 
+                                className="w-full p-3 bg-black/20 border border-white/10 rounded-xl text-white outline-none focus:border-neon-sky/50"
+                                value={links.videoUrl}
+                                onChange={e => setLinks({...links, videoUrl: e.target.value})}
+                                placeholder="Link to YouTube/Video or Upload"
+                            />
+                        </div>
+                        {/* Video File Upload Helper */}
+                        <div className="relative overflow-hidden inline-block mt-2">
+                            <button type="button" className="bg-white/10 hover:bg-white/20 text-white px-3 py-1 rounded text-xs">
+                                Upload Video File
+                            </button>
+                            <input 
+                                type="file" 
+                                accept="video/mp4,video/webm"
+                                className="absolute inset-0 opacity-0 cursor-pointer"
+                                onChange={async (e) => {
+                                    const file = e.target.files?.[0];
+                                    if(!file) return;
+                                    try {
+                                        const fd = new FormData();
+                                        fd.append("file", file);
+                                        const res = await fetch("/api/upload", { method: "POST", body: fd });
+                                        const json = await res.json();
+                                        if(json.success) setLinks(prev => ({...prev, videoUrl: json.url}));
+                                    } catch(err) { alert("Upload failed"); }
+                                }}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
