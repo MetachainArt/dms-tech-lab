@@ -1,7 +1,7 @@
 
 import { MessageSquare, Calendar, Mail, FileText, Video, ShoppingBag, BarChart, Bot } from "lucide-react";
 
-export type AutomationCategory = "All" | "Video" | "Marketing" | "Business" | "Sales" | "Support";
+export type AutomationCategory = "All" | "Video" | "Marketing" | "Business" | "Sales" | "Support" | "Comfyui";
 
 export interface AutomationTemplate {
   id: string;
@@ -36,7 +36,8 @@ export const AUTOMATION_CATEGORIES: AutomationCategory[] = [
   "Marketing",
   "Business",
   "Sales",
-  "Support"
+  "Support",
+  "Comfyui"
 ];
 
 
