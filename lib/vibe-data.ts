@@ -1,5 +1,5 @@
 
-import { AppWindow, Briefcase, Calculator, Palette, Sparkles, Terminal } from "lucide-react";
+import { AppWindow, Briefcase, Calculator, Palette, Sparkles, Terminal, Dumbbell } from "lucide-react";
 
 export type VibeCategory = "All" | "Productivity" | "Creative" | "Business" | "Utility";
 
@@ -45,14 +45,14 @@ export const VIBE_APPS: VibeApp[] = [
     tags: ["Prompt", "AI", "Dev"],
   },
   {
-    id: "roi-calculator",
-    title: "ROI Calculator",
-    description: "AI 도입에 따른 투자 수익률 시뮬레이터.",
+    id: "fitmind-gym",
+    title: "Fitmind Gym Routine",
+    description: "개인 맞춤형 짐 루틴 관리 프로그램. 오늘도 검색 없이 루틴 완주하자.",
     category: "Productivity",
-    url: "/apps/roi-calculator",
-    icon: Calculator,
-    status: "Coming Soon",
-    tags: ["Finance", "Simulation"],
+    url: "https://fitmind.dmssolution.co.kr/",
+    icon: Dumbbell,
+    status: "Live",
+    tags: ["Health", "Workout", "Routine"],
   },
   {
     id: "fantasy-life",
