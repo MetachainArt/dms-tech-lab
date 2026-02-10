@@ -15,7 +15,7 @@ export default function AuthorCard() {
             <h3 className="text-xl font-bold text-white mb-1 group-hover:text-blue-400 transition-colors">Written by Reedo</h3>
             <p className="text-gray-400 text-sm mb-2">Global Field Engineer & Automation Architect</p>
             <p className="text-gray-500 text-xs leading-relaxed max-w-md">
-                AI 에이전트와 인간의 공진화를 연구합니다. 자동화가 가져올 해방과 그 이면의 책임에 대해 이야기합니다.
+                복잡한 코드 속에 담긴 단순한 진심을 찾습니다. 때론 실패하고 넘어지지만, 그 과정들이 모여 더 나은 내일을 만든다고 믿으며 묵묵히 기록합니다.
             </p>
         </div>
         <div className="flex flex-col gap-4 text-gray-400 relative z-10">
