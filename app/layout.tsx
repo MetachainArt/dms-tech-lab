@@ -8,6 +8,7 @@ import Background from "@/components/ui/Background";
 import NextAuthProvider from "@/components/providers/NextAuthProvider";
 import { generateMetadata as generateSeoMetadata, generateStructuredData } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/seo";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -84,6 +85,7 @@ export default function RootLayout({
                 <Footer />
             </div>
         </NextAuthProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
