@@ -11,8 +11,20 @@ const Apps = dynamic(() => import("@/components/sections/Apps"), {
   loading: () => <div className="h-[50vh] w-full bg-[#050B1B] animate-pulse" aria-label="로딩 중" />,
 });
 
+const Testimonials = dynamic(() => import("@/components/sections/Testimonials"), {
+  loading: () => <div className="h-[40vh] w-full bg-[#050B1B] animate-pulse" aria-label="로딩 중" />,
+});
+
 const FounderProfile = dynamic(() => import("@/components/sections/FounderProfile"), {
   loading: () => <div className="h-[50vh] w-full bg-[#050B1B] animate-pulse" aria-label="로딩 중" />,
+});
+
+const FAQ = dynamic(() => import("@/components/sections/FAQ"), {
+  loading: () => <div className="h-[40vh] w-full bg-[#050B1B] animate-pulse" aria-label="로딩 중" />,
+});
+
+const Newsletter = dynamic(() => import("@/components/sections/Newsletter"), {
+  loading: () => <div className="h-[30vh] w-full bg-[#050B1B] animate-pulse" aria-label="로딩 중" />,
 });
 
 const Contact = dynamic(() => import("@/components/sections/Contact"), {
@@ -33,8 +45,17 @@ export default function Home() {
       <section id="projects" className="w-full" aria-label="프로젝트 섹션">
         <Apps />
       </section>
+      <section id="testimonials" className="w-full" aria-label="고객 후기 섹션">
+        <Testimonials />
+      </section>
       <section id="about" className="w-full" aria-label="리도 소개 섹션">
         <FounderProfile />
+      </section>
+      <section id="faq" className="w-full" aria-label="자주 묻는 질문">
+        <FAQ />
+      </section>
+      <section id="newsletter" className="w-full" aria-label="뉴스레터 구독">
+        <Newsletter />
       </section>
       <section id="contact" className="w-full" aria-label="연락처 섹션">
         <Contact />

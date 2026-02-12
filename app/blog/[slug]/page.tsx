@@ -1,7 +1,9 @@
-import { getPostBySlug, getAllPosts } from "@/lib/mdx";
+import { getPostBySlug, getAllPosts, getRelatedPosts } from "@/lib/mdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { MDXComponents } from "@/components/mdx/MDXComponents";
 import AuthorCard from "@/components/blog/AuthorCard";
+import RelatedPosts from "@/components/blog/RelatedPosts";
+import Newsletter from "@/components/sections/Newsletter";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { notFound } from "next/navigation";
@@ -59,6 +61,15 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
   if (!post) {
     notFound();
   }
+
+  // 관련 글 가져오기
+  const relatedPosts = getRelatedPosts(params.slug, 3).map((p) => ({
+    slug: p.slug,
+    title: p.frontMatter.title,
+    excerpt: p.frontMatter.excerpt,
+    coverImage: p.frontMatter.coverImage,
+    series: p.frontMatter.series,
+  }));
   
   return (
     <main className="w-full min-h-screen bg-[#050B1B] text-white font-poppins selection:bg-neon-sky selection:text-[#050B1B]">
@@ -116,8 +127,15 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
             </article>
 
             <AuthorCard />
+
+            {/* Related Posts */}
+            <RelatedPosts posts={relatedPosts} />
         </div>
       </section>
+
+      {/* Newsletter */}
+      <Newsletter />
     </main>
   );
 }
+

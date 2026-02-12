@@ -33,8 +33,11 @@ export async function POST(request: NextRequest) {
     fs.writeFileSync(fullPath, content, "utf-8");
     
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Failed to save file:", error);
-    return NextResponse.json({ error: "Failed to save file" }, { status: 500 });
+    return NextResponse.json(
+      { error: `파일 저장 실패: ${error.message || "알 수 없는 오류"}` },
+      { status: 500 }
+    );
   }
 }

@@ -64,3 +64,39 @@ export function getPostsBySeries(seriesId: string): MDXPost[] {
       return a.frontMatter.date > b.frontMatter.date ? -1 : 1;
     });
 }
+
+export function getRelatedPosts(slug: string, maxCount: number = 3): MDXPost[] {
+  const currentPost = getPostBySlug(slug);
+  if (!currentPost) return [];
+
+  const allPosts = getAllPosts().filter((p) => p.slug !== slug);
+  const related: MDXPost[] = [];
+
+  // 1순위: 같은 시리즈의 다른 글
+  if (currentPost.frontMatter.series) {
+    const sameSeries = allPosts.filter(
+      (p) => p.frontMatter.series === currentPost.frontMatter.series
+    );
+    related.push(...sameSeries);
+  }
+
+  // 2순위: 같은 태그를 가진 글 (이미 추가된 글 제외)
+  const currentTags: string[] = currentPost.frontMatter.tags || [];
+  if (currentTags.length > 0) {
+    const addedSlugs = new Set(related.map((r) => r.slug));
+    const sameTag = allPosts
+      .filter((p) => !addedSlugs.has(p.slug))
+      .map((p) => {
+        const postTags: string[] = p.frontMatter.tags || [];
+        const overlap = postTags.filter((t: string) => currentTags.includes(t)).length;
+        return { post: p, overlap };
+      })
+      .filter((item) => item.overlap > 0)
+      .sort((a, b) => b.overlap - a.overlap)
+      .map((item) => item.post);
+    related.push(...sameTag);
+  }
+
+  return related.slice(0, maxCount);
+}
+

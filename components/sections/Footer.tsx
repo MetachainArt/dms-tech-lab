@@ -54,6 +54,14 @@ export default function Footer() {
               >
                 YT
               </a>
+              <a
+                href="https://open.kakao.com/o/sSPHn33g"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#FEE500] hover:border-[#FEE500] hover:text-[#3C1E1E] text-white/60 transition-all text-sm font-bold"
+              >
+                KT
+              </a>
             </div>
             <p className="text-white/40 text-xs mt-4 font-mono">Reedo Invest</p>
           </div>

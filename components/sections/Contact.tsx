@@ -15,7 +15,7 @@ export default function Contact() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!isValidEmail(formData.email)) {
@@ -23,8 +23,26 @@ export default function Contact() {
       return;
     }
 
+    if (!formData.message.trim()) {
+      alert("문의 내용을 입력해주세요.");
+      return;
+    }
+
     setStatus("loading");
-    setTimeout(() => {
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "문의 처리 중 오류가 발생했습니다.");
+      }
+
       setStatus("success");
       setFormData({
         email: "",
@@ -32,7 +50,10 @@ export default function Contact() {
         lastName: "",
         message: "",
       });
-    }, 1500);
+    } catch (error) {
+      setStatus("idle");
+      alert(error instanceof Error ? error.message : "문의 처리 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+    }
   };
 
   const handleInputChange = (field: keyof ContactForm, value: string) => {

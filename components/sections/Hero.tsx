@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import NeuralBackground from "@/components/ui/NeuralBackground";
 
 export default function Hero() {
@@ -60,6 +62,28 @@ export default function Hero() {
                 복잡한 비즈니스 로직을 자동화하고, AI와 함께 새로운 가능성을 탐색합니다.<br />
                 우리는 기술을 통해 문제를 해결하고, 더 나은 미래를 설계합니다.
             </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="flex flex-col sm:flex-row items-start gap-4 pt-2"
+            >
+                <a
+                    href="#contact"
+                    className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-neon-sky to-cyan-400 hover:from-cyan-400 hover:to-neon-sky text-[#050B1B] font-bold rounded-xl transition-all shadow-lg shadow-neon-sky/20 hover:shadow-neon-sky/40 hover:-translate-y-0.5"
+                >
+                    무료 상담 신청
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+                <Link
+                    href="/services"
+                    className="inline-flex items-center gap-2 px-8 py-4 border border-white/20 hover:border-neon-sky/50 text-white font-semibold rounded-xl transition-all hover:bg-white/5 hover:-translate-y-0.5"
+                >
+                    포트폴리오 보기
+                </Link>
+            </motion.div>
         </div>
 
         {/* Right side - Neural network visible through transparent area */}

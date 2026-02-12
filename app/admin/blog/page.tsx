@@ -139,16 +139,23 @@ export default function AdminBlogPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ path: selectedFile, content }),
       });
-      if (res.ok) {
+
+      const contentType = res.headers.get("content-type");
+      if (!contentType?.includes("application/json")) {
+        throw new Error("세션이 만료되었습니다. 페이지를 새로고침 후 다시 로그인해주세요.");
+      }
+
+      const data = await res.json();
+      if (res.ok && data.success) {
         setOriginalContent(content);
         setMessage({ type: "success", text: "저장되었습니다!" });
         setTimeout(() => setMessage(null), 3000);
       } else {
-        throw new Error("Save failed");
+        throw new Error(data.error || "저장에 실패했습니다.");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Failed to save file:", error);
-      setMessage({ type: "error", text: "저장에 실패했습니다." });
+      setMessage({ type: "error", text: error.message || "저장에 실패했습니다." });
     } finally {
       setSaving(false);
     }
