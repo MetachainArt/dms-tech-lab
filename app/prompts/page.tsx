@@ -4,12 +4,12 @@ import { getAllPromptsFromFiles } from "@/lib/prompt-content";
 import { PROMPTS as STATIC_PROMPTS } from "@/lib/prompt-data";
 import { getPromptsFromDB } from "@/lib/prompt-db";
 
-// Cache the page for 60 seconds, then regenerate in background
-export const revalidate = 60;
+// Cache the page for 5 minutes, then regenerate in background
+export const revalidate = 300;
 
 export default async function PromptLibraryPage() {
   // 1. Fetch File-based Prompts (Text Prompts from content/prompts)
-  const filePrompts = getAllPromptsFromFiles();
+  const filePrompts = await getAllPromptsFromFiles();
 
   // 2. Fetch DB Prompts (From Admin Dashboard)
   const dbPrompts = await getPromptsFromDB();

@@ -45,6 +45,7 @@ function FAQItem({ faq, index }: { faq: typeof faqs[0]; index: number }) {
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between gap-4 p-6 text-left rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/[0.07] transition-all duration-200 group"
         aria-expanded={isOpen}
+        suppressHydrationWarning
       >
         <span className="text-white font-medium text-lg pr-4">{faq.question}</span>
         <ChevronDown

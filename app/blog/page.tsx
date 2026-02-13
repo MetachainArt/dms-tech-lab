@@ -3,11 +3,21 @@ import { BLOG_SERIES } from "@/lib/blog-data";
 import { getAllPosts } from "@/lib/mdx";
 
 export default async function BlogPage() {
-  const allPosts = getAllPosts();
+  const allPosts = await getAllPosts();
+
+  const seriesCountMap = allPosts.reduce<Record<string, number>>((acc, post) => {
+    const seriesId = post.frontMatter.series;
+    if (!seriesId) {
+      return acc;
+    }
+
+    acc[seriesId] = (acc[seriesId] || 0) + 1;
+    return acc;
+  }, {});
 
   // Calculate post count for each series
   const seriesWithCount = Object.values(BLOG_SERIES).map((series) => {
-    const count = allPosts.filter((post) => post.frontMatter.series === series.id).length;
+    const count = seriesCountMap[series.id] || 0;
     return {
       ...series,
       postCount: count,

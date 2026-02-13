@@ -77,12 +77,14 @@ export default function Newsletter() {
                   placeholder="name@email.com"
                   required
                   className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:border-neon-sky focus:ring-1 focus:ring-neon-sky/50 transition-all"
+                  suppressHydrationWarning
                 />
               </div>
               <button
                 type="submit"
                 disabled={status === "loading"}
                 className="group px-8 py-4 bg-gradient-to-r from-neon-sky to-cyan-400 hover:from-cyan-400 hover:to-neon-sky text-[#050B1B] font-bold rounded-xl transition-all shadow-lg shadow-neon-sky/20 hover:shadow-neon-sky/40 disabled:opacity-50 flex items-center justify-center gap-2 whitespace-nowrap"
+                suppressHydrationWarning
               >
                 {status === "loading" ? (
                   <span className="w-5 h-5 border-2 border-[#050B1B]/30 border-t-[#050B1B] rounded-full animate-spin" />

@@ -5,13 +5,14 @@ import AuthorCard from "@/components/blog/AuthorCard";
 import RelatedPosts from "@/components/blog/RelatedPosts";
 import Newsletter from "@/components/sections/Newsletter";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { notFound } from "next/navigation";
 
 
 export async function generateMetadata(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params;
-  const post = getPostBySlug(params.slug);
+  const post = await getPostBySlug(params.slug);
 
   if (!post) {
       return;
@@ -48,7 +49,7 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
 }
 
 export async function generateStaticParams() {
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -56,14 +57,14 @@ export async function generateStaticParams() {
 
 export default async function BlogPostPage(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params;
-  const post = getPostBySlug(params.slug);
+  const post = await getPostBySlug(params.slug);
 
   if (!post) {
     notFound();
   }
 
   // 관련 글 가져오기
-  const relatedPosts = getRelatedPosts(params.slug, 3).map((p) => ({
+  const relatedPosts = (await getRelatedPosts(params.slug, 3)).map((p) => ({
     slug: p.slug,
     title: p.frontMatter.title,
     excerpt: p.frontMatter.excerpt,
@@ -78,10 +79,13 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
         <div className="absolute inset-0 z-0">
              <div className="absolute inset-0 bg-gradient-to-t from-[#050B1B] via-[#050B1B]/40 to-transparent z-10" />
              {post.frontMatter.coverImage && (
-                 <img 
-                    src={post.frontMatter.coverImage} 
+                 <Image
+                    src={post.frontMatter.coverImage}
                     alt={post.frontMatter.title}
-                    className="w-full h-full object-cover opacity-60 scale-105"
+                    fill
+                    priority
+                    sizes="100vw"
+                    className="object-cover opacity-60 scale-105"
                  />
              )}
         </div>

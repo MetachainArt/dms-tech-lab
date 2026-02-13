@@ -2,6 +2,22 @@ import { prisma } from "@/lib/prisma";
 import { PromptItem } from "@/lib/prompt-data";
 import { unstable_cache } from "next/cache";
 
+const ALLOWED_PROMPT_CATEGORIES = new Set<PromptItem["category"]>([
+  "All",
+  "Text",
+  "Image",
+  "Video",
+  "Vibe Coding",
+]);
+
+function normalizePromptCategory(value: unknown): PromptItem["category"] {
+  if (typeof value === "string" && ALLOWED_PROMPT_CATEGORIES.has(value as PromptItem["category"])) {
+    return value as PromptItem["category"];
+  }
+
+  return "Text";
+}
+
 // Cached database query - revalidates every 60 seconds
 const getCachedPrompts = unstable_cache(
   async () => {
@@ -10,7 +26,7 @@ const getCachedPrompts = unstable_cache(
     });
   },
   ["prompts-list"],
-  { revalidate: 60 }
+  { revalidate: 300 }
 );
 
 export async function getPromptsFromDB(): Promise<PromptItem[]> {
@@ -23,7 +39,7 @@ export async function getPromptsFromDB(): Promise<PromptItem[]> {
         id: p.id,
         title: p.title,
         description: p.description,
-        category: p.category as any, // Cast to PromptCategory
+        category: normalizePromptCategory(p.category),
         subcategory: p.subcategory || undefined,
         promptContent: p.promptContent,
         tags: p.tags || [],

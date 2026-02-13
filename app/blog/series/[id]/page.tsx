@@ -27,7 +27,7 @@ export default async function SeriesDetailPage(props: { params: Promise<{ id: st
     );
   }
 
-  const posts = getPostsBySeries(id);
+  const posts = await getPostsBySeries(id);
   
   // Transform MDX posts to the format SeriesPostList expects
   const formattedPosts = posts.map(post => ({

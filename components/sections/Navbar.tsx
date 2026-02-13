@@ -108,6 +108,7 @@ export default function Navbar() {
                         <button
                             onClick={() => signOut({ callbackUrl: "/", redirect: true })}
                             className="text-sm font-medium text-white/70 hover:text-white transition-colors"
+                            suppressHydrationWarning
                         >
                             Logout
                         </button>
@@ -139,6 +140,7 @@ export default function Navbar() {
                 onClick={handleMenuOpen}
                 aria-label="메뉴 열기"
                 aria-expanded={isMobileMenuOpen}
+                suppressHydrationWarning
             >
                 <Menu className="w-6 h-6" />
             </button>
@@ -162,7 +164,12 @@ export default function Navbar() {
             aria-label="모바일 메뉴"
           >
             <div className="flex justify-end mb-8">
-              <button onClick={handleMenuClose} className="p-2 text-white" aria-label="메뉴 닫기">
+              <button
+                onClick={handleMenuClose}
+                className="p-2 text-white"
+                aria-label="메뉴 닫기"
+                suppressHydrationWarning
+              >
                 <X className="w-8 h-8" />
               </button>
             </div>

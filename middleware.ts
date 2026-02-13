@@ -12,11 +12,12 @@ export default withAuth(
       return NextResponse.next();
     }
 
-    const ip = req.headers.get("x-forwarded-for") || req.headers.get("x-real-ip") || "unknown";
+    const forwardedFor = req.headers.get("x-forwarded-for");
+    const firstForwardedIp = forwardedFor?.split(",")[0]?.trim();
+    const ip = firstForwardedIp || req.headers.get("x-real-ip") || "unknown";
 
     // Robust cookie detection
     const secureCookie = req.cookies.get('__Secure-next-auth.session-token');
-    const standardCookie = req.cookies.get('next-auth.session-token');
     const cookieName = secureCookie ? '__Secure-next-auth.session-token' : 'next-auth.session-token';
 
     // Get token directly from JWT
@@ -25,6 +26,8 @@ export default withAuth(
       secret: process.env.NEXTAUTH_SECRET,
       cookieName: cookieName
     });
+
+    const isAdmin = token?.role === "admin" || token?.email === process.env.ADMIN_EMAIL;
 
     // Rate limiting for admin routes - Use 'api' type for admin pages for more generous limits
     if (pathname.startsWith("/admin")) {
@@ -38,7 +41,6 @@ export default withAuth(
 
       // Check if user is admin
       if (token) {
-        const isAdmin = token.role === "admin" || token.email === process.env.ADMIN_EMAIL;
         if (!isAdmin) {
           return NextResponse.redirect(
             new URL("/unauthorized", req.url)
@@ -56,6 +58,14 @@ export default withAuth(
           { status: 429 }
         );
       }
+    }
+
+    // Enforce admin authorization for all admin APIs
+    if (pathname.startsWith("/api/admin") && !isAdmin) {
+      return NextResponse.json(
+        { error: "Forbidden - Admin access required" },
+        { status: 403 }
+      );
     }
 
     return NextResponse.next();

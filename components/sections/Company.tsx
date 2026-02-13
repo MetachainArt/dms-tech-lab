@@ -95,7 +95,10 @@ export default function Company() {
                             ))}
                         </ul>
 
-                        <button className="px-8 py-3 rounded-full border border-gray-300 text-[#050B1B] hover:bg-[#050B1B] hover:text-white hover:border-[#050B1B] transition-all duration-300 font-medium">
+                        <button
+                            className="px-8 py-3 rounded-full border border-gray-300 text-[#050B1B] hover:bg-[#050B1B] hover:text-white hover:border-[#050B1B] transition-all duration-300 font-medium"
+                            suppressHydrationWarning
+                        >
                             솔루션 살펴보기
                         </button>
                     </motion.div>

@@ -28,15 +28,41 @@ const ALLOWED_MIME_TYPES = [
   'application/x-zip-compressed', // Added for Windows compatibility
   'application/x-rar-compressed',
   'application/x-7z-compressed',
-  'application/octet-stream', // Fallback for unknown binary types
   'video/mp4',
   'video/webm',
-  'audio/mpeg',
-  'audio/wav',
 ];
 
 // Max file size: 50MB
 const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
+
+function getFileExtension(pathname: string) {
+  const dotIndex = pathname.lastIndexOf(".");
+  if (dotIndex === -1) {
+    return "";
+  }
+
+  return pathname.slice(dotIndex).toLowerCase();
+}
+
+function parseClientPayload(clientPayload: string | null) {
+  if (!clientPayload) {
+    return null;
+  }
+
+  try {
+    const parsed = JSON.parse(clientPayload);
+    return parsed as {
+      contentType?: string;
+      size?: number;
+      contentLength?: number;
+      byteLength?: number;
+      fileSize?: number;
+      file?: { size?: number; type?: string };
+    };
+  } catch {
+    return null;
+  }
+}
 
 // CORS 헤더 설정 함수
 function corsHeaders() {
@@ -60,9 +86,9 @@ export async function OPTIONS() {
 import { handleUpload, type HandleUploadBody } from '@vercel/blob/client';
 
 export async function POST(request: Request): Promise<NextResponse> {
-  const body = (await request.json()) as HandleUploadBody;
-
   try {
+    const body = (await request.json()) as HandleUploadBody;
+
     const jsonResponse = await handleUpload({
       body,
       request,
@@ -78,11 +104,27 @@ export async function POST(request: Request): Promise<NextResponse> {
             throw new Error('Forbidden');
         }
 
-        // 파일 확장자 검증 (Optional: more strict checks can be added here if needed)
-        // const extension = pathname.split('.').pop()?.toLowerCase();
-        // if (!extension || !ALLOWED_EXTENSIONS.includes(`.${extension}`)) {
-        //     throw new Error('Invalid file extension');
-        // }
+        const fileExtension = getFileExtension(pathname);
+        if (!fileExtension || !ALLOWED_EXTENSIONS.includes(fileExtension)) {
+          throw new Error("Invalid file extension");
+        }
+
+        const payload = parseClientPayload(clientPayload);
+        const contentType = payload?.contentType || payload?.file?.type;
+        if (contentType && !ALLOWED_MIME_TYPES.includes(contentType)) {
+          throw new Error("Invalid file type");
+        }
+
+        const fileSize =
+          payload?.size ||
+          payload?.contentLength ||
+          payload?.byteLength ||
+          payload?.fileSize ||
+          payload?.file?.size;
+
+        if (typeof fileSize === "number" && fileSize > MAX_FILE_SIZE) {
+          throw new Error("File too large");
+        }
 
         return {
           allowedContentTypes: ALLOWED_MIME_TYPES,
@@ -91,7 +133,7 @@ export async function POST(request: Request): Promise<NextResponse> {
           }),
         };
       },
-      onUploadCompleted: async ({ blob, tokenPayload }) => {
+      onUploadCompleted: async ({ blob }) => {
         // 업로드 완료 후 로직 (예: DB 저장 등) - 현재는 불필요
         console.log('Upload completed:', blob.url);
       },
@@ -99,8 +141,18 @@ export async function POST(request: Request): Promise<NextResponse> {
 
     return NextResponse.json(jsonResponse);
   } catch (error) {
+    console.error("Upload API Error:", error);
+
+    const errorMessage = error instanceof Error ? error.message : "Upload failed";
+    const isKnownClientError =
+      errorMessage === "Unauthorized" ||
+      errorMessage === "Forbidden" ||
+      errorMessage === "Invalid file extension" ||
+      errorMessage === "Invalid file type" ||
+      errorMessage === "File too large";
+
     return NextResponse.json(
-      { error: (error as Error).message },
+      { error: isKnownClientError ? errorMessage : "Upload request failed" },
       { status: 400 }, // The webhook will retry 5 times automatically if you return 400-599
     );
   }

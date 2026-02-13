@@ -4,7 +4,7 @@ import { getAllPosts } from '@/lib/mdx';
 async function main() {
   console.log('Verifying getAllPosts()...');
   try {
-    const posts = getAllPosts();
+    const posts = await getAllPosts();
     console.log(`Successfully loaded ${posts.length} posts.`);
     posts.forEach(post => {
       console.log(`- [${post.slug}] ${post.frontMatter.title} (Date: ${post.frontMatter.date})`);

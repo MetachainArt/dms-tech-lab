@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 interface SeriesCardProps {
@@ -48,10 +48,12 @@ export default function SeriesCard({
         
         {/* Cover Image */}
         <div className="absolute inset-0 rounded-[20px] overflow-hidden bg-[#0A1124] border-2 border-white/20 group-hover:border-white/40 transition-colors shadow-lg">
-          <img
+          <Image
             src={coverImage}
             alt={title}
-            className="w-full h-full object-cover opacity-70 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+            className="object-cover opacity-70 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700"
           />
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050B1B]/70 to-[#050B1B]/90 z-10" />

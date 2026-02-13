@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import { BlogSeries } from "@/lib/blog-data";
 
@@ -17,7 +18,13 @@ export default function SeriesHeader({ series, postCount }: SeriesHeaderProps) {
 
       {/* Background Blur Image */}
       <div className="absolute inset-0 opacity-20 blur-3xl z-[-1]">
-        <img src={series.coverImage} className="w-full h-full object-cover" alt="bg" />
+        <Image
+          src={series.coverImage}
+          alt="bg"
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
       </div>
 
       <div className="max-w-4xl mx-auto relative z-10">
@@ -33,7 +40,14 @@ export default function SeriesHeader({ series, postCount }: SeriesHeaderProps) {
             className="w-48 md:w-64 shrink-0 rounded-2xl overflow-hidden shadow-2xl shadow-neon-sky/10 border border-white/10"
           >
             <div className="aspect-[3/4] relative">
-              <img src={series.coverImage} alt={series.title} className="w-full h-full object-cover" />
+              <Image
+                src={series.coverImage}
+                alt={series.title}
+                fill
+                priority
+                sizes="(max-width: 768px) 192px, 256px"
+                className="object-cover"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
                 <span className="text-xs font-bold text-white/60 mb-2">{series.subtitle}</span>
                 <h1 className="text-2xl font-bold text-white leading-tight">{series.title}</h1>

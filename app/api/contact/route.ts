@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
@@ -9,6 +10,18 @@ const RECIPIENT_EMAIL = process.env.CONTACT_EMAIL || "reedo.dev@dmssolution.co.k
 
 export async function POST(request: NextRequest) {
   try {
+    const forwardedFor = request.headers.get("x-forwarded-for");
+    const firstForwardedIp = forwardedFor?.split(",")[0]?.trim();
+    const ip = firstForwardedIp || request.headers.get("x-real-ip") || "unknown";
+
+    const rateLimitResult = await checkRateLimit(ip, "auth");
+    if (!rateLimitResult.success) {
+      return NextResponse.json(
+        { error: "요청이 너무 많습니다. 잠시 후 다시 시도해주세요." },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json();
     const { email, firstName, lastName, message } = body;
 
