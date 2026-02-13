@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, ChevronDown, Monitor, Cpu, Network, ArrowUpRight } from "lucide-react";
+import { ArrowRight, CheckCircle2, Monitor, Cpu, Network, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -199,7 +199,7 @@ export default function AboutPage() {
                         title: "바이브 코딩과 사회적 임팩트", 
                         desc: "장애 아동을 위한 웹앱 프로그램\n자동화 워크플로우 제품화\n해외 무역 확장 + AI Agent 기반 소수정예 운영" 
                     }
-                ].map((item, idx) => (
+                ].map((item) => (
                     <div key={item.year} className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl relative group hover:-translate-y-2 transition-transform duration-300">
                         <div className="w-4 h-4 rounded-full bg-neon-sky absolute -top-[34px] left-1/2 -translate-x-1/2 hidden md:block ring-4 ring-[#050B1B] shadow-[0_0_20px_rgba(0,209,255,0.5)]" />
                         <div className="text-neon-sky font-mono font-bold text-xl mb-4">{item.year}</div>
@@ -278,7 +278,7 @@ export default function AboutPage() {
             <div className="pt-8 border-t border-white/20">
                 <span className="inline-block relative mt-8">
                     <span className="absolute -inset-4 bg-neon-sky/20 rounded-xl transform -skew-x-3" />
-                    <span className="relative text-xl md:text-2xl font-bold text-white leading-relaxed">"우리가 만드는 건 ‘기능’이 아니라,<br/>지속 가능한 실행 시스템입니다."</span>
+                    <span className="relative text-xl md:text-2xl font-bold text-white leading-relaxed">&quot;우리가 만드는 건 ‘기능’이 아니라,<br/>지속 가능한 실행 시스템입니다.&quot;</span>
                 </span>
             </div>
         </div>
