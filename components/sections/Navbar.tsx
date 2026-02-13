@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
@@ -99,9 +100,12 @@ export default function Navbar() {
                 {session ? (
                     <div className="flex items-center gap-3">
                         {session.user?.image && (
-                            <img
+                            <Image
                                 src={session.user.image}
                                 alt="Profile"
+                                width={32}
+                                height={32}
+                                unoptimized
                                 className="w-8 h-8 rounded-full border border-white/20"
                             />
                         )}

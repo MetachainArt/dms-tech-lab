@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Poppins } from "next/font/google"; // Switch to Poppins
 import "./globals.css";
 import clsx from "clsx";
@@ -6,6 +5,7 @@ import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
 import Background from "@/components/ui/Background";
 import NextAuthProvider from "@/components/providers/NextAuthProvider";
+import BookingEventBridge from "@/components/providers/BookingEventBridge";
 import { generateMetadata as generateSeoMetadata, generateStructuredData } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/seo";
 
@@ -49,14 +49,14 @@ export default function RootLayout({
                   script.src = 'https://www.googletagmanager.com/gtag/js?id=G-BYBW33N77V';
                   document.head.appendChild(script);
                   
-                  script.onload = function() {
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-                    gtag('config', 'G-BYBW33N77V');
-                  };
-                }, 1000); // 페이지 로드 후 1초 지연
-              });
+                   script.onload = function() {
+                     window.dataLayer = window.dataLayer || [];
+                     window.gtag = function(){ window.dataLayer.push(arguments); };
+                     window.gtag('js', new Date());
+                     window.gtag('config', 'G-BYBW33N77V');
+                   };
+                 }, 1000); // 페이지 로드 후 1초 지연
+               });
             `,
           }}
         />
@@ -76,14 +76,15 @@ export default function RootLayout({
         />
       </head>
       <body className={clsx(poppins.variable, "antialiased bg-deep-space text-white select-none")} suppressHydrationWarning>
+        <BookingEventBridge />
         <Background />
         <NextAuthProvider>
-            <Navbar />
-            <div className="relative z-10 w-full">
-                {children}
-                <Footer />
-            </div>
+          <Navbar />
         </NextAuthProvider>
+        <div className="relative z-10 w-full">
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );

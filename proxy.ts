@@ -4,7 +4,7 @@ import { checkRateLimit } from "@/lib/rate-limit";
 import { NextResponse } from "next/server";
 
 export default withAuth(
-  async function middleware(req) {
+  async function proxy(req) {
     const { pathname } = req.nextUrl;
 
     // Login page - skip rate limiting and other checks

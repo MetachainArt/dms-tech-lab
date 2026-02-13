@@ -1,12 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
+import { ANALYTICS_EVENTS } from "@/lib/analytics-events";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const hasTrackedStart = useRef(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,6 +25,11 @@ export default function Newsletter() {
       });
 
       if (!response.ok) throw new Error();
+
+      trackEvent(ANALYTICS_EVENTS.NEWSLETTER_FORM_SUBMIT, {
+        section: "newsletter",
+      });
+
       setStatus("success");
       setEmail("");
     } catch {
@@ -73,7 +81,16 @@ export default function Newsletter() {
                 <input
                   type="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    const nextValue = e.target.value;
+                    if (!hasTrackedStart.current && nextValue.trim().length > 0) {
+                      trackEvent(ANALYTICS_EVENTS.NEWSLETTER_FORM_START, {
+                        section: "newsletter",
+                      });
+                      hasTrackedStart.current = true;
+                    }
+                    setEmail(nextValue);
+                  }}
                   placeholder="name@email.com"
                   required
                   className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:border-neon-sky focus:ring-1 focus:ring-neon-sky/50 transition-all"

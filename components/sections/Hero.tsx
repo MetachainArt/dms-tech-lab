@@ -1,9 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import NeuralBackground from "@/components/ui/NeuralBackground";
+import { homeGrowthData } from "@/lib/home-growth-copy";
+import { trackEvent } from "@/lib/analytics";
+import { ANALYTICS_EVENTS } from "@/lib/analytics-events";
+import { BOOKING_URL, isExternalBookingUrl } from "@/lib/booking";
+
+const isExternalBooking = isExternalBookingUrl(BOOKING_URL);
 
 export default function Hero() {
   return (
@@ -71,18 +76,36 @@ export default function Hero() {
                 className="flex flex-col sm:flex-row items-start gap-4 pt-2"
             >
                 <a
-                    href="#contact"
+                    href={BOOKING_URL}
+                    target={isExternalBooking ? "_blank" : undefined}
+                    rel={isExternalBooking ? "noreferrer" : undefined}
+                    onClick={() => {
+                      trackEvent(ANALYTICS_EVENTS.CTA_PRIMARY_CLICK, {
+                        section: "hero",
+                        label: "free_audit",
+                      });
+                      trackEvent(ANALYTICS_EVENTS.CALENDAR_BOOKING_START, {
+                        section: "hero",
+                        destination: isExternalBooking ? "external" : "onsite",
+                      });
+                    }}
                     className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-neon-sky to-cyan-400 hover:from-cyan-400 hover:to-neon-sky text-[#050B1B] font-bold rounded-xl transition-all shadow-lg shadow-neon-sky/20 hover:shadow-neon-sky/40 hover:-translate-y-0.5"
                 >
-                    무료 상담 신청
+                    {homeGrowthData.hero.primaryCtaLabel}
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
-                <Link
-                    href="/services"
+                <a
+                    href="#case-studies"
+                    onClick={() =>
+                      trackEvent(ANALYTICS_EVENTS.CTA_SECONDARY_CLICK, {
+                        section: "hero",
+                        label: "case_studies",
+                      })
+                    }
                     className="inline-flex items-center gap-2 px-8 py-4 border border-white/20 hover:border-neon-sky/50 text-white font-semibold rounded-xl transition-all hover:bg-white/5 hover:-translate-y-0.5"
                 >
-                    포트폴리오 보기
-                </Link>
+                    {homeGrowthData.hero.secondaryCtaLabel}
+                </a>
             </motion.div>
         </div>
 

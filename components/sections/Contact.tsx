@@ -2,12 +2,15 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle2, Mail, ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { isValidEmail, LoadingState } from "@/lib/utils";
 import type { ContactForm } from "@/types/content";
+import { trackEvent } from "@/lib/analytics";
+import { ANALYTICS_EVENTS } from "@/lib/analytics-events";
 
 export default function Contact() {
   const [status, setStatus] = useState<LoadingState>("idle");
+  const hasTrackedFormStart = useRef(false);
   const [formData, setFormData] = useState<ContactForm>({
     email: "",
     firstName: "",
@@ -43,6 +46,11 @@ export default function Contact() {
         throw new Error(data.error || "문의 처리 중 오류가 발생했습니다.");
       }
 
+      trackEvent(ANALYTICS_EVENTS.CONTACT_FORM_SUBMIT, {
+        section: "contact",
+        has_message: formData.message.trim().length > 0,
+      });
+
       setStatus("success");
       setFormData({
         email: "",
@@ -50,6 +58,7 @@ export default function Contact() {
         lastName: "",
         message: "",
       });
+      hasTrackedFormStart.current = false;
     } catch (error) {
       setStatus("idle");
       alert(error instanceof Error ? error.message : "문의 처리 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
@@ -57,6 +66,13 @@ export default function Contact() {
   };
 
   const handleInputChange = (field: keyof ContactForm, value: string) => {
+    if (!hasTrackedFormStart.current && value.trim().length > 0) {
+      trackEvent(ANALYTICS_EVENTS.CONTACT_FORM_START, {
+        section: "contact",
+      });
+      hasTrackedFormStart.current = true;
+    }
+
     setFormData((prev: ContactForm) => ({ ...prev, [field]: value }));
   };
 
