@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { readPostFile } from "@/lib/blog-storage";
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -15,16 +14,12 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Invalid path" }, { status: 400 });
   }
   
-  const postsDir = path.join(process.cwd(), "content", "posts");
-  const fullPath = path.join(postsDir, filePath);
-  
-  // Ensure path is within posts directory
-  if (!fullPath.startsWith(postsDir)) {
-    return NextResponse.json({ error: "Invalid path" }, { status: 400 });
+  if (!filePath.endsWith(".mdx")) {
+    return NextResponse.json({ error: "Only MDX files are allowed" }, { status: 400 });
   }
   
   try {
-    const content = fs.readFileSync(fullPath, "utf-8");
+    const content = await readPostFile(filePath);
     return NextResponse.json({ content });
   } catch {
     return NextResponse.json({ error: "File not found" }, { status: 404 });

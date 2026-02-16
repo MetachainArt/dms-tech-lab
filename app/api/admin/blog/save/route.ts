@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { writePostFile } from "@/lib/blog-storage";
 
 export async function POST(request: NextRequest) {
   try {
@@ -16,27 +15,26 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid path" }, { status: 400 });
     }
     
-    const postsDir = path.join(process.cwd(), "content", "posts");
-    const fullPath = path.join(postsDir, filePath);
-    
-    // Ensure path is within posts directory
-    if (!fullPath.startsWith(postsDir)) {
-      return NextResponse.json({ error: "Invalid path" }, { status: 400 });
-    }
-    
     // Only allow .mdx files
-    if (!fullPath.endsWith(".mdx")) {
+    if (!filePath.endsWith(".mdx")) {
       return NextResponse.json({ error: "Only MDX files are allowed" }, { status: 400 });
     }
-    
-    // Write the file
-    fs.writeFileSync(fullPath, content, "utf-8");
-    
-    return NextResponse.json({ success: true });
+
+    const writeResult = await writePostFile(filePath, content);
+
+    return NextResponse.json({ success: true, storage: writeResult.storage });
   } catch (error: any) {
     console.error("Failed to save file:", error);
+
+    const errorCode = (error as NodeJS.ErrnoException).code;
+    const isWriteDenied = errorCode === "EROFS" || errorCode === "EACCES" || errorCode === "EPERM";
+
     return NextResponse.json(
-      { error: `파일 저장 실패: ${error.message || "알 수 없는 오류"}` },
+      {
+        error: isWriteDenied
+          ? "파일 저장 권한이 없는 환경입니다. 관리자에게 BLOG_RUNTIME_POSTS_DIR 설정을 요청해주세요."
+          : `파일 저장 실패: ${error.message || "알 수 없는 오류"}`,
+      },
       { status: 500 }
     );
   }
