@@ -1,5 +1,10 @@
 import dynamic from "next/dynamic";
 import Hero from "@/components/sections/Hero";
+import BlogTeaser from "@/components/sections/BlogTeaser";
+import EducationTeaser from "@/components/sections/EducationTeaser";
+import HomeVariantTracker from "@/components/providers/HomeVariantTracker";
+import { getAllPosts } from "@/lib/mdx";
+import { EDUCATION_TRACKS } from "@/lib/education-data";
 
 // Hero는 초기 로딩 필수이므로 정적 import
 // 나머지 섹션은 동적 import로 코드 스플리팅
@@ -45,12 +50,23 @@ const Contact = dynamic(() => import("@/components/sections/Contact"), {
   loading: () => <div className="h-[50vh] w-full bg-white animate-pulse" aria-label="로딩 중" />,
 });
 
+const AutomationAssessment = dynamic(() => import("@/components/sections/AutomationAssessment"), {
+  loading: () => <div className="h-[55vh] w-full bg-[#050B1B] animate-pulse" aria-label="로딩 중" />,
+});
+
+const configuredVariant = process.env.NEXT_PUBLIC_HOME_EXPERIMENT_VARIANT?.trim().toLowerCase();
+const homeExperimentVariant: "a" | "b" = configuredVariant === "b" ? "b" : "a";
 
 
-export default function Home() {
+
+export default async function Home() {
+  const latestPosts = (await getAllPosts()).slice(0, 3);
+  const featuredTracks = Object.values(EDUCATION_TRACKS).slice(0, 3);
+
   return (
-    <main className="flex min-h-screen flex-col overflow-x-hidden select-none bg-[#050B1B]">
+    <main className="flex min-h-screen flex-col overflow-x-hidden select-none bg-[#050B1B]" data-home-variant={homeExperimentVariant}>
       <StickyConsultCTA />
+      <HomeVariantTracker variant={homeExperimentVariant} />
       <section id="hero" className="w-full" aria-label="메인 히어로 섹션">
         <Hero />
       </section>
@@ -60,18 +76,52 @@ export default function Home() {
       <section id="roi" className="w-full" aria-label="ROI 계산기">
         <ROICalculator />
       </section>
-      <section id="services" className="w-full" aria-label="서비스 섹션">
-        <Services />
+      <section id="assessment" className="w-full" aria-label="자동화 우선순위 진단">
+        <AutomationAssessment />
       </section>
-      <section id="projects" className="w-full" aria-label="프로젝트 섹션">
-        <Apps />
-      </section>
-      <section id="case-studies" className="w-full" aria-label="성공 사례">
-        <CaseStudies />
-      </section>
-      <section id="testimonials" className="w-full" aria-label="고객 후기 섹션">
-        <Testimonials />
-      </section>
+      {homeExperimentVariant === "a" ? (
+        <>
+          <section id="services" className="w-full" aria-label="서비스 섹션">
+            <Services />
+          </section>
+          <section id="projects" className="w-full" aria-label="프로젝트 섹션">
+            <Apps />
+          </section>
+          <section id="case-studies" className="w-full" aria-label="성공 사례">
+            <CaseStudies />
+          </section>
+          <section id="testimonials" className="w-full" aria-label="고객 후기 섹션">
+            <Testimonials />
+          </section>
+          <section id="insights" className="w-full" aria-label="최신 인사이트">
+            <BlogTeaser posts={latestPosts} variant={homeExperimentVariant} />
+          </section>
+          <section id="learning" className="w-full" aria-label="교육 트랙">
+            <EducationTeaser tracks={featuredTracks} variant={homeExperimentVariant} />
+          </section>
+        </>
+      ) : (
+        <>
+          <section id="insights" className="w-full" aria-label="최신 인사이트">
+            <BlogTeaser posts={latestPosts} variant={homeExperimentVariant} />
+          </section>
+          <section id="learning" className="w-full" aria-label="교육 트랙">
+            <EducationTeaser tracks={featuredTracks} variant={homeExperimentVariant} />
+          </section>
+          <section id="services" className="w-full" aria-label="서비스 섹션">
+            <Services />
+          </section>
+          <section id="case-studies" className="w-full" aria-label="성공 사례">
+            <CaseStudies />
+          </section>
+          <section id="testimonials" className="w-full" aria-label="고객 후기 섹션">
+            <Testimonials />
+          </section>
+          <section id="projects" className="w-full" aria-label="프로젝트 섹션">
+            <Apps />
+          </section>
+        </>
+      )}
       <section id="about" className="w-full" aria-label="리도 소개 섹션">
         <FounderProfile />
       </section>

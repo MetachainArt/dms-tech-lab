@@ -8,6 +8,12 @@ export const ANALYTICS_EVENTS = {
   CONTACT_FORM_SUBMIT: "contact_form_submit",
   NEWSLETTER_FORM_START: "newsletter_form_start",
   NEWSLETTER_FORM_SUBMIT: "newsletter_form_submit",
+  ASSESSMENT_START: "assessment_start",
+  ASSESSMENT_COMPLETE: "assessment_complete",
+  ASSESSMENT_TO_CONTACT: "assessment_to_contact",
+  CONTENT_TEASER_CLICK: "content_teaser_click",
+  TESTIMONIAL_FILTER_SELECT: "testimonial_filter_select",
+  HOME_VARIANT_VIEW: "home_variant_view",
   CALENDAR_BOOKING_START: "calendar_booking_start",
   CALENDAR_BOOKING_COMPLETE: "calendar_booking_complete",
 } as const;

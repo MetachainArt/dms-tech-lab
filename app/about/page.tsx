@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, Monitor, Cpu, Network, ArrowUpRight } from "lucide-react";
+import { ArrowRight, CheckCircle2, Monitor, Cpu, Network, ArrowUpRight, Award, ScrollText, Sparkles } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -104,65 +104,173 @@ export default function AboutPage() {
       </section>
 
       {/* 3. FOUNDER STORY */}
-      <section className="w-full py-32 px-6 bg-white">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Image Side */}
-            <div className="relative h-[600px] rounded-[24px] overflow-hidden shadow-2xl lg:order-1 bg-gray-100">
-                 <Image 
-                    src="/about/founder-new.png" 
-                    alt="Founder" 
-                    fill
-                    className="object-cover"
-                />
-            </div>
+      <section className="w-full py-32 px-6 bg-deep-space relative overflow-hidden">
+        {/* 3D Background Elements & Lighting */}
+        <div className="absolute inset-0 z-0 pointer-events-none perspective-[2000px]">
+          <motion.div 
+            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-1/4 left-[-5%] w-[500px] h-[500px] bg-neon-sky/10 blur-[120px] rounded-full" 
+          />
+          <motion.div 
+            animate={{ scale: [1, 1.4, 1], opacity: [0.2, 0.5, 0.2] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute bottom-1/4 right-[-5%] w-[450px] h-[450px] bg-gold/15 blur-[120px] rounded-full" 
+          />
+          <motion.div
+             animate={{ rotateY: 360, rotateX: 360, y: [0, -40, 0] }}
+             transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+             className="absolute top-[15%] right-[5%] w-40 h-40 glass-panel border border-gold/30 rounded-3xl hidden lg:block backdrop-blur-3xl shadow-[0_0_50px_rgba(212,175,55,0.1)]"
+             style={{ transformStyle: "preserve-3d" }}
+          />
+          <motion.div
+             animate={{ rotateY: -360, rotateX: -360, y: [0, 40, 0] }}
+             transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+             className="absolute bottom-[10%] left-[2%] w-28 h-28 glass-panel border border-neon-sky/30 rounded-full hidden lg:block backdrop-blur-3xl shadow-[0_0_50px_rgba(0,209,255,0.1)]"
+             style={{ transformStyle: "preserve-3d" }}
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center relative z-10">
+            {/* Image Side (3D Auto-Rotating) */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, rotateY: 20 }}
+              whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              className="relative perspective-[2000px] w-full lg:order-1"
+            >
+              <motion.div 
+                  animate={{ 
+                    rotateY: [0, 6, -6, 0],
+                    rotateX: [0, -3, 3, 0],
+                    y: [0, -15, 0]
+                  }}
+                  transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+                  className="relative h-[600px] lg:h-[700px] w-full items-center rounded-[2.5rem] glass-bento border border-gold/30 p-3 shadow-[0_30px_80px_rgba(212,175,55,0.25)]"
+                  style={{ transformStyle: "preserve-3d" }}
+              >
+                <div 
+                  className="relative w-full h-full rounded-[2rem] overflow-hidden bg-black"
+                  style={{ transform: "translateZ(40px)", transformStyle: "preserve-3d" }}
+                >
+                  <div className="absolute inset-[-5%] w-[110%] h-[110%]">
+                      <Image 
+                        src="/about/founder-new.png" 
+                        alt="Reedo Profile" 
+                        fill
+                        className="object-cover opacity-90"
+                      />
+                  </div>
+                  {/* Overlays */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/30 to-transparent opacity-90" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-deep-space/60 via-transparent to-transparent opacity-50" />
+                  
+                  {/* Auto-Sweeping Glare Effect */}
+                  <motion.div 
+                    animate={{ backgroundPosition: ["0% 0%", "200% 200%", "0% 0%"] }}
+                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                    className="absolute inset-0 z-10 opacity-30 pointer-events-none mix-blend-overlay"
+                    style={{ backgroundImage: "radial-gradient(circle at center, rgba(255,255,255,0.95) 0%, transparent 40%)", backgroundSize: "200% 200%" }}
+                  />
+
+                  {/* Floating Badge */}
+                  <div 
+                      className="absolute bottom-10 left-8 right-8 glass-panel p-7 rounded-[1.5rem] border border-white/20 backdrop-blur-2xl shadow-[0_25px_50px_rgba(0,0,0,0.6)] bg-white/5"
+                      style={{ transform: "translateZ(90px)" }} 
+                  >
+                    <div className="flex justify-between items-center text-white">
+                      <div>
+                        <p className="flex items-center gap-2 text-gold-light text-xs font-bold tracking-[0.25em] uppercase mb-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                          <Sparkles className="w-3.5 h-3.5 text-gold" />
+                          Founder & CEO
+                        </p>
+                        <h3 className="text-4xl md:text-5xl font-playfair font-bold text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] tracking-wide">Reedo</h3>
+                      </div>
+                      <div className="text-right border-l border-white/20 pl-6 py-1">
+                        <p className="text-[10px] text-white/60 tracking-[0.2em] uppercase mb-1 drop-shadow-sm">Est.</p>
+                        <p className="text-2xl md:text-3xl font-bold font-playfair text-transparent bg-clip-text bg-gradient-to-br from-gold-light to-gold drop-shadow-lg">2004</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+              
+              {/* Pulsing Floor Shadow for extreme 3D effect */}
+              <motion.div 
+                animate={{ opacity: [0.3, 0.7, 0.3], scale: [0.8, 1.1, 0.8] }}
+                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -bottom-16 left-12 right-12 h-24 bg-gold/25 blur-[60px] -z-10 rounded-[100%]"
+              />
+            </motion.div>
 
             {/* Text Side */}
-            <div className="space-y-8 lg:order-2">
+            <motion.div
+              initial={{ opacity: 0, x: 50, rotateY: -15 }}
+              whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
+              className="space-y-8 lg:order-2"
+              style={{ perspective: "1000px" }}
+            >
                 <div>
-                    <h5 className="text-neon-sky font-semibold tracking-widest text-sm uppercase mb-2">FOUNDER STORY</h5>
-                    <h2 className="text-3xl md:text-4xl font-bold text-[#050B1B] leading-tight">
-                        20년의 현장, 30개국의 경험,<br/>
-                        그리고 다음 10년
+                    <div className="flex items-center gap-4 mb-8">
+                        <span className="h-[1px] w-16 bg-gradient-to-r from-transparent to-gold/80" />
+                        <span className="text-gold-light font-bold tracking-[0.25em] text-sm uppercase drop-shadow-sm">Founder Story</span>
+                    </div>
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold text-white leading-[1.2] mb-6">
+                        20년의 현장,<br />
+                        30개국의 경험,<br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold-light to-white italic pr-2 text-4xl md:text-5xl lg:text-6xl mt-3 block drop-shadow-[0_0_15px_rgba(212,175,55,0.4)]">그리고 다음 10년.</span>
                     </h2>
                 </div>
                 
-                    <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
-                        <p>
-                            20년 이상 3D 설계와 하드웨어 디자인을 기반으로 기술과 현장을 연결하는 엔지니어로 활동해왔습니다.
-                            컴퓨터공학 전공을 바탕으로 정보통신공학까지 아우르며, 제품 설계, 시스템 이해, 양산 및 현장 적용까지 전 과정을 고려한 설계를 강점으로 삼고 있습니다.
-                        </p>
-                        <p>
-                            전 세계 30여 개국에서의 데모 및 교육 경험을 통해 ‘설계는 도면이 아니라 현장에서 완성된다’는 철학을 체득했고, 이러한 경험을 바탕으로 현재까지 <span className="font-bold text-[#050B1B]">17건의 특허와 11건의 디자인 등록</span>을 보유하고 있습니다.
-                        </p>
-                        <p className="font-semibold text-[#050B1B] text-xl pt-4">
-                            기술적 완성도와 더불어<br/>
-                            20년간 이어온 사진 작업, 10년간의 봉사 활동을 통해<br/>
-                            사람 중심의 기술, 지속 가능한 가치를 추구하고 있습니다.
+                <div className="space-y-6 text-white/75 text-lg leading-relaxed font-light">
+                    <p>
+                        20년 이상 3D 설계와 하드웨어 디자인을 기반으로 기술과 현장을 연결하는 엔지니어로 활동해왔습니다.
+                        컴퓨터공학 전공을 바탕으로 정보통신공학까지 아우르며, 제품 설계, 시스템 이해, 양산 및 현장 적용까지 전 과정을 고려한 설계를 강점으로 삼고 있습니다.
+                    </p>
+                    <p>
+                        전 세계 30여 개국에서의 데모 및 교육 경험을 통해 <strong className="font-semibold text-white drop-shadow-sm">'설계는 도면이 아니라 현장에서 완성된다'</strong>는 철학을 체득했고, 이러한 경험을 바탕으로 현재까지 수많은 특허를 일궈냈습니다.
+                    </p>
+                    <div className="pl-6 border-l-4 border-gold/50 mt-10 py-2">
+                        <p className="font-semibold text-white text-xl md:text-2xl font-playfair italic leading-snug drop-shadow-md">
+                            "기술적 완성도와 더불어 사람 중심의 기술, 지속 가능한 가치를 추구합니다."
                         </p>
                     </div>
+                </div>
 
-                    {/* Stats Grid */}
-                    <div className="grid grid-cols-2 gap-4 mt-8">
-                        <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 hover:border-neon-sky/50 transition-colors group">
-                            <div className="flex items-center gap-3 mb-2">
-                                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm">
-                                    <span className="text-neon-sky">★</span> 
-                                </div>
-                                <span className="text-gray-500 text-sm font-medium">특허 보유</span>
+                {/* Stats Grid */}
+                <div className="grid grid-cols-2 gap-6 mt-8">
+                    <motion.div 
+                      whileHover={{ y: -8, scale: 1.02 }}
+                      className="p-8 rounded-3xl glass-panel group shadow-[0_15px_40px_rgba(212,175,55,0.1)] border border-gold/20 hover:border-gold/50 transition-all duration-500 bg-gradient-to-b from-white/5 to-transparent relative overflow-hidden"
+                    >
+                        <div className="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <div className="flex items-center gap-4 mb-4 relative z-10">
+                            <div className="p-3 rounded-2xl bg-gradient-to-br from-gold/20 to-gold/5 text-gold border border-gold/20 group-hover:bg-gold group-hover:text-deep-space transition-all duration-500 shadow-lg">
+                                <Award className="w-5 h-5" /> 
                             </div>
-                            <div className="text-4xl font-bold text-[#050B1B] font-mono">17<span className="text-lg text-gray-400 ml-1">건</span></div>
+                            <span className="text-white/70 text-sm font-semibold tracking-widest uppercase">특허 보유</span>
                         </div>
-                        <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 hover:border-purple-400/50 transition-colors group">
-                             <div className="flex items-center gap-3 mb-2">
-                                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm">
-                                    <span className="text-purple-500">❖</span>
-                                </div>
-                                <span className="text-gray-500 text-sm font-medium">디자인 등록</span>
+                        <div className="text-5xl font-bold font-playfair text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.3)] relative z-10">17<span className="text-xl text-gold ml-2 font-sans font-medium">건</span></div>
+                    </motion.div>
+                    
+                    <motion.div 
+                      whileHover={{ y: -8, scale: 1.02 }}
+                      className="p-8 rounded-3xl glass-panel group shadow-[0_15px_40px_rgba(0,209,255,0.1)] border border-neon-sky/20 hover:border-neon-sky/50 transition-all duration-500 bg-gradient-to-b from-white/5 to-transparent relative overflow-hidden"
+                    >
+                         <div className="absolute inset-0 bg-neon-sky/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                         <div className="flex items-center gap-4 mb-4 relative z-10">
+                            <div className="p-3 rounded-2xl bg-gradient-to-br from-neon-sky/20 to-neon-sky/5 text-neon-sky border border-neon-sky/20 group-hover:bg-neon-sky group-hover:text-deep-space transition-all duration-500 shadow-lg">
+                                <ScrollText className="w-5 h-5" />
                             </div>
-                            <div className="text-4xl font-bold text-[#050B1B] font-mono">11<span className="text-lg text-gray-400 ml-1">건</span></div>
+                            <span className="text-white/70 text-sm font-semibold tracking-widest uppercase">디자인 등록</span>
                         </div>
-                    </div>
-            </div>
+                        <div className="text-5xl font-bold font-playfair text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.3)] relative z-10">11<span className="text-xl text-neon-sky ml-2 font-sans font-medium">건</span></div>
+                    </motion.div>
+                </div>
+            </motion.div>
         </div>
       </section>
 

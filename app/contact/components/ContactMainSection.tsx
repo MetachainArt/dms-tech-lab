@@ -1,7 +1,20 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
+
+interface AssessmentPrefill {
+  source?: string;
+  assessmentScore?: string;
+  assessmentTier?: string;
+  assessmentIndustry?: string;
+  assessmentSummary?: string;
+  assessmentRecommendation?: string;
+}
+
+interface ContactMainSectionProps {
+  assessmentPrefill?: AssessmentPrefill;
+}
 
 const inquiryTypes = [
   '서비스 문의',
@@ -20,7 +33,40 @@ const budgetRanges = [
   '미정 / 협의 필요',
 ];
 
-export default function ContactMainSection() {
+export default function ContactMainSection({ assessmentPrefill }: ContactMainSectionProps) {
+  const prefill = useMemo(() => {
+    const source = assessmentPrefill?.source;
+    if (source !== 'assessment') {
+      return { inquiryType: '', message: '' };
+    }
+
+    const assessmentScore = assessmentPrefill?.assessmentScore || '';
+    const assessmentTier = assessmentPrefill?.assessmentTier || '';
+    const assessmentIndustry = assessmentPrefill?.assessmentIndustry || '';
+    const assessmentSummary = assessmentPrefill?.assessmentSummary || '';
+    const assessmentRecommendation = assessmentPrefill?.assessmentRecommendation || '';
+
+    if (!assessmentScore && !assessmentTier && !assessmentIndustry && !assessmentSummary && !assessmentRecommendation) {
+      return { inquiryType: '', message: '' };
+    }
+
+    const summaryLines = [
+      '[자동화 우선순위 진단 결과]',
+      assessmentScore ? `- 점수: ${assessmentScore}` : '',
+      assessmentTier ? `- 단계: ${assessmentTier}` : '',
+      assessmentIndustry ? `- 업종: ${assessmentIndustry}` : '',
+      assessmentSummary ? `- 요약: ${assessmentSummary}` : '',
+      assessmentRecommendation ? `- 권장 시나리오: ${assessmentRecommendation}` : '',
+      '',
+      '위 진단 결과를 바탕으로 초기 도입 범위와 예상 ROI를 상담받고 싶습니다.',
+    ].filter(Boolean);
+
+    return {
+      inquiryType: '자동화·개발 의뢰',
+      message: summaryLines.join('\n'),
+    };
+  }, [assessmentPrefill]);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -190,7 +236,7 @@ export default function ContactMainSection() {
                     <label className="block text-gray-400 text-sm mb-2">문의 유형 *</label>
                     <select
                       name="inquiryType"
-                      value={formData.inquiryType}
+                      value={formData.inquiryType || prefill.inquiryType}
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-neon-sky focus:outline-none focus:ring-1 focus:ring-neon-sky/50 transition-all appearance-none cursor-pointer"
@@ -235,10 +281,10 @@ export default function ContactMainSection() {
                 {/* Message */}
                 <div>
                   <label className="block text-gray-400 text-sm mb-2">문의 내용 *</label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
+                    <textarea
+                      name="message"
+                      value={formData.message || prefill.message}
+                      onChange={handleChange}
                     required
                     rows={5}
                     className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-neon-sky focus:outline-none focus:ring-1 focus:ring-neon-sky/50 transition-all resize-none"

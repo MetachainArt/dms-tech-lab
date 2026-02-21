@@ -1,4 +1,4 @@
-import { Poppins } from "next/font/google"; // Switch to Poppins
+import { Poppins, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
 import Navbar from "@/components/sections/Navbar";
@@ -11,11 +11,18 @@ import { SITE_CONFIG } from "@/lib/seo";
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"], // 필요한 weight만 로드 (300, 900 제거)
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-poppins",
   display: "swap",
   preload: true,
   fallback: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-playfair",
+  display: "swap",
 });
 
 export const metadata = generateSeoMetadata({
@@ -75,7 +82,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={clsx(poppins.variable, "antialiased bg-deep-space text-white select-none")} suppressHydrationWarning>
+      <body className={clsx(poppins.variable, playfair.variable, "antialiased bg-deep-space text-white select-none")} suppressHydrationWarning>
         <BookingEventBridge />
         <Background />
         <NextAuthProvider>
