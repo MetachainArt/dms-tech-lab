@@ -2,6 +2,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { unstable_cache } from 'next/cache';
+import { cache } from 'react';
 
 const postsDirectory = path.join(process.cwd(), 'content/posts');
 

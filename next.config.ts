@@ -42,6 +42,9 @@ const nextConfig: NextConfig = {
       "@prisma/client",
       "clsx",
       "date-fns",
+      "@react-three/drei",
+      "@react-three/fiber",
+      "three",
     ],
   },
 

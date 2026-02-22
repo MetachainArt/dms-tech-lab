@@ -50,12 +50,20 @@ export async function POST(req: Request) {
   }
 }
 
+// Cache GET requests for 60 seconds
+export const revalidate = 60;
+
 export async function GET(req: Request) {
     try {
         const automations = await prisma.automation.findMany({
             orderBy: { createdAt: "desc" }
         });
-        return NextResponse.json(automations);
+        
+        // Add cache headers
+        const headers = new Headers();
+        headers.set('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=300');
+        
+        return NextResponse.json(automations, { headers });
     } catch (error) {
         return NextResponse.json({ error: "Internal server error" }, { status: 500 });
     }

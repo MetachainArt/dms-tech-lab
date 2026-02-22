@@ -60,8 +60,14 @@ const homeExperimentVariant: "a" | "b" = configuredVariant === "b" ? "b" : "a";
 
 
 export default async function Home() {
-  const latestPosts = (await getAllPosts()).slice(0, 3);
-  const featuredTracks = Object.values(EDUCATION_TRACKS).slice(0, 3);
+  // 병렬 데이터 페칭으로 성능 최적화
+  const [allPosts, educationTracks] = await Promise.all([
+    getAllPosts(),
+    Promise.resolve(Object.values(EDUCATION_TRACKS)),
+  ]);
+  
+  const latestPosts = allPosts.slice(0, 3);
+  const featuredTracks = educationTracks.slice(0, 3);
 
   return (
     <main className="flex min-h-screen flex-col overflow-x-hidden select-none bg-[#050B1B]" data-home-variant={homeExperimentVariant}>
