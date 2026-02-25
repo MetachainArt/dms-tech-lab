@@ -23,6 +23,7 @@ export interface EducationTrack {
   vol: string;
   tags: string[];
   chapters: EducationChapter[];
+  externalLink?: string;
 }
 
 export const EDUCATION_TRACKS: Record<string, EducationTrack> = {
@@ -77,19 +78,20 @@ export const EDUCATION_TRACKS: Record<string, EducationTrack> = {
   },
   "automation": {
     id: "automation",
-    title: "AI Automation",
-    description: "N8N, Zapier, LangChain을 활용한 업무 자동화 설계. 반복적인 업무를 AI 에이전트에게 위임하고, 24시간 멈추지 않는 무인 비즈니스 시스템을 구축하는 노하우.",
-    image: "/icons/3d-curriculum-hw.png",
-    color: "teal",
+    title: "Openclaw",
+    description: "THE AI THAT ACTUALLY DOES THINGS. 이메일, 캘린더, 브라우저까지 제어하는 개인 AI 어시스턴트. WhatsApp, Telegram 등 어떤 채팅 앱에서든 바로 사용 가능.",
+    image: "/images/Service/openclaw-features.png",
+    color: "rose",
     vol: "03",
-    tags: ["N8N", "Zapier", "LangChain"],
+    tags: ["OpenClaw", "AI Assistant", "Automation"],
+    externalLink: "https://openclaw.dmssolution.co.kr/",
     chapters: [
       {
         id: "chapter-01",
-        title: "노코드 자동화 입문",
-        description: "코딩 없이 워크플로우 자동화 시작하기",
+        title: "OpenClaw 시작하기",
+        description: "개인 AI 어시스턴트 설정 및 활용",
         lessons: [
-          { id: "n8n-basics", title: "N8N 인터페이스 익히기", description: "노드 기반의 워크플로우 설계", duration: "10 min" }
+          { id: "openclaw-basics", title: "OpenClaw 설치 및 설정", description: "원클릭 설치로 AI 어시스턴트 시작하기", duration: "10 min" }
         ]
       }
     ]

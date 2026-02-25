@@ -51,6 +51,70 @@ export default function EducationPage() {
                         transition={{ delay: idx * 0.2 }}
                         className="group relative block w-full"
                     >
+                        {track.externalLink ? (
+                          <a href={track.externalLink} target="_blank" rel="noopener noreferrer" className="block h-full">
+                            <div className="relative aspect-[3/4] w-full rounded-[20px] transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl hover:shadow-neon-sky/20 perspective-1000">
+                                
+                                {/* Book Spine Effect (Left Side) */}
+                                <div className="absolute left-0 top-0 bottom-0 w-3 rounded-l-[20px] bg-gradient-to-r from-white/20 to-transparent z-20 pointer-events-none" />
+                                
+                                {/* Cover Image/Background */}
+                                <div className="absolute inset-0 rounded-[20px] overflow-hidden bg-[#0A1124] border-2 border-white/20 group-hover:border-white/40 transition-colors shadow-lg flex items-center justify-center">
+                                    <div className={`absolute inset-0 bg-gradient-to-br from-${track.color}-900/50 to-slate-900 z-0`} /> 
+                                    <div className="absolute inset-0 z-0 transition-transform duration-700 group-hover:scale-110">
+                                        <Image 
+                                            src={track.backgroundImage || track.image}
+                                            alt={track.title}
+                                            fill
+                                            className="object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                                        />
+                                    </div>
+
+                                    {/* Gradient Overlay */}
+                                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050B1B]/80 to-[#050B1B] z-10" />
+                                </div>
+
+                                {/* Content */}
+                                <div className="absolute inset-0 p-8 flex flex-col justify-end z-20">
+                                    {/* Top Badge (Tags) */}
+                                    <div className="absolute top-6 left-6 flex flex-wrap gap-2">
+                                        {track.tags.map((tag, i) => (
+                                            <span key={i} className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/90 shadow-sm">
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+
+                                    {/* Vol Badge */}
+                                    <div className={`absolute top-6 right-6 w-12 h-16 bg-${track.color}-500 rounded-b-lg shadow-lg flex flex-col items-center justify-center text-white font-bold opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 delay-100`}>
+                                        <span className="text-xs opacity-80">Vol.</span>
+                                        <span className="text-lg">{track.vol}</span>
+                                    </div>
+
+                                    {/* Title Section */}
+                                    <div className="transform transition-transform duration-300 group-hover:translate-y-[-10px]">
+                                        <span className={`block text-${track.color}-400 text-sm font-bold tracking-widest uppercase mb-2 opacity-90`}>
+                                            {track.id.toUpperCase().replace("-", " ")}
+                                        </span>
+                                        <h3 className="text-3xl font-bold text-white mb-4 leading-tight group-hover:text-neon-sky transition-colors">
+                                            {track.title}
+                                        </h3>
+                                        <div className="h-0 group-hover:h-auto overflow-hidden transition-all duration-500 opacity-0 group-hover:opacity-100">
+                                            <p className="text-gray-300 text-sm leading-relaxed mb-4 line-clamp-3">
+                                                {track.description}
+                                            </p>
+                                            <div className="flex items-center text-white font-semibold text-sm hover:text-neon-sky transition-colors">
+                                                Visit Openclaw <ArrowRight className="w-4 h-4 ml-2" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Hover Glow Effect */}
+                                <div className={`absolute -inset-1 rounded-[24px] bg-gradient-to-br from-${track.color}-500/20 to-transparent blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10`} />
+                            </div>
+                          </a>
+                        ) : (
                         <Link href={`/education/${track.id}`} className="block h-full"> 
                             <div className="relative aspect-[3/4] w-full rounded-[20px] transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl hover:shadow-neon-sky/20 perspective-1000">
                                 
@@ -113,6 +177,7 @@ export default function EducationPage() {
                                 <div className={`absolute -inset-1 rounded-[24px] bg-gradient-to-br from-${track.color}-500/20 to-transparent blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10`} />
                             </div>
                         </Link>
+                        )}
                         
                         {/* Reflection */}
                         <div className="absolute -bottom-4 left-4 right-4 h-4 bg-black/50 blur-lg rounded-[100%] opacity-0 group-hover:opacity-40 transition-opacity duration-500 transform scale-x-90" />

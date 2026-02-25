@@ -55,6 +55,26 @@ export default function EducationTeaser({ tracks, variant }: EducationTeaserProp
                   </span>
                 ))}
               </div>
+              {track.externalLink ? (
+                <a
+                  href={track.externalLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() =>
+                    trackEvent(ANALYTICS_EVENTS.CONTENT_TEASER_CLICK, {
+                      section: "education_teaser",
+                      content_type: "track",
+                      item_id: track.id,
+                      position: index + 1,
+                      destination: track.externalLink || "",
+                      variant,
+                    })
+                  }
+                  className="inline-flex px-4 py-2 rounded-lg border border-neon-sky/35 text-neon-sky hover:bg-neon-sky/10 transition-colors"
+                >
+                  바로가기
+                </a>
+              ) : (
               <Link
                 href={`/education/${track.id}`}
                 onClick={() =>
@@ -71,6 +91,7 @@ export default function EducationTeaser({ tracks, variant }: EducationTeaserProp
               >
                 트랙 상세 보기
               </Link>
+              )}
             </article>
           ))}
         </div>
