@@ -6,6 +6,7 @@ import Footer from "@/components/sections/Footer";
 import Background from "@/components/ui/Background";
 import NextAuthProvider from "@/components/providers/NextAuthProvider";
 import BookingEventBridge from "@/components/providers/BookingEventBridge";
+import Script from "next/script";
 import { generateMetadata as generateSeoMetadata, generateStructuredData } from "@/lib/metadata";
 import { SITE_CONFIG } from "@/lib/seo";
 
@@ -40,11 +41,6 @@ export default function RootLayout({
     <html lang="ko" className="dark scroll-smooth" suppressHydrationWarning>
       <head>
         <meta name="naver-site-verification" content="b8ab729a0b0dbcfe3400052a6f192884926e93e4" />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4327440469164693"
-          crossOrigin="anonymous"
-        />
         <link rel="preconnect" href="https://images.unsplash.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -88,6 +84,11 @@ export default function RootLayout({
         />
       </head>
       <body className={clsx(poppins.variable, playfair.variable, "antialiased bg-deep-space text-white select-none")} suppressHydrationWarning>
+        <Script
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4327440469164693"
+          strategy="afterInteractive"
+          crossOrigin="anonymous"
+        />
         <BookingEventBridge />
         <Background />
         <NextAuthProvider>
