@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="층별 파이프라인에서 유지 복구 재배치가 순환하는 다이어그램">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111827"/><stop offset="100%" stop-color="#312e81"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg3)"/>
+  <g fill="#0b1220" stroke="#6366f1" stroke-width="4">
+    <circle cx="500" cy="450" r="160"/>
+    <circle cx="800" cy="450" r="160"/>
+    <circle cx="1100" cy="450" r="160"/>
+  </g>
+  <g fill="#c7d2fe" font-family="Arial, sans-serif" font-size="42" text-anchor="middle">
+    <text x="500" y="465">유지</text>
+    <text x="800" y="465">복구</text>
+    <text x="1100" y="465">재배치</text>
+  </g>
+  <g fill="none" stroke="#a5b4fc" stroke-width="10" marker-end="url(#arr)">
+    <defs><marker id="arr" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto"><path d="M0,0 L0,8 L10,4 z" fill="#a5b4fc"/></marker></defs>
+    <path d="M650 350 C700 280, 900 280, 950 350"/>
+    <path d="M950 550 C900 620, 700 620, 650 550"/>
+  </g>
+  <rect x="420" y="700" width="760" height="90" rx="14" fill="#1f2937" stroke="#4f46e5"/>
+  <text x="800" y="757" fill="#e0e7ff" font-size="32" text-anchor="middle" font-family="Arial, sans-serif">주간 루프로 변동성을 줄이고 현금흐름을 안정화</text>
+</svg>

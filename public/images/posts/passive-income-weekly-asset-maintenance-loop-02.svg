@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="격자 보드 위에 정렬된 카드와 작은 개선 화살표">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/><stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg2)"/>
+  <g stroke="#334155" opacity="0.35">
+    <path d="M0 100h1600M0 200h1600M0 300h1600M0 400h1600M0 500h1600M0 600h1600M0 700h1600M0 800h1600"/>
+    <path d="M100 0v900M300 0v900M500 0v900M700 0v900M900 0v900M1100 0v900M1300 0v900M1500 0v900"/>
+  </g>
+  <g>
+    <rect x="210" y="240" width="320" height="180" rx="20" fill="#111827" stroke="#475569"/>
+    <rect x="640" y="340" width="320" height="180" rx="20" fill="#111827" stroke="#475569"/>
+    <rect x="1070" y="210" width="320" height="180" rx="20" fill="#111827" stroke="#475569"/>
+  </g>
+  <g fill="none" stroke="#22d3ee" stroke-width="8" marker-end="url(#arrow)">
+    <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#22d3ee"/></marker></defs>
+    <path d="M530 330 C590 330, 590 410, 640 430"/>
+    <path d="M960 430 C1020 430, 1020 320, 1070 300"/>
+  </g>
+  <g fill="#e2e8f0" font-family="Arial, sans-serif" font-size="28">
+    <text x="255" y="335">작은 변경</text>
+    <text x="690" y="435">짧은 측정</text>
+    <text x="1120" y="305">즉시 기록</text>
+  </g>
+</svg>

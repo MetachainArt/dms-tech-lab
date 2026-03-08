@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="추세선과 점검 카드가 겹쳐진 주간 유지보수 대시보드">
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1020"/>
+      <stop offset="100%" stop-color="#16263a"/>
+    </linearGradient>
+    <linearGradient id="line1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg1)"/>
+  <g opacity="0.2" stroke="#6b7280">
+    <path d="M0 150h1600M0 300h1600M0 450h1600M0 600h1600M0 750h1600"/>
+    <path d="M200 0v900M400 0v900M600 0v900M800 0v900M1000 0v900M1200 0v900M1400 0v900"/>
+  </g>
+  <polyline fill="none" stroke="url(#line1)" stroke-width="10" points="120,680 320,620 500,640 700,540 900,500 1080,430 1260,390 1480,290"/>
+  <g fill="#111827" stroke="#374151" stroke-width="3">
+    <rect x="180" y="120" width="260" height="130" rx="16"/><rect x="500" y="150" width="260" height="130" rx="16"/><rect x="820" y="110" width="260" height="130" rx="16"/><rect x="1140" y="170" width="260" height="130" rx="16"/>
+  </g>
+  <g fill="#e5e7eb" font-family="Arial, sans-serif" font-size="26" opacity="0.9">
+    <text x="220" y="195">유입 유지율</text><text x="540" y="225">전환 밀도</text><text x="860" y="185">이탈 지점</text><text x="1180" y="245">지원 마찰</text>
+  </g>
+</svg>
