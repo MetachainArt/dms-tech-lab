@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
+  <rect width="1600" height="900" fill="#0B1020"/>
+  <rect x="80" y="80" width="1440" height="740" rx="28" fill="#111A33" stroke="#2A3D75"/>
+  <rect x="130" y="130" width="420" height="300" rx="18" fill="#1C2A52"/>
+  <rect x="575" y="130" width="420" height="300" rx="18" fill="#1E3A5F"/>
+  <rect x="1020" y="130" width="450" height="300" rx="18" fill="#21456A"/>
+  <rect x="130" y="460" width="1340" height="110" rx="16" fill="#162440"/>
+  <rect x="130" y="590" width="1340" height="110" rx="16" fill="#132038"/>
+  <circle cx="210" cy="215" r="34" fill="#4CC9F0"/>
+  <circle cx="655" cy="215" r="34" fill="#80ED99"/>
+  <circle cx="1100" cy="215" r="34" fill="#F9C74F"/>
+  <rect x="260" y="192" width="240" height="16" rx="8" fill="#8FA9FF"/>
+  <rect x="705" y="192" width="240" height="16" rx="8" fill="#A5E3B3"/>
+  <rect x="1150" y="192" width="260" height="16" rx="8" fill="#FFD88A"/>
+  <rect x="260" y="226" width="190" height="12" rx="6" fill="#6075B7"/>
+  <rect x="705" y="226" width="200" height="12" rx="6" fill="#6EBE7E"/>
+  <rect x="1150" y="226" width="210" height="12" rx="6" fill="#C5A45F"/>
+  <rect x="180" y="500" width="380" height="26" rx="10" fill="#6F8CFF"/>
+  <rect x="590" y="500" width="340" height="26" rx="10" fill="#6FD8A6"/>
+  <rect x="960" y="500" width="460" height="26" rx="10" fill="#FFCF70"/>
+  <rect x="180" y="630" width="250" height="26" rx="10" fill="#5C75D2"/>
+  <rect x="460" y="630" width="280" height="26" rx="10" fill="#55B88A"/>
+  <rect x="770" y="630" width="220" height="26" rx="10" fill="#D0AA57"/>
+  <rect x="1020" y="630" width="300" height="26" rx="10" fill="#3E5FB2"/>
+  <text x="130" y="760" fill="#B7C6FF" font-family="Arial, sans-serif" font-size="36" font-weight="700">Semantic Layout Control Board</text>
+</svg>
