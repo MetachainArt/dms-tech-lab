@@ -1,0 +1,54 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#060816"/>
+  <defs>
+    <linearGradient id="bg" x1="180" y1="120" x2="1460" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1024"/>
+      <stop offset="0.5" stop-color="#121A3A"/>
+      <stop offset="1" stop-color="#241237"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="240" y1="180" x2="1280" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#67E8F9" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#A855F7" stop-opacity="0.08"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(420 280) rotate(18) scale(360 260)">
+      <stop stop-color="#22D3EE" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#22D3EE" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1180 620) rotate(-12) scale(380 240)">
+      <stop stop-color="#C084FC" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#C084FC" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect x="40" y="40" width="1520" height="820" rx="40" fill="url(#bg)"/>
+  <ellipse cx="420" cy="280" rx="360" ry="260" fill="url(#glow1)"/>
+  <ellipse cx="1180" cy="620" rx="380" ry="240" fill="url(#glow2)"/>
+  <g opacity="0.8">
+    <rect x="200" y="170" width="310" height="420" rx="24" fill="url(#glass)" stroke="#67E8F9" stroke-opacity="0.35"/>
+    <rect x="560" y="230" width="260" height="300" rx="24" fill="url(#glass)" stroke="#93C5FD" stroke-opacity="0.3"/>
+    <rect x="870" y="150" width="520" height="500" rx="28" fill="url(#glass)" stroke="#C084FC" stroke-opacity="0.26"/>
+  </g>
+  <g stroke="#E879F9" stroke-opacity="0.25">
+    <path d="M260 230H450"/>
+    <path d="M260 290H450"/>
+    <path d="M260 350H450"/>
+    <path d="M260 410H450"/>
+    <path d="M260 470H450"/>
+    <path d="M610 290H770"/>
+    <path d="M610 350H770"/>
+    <path d="M610 410H770"/>
+    <path d="M930 230H1320"/>
+    <path d="M930 300H1320"/>
+    <path d="M930 370H1320"/>
+    <path d="M930 440H1320"/>
+    <path d="M930 510H1320"/>
+  </g>
+  <g stroke="#67E8F9" stroke-width="3" stroke-opacity="0.55">
+    <path d="M510 380C560 380 570 380 620 380"/>
+    <path d="M820 380C860 380 870 380 920 380"/>
+  </g>
+  <circle cx="510" cy="380" r="7" fill="#67E8F9"/>
+  <circle cx="820" cy="380" r="7" fill="#93C5FD"/>
+  <circle cx="920" cy="380" r="7" fill="#C084FC"/>
+  <path d="M180 720C360 640 520 760 700 700C840 654 930 600 1100 640C1220 668 1320 720 1440 690" stroke="#60A5FA" stroke-width="4" stroke-opacity="0.45"/>
+  <path d="M180 760C360 680 520 800 700 740C840 694 930 640 1100 680C1220 708 1320 760 1440 730" stroke="#A78BFA" stroke-width="2" stroke-opacity="0.38"/>
+</svg>
