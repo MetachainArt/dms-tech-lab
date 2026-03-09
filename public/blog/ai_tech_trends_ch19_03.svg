@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Browser workspace with autonomous tabs, audit rails, and measured automation loops">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#07131a"/>
+      <stop offset="100%" stop-color="#123524"/>
+    </linearGradient>
+    <linearGradient id="rail" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#22c55e" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg3)"/>
+  <g opacity="0.15">
+    <circle cx="1330" cy="180" r="170" fill="#10b981"/>
+    <circle cx="290" cy="760" r="210" fill="#0ea5e9"/>
+  </g>
+  <rect x="130" y="120" width="960" height="660" rx="34" fill="#09161d" stroke="#2dd4bf" stroke-opacity="0.35"/>
+  <rect x="1140" y="120" width="330" height="660" rx="34" fill="#09161d" stroke="#4ade80" stroke-opacity="0.35"/>
+  <rect x="180" y="190" width="860" height="110" rx="22" fill="#102330"/>
+  <rect x="180" y="340" width="260" height="350" rx="24" fill="#102330"/>
+  <rect x="480" y="340" width="260" height="350" rx="24" fill="#102330"/>
+  <rect x="780" y="340" width="260" height="350" rx="24" fill="#102330"/>
+  <rect x="1180" y="190" width="250" height="500" rx="24" fill="#102330"/>
+  <rect x="1210" y="230" width="16" height="420" rx="8" fill="url(#rail)"/>
+  <g fill="#e6fffb" font-family="Arial, sans-serif">
+    <text x="210" y="255" font-size="34" font-weight="700">Autonomous Browser Workspace</text>
+    <text x="1210" y="170" font-size="32" font-weight="700">Governance Rail</text>
+    <text x="220" y="395" font-size="28" font-weight="700">Observe</text>
+    <text x="520" y="395" font-size="28" font-weight="700">Decide</text>
+    <text x="820" y="395" font-size="28" font-weight="700">Act</text>
+  </g>
+  <g fill="#99f6e4" font-family="Arial, sans-serif" font-size="21">
+    <text x="220" y="455">Live DOM changes</text>
+    <text x="220" y="495">Source capture</text>
+    <text x="220" y="535">UI state memory</text>
+    <text x="520" y="455">Intent confidence</text>
+    <text x="520" y="495">Tool selection</text>
+    <text x="520" y="535">Risk scoring</text>
+    <text x="820" y="455">Form fill</text>
+    <text x="820" y="495">Cross-check</text>
+    <text x="820" y="535">Rollback checkpoint</text>
+    <text x="1260" y="270">Policy match</text>
+    <text x="1260" y="330">User consent</text>
+    <text x="1260" y="390">Rate limit</text>
+    <text x="1260" y="450">Error budget</text>
+    <text x="1260" y="510">Audit trail</text>
+    <text x="1260" y="570">Stop switch</text>
+  </g>
+  <g stroke="#5eead4" stroke-width="8" fill="none" stroke-linecap="round">
+    <path d="M440 515 C470 515, 480 515, 500 515"/>
+    <path d="M740 515 C770 515, 780 515, 800 515"/>
+  </g>
+</svg>

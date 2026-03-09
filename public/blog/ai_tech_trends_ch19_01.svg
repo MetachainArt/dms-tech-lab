@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Layered browser agents routing tasks across tabs and tools">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#07111f"/>
+      <stop offset="50%" stop-color="#102a43"/>
+      <stop offset="100%" stop-color="#1c3d5a"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.18"/>
+    </linearGradient>
+    <linearGradient id="flow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g opacity="0.22">
+    <circle cx="280" cy="150" r="180" fill="#38bdf8"/>
+    <circle cx="1290" cy="720" r="240" fill="#7c3aed"/>
+    <circle cx="860" cy="220" r="120" fill="#14b8a6"/>
+  </g>
+  <rect x="120" y="130" width="1360" height="640" rx="28" fill="#081522" stroke="#3b82f6" stroke-opacity="0.35"/>
+  <rect x="160" y="180" width="1280" height="80" rx="18" fill="url(#panel)" stroke="#67e8f9" stroke-opacity="0.35"/>
+  <circle cx="210" cy="220" r="10" fill="#fb7185"/>
+  <circle cx="245" cy="220" r="10" fill="#fbbf24"/>
+  <circle cx="280" cy="220" r="10" fill="#4ade80"/>
+  <rect x="340" y="200" width="820" height="40" rx="12" fill="#0f2740" stroke="#60a5fa" stroke-opacity="0.3"/>
+  <rect x="190" y="315" width="320" height="360" rx="22" fill="#0c1d2f" stroke="#22d3ee" stroke-opacity="0.35"/>
+  <rect x="550" y="315" width="400" height="150" rx="22" fill="#0c1d2f" stroke="#a78bfa" stroke-opacity="0.35"/>
+  <rect x="550" y="500" width="400" height="175" rx="22" fill="#0c1d2f" stroke="#34d399" stroke-opacity="0.35"/>
+  <rect x="990" y="315" width="260" height="360" rx="22" fill="#0c1d2f" stroke="#38bdf8" stroke-opacity="0.35"/>
+  <rect x="1290" y="315" width="110" height="360" rx="22" fill="#0c1d2f" stroke="#38bdf8" stroke-opacity="0.2"/>
+  <path d="M510 420 C560 420, 560 390, 610 390 L950 390" fill="none" stroke="url(#flow)" stroke-width="10" stroke-linecap="round"/>
+  <path d="M950 390 C1020 390, 1020 470, 1090 470" fill="none" stroke="url(#flow)" stroke-width="10" stroke-linecap="round"/>
+  <path d="M510 565 C600 565, 620 585, 730 585 L950 585" fill="none" stroke="url(#flow)" stroke-width="10" stroke-linecap="round"/>
+  <g fill="#dbeafe" font-family="Arial, sans-serif">
+    <text x="220" y="370" font-size="30" font-weight="700">Agent Browser</text>
+    <text x="580" y="370" font-size="28" font-weight="700">Task Router</text>
+    <text x="580" y="555" font-size="28" font-weight="700">Evidence Cache</text>
+    <text x="1030" y="370" font-size="28" font-weight="700">Action Log</text>
+    <text x="220" y="430" font-size="20" opacity="0.8">Intent parsing</text>
+    <text x="220" y="470" font-size="20" opacity="0.8">Source grounding</text>
+    <text x="220" y="510" font-size="20" opacity="0.8">Multi-tab orchestration</text>
+    <text x="220" y="550" font-size="20" opacity="0.8">Safe execution gates</text>
+    <text x="580" y="430" font-size="20" opacity="0.8">Search / verify / execute</text>
+    <text x="580" y="605" font-size="20" opacity="0.8">Reusable answers and snippets</text>
+    <text x="1030" y="430" font-size="20" opacity="0.8">Who did what, when, why</text>
+  </g>
+</svg>

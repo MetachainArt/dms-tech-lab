@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Search results collapsing into verified source clusters and action cards">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1020"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#1f2937"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg2)"/>
+  <g opacity="0.18">
+    <path d="M0 720 C350 560, 620 820, 980 620 S1450 520, 1600 650 L1600 900 L0 900 Z" fill="#0ea5e9"/>
+    <path d="M0 760 C300 660, 560 880, 920 700 S1400 620, 1600 760 L1600 900 L0 900 Z" fill="#8b5cf6"/>
+  </g>
+  <rect x="110" y="120" width="500" height="660" rx="30" fill="url(#card)" stroke="#60a5fa" stroke-opacity="0.35"/>
+  <rect x="670" y="120" width="350" height="300" rx="30" fill="url(#card)" stroke="#22d3ee" stroke-opacity="0.35"/>
+  <rect x="670" y="480" width="350" height="300" rx="30" fill="url(#card)" stroke="#a78bfa" stroke-opacity="0.35"/>
+  <rect x="1080" y="120" width="410" height="660" rx="30" fill="url(#card)" stroke="#34d399" stroke-opacity="0.35"/>
+  <g fill="#e5f3ff" font-family="Arial, sans-serif">
+    <text x="150" y="185" font-size="34" font-weight="700">Search Surface</text>
+    <text x="710" y="185" font-size="30" font-weight="700">Verified Cluster</text>
+    <text x="710" y="545" font-size="30" font-weight="700">Policy Guardrail</text>
+    <text x="1120" y="185" font-size="34" font-weight="700">Action Cards</text>
+  </g>
+  <g fill="#93c5fd">
+    <rect x="150" y="230" width="420" height="70" rx="18"/>
+    <rect x="150" y="330" width="420" height="70" rx="18" opacity="0.9"/>
+    <rect x="150" y="430" width="420" height="70" rx="18" opacity="0.8"/>
+    <rect x="150" y="530" width="420" height="70" rx="18" opacity="0.7"/>
+  </g>
+  <g fill="#0f172a" font-family="Arial, sans-serif" font-size="22" font-weight="700">
+    <text x="180" y="275">Unranked pages</text>
+    <text x="180" y="375">Mixed answers</text>
+    <text x="180" y="475">Conflicting snippets</text>
+    <text x="180" y="575">Ad-heavy SERP</text>
+  </g>
+  <g stroke="#67e8f9" stroke-width="8" fill="none" stroke-linecap="round">
+    <path d="M580 265 C630 265, 640 250, 680 250"/>
+    <path d="M580 365 C640 365, 630 250, 680 250"/>
+    <path d="M580 465 C630 465, 640 610, 680 610"/>
+    <path d="M580 565 C640 565, 630 610, 680 610"/>
+  </g>
+  <g fill="#d1fae5" font-family="Arial, sans-serif" font-size="22">
+    <text x="710" y="250">Source reputation</text>
+    <text x="710" y="290">Freshness check</text>
+    <text x="710" y="330">Cross-source match</text>
+    <text x="710" y="610">Allowed action list</text>
+    <text x="710" y="650">Human approval points</text>
+    <text x="710" y="690">Rollback path</text>
+  </g>
+  <g fill="#86efac">
+    <rect x="1120" y="240" width="330" height="110" rx="20"/>
+    <rect x="1120" y="390" width="330" height="110" rx="20" opacity="0.82"/>
+    <rect x="1120" y="540" width="330" height="110" rx="20" opacity="0.68"/>
+  </g>
+  <g fill="#052e16" font-family="Arial, sans-serif" font-size="24" font-weight="700">
+    <text x="1160" y="305">Summarize with citations</text>
+    <text x="1160" y="455">Open verified workflow</text>
+    <text x="1160" y="605">Execute bounded automation</text>
+  </g>
+</svg>
