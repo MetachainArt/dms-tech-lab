@@ -32,7 +32,7 @@ export default async function SeriesDetailPage(props: { params: Promise<{ id: st
   // Transform MDX posts to the format SeriesPostList expects
   const formattedPosts = posts.map(post => ({
     slug: post.slug,
-    chapter: post.frontMatter.chapter || "00",
+    chapter: post.frontMatter.chapter,
     title: post.frontMatter.title,
     excerpt: post.frontMatter.excerpt,
     date: post.frontMatter.date,
