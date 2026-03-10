@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="상단 요약 바와 체크포인트가 포함된 번들 운영 대시보드">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#312e81"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg3)"/>
+  <rect x="120" y="120" width="1360" height="120" rx="24" fill="#0b1220" stroke="#6366f1" stroke-width="4"/>
+  <g fill="#e0e7ff" font-family="Arial, sans-serif">
+    <text x="210" y="195" font-size="34">전환 흐름 계기판</text>
+    <text x="760" y="195" font-size="30">입문 → 핵심</text>
+    <text x="1050" y="195" font-size="30">핵심 → 확장</text>
+    <text x="1320" y="195" font-size="30">문의 / 환불</text>
+  </g>
+  <g>
+    <rect x="180" y="340" width="360" height="320" rx="24" fill="#111827" stroke="#22c55e" stroke-width="4"/>
+    <rect x="620" y="340" width="360" height="320" rx="24" fill="#111827" stroke="#06b6d4" stroke-width="4"/>
+    <rect x="1060" y="340" width="360" height="320" rx="24" fill="#111827" stroke="#a78bfa" stroke-width="4"/>
+  </g>
+  <g fill="#f8fafc" font-family="Arial, sans-serif">
+    <text x="250" y="430" font-size="34">1. 다음 단계 노출 위치</text>
+    <text x="250" y="495" font-size="28">구매 직후 안내</text>
+    <text x="250" y="545" font-size="28">첫 성과 체크포인트</text>
+    <text x="250" y="595" font-size="28">재방문 동선</text>
+
+    <text x="690" y="430" font-size="34">2. 메시지 점검</text>
+    <text x="690" y="495" font-size="28">사용 전후 차이</text>
+    <text x="690" y="545" font-size="28">역할이 선명한 묶음</text>
+    <text x="690" y="595" font-size="28">과한 보너스 제거</text>
+
+    <text x="1130" y="430" font-size="34">3. 운영 수치 추적</text>
+    <text x="1130" y="495" font-size="28">단계별 전환율</text>
+    <text x="1130" y="545" font-size="28">문의 빈도</text>
+    <text x="1130" y="595" font-size="28">재구매 비중</text>
+  </g>
+</svg>

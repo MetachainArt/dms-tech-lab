@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="단품과 번들이 층으로 연결된 수익 사다리 구조도">
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#08111f"/>
+      <stop offset="100%" stop-color="#172554"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg1)"/>
+  <g opacity="0.16" stroke="#64748b">
+    <path d="M0 180h1600M0 360h1600M0 540h1600M0 720h1600"/>
+    <path d="M200 0v900M400 0v900M600 0v900M800 0v900M1000 0v900M1200 0v900M1400 0v900"/>
+  </g>
+  <g fill="#0f172a" stroke="#334155" stroke-width="4">
+    <rect x="180" y="520" width="340" height="190" rx="24"/>
+    <rect x="630" y="340" width="340" height="190" rx="24"/>
+    <rect x="1080" y="170" width="340" height="190" rx="24"/>
+  </g>
+  <g fill="#e2e8f0" font-family="Arial, sans-serif" text-anchor="middle">
+    <text x="350" y="600" font-size="42">입문 상품</text>
+    <text x="350" y="655" font-size="28">빠른 첫 성과</text>
+    <text x="800" y="420" font-size="42">핵심 상품</text>
+    <text x="800" y="475" font-size="28">문제 해결의 본체</text>
+    <text x="1250" y="250" font-size="42">확장 번들</text>
+    <text x="1250" y="305" font-size="28">시간 절약과 응용</text>
+  </g>
+  <g fill="none" stroke="url(#line)" stroke-width="12" marker-end="url(#arrow)">
+    <defs>
+      <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto">
+        <path d="M0,0 L0,8 L10,4 z" fill="#60a5fa"/>
+      </marker>
+    </defs>
+    <path d="M520 560 C600 560, 600 430, 630 430"/>
+    <path d="M970 380 C1040 380, 1040 260, 1080 260"/>
+  </g>
+  <polyline fill="none" stroke="#22d3ee" stroke-width="8" points="190,760 390,700 620,640 840,510 1080,390 1410,250" opacity="0.8"/>
+</svg>
