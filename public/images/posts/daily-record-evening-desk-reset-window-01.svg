@@ -1,0 +1,42 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#101728"/>
+      <stop offset="1" stop-color="#1C2336"/>
+    </linearGradient>
+    <linearGradient id="windowGlow" x1="1130" y1="180" x2="1460" y2="470" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFB36B"/>
+      <stop offset="1" stop-color="#5D8DFF"/>
+    </linearGradient>
+    <linearGradient id="lamp" x1="420" y1="170" x2="530" y2="320" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE1A8"/>
+      <stop offset="1" stop-color="#F59E0B" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg1)"/>
+  <rect x="0" y="620" width="1600" height="280" fill="#2A1F17"/>
+  <rect x="0" y="654" width="1600" height="246" fill="#3B2A1F"/>
+  <rect x="1090" y="140" width="340" height="340" rx="24" fill="#0E1729" stroke="#415170" stroke-width="6"/>
+  <rect x="1130" y="180" width="260" height="260" rx="16" fill="url(#windowGlow)"/>
+  <path d="M1260 180V440" stroke="#BFD6FF" stroke-opacity="0.5" stroke-width="6"/>
+  <path d="M1130 310H1390" stroke="#BFD6FF" stroke-opacity="0.5" stroke-width="6"/>
+  <rect x="210" y="650" width="680" height="120" rx="18" fill="#E6D6BF"/>
+  <rect x="260" y="680" width="260" height="14" rx="7" fill="#B7A38D"/>
+  <rect x="260" y="712" width="410" height="12" rx="6" fill="#C8B7A4"/>
+  <rect x="260" y="738" width="360" height="12" rx="6" fill="#C8B7A4"/>
+  <rect x="920" y="640" width="180" height="130" rx="20" fill="#D4DCE7"/>
+  <rect x="952" y="676" width="116" height="14" rx="7" fill="#8FA1B8"/>
+  <rect x="952" y="708" width="86" height="14" rx="7" fill="#8FA1B8"/>
+  <path d="M390 520L470 260" stroke="#7088A5" stroke-width="18" stroke-linecap="round"/>
+  <path d="M470 260C520 210 600 220 632 288" stroke="#7088A5" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="648" cy="312" r="74" fill="#1B2436"/>
+  <circle cx="648" cy="312" r="62" fill="url(#lamp)" fill-opacity="0.9"/>
+  <ellipse cx="648" cy="394" rx="170" ry="60" fill="#F5C77B" fill-opacity="0.18"/>
+  <rect x="1140" y="622" width="120" height="148" rx="20" fill="#8A5B39"/>
+  <rect x="1166" y="648" width="68" height="96" rx="8" fill="#F5E6C7"/>
+  <rect x="1294" y="654" width="96" height="116" rx="48" fill="#D4E5F2"/>
+  <rect x="1312" y="636" width="60" height="30" rx="15" fill="#D4E5F2"/>
+  <circle cx="1342" cy="694" r="14" fill="#C99A6B" fill-opacity="0.45"/>
+  <rect x="90" y="120" width="250" height="18" rx="9" fill="#2A344B"/>
+  <rect x="90" y="156" width="180" height="12" rx="6" fill="#2A344B"/>
+</svg>
