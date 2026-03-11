@@ -1,0 +1,28 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#081018"/>
+  <rect x="90" y="110" width="440" height="660" rx="28" fill="#0F2134" stroke="#274863" stroke-width="2"/>
+  <rect x="580" y="110" width="440" height="660" rx="28" fill="#11293C" stroke="#305673" stroke-width="2"/>
+  <rect x="1070" y="110" width="440" height="660" rx="28" fill="#133247" stroke="#376480" stroke-width="2"/>
+  <text x="145" y="180" fill="#E8F4FF" font-family="Arial, sans-serif" font-size="36" font-weight="700">Reference Analysis</text>
+  <text x="635" y="180" fill="#E8F4FF" font-family="Arial, sans-serif" font-size="36" font-weight="700">Handoff Card</text>
+  <text x="1125" y="180" fill="#E8F4FF" font-family="Arial, sans-serif" font-size="36" font-weight="700">Prompt Build</text>
+  <text x="145" y="260" fill="#9FC2E2" font-family="Arial, sans-serif" font-size="24">1. tag tone</text>
+  <text x="145" y="310" fill="#9FC2E2" font-family="Arial, sans-serif" font-size="24">2. map materials</text>
+  <text x="145" y="360" fill="#9FC2E2" font-family="Arial, sans-serif" font-size="24">3. define layout</text>
+  <text x="145" y="410" fill="#9FC2E2" font-family="Arial, sans-serif" font-size="24">4. mark usage</text>
+  <text x="145" y="460" fill="#9FC2E2" font-family="Arial, sans-serif" font-size="24">5. lock constraints</text>
+  <rect x="625" y="235" width="350" height="360" rx="24" fill="#1A3950"/>
+  <text x="660" y="295" fill="#CDEAFF" font-family="Arial, sans-serif" font-size="24">Goal: stable visual handoff</text>
+  <text x="660" y="345" fill="#CDEAFF" font-family="Arial, sans-serif" font-size="24">Object: translucent panel</text>
+  <text x="660" y="395" fill="#CDEAFF" font-family="Arial, sans-serif" font-size="24">Mood: cool / calm / precise</text>
+  <text x="660" y="445" fill="#CDEAFF" font-family="Arial, sans-serif" font-size="24">Layout: top safe zone</text>
+  <text x="660" y="495" fill="#CDEAFF" font-family="Arial, sans-serif" font-size="24">Ban: human / face / text</text>
+  <rect x="1125" y="240" width="310" height="90" rx="20" fill="#265A72"/>
+  <rect x="1125" y="370" width="310" height="90" rx="20" fill="#2C667E"/>
+  <rect x="1125" y="500" width="310" height="90" rx="20" fill="#34728A"/>
+  <text x="1170" y="295" fill="#EAF7FF" font-family="Arial, sans-serif" font-size="24">Core prompt blocks</text>
+  <text x="1170" y="425" fill="#EAF7FF" font-family="Arial, sans-serif" font-size="24">A/B variation rules</text>
+  <text x="1170" y="555" fill="#EAF7FF" font-family="Arial, sans-serif" font-size="24">Validation checklist</text>
+  <path d="M525 440H565" stroke="#7FD4FF" stroke-width="8" stroke-linecap="round"/>
+  <path d="M1015 440H1055" stroke="#7FD4FF" stroke-width="8" stroke-linecap="round"/>
+</svg>

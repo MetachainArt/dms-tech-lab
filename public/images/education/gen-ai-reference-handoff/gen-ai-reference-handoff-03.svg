@@ -1,0 +1,18 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#07131D"/>
+  <text x="110" y="140" fill="#E7F1FF" font-family="Arial, sans-serif" font-size="42" font-weight="700">Quality Check Loop</text>
+  <text x="110" y="184" fill="#9DB8D6" font-family="Arial, sans-serif" font-size="22">Axis-based review instead of taste-based review</text>
+  <circle cx="360" cy="470" r="150" fill="#15304A"/>
+  <circle cx="800" cy="470" r="150" fill="#1A3A56"/>
+  <circle cx="1240" cy="470" r="150" fill="#214466"/>
+  <text x="278" y="455" fill="#DFF0FF" font-family="Arial, sans-serif" font-size="34" font-weight="700">Tone</text>
+  <text x="270" y="510" fill="#DFF0FF" font-family="Arial, sans-serif" font-size="22">calm / clean / cool</text>
+  <text x="726" y="455" fill="#DFF0FF" font-family="Arial, sans-serif" font-size="34" font-weight="700">Layout</text>
+  <text x="684" y="510" fill="#DFF0FF" font-family="Arial, sans-serif" font-size="22">safe space / focus / flow</text>
+  <text x="1162" y="455" fill="#DFF0FF" font-family="Arial, sans-serif" font-size="34" font-weight="700">Function</text>
+  <text x="1120" y="510" fill="#DFF0FF" font-family="Arial, sans-serif" font-size="22">cover / inline / banner fit</text>
+  <path d="M510 470H650" stroke="#7CCEFF" stroke-width="10" stroke-linecap="round"/>
+  <path d="M950 470H1090" stroke="#7CCEFF" stroke-width="10" stroke-linecap="round"/>
+  <rect x="250" y="690" width="1100" height="88" rx="24" fill="#0E2236" stroke="#27455E" stroke-width="2"/>
+  <text x="320" y="745" fill="#CFE7FF" font-family="Arial, sans-serif" font-size="28">Reject immediately if any banned element appears: human, face, silhouette, text artifact, crowded background</text>
+</svg>
