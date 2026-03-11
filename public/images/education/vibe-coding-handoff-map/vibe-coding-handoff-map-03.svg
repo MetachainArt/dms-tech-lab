@@ -1,0 +1,22 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="36" fill="#0A1324"/>
+  <rect x="70" y="70" width="1460" height="760" rx="28" fill="#101B31" stroke="#2F476F"/>
+  <text x="110" y="150" fill="#EFF5FF" font-size="44" font-family="Arial, sans-serif" font-weight="700">Acceptance Contract for the Next 30 Minutes</text>
+  <text x="110" y="200" fill="#9EB3D1" font-size="24" font-family="Arial, sans-serif">Design the handoff so the next contributor can act, not just read</text>
+  <circle cx="310" cy="470" r="120" fill="#17304E" stroke="#6D97CB" stroke-width="8"/>
+  <circle cx="800" cy="470" r="120" fill="#1B3A34" stroke="#6AB69D" stroke-width="8"/>
+  <circle cx="1290" cy="470" r="120" fill="#3D2C1F" stroke="#E0A76F" stroke-width="8"/>
+  <text x="246" y="455" fill="#E5F0FF" font-size="28" font-family="Arial, sans-serif" font-weight="700">10 min</text>
+  <text x="218" y="495" fill="#B8CAEA" font-size="22" font-family="Arial, sans-serif">understand</text>
+  <text x="217" y="525" fill="#B8CAEA" font-size="22" font-family="Arial, sans-serif">the purpose</text>
+  <text x="736" y="455" fill="#E8FFF4" font-size="28" font-family="Arial, sans-serif" font-weight="700">20 min</text>
+  <text x="691" y="495" fill="#BCE4D6" font-size="22" font-family="Arial, sans-serif">identify safe</text>
+  <text x="695" y="525" fill="#BCE4D6" font-size="22" font-family="Arial, sans-serif">edit boundaries</text>
+  <text x="1223" y="455" fill="#FFF0E3" font-size="28" font-family="Arial, sans-serif" font-weight="700">30 min</text>
+  <text x="1186" y="495" fill="#FFDABE" font-size="22" font-family="Arial, sans-serif">start first</text>
+  <text x="1177" y="525" fill="#FFDABE" font-size="22" font-family="Arial, sans-serif">fix or validation</text>
+  <path d="M430 470H680" stroke="#6F93C6" stroke-width="12" stroke-linecap="round"/>
+  <path d="M920 470H1170" stroke="#6CBDA5" stroke-width="12" stroke-linecap="round"/>
+  <rect x="180" y="690" width="1240" height="74" rx="18" fill="#0C1527" stroke="#31476E"/>
+  <text x="220" y="737" fill="#EAF1FB" font-size="24" font-family="Arial, sans-serif">If the next person cannot move within 30 minutes, the handoff still needs work.</text>
+</svg>

@@ -1,0 +1,31 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="36" fill="#0B1220"/>
+  <rect x="70" y="70" width="1460" height="760" rx="28" fill="#101A2F" stroke="#2B3E67"/>
+  <text x="110" y="150" fill="#E7EEF9" font-size="44" font-family="Arial, sans-serif" font-weight="700">Vibe Coding Handoff Map</text>
+  <text x="110" y="200" fill="#94A9C9" font-size="24" font-family="Arial, sans-serif">From rapid prototype to deployable handoff without people or silhouette imagery</text>
+  <rect x="120" y="270" width="280" height="360" rx="24" fill="#16243F" stroke="#4C6FA8"/>
+  <rect x="460" y="270" width="280" height="360" rx="24" fill="#152A34" stroke="#5AA6A2"/>
+  <rect x="800" y="270" width="280" height="360" rx="24" fill="#2A2238" stroke="#9980D9"/>
+  <rect x="1140" y="270" width="280" height="360" rx="24" fill="#35251D" stroke="#F0A35A"/>
+  <text x="160" y="340" fill="#DCE8FF" font-size="30" font-family="Arial, sans-serif" font-weight="700">Explore</text>
+  <text x="500" y="340" fill="#D9FFF6" font-size="30" font-family="Arial, sans-serif" font-weight="700">Validate</text>
+  <text x="840" y="340" fill="#F0E8FF" font-size="30" font-family="Arial, sans-serif" font-weight="700">Handoff</text>
+  <text x="1180" y="340" fill="#FFF0E2" font-size="30" font-family="Arial, sans-serif" font-weight="700">Release</text>
+  <text x="160" y="400" fill="#AFC2E8" font-size="22" font-family="Arial, sans-serif">• rough structure</text>
+  <text x="160" y="438" fill="#AFC2E8" font-size="22" font-family="Arial, sans-serif">• fast hypothesis</text>
+  <text x="160" y="476" fill="#AFC2E8" font-size="22" font-family="Arial, sans-serif">• open decisions</text>
+  <text x="500" y="400" fill="#B2E6E0" font-size="22" font-family="Arial, sans-serif">• key flow works</text>
+  <text x="500" y="438" fill="#B2E6E0" font-size="22" font-family="Arial, sans-serif">• message clarity</text>
+  <text x="500" y="476" fill="#B2E6E0" font-size="22" font-family="Arial, sans-serif">• risk notes visible</text>
+  <text x="840" y="400" fill="#D5C8FF" font-size="22" font-family="Arial, sans-serif">• fixed decisions</text>
+  <text x="840" y="438" fill="#D5C8FF" font-size="22" font-family="Arial, sans-serif">• owner next step</text>
+  <text x="840" y="476" fill="#D5C8FF" font-size="22" font-family="Arial, sans-serif">• acceptance checklist</text>
+  <text x="1180" y="400" fill="#FFD6B4" font-size="22" font-family="Arial, sans-serif">• logging ready</text>
+  <text x="1180" y="438" fill="#FFD6B4" font-size="22" font-family="Arial, sans-serif">• error recovery</text>
+  <text x="1180" y="476" fill="#FFD6B4" font-size="22" font-family="Arial, sans-serif">• deploy candidate</text>
+  <path d="M400 450H460" stroke="#6E8FC5" stroke-width="10" stroke-linecap="round"/>
+  <path d="M740 450H800" stroke="#6AB4B1" stroke-width="10" stroke-linecap="round"/>
+  <path d="M1080 450H1140" stroke="#C29AF2" stroke-width="10" stroke-linecap="round"/>
+  <rect x="120" y="690" width="1300" height="90" rx="18" fill="#0E1728" stroke="#31486F"/>
+  <text x="160" y="745" fill="#E7EEF9" font-size="24" font-family="Arial, sans-serif">Core rule: every output must carry a state label, decision list, open risks, and acceptance contract before it moves forward.</text>
+</svg>
