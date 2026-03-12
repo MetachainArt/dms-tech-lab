@@ -1,0 +1,25 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#164e63"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.2"/>
+      <stop offset="50%" stop-color="#67e8f9" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg3)"/>
+  <g fill="none" stroke="#99f6e4" stroke-opacity="0.45">
+    <polygon points="280,450 520,230 1080,230 1320,450 1080,670 520,670"/>
+    <polygon points="420,450 610,290 990,290 1180,450 990,610 610,610"/>
+    <polygon points="560,450 700,350 900,350 1040,450 900,550 700,550"/>
+  </g>
+  <rect x="180" y="420" width="1240" height="60" fill="url(#beam)" rx="30"/>
+  <g fill="#67e8f9">
+    <circle cx="560" cy="450" r="10"/>
+    <circle cx="800" cy="450" r="12"/>
+    <circle cx="1040" cy="450" r="10"/>
+  </g>
+</svg>
