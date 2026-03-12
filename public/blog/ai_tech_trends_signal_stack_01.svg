@@ -1,0 +1,27 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#071226"/>
+      <stop offset="100%" stop-color="#12315a"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g opacity="0.9" stroke="url(#line)" stroke-width="6" fill="none">
+    <rect x="130" y="170" width="230" height="120" rx="18"/>
+    <rect x="450" y="170" width="230" height="120" rx="18"/>
+    <rect x="770" y="170" width="230" height="120" rx="18"/>
+    <rect x="1090" y="170" width="230" height="120" rx="18"/>
+    <rect x="450" y="470" width="230" height="120" rx="18"/>
+    <rect x="770" y="470" width="230" height="120" rx="18"/>
+    <rect x="1090" y="470" width="230" height="120" rx="18"/>
+    <path d="M360 230 L450 230 M680 230 L770 230 M1000 230 L1090 230"/>
+    <path d="M565 290 L565 470 M885 290 L885 470 M1205 290 L1205 470"/>
+    <path d="M680 530 L770 530 M1000 530 L1090 530"/>
+  </g>
+  <text x="130" y="760" fill="#dbeafe" font-size="58" font-family="Pretendard, Arial, sans-serif" font-weight="700">AI Runtime Signal Stack</text>
+  <text x="130" y="815" fill="#93c5fd" font-size="34" font-family="Pretendard, Arial, sans-serif">Request ID · Latency · Token Cost · Error Code · Recovery Trace</text>
+</svg>
