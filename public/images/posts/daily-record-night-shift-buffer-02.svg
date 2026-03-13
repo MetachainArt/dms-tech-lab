@@ -1,0 +1,25 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg2)"/>
+  <g transform="translate(160,130)">
+    <rect width="1280" height="640" rx="28" fill="url(#card)" stroke="#64748b" stroke-opacity="0.45"/>
+    <rect x="60" y="70" width="360" height="120" rx="16" fill="#0b1220"/>
+    <rect x="60" y="220" width="560" height="52" rx="12" fill="#22d3ee" fill-opacity="0.35"/>
+    <rect x="60" y="300" width="500" height="52" rx="12" fill="#38bdf8" fill-opacity="0.3"/>
+    <rect x="60" y="380" width="620" height="52" rx="12" fill="#a78bfa" fill-opacity="0.32"/>
+    <g transform="translate(760,90)">
+      <circle cx="220" cy="220" r="190" fill="none" stroke="#22d3ee" stroke-width="26" stroke-dasharray="720 500"/>
+      <circle cx="220" cy="220" r="130" fill="none" stroke="#818cf8" stroke-width="22" stroke-dasharray="480 340"/>
+      <circle cx="220" cy="220" r="70" fill="none" stroke="#34d399" stroke-width="18" stroke-dasharray="220 180"/>
+    </g>
+  </g>
+</svg>

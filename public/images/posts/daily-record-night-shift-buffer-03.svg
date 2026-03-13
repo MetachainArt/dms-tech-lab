@@ -1,0 +1,25 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f2937"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg3)"/>
+  <g opacity="0.22" stroke="#94a3b8" stroke-width="1">
+    <path d="M0 150H1600M0 300H1600M0 450H1600M0 600H1600M0 750H1600"/>
+  </g>
+  <g transform="translate(180,180)">
+    <rect x="0" y="0" width="1240" height="520" rx="24" fill="#0b1020" stroke="#475569"/>
+    <path d="M90 430L290 350L470 370L650 280L860 300L1040 200L1160 220" fill="none" stroke="url(#beam)" stroke-width="12" stroke-linecap="round"/>
+    <g fill="#fb923c">
+      <circle cx="290" cy="350" r="11"/><circle cx="650" cy="280" r="11"/><circle cx="1040" cy="200" r="11"/>
+    </g>
+    <rect x="90" y="70" width="460" height="88" rx="14" fill="#111827" stroke="#f59e0b" stroke-opacity="0.6"/>
+    <text x="120" y="126" font-family="Inter, Arial, sans-serif" font-size="40" fill="#fde68a">Reset Window Protocol</text>
+  </g>
+</svg>
