@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#12121f"/>
+      <stop offset="100%" stop-color="#281a45"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2dd4bf"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg2)"/>
+  <g>
+    <rect x="240" y="130" width="1120" height="640" rx="28" fill="none" stroke="url(#card)" stroke-width="10"/>
+    <rect x="320" y="230" width="960" height="90" rx="14" fill="#111827" stroke="#60a5fa" stroke-width="3"/>
+    <rect x="320" y="360" width="960" height="90" rx="14" fill="#111827" stroke="#67e8f9" stroke-width="3"/>
+    <rect x="320" y="490" width="960" height="90" rx="14" fill="#111827" stroke="#a78bfa" stroke-width="3"/>
+    <rect x="320" y="620" width="960" height="90" rx="14" fill="#111827" stroke="#34d399" stroke-width="3"/>
+  </g>
+  <g fill="#dbeafe" font-family="Pretendard, Arial, sans-serif" font-size="34" text-anchor="middle">
+    <text x="800" y="185">Operator Contract Checklist</text>
+  </g>
+</svg>
