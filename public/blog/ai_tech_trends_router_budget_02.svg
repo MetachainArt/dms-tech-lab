@@ -1,0 +1,29 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Token budget dashboard">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#1f2937"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg2)"/>
+  <rect x="120" y="110" width="1360" height="680" rx="26" fill="#0b1220" stroke="#374151"/>
+  <text x="170" y="190" fill="#e5e7eb" font-size="40" font-family="Pretendard, Arial, sans-serif">TOKEN BUDGET CONTROL SURFACE</text>
+  <g>
+    <rect x="180" y="250" width="390" height="220" rx="18" fill="#111c30"/>
+    <rect x="605" y="250" width="390" height="220" rx="18" fill="#111c30"/>
+    <rect x="1030" y="250" width="390" height="220" rx="18" fill="#111c30"/>
+    <rect x="180" y="500" width="1240" height="230" rx="18" fill="#111c30"/>
+  </g>
+  <g font-family="Pretendard, Arial, sans-serif" fill="#93c5fd">
+    <text x="220" y="305" font-size="28">Input Tokens</text>
+    <text x="650" y="305" font-size="28">Retry Burst</text>
+    <text x="1080" y="305" font-size="28">Cost per Request</text>
+    <text x="220" y="555" font-size="28">Policy Timeline</text>
+  </g>
+  <g fill="#22d3ee">
+    <rect x="220" y="340" width="290" height="28" rx="8"/>
+    <rect x="645" y="340" width="180" height="28" rx="8"/>
+    <rect x="1080" y="340" width="240" height="28" rx="8"/>
+  </g>
+  <polyline points="230,650 340,620 460,640 590,590 720,610 860,560 990,580 1120,530 1260,550 1380,500" fill="none" stroke="#a78bfa" stroke-width="6"/>
+</svg>

@@ -1,0 +1,30 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Failover protocol board">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b132b"/>
+      <stop offset="100%" stop-color="#1c2541"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg3)"/>
+  <text x="150" y="170" fill="#c4b5fd" font-size="44" font-family="Pretendard, Arial, sans-serif">AUTONOMOUS FAILOVER PROTOCOL</text>
+  <g stroke="#60a5fa" stroke-width="4" fill="#0f172a">
+    <rect x="170" y="250" width="300" height="120" rx="16"/>
+    <rect x="560" y="250" width="300" height="120" rx="16"/>
+    <rect x="950" y="250" width="300" height="120" rx="16"/>
+    <rect x="365" y="500" width="300" height="120" rx="16"/>
+    <rect x="755" y="500" width="300" height="120" rx="16"/>
+  </g>
+  <g font-size="28" fill="#bfdbfe" font-family="Pretendard, Arial, sans-serif">
+    <text x="245" y="320">Detect</text>
+    <text x="620" y="320">Throttle</text>
+    <text x="1015" y="320">Reroute</text>
+    <text x="430" y="570">Stabilize</text>
+    <text x="815" y="570">Recover</text>
+  </g>
+  <g stroke="#818cf8" stroke-width="5" fill="none" stroke-linecap="round">
+    <path d="M470 310 L560 310"/>
+    <path d="M860 310 L950 310"/>
+    <path d="M1110 370 C1120 430, 1010 470, 910 500"/>
+    <path d="M620 500 C520 470, 430 430, 420 370"/>
+  </g>
+</svg>
