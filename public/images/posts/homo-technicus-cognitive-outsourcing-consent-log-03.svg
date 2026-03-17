@@ -1,0 +1,29 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#312e81"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg3)"/>
+  <g opacity="0.2" stroke="#c4b5fd" stroke-width="1">
+    <path d="M180 730H1460M180 610H1460M180 490H1460M180 370H1460M180 250H1460"/>
+  </g>
+  <g fill="url(#bar)">
+    <rect x="290" y="540" width="170" height="190" rx="16"/>
+    <rect x="550" y="450" width="170" height="280" rx="16"/>
+    <rect x="810" y="330" width="170" height="400" rx="16"/>
+    <rect x="1070" y="250" width="170" height="480" rx="16"/>
+  </g>
+  <g fill="#e2e8f0" font-family="Pretendard, Arial, sans-serif" text-anchor="middle">
+    <text x="800" y="120" font-size="52" font-weight="700">Autonomy by Explainability</text>
+    <text x="375" y="785" font-size="28">Usage</text>
+    <text x="635" y="785" font-size="28">Control</text>
+    <text x="895" y="785" font-size="28">Traceability</text>
+    <text x="1155" y="785" font-size="28">Accountability</text>
+  </g>
+</svg>

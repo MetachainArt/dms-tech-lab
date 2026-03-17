@@ -1,0 +1,31 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1020"/>
+      <stop offset="100%" stop-color="#132a45"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g opacity="0.25" stroke="#60a5fa" stroke-width="1">
+    <path d="M0 120H1600M0 240H1600M0 360H1600M0 480H1600M0 600H1600M0 720H1600"/>
+    <path d="M160 0V900M320 0V900M480 0V900M640 0V900M800 0V900M960 0V900M1120 0V900M1280 0V900M1440 0V900"/>
+  </g>
+  <g fill="none" stroke="url(#line)" stroke-width="8" stroke-linecap="round">
+    <path d="M140 700 C320 620, 420 480, 620 500 C760 515, 860 380, 980 390 C1140 405, 1220 250, 1460 180"/>
+    <path d="M140 760 C300 740, 430 650, 610 660 C780 670, 900 560, 1020 575 C1180 595, 1300 520, 1460 500" opacity="0.6"/>
+  </g>
+  <g fill="#e2e8f0" font-family="Pretendard, Arial, sans-serif" text-anchor="middle">
+    <text x="800" y="120" font-size="52" font-weight="700">Cognitive Outsourcing Flow</text>
+    <text x="800" y="170" font-size="28" fill="#93c5fd">Recommendation → Decision → Approval → Habit</text>
+  </g>
+  <g>
+    <circle cx="320" cy="620" r="46" fill="#0ea5e9"/>
+    <circle cx="700" cy="500" r="46" fill="#22d3ee"/>
+    <circle cx="1030" cy="395" r="46" fill="#38bdf8"/>
+    <circle cx="1360" cy="220" r="46" fill="#60a5fa"/>
+  </g>
+</svg>
