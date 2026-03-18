@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="청록빛 조수가 흐르는 유리 정원">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#081326"/>
+      <stop offset="55%" stop-color="#102a4c"/>
+      <stop offset="100%" stop-color="#1a3f5a"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4ee7d0" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#67a6ff" stop-opacity="0.5"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g opacity="0.5" stroke="#89f2ff" stroke-width="2" fill="none">
+    <path d="M80 720 C280 620, 420 760, 650 690 S1070 640, 1520 730"/>
+    <path d="M70 610 C260 540, 470 650, 700 590 S1080 520, 1530 620"/>
+    <path d="M120 500 C340 450, 520 530, 760 490 S1140 430, 1490 500"/>
+  </g>
+  <g fill="#9defff" opacity="0.25">
+    <rect x="180" y="160" width="220" height="460" rx="24"/>
+    <rect x="480" y="110" width="200" height="520" rx="24"/>
+    <rect x="760" y="190" width="240" height="430" rx="24"/>
+    <rect x="1080" y="140" width="260" height="490" rx="24"/>
+  </g>
+  <g fill="url(#water)">
+    <ellipse cx="320" cy="700" rx="240" ry="70"/>
+    <ellipse cx="800" cy="730" rx="280" ry="75"/>
+    <ellipse cx="1240" cy="700" rx="260" ry="72"/>
+  </g>
+  <g fill="#d8fffd" opacity="0.75">
+    <circle cx="250" cy="665" r="8"/>
+    <circle cx="560" cy="705" r="7"/>
+    <circle cx="880" cy="675" r="8"/>
+    <circle cx="1160" cy="715" r="7"/>
+    <circle cx="1410" cy="680" r="8"/>
+  </g>
+</svg>
