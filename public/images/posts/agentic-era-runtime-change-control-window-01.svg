@@ -1,0 +1,28 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1020"/>
+      <stop offset="100%" stop-color="#111c3a"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g opacity="0.16" stroke="#38bdf8" stroke-width="1">
+    <path d="M0 120H1600M0 240H1600M0 360H1600M0 480H1600M0 600H1600M0 720H1600"/>
+    <path d="M200 0V900M400 0V900M600 0V900M800 0V900M1000 0V900M1200 0V900M1400 0V900"/>
+  </g>
+  <rect x="140" y="180" width="290" height="130" rx="20" fill="#0f172a" stroke="#22d3ee" stroke-width="3"/>
+  <rect x="500" y="180" width="290" height="130" rx="20" fill="#0f172a" stroke="#38bdf8" stroke-width="3"/>
+  <rect x="860" y="180" width="290" height="130" rx="20" fill="#0f172a" stroke="#6366f1" stroke-width="3"/>
+  <rect x="1220" y="180" width="240" height="130" rx="20" fill="#0f172a" stroke="#a855f7" stroke-width="3"/>
+  <path d="M430 245H500M790 245H860M1150 245H1220" stroke="url(#line)" stroke-width="8" stroke-linecap="round"/>
+  <rect x="260" y="430" width="1080" height="280" rx="26" fill="#0b1228" stroke="#334155" stroke-width="3"/>
+  <path d="M320 620 C420 470, 520 680, 620 520 C700 390, 820 700, 910 560 C990 430, 1120 670, 1260 500" fill="none" stroke="url(#line)" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="620" cy="520" r="13" fill="#22d3ee"/>
+  <circle cx="910" cy="560" r="13" fill="#6366f1"/>
+  <circle cx="1260" cy="500" r="13" fill="#a855f7"/>
+  <text x="140" y="110" fill="#e2e8f0" font-size="44" font-family="Pretendard, Arial, sans-serif" font-weight="700">Runtime Change Concurrency Map</text>
+</svg>
