@@ -1,56 +1,145 @@
 import AutomationContainer from "@/components/automation/AutomationMain";
+import { AUTOMATION_CATEGORIES, type AutomationCategory, type AutomationTemplate } from "@/lib/automation-data";
+import { generateMetadata as generateSeoMetadata } from "@/lib/metadata";
 import { prisma } from "@/lib/prisma";
-import { AutomationTemplate } from "@/lib/automation-data";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
+
+export const metadata = generateSeoMetadata({
+  title: "자동화",
+  description: "반복 업무를 줄이는 실무형 자동화 템플릿과 워크플로우를 살펴보세요.",
+  path: "/automation",
+});
+
+type AutomationRecord = Awaited<ReturnType<typeof prisma.automation.findMany>>[number];
+type AutomationDetail = AutomationTemplate["detail"];
+type AutomationStats = AutomationTemplate["stats"];
+
+function asRecord(value: unknown): Record<string, unknown> | null {
+  return typeof value === "object" && value !== null ? (value as Record<string, unknown>) : null;
+}
+
+function isCategory(value: string): value is Exclude<AutomationCategory, "All"> {
+  return AUTOMATION_CATEGORIES.some((category) => category !== "All" && category === value);
+}
+
+function normalizeStats(detail: unknown): AutomationStats {
+  const detailRecord = asRecord(detail);
+  const statsRecord = detailRecord ? asRecord(detailRecord.stats) : null;
+
+  if (!statsRecord) {
+    return { complexity: "Beginner" };
+  }
+
+  const likes = typeof statsRecord.likes === "number" ? statsRecord.likes : undefined;
+  const downloads = typeof statsRecord.downloads === "number" ? statsRecord.downloads : undefined;
+  const complexity =
+    statsRecord.complexity === "Beginner" || statsRecord.complexity === "Intermediate" || statsRecord.complexity === "Advanced"
+      ? statsRecord.complexity
+      : "Beginner";
+
+  return { likes, downloads, complexity };
+}
+
+function normalizeIcons(detail: unknown): string[] {
+  const detailRecord = asRecord(detail);
+  const icons = detailRecord?.icons;
+
+  if (!Array.isArray(icons)) {
+    return [];
+  }
+
+  return icons.filter((icon): icon is string => typeof icon === "string");
+}
+
+function normalizeDetail(detail: unknown): AutomationDetail {
+  const detailRecord = asRecord(detail);
+
+  if (!detailRecord) {
+    return {
+      lastUpdate: "최근 업데이트",
+      features: [],
+      steps: [],
+      descriptionLong: "상세 정보가 아직 정리되지 않았습니다.",
+    };
+  }
+
+  const lastUpdate = typeof detailRecord.lastUpdate === "string" ? detailRecord.lastUpdate : "최근 업데이트";
+  const descriptionLong = typeof detailRecord.descriptionLong === "string" ? detailRecord.descriptionLong : "상세 정보가 아직 정리되지 않았습니다.";
+  const diagramImage = typeof detailRecord.diagramImage === "string" ? detailRecord.diagramImage : undefined;
+  const workflowCode = typeof detailRecord.workflowCode === "string" ? detailRecord.workflowCode : undefined;
+
+  const features = Array.isArray(detailRecord.features)
+    ? detailRecord.features
+        .map((feature) => asRecord(feature))
+        .filter((feature): feature is Record<string, unknown> => feature !== null && typeof feature.title === "string")
+        .map((feature) => ({ title: feature.title as string, description: typeof feature.description === "string" ? feature.description : undefined }))
+    : [];
+
+  const steps = Array.isArray(detailRecord.steps)
+    ? detailRecord.steps
+        .map((step) => asRecord(step))
+        .filter((step): step is Record<string, unknown> => step !== null && typeof step.title === "string" && typeof step.desc === "string")
+        .map((step) => ({ title: step.title as string, desc: step.desc as string }))
+    : [];
+
+  const prerequisites = Array.isArray(detailRecord.prerequisites)
+    ? detailRecord.prerequisites
+        .map((item) => asRecord(item))
+        .filter((item): item is Record<string, unknown> => item !== null && typeof item.title === "string")
+        .map((item) => ({ title: item.title as string, description: typeof item.description === "string" ? item.description : undefined }))
+    : undefined;
+
+  return { lastUpdate, descriptionLong, diagramImage, workflowCode, features, steps, prerequisites };
+}
+
+function mapAutomation(record: AutomationRecord): AutomationTemplate {
+  return {
+    id: record.id,
+    title: record.title,
+    description: record.description,
+    category: isCategory(record.category) ? record.category : "Business",
+    author: {
+      name: record.author || "Reedo",
+      avatar: "",
+      verified: true,
+    },
+    stats: normalizeStats(record.detail),
+    icons: normalizeIcons(record.detail),
+    detail: normalizeDetail(record.detail),
+  };
+}
 
 export default async function AutomationPage() {
   const automations = await prisma.automation.findMany({
-    orderBy: { createdAt: "desc" }
+    orderBy: { createdAt: "desc" },
   });
 
-  // Convert DB model to UI model if fields match loosely, or map explicitly if needed.
-  // Assuming strict type compatibility for now, but we verify fields.
-  // Prisma Automation `detail` is Json, so we might need type casting.
-  const formattedAutomations = automations.map(a => ({
-    ...a,
-    detail: a.detail as any, // Cast Json to required type structure
-    // Ensure category matches valid union types if stored as string
-    category: a.category as any,
-    author: {
-        name: a.author,
-        avatar: "", // Placeholder or fetch if available
-        verified: true
-    },
-    // Add missing fields or defaults
-    stats: { complexity: "Beginner", ...((a.detail as any)?.stats || {}) },
-    icons: (a.detail as any)?.icons || [],
-  })) as AutomationTemplate[];
+  const formattedAutomations = automations.map(mapAutomation);
 
   return (
-    <main className="w-full min-h-screen bg-[#050B1B] text-white font-poppins relative selection:bg-blue-500 selection:text-white">
-      
-      {/* Hero Section */}
+    <main className="w-full min-h-screen bg-[#FDFCF8] text-stone-900 font-poppins relative selection:bg-stone-200 selection:text-stone-900">
       <section className="relative w-full pt-40 pb-20 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050B1B] via-[#050B1B]/80 to-[#050B1B] z-0" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.15),transparent_70%)] z-0" />
-        
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FDFCF8] via-[#FDFCF8]/80 to-[#FDFCF8] z-0" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.03),transparent_70%)] z-0" />
+
         <div className="max-w-7xl mx-auto relative z-10">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg">
-                Workflow <span className="text-blue-500 drop-shadow-[0_0_20px_rgba(59,130,246,0.5)]">Automation</span>
-            </h1>
-            <p className="text-xl text-gray-300 max-w-2xl leading-relaxed drop-shadow-md">
-                반복되는 업무는 이제 그만. <br />
-                검증된 워크플로우 템플릿으로 비즈니스를 자동화하세요.
-            </p>
+          <p className="mb-4 text-sm font-semibold tracking-[0.24em] uppercase text-stone-500">자동화</p>
+          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6">
+            반복 업무를 줄이는
+            <br />
+            <span className="text-stone-500">실무형 자동화 템플릿.</span>
+          </h1>
+          <p className="text-xl text-stone-500 max-w-2xl leading-relaxed">
+            반복되는 작업은 덜어내고, 판단이 필요한 일에 더 집중할 수 있도록 검증된 워크플로우를 모았습니다.
+          </p>
         </div>
       </section>
 
-      {/* Content Section */}
       <section className="px-6 pb-32 relative z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050B1B]/50 to-[#050B1B] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#FDFCF8]/50 to-[#FDFCF8] pointer-events-none" />
         <div className="max-w-7xl mx-auto relative">
-            <AutomationContainer initialTemplates={formattedAutomations} />
+          <AutomationContainer initialTemplates={formattedAutomations} />
         </div>
       </section>
     </main>

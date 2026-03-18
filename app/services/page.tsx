@@ -9,7 +9,7 @@ import { ArrowRight, Settings2, FileText, AppWindow } from "lucide-react";
 // Service Data (Formerly Projects)
 const services = [
   {
-    category: "BUSINESS AUTOMATION",
+    category: "업무 자동화",
     title: "워크플로우 자동화",
     desc: "24시간 멈추지 않는 비즈니스. N8N, Opal 등 최적의 도구를 조합해 반복 업무를 완벽하게 자동화합니다.",
     icon: Settings2,
@@ -18,7 +18,7 @@ const services = [
     link: "/automation",
   },
   {
-    category: "AI ENGINEERING",
+    category: "프롬프트",
     title: "프롬프트 라이브러리",
     desc: "시행착오를 줄여주는 솔루션. 개발과 비즈니스 효율을 극대화하는 검증된 프롬프트 모음입니다.",
     icon: FileText,
@@ -27,7 +27,7 @@ const services = [
     link: "/prompts",
   },
   {
-    category: "VIBE CODING APPS",
+    category: "실험적인 웹앱",
     title: "바이브 코딩 웹앱",
     desc: "상상을 현실로. 뮤즈캔버스를 비롯해 바이브 코딩으로 제작된 다양한 웹 애플리케이션을 소개합니다.",
     icon: AppWindow,
@@ -39,24 +39,28 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <main className="w-full min-h-screen bg-[#050B1B] text-white font-poppins selection:bg-neon-sky selection:text-[#050B1B] pt-32 pb-20 relative">
+    <main className="w-full min-h-screen bg-[#FDFCF8] text-stone-900 font-poppins selection:bg-stone-200 selection:text-stone-900 pt-32 pb-20 relative">
       {/* Header Section */}
       <section className="max-w-7xl mx-auto px-6 mb-24 relative z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,209,255,0.1),transparent_70%)] -z-10" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.03),transparent_70%)] -z-10" />
         <motion.div
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 0.6 }}
         >
             <div className="flex items-center gap-4 mb-6">
-                <span className="h-[2px] w-12 bg-neon-sky" />
-                <span className="text-neon-sky font-semibold tracking-widest text-sm uppercase">OUR SERVICES</span>
-            </div>
-            <h1 className="text-5xl md:text-6xl font-bold leading-tight drop-shadow-lg">
-                디지털 혁신을 위한<br />
-                <span className="text-neon-sky drop-shadow-[0_0_20px_rgba(0,209,255,0.5)]">맞춤형 솔루션.</span>
-            </h1>
-        </motion.div>
+                <span className="h-[2px] w-12 bg-stone-300" />
+                <span className="text-stone-500 font-semibold tracking-widest text-sm uppercase">하는 일</span>
+             </div>
+             <h1 className="text-5xl md:text-6xl font-serif font-bold leading-tight">
+                지금 필요한 문제를
+                <br />
+                <span className="text-stone-500">이런 방식으로 돕습니다.</span>
+             </h1>
+             <p className="mt-6 max-w-2xl text-lg leading-8 text-stone-500">
+               거창한 서비스 카탈로그보다, 실제로 도움이 되는 자동화와 도구, 작업 방식을 중심으로 정리했습니다.
+             </p>
+         </motion.div>
       </section>
 
       {/* Services Grid */}
@@ -68,32 +72,33 @@ export default function ServicesPage() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: idx * 0.1 }}
-                    className="group bg-white rounded-[2rem] overflow-hidden hover:-translate-y-2 transition-transform duration-300 shadow-xl border border-gray-200"
+                    className="group bg-white rounded-[2rem] overflow-hidden hover:-translate-y-2 transition-transform duration-300 shadow-sm border border-stone-200 hover:shadow-md"
                 >
                     <Link href={service.link} className="flex flex-col h-full">
                         {/* Image Area */}
                         <div className="h-64 w-full relative overflow-hidden flex-shrink-0">
-                             <img 
+                             <Image 
                                 src={service.image} 
                                 alt={service.title}
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                fill
+                                className="object-cover transition-transform duration-700 group-hover:scale-110"
                              />
-                             <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300" />
+                             <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-300" />
                              
-                             <div className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg z-10">
+                             <div className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-stone-100 z-10">
                                 <service.icon className={`w-5 h-5 ${service.color}`} />
                              </div>
                         </div>
 
                         {/* Content */}
                         <div className="p-8 flex flex-col bg-white h-full relative z-20">
-                            <div className="text-xs font-bold text-gray-400 tracking-widest uppercase mb-3">{service.category}</div>
-                            <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-neon-sky transition-colors">{service.title}</h3>
-                            <p className="text-gray-600 text-sm leading-relaxed mb-8 line-clamp-3">
+                            <div className="text-xs font-bold text-stone-400 tracking-widest uppercase mb-3">{service.category}</div>
+                            <h3 className="text-2xl font-bold text-stone-900 mb-4 group-hover:text-stone-600 transition-colors">{service.title}</h3>
+                            <p className="text-stone-600 text-sm leading-relaxed mb-8 line-clamp-3">
                                 {service.desc}
                             </p>
                             
-                            <div className="mt-auto self-start px-6 py-3 rounded-full border border-gray-200 text-slate-900 font-bold text-sm flex items-center gap-2 group-hover:bg-[#050B1B] group-hover:text-white group-hover:border-[#050B1B] transition-all">
+                            <div className="mt-auto self-start px-6 py-3 rounded-full border border-stone-200 text-stone-900 font-bold text-sm flex items-center gap-2 group-hover:bg-stone-900 group-hover:text-white group-hover:border-stone-900 transition-all">
                                 자세히 보기 <ArrowRight className="w-4 h-4" />
                             </div>
                         </div>

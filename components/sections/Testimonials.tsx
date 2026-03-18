@@ -30,7 +30,7 @@ const testimonials = [
     role: "제품 디자이너",
     company: "모션랩",
     industry: "제조/디자인",
-    content: "3D 제품 시각화 프로젝트에서 DMS.LAB의 기술력에 깊은 인상을 받았습니다. 현장 경험에서 나오는 디테일이 결과물의 차이를 만듭니다.",
+    content: "3D 제품 시각화 프로젝트에서 리도의 기술력에 깊은 인상을 받았습니다. 현장 경험에서 나오는 디테일이 결과물의 차이를 만듭니다.",
     impact: "제품 시안 승인속도 2배",
     rating: 5,
   },
@@ -56,11 +56,11 @@ export default function Testimonials() {
   }, [selectedIndustry]);
 
   return (
-    <section className="w-full py-24 px-6 bg-[#050B1B] relative overflow-hidden">
+    <section className="w-full py-24 px-6 bg-[#FDFCF8] relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[150px] -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-neon-sky/5 rounded-full blur-[120px]" />
+        <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-stone-200/20 rounded-full blur-[150px] -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-stone-200/20 rounded-full blur-[120px]" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -72,16 +72,16 @@ export default function Testimonials() {
           className="text-center mb-16"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <span className="h-[1px] w-12 bg-neon-sky" />
-            <h3 className="text-neon-sky font-semibold tracking-widest text-sm uppercase">
-              Client Stories
+            <span className="h-[1px] w-12 bg-stone-300" />
+            <h3 className="text-stone-500 font-semibold tracking-widest text-sm uppercase">
+              고객 이야기
             </h3>
-            <span className="h-[1px] w-12 bg-neon-sky" />
+            <span className="h-[1px] w-12 bg-stone-300" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
-            고객이 경험한 <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-sky to-purple-400">변화</span>
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-stone-900 tracking-tight mb-4">
+            고객이 경험한 변화
           </h2>
-          <p className="text-white/50 text-lg max-w-xl mx-auto">
+          <p className="text-stone-500 text-lg max-w-xl mx-auto">
             실제 프로젝트에서 체감한 결과를 직접 들어보세요.
           </p>
 
@@ -99,8 +99,8 @@ export default function Testimonials() {
                 }}
                 className={`px-4 py-2 rounded-full border text-sm transition-colors ${
                   selectedIndustry === industry
-                    ? "border-neon-sky bg-neon-sky/15 text-neon-sky"
-                    : "border-white/15 text-white/70 hover:border-white/30"
+                    ? "border-stone-900 bg-stone-900 text-white"
+                    : "border-stone-200 text-stone-500 hover:border-stone-300"
                 }`}
                 suppressHydrationWarning
               >
@@ -119,10 +119,10 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/[0.07] transition-all duration-300"
+              className="group relative p-8 rounded-2xl bg-white border border-stone-200 hover:border-stone-300 hover:shadow-sm transition-all duration-300"
             >
               {/* Quote Icon */}
-              <Quote className="absolute top-6 right-6 w-8 h-8 text-neon-sky/20 group-hover:text-neon-sky/40 transition-colors" />
+              <Quote className="absolute top-6 right-6 w-8 h-8 text-stone-200 group-hover:text-stone-300 transition-colors" />
 
               {/* Rating */}
               <div className="flex gap-1 mb-4">
@@ -132,27 +132,24 @@ export default function Testimonials() {
               </div>
 
               {/* Content */}
-              <p className="text-white/70 text-base leading-relaxed mb-6">
+              <p className="text-stone-700 text-base leading-relaxed mb-6">
                 &ldquo;{testimonial.content}&rdquo;
               </p>
 
-              <div className="inline-flex px-3 py-1 rounded-full bg-neon-sky/10 border border-neon-sky/25 text-neon-sky text-xs font-semibold mb-5">
+              <div className="inline-flex px-3 py-1 rounded-full bg-stone-100 border border-stone-200 text-stone-600 text-xs font-semibold mb-5">
                 {testimonial.impact}
               </div>
 
               {/* Author */}
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-neon-sky/30 to-purple-500/30 flex items-center justify-center text-white font-bold text-lg border border-white/10">
+                <div className="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center text-stone-700 font-bold text-lg border border-stone-200">
                   {testimonial.name[0]}
                 </div>
                 <div>
-                  <p className="text-white font-semibold">{testimonial.name}</p>
-                  <p className="text-white/40 text-sm">{testimonial.role} · {testimonial.company}</p>
+                  <p className="text-stone-900 font-semibold">{testimonial.name}</p>
+                  <p className="text-stone-500 text-sm">{testimonial.role} · {testimonial.company}</p>
                 </div>
               </div>
-
-              {/* Hover glow */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neon-sky/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
             </motion.div>
           ))}
         </div>
