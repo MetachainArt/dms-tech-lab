@@ -1,6 +1,19 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+
 export default function Background() {
+  const pathname = usePathname();
+
+  if (
+    pathname === "/" ||
+    pathname === "/about" ||
+    pathname === "/contact" ||
+    pathname.startsWith("/blog")
+  ) {
+    return null;
+  }
+
   return (
     <div className="fixed inset-0 z-0 h-screen w-full bg-[#030014] overflow-hidden">
       {/* Aurora Blobs */}

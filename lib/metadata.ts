@@ -17,12 +17,13 @@ export function generateMetadata({
 }: PageMetadata) {
   const fullTitle = title === SITE_CONFIG.title
     ? title
-    : `${title} | DMS.LAB`;
+    : `${title} | Reedo`;
 
   const url = `${SITE_CONFIG.url}${path}`;
   const ogImage = image || SITE_CONFIG.og.image;
 
   return {
+    metadataBase: new URL(SITE_CONFIG.url),
     title: fullTitle,
     description,
     keywords: SITE_CONFIG.keywords.join(", "),
@@ -58,7 +59,7 @@ export function generateMetadata({
         index: !noIndex,
         follow: !noIndex,
         "max-video-preview": -1,
-        "max-image-preview": "large",
+        "max-image-preview": "large" as const,
         "max-snippet": -1,
       },
     },
@@ -74,7 +75,7 @@ export function generateMetadata({
 /**
  * JSON-LD 구조화된 데이터 생성
  */
-export function generateStructuredData(type: "Organization" | "WebSite", data?: any) {
+export function generateStructuredData(type: "Organization" | "Person" | "WebSite") {
   const base = {
     "@context": "https://schema.org",
   };
@@ -97,6 +98,24 @@ export function generateStructuredData(type: "Organization" | "WebSite", data?: 
         contactType: "customer service",
         availableLanguage: ["Korean", "English"],
       },
+    };
+  }
+
+  if (type === "Person") {
+    return {
+      ...base,
+      "@type": "Person",
+      name: SITE_CONFIG.author.name,
+      url: SITE_CONFIG.author.url,
+      description: SITE_CONFIG.description,
+      jobTitle: "광통신 하드웨어 · AI 자동화 · 실무형 교육 파트너",
+      image: `${SITE_CONFIG.url}/og-image.png`,
+      email: "reedo.dev@dmssolution.co.kr",
+      sameAs: [
+        SITE_CONFIG.social.instagram,
+        SITE_CONFIG.social.youtube,
+        SITE_CONFIG.social.kakao,
+      ],
     };
   }
 
@@ -132,9 +151,6 @@ export function generateBlogMetadata({
   modifiedTime?: string;
   authors?: string[];
 }) {
-  const fullTitle = `${title} | DMS.LAB`;
-  const url = `${SITE_CONFIG.url}${path}`;
-
   return {
     ...generateMetadata({ title, description, path, image }),
     openGraph: {

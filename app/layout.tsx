@@ -38,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className="dark scroll-smooth" suppressHydrationWarning>
+    <html lang="ko" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <meta name="naver-site-verification" content="b8ab729a0b0dbcfe3400052a6f192884926e93e4" />
         <link rel="preconnect" href="https://images.unsplash.com" />
@@ -73,7 +73,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(generateStructuredData("Organization")),
+            __html: JSON.stringify(generateStructuredData("Person")),
           }}
         />
         <script
@@ -83,7 +83,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={clsx(poppins.variable, playfair.variable, "antialiased bg-deep-space text-white select-none")} suppressHydrationWarning>
+      <body className={clsx(poppins.variable, playfair.variable, "antialiased bg-paperfolio-bg text-paperfolio-text")} suppressHydrationWarning>
         <Script
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4327440469164693"
           strategy="afterInteractive"

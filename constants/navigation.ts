@@ -1,9 +1,10 @@
 export const navLinks = [
   { name: "홈", href: "/" },
-  { name: "리도이야기", href: "/about" },
-  { name: "서비스", href: "/services" },
-  { name: "교육자료", href: "/education" },
-  { name: "블로그", href: "/blog" },
+  { name: "소개", href: "/#intro" },
+  { name: "하는 일", href: "/#what-i-do" },
+  { name: "작업", href: "/#selected-works" },
+  { name: "글", href: "/blog" },
+  { name: "문의", href: "/#contact" },
 ] as const;
 
 export type NavLink = (typeof navLinks)[number];

@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import fs from 'fs';
 import path from 'path';
+import { BLOG_SERIES } from '@/lib/blog-data';
 
 // 블로그 포스트 슬러그를 파일 시스템에서 자동으로 수집
 function getBlogSlugs(): string[] {
@@ -36,6 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // 블로그 포스트 자동 수집
   const blogSlugs = getBlogSlugs();
+  const seriesSlugs = Object.keys(BLOG_SERIES);
 
   const sitemap: MetadataRoute.Sitemap = [
     // 메인 페이지
@@ -51,6 +53,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.6,
+    })),
+    ...seriesSlugs.map((slug) => ({
+      url: `${baseUrl}/blog/series/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
     })),
   ];
 
