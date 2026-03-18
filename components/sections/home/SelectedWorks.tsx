@@ -1,49 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
-
-const works = [
-  {
-    title: "업무 자동화 실험실",
-    summary: "메일, 보고서, 문서 작성처럼 반복되는 업무를 자동화한 사례들입니다.",
-    tags: ["자동화", "실무", "생산성"],
-    image: "/images/business.png",
-  },
-  {
-    title: "PromptBlocks",
-    summary: "프롬프트를 13개 구조 블록으로 분해하고 다시 조립해, 팀 단위로 재현 가능한 결과를 만드는 프롬프트 워크스페이스입니다.",
-    tags: ["프롬프트", "블록", "워크스페이스"],
-    image: "/images/prompt.png",
-    link: "https://promptblocks.dmssolution.co.kr/",
-  },
-  {
-    title: "3D 제품 설계 및 구조 검토",
-    summary: "20개 이상의 하드웨어 제품 개발과 상용화 경험을 바탕으로 아이디어를 실제 검토 가능한 구조와 시각화 자료로 바꿉니다.",
-    tags: ["3D", "설계", "제조"],
-    image: "/images/3D.png",
-  },
-  {
-    title: "실무형 AI 교육 프로그램 설계",
-    summary: "처음 배우는 사람도 바로 써볼 수 있도록 실습 중심 커리큘럼과 예제를 설계했습니다.",
-    tags: ["교육", "AI", "워크숍"],
-    image: "/images/AIauto.png",
-  },
-  {
-    title: "꿈꾸는 카메라 프로젝트",
-    summary: "사진, AI, 글, 음악을 연결해 기술을 쉽게 풀어내는 AI 교육 프로그램 기획·개발 사례입니다.",
-    tags: ["사진", "AI", "콘텐츠"],
-    image: "/images/dream.png",
-    link: "https://storylens.dmssolution.co.kr/",
-  },
-  {
-    title: "AI 실무 채널 운영",
-    summary: "기술을 어렵지 않게 전달하기 위해 글, 이미지, 영상, 유튜브 채널 운영을 함께 설계합니다.",
-    tags: ["유튜브", "교육", "전달력"],
-    image: "/images/youtube.png",
-    link: "https://www.youtube.com/@Reedodev",
-  },
-];
+import { SHOWCASE_WORKS } from "@/lib/works-showcase";
 
 export default function SelectedWorks() {
   return (
@@ -57,12 +17,20 @@ export default function SelectedWorks() {
               화려한 포장보다 문제를 어떻게 풀었는지가 남도록 정리했습니다. 지금 하고 있는 일과 닿는 사례부터 보셔도 좋습니다.
             </p>
           </div>
+          <Link href="/works" className="inline-flex items-center gap-2 text-sm font-semibold text-paperfolio-text hover:text-paperfolio-accent-coral">
+            작업 더 보기
+          </Link>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {works.map((work, index) => {
+          {SHOWCASE_WORKS.map((work, index) => {
+            const isExternalLink = Boolean(work.link?.startsWith("http"));
             const MotionComponent = work.link ? motion.a : motion.article;
-            const linkProps = work.link ? { href: work.link, target: "_blank", rel: "noopener noreferrer" } : {};
+            const linkProps = work.link
+              ? isExternalLink
+                ? { href: work.link, target: "_blank", rel: "noopener noreferrer" }
+                : { href: work.link }
+              : {};
 
             return (
               <MotionComponent

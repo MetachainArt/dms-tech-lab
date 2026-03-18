@@ -1,31 +1,29 @@
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import AuthorCard from "@/components/blog/AuthorCard";
-import RelatedPosts from "@/components/blog/RelatedPosts";
 import { MDXComponents } from "@/components/mdx/MDXComponents";
-import { getSeriesTitle } from "@/lib/blog-data";
+import { BLOG_SERIES } from "@/lib/blog-data";
 import { generateBlogMetadata } from "@/lib/metadata";
-import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/mdx";
 import { SITE_CONFIG } from "@/lib/seo";
-import { getWorkBySlug } from "@/lib/work-mdx";
+import { getAllWorks, getWorkBySlug } from "@/lib/work-mdx";
 
 export async function generateMetadata(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params;
-  const post = await getPostBySlug(params.slug);
+  const work = await getWorkBySlug(params.slug);
 
-  if (!post) {
+  if (!work) {
     return;
   }
 
-  const { title, excerpt, coverImage, date } = post.frontMatter;
+  const { title, excerpt, coverImage, date } = work.frontMatter;
 
   return generateBlogMetadata({
     title: String(title),
     description: String(excerpt),
-    path: `/blog/${post.slug}`,
+    path: `/works/${work.slug}`,
     image: typeof coverImage === "string" ? coverImage : undefined,
     publishedTime: typeof date === "string" ? date : undefined,
     authors: ["Reedo"],
@@ -33,40 +31,30 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
 }
 
 export async function generateStaticParams() {
-  const posts = await getAllPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
+  const works = await getAllWorks();
+  return works.map((work) => ({
+    slug: work.slug,
   }));
 }
 
-export default async function BlogPostPage(props: { params: Promise<{ slug: string }> }) {
+export default async function WorkDetailPage(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params;
-  const post = await getPostBySlug(params.slug);
+  const work = await getWorkBySlug(params.slug);
 
-  if (!post) {
-    const work = await getWorkBySlug(params.slug);
-    if (work) {
-      redirect(`/works/${work.slug}`);
-    }
-
+  if (!work) {
     notFound();
   }
 
-  const relatedPosts = (await getRelatedPosts(params.slug, 3)).map((item) => ({
-    slug: item.slug,
-    title: String(item.frontMatter.title),
-    excerpt: String(item.frontMatter.excerpt),
-    coverImage: typeof item.frontMatter.coverImage === "string" ? item.frontMatter.coverImage : undefined,
-    series: typeof item.frontMatter.series === "string" ? item.frontMatter.series : undefined,
-    date: typeof item.frontMatter.date === "string" ? item.frontMatter.date : undefined,
-  }));
+  const seriesId = typeof work.frontMatter.series === "string" ? work.frontMatter.series : undefined;
+  const backHref = seriesId && BLOG_SERIES[seriesId] ? `/blog/series/${seriesId}` : "/works";
+  const backLabel = seriesId && BLOG_SERIES[seriesId] ? "시리즈로 돌아가기" : "대표 작업으로 돌아가기";
 
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: String(post.frontMatter.title),
-    description: String(post.frontMatter.excerpt),
-    datePublished: String(post.frontMatter.date),
+    headline: String(work.frontMatter.title),
+    description: String(work.frontMatter.excerpt),
+    datePublished: String(work.frontMatter.date),
     author: {
       "@type": "Person",
       name: "Reedo",
@@ -75,8 +63,11 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
       "@type": "Person",
       name: "Reedo",
     },
-    image: typeof post.frontMatter.coverImage === "string" ? [`${SITE_CONFIG.url}${post.frontMatter.coverImage}`] : undefined,
-    mainEntityOfPage: `${SITE_CONFIG.url}/blog/${post.slug}`,
+    image:
+      typeof work.frontMatter.coverImage === "string"
+        ? [`${SITE_CONFIG.url}${work.frontMatter.coverImage}`]
+        : undefined,
+    mainEntityOfPage: `${SITE_CONFIG.url}/works/${work.slug}`,
   };
 
   return (
@@ -87,43 +78,41 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(320px,0.75fr)] lg:items-end">
           <div className="space-y-7">
             <Link
-              href="/blog"
+              href={backHref}
               className="inline-flex items-center gap-2 text-sm font-semibold text-paperfolio-text-muted hover:text-paperfolio-accent-blue"
             >
               <ArrowLeft className="h-4 w-4" />
-              글 목록으로 돌아가기
+              {backLabel}
             </Link>
 
             <div className="flex flex-wrap items-center gap-3 text-sm text-paperfolio-text-muted">
-              {post.frontMatter.series && (
-                <span className="rounded-full border border-paperfolio-accent-blue/20 bg-paperfolio-accent-blue/10 px-3 py-1 font-semibold text-paperfolio-accent-blue">
-                  {getSeriesTitle(String(post.frontMatter.series))}
-                </span>
-              )}
-              <time dateTime={String(post.frontMatter.date)} className="inline-flex items-center gap-2">
+              <span className="rounded-full border border-paperfolio-accent-blue/20 bg-paperfolio-accent-blue/10 px-3 py-1 font-semibold text-paperfolio-accent-blue">
+                대표 작업
+              </span>
+              <time dateTime={String(work.frontMatter.date)} className="inline-flex items-center gap-2">
                 <Calendar className="h-4 w-4" />
-                {String(post.frontMatter.date)}
+                {String(work.frontMatter.date)}
               </time>
-              {post.frontMatter.readTime && (
+              {work.frontMatter.readTime && (
                 <span className="inline-flex items-center gap-2">
                   <Clock className="h-4 w-4" />
-                  {String(post.frontMatter.readTime)}
+                  {String(work.frontMatter.readTime)}
                 </span>
               )}
             </div>
 
             <div className="space-y-5">
-              <h1 className="paperfolio-display max-w-4xl text-paperfolio-text">{String(post.frontMatter.title)}</h1>
-              <p className="max-w-2xl text-lg leading-8 text-paperfolio-text-muted">{String(post.frontMatter.excerpt)}</p>
+              <h1 className="paperfolio-display max-w-4xl text-paperfolio-text">{String(work.frontMatter.title)}</h1>
+              <p className="max-w-2xl text-lg leading-8 text-paperfolio-text-muted">{String(work.frontMatter.excerpt)}</p>
             </div>
           </div>
 
-          {typeof post.frontMatter.coverImage === "string" && (
+          {typeof work.frontMatter.coverImage === "string" && (
             <div className="relative overflow-hidden rounded-[36px] border border-paperfolio-line bg-paperfolio-surface shadow-[0_24px_80px_rgba(31,41,55,0.10)]">
               <div className="relative aspect-[4/3]">
                 <Image
-                  src={post.frontMatter.coverImage}
-                  alt={String(post.frontMatter.title)}
+                  src={work.frontMatter.coverImage}
+                  alt={String(work.frontMatter.title)}
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 40vw"
@@ -139,10 +128,9 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
       <section className="border-t border-paperfolio-line bg-paperfolio-surface px-6 py-20">
         <div className="mx-auto max-w-3xl">
           <article className="editorial-prose">
-            <MDXRemote source={post.content} components={MDXComponents} />
+            <MDXRemote source={work.content} components={MDXComponents} />
           </article>
           <AuthorCard />
-          <RelatedPosts posts={relatedPosts} />
         </div>
       </section>
 

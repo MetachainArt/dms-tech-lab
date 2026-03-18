@@ -61,7 +61,7 @@ export default function AboutPage() {
               3D 설계와 하드웨어 디자인, 광통신 인프라 장비 개발, 기술 교육을 20년 가까이 해왔습니다. 지금은 AI 자동화와 실무형 도구, 콘텐츠 제작까지 연결하며 복잡한 일을 더 단순하게 만드는 작업을 하고 있습니다.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
-              <Link href="/#selected-works" className="inline-flex items-center justify-center rounded-full bg-paperfolio-text px-7 py-4 text-sm font-semibold text-white hover:bg-paperfolio-accent-blue">
+              <Link href="/works" className="inline-flex items-center justify-center rounded-full bg-paperfolio-text px-7 py-4 text-sm font-semibold text-white hover:bg-paperfolio-accent-blue">
                 작업 보기
               </Link>
               <Link href="/contact" className="inline-flex items-center justify-center rounded-full border border-paperfolio-line bg-white px-7 py-4 text-sm font-semibold text-paperfolio-text hover:border-paperfolio-accent-coral/40 hover:text-paperfolio-accent-coral">

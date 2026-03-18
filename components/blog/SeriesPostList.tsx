@@ -5,6 +5,7 @@ import Link from "next/link";
 
 interface PostItem {
   slug: string;
+  href: string;
   chapter?: string;
   title: string;
   excerpt: string;
@@ -36,7 +37,7 @@ export default function SeriesPostList({ posts, color }: SeriesPostListProps) {
       {posts.map((post) => (
         <Link
           key={post.slug}
-          href={`/blog/${post.slug}`}
+          href={post.href}
           className="group block rounded-[30px] border border-paperfolio-line bg-white px-6 py-6 shadow-[0_16px_55px_rgba(31,41,55,0.05)] hover:-translate-y-0.5 hover:border-paperfolio-accent-blue/35"
         >
           <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">

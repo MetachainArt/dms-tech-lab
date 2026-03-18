@@ -1,21 +1,9 @@
 import { MetadataRoute } from 'next';
-import fs from 'fs';
-import path from 'path';
-import { BLOG_SERIES } from '@/lib/blog-data';
+import { getAllPosts } from '@/lib/mdx';
+import { getSeriesIdsWithContent } from '@/lib/series-content';
+import { getAllWorks } from '@/lib/work-mdx';
 
-// 블로그 포스트 슬러그를 파일 시스템에서 자동으로 수집
-function getBlogSlugs(): string[] {
-  const postsDir = path.join(process.cwd(), 'content', 'posts');
-  try {
-    return fs.readdirSync(postsDir)
-      .filter(file => file.endsWith('.mdx') && !file.startsWith('_'))
-      .map(file => file.replace('.mdx', ''));
-  } catch {
-    return [];
-  }
-}
-
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://dmssolution.co.kr';
 
   // 메인 페이지 + 모든 서브 페이지
@@ -25,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/services', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/contact', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/blog', priority: 0.9, changeFrequency: 'weekly' as const },
+    { path: '/works', priority: 0.9, changeFrequency: 'weekly' as const },
     { path: '/company', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/education', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/automation', priority: 0.8, changeFrequency: 'weekly' as const },
@@ -36,8 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // 블로그 포스트 자동 수집
-  const blogSlugs = getBlogSlugs();
-  const seriesSlugs = Object.keys(BLOG_SERIES);
+  const [blogPosts, works, seriesSlugs] = await Promise.all([getAllPosts(), getAllWorks(), getSeriesIdsWithContent()]);
 
   const sitemap: MetadataRoute.Sitemap = [
     // 메인 페이지
@@ -48,11 +36,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: route.priority,
     })),
     // 블로그 포스트 (자동)
-    ...blogSlugs.map((slug) => ({
-      url: `${baseUrl}/blog/${slug}`,
+    ...blogPosts.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.6,
+    })),
+    ...works.map((work) => ({
+      url: `${baseUrl}/works/${work.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
     })),
     ...seriesSlugs.map((slug) => ({
       url: `${baseUrl}/blog/series/${slug}`,

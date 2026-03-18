@@ -3,6 +3,7 @@ import SeriesList from "@/components/blog/SeriesList";
 import { BLOG_SERIES } from "@/lib/blog-data";
 import { getAllPosts } from "@/lib/mdx";
 import { generateMetadata as generateSeoMetadata } from "@/lib/metadata";
+import { getSeriesCountMap } from "@/lib/series-content";
 
 export const metadata = generateSeoMetadata({
   title: "리도 인사이트",
@@ -12,21 +13,12 @@ export const metadata = generateSeoMetadata({
 
 export default async function BlogPage() {
   const allPosts = await getAllPosts();
-
-  const seriesCountMap = allPosts.reduce<Record<string, number>>((acc, post) => {
-    const seriesId = post.frontMatter.series;
-    if (!seriesId) {
-      return acc;
-    }
-
-    acc[seriesId] = (acc[seriesId] || 0) + 1;
-    return acc;
-  }, {});
+  const seriesCountMap = await getSeriesCountMap();
 
   const seriesWithCount = Object.values(BLOG_SERIES).map((series) => ({
     ...series,
     postCount: seriesCountMap[series.id] || 0,
-  }));
+  })).filter((series) => series.postCount > 0);
 
   const latestPosts = allPosts.slice(0, 3);
 

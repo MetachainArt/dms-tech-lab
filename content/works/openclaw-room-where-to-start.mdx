@@ -1,0 +1,172 @@
+---
+title: "1편 OpenClaw 멀티에이전트 만들기 "
+excerpt: "터미널에서 `boribot`을 만들고, OAuth 인증과 기본 설정을 마친 뒤, SOUL.md·IDENTITY.md·USER.md를 주입해 나만의 에이전트로 학습시키는 전체 흐름을 따라갑니다."
+date: "2026. 03. 18"
+readTime: "8 min"
+coverImage: "/series/openclaw2.png"
+series: "openclaw-room"
+chapter: "1"
+tags: ["OpenClaw", "에이전트", "튜토리얼", "온보딩", "OAuth"]
+subtitle: "보리봇을 만들고 인증, 초기 설정, SOUL/IDENTITY/USER 주입까지 한 번에 끝내는 첫 세팅 가이드"
+---
+
+<div className="rounded-[28px] border border-paperfolio-line bg-paperfolio-surface px-6 py-6 shadow-[0_14px_40px_rgba(31,41,55,0.04)]">
+  <div className="flex items-start gap-4">
+    <img src="/images/openclaw2.png" alt="보리" className="h-14 w-14 shrink-0 rounded-full border border-paperfolio-line bg-white" />
+    <div className="space-y-3">
+      <div className="font-nanum-pen text-3xl leading-tight text-paperfolio-text">안녕 난 보리야 ^^ 오늘은 터미널에서 나를 처음 만들고, 인증과 초기 설정을 마친 뒤, SOUL과 IDENTITY, USER까지 차근차근 주입해서 진짜 내 봇으로 만드는 과정을 같이 볼 거야.</div>
+      <div className="text-lg leading-8 text-paperfolio-text-muted">
+        이번 글은 영상 자막 흐름에 맞춰 그대로 따라갈 수 있게 정리했어. 영상과 함께 보면 어느 시점에 어떤 화면이 나오는지, 어떤 명령을 치는지, 왜 그 단계가 필요한지 한 번에 연결해서 이해할 수 있어.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div className="mx-auto my-8 max-w-[800px]">
+  <h3 className="text-xl font-semibold text-paperfolio-text">[오픈클로] 멀티에이전트 만들기 가이드</h3>
+  <div className="relative mt-4 overflow-hidden rounded-[24px] border border-paperfolio-line bg-paperfolio-surface pb-[56.25%] shadow-[0_14px_40px_rgba(31,41,55,0.04)]">
+    <iframe
+      className="absolute inset-0 h-full w-full"
+      src="https://www.youtube.com/embed/dkNRBuV7Mig?start=268"
+      title="[오픈클로] 멀티에이전트 만들기 가이드"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerPolicy="strict-origin-when-cross-origin"
+      allowFullScreen
+    />
+  </div>
+</div>
+
+> 오늘 영상의 핵심은 단순하다. 봇을 하나 만들고, 인증하고, 채널을 붙이고, 세 가지 문서로 영혼과 정체성과 사용자 맥락을 심어주면 된다.
+
+## 이번 영상에서 따라가는 흐름
+
+<Grid cols={2}>
+  <Card title="인트로 & 에이전트 생성" color="blue">
+    <p>MobaXterm 터미널에서 `boribot`을 새로 만들고, 이번 영상이 무엇을 보여주는지 소개합니다.</p>
+  </Card>
+  <Card title="권한 인증" color="teal">
+    <p>OAuth 인증을 완료하고, 에이전트가 다음 단계를 진행할 수 있도록 기본 설정을 마무리합니다.</p>
+  </Card>
+  <Card title="첫 만남과 초기 설정" color="coral">
+    <p>`openclaw tui --session agent:boribot:main`으로 첫 채팅방에 들어가 보리봇과 첫인사를 나눕니다.</p>
+  </Card>
+  <Card title="SOUL.md 주입" color="blue">
+    <p>`SOUL.md`를 주입해 봇의 철학, 사고방식, 응답 구조를 먼저 심습니다.</p>
+  </Card>
+  <Card title="IDENTITY.md 확립" color="teal">
+    <p>`IDENTITY.md`로 역할, 성격, 말투, 금지사항을 구체화해 페르소나를 완성합니다.</p>
+  </Card>
+  <Card title="USER.md 학습 및 마무리" color="coral">
+    <p>`USER.md`로 사용자인 리도의 성향을 학습시키고, 다음 편 예고와 함께 마무리합니다.</p>
+  </Card>
+</Grid>
+
+## 인트로 & 에이전트 생성
+
+영상은 검은 터미널 화면, 정확히는 root 권한으로 접속된 `MobaXterm` 세션에서 시작합니다. 여기서 이번 영상의 목적을 먼저 분명하게 잡습니다. 그냥 명령어 몇 개를 보여주는 게 아니라, OpenClaw를 이용해 나만의 인공지능 에이전트 `boribot`을 처음 만들고 학습시키는 전 과정을 끝까지 보여주는 흐름입니다.
+
+가장 먼저 입력하는 명령은 아래와 같습니다.
+
+```bash
+openclaw agent add boribot
+```
+
+이 단계에서 중요한 건 복잡한 설정이 아닙니다. 이름이 있는 에이전트 하나를 실제로 생성해 “이제부터 이 봇을 키운다”는 출발점을 만드는 것입니다. 영상의 인트로는 바로 이 첫 명령으로 깔끔하게 정리됩니다.
+
+## 권한 인증 및 기본 설정
+
+에이전트를 만들었다면 바로 인증 절차로 넘어갑니다. 화면에서는 웹 브라우저가 열리고, OAuth 인증 과정을 거쳐 발급된 코드를 복사한 뒤 다시 터미널에 붙여 넣습니다. 이 장면은 “내가 만든 봇이 실제 서비스와 연결될 준비를 마친다”는 의미를 갖습니다.
+
+인증이 끝나면 이어서 기본 설정 단계로 넘어갑니다.
+
+이 구간에서 중요한 건 특정 채널을 붙이는 장면보다, 인증 이후 필요한 설정을 빠르게 마무리해 보리봇이 다음 단계로 넘어갈 준비를 끝내는 흐름입니다. 그래서 글에서도 세부 채널명보다는 “실제 운용을 위한 초기 설정을 마무리하는 단계”로 이해하는 편이 더 정확합니다.
+
+<ScenarioBox>
+  <div className="font-semibold text-paperfolio-text">이 구간에서 전달해야 하는 포인트</div>
+  <div>봇 생성은 시작이고, 인증과 초기 설정이 끝나야 비로소 다음 학습 단계로 넘어갈 수 있는 운용 가능한 에이전트가 됩니다. 영상에서는 그 준비 과정을 빠르게 한 번에 보여줍니다.</div>
+</ScenarioBox>
+
+## 첫 만남과 초기 설정
+
+이제 본격적으로 보리봇과 첫 대화를 시작합니다. 사용자가 들어가는 세션은 아래 명령으로 열립니다.
+
+```bash
+openclaw tui --session agent:boribot:main
+```
+
+TUI 채팅방에 입장하면 보리봇이 “안녕, 방금 깨어났어...” 같은 느낌으로 첫 인사를 건넵니다. 이어서 사용자는 “너는 뉘규여, 나를 앞으로 리도라고 불러줘”라고 입력해 이름과 호칭을 먼저 각인시킵니다.
+
+이 장면은 사소해 보이지만 중요합니다. 아직 깊은 학습을 넣기 전이라도, 첫 세션에서 관계의 기본값을 잡아 주면 이후 주입되는 문서들이 더 자연스럽게 사용자 맥락 위에 쌓이기 때문입니다.
+
+## 1단계: 봇의 영혼, `SOUL.md` 주입
+
+이제부터가 영상의 핵심입니다. 화면은 ChatGPT 웹 화면으로 전환되고, 미리 준비한 `SOUL.md` 내용을 복사해 터미널의 보리봇에게 그대로 붙여 넣습니다. 이 문서에는 핵심 철학, 사고방식, 응답 구조 같은 가장 상위 원칙이 담깁니다.
+
+쉽게 말해 `SOUL.md`는 이 봇이 어떤 기준으로 사고할지 정해 주는 문서입니다.
+
+- 어떤 태도로 문제를 해석할지
+- 응답을 어떤 구조로 정리할지
+- 어떤 가치와 우선순위를 지킬지
+
+자막도 이 부분을 “봇의 영혼”이라고 표현하고 있습니다. 그래서 글에서도 단순 프롬프트 입력이 아니라, 보리봇의 사고 프레임을 심는 단계로 설명하는 것이 정확합니다.
+
+## 2단계: 정체성, `IDENTITY.md` 확립
+
+두 번째로 주입하는 문서는 `IDENTITY.md`입니다. 여기에는 역할, 성격, 행동 원칙, 금지사항, 말투 같은 보다 구체적인 페르소나 정보가 들어갑니다.
+
+`SOUL.md`가 철학이라면 `IDENTITY.md`는 캐릭터 설정에 가깝습니다.
+
+- 이 봇은 어떤 역할을 맡는가
+- 어떤 톤과 말투로 답하는가
+- 절대 하면 안 되는 행동은 무엇인가
+- 어떤 기준으로 사용자를 돕는가
+
+영상에서는 이 주입이 끝난 뒤 보리봇의 말투와 반응이 훨씬 또렷하게 정리되는 흐름으로 보입니다. 그래서 이 구간은 “성격을 넣는다”기보다 “행동 규약을 가진 정체성을 완성한다”는 느낌으로 읽으면 좋습니다.
+
+## 3단계: 사용자 정보, `USER.md` 학습
+
+마지막 주입 문서는 `USER.md`입니다. 이 문서의 목적은 봇 그 자체를 정의하는 것이 아니라, 봇이 앞으로 함께 일할 사용자인 `리도`를 이해하게 만드는 것입니다.
+
+여기에는 보통 다음 같은 정보가 들어갑니다.
+
+- 사용자가 선호하는 답변 스타일
+- 자주 하는 업무와 관심사
+- 어떤 방식의 정리와 제안을 좋아하는지
+- 피해야 할 커뮤니케이션 방식은 무엇인지
+
+이 단계가 끝나면 보리봇은 단순한 범용 챗봇이 아니라, 특정 사용자에게 맞춰진 1:1 맞춤형 컨설턴트에 가까워집니다. 영상 자막에서도 “나에게 딱 맞는 비서가 탄생한다”는 메시지가 이 구간의 핵심입니다.
+
+## 테스트 및 마무리
+
+영상의 마지막은 복잡한 기능 시연보다, 지금까지 만든 설정이 하나의 흐름으로 완성되었다는 점을 짚어 주는 마무리입니다. 즉, 이번 편에서 끝난 것은 아래 네 가지입니다.
+
+<Grid cols={2}>
+  <Card title="1. 생성 완료" color="blue">
+    <p>`boribot`이라는 이름의 에이전트를 실제로 만들었습니다.</p>
+  </Card>
+  <Card title="2. 연결 완료" color="teal">
+    <p> OAuth 인증과 기본 설정을 마쳤습니다.</p>
+  </Card>
+  <Card title="3. 관계 설정 완료" color="coral">
+    <p>TUI 첫 세션에서 보리봇과 사용자의 호칭과 관계를 정리했습니다.</p>
+  </Card>
+  <Card title="4. 학습 주입 완료" color="blue">
+    <p>`SOUL.md`, `IDENTITY.md`, `USER.md`를 차례로 넣어 맞춤형 에이전트 기반을 만들었습니다.</p>
+  </Card>
+</Grid>
+
+그래서 이번 편은 “설치 튜토리얼”이라기보다 “한 개의 에이전트를 실제로 태어나게 하고 첫 학습까지 끝내는 온보딩 영상”으로 보는 편이 더 잘 맞습니다.
+
+## 오늘의 한 줄 요약
+
+<div className="rounded-[28px] border border-paperfolio-line bg-paperfolio-surface px-6 py-6 shadow-[0_14px_40px_rgba(31,41,55,0.04)]">
+  <div className="flex items-start gap-4">
+    <img src="/images/openclaw2.png" alt="보리" className="h-12 w-12 shrink-0 rounded-full border border-paperfolio-line bg-white" />
+    <div className="font-nanum-pen text-3xl leading-tight text-paperfolio-text">보리봇 만들기의 핵심은 명령어 몇 줄이 아니라, 인증과 초기 설정 위에 SOUL, IDENTITY, USER를 차곡차곡 얹어 나만의 봇으로 키우는 거야 ^^</div>
+  </div>
+</div>
+
+<Callout>
+  <div className="font-semibold text-paperfolio-text">다음 편 예고</div>
+  <div>다음 시간에는 멀티에이전트 폴더 구조를 어떻게 잡을지, 그리고 보리봇을 실제 운영 흐름에 맞게 어떻게 확장할지 이어서 살펴보겠습니다.</div>
+</Callout>

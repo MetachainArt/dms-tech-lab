@@ -67,7 +67,7 @@ const nextConfig: NextConfig = {
       "img-src 'self' data: blob: https://images.unsplash.com https://www.google-analytics.com https://*.google.com https://*.googleusercontent.com https://*.public.blob.vercel-storage.com https://k.kakaocdn.net https://avatars.githubusercontent.com https://lh3.googleusercontent.com https://placehold.co https://loremflickr.com https://pagead2.googlesyndication.com https://tpc.googlesyndication.com",
       "font-src 'self' data: https://fonts.gstatic.com https://fonts.googleapis.com",
       "connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.supabase.co https://*.public.blob.vercel-storage.com https://pagead2.googlesyndication.com",
-      "frame-src 'self' https://accounts.google.com https://kauth.kakao.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com",
+      "frame-src 'self' https://accounts.google.com https://kauth.kakao.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://www.youtube.com https://www.youtube-nocookie.com",
       "base-uri 'self'",
       "form-action 'self'",
       "object-src 'none'",

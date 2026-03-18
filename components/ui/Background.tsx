@@ -9,7 +9,8 @@ export default function Background() {
     pathname === "/" ||
     pathname === "/about" ||
     pathname === "/contact" ||
-    pathname.startsWith("/blog")
+    pathname.startsWith("/blog") ||
+    pathname.startsWith("/works")
   ) {
     return null;
   }
