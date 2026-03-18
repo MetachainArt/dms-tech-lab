@@ -1,31 +1,37 @@
-import { Share2, Bookmark } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function AuthorCard() {
   return (
-    <div className="mt-24 p-8 rounded-2xl bg-[#0A1124] border border-white/10 flex items-center gap-6 shadow-2xl relative overflow-hidden group hover:border-blue-500/30 transition-colors">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-        <div className="relative shrink-0">
-            <img 
-                src="/reedo-profile-high.png" 
-                alt="Reedo"
-                className="w-24 h-24 rounded-full object-cover border-2 border-white/10 grayscale group-hover:grayscale-0 transition-all duration-500"
-            />
+    <div className="mt-20 rounded-[32px] border border-paperfolio-line bg-white p-8 shadow-[0_18px_60px_rgba(31,41,55,0.05)] md:p-10">
+      <div className="flex flex-col gap-6 md:flex-row md:items-center">
+        <div className="relative h-24 w-24 overflow-hidden rounded-full border border-paperfolio-line bg-paperfolio-surface">
+          <Image src="/reedo-profile-high.png" alt="리도 프로필" fill sizes="96px" className="object-cover" />
         </div>
-        <div className="flex-grow relative z-10">
-            <h3 className="text-xl font-bold text-white mb-1 group-hover:text-blue-400 transition-colors">Written by Reedo</h3>
-            <p className="text-gray-400 text-sm mb-2">Global Field Engineer & Automation Architect</p>
-            <p className="text-gray-500 text-xs leading-relaxed max-w-md">
-                복잡한 코드 속에 담긴 단순한 진심을 찾습니다. 때론 실패하고 넘어지지만, 그 과정들이 모여 더 나은 내일을 만든다고 믿으며 묵묵히 기록합니다.
-            </p>
+
+        <div className="flex-1 space-y-3">
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-paperfolio-accent-blue">리도 인사이트</p>
+          <h3 className="text-2xl font-semibold tracking-tight text-paperfolio-text">기술을 현장 언어로 다시 풀어 쓰는 사람</h3>
+          <p className="text-sm leading-7 text-paperfolio-text-muted">
+            3D 설계, 광통신 인프라 장비 개발, 글로벌 현장 교육을 19년 넘게 다뤄왔고, 요즘은 AI 자동화, 꿈꾸는 카메라, 실무 채널 운영을 연결해 복잡한 일을 더 쉽게 만드는 방법을 기록하고 있습니다.
+          </p>
         </div>
-        <div className="flex flex-col gap-4 text-gray-400 relative z-10">
-                <button className="hover:text-white transition-colors p-2 hover:bg-white/5 rounded-full" aria-label="Share">
-                <Share2 className="w-5 h-5" />
-                </button>
-                <button className="hover:text-white transition-colors p-2 hover:bg-white/5 rounded-full" aria-label="Bookmark">
-                <Bookmark className="w-5 h-5" />
-                </button>
+
+        <div className="flex gap-3 md:flex-col">
+          <Link
+            href="/about"
+            className="inline-flex items-center justify-center rounded-full border border-paperfolio-line px-5 py-3 text-sm font-semibold text-paperfolio-text hover:border-paperfolio-accent-blue/35 hover:text-paperfolio-accent-blue"
+          >
+            소개 보기
+          </Link>
+          <Link
+            href="/#contact"
+            className="inline-flex items-center justify-center rounded-full bg-paperfolio-text px-5 py-3 text-sm font-semibold text-white hover:bg-paperfolio-accent-blue"
+          >
+            문의하기
+          </Link>
         </div>
+      </div>
     </div>
   );
 }

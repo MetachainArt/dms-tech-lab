@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
+import Link from "next/link";
 
 interface PostItem {
   slug: string;
@@ -17,56 +17,56 @@ interface SeriesPostListProps {
   color: string;
 }
 
+const colorVariants: Record<string, { badge: string; line: string }> = {
+  purple: { badge: "bg-[#ede7fb] text-[#6d4bc3]", line: "bg-[#6d4bc3]" },
+  rose: { badge: "bg-[#fde8ee] text-[#b25072]", line: "bg-[#b25072]" },
+  teal: { badge: "bg-[#e0f4f2] text-[#266b63]", line: "bg-[#266b63]" },
+  blue: { badge: "bg-[#e2ecf3] text-[#2f5d7c]", line: "bg-[#2f5d7c]" },
+  emerald: { badge: "bg-[#e4f3ea] text-[#2f7d59]", line: "bg-[#2f7d59]" },
+  pink: { badge: "bg-[#f9e6ef] text-[#b45f84]", line: "bg-[#b45f84]" },
+  orange: { badge: "bg-[#f7eadc] text-[#b16b2c]", line: "bg-[#b16b2c]" },
+  yellow: { badge: "bg-[#f8f0dc] text-[#9a7a26]", line: "bg-[#9a7a26]" },
+};
+
 export default function SeriesPostList({ posts, color }: SeriesPostListProps) {
+  const variant = colorVariants[color] || colorVariants.blue;
+
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-8">
-      {posts.map((post, index) => (
-        <Link 
-            key={post.slug} 
-            href={`/blog/${post.slug}`}
-            className="group block relative pl-8 md:pl-0"
+    <div className="space-y-5">
+      {posts.map((post) => (
+        <Link
+          key={post.slug}
+          href={`/blog/${post.slug}`}
+          className="group block rounded-[30px] border border-paperfolio-line bg-white px-6 py-6 shadow-[0_16px_55px_rgba(31,41,55,0.05)] hover:-translate-y-0.5 hover:border-paperfolio-accent-blue/35"
         >
-          {/* Vertical Line Connector */}
-          {index !== posts.length - 1 && (
-            <div className={`absolute left-[4px] md:left-[-24px] top-6 bottom-[-32px] w-[1px] bg-white/10 group-hover:bg-${color}-500/50 transition-colors`} />
-          )}
-
-          <div className="flex items-start gap-6">
-             {/* Chapter Number Badge */}
-             {post.chapter && (
-               <div className="hidden md:flex flex-col items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-[#0A1124] group-hover:border-neon-sky/50 group-hover:shadow-[0_0_15px_rgba(0,255,255,0.2)] transition-all z-10 shrink-0">
-                  <span className={`text-[10px] text-gray-500 font-bold uppercase`}>No.</span>
-                  <span className={`text-lg font-bold text-white group-hover:text-neon-sky`}>{post.chapter}</span>
-               </div>
-             )}
-
-             {/* Content */}
-             <div className="flex-grow p-6 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
-                <div className="flex justify-between items-start mb-2">
-                    <div>
-                      {post.chapter && (
-                        <span className={`text-xs font-bold text-${color}-400 px-2 py-1 rounded bg-${color}-500/10`}>
-                            Chapter {post.chapter}
-                        </span>
-                      )}
-                    </div>
-                    <div className="flex items-center gap-3 text-xs text-gray-500">
-                        <span>{post.date}</span>
-                        <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {post.readTime}</span>
-                    </div>
-                </div>
-                
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-neon-sky transition-colors">
-                    {post.title}
+          <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
+            <div className="space-y-4">
+              {post.chapter && (
+                <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] ${variant.badge}`}>
+                  글 {post.chapter}
+                </span>
+              )}
+              <div className="space-y-3">
+                <h3 className="text-2xl font-semibold tracking-tight text-paperfolio-text group-hover:text-paperfolio-accent-blue">
+                  {post.title}
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed line-clamp-2 mb-4">
-                    {post.excerpt}
-                </p>
-                
-                <div className="flex items-center text-sm font-semibold text-gray-300 group-hover:text-white transition-colors">
-                    {post.chapter ? 'Read Chapter' : 'Read Article'} <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </div>
-             </div>
+                <p className="max-w-2xl text-sm leading-7 text-paperfolio-text-muted">{post.excerpt}</p>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-4 md:items-end">
+              <div className="flex flex-wrap items-center gap-3 text-xs text-paperfolio-text-muted md:justify-end">
+                <time dateTime={post.date}>{post.date}</time>
+                <span className="inline-flex items-center gap-1.5">
+                  <Clock className="h-3.5 w-3.5" />
+                  {post.readTime}
+                </span>
+              </div>
+              <span className="inline-flex items-center gap-2 text-sm font-semibold text-paperfolio-text group-hover:text-paperfolio-accent-blue">
+                읽어보기
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </span>
+            </div>
           </div>
         </Link>
       ))}

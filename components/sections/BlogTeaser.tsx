@@ -17,13 +17,13 @@ export default function BlogTeaser({ posts, variant }: BlogTeaserProps) {
   }
 
   return (
-    <section className="w-full py-20 px-6 bg-[#050B1B]" aria-label="최신 인사이트">
+    <section className="w-full py-20 px-6 bg-[#FDFCF8]" aria-label="최신 글">
       <div className="max-w-7xl mx-auto">
         <div className="mb-10 flex items-end justify-between gap-6">
           <div>
-            <p className="text-neon-sky text-sm font-semibold tracking-widest uppercase mb-3">Latest Insights</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-white">최신 인사이트</h2>
-            <p className="text-white/60 mt-3">실무에서 바로 적용 가능한 자동화, AI, 엔지니어링 콘텐츠를 확인하세요.</p>
+            <p className="text-stone-500 text-sm font-semibold tracking-widest uppercase mb-3">리도 인사이트</p>
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-stone-900">최신 글</h2>
+            <p className="text-stone-500 mt-3">실무에서 바로 적용 가능한 자동화, AI, 엔지니어링 콘텐츠를 확인하세요.</p>
           </div>
           <Link
             href="/blog"
@@ -37,15 +37,15 @@ export default function BlogTeaser({ posts, variant }: BlogTeaserProps) {
                 variant,
               })
             }
-            className="hidden md:inline-flex px-5 py-2.5 rounded-xl border border-white/15 text-white/85 hover:border-neon-sky/40 hover:text-white transition-colors"
+            className="hidden md:inline-flex px-5 py-2.5 rounded-xl border border-stone-200 text-stone-600 hover:border-stone-300 hover:text-stone-900 transition-colors"
           >
-            인사이트 더 보기
+            글 더 보기
           </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {posts.map((post, index) => (
-            <article key={post.slug} className="rounded-2xl overflow-hidden border border-white/10 bg-white/[0.04] group">
+            <article key={post.slug} className="rounded-2xl overflow-hidden border border-stone-200 bg-white group">
               <Link
                 href={`/blog/${post.slug}`}
                 onClick={() =>
@@ -70,9 +70,9 @@ export default function BlogTeaser({ posts, variant }: BlogTeaserProps) {
                   />
                 </div>
                 <div className="p-5">
-                  <p className="text-xs text-neon-sky mb-2">{String(post.frontMatter.date)}</p>
-                  <h3 className="text-white font-bold text-lg leading-snug line-clamp-2 mb-2">{String(post.frontMatter.title)}</h3>
-                  <p className="text-white/60 text-sm line-clamp-3">{String(post.frontMatter.excerpt)}</p>
+                  <p className="text-xs text-stone-500 mb-2">{String(post.frontMatter.date)}</p>
+                  <h3 className="text-stone-900 font-bold text-lg leading-snug line-clamp-2 mb-2">{String(post.frontMatter.title)}</h3>
+                  <p className="text-stone-600 text-sm line-clamp-3">{String(post.frontMatter.excerpt)}</p>
                 </div>
               </Link>
             </article>
@@ -92,9 +92,9 @@ export default function BlogTeaser({ posts, variant }: BlogTeaserProps) {
                 variant,
               })
             }
-            className="inline-flex px-5 py-2.5 rounded-xl border border-white/15 text-white/85 hover:border-neon-sky/40 hover:text-white transition-colors"
+            className="inline-flex px-5 py-2.5 rounded-xl border border-stone-200 text-stone-600 hover:border-stone-300 hover:text-stone-900 transition-colors"
           >
-            인사이트 더 보기
+            글 더 보기
           </Link>
         </div>
       </div>

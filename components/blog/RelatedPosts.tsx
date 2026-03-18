@@ -1,7 +1,5 @@
-import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
-import { MDXPost } from "@/lib/mdx";
+import Link from "next/link";
 
 interface RelatedPostsProps {
   posts: {
@@ -10,51 +8,46 @@ interface RelatedPostsProps {
     excerpt: string;
     coverImage?: string;
     series?: string;
+    date?: string;
   }[];
 }
 
 export default function RelatedPosts({ posts }: RelatedPostsProps) {
-  if (posts.length === 0) return null;
+  if (posts.length === 0) {
+    return null;
+  }
 
   return (
-    <div className="mt-16 pt-12 border-t border-white/10">
-      <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-        <span className="h-[2px] w-8 bg-neon-sky" />
-        이 글도 읽어보세요
-      </h3>
+    <div className="mt-16 border-t border-paperfolio-line pt-12">
+      <div className="mb-8 space-y-3">
+        <p className="text-sm font-semibold uppercase tracking-[0.22em] text-paperfolio-accent-blue">함께 읽기</p>
+        <h3 className="text-3xl font-semibold tracking-tight text-paperfolio-text">이 글도 같이 읽어보세요</h3>
+      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {posts.map((post) => (
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="group block rounded-2xl bg-white/5 border border-white/10 overflow-hidden hover:border-white/20 hover:bg-white/[0.07] transition-all duration-300"
+            className="group overflow-hidden rounded-[28px] border border-paperfolio-line bg-white shadow-[0_16px_55px_rgba(31,41,55,0.05)] hover:-translate-y-0.5 hover:border-paperfolio-accent-blue/35"
           >
-            {/* Image */}
             {post.coverImage && (
-              <div className="relative h-36 w-full overflow-hidden">
-                <Image
-                  src={post.coverImage}
-                  alt={post.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050B1B]/80 to-transparent" />
+              <div className="relative h-40 w-full overflow-hidden bg-paperfolio-surface">
+                <Image src={post.coverImage} alt={post.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" />
               </div>
             )}
 
-            {/* Content */}
-            <div className="p-5">
-              {post.series && (
-                <span className="inline-block px-2 py-1 rounded-full bg-neon-sky/10 text-neon-sky text-xs font-medium border border-neon-sky/20 mb-3">
-                  {post.series}
-                </span>
-              )}
-              <h4 className="text-white font-semibold text-base mb-2 line-clamp-2 group-hover:text-neon-sky transition-colors">
-                {post.title}
-              </h4>
-              <p className="text-white/40 text-sm line-clamp-2">{post.excerpt}</p>
+            <div className="space-y-3 p-5">
+              <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-paperfolio-text-muted">
+                {post.series && (
+                  <span className="rounded-full border border-paperfolio-accent-blue/20 bg-paperfolio-accent-blue/10 px-2.5 py-1 text-paperfolio-accent-blue">
+                    {post.series}
+                  </span>
+                )}
+                {post.date && <span>{post.date}</span>}
+              </div>
+              <h4 className="text-lg font-semibold tracking-tight text-paperfolio-text group-hover:text-paperfolio-accent-blue">{post.title}</h4>
+              <p className="text-sm leading-7 text-paperfolio-text-muted">{post.excerpt}</p>
             </div>
           </Link>
         ))}

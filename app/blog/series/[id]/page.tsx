@@ -1,59 +1,68 @@
-
-import SeriesPostList from "@/components/blog/SeriesPostList";
-import SeriesHeader from "@/components/blog/SeriesHeader";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+import SeriesHeader from "@/components/blog/SeriesHeader";
+import SeriesPostList from "@/components/blog/SeriesPostList";
 import { BLOG_SERIES } from "@/lib/blog-data";
+import { generateMetadata as generateSeoMetadata } from "@/lib/metadata";
 import { getPostsBySeries } from "@/lib/mdx";
 
 export async function generateStaticParams() {
-    return Object.keys(BLOG_SERIES).map((id) => ({
-        id: id,
-    }));
+  return Object.keys(BLOG_SERIES).map((id) => ({ id }));
+}
+
+export async function generateMetadata(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
+  const series = BLOG_SERIES[params.id];
+
+  if (!series) {
+    return;
+  }
+
+  return generateSeoMetadata({
+    title: `${series.title} 시리즈`,
+    description: series.description,
+    path: `/blog/series/${series.id}`,
+    image: series.coverImage,
+  });
 }
 
 export default async function SeriesDetailPage(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;
   const id = params.id;
-  const data = BLOG_SERIES[id];
+  const series = BLOG_SERIES[id];
 
-  if (!data) {
-    return (
-      <div className="min-h-screen bg-[#050B1B] text-white flex items-center justify-center">
-        <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4">Series Not Found</h1>
-            <Link href="/blog" className="text-neon-sky hover:underline">Return to Blog</Link>
-        </div>
-      </div>
-    );
+  if (!series) {
+    notFound();
   }
 
   const posts = await getPostsBySeries(id);
-  
-  // Transform MDX posts to the format SeriesPostList expects
-  const formattedPosts = posts.map(post => ({
+
+  const formattedPosts = posts.map((post) => ({
     slug: post.slug,
-    chapter: post.frontMatter.chapter,
-    title: post.frontMatter.title,
-    excerpt: post.frontMatter.excerpt,
-    date: post.frontMatter.date,
-    readTime: post.frontMatter.readTime || "5 min"
+    chapter: typeof post.frontMatter.chapter === "string" ? post.frontMatter.chapter : undefined,
+    title: String(post.frontMatter.title),
+    excerpt: String(post.frontMatter.excerpt),
+    date: String(post.frontMatter.date),
+    readTime: typeof post.frontMatter.readTime === "string" ? post.frontMatter.readTime : "5 min",
   }));
 
   return (
-    <main className="w-full min-h-screen bg-[#050B1B] text-white font-poppins selection:bg-neon-sky selection:text-[#050B1B] relative">
+    <main className="min-h-screen bg-paperfolio-bg text-paperfolio-text selection:bg-paperfolio-accent-yellow/70 selection:text-paperfolio-text">
+      <section className="px-6 pt-36">
+        <div className="mx-auto max-w-7xl">
+          <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-paperfolio-text-muted hover:text-paperfolio-accent-blue">
+            글 목록으로 돌아가기
+          </Link>
+        </div>
+      </section>
 
-      {/* Header Section (Client Component for Animations) */}
-      <div className="relative z-10">
-        <SeriesHeader series={data} postCount={posts.length} />
+      <SeriesHeader series={series} postCount={posts.length} />
 
-        {/* Post List Section */}
-        <section className="px-6 pb-32">
-          <div className="max-w-4xl mx-auto">
-              <SeriesPostList posts={formattedPosts} color={data.color} />
-          </div>
-        </section>
-      </div>
-
+      <section className="px-6 pb-28">
+        <div className="mx-auto max-w-5xl">
+          <SeriesPostList posts={formattedPosts} color={series.color} />
+        </div>
+      </section>
     </main>
   );
 }
