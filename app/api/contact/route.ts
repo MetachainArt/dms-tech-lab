@@ -23,7 +23,27 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { email, firstName, lastName, message } = body;
+    const {
+      email,
+      firstName,
+      lastName,
+      name,
+      company,
+      inquiryType,
+      budget,
+      timeline,
+      message,
+    } = body as {
+      email?: string;
+      firstName?: string;
+      lastName?: string;
+      name?: string;
+      company?: string;
+      inquiryType?: string;
+      budget?: string;
+      timeline?: string;
+      message?: string;
+    };
 
     // 기본 유효성 검사
     if (!email || !email.includes("@")) {
@@ -40,52 +60,58 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const fullName = `${lastName || ""} ${firstName || ""}`.trim() || "이름 없음";
+    const fullName = name?.trim() || `${lastName || ""} ${firstName || ""}`.trim() || "이름 없음";
+    const detailRows = [
+      ["이름", fullName],
+      ["이메일", email],
+      ["회사/팀", company],
+      ["문의 유형", inquiryType],
+      ["예산", budget],
+      ["희망 일정", timeline],
+      ["내용", message],
+    ].filter(([, value]) => Boolean(value));
 
     // Resend API 키가 설정된 경우 실제 이메일 발송
     if (resend) {
       // 관리자에게 알림 이메일
       await resend.emails.send({
-        from: "DMS.LAB 문의 <onboarding@resend.dev>",
+        from: "Reedo 문의 <onboarding@resend.dev>",
         to: [RECIPIENT_EMAIL],
-        subject: `[DMS.LAB] 새 문의: ${fullName}`,
+        subject: `[Reedo] 새 문의: ${fullName}`,
         html: `
           <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2 style="color: #0ea5e9;">📩 새로운 문의가 도착했습니다</h2>
+            <h2 style="color: #2f5d7c;">📩 새로운 문의가 도착했습니다</h2>
             <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+              ${detailRows
+                .map(
+                  ([label, value]) => `
               <tr>
-                <td style="padding: 12px; border-bottom: 1px solid #eee; font-weight: bold; width: 100px;">이름</td>
-                <td style="padding: 12px; border-bottom: 1px solid #eee;">${fullName}</td>
-              </tr>
-              <tr>
-                <td style="padding: 12px; border-bottom: 1px solid #eee; font-weight: bold;">이메일</td>
-                <td style="padding: 12px; border-bottom: 1px solid #eee;">${email}</td>
-              </tr>
-              <tr>
-                <td style="padding: 12px; border-bottom: 1px solid #eee; font-weight: bold;">내용</td>
-                <td style="padding: 12px; border-bottom: 1px solid #eee; white-space: pre-wrap;">${message}</td>
-              </tr>
+                <td style="padding: 12px; border-bottom: 1px solid #eee; font-weight: bold; width: 110px;">${label}</td>
+                <td style="padding: 12px; border-bottom: 1px solid #eee; white-space: pre-wrap;">${value}</td>
+              </tr>`
+                )
+                .join("")}
             </table>
-            <p style="color: #999; font-size: 12px;">DMS.LAB 홈페이지에서 발송됨</p>
+            <p style="color: #999; font-size: 12px;">Reedo 홈페이지에서 발송됨</p>
           </div>
         `,
       });
 
       // 문의자에게 자동 응답 이메일
       await resend.emails.send({
-        from: "DMS.LAB <onboarding@resend.dev>",
+        from: "Reedo <onboarding@resend.dev>",
         to: [email],
-        subject: "[DMS.LAB] 문의가 접수되었습니다",
+        subject: "[Reedo] 문의가 접수되었습니다",
         html: `
           <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2 style="color: #0ea5e9;">감사합니다, ${fullName}님! 🙏</h2>
+            <h2 style="color: #2f5d7c;">감사합니다, ${fullName}님! 🙏</h2>
             <p>문의가 정상적으로 접수되었습니다.</p>
             <p>담당자가 확인 후 <strong>24시간 이내</strong>에 연락드리겠습니다.</p>
             <hr style="margin: 24px 0; border: none; border-top: 1px solid #eee;" />
             <p style="color: #666; font-size: 14px;">보내주신 내용:</p>
-            <blockquote style="margin: 12px 0; padding: 12px 16px; border-left: 3px solid #0ea5e9; background: #f9f9f9; white-space: pre-wrap;">${message}</blockquote>
+            <blockquote style="margin: 12px 0; padding: 12px 16px; border-left: 3px solid #2f5d7c; background: #f9f9f9; white-space: pre-wrap;">${message}</blockquote>
             <p style="color: #999; font-size: 12px; margin-top: 24px;">
-              DMS.LAB | <a href="https://dmssolution.co.kr" style="color: #0ea5e9;">dmssolution.co.kr</a>
+              Reedo | <a href="https://dmssolution.co.kr" style="color: #2f5d7c;">dmssolution.co.kr</a>
             </p>
           </div>
         `,

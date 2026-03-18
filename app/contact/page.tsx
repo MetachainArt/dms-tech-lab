@@ -1,7 +1,8 @@
-import ContactHero from './components/ContactHero';
-import ContactMainSection from './components/ContactMainSection';
-import LocationSection from './components/LocationSection';
-import ContactCTA from './components/ContactCTA';
+import { generateMetadata as generateSeoMetadata } from "@/lib/metadata";
+import ContactCTA from "./components/ContactCTA";
+import ContactHero from "./components/ContactHero";
+import ContactMainSection from "./components/ContactMainSection";
+import LocationSection from "./components/LocationSection";
 
 interface ContactPageProps {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
@@ -9,15 +10,17 @@ interface ContactPageProps {
 
 function toSingleValue(value: string | string[] | undefined): string {
   if (Array.isArray(value)) {
-    return value[0] || '';
+    return value[0] || "";
   }
-  return value || '';
+
+  return value || "";
 }
 
-export const metadata = {
-  title: 'Contact | DMS Solution',
-  description: '프로젝트에 대한 문의나 협업 제안을 환영합니다. DMS Solution과 함께 아이디어를 현실로 만들어 보세요.',
-};
+export const metadata = generateSeoMetadata({
+  title: "문의",
+  description: "리도와 자동화, 설계, 교육, 콘텐츠 작업에 대해 편하게 이야기할 수 있는 문의 페이지입니다.",
+  path: "/contact",
+});
 
 export default async function ContactPage({ searchParams }: ContactPageProps) {
   const resolvedSearchParams = await searchParams;
@@ -31,7 +34,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
   };
 
   return (
-    <main className="min-h-screen bg-[#050B1B] text-white font-poppins selection:bg-neon-sky selection:text-[#050B1B] relative">
+    <main className="min-h-screen bg-paperfolio-bg text-paperfolio-text selection:bg-paperfolio-accent-yellow/70 selection:text-paperfolio-text">
       <ContactHero />
       <ContactMainSection assessmentPrefill={assessmentPrefill} />
       <LocationSection />
