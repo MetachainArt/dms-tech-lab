@@ -1,0 +1,22 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111827"/>
+      <stop offset="1" stop-color="#1E293B"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg2)"/>
+  <rect x="120" y="110" width="1360" height="680" rx="28" fill="#0F172A" stroke="#60A5FA" stroke-opacity="0.45"/>
+  <rect x="220" y="220" width="250" height="460" rx="20" fill="#1D4ED8" fill-opacity="0.22" stroke="#93C5FD"/>
+  <rect x="520" y="280" width="250" height="400" rx="20" fill="#0EA5E9" fill-opacity="0.2" stroke="#7DD3FC"/>
+  <rect x="820" y="350" width="250" height="330" rx="20" fill="#06B6D4" fill-opacity="0.2" stroke="#67E8F9"/>
+  <rect x="1120" y="420" width="250" height="260" rx="20" fill="#14B8A6" fill-opacity="0.2" stroke="#5EEAD4"/>
+  <path d="M250 680V200" stroke="#BFDBFE" stroke-dasharray="8 10"/>
+  <path d="M550 680V260" stroke="#BAE6FD" stroke-dasharray="8 10"/>
+  <path d="M850 680V330" stroke="#A5F3FC" stroke-dasharray="8 10"/>
+  <path d="M1150 680V400" stroke="#99F6E4" stroke-dasharray="8 10"/>
+  <text x="210" y="760" fill="#E0F2FE" font-size="34" font-family="Pretendard, Arial, sans-serif" font-weight="700">Core</text>
+  <text x="510" y="760" fill="#E0F2FE" font-size="34" font-family="Pretendard, Arial, sans-serif" font-weight="700">Upsell</text>
+  <text x="810" y="760" fill="#E0F2FE" font-size="34" font-family="Pretendard, Arial, sans-serif" font-weight="700">Bundle</text>
+  <text x="1110" y="760" fill="#E0F2FE" font-size="34" font-family="Pretendard, Arial, sans-serif" font-weight="700">Retention</text>
+</svg>
