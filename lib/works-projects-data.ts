@@ -36,7 +36,7 @@ export const WORKS_DATA: Record<string, WorkLanding> = {
         id: "sj-atelier",
         title: "SJ Atelier 기술 자문",
         subtitle: "AI AUTOMATION CONSULTING",
-        description: "콘텐츠 운영과 GPT 활용 흐름을 실제 업무에 맞게 다시 정리하고, 9시간 자문 커리큘럼으로 연결한 교육 설계 프로젝트입니다.",
+        description: "콘텐츠 운영과 GPT 활용 흐름을 실제 업무에 맞게 다시 정리하고, 자문 커리큘럼으로 연결한 교육 설계 프로젝트입니다.",
         coverImage: "/images/sj.png",
         color: "blue",
         tags: ["자동화", "교육", "컨설팅"],
