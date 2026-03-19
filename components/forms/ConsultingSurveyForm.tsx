@@ -64,28 +64,34 @@ const PDFReport = forwardRef<HTMLDivElement, { data: SurveyData }>(({ data }, re
     const displayValue = Array.isArray(value) ? (value.length > 0 ? value.join(", ") : "-") : (value || "-");
     return (
       <div className="mb-5 break-inside-avoid">
-        <p className="text-[13px] font-semibold text-gray-400 mb-1">{label}</p>
-        <p className="text-[15px] text-gray-900 leading-snug font-medium break-keep">{displayValue}</p>
+        <p className="text-[13px] font-semibold mb-1" style={{ color: '#9ca3af' }}>{label}</p>
+        <p className="text-[15px] leading-snug font-medium break-keep" style={{ color: '#111827' }}>{displayValue}</p>
       </div>
     );
   };
 
+  const badgeStyle = { backgroundColor: '#f9fafb', borderColor: '#f3f4f6', color: '#111827' };
+  const borderBottomStyle = { borderColor: '#e5e7eb' };
+  const h2Style = { color: '#1f2937' };
+
   return (
     <div 
       ref={ref} 
-      className="w-[900px] min-h-[1272px] bg-white p-14 text-gray-800"
+      className="w-[900px] min-h-[1272px] p-14"
       style={{ 
-        fontFamily: "'Pretendard Variable', Pretendard, sans-serif"
+        fontFamily: "'Pretendard Variable', Pretendard, sans-serif",
+        backgroundColor: '#ffffff',
+        color: '#1f2937'
       }}
     >
-      <div className="border-b-[3px] py-6 border-gray-900 flex justify-between items-end mb-10">
+      <div className="border-b-[3px] py-6 flex justify-between items-end mb-10" style={{ borderColor: '#111827' }}>
         <div>
-          <p className="text-sm font-bold tracking-widest text-paperfolio-accent-blue mb-2 uppercase">SJ Atelier Consulting</p>
-          <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 mb-2">사전 질의응답 리포트</h1>
-          <p className="text-gray-500 font-medium">자동화 및 기술교육 과정</p>
+          <p className="text-sm font-bold tracking-widest mb-2 uppercase" style={{ color: '#2f5d7c' }}>SJ Atelier Consulting</p>
+          <h1 className="text-4xl font-extrabold tracking-tight mb-2" style={{ color: '#111827' }}>사전 질의응답 리포트</h1>
+          <p className="font-medium" style={{ color: '#6b7280' }}>자동화 및 기술교육 과정</p>
         </div>
         <div className="text-right">
-          <p className="text-sm font-medium text-gray-400">Date: {new Date().toLocaleDateString('ko-KR')}</p>
+          <p className="text-sm font-medium" style={{ color: '#9ca3af' }}>Date: {new Date().toLocaleDateString('ko-KR')}</p>
         </div>
       </div>
 
@@ -93,29 +99,29 @@ const PDFReport = forwardRef<HTMLDivElement, { data: SurveyData }>(({ data }, re
         {/* COLUMN 1 */}
         <div className="flex flex-col gap-6">
           <section>
-            <h2 className="text-[18px] font-bold border-b border-gray-200 pb-2 mb-5 text-gray-800">1. 현재 해결 과제</h2>
+            <h2 className="text-[18px] font-bold border-b pb-2 mb-5" style={{ ...borderBottomStyle, ...h2Style }}>1. 현재 해결 과제</h2>
             <ReportItem label="Q1. 시간을 가장 많이 쓰는 작업" value={data.q1.map(v => v === '기타' && data.q1_other ? `기타(${data.q1_other})` : v)} />
             <ReportItem label="Q2. 1순위 해결 과제" value={data.q2 === '기타' && data.q2_other ? `기타(${data.q2_other})` : data.q2} />
             <div className="mb-5 break-inside-avoid">
-              <p className="text-[13px] font-semibold text-gray-400 mb-2">Q3. 우선순위</p>
-              <div className="grid grid-cols-2 gap-2 text-[14px] text-gray-900 font-medium">
-                <span className="bg-gray-50 px-3 py-2 rounded-lg border border-gray-100 shadow-sm">📰 뉴스레터: {data.q3.newsletter || "-"}</span>
-                <span className="bg-gray-50 px-3 py-2 rounded-lg border border-gray-100 shadow-sm">📱 블로그/SNS: {data.q3.blog || "-"}</span>
-                <span className="bg-gray-50 px-3 py-2 rounded-lg border border-gray-100 shadow-sm">🎨 이미지 제작: {data.q3.image || "-"}</span>
-                <span className="bg-gray-50 px-3 py-2 rounded-lg border border-gray-100 shadow-sm">🌐 홈페이지: {data.q3.portfolio || "-"}</span>
+              <p className="text-[13px] font-semibold mb-2" style={{ color: '#9ca3af' }}>Q3. 우선순위</p>
+              <div className="grid grid-cols-2 gap-2 text-[14px] font-medium">
+                <span className="px-3 py-2 rounded-lg border shadow-sm" style={badgeStyle}>📰 뉴스레터: {data.q3.newsletter || "-"}</span>
+                <span className="px-3 py-2 rounded-lg border shadow-sm" style={badgeStyle}>📱 블로그/SNS: {data.q3.blog || "-"}</span>
+                <span className="px-3 py-2 rounded-lg border shadow-sm" style={badgeStyle}>🎨 이미지 제작: {data.q3.image || "-"}</span>
+                <span className="px-3 py-2 rounded-lg border shadow-sm" style={badgeStyle}>🌐 홈페이지: {data.q3.portfolio || "-"}</span>
               </div>
             </div>
           </section>
 
           <section>
-             <h2 className="text-[18px] font-bold border-b border-gray-200 pb-2 mb-5 text-gray-800">2. 자문 방향성</h2>
+             <h2 className="text-[18px] font-bold border-b pb-2 mb-5" style={{ ...borderBottomStyle, ...h2Style }}>2. 자문 방향성</h2>
              <ReportItem label="Q4. 자문 진행 방식" value={data.q4} />
              <ReportItem label="Q5. 기대하는 결과물 1개" value={data.q5} />
              <ReportItem label="Q6. 가장 기대하는 변화" value={data.q6.map(v => v === '기타' && data.q6_other ? `기타(${data.q6_other})` : v)} />
           </section>
 
           <section>
-            <h2 className="text-[18px] font-bold border-b border-gray-200 pb-2 mb-5 text-gray-800">3. 도구와 환경</h2>
+            <h2 className="text-[18px] font-bold border-b pb-2 mb-5" style={{ ...borderBottomStyle, ...h2Style }}>3. 도구와 환경</h2>
             <ReportItem label="Q7. 사용 중인 도구" value={data.q7.map(v => v === '기타' && data.q7_other ? `기타(${data.q7_other})` : v)} />
             <ReportItem label="Q8. 유료 사용 도구" value={data.q8} />
             <ReportItem label="Q9. 실습 환경" value={data.q9} />
@@ -127,7 +133,7 @@ const PDFReport = forwardRef<HTMLDivElement, { data: SurveyData }>(({ data }, re
         {/* COLUMN 2 */}
         <div className="flex flex-col gap-6">
           <section>
-            <h2 className="text-[18px] font-bold border-b border-gray-200 pb-2 mb-5 text-gray-800">4. 콘텐츠 방향</h2>
+            <h2 className="text-[18px] font-bold border-b pb-2 mb-5" style={{ ...borderBottomStyle, ...h2Style }}>4. 콘텐츠 방향</h2>
             <ReportItem label="Q12. 선호 콘텐츠 유형" value={data.q12.map(v => v === '기타' && data.q12_other ? `기타(${data.q12_other})` : v)} />
             <ReportItem label="Q13. 주요 다룰 주제 3가지" value={data.q13} />
             <ReportItem label="Q14. 원하는 톤" value={data.q14} />
@@ -135,7 +141,7 @@ const PDFReport = forwardRef<HTMLDivElement, { data: SurveyData }>(({ data }, re
           </section>
 
           <section>
-            <h2 className="text-[18px] font-bold border-b border-gray-200 pb-2 mb-5 text-gray-800">5. 이미지 제작</h2>
+            <h2 className="text-[18px] font-bold border-b pb-2 mb-5" style={{ ...borderBottomStyle, ...h2Style }}>5. 이미지 제작</h2>
             <ReportItem label="Q16. 이미지 제작 포함 여부" value={data.q16} />
             <ReportItem label="Q17. 주요 용도" value={data.q17} />
             <ReportItem label="Q18. 선호 스타일" value={data.q18} />
@@ -143,14 +149,14 @@ const PDFReport = forwardRef<HTMLDivElement, { data: SurveyData }>(({ data }, re
           </section>
 
           <section>
-            <h2 className="text-[18px] font-bold border-b border-gray-200 pb-2 mb-5 text-gray-800">6. 자동화 방향</h2>
+            <h2 className="text-[18px] font-bold border-b pb-2 mb-5" style={{ ...borderBottomStyle, ...h2Style }}>6. 자동화 방향</h2>
             <ReportItem label="Q20. 가장 궁금한 도구/방식" value={data.q20} />
             <ReportItem label="Q21. 기대하는 자동화 수준" value={data.q21} />
             <ReportItem label="Q22. 자동화 학습 의향" value={data.q22} />
           </section>
 
           <section>
-             <h2 className="text-[18px] font-bold border-b border-gray-200 pb-2 mb-5 text-gray-800">7. 성공 기준</h2>
+             <h2 className="text-[18px] font-bold border-b pb-2 mb-5" style={{ ...borderBottomStyle, ...h2Style }}>7. 성공 기준</h2>
              <ReportItem label="Q23. 만족스러운 자문 결과" value={data.q23} />
              <ReportItem label="Q24. 교육 후 기대 활용 빈도" value={data.q24} />
              <ReportItem label="Q25. 가장 우려되는 점" value={data.q25} />
@@ -158,9 +164,9 @@ const PDFReport = forwardRef<HTMLDivElement, { data: SurveyData }>(({ data }, re
         </div>
       </div>
 
-      <div className="mt-12 pt-6 border-t border-gray-200 text-center flex flex-col items-center">
-        <div className="w-12 h-1 bg-gray-900 mb-4 rounded-full"></div>
-        <p className="text-[12px] font-bold tracking-widest text-gray-400 uppercase">Consulting Preparation Document</p>
+      <div className="mt-12 pt-6 border-t text-center flex flex-col items-center" style={{ borderColor: '#e5e7eb' }}>
+        <div className="w-12 h-1 mb-4 rounded-full" style={{ backgroundColor: '#111827' }}></div>
+        <p className="text-[12px] font-bold tracking-widest uppercase" style={{ color: '#9ca3af' }}>Consulting Preparation Document</p>
       </div>
     </div>
   );
