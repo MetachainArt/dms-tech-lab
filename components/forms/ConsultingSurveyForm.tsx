@@ -4,6 +4,10 @@ import { useState, useRef, ReactNode, forwardRef } from "react";
 import { Copy, Check, Download, Send } from "lucide-react";
 
 type SurveyData = {
+  company: string;
+  name: string;
+  contact: string;
+  email: string;
   q1: string[];
   q2: string;
   q3: { newsletter: string; blog: string; image: string; portfolio: string };
@@ -37,6 +41,7 @@ type SurveyData = {
 };
 
 const initialData: SurveyData = {
+  company: "", name: "", contact: "", email: "",
   q1: [], q2: "", q3: { newsletter: "", blog: "", image: "", portfolio: "" },
   q4: "", q5: "", q6: [], q7: [], q8: "", q9: "", q10: "", q11: "",
   q12: [], q13: "", q14: [], q15: "", q16: "", q17: [], q18: "",
@@ -92,6 +97,16 @@ const PDFReport = forwardRef<HTMLDivElement, { data: SurveyData }>(({ data }, re
         </div>
         <div className="text-right">
           <p className="text-sm font-medium" style={{ color: '#9ca3af' }}>Date: {new Date().toLocaleDateString('ko-KR')}</p>
+        </div>
+      </div>
+
+      <div className="mb-10 rounded-xl p-6" style={{ backgroundColor: '#f9fafb', border: '1px solid #e5e7eb' }}>
+        <h2 className="text-[16px] font-bold mb-4" style={{ color: '#1f2937' }}>신청자 정보</h2>
+        <div className="grid grid-cols-2 gap-4">
+          <ReportItem label="회사/브랜드" value={data.company} />
+          <ReportItem label="성함 (직급)" value={data.name} />
+          <ReportItem label="연락처" value={data.contact} />
+          <ReportItem label="이메일" value={data.email} />
         </div>
       </div>
 
@@ -211,6 +226,7 @@ export default function ConsultingSurveyForm() {
     const q12Res = data.q12.map(v => v === '기타' && data.q12_other ? `기타(${data.q12_other})` : v).join(", ");
 
     return `[자동화 및 기술교육 사전 질의응답]\n\n` + 
+    `[신청자 정보]\n회사/브랜드: ${data.company}\n성함: ${data.name}\n연락처: ${data.contact}\n이메일: ${data.email}\n\n` +
     `1. 현재 가장 해결하고 싶은 문제\n` +
     `Q1: ${q1Res}\nQ2: ${q2Res}\n` +
     `Q3 (뉴스레터/블로그/이미지/홈페이지): ${data.q3.newsletter}/${data.q3.blog}/${data.q3.image}/${data.q3.portfolio}\n\n` +
@@ -326,6 +342,29 @@ export default function ConsultingSurveyForm() {
           이번 과정을 최대한 실질적으로 구성하기 위해 간단한 사전 질의응답을 부탁드립니다.<br />
           답변 주신 내용을 바탕으로 대표님 상황에 맞는 커리큘럼을 정리해보겠습니다.
         </p>
+      </div>
+
+      <SectionTitle title="신청자 기본 정보 (필수)" />
+      
+      <div className="mb-8 rounded-2xl border border-paperfolio-line bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <div>
+            <label className="mb-2 block text-sm font-semibold text-paperfolio-text">회사명 (또는 브랜드명)</label>
+            <input type="text" className="w-full rounded-lg border border-paperfolio-line bg-gray-50 px-4 py-3 outline-none focus:border-paperfolio-accent-blue focus:bg-white transition-colors" placeholder="예: 스튜디오 리도" value={data.company} onChange={(e) => handleText("company", e.target.value)} />
+          </div>
+          <div>
+            <label className="mb-2 block text-sm font-semibold text-paperfolio-text">성함 (직급)</label>
+            <input type="text" className="w-full rounded-lg border border-paperfolio-line bg-gray-50 px-4 py-3 outline-none focus:border-paperfolio-accent-blue focus:bg-white transition-colors" placeholder="예: 홍길동 대표" value={data.name} onChange={(e) => handleText("name", e.target.value)} />
+          </div>
+          <div>
+            <label className="mb-2 block text-sm font-semibold text-paperfolio-text">연락처</label>
+            <input type="text" className="w-full rounded-lg border border-paperfolio-line bg-gray-50 px-4 py-3 outline-none focus:border-paperfolio-accent-blue focus:bg-white transition-colors" placeholder="예: 010-1234-5678" value={data.contact} onChange={(e) => handleText("contact", e.target.value)} />
+          </div>
+          <div>
+            <label className="mb-2 block text-sm font-semibold text-paperfolio-text">이메일 주소</label>
+            <input type="email" className="w-full rounded-lg border border-paperfolio-line bg-gray-50 px-4 py-3 outline-none focus:border-paperfolio-accent-blue focus:bg-white transition-colors" placeholder="예: reedo@example.com" value={data.email} onChange={(e) => handleText("email", e.target.value)} />
+          </div>
+        </div>
       </div>
 
       <SectionTitle title="1. 현재 가장 해결하고 싶은 문제" />
