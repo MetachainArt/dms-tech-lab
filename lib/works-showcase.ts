@@ -31,6 +31,7 @@ export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
     summary: "처음 배우는 사람도 바로 써볼 수 있도록 실습 중심 커리큘럼과 예제를 설계했습니다.",
     tags: ["교육", "AI", "워크숍"],
     image: "/images/AIauto.png",
+    link: "/works/ai-education",
   },
   {
     title: "꿈꾸는 카메라 프로젝트",

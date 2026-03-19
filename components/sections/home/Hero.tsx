@@ -32,7 +32,7 @@ export default function Hero() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-4 sm:flex-row">
+          <div className="flex flex-col gap-4 sm:flex-row flex-wrap">
             <Link
               href="/works"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-paperfolio-text px-7 py-4 text-sm font-semibold text-white shadow-[0_16px_40px_rgba(31,41,55,0.16)] hover:-translate-y-0.5 hover:bg-paperfolio-accent-blue"
