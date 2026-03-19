@@ -91,7 +91,7 @@ const PDFReport = forwardRef<HTMLDivElement, { data: SurveyData }>(({ data }, re
     >
       <div className="border-b-[3px] py-6 flex justify-between items-end mb-10" style={{ borderColor: '#111827' }}>
         <div>
-          <p className="text-sm font-bold tracking-widest mb-2 uppercase" style={{ color: '#2f5d7c' }}>SJ Atelier Consulting</p>
+          <p className="text-sm font-bold tracking-widest mb-2 uppercase" style={{ color: '#2f5d7c' }}>{data.company ? data.company : 'CONSULTING PREPARATION'}</p>
           <h1 className="text-4xl font-extrabold tracking-tight mb-2" style={{ color: '#111827' }}>사전 질의응답 리포트</h1>
           <p className="font-medium" style={{ color: '#6b7280' }}>자동화 및 기술교육 과정</p>
         </div>
