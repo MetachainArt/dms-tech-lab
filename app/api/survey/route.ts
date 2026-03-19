@@ -1,8 +1,14 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-// Default to process.env.RESEND_API_KEY
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResendClient(): Resend | null {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    return null;
+  }
+
+  return new Resend(apiKey);
+}
 
 export async function POST(req: Request) {
   try {
@@ -10,6 +16,13 @@ export async function POST(req: Request) {
 
     if (!text) {
       return NextResponse.json({ error: 'Text content is required' }, { status: 400 });
+    }
+
+    const resend = getResendClient();
+
+    if (!resend) {
+      console.error('RESEND_API_KEY is not configured.');
+      return NextResponse.json({ error: 'Email service is not configured' }, { status: 500 });
     }
 
     const { data, error } = await resend.emails.send({
