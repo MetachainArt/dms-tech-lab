@@ -34,6 +34,13 @@ export default function Hero() {
 
           <div className="flex flex-col gap-4 sm:flex-row flex-wrap">
             <Link
+              href="/survey"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#f3e5ab_0%,#fff7dd_34%,#ead9c4_100%)] px-7 py-4 text-sm font-bold text-paperfolio-text shadow-[0_8px_20px_rgba(210,167,95,0.2)] hover:-translate-y-0.5"
+            >
+              사전 질의응답 작성
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link
               href="/works"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-paperfolio-text px-7 py-4 text-sm font-semibold text-white shadow-[0_16px_40px_rgba(31,41,55,0.16)] hover:-translate-y-0.5 hover:bg-paperfolio-accent-blue"
             >
