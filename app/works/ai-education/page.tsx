@@ -16,7 +16,7 @@ export default function AiEducationLandingPage() {
     <main className="min-h-screen bg-paperfolio-bg text-paperfolio-text selection:bg-paperfolio-accent-yellow/70 selection:text-paperfolio-text">
       <section className="px-6 pb-16 pt-36">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12 space-y-7">
+          <div className="mb-10">
             <Link
               href="/works"
               className="inline-flex items-center gap-2 text-sm font-semibold text-paperfolio-text-muted hover:text-paperfolio-accent-blue"
@@ -24,17 +24,6 @@ export default function AiEducationLandingPage() {
               <ArrowLeft className="h-4 w-4" />
               대표 작업으로 돌아가기
             </Link>
-            <div className="space-y-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">Work</p>
-              <h1 className="paperfolio-display max-w-4xl">{work.title}</h1>
-              <p className="max-w-2xl text-lg leading-8 text-paperfolio-text-muted">{work.description}</p>
-            </div>
-          </div>
-
-          <div className="mb-10 space-y-3">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-coral">진행 프로젝트</p>
-            <h2 className="paperfolio-h1">현재 공개 가능한 교육·자문 프로젝트를 모아둡니다</h2>
-            <p className="paperfolio-body max-w-2xl">각 프로젝트는 문제 정의부터 설계 과정, 실행 루틴까지 단계별로 정리해 포트폴리오처럼 볼 수 있게 구성합니다.</p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
