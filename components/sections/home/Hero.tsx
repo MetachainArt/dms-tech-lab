@@ -17,18 +17,25 @@ export default function Hero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="space-y-8"
         >
-          <div className="inline-flex rounded-full border border-paperfolio-line bg-white/80 px-4 py-2 text-xl font-nanum-pen text-paperfolio-text-muted shadow-sm backdrop-blur">
-            실무형 메이커이자 교육자, 그리고 문제 해결자
+          <div className="inline-flex items-center gap-2 rounded-full border border-paperfolio-accent-blue/30 bg-white/60 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-paperfolio-accent-blue shadow-sm backdrop-blur">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-paperfolio-accent-blue opacity-40"></span>
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-paperfolio-accent-blue"></span>
+            </span>
+            AI & Automation Consulting
           </div>
 
           <div className="space-y-6">
-            <h1 className="paperfolio-display max-w-4xl text-paperfolio-text">
-              복잡한 일은 줄이고,
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 md:text-[4.5rem] md:leading-[1.1]">
+              복잡한 일은 <br className="hidden md:block"/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-paperfolio-accent-blue to-gray-400">줄이고,</span>
               <br />
-              필요한 건 직접 만듭니다.
+              필요한 건 <br className="hidden md:block"/>
+              <span className="text-transparent bg-clip-text bg-[linear-gradient(135deg,#2f5d7c_0%,#1f2937_100%)]">직접 만듭니다.</span>
             </h1>
-            <p className="max-w-2xl text-lg leading-8 text-paperfolio-text-muted md:text-xl">
-              AI 자동화, 3D 설계, 실무형 교육까지. 리도가 직접 만들고, 설명하고, 함께 해결합니다.
+            <p className="max-w-2xl text-lg leading-relaxed text-gray-500 font-medium md:text-xl">
+              AI 자동화, 3D 설계, 실무형 교육까지. <br className="hidden sm:block" />
+              현장에 맞춰 최적화된 시스템을 설계하고, 직접 사용할 수 있도록 가르칩니다.
             </p>
           </div>
 
