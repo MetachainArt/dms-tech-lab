@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="원형 타임블록과 체크 포인트가 배치된 추상 운영 캔버스">
+  <defs>
+    <radialGradient id="bg2" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#102a43"/>
+      <stop offset="100%" stop-color="#0b1021"/>
+    </radialGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg2)"/>
+  <g opacity="0.8" fill="none" stroke="url(#ring)">
+    <circle cx="800" cy="450" r="300" stroke-width="8"/>
+    <circle cx="800" cy="450" r="210" stroke-width="5" opacity="0.8"/>
+    <circle cx="800" cy="450" r="120" stroke-width="3" opacity="0.7"/>
+  </g>
+  <g fill="#c4b5fd" opacity="0.95">
+    <rect x="360" y="190" width="280" height="70" rx="16"/>
+    <rect x="980" y="610" width="260" height="70" rx="16"/>
+    <rect x="700" y="720" width="220" height="64" rx="16"/>
+  </g>
+  <g fill="#facc15" opacity="0.9">
+    <circle cx="1090" cy="265" r="14"/>
+    <circle cx="1215" cy="365" r="14"/>
+    <circle cx="575" cy="635" r="14"/>
+  </g>
+</svg>
