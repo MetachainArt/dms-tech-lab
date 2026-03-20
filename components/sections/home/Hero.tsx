@@ -6,7 +6,9 @@ import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <div className="relative overflow-hidden px-6 pb-18 pt-36">
+    <div className="relative overflow-x-hidden px-6 pb-24 pt-36">
+      {/* Background image 30% opacity */}
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30" style={{ backgroundImage: "url('/images/a14.webp')" }} />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(210,167,95,0.24),transparent_32%),radial-gradient(circle_at_80%_20%,rgba(47,93,124,0.18),transparent_24%)]" />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-paperfolio-accent-blue/20 to-transparent" />
 
@@ -26,12 +28,11 @@ export default function Hero() {
           </div>
 
           <div className="space-y-6">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 md:text-[4.5rem] md:leading-[1.1]">
-              복잡한 일은 <br className="hidden md:block"/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-paperfolio-accent-blue to-gray-400">줄이고,</span>
-              <br />
-              필요한 건 <br className="hidden md:block"/>
-              <span className="text-transparent bg-clip-text bg-[linear-gradient(135deg,#2f5d7c_0%,#1f2937_100%)]">직접 만듭니다.</span>
+            <h1 className="font-playfair text-[3rem] leading-[1.1] tracking-[-0.02em] text-paperfolio-text md:text-[5rem] md:leading-[1.06]">
+              Reduce<br />
+              <span className="italic text-paperfolio-accent-blue">the noise.</span><br />
+              Build what<br />
+              <span className="italic">truly matters.</span>
             </h1>
             <p className="max-w-2xl text-lg leading-relaxed text-gray-500 font-medium md:text-xl">
               AI 자동화, 3D 설계, 실무형 교육까지. <br className="hidden sm:block" />
@@ -73,8 +74,9 @@ export default function Hero() {
             <div className="mb-8 rounded-[28px] bg-[linear-gradient(135deg,#f3e5ab_0%,#fff7dd_34%,#ead9c4_100%)] p-8">
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-paperfolio-accent-blue">Reedo</p>
               <div className="mt-8 space-y-4">
-                <p className="font-playfair text-4xl leading-tight text-paperfolio-text">
-                  기술은 어렵게 말하지 않겠습니다.
+                <p className="font-playfair text-[2rem] leading-[1.25] tracking-[-0.01em] text-paperfolio-text">
+                  Technology,<br />
+                  <span className="italic">explained simply.</span>
                 </p>
                 <p className="text-base leading-7 text-paperfolio-text-muted">
                   현장에서 바로 써볼 수 있는 결과가 남도록 설계하고 자동화하고 가르칩니다.

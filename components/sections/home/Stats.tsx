@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 
 const stats = [
-  { label: "설계·개발 경험", value: "20년 가까이" },
-  { label: "글로벌 현장 지원", value: "9개국" },
-  { label: "핵심 특허", value: "17건" },
-  { label: "문제 해결", value: "실무 중심" },
+  { label: "Years of Experience", value: "20+" },
+  { label: "Countries Supported", value: "9" },
+  { label: "Core Patents", value: "17" },
+  { label: "Approach", value: "Field-First" },
 ];
 
 export default function Stats() {

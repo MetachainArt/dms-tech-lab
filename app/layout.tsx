@@ -1,4 +1,4 @@
-import { Poppins, Playfair_Display } from "next/font/google";
+import { Nanum_Pen_Script, Poppins, DM_Serif_Display, Noto_Serif_KR } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
 import Navbar from "@/components/sections/Navbar";
@@ -19,10 +19,28 @@ const poppins = Poppins({
   fallback: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
 });
 
-const playfair = Playfair_Display({
+// 영문 Display: MAI 사이트 스타일의 클래식 세리프
+const dmSerif = DM_Serif_Display({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-playfair",
+  weight: "400",
+  variable: "--font-playfair", // 기존 변수명 유지 → 컴포넌트 코드 변경 불필요
+  display: "swap",
+  preload: true,
+});
+
+// 한글 세리프: 정갈하고 품격 있는 명조체
+const notoSerifKr = Noto_Serif_KR({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-korean",
+  display: "swap",
+  preload: false,
+});
+
+const nanumPen = Nanum_Pen_Script({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-nanum-pen",
   display: "swap",
 });
 
@@ -83,10 +101,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={clsx(poppins.variable, playfair.variable, "antialiased bg-paperfolio-bg text-paperfolio-text")} suppressHydrationWarning>
+      <body className={clsx(poppins.variable, dmSerif.variable, notoSerifKr.variable, nanumPen.variable, "antialiased bg-paperfolio-bg text-paperfolio-text")} suppressHydrationWarning>
         <Script
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4327440469164693"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           crossOrigin="anonymous"
         />
         <BookingEventBridge />

@@ -16,14 +16,14 @@ export default function Writing({ posts }: WritingProps) {
       <div className="mx-auto max-w-5xl">
         <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">리도 인사이트</p>
-            <h2 className="paperfolio-h1">작업하면서 남긴 기록들</h2>
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">Reedo Insights</p>
+            <h2 className="paperfolio-h1">Notes from<br /><span className="italic">the work.</span></h2>
             <p className="paperfolio-body max-w-2xl">
               자동화, 도구, 감각, 운영 방식에 대해 실무에서 부딪히며 정리한 생각들입니다.
             </p>
           </div>
           <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-paperfolio-text hover:text-paperfolio-accent-coral">
-            글 더 보기
+            Read more
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -45,7 +45,7 @@ export default function Writing({ posts }: WritingProps) {
                 </p>
               </div>
               <span className="inline-flex items-center gap-2 text-sm font-semibold text-paperfolio-text md:shrink-0">
-                읽어보기
+                Read
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </span>
             </Link>

@@ -12,34 +12,35 @@ export const metadata = generateSeoMetadata({
 export default function WorksPage() {
   return (
     <main className="min-h-screen bg-paperfolio-bg text-paperfolio-text selection:bg-paperfolio-accent-yellow/70 selection:text-paperfolio-text">
-      <section className="px-6 pb-16 pt-40">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
-            <div className="space-y-6">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">대표 작업</p>
-              <h1 className="paperfolio-display max-w-4xl">말보다 작업물이 먼저 설명하게 합니다</h1>
-              <p className="max-w-2xl text-lg leading-8 text-paperfolio-text-muted">
-                자동화, 설계, 교육, 콘텐츠를 어떻게 실제 결과로 만들었는지 따로 모았습니다. 홈의 요약 섹션이 아니라, 작업만 따로 보고 판단할 수 있는 페이지입니다.
-              </p>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-              <div className="rounded-[28px] border border-paperfolio-line bg-white px-6 py-5 shadow-[0_16px_50px_rgba(31,41,55,0.05)]">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-coral">대표 작업</p>
-                <p className="mt-3 font-playfair text-3xl text-paperfolio-text">{SHOWCASE_WORKS.length}</p>
-              </div>
-              <div className="rounded-[28px] border border-paperfolio-line bg-white px-6 py-5 shadow-[0_16px_50px_rgba(31,41,55,0.05)]">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">관리 경로</p>
-                <p className="mt-3 text-base font-semibold text-paperfolio-text">`/works` + `content/works`</p>
-              </div>
-              <div className="rounded-[28px] border border-paperfolio-line bg-white px-6 py-5 shadow-[0_16px_50px_rgba(31,41,55,0.05)]">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-yellow">용도</p>
-                <p className="mt-3 text-base font-semibold text-paperfolio-text">사례 + 결과 + 작업 흐름</p>
-              </div>
-            </div>
+      <header className="px-10 py-20 lg:py-28 border-b border-paperfolio-line bg-paperfolio-surface">
+        <div className="mx-auto max-w-7xl flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-paperfolio-accent-coral mb-4">
+              Works
+            </p>
+            <h1 className="font-playfair text-paperfolio-text"
+              style={{ fontSize: "clamp(3.5rem, 9vw, 7rem)", lineHeight: 1.0, letterSpacing: "-0.02em" }}>
+              작업
+            </h1>
+            <p className="font-playfair italic text-paperfolio-text-muted mt-4"
+              style={{ fontSize: "clamp(1rem, 2vw, 1.35rem)" }}>
+              The work speaks before the words do
+            </p>
           </div>
+          <p className="text-sm text-paperfolio-text-muted max-w-sm leading-[1.9]"
+            style={{ fontFamily: "var(--font-korean), serif", wordBreak: "keep-all" }}>
+            자동화, 설계, 교육, 콘텐츠를 어떻게 실제 결과로 만들었는지 따로 모았습니다. 작업만 따로 보고 판단할 수 있는 페이지입니다.
+          </p>
         </div>
-      </section>
+        <div className="mx-auto max-w-7xl mt-14 pt-8 border-t border-paperfolio-line flex items-center justify-between">
+          <span className="text-xs tracking-[0.18em] uppercase text-paperfolio-text-muted">
+            {SHOWCASE_WORKS.length} works
+          </span>
+          <span className="text-xs tracking-[0.18em] uppercase text-paperfolio-text-muted">
+            2024 — 2026
+          </span>
+        </div>
+      </header>
 
       <section className="border-t border-paperfolio-line bg-paperfolio-surface px-6 py-20">
         <div className="mx-auto max-w-7xl">
@@ -47,9 +48,6 @@ export default function WorksPage() {
             <div className="space-y-4">
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">Works</p>
               <h2 className="paperfolio-h1">지금 보고 싶은 작업부터 고르면 됩니다</h2>
-              <p className="paperfolio-body max-w-2xl">
-                글 목록과 분리해 작업만 모아뒀습니다. 필요하면 각 작업 상세로 바로 들어가고, 외부 프로젝트는 그대로 연결됩니다.
-              </p>
             </div>
           </div>
 

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getSeriesTitle } from "@/lib/blog-data";
 
 interface RelatedPostsProps {
   posts: {
@@ -41,7 +42,7 @@ export default function RelatedPosts({ posts }: RelatedPostsProps) {
               <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-paperfolio-text-muted">
                 {post.series && (
                   <span className="rounded-full border border-paperfolio-accent-blue/20 bg-paperfolio-accent-blue/10 px-2.5 py-1 text-paperfolio-accent-blue">
-                    {post.series}
+                    {getSeriesTitle(post.series)}
                   </span>
                 )}
                 {post.date && <span>{post.date}</span>}

@@ -7,20 +7,12 @@ import WhatIDo from "@/components/sections/home/WhatIDo";
 import WorkingStyle from "@/components/sections/home/WorkingStyle";
 import Writing from "@/components/sections/home/Writing";
 import { getAllPosts } from "@/lib/mdx";
-import { Nanum_Pen_Script } from "next/font/google";
-
-const nanumPen = Nanum_Pen_Script({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-nanum-pen",
-  display: "swap",
-});
 
 export default async function Home() {
   const latestPosts = (await getAllPosts()).slice(0, 3);
 
   return (
-    <main className={`min-h-screen overflow-x-hidden bg-paperfolio-bg text-paperfolio-text selection:bg-paperfolio-accent-yellow/70 selection:text-paperfolio-text ${nanumPen.variable}`}>
+    <main className="min-h-screen overflow-x-hidden bg-paperfolio-bg text-paperfolio-text selection:bg-paperfolio-accent-yellow/70 selection:text-paperfolio-text">
       <section id="hero" className="scroll-mt-32" aria-label="첫 화면">
         <Hero />
       </section>

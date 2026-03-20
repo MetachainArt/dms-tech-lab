@@ -11,14 +11,14 @@ export default function SelectedWorks() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="space-y-4">
-            <p className="font-nanum-pen text-2xl text-paperfolio-accent-blue">대표 작업</p>
-            <h2 className="paperfolio-h1">말보다 작업물이 먼저 설명하게 합니다</h2>
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">Selected Works</p>
+            <h2 className="paperfolio-h1">The work speaks<br /><span className="italic">before the words do.</span></h2>
             <p className="paperfolio-body max-w-2xl">
-              화려한 포장보다 문제를 어떻게 풀었는지가 남도록 정리했습니다. 지금 하고 있는 일과 닿는 사례부터 보셔도 좋습니다.
+              Start with whatever feels closest to what you're working on right now.
             </p>
           </div>
           <Link href="/works" className="inline-flex items-center gap-2 text-sm font-semibold text-paperfolio-text hover:text-paperfolio-accent-coral">
-            작업 더 보기
+            See all work
           </Link>
         </div>
 

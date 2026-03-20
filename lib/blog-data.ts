@@ -14,7 +14,7 @@ export const BLOG_SERIES: Record<string, BlogSeries> = {
     title: "Future Arts",
     subtitle: "AI & AESTHETICS",
     description: "기계의 눈으로 본 세상, 알고리즘이 빚어낸 건축, 그리고 합성된 시네마. AI 시대의 예술과 미학을 탐구합니다.",
-    coverImage: "/series/future-arts.png",
+    coverImage: "/images/w1.webp",
     color: "purple",
     tags: ["AI Art", "Cinema", "Architecture"],
   },
@@ -86,7 +86,7 @@ export const BLOG_SERIES: Record<string, BlogSeries> = {
     title: "OpenClaw",
     subtitle: "CHAT AGENT & SKILLS",
     description: "메신저 기반 개인 AI 비서 OpenClaw를 설치, 연결, 스킬, 메모리, 자동화, 운영까지 실전 중심으로 배우는 가이드 시리즈입니다.",
-    coverImage: "/series/openclaw2.png",
+    coverImage: "/images/a12.webp",
     color: "blue",
     tags: ["설치", "채널", "모델", "스킬", "자동화", "운영"],
   }

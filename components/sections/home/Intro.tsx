@@ -13,8 +13,8 @@ export default function Intro() {
           transition={{ duration: 0.6 }}
           className="space-y-4"
         >
-          <p className="font-nanum-pen text-2xl text-paperfolio-accent-blue">소개</p>
-          <h2 className="paperfolio-h2 text-paperfolio-text">안녕하세요. 리도입니다.</h2>
+          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">About</p>
+          <h2 className="paperfolio-h2 text-paperfolio-text">Hello,<br />I'm Reedo.</h2>
         </motion.div>
 
         <motion.div

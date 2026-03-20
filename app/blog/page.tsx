@@ -24,34 +24,39 @@ export default async function BlogPage() {
 
   return (
     <main className="min-h-screen bg-paperfolio-bg text-paperfolio-text selection:bg-paperfolio-accent-yellow/70 selection:text-paperfolio-text">
-      <section className="px-6 pb-16 pt-40">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
-            <div className="space-y-6">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">리도 인사이트</p>
-              <h1 className="paperfolio-display max-w-4xl">작업하면서 남긴 글들</h1>
-              <p className="max-w-2xl text-lg leading-8 text-paperfolio-text-muted">
-                자동화, 설계, 교육, 감각, 운영 방식에 대해 현장에서 부딪히며 정리한 기록들입니다. 답을 과하게 포장하기보다, 다시 꺼내 쓸 수 있는 문장으로 남기려고 합니다.
-              </p>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-              <div className="rounded-[28px] border border-paperfolio-line bg-white px-6 py-5 shadow-[0_16px_50px_rgba(31,41,55,0.05)]">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-coral">인사이트 시리즈</p>
-                <p className="mt-3 font-playfair text-3xl text-paperfolio-text">{seriesWithCount.length}</p>
-              </div>
-              <div className="rounded-[28px] border border-paperfolio-line bg-white px-6 py-5 shadow-[0_16px_50px_rgba(31,41,55,0.05)]">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">전체 글</p>
-                <p className="mt-3 font-playfair text-3xl text-paperfolio-text">{allPosts.length}</p>
-              </div>
-              <div className="rounded-[28px] border border-paperfolio-line bg-white px-6 py-5 shadow-[0_16px_50px_rgba(31,41,55,0.05)]">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-yellow">톤</p>
-                <p className="mt-3 text-base font-semibold text-paperfolio-text">기록 + 통찰 + 실무 메모</p>
-              </div>
-            </div>
+      <header className="px-10 py-20 lg:py-28 border-b border-paperfolio-line bg-paperfolio-surface">
+        <div className="mx-auto max-w-7xl flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-paperfolio-accent-coral mb-4">
+              Reedo Insights
+            </p>
+            <h1 className="font-playfair text-paperfolio-text"
+              style={{ fontSize: "clamp(3.5rem, 9vw, 7rem)", lineHeight: 1.0, letterSpacing: "-0.02em" }}>
+              글
+            </h1>
+            <p className="font-playfair italic text-paperfolio-text-muted mt-4"
+              style={{ fontSize: "clamp(1rem, 2vw, 1.35rem)" }}>
+              Notes from the work
+            </p>
           </div>
+          <p className="text-sm text-paperfolio-text-muted max-w-sm leading-[1.9]"
+            style={{ fontFamily: "var(--font-korean), serif", wordBreak: "keep-all" }}>
+            자동화, 설계, 교육, 감각, 운영 방식에 대해 현장에서 부딪히며 정리한 기록들입니다. 답을 과하게 포장하기보다, 다시 꺼내 쓸 수 있는 문장으로 남기려고 합니다.
+          </p>
+        </div>
+        <div className="mx-auto max-w-7xl mt-14 pt-8 border-t border-paperfolio-line flex items-center justify-between">
+          <span className="text-xs tracking-[0.18em] uppercase text-paperfolio-text-muted">
+            {allPosts.length} posts · {seriesWithCount.length} series
+          </span>
+          <span className="text-xs tracking-[0.18em] uppercase text-paperfolio-text-muted">
+            2024 — 2026
+          </span>
+        </div>
+      </header>
 
-          <div className="mt-14 grid gap-5 lg:grid-cols-3">
+      <section className="px-6 pb-16 pt-14">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-5 lg:grid-cols-3">
             {latestPosts.map((post) => (
               <Link
                 key={post.slug}

@@ -1,120 +1,159 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { Menu, X, Mail } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Search, Menu, X, ArrowUpRight } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navLinks } from "@/constants/navigation";
 
+// 데스크탑: 핵심 4개만 (소개·하는일은 홈 앵커라 생략)
+const desktopLinks = [
+  { name: "작업",   href: "/works" },
+  { name: "글",     href: "/blog"  },
+  { name: "미술관", href: "/gallery" },
+] as const;
+
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const pathname = usePathname();
-  const isAdminPage = pathname?.startsWith("/admin");
 
   const handleMenuOpen = useCallback(() => setIsMobileMenuOpen(true), []);
   const handleMenuClose = useCallback(() => setIsMobileMenuOpen(false), []);
 
-  if (isAdminPage) return null;
+  if (pathname?.startsWith("/admin")) return null;
 
   return (
     <>
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ type: "spring", stiffness: 100, damping: 20 }}
-        className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-4xl"
-        role="navigation"
-        aria-label="메인 네비게이션"
-      >
-        <div className="flex items-center justify-between bg-black text-white px-6 py-3 rounded-full shadow-2xl">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group" aria-label="Reedo 홈으로 이동">
-            <div className="w-8 h-8 border-2 border-white rounded-full flex items-center justify-center overflow-hidden bg-white text-black font-bold text-xs">
-              R
-            </div>
-            <span className="font-playfair font-bold text-lg tracking-tight hidden sm:block">Reedo</span>
-          </Link>
+      {/* MAI-style full-width top navbar */}
+      <header className="fixed top-0 inset-x-0 z-50 bg-paperfolio-surface/95 backdrop-blur-md border-b border-paperfolio-line animate-[fadeIn_0.4s_ease-out_both]">
+        <div className="mx-auto max-w-7xl px-6 md:px-10">
+          <div className="relative flex h-[58px] items-center justify-between">
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="hover:opacity-70 transition-opacity"
-                aria-current={pathname === link.href ? "page" : undefined}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-
-          {/* CTA & Mobile Toggle */}
-          <div className="flex items-center gap-3">
-            <Link
-              href="/#contact"
-              className="hidden md:flex items-center justify-center bg-white text-black p-2 rounded-full hover:bg-gray-200 transition-colors"
-              aria-label="문의하기"
-            >
-              <Mail className="w-4 h-4" />
-            </Link>
+            {/* Left: Search */}
             <button
-              className="md:hidden p-2 text-white hover:opacity-70 transition-opacity"
-              onClick={handleMenuOpen}
-              aria-label="메뉴 열기"
-              aria-expanded={isMobileMenuOpen}
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              className="flex items-center gap-2 text-sm text-paperfolio-text-muted hover:text-paperfolio-text transition-colors"
+              aria-label="검색"
             >
-              <Menu className="w-5 h-5" />
+              <Search className="w-4 h-4" strokeWidth={1.5} />
+              <span className="hidden sm:inline">Search</span>
             </button>
+
+            {/* Center: Brand — absolutely centered */}
+            <Link
+              href="/"
+              className="absolute left-1/2 -translate-x-1/2 font-playfair text-[1.5rem] leading-none text-paperfolio-text tracking-tight hover:opacity-70 transition-opacity"
+              aria-label="Reedo 홈"
+            >
+              Reedo
+            </Link>
+
+            {/* Right: Desktop nav links + CTA */}
+            <div className="flex items-center gap-2">
+              <nav className="hidden lg:flex items-center gap-8 mr-6" aria-label="주요 메뉴">
+                {desktopLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={`text-sm transition-colors ${
+                      pathname === link.href
+                        ? "text-paperfolio-text font-medium"
+                        : "text-paperfolio-text-muted hover:text-paperfolio-text"
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </nav>
+
+              {/* 문의 CTA — 항상 표시 */}
+              <Link
+                href="/#contact"
+                className="hidden sm:flex items-center gap-1 text-sm font-medium text-paperfolio-text hover:text-paperfolio-accent-coral transition-colors"
+              >
+                문의
+                <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={1.5} />
+              </Link>
+
+              {/* Mobile: hamburger */}
+              <button
+                className="lg:hidden ml-3 p-1 text-paperfolio-text-muted hover:text-paperfolio-text transition-colors"
+                onClick={handleMenuOpen}
+                aria-label="메뉴 열기"
+              >
+                <Menu className="w-5 h-5" strokeWidth={1.5} />
+              </button>
+            </div>
           </div>
         </div>
-      </motion.nav>
+
+        {/* Search bar (expandable) */}
+        <AnimatePresence>
+          {isSearchOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="overflow-hidden border-t border-paperfolio-line"
+            >
+              <div className="mx-auto max-w-7xl px-6 md:px-10 py-3">
+                <input
+                  autoFocus
+                  type="search"
+                  placeholder="검색어를 입력하세요..."
+                  className="w-full bg-transparent text-sm text-paperfolio-text placeholder:text-paperfolio-text-muted outline-none"
+                  onKeyDown={(e) => e.key === "Escape" && setIsSearchOpen(false)}
+                />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: "-100%" }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: "-100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[60] bg-white text-black p-6 md:hidden flex flex-col"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[60] bg-paperfolio-surface flex flex-col px-8 py-6 md:hidden"
             role="dialog"
             aria-modal="true"
-            aria-label="모바일 메뉴"
           >
-            <div className="flex justify-end mb-8">
-              <button
-                onClick={handleMenuClose}
-                className="p-2 text-black hover:opacity-70 transition-opacity"
-                aria-label="메뉴 닫기"
-              >
-                <X className="w-8 h-8" />
+            <div className="flex items-center justify-between mb-12">
+              <span className="font-playfair text-2xl text-paperfolio-text">Reedo</span>
+              <button onClick={handleMenuClose} aria-label="메뉴 닫기">
+                <X className="w-6 h-6 text-paperfolio-text-muted" strokeWidth={1.5} />
               </button>
             </div>
 
-            <nav className="flex flex-col gap-8 text-center mt-12" aria-label="모바일 메뉴 네비게이션">
-              {navLinks.map((link) => (
-                <Link
+            <nav className="flex flex-col gap-2" aria-label="모바일 메뉴">
+              {navLinks.map((link, i) => (
+                <motion.div
                   key={link.name}
-                  href={link.href}
-                  onClick={handleMenuClose}
-                  className="text-3xl font-playfair font-bold hover:text-paperfolio-accent-coral transition-colors"
-                  aria-current={pathname === link.href ? "page" : undefined}
+                  initial={{ opacity: 0, x: -16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.06 }}
                 >
-                  {link.name}
-                </Link>
+                  <Link
+                    href={link.href}
+                    onClick={handleMenuClose}
+                    className="block font-playfair text-4xl text-paperfolio-text hover:text-paperfolio-accent-coral transition-colors py-2 border-b border-paperfolio-line"
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
               ))}
-              <Link
-                href="/#contact"
-                onClick={handleMenuClose}
-                className="mt-8 px-8 py-4 bg-black text-white font-bold rounded-full text-lg mx-auto"
-                aria-label="문의하기"
-              >
-                문의하기
-              </Link>
             </nav>
+
+            <div className="mt-auto pt-8 text-sm text-paperfolio-text-muted">
+              AI 자동화 · 3D 설계 · 실무형 교육
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
