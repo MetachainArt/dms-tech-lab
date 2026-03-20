@@ -54,8 +54,8 @@ export const WORKS_DATA: Record<string, WorkLanding> = {
       },
       {
         id: "icheon-ai",
-        title: "생성형 활용 및 바이브코딩 자동화",
-        subtitle: "생성형 AI · 바이브코딩 · 자동화",
+        title: "AI 활용 및 바이브코딩 자동화",
+        subtitle: "AI 활용 · 바이브코딩 · 자동화",
         description: "생성형 AI 활용부터 이미지·영상·음악 생성, 바이브코딩, 자동화, Openclaw까지 — 12회 격주 2시간, 배우고 그날 바로 써볼 수 있게 설계된 실습 중심 AI 커리큘럼입니다.",
         coverImage: "/images/a8.webp",
         color: "coral",
