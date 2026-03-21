@@ -16,6 +16,7 @@ export interface WorkProject {
   color: string;
   tags: string[];
   status: string;
+  category: string;
   steps: WorkStep[];
 }
 
@@ -41,6 +42,7 @@ export const WORKS_DATA: Record<string, WorkLanding> = {
         color: "blue",
         tags: ["자동화", "교육", "컨설팅"],
         status: "진행 중",
+        category: "교육 설계",
         steps: [
           {
             id: "step-1",
@@ -61,6 +63,7 @@ export const WORKS_DATA: Record<string, WorkLanding> = {
         color: "coral",
         tags: ["생성형 AI", "바이브코딩", "자동화", "Openclaw"],
         status: "2026 진행 예정",
+        category: "교육 설계",
         steps: [
           {
             id: "step-1",
@@ -176,6 +179,7 @@ export const WORKS_DATA: Record<string, WorkLanding> = {
         color: "teal",
         tags: ["Openclaw", "SNS", "카드뉴스", "자동화"],
         status: "진행 중",
+        category: "업무 자동화",
         steps: [
           {
             id: "step-1",

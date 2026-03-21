@@ -48,7 +48,7 @@ export default function ProjectSeriesHeader({ project, stepCount }: ProjectSerie
           <div className="grid gap-4 sm:grid-cols-3">
             <div className="rounded-[24px] border border-paperfolio-line bg-white px-5 py-5">
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-paperfolio-text-muted">분류</p>
-              <p className="mt-3 text-lg font-semibold text-paperfolio-text">교육 설계</p>
+              <p className="mt-3 text-lg font-semibold text-paperfolio-text">{project.category}</p>
             </div>
             <div className="rounded-[24px] border border-paperfolio-line bg-white px-5 py-5">
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-paperfolio-text-muted">단계</p>
