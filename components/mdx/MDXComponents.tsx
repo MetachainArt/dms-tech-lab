@@ -89,7 +89,7 @@ export const MDXComponents = {
     <blockquote className="my-8 rounded-[24px] border border-paperfolio-line bg-paperfolio-surface px-6 py-5 font-playfair text-2xl leading-10 text-paperfolio-text" {...props} />
   ),
   hr: (props: ComponentPropsWithoutRef<"hr">) => <hr className="my-10 border-paperfolio-line" {...props} />,
-  pre: (props: PreProps) => <pre className="my-8 overflow-x-auto rounded-[24px] bg-paperfolio-text p-5 text-sm leading-7 text-white" {...props} />,
+  pre: (props: PreProps) => <pre className="my-8 overflow-x-auto rounded-[24px] bg-paperfolio-text p-5 text-sm leading-7 text-white [&_code]:bg-transparent [&_code]:text-white [&_code]:p-0 [&_code]:rounded-none" {...props} />,
   code: (props: CodeProps) => <code className="rounded bg-paperfolio-accent-blue/10 px-1.5 py-0.5 text-[0.92em] text-paperfolio-accent-blue" {...props} />,
   img: (props: ImageProps) => <img className="my-10 w-full rounded-[28px] border border-paperfolio-line" alt={props.alt ?? ""} {...props} />,
 
