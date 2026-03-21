@@ -12,6 +12,7 @@ export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
     summary: "메일, 보고서, 문서 작성처럼 반복되는 업무를 자동화한 사례들입니다.",
     tags: ["자동화", "실무", "생산성"],
     image: "/images/a1.webp",
+    link: "/works/automation",
   },
   {
     title: "PromptBlocks",
