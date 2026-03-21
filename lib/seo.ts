@@ -35,7 +35,7 @@ export const SITE_CONFIG = {
     description:
       "복잡한 일은 줄이고, 필요한 건 직접 만듭니다. 광통신 하드웨어 경험을 바탕으로 AI 자동화, 3D 설계, 실무형 교육을 리도만의 방식으로 연결합니다.",
     image:
-      "https://dmssolution.co.kr/og-image.png",
+      "https://dmssolution.co.kr/images/a21.webp",
     alt: "리도 - 자동화 · 설계 · 교육",
   },
   twitter: {
@@ -44,7 +44,7 @@ export const SITE_CONFIG = {
     description:
       "복잡한 일은 줄이고, 필요한 건 직접 만듭니다.",
     image:
-      "https://dmssolution.co.kr/og-image.png",
+      "https://dmssolution.co.kr/images/a21.webp",
     creator: "@reedoinvest",
   },
 } as const;
