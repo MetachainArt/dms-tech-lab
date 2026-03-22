@@ -141,6 +141,15 @@ select:focus-visible {
   color: var(--color-paperfolio-text-muted);
 }
 
+.editorial-prose pre {
+  color: white !important;
+}
+
+.editorial-prose pre code {
+  color: white !important;
+  background-color: transparent !important;
+}
+
 .editorial-prose > * + * {
   margin-top: 1.5rem;
 }

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import AuthorCard from "@/components/blog/AuthorCard";
 import { MDXComponents } from "@/components/mdx/MDXComponents";
+import StepNavigation from "@/components/works/StepNavigation";
 import { generateMetadata as generateSeoMetadata } from "@/lib/metadata";
 import { WORKS_DATA } from "@/lib/works-projects-data";
 
@@ -83,6 +84,11 @@ export default async function StepDetailPage(props: { params: Promise<{ stepId: 
           <article className="editorial-prose">
             <MDXRemote source={step.content} components={MDXComponents} />
           </article>
+          <StepNavigation
+            steps={project.steps}
+            currentStepId={step.id}
+            basePath="/works/ai-education/icheon-ai"
+          />
           <AuthorCard />
         </div>
       </section>

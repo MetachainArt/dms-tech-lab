@@ -22,10 +22,11 @@ export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
     link: "https://promptblocks.dmssolution.co.kr/",
   },
   {
-    title: "3D 제품 설계 및 구조 검토",
-    summary: "20개 이상의 하드웨어 제품 개발과 상용화 경험을 바탕으로 아이디어를 실제 검토 가능한 구조와 시각화 자료로 바꿉니다.",
-    tags: ["3D", "설계", "제조"],
+    title: "AI 스킬 및 구축",
+    summary: "ComfyUI API 연동, 이미지 생성 파이프라인 구축 등 AI 스킬을 실전에서 직접 구현하고 기록한 공간입니다.",
+    tags: ["ComfyUI", "AI", "파이프라인"],
     image: "/images/a6.webp",
+    link: "/works/ai-skill",
   },
   {
     title: "실무형 AI 교육 프로그램 설계",
