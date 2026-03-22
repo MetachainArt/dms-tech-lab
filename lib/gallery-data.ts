@@ -83,4 +83,34 @@ export const galleryPieces: GalleryPiece[] = [
     layout: "image-left",
     accent: "blue",
   },
+  {
+    id: "chaos-in-my-head",
+    date: "2026. 03",
+    category: "Essay",
+    title: "혼돈의 머릿속",
+    subtitle: "A Mind That Never Stops",
+    body: "배우면 배울수록 모르는 것이 더 많아진다. 혼돈은 무지에서 오는 것이 아니라, 앎의 경계가 선명해질수록 더 깊어진다.",
+    paragraphs: [
+      {
+        type: "text",
+        text: "배우면 배울수록\n모르는 것이 더 많아진다.\n지식의 지평이 넓어질수록\n그 너머의 어둠도 함께 커진다.\n혼돈은 무지에서 오는 것이 아니라\n앎의 경계가 선명해질수록\n더 깊어진다.",
+      },
+      {
+        type: "motto",
+        text: "— 알수록, 더 모른다. —",
+      },
+      {
+        type: "text",
+        text: "어제는 이것을 이해했다 생각했는데\n오늘은 또 다른 개념이 벽처럼 서 있다.\n공부는 정리가 아니라\n계속해서 새로운 혼돈을 만드는 일이다.\n그래도 멈출 수가 없다.\n혼돈 속에서만 진짜 생각이 자라기 때문이다.",
+      },
+      {
+        type: "quote",
+        text: "The more you learn, the more you realize you never know enough — and yet, that chaos is the only place where real thinking grows.",
+      },
+    ],
+    image: "/images/art/1.webp",
+    imageAlt: "혼돈의 머릿속",
+    layout: "image-right",
+    accent: "yellow",
+  },
 ];
