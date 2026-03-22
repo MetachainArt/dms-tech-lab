@@ -363,7 +363,7 @@ export const WORKS_DATA: Record<string, WorkLanding> = {
         steps: [
           {
             id: "step-1",
-            title: "1편 — ComfyUI란 무엇이고 API 모드로 어떻게 여는가",
+            title: "ComfyUI란 무엇이고 API 모드로 어떻게 여는가",
             excerpt: "ComfyUI를 처음 접하는 분을 위해 기본 개념부터 API 모드 실행까지 설명합니다. GUI로 워크플로우를 만들고 API JSON으로 내보내는 과정을 단계별로 정리합니다.",
             date: "2026. 03. 22",
             readTime: "10 min",
@@ -371,7 +371,7 @@ export const WORKS_DATA: Record<string, WorkLanding> = {
           },
           {
             id: "step-2",
-            title: "2편 — D:\\016_CardNew 폴더 구조와 job.json 설계",
+            title: "D:\\016_CardNew 폴더 구조와 job.json 설계",
             excerpt: "이미지 생성 파이프라인이 사용하는 폴더 구조를 설계합니다. io, scripts, output 각 폴더의 역할과 job.json, result.json 파일 형식을 정리합니다.",
             date: "2026. 03. 22",
             readTime: "10 min",
@@ -379,7 +379,7 @@ export const WORKS_DATA: Record<string, WorkLanding> = {
           },
           {
             id: "step-3",
-            title: "3편 — worker.ps1 전체 코드 작성: ComfyUI API 호출부터 결과 저장까지",
+            title: "worker.ps1 전체 코드 작성: ComfyUI API 호출부터 결과 저장까지",
             excerpt: "worker.ps1의 전체 코드를 한 줄씩 설명합니다. job.json 읽기, 워크플로우에 프롬프트 주입, ComfyUI API POST 요청, 생성 완료 대기(polling), 이미지 저장, result.json 작성까지 빠짐없이 다룹니다.",
             date: "2026. 03. 22",
             readTime: "15 min",
@@ -387,7 +387,7 @@ export const WORKS_DATA: Record<string, WorkLanding> = {
           },
           {
             id: "step-4",
-            title: "4편 — Linux에서 Windows ComfyUI 원격 호출: 엔드투엔드 실전 테스트",
+            title: "Linux에서 Windows ComfyUI 원격 호출: 엔드투엔드 실전 테스트",
             excerpt: "Linux 서버에서 job.json을 만들어 Windows로 전송하고, SSH로 worker.ps1을 실행한 뒤 생성된 이미지를 다시 가져오는 전체 흐름을 실제 명령어로 실행합니다.",
             date: "2026. 03. 22",
             readTime: "12 min",
