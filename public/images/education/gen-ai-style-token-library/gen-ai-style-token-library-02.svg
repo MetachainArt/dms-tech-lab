@@ -1,0 +1,22 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#030712"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg2)"/>
+  <rect x="130" y="120" width="1340" height="660" rx="28" fill="#0b1220" stroke="#1f2937" stroke-width="3"/>
+  <rect x="220" y="220" width="220" height="460" rx="16" fill="#0f172a" stroke="#334155"/>
+  <rect x="500" y="220" width="220" height="460" rx="16" fill="#0f172a" stroke="#334155"/>
+  <rect x="780" y="220" width="220" height="460" rx="16" fill="#0f172a" stroke="#334155"/>
+  <rect x="1060" y="220" width="320" height="460" rx="16" fill="#0f172a" stroke="#334155"/>
+  <rect x="250" y="260" width="160" height="60" rx="10" fill="#22d3ee" opacity="0.8"/>
+  <rect x="530" y="260" width="160" height="60" rx="10" fill="#818cf8" opacity="0.8"/>
+  <rect x="810" y="260" width="160" height="60" rx="10" fill="#34d399" opacity="0.8"/>
+  <path d="M1120 300 L1320 300 M1120 380 L1320 380 M1120 460 L1320 460 M1120 540 L1320 540" stroke="#94a3b8" stroke-width="10" stroke-linecap="round"/>
+  <path d="M410 520 C520 560, 620 520, 730 560 C820 590, 920 520, 1020 560" stroke="#67e8f9" stroke-width="4" fill="none"/>
+  <circle cx="520" cy="520" r="8" fill="#67e8f9"/>
+  <circle cx="660" cy="545" r="8" fill="#818cf8"/>
+  <circle cx="860" cy="552" r="8" fill="#34d399"/>
+</svg>
