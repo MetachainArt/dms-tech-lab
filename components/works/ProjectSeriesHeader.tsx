@@ -1,8 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { MessageCircle } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import type { WorkProject } from "@/lib/works-projects-data";
+
+const KAKAO_URL = "https://open.kakao.com/o/sSPHn33g";
 
 interface ProjectSeriesHeaderProps {
   project: WorkProject;
@@ -45,7 +49,7 @@ export default function ProjectSeriesHeader({ project, stepCount }: ProjectSerie
             <h1 className="paperfolio-display text-paperfolio-text">{project.title}</h1>
             <p className="max-w-2xl text-lg leading-8 text-paperfolio-text-muted">{project.description}</p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-3">
+          <div className="grid gap-4 grid-cols-2 sm:grid-cols-4">
             <div className="rounded-[24px] border border-paperfolio-line bg-white px-5 py-5">
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-paperfolio-text-muted">분류</p>
               <p className="mt-3 text-lg font-semibold text-paperfolio-text">{project.category}</p>
@@ -58,6 +62,15 @@ export default function ProjectSeriesHeader({ project, stepCount }: ProjectSerie
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-paperfolio-text-muted">상태</p>
               <p className="mt-3 text-lg font-semibold text-paperfolio-accent-blue">{project.status}</p>
             </div>
+            <Link
+              href={KAKAO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group rounded-[24px] border border-[#f9e000]/60 bg-[#FEE500] px-5 py-5 transition-all hover:bg-[#f0d800] hover:shadow-[0_8px_24px_rgba(254,229,0,0.35)]"
+            >
+              <MessageCircle className="h-5 w-5 text-[#3c1e1e]/60 group-hover:text-[#3c1e1e]" />
+              <p className="mt-3 text-lg font-semibold text-[#3c1e1e]">교육문의</p>
+            </Link>
           </div>
         </motion.div>
       </div>
