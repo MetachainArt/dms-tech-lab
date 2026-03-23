@@ -3,14 +3,11 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // 서버 번들에서 대용량 클라이언트 전용 패키지 제외
   serverExternalPackages: [
-    "three",
-    "@react-three/fiber",
-    "@react-three/drei",
     "html2canvas",
     "jspdf",
   ],
 
-  // 이미지 최적화 설정
+// 이미지 최적화 설정
   images: {
     remotePatterns: [
       {
