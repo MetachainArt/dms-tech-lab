@@ -7,13 +7,16 @@ const nextConfig: NextConfig = {
     "jspdf",
   ],
 
-  // public/ 이미지 파일들을 서버리스 함수 번들에서 제외
+  // 파일 읽기 admin API에서만 대용량 파일 제외 (이미지 최적화 함수는 제외하지 않음)
   outputFileTracingExcludes: {
-    "*": [
-      "public/**/*",
-      "My_source/**/*",
-      "images/**/*",
-    ],
+    "api/admin/blog/files": ["public/**/*", "My_source/**/*", "/images/**/*"],
+    "api/admin/blog/read": ["public/**/*", "My_source/**/*", "/images/**/*"],
+    "api/admin/blog/save": ["public/**/*", "My_source/**/*", "/images/**/*"],
+    "api/admin/education/files": ["public/**/*", "My_source/**/*", "/images/**/*"],
+    "api/admin/education/read": ["public/**/*", "My_source/**/*", "/images/**/*"],
+    "api/admin/education/save": ["public/**/*", "My_source/**/*", "/images/**/*"],
+    "api/admin/files": ["public/**/*", "My_source/**/*", "/images/**/*"],
+    "api/admin/read": ["public/**/*", "My_source/**/*", "/images/**/*"],
   },
 
 // 이미지 최적화 설정
