@@ -7,6 +7,15 @@ const nextConfig: NextConfig = {
     "jspdf",
   ],
 
+  // public/ 이미지 파일들을 서버리스 함수 번들에서 제외
+  outputFileTracingExcludes: {
+    "*": [
+      "public/**/*",
+      "My_source/**/*",
+      "images/**/*",
+    ],
+  },
+
 // 이미지 최적화 설정
   images: {
     remotePatterns: [
