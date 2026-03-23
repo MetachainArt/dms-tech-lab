@@ -50,7 +50,7 @@ export const galleryPieces: GalleryPiece[] = [
     ],
     image: "/images/art/1.webp",
     imageAlt: "혼돈의 머릿속",
-    layout: "image-right",
+    layout: "image-left",
     accent: "yellow",
   },
   {
