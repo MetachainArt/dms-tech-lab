@@ -11,6 +11,7 @@ const KAKAO_URL = "https://open.kakao.com/o/sSPHn33g";
 interface ProjectSeriesHeaderProps {
   project: WorkProject;
   stepCount: number;
+  externalLink?: { href: string; label: string };
 }
 
 const colorVariants: Record<string, string> = {
@@ -24,7 +25,7 @@ const colorVariants: Record<string, string> = {
   yellow: "text-[#9a7a26] bg-[#f8f0dc]",
 };
 
-export default function ProjectSeriesHeader({ project, stepCount }: ProjectSeriesHeaderProps) {
+export default function ProjectSeriesHeader({ project, stepCount, externalLink }: ProjectSeriesHeaderProps) {
   const variant = colorVariants[project.color] || colorVariants.blue;
 
   return (
@@ -72,6 +73,20 @@ export default function ProjectSeriesHeader({ project, stepCount }: ProjectSerie
               <p className="mt-3 text-lg font-semibold text-[#3c1e1e]">교육문의</p>
             </Link>
           </div>
+
+          {externalLink && (
+            <Link
+              href={externalLink.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 self-start rounded-full border border-paperfolio-line bg-white px-6 py-3 text-sm font-semibold text-paperfolio-text shadow-[0_4px_16px_rgba(31,41,55,0.06)] transition-all hover:border-paperfolio-accent-blue/40 hover:shadow-[0_6px_20px_rgba(31,41,55,0.10)]"
+            >
+              <span className="text-paperfolio-text-muted">{externalLink.label}</span>
+              <svg className="h-4 w-4 text-paperfolio-accent-blue transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </Link>
+          )}
         </motion.div>
       </div>
     </section>

@@ -42,7 +42,11 @@ export default function SemiAutomationDesignPage() {
         </div>
       </section>
 
-      <ProjectSeriesHeader project={project} stepCount={posts.length} />
+      <ProjectSeriesHeader
+        project={project}
+        stepCount={posts.length}
+        externalLink={{ href: "https://untitled-4ymcur9.gamma.site/", label: "자세한 내용 보기" }}
+      />
 
       <section className="px-6 pb-28">
         <div className="mx-auto max-w-5xl">
