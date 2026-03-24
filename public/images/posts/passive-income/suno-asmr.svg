@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1b2a"/>
+      <stop offset="50%" style="stop-color:#1a1040"/>
+      <stop offset="100%" style="stop-color:#0a1628"/>
+    </linearGradient>
+    <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6c63ff;stop-opacity:0"/>
+      <stop offset="30%" style="stop-color:#6c63ff;stop-opacity:0.8"/>
+      <stop offset="70%" style="stop-color:#a78bfa;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#a78bfa;stop-opacity:0"/>
+    </linearGradient>
+    <linearGradient id="waveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:0"/>
+      <stop offset="30%" style="stop-color:#38bdf8;stop-opacity:0.5"/>
+      <stop offset="70%" style="stop-color:#818cf8;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#818cf8;stop-opacity:0"/>
+    </linearGradient>
+    <linearGradient id="waveGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c4b5fd;stop-opacity:0"/>
+      <stop offset="40%" style="stop-color:#c4b5fd;stop-opacity:0.4"/>
+      <stop offset="60%" style="stop-color:#c4b5fd;stop-opacity:0.4"/>
+      <stop offset="100%" style="stop-color:#c4b5fd;stop-opacity:0"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softglow">
+      <feGaussianBlur stdDeviation="12" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#6c63ff;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#6c63ff;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Center glow -->
+  <ellipse cx="600" cy="315" rx="500" ry="280" fill="url(#centerGlow)"/>
+
+  <!-- Stars / noise -->
+  <circle cx="120" cy="80" r="1.2" fill="#ffffff" opacity="0.4"/>
+  <circle cx="280" cy="45" r="0.8" fill="#ffffff" opacity="0.3"/>
+  <circle cx="450" cy="110" r="1" fill="#ffffff" opacity="0.35"/>
+  <circle cx="700" cy="60" r="1.2" fill="#ffffff" opacity="0.4"/>
+  <circle cx="900" cy="90" r="0.8" fill="#ffffff" opacity="0.3"/>
+  <circle cx="1050" cy="55" r="1" fill="#ffffff" opacity="0.35"/>
+  <circle cx="1150" cy="130" r="1.2" fill="#ffffff" opacity="0.3"/>
+  <circle cx="80" cy="400" r="0.8" fill="#ffffff" opacity="0.25"/>
+  <circle cx="200" cy="550" r="1" fill="#ffffff" opacity="0.3"/>
+  <circle cx="1100" cy="480" r="1.2" fill="#ffffff" opacity="0.25"/>
+  <circle cx="980" cy="560" r="0.8" fill="#ffffff" opacity="0.3"/>
+  <circle cx="350" cy="580" r="1" fill="#ffffff" opacity="0.2"/>
+
+  <!-- ASMR Waveform bars - center section -->
+  <!-- Bar heights simulate a realistic audio waveform -->
+  <g transform="translate(200, 315)" filter="url(#glow)">
+    <!-- Left side bars (mirror) -->
+    <rect x="-380" y="-8" width="6" height="16" rx="3" fill="url(#waveGrad1)" opacity="0.3"/>
+    <rect x="-368" y="-14" width="6" height="28" rx="3" fill="url(#waveGrad1)" opacity="0.35"/>
+    <rect x="-356" y="-22" width="6" height="44" rx="3" fill="url(#waveGrad1)" opacity="0.45"/>
+    <rect x="-344" y="-18" width="6" height="36" rx="3" fill="url(#waveGrad1)" opacity="0.4"/>
+    <rect x="-332" y="-30" width="6" height="60" rx="3" fill="url(#waveGrad1)" opacity="0.5"/>
+    <rect x="-320" y="-24" width="6" height="48" rx="3" fill="url(#waveGrad1)" opacity="0.55"/>
+    <rect x="-308" y="-40" width="6" height="80" rx="3" fill="url(#waveGrad1)" opacity="0.6"/>
+    <rect x="-296" y="-35" width="6" height="70" rx="3" fill="url(#waveGrad1)" opacity="0.65"/>
+    <rect x="-284" y="-55" width="6" height="110" rx="3" fill="url(#waveGrad1)" opacity="0.7"/>
+    <rect x="-272" y="-45" width="6" height="90" rx="3" fill="url(#waveGrad1)" opacity="0.7"/>
+    <rect x="-260" y="-70" width="6" height="140" rx="3" fill="url(#waveGrad1)" opacity="0.75"/>
+    <rect x="-248" y="-58" width="6" height="116" rx="3" fill="url(#waveGrad1)" opacity="0.75"/>
+    <rect x="-236" y="-80" width="6" height="160" rx="3" fill="url(#waveGrad1)" opacity="0.8"/>
+    <rect x="-224" y="-68" width="6" height="136" rx="3" fill="url(#waveGrad1)" opacity="0.82"/>
+    <rect x="-212" y="-90" width="6" height="180" rx="3" fill="url(#waveGrad1)" opacity="0.85"/>
+    <rect x="-200" y="-75" width="6" height="150" rx="3" fill="url(#waveGrad1)" opacity="0.87"/>
+    <rect x="-188" y="-95" width="6" height="190" rx="3" fill="url(#waveGrad1)" opacity="0.9"/>
+    <rect x="-176" y="-82" width="6" height="164" rx="3" fill="url(#waveGrad1)" opacity="0.9"/>
+    <rect x="-164" y="-100" width="6" height="200" rx="3" fill="url(#waveGrad1)" opacity="0.92"/>
+    <rect x="-152" y="-88" width="6" height="176" rx="3" fill="url(#waveGrad1)" opacity="0.93"/>
+    <rect x="-140" y="-108" width="6" height="216" rx="3" fill="url(#waveGrad1)" opacity="0.94"/>
+    <rect x="-128" y="-95" width="6" height="190" rx="3" fill="url(#waveGrad1)" opacity="0.95"/>
+    <rect x="-116" y="-112" width="6" height="224" rx="3" fill="url(#waveGrad1)" opacity="0.96"/>
+    <rect x="-104" y="-100" width="6" height="200" rx="3" fill="url(#waveGrad1)" opacity="0.97"/>
+    <rect x="-92" y="-118" width="6" height="236" rx="3" fill="url(#waveGrad1)" opacity="0.98"/>
+    <rect x="-80" y="-105" width="6" height="210" rx="3" fill="url(#waveGrad1)" opacity="0.98"/>
+
+    <!-- Center peak bars -->
+    <rect x="-68" y="-122" width="6" height="244" rx="3" fill="#a78bfa" opacity="1"/>
+    <rect x="-56" y="-115" width="6" height="230" rx="3" fill="#a78bfa" opacity="1"/>
+    <rect x="-44" y="-125" width="6" height="250" rx="3" fill="#c4b5fd" opacity="1"/>
+    <rect x="-32" y="-118" width="6" height="236" rx="3" fill="#c4b5fd" opacity="1"/>
+    <rect x="-20" y="-128" width="6" height="256" rx="3" fill="#e9d5ff" opacity="1"/>
+    <rect x="-8" y="-130" width="6" height="260" rx="3" fill="#ffffff" opacity="0.95"/>
+    <rect x="4" y="-130" width="6" height="260" rx="3" fill="#ffffff" opacity="0.95"/>
+    <rect x="16" y="-128" width="6" height="256" rx="3" fill="#e9d5ff" opacity="1"/>
+    <rect x="28" y="-118" width="6" height="236" rx="3" fill="#c4b5fd" opacity="1"/>
+    <rect x="40" y="-125" width="6" height="250" rx="3" fill="#c4b5fd" opacity="1"/>
+    <rect x="52" y="-115" width="6" height="230" rx="3" fill="#a78bfa" opacity="1"/>
+    <rect x="64" y="-122" width="6" height="244" rx="3" fill="#a78bfa" opacity="1"/>
+
+    <!-- Right side bars (mirror) -->
+    <rect x="76" y="-105" width="6" height="210" rx="3" fill="url(#waveGrad1)" opacity="0.98"/>
+    <rect x="88" y="-118" width="6" height="236" rx="3" fill="url(#waveGrad1)" opacity="0.98"/>
+    <rect x="100" y="-100" width="6" height="200" rx="3" fill="url(#waveGrad1)" opacity="0.97"/>
+    <rect x="112" y="-112" width="6" height="224" rx="3" fill="url(#waveGrad1)" opacity="0.96"/>
+    <rect x="124" y="-95" width="6" height="190" rx="3" fill="url(#waveGrad1)" opacity="0.95"/>
+    <rect x="136" y="-108" width="6" height="216" rx="3" fill="url(#waveGrad1)" opacity="0.94"/>
+    <rect x="148" y="-88" width="6" height="176" rx="3" fill="url(#waveGrad1)" opacity="0.93"/>
+    <rect x="160" y="-100" width="6" height="200" rx="3" fill="url(#waveGrad1)" opacity="0.92"/>
+    <rect x="172" y="-82" width="6" height="164" rx="3" fill="url(#waveGrad1)" opacity="0.9"/>
+    <rect x="184" y="-95" width="6" height="190" rx="3" fill="url(#waveGrad1)" opacity="0.9"/>
+    <rect x="196" y="-75" width="6" height="150" rx="3" fill="url(#waveGrad1)" opacity="0.87"/>
+    <rect x="208" y="-90" width="6" height="180" rx="3" fill="url(#waveGrad1)" opacity="0.85"/>
+    <rect x="220" y="-68" width="6" height="136" rx="3" fill="url(#waveGrad1)" opacity="0.82"/>
+    <rect x="232" y="-80" width="6" height="160" rx="3" fill="url(#waveGrad1)" opacity="0.8"/>
+    <rect x="244" y="-58" width="6" height="116" rx="3" fill="url(#waveGrad1)" opacity="0.75"/>
+    <rect x="256" y="-70" width="6" height="140" rx="3" fill="url(#waveGrad1)" opacity="0.75"/>
+    <rect x="268" y="-45" width="6" height="90" rx="3" fill="url(#waveGrad1)" opacity="0.7"/>
+    <rect x="280" y="-55" width="6" height="110" rx="3" fill="url(#waveGrad1)" opacity="0.7"/>
+    <rect x="292" y="-35" width="6" height="70" rx="3" fill="url(#waveGrad1)" opacity="0.65"/>
+    <rect x="304" y="-40" width="6" height="80" rx="3" fill="url(#waveGrad1)" opacity="0.6"/>
+    <rect x="316" y="-24" width="6" height="48" rx="3" fill="url(#waveGrad1)" opacity="0.55"/>
+    <rect x="328" y="-30" width="6" height="60" rx="3" fill="url(#waveGrad1)" opacity="0.5"/>
+    <rect x="340" y="-18" width="6" height="36" rx="3" fill="url(#waveGrad1)" opacity="0.4"/>
+    <rect x="352" y="-22" width="6" height="44" rx="3" fill="url(#waveGrad1)" opacity="0.45"/>
+    <rect x="364" y="-14" width="6" height="28" rx="3" fill="url(#waveGrad1)" opacity="0.35"/>
+    <rect x="376" y="-8" width="6" height="16" rx="3" fill="url(#waveGrad1)" opacity="0.3"/>
+  </g>
+
+  <!-- Subtle second waveform layer (smaller, offset) -->
+  <g transform="translate(200, 255)" opacity="0.2">
+    <rect x="-200" y="-4" width="4" height="8" rx="2" fill="#38bdf8"/>
+    <rect x="-188" y="-8" width="4" height="16" rx="2" fill="#38bdf8"/>
+    <rect x="-176" y="-12" width="4" height="24" rx="2" fill="#38bdf8"/>
+    <rect x="-164" y="-18" width="4" height="36" rx="2" fill="#38bdf8"/>
+    <rect x="-152" y="-24" width="4" height="48" rx="2" fill="#38bdf8"/>
+    <rect x="-140" y="-30" width="4" height="60" rx="2" fill="#38bdf8"/>
+    <rect x="-128" y="-22" width="4" height="44" rx="2" fill="#38bdf8"/>
+    <rect x="-116" y="-35" width="4" height="70" rx="2" fill="#38bdf8"/>
+    <rect x="-104" y="-28" width="4" height="56" rx="2" fill="#38bdf8"/>
+    <rect x="-92" y="-40" width="4" height="80" rx="2" fill="#38bdf8"/>
+    <rect x="-80" y="-50" width="4" height="100" rx="2" fill="#38bdf8"/>
+    <rect x="-68" y="-60" width="4" height="120" rx="2" fill="#38bdf8"/>
+    <rect x="-56" y="-50" width="4" height="100" rx="2" fill="#38bdf8"/>
+    <rect x="-44" y="-40" width="4" height="80" rx="2" fill="#38bdf8"/>
+    <rect x="-32" y="-28" width="4" height="56" rx="2" fill="#38bdf8"/>
+    <rect x="-20" y="-35" width="4" height="70" rx="2" fill="#38bdf8"/>
+    <rect x="-8" y="-22" width="4" height="44" rx="2" fill="#38bdf8"/>
+    <rect x="4" y="-30" width="4" height="60" rx="2" fill="#38bdf8"/>
+    <rect x="16" y="-24" width="4" height="48" rx="2" fill="#38bdf8"/>
+    <rect x="28" y="-18" width="4" height="36" rx="2" fill="#38bdf8"/>
+    <rect x="40" y="-12" width="4" height="24" rx="2" fill="#38bdf8"/>
+    <rect x="52" y="-8" width="4" height="16" rx="2" fill="#38bdf8"/>
+    <rect x="64" y="-4" width="4" height="8" rx="2" fill="#38bdf8"/>
+  </g>
+
+  <!-- Moon icon top right -->
+  <g transform="translate(1060, 100)">
+    <circle cx="0" cy="0" r="28" fill="none" stroke="#c4b5fd" stroke-width="1.5" opacity="0.3"/>
+    <path d="M -8 -20 Q 20 0 -8 20 Q -25 12 -25 0 Q -25 -12 -8 -20Z" fill="#c4b5fd" opacity="0.25"/>
+  </g>
+
+  <!-- Sleep Z's top left -->
+  <g transform="translate(140, 120)" fill="#6c63ff" opacity="0.2" font-family="serif" font-weight="bold">
+    <text x="0" y="0" font-size="28">Z</text>
+    <text x="22" y="-18" font-size="22">Z</text>
+    <text x="40" y="-32" font-size="16">Z</text>
+  </g>
+
+  <!-- Label: ASMR badge top -->
+  <g transform="translate(600, 148)">
+    <rect x="-48" y="-18" width="96" height="32" rx="16" fill="#6c63ff" opacity="0.25"/>
+    <text x="0" y="8" text-anchor="middle" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="3" fill="#c4b5fd" opacity="0.9">ASMR</text>
+  </g>
+
+  <!-- Main title text -->
+  <text x="600" y="508" text-anchor="middle" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="17" font-weight="500" letter-spacing="1.5" fill="#94a3b8" opacity="0.8">수면용 사운드스케이프 파이프라인</text>
+
+  <!-- Suno AI label bottom -->
+  <g transform="translate(600, 555)">
+    <rect x="-55" y="-15" width="110" height="28" rx="6" fill="none" stroke="#6c63ff" stroke-width="1" opacity="0.4"/>
+    <text x="0" y="7" text-anchor="middle" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="2" fill="#a78bfa" opacity="0.7">SUNO AI</text>
+  </g>
+
+  <!-- Horizontal line accents -->
+  <line x1="80" y1="315" x2="170" y2="315" stroke="#6c63ff" stroke-width="1" opacity="0.2"/>
+  <line x1="1030" y1="315" x2="1120" y2="315" stroke="#6c63ff" stroke-width="1" opacity="0.2"/>
+
+  <!-- Small dot decorations -->
+  <circle cx="600" cy="220" r="2.5" fill="#a78bfa" opacity="0.5"/>
+  <circle cx="600" cy="410" r="2.5" fill="#a78bfa" opacity="0.5"/>
+  <circle cx="485" cy="315" r="2" fill="#6c63ff" opacity="0.4"/>
+  <circle cx="715" cy="315" r="2" fill="#6c63ff" opacity="0.4"/>
+</svg>
