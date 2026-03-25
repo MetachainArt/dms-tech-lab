@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0a2e"/>
+      <stop offset="40%" style="stop-color:#16213e"/>
+      <stop offset="100%" style="stop-color:#0f3460"/>
+    </linearGradient>
+    <linearGradient id="card1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6c63ff;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#a78bfa;stop-opacity:0.15"/>
+    </linearGradient>
+    <linearGradient id="card2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:0.25"/>
+      <stop offset="100%" style="stop-color:#fbbf24;stop-opacity:0.1"/>
+    </linearGradient>
+    <linearGradient id="card3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:0.25"/>
+      <stop offset="100%" style="stop-color:#34d399;stop-opacity:0.1"/>
+    </linearGradient>
+    <linearGradient id="card4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444;stop-opacity:0.25"/>
+      <stop offset="100%" style="stop-color:#f87171;stop-opacity:0.1"/>
+    </linearGradient>
+    <linearGradient id="card5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:0.25"/>
+      <stop offset="100%" style="stop-color:#7dd3fc;stop-opacity:0.1"/>
+    </linearGradient>
+    <linearGradient id="card6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899;stop-opacity:0.25"/>
+      <stop offset="100%" style="stop-color:#f472b6;stop-opacity:0.1"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#6c63ff;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#6c63ff;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <ellipse cx="600" cy="315" rx="550" ry="300" fill="url(#centerGlow)"/>
+
+  <!-- Grid of style cards - 3x2 layout right side -->
+  <!-- Card 1: Photography -->
+  <rect x="640" y="60" width="155" height="115" rx="12" fill="url(#card1)" stroke="#a78bfa" stroke-width="0.8" stroke-opacity="0.4"/>
+  <text x="718" y="110" text-anchor="middle" font-family="'SF Pro Display', Arial, sans-serif" font-size="11" font-weight="600" fill="#c4b5fd" opacity="0.9">📷 포토그래픽</text>
+  <text x="718" y="128" text-anchor="middle" font-family="monospace" font-size="8.5" fill="#a78bfa" opacity="0.7">Fujifilm · Hasselblad</text>
+  <text x="718" y="143" text-anchor="middle" font-family="monospace" font-size="8.5" fill="#a78bfa" opacity="0.7">서울 을지로 · 북한산</text>
+  <text x="718" y="90" text-anchor="middle" font-family="'SF Pro Display', Arial, sans-serif" font-size="9" fill="#e9d5ff" opacity="0.5" letter-spacing="1">PHOTO</text>
+
+  <!-- Card 2: Cinematic -->
+  <rect x="810" y="60" width="155" height="115" rx="12" fill="url(#card2)" stroke="#fbbf24" stroke-width="0.8" stroke-opacity="0.4"/>
+  <text x="888" y="110" text-anchor="middle" font-family="'SF Pro Display', Arial, sans-serif" font-size="11" font-weight="600" fill="#fde68a" opacity="0.9">🎬 시네마틱</text>
+  <text x="888" y="128" text-anchor="middle" font-family="monospace" font-size="8.5" fill="#fbbf24" opacity="0.7">한강 · 경복궁 야간</text>
+  <text x="888" y="143" text-anchor="middle" font-family="monospace" font-size="8.5" fill="#fbbf24" opacity="0.7">Teal-Amber · 35mm</text>
+  <text x="888" y="90" text-anchor="middle" font-family="'SF Pro Display', Arial, sans-serif" font-size="9" fill="#fef9c3" opacity="0.5" letter-spacing="1">CINEMA</text>
+
+  <!-- Card 3: Illustration -->
+  <rect x="980" y="60" width="165" height="115" rx="12" fill="url(#card3)" stroke="#34d399" stroke-width="0.8" stroke-opacity="0.4"/>
+  <text x="1062" y="110" text-anchor="middle" font-family="'SF Pro Display', Arial, sans-serif" font-size="11" font-weight="600" fill="#6ee7b7" opacity="0.9">🖌 일러스트</text>
+  <text x="1062" y="128" text-anchor="middle" font-family="monospace" font-size="8.5" fill="#34d399" opacity="0.7">전주 한옥 · 수채화</text>
+  <text x="1062" y="143" text-anchor="middle" font-family="monospace" font-size="8.5" fill="#34d399" opacity="0.7">웹툰 · 컨셉 아트</text>
+  <text x="1062" y="90" text-anchor="middle" font-family="'SF Pro Display', Arial, sans-serif" font-size="9" fill="#d1fae5" opacity="0.5" letter-spacing="1">ILLUST</text>
+
+  <!-- Card 4: 3D Render -->
+  <rect x="640" y="195" width="155" height="115" rx="12" fill="url(#card5)" stroke="#38bdf8" stroke-width="0.8" stroke-opacity="0.4"/>
+  <text x="718" y="245" text-anchor="middle" font-family="'SF Pro Display', Arial, sans-serif" font-size="11" font-weight="600" fill="#7dd3fc" opacity="0.9">🎮 3D 렌더</text>
+  <text x="718" y="263" text-anchor="middle" font-family="monospace" font-size="8.5" fill="#38bdf8" opacity="0.7">Unreal 5 · RTX</text>
+  <text x="718" y="278" text-anchor="middle" font-family="monospace" font-size="8.5" fill="#38bdf8" opacity="0.7">광화문 · 사이버펑크</text>
+  <text x="718" y="225" text-anchor="middle" font-family="'SF Pro Display', Arial, sans-serif" font-size="9" fill="#e0f2fe" opacity="0.5" letter-spacing="1">3D RENDER</text>
+
+  <!-- Card 5: Vintage -->
+  <rect x="810" y="195" width="155" height="115" rx="12" fill="url(#card4)" stroke="#f87171" stroke-width="0.8" stroke-opacity="0.4"/>
+  <text x="888" y="245" text-anchor="middle" font-family="'SF Pro Display', Arial, sans-serif" font-size="11" font-weight="600" fill="#fca5a5" opacity="0.9">📽 빈티지</text>
+  <text x="888" y="263" text-anchor="middle" font-family="monospace" font-size="8.5" fill="#f87171" opacity="0.7">조선 다게레오타입</text>
+  <text x="888" y="278" text-anchor="middle" font-family="monospace" font-size="8.5" fill="#f87171" opacity="0.7">코닥크롬 · VHS</text>
+  <text x="888" y="225" text-anchor="middle" font-family="'SF Pro Display', Arial, sans-serif" font-size="9" fill="#fee2e2" opacity="0.5" letter-spacing="1">VINTAGE</text>
+
+  <!-- Card 6: Experimental -->
+  <rect x="980" y="195" width="165" height="115" rx="12" fill="url(#card6)" stroke="#f472b6" stroke-width="0.8" stroke-opacity="0.4"/>
+  <text x="1062" y="245" text-anchor="middle" font-family="'SF Pro Display', Arial, sans-serif" font-size="11" font-weight="600" fill="#f9a8d4" opacity="0.9">🔬 실험적</text>
+  <text x="1062" y="263" text-anchor="middle" font-family="monospace" font-size="8.5" fill="#f472b6" opacity="0.7">AI 고유 형식</text>
+  <text x="1062" y="278" text-anchor="middle" font-family="monospace" font-size="8.5" fill="#f472b6" opacity="0.7">프랙탈 · 아웃페인팅</text>
+  <text x="1062" y="225" text-anchor="middle" font-family="'SF Pro Display', Arial, sans-serif" font-size="9" fill="#fce7f3" opacity="0.5" letter-spacing="1">EXPERIMENTAL</text>
+
+  <!-- More cards row 3 -->
+  <rect x="640" y="330" width="155" height="90" rx="12" fill="none" stroke="#6c63ff" stroke-width="0.8" stroke-opacity="0.3"/>
+  <text x="718" y="370" text-anchor="middle" font-family="'SF Pro Display', Arial, sans-serif" font-size="10" font-weight="600" fill="#a78bfa" opacity="0.7">🎨 파인 아트</text>
+  <text x="718" y="388" text-anchor="middle" font-family="monospace" font-size="8" fill="#6c63ff" opacity="0.5">베르메르 · 호쿠사이</text>
+  <text x="718" y="403" text-anchor="middle" font-family="monospace" font-size="8" fill="#6c63ff" opacity="0.5">한복 여인 · 해녀</text>
+
+  <rect x="810" y="330" width="155" height="90" rx="12" fill="none" stroke="#34d399" stroke-width="0.8" stroke-opacity="0.3"/>
+  <text x="888" y="370" text-anchor="middle" font-family="'SF Pro Display', Arial, sans-serif" font-size="10" font-weight="600" fill="#6ee7b7" opacity="0.7">🌐 서브컬처</text>
+  <text x="888" y="388" text-anchor="middle" font-family="monospace" font-size="8" fill="#34d399" opacity="0.5">다크아카데미아</text>
+  <text x="888" y="403" text-anchor="middle" font-family="monospace" font-size="8" fill="#34d399" opacity="0.5">코티지코어 · 바비코어</text>
+
+  <rect x="980" y="330" width="165" height="90" rx="12" fill="none" stroke="#fbbf24" stroke-width="0.8" stroke-opacity="0.3"/>
+  <text x="1062" y="370" text-anchor="middle" font-family="'SF Pro Display', Arial, sans-serif" font-size="10" font-weight="600" fill="#fde68a" opacity="0.7">🚀 SF & 사변</text>
+  <text x="1062" y="388" text-anchor="middle" font-family="monospace" font-size="8" fill="#fbbf24" opacity="0.5">수몰 도시 · 솔라펑크</text>
+  <text x="1062" y="403" text-anchor="middle" font-family="monospace" font-size="8" fill="#fbbf24" opacity="0.5">한복 우주 · 바이오펑크</text>
+
+  <!-- Left side: Main title area -->
+  <!-- Badge -->
+  <rect x="60" y="80" width="130" height="26" rx="13" fill="#6c63ff" fill-opacity="0.2" stroke="#a78bfa" stroke-width="0.8" stroke-opacity="0.5"/>
+  <text x="125" y="97" text-anchor="middle" font-family="'SF Pro Display', Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="2" fill="#c4b5fd">STYLE GUIDE</text>
+
+  <!-- Main title -->
+  <text x="60" y="175" font-family="'SF Pro Display', 'Noto Sans KR', Arial, sans-serif" font-size="42" font-weight="800" fill="#ffffff">AI 이미지</text>
+  <text x="60" y="228" font-family="'SF Pro Display', 'Noto Sans KR', Arial, sans-serif" font-size="42" font-weight="800" fill="#ffffff">생성 스타일</text>
+  <text x="60" y="281" font-family="'SF Pro Display', 'Noto Sans KR', Arial, sans-serif" font-size="42" font-weight="800" fill="#a78bfa">완전 가이드</text>
+
+  <!-- Subtitle -->
+  <text x="60" y="325" font-family="'SF Pro Display', Arial, sans-serif" font-size="15" fill="#94a3b8" opacity="0.85">10개 카테고리 · 150+ 프롬프트</text>
+  <text x="60" y="348" font-family="'SF Pro Display', Arial, sans-serif" font-size="15" fill="#94a3b8" opacity="0.85">한국적 피사체 기준 실전 테스트 완료</text>
+
+  <!-- Divider line -->
+  <line x1="60" y1="375" x2="380" y2="375" stroke="#6c63ff" stroke-width="0.8" stroke-opacity="0.35"/>
+
+  <!-- Platform badges -->
+  <rect x="60" y="392" width="88" height="24" rx="8" fill="#6c63ff" fill-opacity="0.15" stroke="#6c63ff" stroke-width="0.7" stroke-opacity="0.4"/>
+  <text x="104" y="408" text-anchor="middle" font-family="monospace" font-size="10" fill="#a78bfa" opacity="0.85">Midjourney</text>
+
+  <rect x="158" y="392" width="78" height="24" rx="8" fill="#6c63ff" fill-opacity="0.15" stroke="#6c63ff" stroke-width="0.7" stroke-opacity="0.4"/>
+  <text x="197" y="408" text-anchor="middle" font-family="monospace" font-size="10" fill="#a78bfa" opacity="0.85">ChatGPT</text>
+
+  <rect x="246" y="392" width="110" height="24" rx="8" fill="#6c63ff" fill-opacity="0.15" stroke="#6c63ff" stroke-width="0.7" stroke-opacity="0.4"/>
+  <text x="301" y="408" text-anchor="middle" font-family="monospace" font-size="10" fill="#a78bfa" opacity="0.85">Nano Banana 2</text>
+
+  <!-- Stars -->
+  <circle cx="92" cy="450" r="1.2" fill="#a78bfa" opacity="0.4"/>
+  <circle cx="148" cy="460" r="0.8" fill="#c4b5fd" opacity="0.3"/>
+  <circle cx="205" cy="442" r="1.5" fill="#818cf8" opacity="0.35"/>
+  <circle cx="270" cy="465" r="1" fill="#a78bfa" opacity="0.3"/>
+  <circle cx="330" cy="448" r="0.8" fill="#c4b5fd" opacity="0.4"/>
+
+  <!-- Bottom tag line -->
+  <text x="60" y="540" font-family="'SF Pro Display', Arial, sans-serif" font-size="13" fill="#64748b" opacity="0.7">스타일을 쓰는 것보다 섞는 것이 더 중요하다</text>
+
+  <!-- Series mark -->
+  <text x="60" y="580" font-family="monospace" font-size="11" fill="#6c63ff" opacity="0.5">FUTURE ARTS · CH.12</text>
+
+  <!-- Subtle grid lines background right -->
+  <line x1="620" y1="40" x2="620" y2="590" stroke="#6c63ff" stroke-width="0.4" stroke-opacity="0.1"/>
+  <line x1="640" y1="40" x2="640" y2="590" stroke="#6c63ff" stroke-width="0.4" stroke-opacity="0.08"/>
+</svg>
