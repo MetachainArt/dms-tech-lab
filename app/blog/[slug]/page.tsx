@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import AuthorCard from "@/components/blog/AuthorCard";
+import BlogNewsletterCTA from "@/components/blog/BlogNewsletterCTA";
 import RelatedPosts from "@/components/blog/RelatedPosts";
 import { MDXComponents } from "@/components/mdx/MDXComponents";
 import { getSeriesTitle } from "@/lib/blog-data";
@@ -142,6 +143,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
             <MDXRemote source={post.content} components={MDXComponents} />
           </article>
           <AuthorCard />
+          <BlogNewsletterCTA />
           <RelatedPosts posts={relatedPosts} />
         </div>
       </section>

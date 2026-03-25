@@ -1,0 +1,50 @@
+name: Newsletter — 새 글 자동 발송
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "content/posts/*.mdx"
+
+jobs:
+  send-newsletter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout (with history)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect newly added posts
+        id: detect
+        run: |
+          NEW=$(git diff --name-only --diff-filter=A HEAD~1 HEAD -- 'content/posts/*.mdx' | grep -v '^_' || true)
+          echo "files=$NEW" >> $GITHUB_OUTPUT
+          if [ -n "$NEW" ]; then
+            echo "found=true" >> $GITHUB_OUTPUT
+            echo "새 포스트 감지: $NEW"
+          else
+            echo "found=false" >> $GITHUB_OUTPUT
+            echo "새 포스트 없음 — 뉴스레터 발송 건너뜀"
+          fi
+
+      - name: Setup Node.js
+        if: steps.detect.outputs.found == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        if: steps.detect.outputs.found == 'true'
+        run: npm ci --ignore-scripts
+
+      - name: Send newsletter
+        if: steps.detect.outputs.found == 'true'
+        run: node scripts/send-newsletter.mjs
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_AUDIENCE_ID: ${{ secrets.RESEND_AUDIENCE_ID }}
+          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
+          NEW_POST_FILES: ${{ steps.detect.outputs.files }}
