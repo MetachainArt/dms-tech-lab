@@ -5,7 +5,7 @@ import { welcomeEmailHtml } from "@/lib/email-templates";
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 const AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID ?? "";
-const FROM_EMAIL = process.env.RESEND_FROM_EMAIL ?? "리도레터 <newsletter@dmssolution.co.kr>";
+const FROM_EMAIL = process.env.RESEND_FROM_EMAIL ?? "리도인사이트 <newsletter@dmssolution.co.kr>";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://dmssolution.co.kr";
 
 export async function POST(request: NextRequest) {
