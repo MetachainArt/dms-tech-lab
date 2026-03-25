@@ -42,6 +42,11 @@ async function loadPostBySlug(slug: string): Promise<MDXPost | null> {
   }
 }
 
+function normalizeDateStr(dateStr: string): string {
+  // "2026. 03. 25" → "20260325", "2026-03-25" → "20260325"
+  return dateStr.replace(/\D/g, '').slice(0, 8).padEnd(8, '0');
+}
+
 async function getAllPostsInternal(): Promise<MDXPost[]> {
   try {
     const files = await fs.readdir(postsDirectory);
@@ -53,7 +58,11 @@ async function getAllPostsInternal(): Promise<MDXPost[]> {
 
     return loadedPosts
       .filter((post): post is MDXPost => post !== null)
-      .sort((post1, post2) => (post1.frontMatter.date > post2.frontMatter.date ? -1 : 1));
+      .sort((post1, post2) => {
+        const d1 = normalizeDateStr(String(post1.frontMatter.date));
+        const d2 = normalizeDateStr(String(post2.frontMatter.date));
+        return d1 > d2 ? -1 : 1;
+      });
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
       return [];

@@ -12,12 +12,16 @@ export interface SeriesContentItem {
   readTime: string;
 }
 
+function normalizeDateStr(dateStr: string): string {
+  return dateStr.replace(/\D/g, '').slice(0, 8).padEnd(8, '0');
+}
+
 function compareSeriesItems(left: SeriesContentItem, right: SeriesContentItem) {
   if (left.chapter && right.chapter) {
     return left.chapter.localeCompare(right.chapter, undefined, { numeric: true });
   }
 
-  return left.date > right.date ? -1 : 1;
+  return normalizeDateStr(left.date) > normalizeDateStr(right.date) ? -1 : 1;
 }
 
 export async function getSeriesContentItems(seriesId: string): Promise<SeriesContentItem[]> {
