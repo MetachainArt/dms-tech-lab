@@ -16,7 +16,7 @@ const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID;
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://dmssolution.co.kr").replace(/\/$/, "");
 const NEW_POST_FILES = process.env.NEW_POST_FILES ?? "";
-const FROM_EMAIL = process.env.RESEND_FROM_EMAIL ?? "Reedo <newsletter@dmssolution.co.kr>";
+const FROM_EMAIL = process.env.RESEND_FROM_EMAIL ?? "리도레터 <newsletter@dmssolution.co.kr>";
 
 if (!RESEND_API_KEY || !AUDIENCE_ID) {
   console.error("❌ RESEND_API_KEY 또는 RESEND_AUDIENCE_ID 환경변수가 설정되지 않았습니다.");
