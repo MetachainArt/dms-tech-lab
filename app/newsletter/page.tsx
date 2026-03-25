@@ -9,6 +9,20 @@ export const metadata: Metadata = {
     title: "리도인사이트 뉴스레터",
     description: "AI, 자동화, 수익화에 대한 현장의 기록을 이메일로 받아보세요.",
     url: `${SITE_CONFIG.url}/newsletter`,
+    images: [
+      {
+        url: `${SITE_CONFIG.url}/images/newsletter-og.jpeg`,
+        width: 1200,
+        height: 630,
+        alt: "리도인사이트 뉴스레터",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "리도인사이트 뉴스레터",
+    description: "AI, 자동화, 수익화에 대한 현장의 기록을 이메일로 받아보세요.",
+    images: [`${SITE_CONFIG.url}/images/newsletter-og.jpeg`],
   },
 };
 
