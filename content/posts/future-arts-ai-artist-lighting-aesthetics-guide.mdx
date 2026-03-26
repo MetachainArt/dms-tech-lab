@@ -1,0 +1,416 @@
+---
+title: "AI 이미지 프롬프트 치트시트 "
+excerpt: "화가 이름 하나가 프롬프트 전체를 바꾼다. 렘브란트 조명, 우키요에, 사이버펑크부터 Ektar 100 필름 그레인까지. 수백 번 테스트하며 추려낸 150개 스타일 수식어 실전 치트시트."
+date: "2026-03-26"
+readTime: "12 min"
+coverImage: "/images/posts/ai-image-style-cheatsheet.jpeg"
+series: "future-arts"
+chapter: "13"
+tags: ["AI Art", "Prompt Engineering", "Midjourney", "스타일 가이드", "조명"]
+---
+
+이 글은 미디엄(Medium) 아티클을 바탕으로, 직접 테스트하고 한국적 맥락으로 재구성한 내용입니다.
+
+---
+
+AI 이미지 툴을 쓰다 보면 어느 순간 벽에 부딪히게 됩니다. 프롬프트를 아무리 길게 써도 결과물이 비슷비슷하고, "예쁘게", "영화 같이" 같은 수식어는 AI가 그냥 무시해버리곤 하죠.
+
+그 벽을 넘는 열쇠는 대부분 단 한 단어입니다. **정확한 스타일 이름.**
+
+"숲속의 여자"와 "숲속의 여자, Alphonse Mucha 스타일, 황금시간대 조명, Art Nouveau 미학"은 완전히 다른 결과물을 만들어냅니다. 화가 이름, 조명 기법, 미술 사조 이름을 집어넣는 순간 AI는 수십만 장의 레퍼런스를 끌어와 그 방향으로 수렴합니다.
+
+제가 실제로 쓰면서 효과를 확인한 **150개 스타일 수식어**를 아티스트·조명·미적 무브먼트 세 카테고리로 정리해봤습니다.
+
+---
+
+## Part 1. 아티스트 스타일 — 50인
+
+화가 이름을 프롬프트에 넣는 것이 단일 수식어 중 가장 강력합니다. 이름 하나가 붓터치, 색감, 구도, 분위기를 한번에 정의해주거든요.
+
+### 고전·르네상스
+
+→ **Leonardo da Vinci** — 스푸마토 기법, 경계가 스며드는 부드러운 전환, 과학적 디테일
+
+→ **Rembrandt** — 극적 명암 대비(키아로스쿠로), 따뜻한 촛불빛, 풍부한 그림자
+
+→ **Johannes Vermeer** — 정적인 실내 풍경, 진주 같은 발광, 창문을 통한 부드러운 자연광
+
+→ **Caravaggio** — 극단적 명암, 연극적 어둠, 날것 그대로의 사실주의
+
+→ **Hieronymus Bosch** — 초현실적 지옥도, 빽빽한 상징, 중세 판타지
+
+→ **Albrecht Dürer** — 정밀한 판화, 날카로운 선, 게르만식 세밀함
+
+→ **Botticelli** — 우아한 인물, 신화적 아름다움, 흐르는 곡선
+
+> "경복궁 근정전 , Vermeer 스타일, 창호지를 통한 부드러운 자연광, 유화"
+
+![고전 르네상스 스타일 AI 이미지](/images/posts/14/Korean_nobleman_seated_202603260906.webp)
+
+---
+
+### 인상주의·후기 인상주의
+
+→ **Claude Monet** — 부드럽게 흩어진 빛, 흐린 수면, 뮤트한 파스텔
+
+→ **Vincent van Gogh** — 소용돌이치는 붓터치, 전기가 흐르는 듯한 색채, 감정적
+
+→ **Paul Gauguin** — 대담하고 평평한 색면, 원시적 추상
+
+→ **Georges Seurat** — 점묘법 점들, 정적인 장면, 일요일 오후의 고요함
+
+→ **Edgar Degas** — 예상치 못한 앵글, 순간 포착된 움직임
+
+→ **Mary Cassatt** — 친밀한 일상, 파스텔 부드러움
+
+> "북한산 단풍길을 걷는 등산객들, Monet 인상주의 스타일, 흩어진 가을빛, 수채화"
+
+![인상주의 스타일 AI 이미지](/images/posts/14/Hikers_on_Bukhansan_202603260907.webp)
+
+---
+
+### 모던 아트
+
+→ **Pablo Picasso** — 큐비즘 분절, 다중 시점, 대담한 형태
+
+→ **Salvador Dalí** — 극사실적 초현실주의, 녹아내리는 물체, 꿈의 풍경
+
+→ **Frida Kahlo** — 상징적 자화상, 생생한 민속 색채
+
+→ **Wassily Kandinsky** — 정신적 추상, 순수한 기하학적 색면
+
+→ **Mark Rothko** — 색면 명상, 발광하는 직사각형, 감정적
+
+→ **Jackson Pollock** — 드립 페인팅, 액션 제스처, 레이어 텍스처
+
+→ **René Magritte** — 사진적 초현실주의, 불가능한 하늘
+
+→ **Edward Hopper** — 미국식 고독감, 날카로운 햇빛, 영화적
+
+> "새벽 4시 편의점 창문, Edward Hopper 스타일, 형광등 빛이 쏟아지는 고독한 도시"
+
+![모던 아트 스타일 AI 이미지](/images/posts/14/Lone_salaryman_outside_202603260907.webp)
+
+---
+
+### 일러스트레이션·컨셉 아트
+
+→ **Alphonse Mucha** — Art Nouveau 장식 테두리, 흐르는 머리카락, 황금빛
+
+→ **Arthur Rackham** — 고딕 동화, 잉크와 수채, 뒤틀린 나무
+
+→ **Frank Frazetta** — 펄프 판타지, 다이나믹한 액션, 서사적 스케일
+
+→ **John William Waterhouse** — 라파엘 전파 여성, 신화, 자연
+
+→ **Gustave Doré** — 흑백 판화, 성경적 서사, 극적 스케일
+
+> "경복궁 광화문 앞 한복 입은 여인, Alphonse Mucha 스타일, golden hour, Art Nouveau 장식 테두리"
+
+![일러스트레이션 컨셉 아트 스타일 AI 이미지](/images/posts/14/Korean_woman_in_202603260907.webp)
+
+---
+
+### 현대·디지털 아트
+
+→ **Yayoi Kusama** — 폴카 도트, 무한 거울, 집착적 반복
+
+→ **Takashi Murakami** — 슈퍼플랫 애니팝, 웃는 꽃, 평평한 원색
+
+→ **James Jean** — 꿈 같은 일러스트레이션, 유기적 흐름, 섬세한 선
+
+→ **Loish** — 디지털 페인팅, 발광하는 피부, 판타지 초상
+
+→ **Greg Rutkowski** — 서사적 판타지 랜드스케이프, 회화적 빛, 영화적
+
+→ **Wlop** — 에테리얼 판타지, 달빛 글로우
+
+→ **Simon Stålenhag** — 레트로퓨처리스틱, 외로운 로봇, SF
+
+→ **Moebius (Jean Giraud)** — 깔끔한 선명한 윤곽, 부드러운 SF, 외계 풍경
+
+→ **H.R. Giger** — 바이오메카니컬 에이리언 호러, 기계적 살점
+
+→ **Hayao Miyazaki** — 지브리 따뜻함, 자연 정령, 수작업 애니메이션
+
+→ **Yoshitaka Amano** — 파이널 판타지의 섬세함, 수채화 우아함, 에테리얼
+
+→ **Kentaro Miura** — 베르세르크 빽빽한 크로스해칭, 다크 에픽 판타지 망가
+
+> "북악산 정상에 선 여인, Yoshitaka Amano 스타일, bioluminescent lighting, Studio Ghibli 미학"
+
+![현대 디지털 아트 스타일 AI 이미지](/images/posts/14/Spirit_guardian_Namsan_202603260907.webp)
+
+---
+
+## Part 2. 조명 스타일 — 40종
+
+조명은 단일 변수 중 결과물 분위기를 가장 크게 바꿉니다. 같은 피사체라도 조명 하나로 완전히 다른 감정이 만들어지거든요.
+
+### 자연광
+
+→ **Golden hour** — 따뜻한 호박색 톤, 긴 그림자, 영화적 온기
+
+→ **Blue hour** — 차가운 황혼, 부드러운 보라빛 하늘, 고요한 분위기
+
+→ **Magic hour** — 일출 직후 또는 일몰 직전
+
+→ **Overcast diffused light** — 균일하고 그림자 없는, 뮤트하고 플랫
+
+→ **Harsh midday sun** — 높은 대비, 검은 그림자, 표백된 하이라이트
+
+→ **Dappled light** — 나뭇잎 사이로 스며드는 햇빛, 점박이 패턴, 몽환적
+
+→ **Backlit / contre-jour** — 피사체 실루엣 또는 빛이 투과되는 글로우
+
+→ **Rainy day light** — 뮤트하고 회색, 반사되는 물웅덩이, 내성적
+
+> "창덕궁 후원 연못, golden hour 조명, 단풍 반영, 필름 그레인"
+
+![자연광 조명 스타일 AI 이미지](/images/posts/14/Secret_garden_pond_202603260908.webp)
+
+---
+
+### 스튜디오·인공광
+
+→ **Chiaroscuro** — 극단적 명암 대비, 르네상스 드라마
+
+→ **Rembrandt lighting** — 한쪽 얼굴에 삼각형 하이라이트, 반대편 그림자
+
+→ **Rim lighting** — 피사체 테두리를 감싸는 빛의 윤곽선
+
+→ **Neon lighting** — 전기 색 글로우, 사이버펑크 분위기, 핑크·블루·그린
+
+→ **Bioluminescent lighting** — 유기적 발광 요소, 판타지 수중
+
+→ **Candlelight** — 따뜻한 흔들림, 친밀감, 구세계 분위기
+
+→ **Firelight** — 오렌지 온기, 춤추는 빛, 원초적
+
+→ **High key lighting** — 매우 밝고 그림자 최소, 가볍고 깨끗
+
+→ **Low key lighting** — 대부분 어둡고 선택적 하이라이트, 극적, 누아르
+
+> "한국 재즈 뮤지션, Rembrandt three-point lighting, 삼각형 하이라이트, 클럽 촛불 분위기"
+
+![스튜디오 인공광 조명 스타일 AI 이미지](/images/posts/14/Korean_musician_playing_202603260908.webp)
+
+---
+
+### 영화적·스타일화 조명
+
+→ **Cinematic lighting** — 할리우드급 방향성 있는 드라마
+
+→ **Noir lighting** — 흑백, 베네치안 블라인드 그림자, 범죄 드라마
+
+→ **Volumetric lighting** — 분위기를 통해 보이는 빛줄기, 갓 레이
+
+→ **God rays / crepuscular rays** — 구름이나 나무를 통한 빛의 광선
+
+→ **Lens flare** — 광학 아티팩트, 아나모픽 스트릭
+
+→ **Split lighting** — 얼굴 절반만 조명, 강렬한 초상화
+
+→ **Moonlight** — 차갑고 푸른 은빛, 신비롭고 낭만적인 밤
+
+→ **UV / blacklight** — 형광 글로우, 네온 포스터, 클럽 에너지
+
+→ **Underwater caustics** — 물결치는 굴절 빛 패턴, 몽환적
+
+→ **Ilford push film look** — 고감도 흑백 필름 그레인, 다큐멘터리
+
+> "홍대 골목, neon lighting, volumetric light, 빗속 사이버펑크 Seoul"
+
+![영화적 조명 스타일 AI 이미지](/images/posts/14/Hongdae_alley_heavy_202603260908.webp)
+
+---
+
+## Part 3. 시각적 미학과 미술 운동 — 60종+
+
+개별 화가나 조명을 넘어, 미술 운동 전체를 지정하면 AI가 그 시대의 미학 시스템 전체를 끌어옵니다.
+
+### 역사적 미술 운동
+
+→ **Baroque** — 화려한 드라마, 금빛 과잉, 천장화, 가톨릭적
+
+→ **Rococo** — 파스텔 유희, 케루빔, 귀족적 장식
+
+→ **Neoclassicism** — 그리스·로마 이상, 깔끔한 선, 대리석 질서
+
+→ **Romanticism** — 거친 자연, 감정적 숭고함, 극적 랜드스케이프
+
+→ **Pre-Raphaelite** — 중세 부흥주의, 자연 디테일, 보석 톤 패브릭
+
+→ **Art Nouveau** — 유기적 곡선, 꽃 모티프, 장식적 금색, Mucha풍
+
+→ **Art Deco** — 기하학적 우아함, 크롬과 검정, 1920년대 글래머
+
+→ **Bauhaus** — 기능적 디자인, 원색, 타이포그래피와 기하학
+
+→ **Expressionism** — 왜곡된 감정, 독일 앙스트
+
+→ **Surrealism** — 꿈 같은 병치, 프로이트적 이미지, 불가능한 논리
+
+→ **Constructivism** — 소비에트 기하학, 선전 포스터, 빨강과 검정
+
+> "경복궁 천장 단청, Baroque 화려한 드라마, 금빛 과잉, 극적 상향 시점"
+
+![역사적 미술 운동 스타일 AI 이미지](/images/posts/14/Palace_ceiling_mural_202603260908.webp)
+
+---
+
+### 사진 미학
+
+→ **Film photography** — 그레인, 색 이동, 빛 누출, 아날로그 온기
+
+→ **Daguerreotype** — 은판 초상, 구세계 격식, 오래된 질감
+
+→ **Polaroid** — 정사각 포맷, 바랜 색, 흰 테두리, 향수
+
+→ **35mm grain** — 가시적인 그레인, 르포르타주 감각, 그리티 다큐멘터리
+
+→ **Medium format** — 극도로 선명하고 크리미한 보케, 패션 사진
+
+→ **Infrared photography** — 흰 잎사귀, 검은 하늘, 초현실적 자연
+
+→ **Double exposure** — 두 이미지 블렌딩, 시적 중첩
+
+→ **Long exposure** — 빛의 궤적, 실크 같은 물, 모션 블러
+
+→ **Lomography** — 토이 카메라, 선명하게 채도 높은 색, 비네트 엣지
+
+→ **Cinestill 800T** — 하이라이트의 할레이션 글로우, 텅스텐 야경 사진
+
+> "서울역 새벽 5시, Cinestill 800T, 텅스텐 가로등, 귀가하는 직장인 실루엣"
+
+![사진 미학 스타일 AI 이미지](/images/posts/14/Seoul_Station_at_202603260908.webp)
+
+---
+
+### 디지털·현대 미학
+
+→ **Vaporwave** — 파스텔 핑크·퍼플, 그리스 흉상, 80년대 향수 그리드
+
+→ **Synthwave / retrowave** — 네온 석양, 그리드 수평선, 트론 미학
+
+→ **Lo-fi aesthetic** — 따뜻한 그레인, 아늑한 일러스트레이션, 공부하는 분위기
+
+→ **Glitch art** — 픽셀 손상, RGB 이동, VHS 왜곡
+
+→ **Pixel art** — 레트로 게임 스프라이트, 8비트 또는 16비트
+
+→ **Dark academia** — 촛불, 고딕 건축, 가죽 책, 세피아
+
+→ **Psychedelic art** — 트리피한 색, 프랙탈 패턴, 60년대 반문화
+
+> "연세대 도서관 밤, dark academia 미학, 촛불 조명, 고딕 천장"
+
+---
+
+### 장르·서브컬처 미학
+
+→ **Cyberpunk** — 비 오는 네온 도시, 강화된 인류, 기업 디스토피아
+
+→ **Steampunk** — 빅토리아 황동과 기어, 비행선, 세피아 발명품
+
+→ **Solarpunk** — 초록 유토피아, 유기적 건축, 밝은 희망
+
+→ **Cottagecore** — 야생화, 버섯, 린넨 앞치마, 목가적 이상
+
+→ **Witchcore** — 가마솥, 양초, 식물 일러스트, 주문서
+
+→ **Dreamcore** — 기묘한 경계 공간, 향수 어린 공포, 부드러운 비현실
+
+→ **Liminal spaces** — 텅 빈 수영장, 형광등 복도, 섬뜩한 비장소
+
+> "야간 공사 중인 서울 지하철역, liminal space 미학, 형광등, 아무도 없는 플랫폼"
+
+![장르 서브컬처 미학 AI 이미지](/images/posts/14/Empty_Seoul_subway_202603260908.webp)
+
+---
+
+### 일러스트레이션·렌더링 스타일
+
+→ **Watercolor illustration** — 반투명 색 워시, 흰 종이가 비치는
+
+→ **Gouache illustration** — 불투명 매트 색, 평평하고 그래픽적, 포스터
+
+→ **Ink wash / sumi-e** — 일본 수묵화, 미니멀리스트 붓터치, 선
+
+→ **Pen and ink** — 크로스해칭, 점묘, 세밀한 선묘
+
+→ **Charcoal sketch** — 문질러진 회색 톤, 극적 제스처, 날것
+
+→ **Linocut / woodblock** — 인쇄된 텍스처, 대담한 그래픽, 제한된 색
+
+→ **Comic book style** — 굵은 윤곽선, 하프톤 음영, 액션 에너지
+
+→ **Manga style** — 표현력 있는 눈, 속도선, 일본 패널 미학
+
+→ **Ukiyo-e** — 일본 목판화, 평면 색, 굵은 윤곽, 호쿠사이 파도
+
+> "한복 입은 여인과 달, ukiyo-e 목판화 스타일, 평면 색면, 민화 느낌"
+
+![일러스트레이션 렌더링 스타일 AI 이미지](/images/posts/14/Korean_woman_with_202603260908.webp)
+
+---
+
+## 스타일 조합 공식
+
+진짜 마법은 여러 수식어를 쌓을 때 일어납니다.
+
+**기본 공식:**
+
+```
+[피사체] + [아티스트 스타일] + [조명] + [미학] + [매체]
+```
+
+**한국적 예시 4가지:**
+
+**1. 고독한 서울 새벽**
+```
+새벽 3시 강남 편의점 앞에 혼자 앉은 직장인, Edward Hopper 스타일,
+형광등 low key lighting, urban loneliness aesthetic,
+Cinestill 800T 필름, 디지털 페인팅
+```
+
+**2. 북악산 판타지**
+```
+북악산 정상에 선 여인, Yoshitaka Amano 스타일,
+bioluminescent lighting, Studio Ghibli 미학,
+수채화 일러스트레이션, 달빛 glowing
+```
+
+**3. 홍대 사이버펑크**
+```
+홍대 골목 비 오는 밤, Moebius clean line art 스타일,
+neon lighting + volumetric light, cyberpunk aesthetic,
+잉크와 수채 혼합 매체
+```
+
+**4. 경복궁 Art Nouveau**
+```
+경복궁 광화문 앞 한복 입은 여인, Alphonse Mucha 스타일,
+golden hour 조명, Art Nouveau 미학,
+장식 테두리와 금박 디테일, 디지털 페인팅
+```
+
+---
+
+## 프롬프트 수식어 활용 팁
+
+**아티스트부터 시작해 보세요.** 아티스트 이름 하나가 단어당 담는 시각 정보가 가장 많습니다. 조명은 그 위에서 분위기를 정제해 줍니다.
+
+**적을수록 낫습니다.** 수식어 2~3개가 10개보다 오히려 잘 됩니다. AI가 해석할 여지가 필요하거든요.
+
+**구체성이 모호함을 이깁니다.** "Rembrandt lighting"이 "극적인 조명"보다 낫고, "Ukiyo-e"가 "일본 스타일"보다 훨씬 정확합니다.
+
+**미학을 먼저 단독으로 테스트해 보세요.** 피사체 없이 "vaporwave aesthetic"나 "dark academia"만 넣어서 AI가 무엇을 기본값으로 내놓는지 먼저 확인해 보세요. 그 위에 피사체를 쌓으면 훨씬 안정적입니다.
+
+**의외의 조합을 시도해 보세요.** "Baroque 구도, cyberpunk 조명"이나 "cottagecore 미학, sumi-e 스타일"처럼 어울릴 것 같지 않은 조합이 오히려 독창적인 결과물을 만들어냅니다.
+
+**매체를 꼭 명시해 주세요.** "유화", "수채화", "디지털 아트", "사진" — 이 한 단어가 결과물의 텍스처 전체를 결정합니다.
+
+---
+
+스타일 언어를 배우는 건 새 언어를 배우는 것과 같습니다. 처음엔 낯설지만, 몇 가지 핵심 단어만 익혀두면 AI와의 대화 품질이 완전히 달라집니다. 오늘 당장 가장 끌리는 화가 이름 하나를 골라서 프롬프트에 붙여넣어 보세요.
