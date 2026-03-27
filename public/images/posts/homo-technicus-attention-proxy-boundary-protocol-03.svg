@@ -1,0 +1,23 @@
+﻿<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#312e81"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg3)"/>
+  <text x="800" y="120" fill="#ddd6fe" font-size="48" text-anchor="middle" font-family="Pretendard, Arial">주도권 회수 프로토콜</text>
+  <rect x="180" y="190" width="1240" height="600" rx="24" fill="#0f172a" stroke="#8b5cf6" stroke-width="3"/>
+  <circle cx="360" cy="360" r="120" fill="#1d4ed8"/>
+  <circle cx="800" cy="360" r="120" fill="#7c3aed"/>
+  <circle cx="1240" cy="360" r="120" fill="#0ea5e9"/>
+  <text x="360" y="345" fill="#dbeafe" font-size="34" text-anchor="middle" font-family="Pretendard, Arial">위임 목록</text>
+  <text x="360" y="390" fill="#bfdbfe" font-size="24" text-anchor="middle" font-family="Pretendard, Arial">반복/저위험</text>
+  <text x="800" y="345" fill="#ede9fe" font-size="34" text-anchor="middle" font-family="Pretendard, Arial">회수 트리거</text>
+  <text x="800" y="390" fill="#ddd6fe" font-size="24" text-anchor="middle" font-family="Pretendard, Arial">고위험/다자 이슈</text>
+  <text x="1240" y="345" fill="#e0f2fe" font-size="34" text-anchor="middle" font-family="Pretendard, Arial">점검 리듬</text>
+  <text x="1240" y="390" fill="#bae6fd" font-size="24" text-anchor="middle" font-family="Pretendard, Arial">주간 복기</text>
+  <path d="M480 360 L680 360" stroke="#a78bfa" stroke-width="6"/>
+  <path d="M920 360 L1120 360" stroke="#67e8f9" stroke-width="6"/>
+  <text x="800" y="700" fill="#cbd5e1" font-size="30" text-anchor="middle" font-family="Pretendard, Arial">자동화는 확대하고, 최종 책임은 인간이 유지한다</text>
+</svg>

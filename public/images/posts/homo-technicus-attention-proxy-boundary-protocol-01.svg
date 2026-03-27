@@ -1,0 +1,26 @@
+﻿<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a1020"/>
+      <stop offset="100%" stop-color="#123a63"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect x="120" y="170" width="360" height="560" rx="24" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+  <rect x="620" y="120" width="360" height="660" rx="24" fill="#111827" stroke="#60a5fa" stroke-width="2"/>
+  <rect x="1120" y="170" width="360" height="560" rx="24" fill="#0f172a" stroke="#818cf8" stroke-width="2"/>
+  <path d="M480 450 L620 450" stroke="url(#line)" stroke-width="6"/>
+  <path d="M980 450 L1120 450" stroke="url(#line)" stroke-width="6"/>
+  <circle cx="550" cy="450" r="10" fill="#22d3ee"/>
+  <circle cx="1050" cy="450" r="10" fill="#818cf8"/>
+  <text x="300" y="260" fill="#67e8f9" font-size="42" text-anchor="middle" font-family="Pretendard, Arial">입력 영역</text>
+  <text x="800" y="210" fill="#93c5fd" font-size="42" text-anchor="middle" font-family="Pretendard, Arial">판단 코어</text>
+  <text x="1300" y="260" fill="#a5b4fc" font-size="42" text-anchor="middle" font-family="Pretendard, Arial">출력 영역</text>
+  <text x="300" y="340" fill="#cbd5e1" font-size="30" text-anchor="middle" font-family="Pretendard, Arial">기록 · 분류 · 요약</text>
+  <text x="800" y="340" fill="#cbd5e1" font-size="30" text-anchor="middle" font-family="Pretendard, Arial">우선순위 · 의미부여 · 승인</text>
+  <text x="1300" y="340" fill="#cbd5e1" font-size="30" text-anchor="middle" font-family="Pretendard, Arial">문서 · 메시지 · 실행</text>
+</svg>
