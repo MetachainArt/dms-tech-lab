@@ -1,0 +1,24 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="주의 리듬 레저 추상 이미지 1">
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1020"/>
+      <stop offset="50%" stop-color="#132a4a"/>
+      <stop offset="100%" stop-color="#1f6aa5"/>
+    </linearGradient>
+    <linearGradient id="line1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#67e8f9"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg1)"/>
+  <g opacity="0.2" stroke="#93c5fd" stroke-width="1">
+    <path d="M0 150 H1600"/><path d="M0 300 H1600"/><path d="M0 450 H1600"/><path d="M0 600 H1600"/><path d="M0 750 H1600"/>
+    <path d="M200 0 V900"/><path d="M400 0 V900"/><path d="M600 0 V900"/><path d="M800 0 V900"/><path d="M1000 0 V900"/><path d="M1200 0 V900"/><path d="M1400 0 V900"/>
+  </g>
+  <path d="M80 620 C180 560 260 580 340 500 C420 420 520 430 600 480 C700 545 760 520 840 440 C940 340 1030 330 1110 400 C1210 490 1300 500 1400 410 C1470 360 1510 345 1560 360" fill="none" stroke="url(#line1)" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="340" cy="500" r="16" fill="#67e8f9"/>
+  <circle cx="840" cy="440" r="16" fill="#a78bfa"/>
+  <circle cx="1400" cy="410" r="16" fill="#67e8f9"/>
+  <text x="90" y="120" fill="#dbeafe" font-size="46" font-family="Pretendard, Arial, sans-serif">Attention Rhythm Ledger</text>
+  <text x="90" y="170" fill="#bfdbfe" font-size="26" font-family="Pretendard, Arial, sans-serif">Signal Density · Recovery Window · Flow Stability</text>
+</svg>

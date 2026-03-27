@@ -1,0 +1,27 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="주의 리듬 레저 추상 이미지 2">
+  <defs>
+    <radialGradient id="bg2" cx="50%" cy="45%" r="70%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="60%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </radialGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#f472b6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg2)"/>
+  <g fill="none" stroke="url(#ring)">
+    <circle cx="800" cy="460" r="110" stroke-width="10" opacity="0.9"/>
+    <circle cx="800" cy="460" r="190" stroke-width="8" opacity="0.7"/>
+    <circle cx="800" cy="460" r="280" stroke-width="6" opacity="0.5"/>
+    <circle cx="800" cy="460" r="370" stroke-width="4" opacity="0.35"/>
+  </g>
+  <path d="M200 700 Q450 520 700 700 T1200 700" stroke="#38bdf8" stroke-width="7" fill="none" opacity="0.8"/>
+  <path d="M200 760 Q450 580 700 760 T1200 760" stroke="#f0abfc" stroke-width="5" fill="none" opacity="0.75"/>
+  <rect x="1220" y="180" width="250" height="220" rx="18" fill="#0b1220" stroke="#334155"/>
+  <text x="1250" y="240" fill="#e2e8f0" font-size="28" font-family="Pretendard, Arial, sans-serif">Loop Map</text>
+  <text x="1250" y="285" fill="#93c5fd" font-size="21" font-family="Pretendard, Arial, sans-serif">observe → tune</text>
+  <text x="1250" y="320" fill="#f9a8d4" font-size="21" font-family="Pretendard, Arial, sans-serif">release → recover</text>
+  <text x="1250" y="355" fill="#cbd5e1" font-size="21" font-family="Pretendard, Arial, sans-serif">repeat with margin</text>
+</svg>
