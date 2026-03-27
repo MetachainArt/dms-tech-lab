@@ -5,8 +5,10 @@ const nextConfig: NextConfig = {
   serverExternalPackages: [
     "html2canvas",
     "jspdf",
+    "three",
+    "@react-three/fiber",
+    "@react-three/drei",
   ],
-
 
 // 이미지 최적화 설정
   images: {
@@ -53,6 +55,9 @@ const nextConfig: NextConfig = {
       "@react-three/fiber",
       "three",
     ],
+    // 서버리스 함수 크기 초과 방지 — 브라우저 전용 3D 패키지 tracing 제외
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ...(({ outputFileTracingExcludes: { "*": ["./node_modules/three/**", "./node_modules/@react-three/**"] } }) as any),
   },
 
   // 컴파일러 최적화
