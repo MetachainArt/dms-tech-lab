@@ -7,6 +7,13 @@ const nextConfig: NextConfig = {
     "jspdf",
   ],
 
+  // admin/blog API 함수에서 public/ 폴더 제외 (이미지/오디오가 함수 번들에 포함되는 문제 방지)
+  outputFileTracingExcludes: {
+    "/api/admin/blog/files": ["./public/**"],
+    "/api/admin/blog/read": ["./public/**"],
+    "/api/admin/blog/save": ["./public/**"],
+  },
+
 // 이미지 최적화 설정
   images: {
     remotePatterns: [
@@ -49,12 +56,6 @@ const nextConfig: NextConfig = {
       "clsx",
       "date-fns",
     ],
-    // 서버리스 함수 크기 초과 방지 — 브라우저 전용 패키지 tracing 제외
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ...(({ outputFileTracingExcludes: { "*": [
-      "./node_modules/jspdf/**",
-      "./node_modules/html2canvas/**",
-    ] } }) as any),
   },
 
   // 컴파일러 최적화
