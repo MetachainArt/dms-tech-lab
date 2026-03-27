@@ -5,9 +5,6 @@ const nextConfig: NextConfig = {
   serverExternalPackages: [
     "html2canvas",
     "jspdf",
-    "three",
-    "@react-three/fiber",
-    "@react-three/drei",
   ],
 
 // 이미지 최적화 설정
