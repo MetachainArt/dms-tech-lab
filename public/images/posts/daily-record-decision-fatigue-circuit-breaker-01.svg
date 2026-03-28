@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="밤의 작업 보드 추상 일러스트">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f2b"/>
+      <stop offset="100%" stop-color="#17103a"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g opacity="0.25" stroke="#38bdf8" stroke-width="1">
+    <path d="M0 130 H1600"/><path d="M0 260 H1600"/><path d="M0 390 H1600"/><path d="M0 520 H1600"/><path d="M0 650 H1600"/><path d="M0 780 H1600"/>
+    <path d="M180 0 V900"/><path d="M360 0 V900"/><path d="M540 0 V900"/><path d="M720 0 V900"/><path d="M900 0 V900"/><path d="M1080 0 V900"/><path d="M1260 0 V900"/><path d="M1440 0 V900"/>
+  </g>
+  <rect x="180" y="170" width="1240" height="560" rx="28" fill="#0b1228" opacity="0.85" stroke="#334155"/>
+  <path d="M250 620 C430 520, 530 690, 700 560 S1020 420, 1330 320" stroke="url(#line)" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <circle cx="700" cy="560" r="16" fill="#22d3ee"/>
+  <circle cx="1020" cy="420" r="16" fill="#a78bfa"/>
+  <rect x="240" y="220" width="240" height="24" rx="12" fill="#1e293b"/>
+  <rect x="240" y="270" width="360" height="16" rx="8" fill="#334155"/>
+  <rect x="240" y="300" width="300" height="16" rx="8" fill="#334155"/>
+  <rect x="1160" y="220" width="180" height="120" rx="16" fill="#111827" stroke="#475569"/>
+  <rect x="1188" y="260" width="124" height="10" rx="5" fill="#22d3ee"/>
+  <rect x="1188" y="282" width="98" height="10" rx="5" fill="#a78bfa"/>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="시간 블록 운영 리듬 추상 일러스트">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#081021"/>
+      <stop offset="100%" stop-color="#1f1147"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg2)"/>
+  <g transform="translate(220,130)">
+    <rect width="1160" height="640" rx="30" fill="#0f172a" opacity="0.86" stroke="#334155"/>
+    <g transform="translate(80,90)">
+      <rect x="0" y="0" width="300" height="120" rx="18" fill="#1e293b"/>
+      <rect x="340" y="0" width="300" height="120" rx="18" fill="#0f766e" opacity="0.5"/>
+      <rect x="680" y="0" width="300" height="120" rx="18" fill="#3730a3" opacity="0.55"/>
+      <rect x="0" y="170" width="460" height="220" rx="24" fill="#111827" stroke="#475569"/>
+      <rect x="500" y="170" width="480" height="220" rx="24" fill="#111827" stroke="#475569"/>
+      <path d="M40 320 H420" stroke="#22d3ee" stroke-width="8" stroke-linecap="round"/>
+      <path d="M540 260 H930" stroke="#a78bfa" stroke-width="8" stroke-linecap="round"/>
+      <path d="M540 310 H870" stroke="#38bdf8" stroke-width="8" stroke-linecap="round"/>
+      <path d="M540 360 H760" stroke="#c084fc" stroke-width="8" stroke-linecap="round"/>
+    </g>
+  </g>
+  <circle cx="1320" cy="150" r="36" fill="#22d3ee" opacity="0.6"/>
+  <circle cx="1380" cy="210" r="20" fill="#a78bfa" opacity="0.7"/>
+</svg>

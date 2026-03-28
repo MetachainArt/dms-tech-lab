@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="야간 복구 체크리스트 추상 일러스트">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0b1020"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg3)"/>
+  <rect x="260" y="120" width="1080" height="660" rx="30" fill="#0f172a" opacity="0.9" stroke="#334155"/>
+  <rect x="330" y="200" width="940" height="80" rx="14" fill="#1e293b"/>
+  <rect x="330" y="320" width="940" height="80" rx="14" fill="#111827" stroke="#374151"/>
+  <rect x="330" y="440" width="940" height="80" rx="14" fill="#111827" stroke="#374151"/>
+  <rect x="330" y="560" width="940" height="80" rx="14" fill="#111827" stroke="#374151"/>
+  <g fill="none" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="390" cy="360" r="20" stroke="#22d3ee"/>
+    <path d="M380 360 L388 368 L404 350" stroke="#22d3ee"/>
+    <circle cx="390" cy="480" r="20" stroke="#a78bfa"/>
+    <path d="M380 480 L388 488 L404 470" stroke="#a78bfa"/>
+    <circle cx="390" cy="600" r="20" stroke="#38bdf8"/>
+    <path d="M380 600 L388 608 L404 590" stroke="#38bdf8"/>
+  </g>
+  <rect x="440" y="346" width="640" height="20" rx="10" fill="#334155"/>
+  <rect x="440" y="466" width="560" height="20" rx="10" fill="#334155"/>
+  <rect x="440" y="586" width="700" height="20" rx="10" fill="#334155"/>
+</svg>
