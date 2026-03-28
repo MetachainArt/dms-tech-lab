@@ -1,0 +1,141 @@
+<svg width="640" height="420" viewBox="0 0 640 420" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+  <!-- Window shadow -->
+  <rect x="4" y="4" width="632" height="412" rx="8" fill="#00000022"/>
+  <!-- Window background -->
+  <rect x="0" y="0" width="632" height="412" rx="8" fill="#f3f3f3"/>
+
+  <!-- Title bar -->
+  <rect x="0" y="0" width="632" height="36" rx="8" fill="#2c2c2c"/>
+  <rect x="0" y="18" width="632" height="18" fill="#2c2c2c"/>
+  <text x="16" y="23" font-size="13" fill="white" font-weight="400">작업 관리자</text>
+  <circle cx="596" cy="18" r="7" fill="#ff5f56"/>
+  <circle cx="614" cy="18" r="7" fill="#ffbd2e"/>
+
+  <!-- Menu bar -->
+  <rect x="0" y="36" width="632" height="28" fill="#e8e8e8"/>
+  <text x="16" y="55" font-size="12" fill="#555">파일</text>
+  <text x="52" y="55" font-size="12" fill="#555">옵션</text>
+  <text x="88" y="55" font-size="12" fill="#555">보기</text>
+
+  <!-- Tab bar -->
+  <rect x="0" y="64" width="632" height="34" fill="#e0e0e0"/>
+  <!-- Inactive tabs -->
+  <rect x="0" y="64" width="90" height="34" fill="#e0e0e0"/>
+  <text x="18" y="86" font-size="12" fill="#666">프로세스</text>
+  <!-- Active tab: 성능 -->
+  <rect x="90" y="64" width="70" height="34" fill="#f3f3f3"/>
+  <rect x="90" y="96" width="70" height="2" fill="#0078d4"/>
+  <text x="105" y="86" font-size="12" fill="#0078d4" font-weight="bold">성능</text>
+  <!-- More tabs -->
+  <rect x="160" y="64" width="80" height="34" fill="#e0e0e0"/>
+  <text x="172" y="86" font-size="12" fill="#666">앱 기록</text>
+  <rect x="240" y="64" width="80" height="34" fill="#e0e0e0"/>
+  <text x="254" y="86" font-size="12" fill="#666">시작프로그램</text>
+  <rect x="320" y="64" width="70" height="34" fill="#e0e0e0"/>
+  <text x="332" y="86" font-size="12" fill="#666">사용자</text>
+
+  <!-- Left sidebar -->
+  <rect x="0" y="98" width="148" height="314" fill="#fafafa" stroke="#e0e0e0" stroke-width="1"/>
+
+  <!-- CPU item - selected -->
+  <rect x="0" y="98" width="148" height="60" fill="#cce5ff"/>
+  <rect x="0" y="98" width="3" height="60" fill="#0078d4"/>
+  <text x="14" y="118" font-size="13" fill="#004c97" font-weight="bold">CPU</text>
+  <!-- Mini CPU graph -->
+  <rect x="12" y="124" width="120" height="26" fill="#001733" rx="2"/>
+  <polyline points="12,144 28,140 44,138 60,136 76,142 92,134 108,137 124,133 132,135" fill="none" stroke="#4da6ff" stroke-width="1.5" transform="translate(12,0)"/>
+
+  <!-- Memory item -->
+  <rect x="0" y="158" width="148" height="58" fill="#fafafa"/>
+  <text x="14" y="177" font-size="12" fill="#555">메모리</text>
+  <rect x="12" y="183" width="120" height="24" fill="#001733" rx="2"/>
+  <polyline points="12,200 50,196 88,194 108,192 132,195" fill="none" stroke="#4da6ff" stroke-width="1.2" transform="translate(12,0)"/>
+
+  <!-- Disk item -->
+  <rect x="0" y="216" width="148" height="58" fill="#fafafa"/>
+  <text x="14" y="235" font-size="12" fill="#555">디스크 0 (C:)</text>
+  <rect x="12" y="241" width="120" height="24" fill="#001733" rx="2"/>
+  <polyline points="12,260 40,258 80,259 110,257 132,258" fill="none" stroke="#4da6ff" stroke-width="1.2" transform="translate(12,0)"/>
+
+  <!-- Network item -->
+  <rect x="0" y="274" width="148" height="58" fill="#fafafa"/>
+  <text x="14" y="293" font-size="12" fill="#555">Wi-Fi</text>
+  <rect x="12" y="299" width="120" height="24" fill="#001733" rx="2"/>
+
+  <!-- Main content area -->
+  <rect x="148" y="98" width="484" height="314" fill="white"/>
+
+  <!-- CPU header -->
+  <text x="168" y="126" font-size="18" fill="#0078d4" font-weight="bold">CPU</text>
+  <text x="300" y="120" font-size="11" fill="#888">Intel(R) Core(TM) i7-1260P @ 2.10GHz</text>
+  <text x="300" y="135" font-size="10" fill="#aaa">% 사용률, 60초</text>
+
+  <!-- CPU Usage graph -->
+  <rect x="162" y="142" width="456" height="150" fill="#001a33" rx="3"/>
+  <!-- Grid lines -->
+  <line x1="162" y1="167" x2="618" y2="167" stroke="#0a3050" stroke-width="0.7" stroke-dasharray="4,4"/>
+  <line x1="162" y1="192" x2="618" y2="192" stroke="#0a3050" stroke-width="0.7" stroke-dasharray="4,4"/>
+  <line x1="162" y1="217" x2="618" y2="217" stroke="#0a3050" stroke-width="0.7" stroke-dasharray="4,4"/>
+  <line x1="162" y1="242" x2="618" y2="242" stroke="#0a3050" stroke-width="0.7" stroke-dasharray="4,4"/>
+  <!-- Y labels -->
+  <text x="166" y="151" font-size="9" fill="#4da6ff">100%</text>
+  <text x="173" y="288" font-size="9" fill="#4da6ff">0</text>
+  <!-- Graph line (low CPU usage) -->
+  <polyline points="170,282 200,279 230,275 260,278 290,272 320,276 360,270 400,274 440,268 480,272 520,265 560,269 610,264"
+            fill="none" stroke="#4da6ff" stroke-width="2"/>
+  <polyline points="170,282 200,279 230,275 260,278 290,272 320,276 360,270 400,274 440,268 480,272 520,265 560,269 610,264 610,292 170,292"
+            fill="#0a2a4a" stroke="none"/>
+
+  <!-- Stats row 1 -->
+  <line x1="162" y1="304" x2="618" y2="304" stroke="#e8e8e8" stroke-width="0.7"/>
+
+  <text x="168" y="320" font-size="10" fill="#888">사용률</text>
+  <text x="168" y="336" font-size="16" fill="#111" font-weight="600">3%</text>
+
+  <text x="268" y="320" font-size="10" fill="#888">속도</text>
+  <text x="268" y="336" font-size="16" fill="#111" font-weight="600">2.10 GHz</text>
+
+  <text x="368" y="320" font-size="10" fill="#888">프로세스</text>
+  <text x="368" y="336" font-size="16" fill="#111" font-weight="600">189</text>
+
+  <text x="478" y="320" font-size="10" fill="#888">스레드</text>
+  <text x="478" y="336" font-size="16" fill="#111" font-weight="600">2,734</text>
+
+  <!-- Stats row 2 -->
+  <text x="168" y="360" font-size="10" fill="#888">핸들</text>
+  <text x="168" y="376" font-size="14" fill="#111" font-weight="600">82,140</text>
+
+  <text x="268" y="360" font-size="10" fill="#888">작동 시간</text>
+  <text x="268" y="376" font-size="14" fill="#111" font-weight="600">0:43:12</text>
+
+  <text x="368" y="360" font-size="10" fill="#888">논리 프로세서</text>
+  <text x="368" y="376" font-size="14" fill="#111" font-weight="600">16</text>
+
+  <!-- KEY: 가상화 사용 - highlighted with green bg -->
+  <rect x="472" y="350" width="140" height="36" rx="6" fill="#e6f4ea" stroke="#34a853" stroke-width="2"/>
+  <text x="480" y="362" font-size="10" fill="#1e6b3a" font-weight="600">가상화</text>
+  <text x="480" y="380" font-size="16" fill="#1a6b30" font-weight="bold">사용</text>
+
+  <!-- Annotation: callout arrow pointing to 가상화 -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ff4444"/>
+    </marker>
+  </defs>
+  <!-- Arrow from right side pointing left to the box -->
+  <line x1="624" y1="368" x2="616" y2="368" stroke="#ff4444" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+  <!-- Callout label -->
+  <rect x="616" y="352" width="0" height="0" fill="none"/>
+
+  <!-- Annotation bubble -->
+  <rect x="460" y="302" width="160" height="38" rx="6" fill="#fff3cd" stroke="#ff9800" stroke-width="1.5"/>
+  <text x="473" y="318" font-size="11" fill="#7a4f00" font-weight="bold">여기를 확인하세요!</text>
+  <text x="473" y="333" font-size="10" fill="#7a4f00">"사용"이면 통과 ✓</text>
+  <!-- Bubble tail -->
+  <polygon points="520,340 510,350 530,350" fill="#fff3cd" stroke="#ff9800" stroke-width="1.5"/>
+
+  <!-- Bottom status bar -->
+  <rect x="0" y="396" width="632" height="16" rx="0" fill="#f0f0f0"/>
+  <rect x="0" y="396" width="632" height="16" fill="#f0f0f0"/>
+  <text x="16" y="408" font-size="9" fill="#888">CPU: Intel(R) Core(TM) i7-1260P    코어: 10    논리 프로세서: 16    소켓: 1</text>
+</svg>

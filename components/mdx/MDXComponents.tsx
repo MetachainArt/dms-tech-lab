@@ -478,6 +478,36 @@ function SlackScopesTable() {
   );
 }
 
+function LogErrorTable() {
+  const errors = [
+    { msg: "token expired",      meaning: "토큰 만료",              fix: "api.slack.com에서 토큰 재발급 후 openclaw configure 재실행", color: "bg-red-50 text-red-700 border-red-200" },
+    { msg: "unknown user",       meaning: "허용되지 않은 사용자",     fix: "allowedUsers 설정 확인 — 내 Slack ID가 목록에 있는지 체크",  color: "bg-amber-50 text-amber-700 border-amber-200" },
+    { msg: "connection refused", meaning: "봇이 꺼진 상태",          fix: "openclaw gateway start 재실행",                            color: "bg-amber-50 text-amber-700 border-amber-200" },
+    { msg: "rate limit",         meaning: "AI API 호출 과다",        fix: "잠시 기다리면 자동 복구됨 (보통 1분 이내)",                  color: "bg-blue-50 text-blue-700 border-blue-200" },
+  ];
+  return (
+    <div className="my-8 overflow-hidden rounded-[24px] border border-paperfolio-line bg-white shadow-[0_14px_40px_rgba(31,41,55,0.04)]">
+      <div className="bg-paperfolio-text px-6 py-4">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40">Log Error Guide</p>
+        <p className="mt-1 text-sm text-white/70">자주 보이는 오류 메시지 해석</p>
+      </div>
+      <div className="divide-y divide-paperfolio-line">
+        {errors.map((e) => (
+          <div key={e.msg} className="flex flex-col gap-1.5 px-6 py-4 sm:flex-row sm:items-start sm:gap-4">
+            <div className="shrink-0">
+              <span className={`rounded-full border px-2.5 py-1 text-xs font-mono font-semibold ${e.color}`}>{e.msg}</span>
+            </div>
+            <div className="flex-1">
+              <p className="text-sm font-semibold text-paperfolio-text">{e.meaning}</p>
+              <p className="mt-0.5 text-sm text-paperfolio-text-muted">{e.fix}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function SecurityThreatTable() {
   const threats = [
     { type: "토큰 유출",    desc: "AI/Slack 무단 사용, 요금 청구",    fix: "환경 변수 + .gitignore",   level: "high"   },
@@ -560,6 +590,7 @@ export const MDXComponents = {
   WslVsDirectTable,
   VpsComparisonTable,
   SecurityThreatTable,
+  LogErrorTable,
   StatusRow,
   StatusGrid,
   ChangeRow,
