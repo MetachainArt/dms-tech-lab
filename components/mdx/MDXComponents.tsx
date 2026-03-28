@@ -358,6 +358,51 @@ function StepGuideTable() {
   );
 }
 
+function VpsComparisonTable() {
+  const rows = [
+    { label: "안정성",   wsl: "절전/종료 시 중단됨",    vps: "24시간 지속 운영",     wslBad: true  },
+    { label: "보안",     wsl: "기존 환경과 공유",        vps: "격리된 독립 환경",     wslBad: true  },
+    { label: "성능",     wsl: "다른 앱과 리소스 공유",   vps: "전용 리소스",          wslBad: true  },
+    { label: "유지보수", wsl: "컴퓨터 사용 중 어려움",   vps: "원격으로 관리 가능",   wslBad: true  },
+    { label: "비용",     wsl: "추가 비용 없음",           vps: "월 $5~10 (저사양)",   wslBad: false },
+    { label: "권장 용도",wsl: "개인 테스트, 학습",        vps: "팀 운영, 업무 자동화", wslBad: false },
+  ];
+  return (
+    <div className="my-8 overflow-hidden rounded-[24px] border border-paperfolio-line bg-white shadow-[0_14px_40px_rgba(31,41,55,0.04)]">
+      {/* Header */}
+      <div className="grid grid-cols-3 bg-paperfolio-text">
+        <div className="px-5 py-4 text-[11px] font-semibold uppercase tracking-widest text-white/40">구분</div>
+        <div className="border-l border-white/10 px-5 py-4">
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-white/40">개인 컴퓨터</p>
+          <p className="mt-0.5 text-sm font-bold text-white">WSL</p>
+        </div>
+        <div className="border-l border-white/10 bg-teal-600/20 px-5 py-4">
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-teal-300/70">추천</p>
+          <p className="mt-0.5 text-sm font-bold text-teal-200">전용 서버 (VPS)</p>
+        </div>
+      </div>
+      {/* Rows */}
+      <div className="divide-y divide-paperfolio-line">
+        {rows.map((row) => (
+          <div key={row.label} className="grid grid-cols-3">
+            <div className="flex items-center px-5 py-4">
+              <span className="text-sm font-semibold text-paperfolio-text">{row.label}</span>
+            </div>
+            <div className={`flex items-center gap-2 border-l border-paperfolio-line px-5 py-4 ${row.wslBad ? "bg-red-50/40" : "bg-white"}`}>
+              {row.wslBad && <span className="text-red-400 text-xs">✕</span>}
+              <span className="text-sm text-paperfolio-text-muted">{row.wsl}</span>
+            </div>
+            <div className="flex items-center gap-2 border-l border-paperfolio-line bg-teal-50/60 px-5 py-4">
+              <span className="text-teal-500 text-xs font-bold">✓</span>
+              <span className="text-sm font-medium text-teal-700">{row.vps}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function SlackScopesTable() {
   const scopes = [
     { name: "chat:write",        desc: "메시지 전송 권한",             color: "bg-teal-400",   badge: "bg-teal-50   text-teal-700   border-teal-200"   },
@@ -465,6 +510,7 @@ export const MDXComponents = {
   BiosSettingsCard,
   StepGuideTable,
   SlackScopesTable,
+  VpsComparisonTable,
   SecurityThreatTable,
   StatusRow,
   StatusGrid,
