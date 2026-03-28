@@ -238,6 +238,164 @@ function ChangeGrid({ children }: { children: ReactNode }) {
   );
 }
 
+function DiskSpaceChart() {
+  const items = [
+    { label: "Ubuntu 24.04 설치", value: "약 2GB",  gb: 2,   color: "bg-teal-400",   badge: "bg-teal-50   text-teal-700   border-teal-200"   },
+    { label: "Node.js 24",        value: "약 500MB", gb: 0.5, color: "bg-blue-400",   badge: "bg-blue-50   text-blue-700   border-blue-200"   },
+    { label: "오픈클로 + 패키지",  value: "약 500MB", gb: 0.5, color: "bg-violet-400", badge: "bg-violet-50 text-violet-700 border-violet-200" },
+    { label: "작업 여유 공간",     value: "2GB 이상", gb: 2,   color: "bg-amber-400",  badge: "bg-amber-50  text-amber-700  border-amber-200"  },
+  ];
+  const total = 5;
+  return (
+    <div className="my-10 overflow-hidden rounded-[24px] border border-paperfolio-line bg-white shadow-[0_14px_40px_rgba(31,41,55,0.04)]">
+      <div className="bg-paperfolio-text px-6 py-4">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40">디스크 여유 공간 체크</p>
+        <p className="mt-1 text-xl font-bold text-white">최소 <span className="text-paperfolio-accent-yellow">5GB 이상</span> 필요합니다</p>
+      </div>
+      <div className="px-6 py-5">
+        <div className="flex h-8 w-full overflow-hidden rounded-xl">
+          {items.map((item) => (
+            <div
+              key={item.label}
+              className={`${item.color} transition-all`}
+              style={{ width: `${(item.gb / total) * 100}%` }}
+            />
+          ))}
+        </div>
+        <div className="mt-5 space-y-3">
+          {items.map((item) => (
+            <div key={item.label} className="flex items-center gap-3">
+              <div className={`h-3 w-3 shrink-0 rounded-sm ${item.color}`} />
+              <span className="flex-1 text-sm text-paperfolio-text-muted">{item.label}</span>
+              <span className={`rounded-full border px-2.5 py-0.5 text-xs font-semibold ${item.badge}`}>{item.value}</span>
+            </div>
+          ))}
+          <div className="flex items-center gap-3 border-t border-paperfolio-line pt-3">
+            <div className="h-3 w-3 shrink-0 rounded-sm bg-paperfolio-text" />
+            <span className="flex-1 text-sm font-semibold text-paperfolio-text">합계</span>
+            <span className="rounded-full border border-paperfolio-text bg-paperfolio-text px-2.5 py-0.5 text-xs font-semibold text-white">5GB 이상</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function BiosSettingsCard() {
+  const cpus = [
+    {
+      brand: "Intel",
+      color: "bg-blue-50 border-blue-200",
+      headColor: "bg-blue-600",
+      settings: ["VT-x", "Intel Virtualization Technology"],
+      icon: "🔵",
+    },
+    {
+      brand: "AMD",
+      color: "bg-red-50 border-red-200",
+      headColor: "bg-red-600",
+      settings: ["AMD-V", "SVM Mode"],
+      icon: "🔴",
+    },
+  ];
+  return (
+    <div className="my-8">
+      <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-paperfolio-text-muted">BIOS 가상화 설정 위치</p>
+      <div className="grid grid-cols-2 gap-4">
+        {cpus.map((cpu) => (
+          <div key={cpu.brand} className={`overflow-hidden rounded-[20px] border ${cpu.color}`}>
+            <div className={`${cpu.headColor} px-5 py-3`}>
+              <p className="text-xs font-semibold uppercase tracking-widest text-white/70">CPU 제조사</p>
+              <p className="mt-0.5 text-xl font-bold text-white">{cpu.brand}</p>
+            </div>
+            <div className="px-5 py-4 space-y-2">
+              {cpu.settings.map((s) => (
+                <div key={s} className="flex items-center gap-2">
+                  <div className={`h-1.5 w-1.5 shrink-0 rounded-full ${cpu.headColor}`} />
+                  <span className="font-mono text-sm font-medium text-paperfolio-text">{s}</span>
+                </div>
+              ))}
+              <p className="pt-1 text-xs text-paperfolio-text-muted">BIOS 진입: 재시작 후 Del 또는 F2</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function StepGuideTable() {
+  const steps = [
+    { num: "01", title: "오픈클로 소개 + 준비 확인",         time: "10분",  current: true  },
+    { num: "02", title: "WSL 설치 및 Ubuntu 설정",          time: "20분",  current: false },
+    { num: "03", title: "Node.js 24 + 오픈클로 설치",        time: "15분",  current: false },
+    { num: "04", title: "AI 인증 + Slack 연결 + 첫 실행",    time: "25분",  current: false },
+    { num: "05", title: "보안 설정 완벽 가이드",              time: "20분",  current: false },
+  ];
+  return (
+    <div className="my-8 overflow-hidden rounded-[24px] border border-paperfolio-line bg-white shadow-[0_14px_40px_rgba(31,41,55,0.04)]">
+      <div className="bg-paperfolio-text px-6 py-4">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40">전체 설치 가이드 구성</p>
+        <p className="mt-1 text-sm text-white/70">총 소요 시간 약 <span className="font-bold text-paperfolio-accent-yellow">90분</span></p>
+      </div>
+      <div className="divide-y divide-paperfolio-line">
+        {steps.map((step) => (
+          <div key={step.num} className={`flex items-center gap-4 px-6 py-4 ${step.current ? "bg-teal-50" : "bg-white"}`}>
+            <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-bold ${step.current ? "bg-teal-500 text-white" : "bg-paperfolio-surface text-paperfolio-text-muted"}`}>
+              {step.num}
+            </div>
+            <div className="flex-1">
+              <p className={`text-sm font-semibold ${step.current ? "text-teal-700" : "text-paperfolio-text"}`}>{step.title}</p>
+              {step.current && <p className="text-xs text-teal-500 font-medium">← 현재 단계</p>}
+            </div>
+            <div className={`shrink-0 rounded-full border px-3 py-0.5 text-xs font-semibold ${step.current ? "border-teal-300 bg-teal-100 text-teal-700" : "border-paperfolio-line bg-paperfolio-surface text-paperfolio-text-muted"}`}>
+              {step.time}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function SecurityThreatTable() {
+  const threats = [
+    { type: "토큰 유출",    desc: "AI/Slack 무단 사용, 요금 청구",    fix: "환경 변수 + .gitignore",   level: "high"   },
+    { type: "무단 접근",    desc: "허가되지 않은 사용자 봇 조종",      fix: "allowedUsers 목록 설정",    level: "high"   },
+    { type: "외부 포트 노출", desc: "인터넷에서 봇 서버 직접 접근",    fix: "127.0.0.1 바인딩",          level: "medium" },
+    { type: "프롬프트 인젝션", desc: "악성 메시지로 AI 역할 변경",     fix: "시스템 프롬프트 강화",      level: "medium" },
+    { type: "과도한 권한",  desc: "불필요한 채널/기능 접근",           fix: "Slack Scope 최소화",        level: "low"    },
+  ];
+  const levelStyle: Record<string, string> = {
+    high:   "bg-red-50   text-red-700   border-red-200",
+    medium: "bg-amber-50 text-amber-700 border-amber-200",
+    low:    "bg-blue-50  text-blue-700  border-blue-200",
+  };
+  const levelLabel: Record<string, string> = { high: "높음", medium: "중간", low: "낮음" };
+  return (
+    <div className="my-8 overflow-hidden rounded-[24px] border border-paperfolio-line bg-white shadow-[0_14px_40px_rgba(31,41,55,0.04)]">
+      <div className="flex items-center gap-4 bg-paperfolio-text px-6 py-3">
+        <div className="w-24 shrink-0 text-[10px] font-semibold uppercase tracking-widest text-white/40">위협 유형</div>
+        <div className="flex-1 text-[10px] font-semibold uppercase tracking-widest text-white/40">피해 내용</div>
+        <div className="w-40 shrink-0 text-[10px] font-semibold uppercase tracking-widest text-white/40">대응 방법</div>
+        <div className="w-14 shrink-0 text-center text-[10px] font-semibold uppercase tracking-widest text-white/40">위험도</div>
+      </div>
+      <div className="divide-y divide-paperfolio-line">
+        {threats.map((t) => (
+          <div key={t.type} className="flex items-center gap-4 px-6 py-4">
+            <div className="w-24 shrink-0 text-sm font-semibold text-paperfolio-text">{t.type}</div>
+            <div className="flex-1 text-sm text-paperfolio-text-muted">{t.desc}</div>
+            <div className="w-40 shrink-0 text-sm text-paperfolio-text-muted">{t.fix}</div>
+            <div className="w-14 shrink-0 text-center">
+              <span className={`rounded-full border px-2 py-0.5 text-[11px] font-semibold ${levelStyle[t.level]}`}>{levelLabel[t.level]}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export const MDXComponents = {
   h1: (props: HeadingProps) => <h1 className="mt-14 font-playfair text-4xl font-bold leading-tight tracking-tight text-paperfolio-text md:text-5xl" {...props} />,
   h2: (props: HeadingProps) => <h2 className="mt-12 font-playfair text-3xl font-semibold leading-tight tracking-tight text-paperfolio-text md:text-4xl" {...props} />,
@@ -275,6 +433,10 @@ export const MDXComponents = {
   AudioPlayer,
 
   ComfyWorkflowDiagram,
+  DiskSpaceChart,
+  BiosSettingsCard,
+  StepGuideTable,
+  SecurityThreatTable,
   StatusRow,
   StatusGrid,
   ChangeRow,
