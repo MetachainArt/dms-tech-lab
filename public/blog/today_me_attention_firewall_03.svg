@@ -1,0 +1,13 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#0A0F1A"/>
+  <path d="M180 700H1420" stroke="#334155" stroke-width="4"/>
+  <path d="M260 700V260" stroke="#334155" stroke-width="4"/>
+  <path d="M260 620C460 560 560 430 760 420C920 412 1020 500 1180 470C1270 453 1340 380 1420 330" stroke="#60A5FA" stroke-width="10" stroke-linecap="round"/>
+  <path d="M260 560C430 520 580 340 760 350C940 360 1060 450 1220 410C1300 390 1360 330 1420 260" stroke="#34D399" stroke-width="8" stroke-linecap="round" stroke-dasharray="12 14"/>
+  <circle cx="760" cy="420" r="16" fill="#F59E0B"/>
+  <circle cx="1180" cy="470" r="16" fill="#F59E0B"/>
+  <circle cx="1420" cy="330" r="16" fill="#F59E0B"/>
+  <rect x="980" y="130" width="360" height="150" rx="20" fill="#111827" stroke="#475569"/>
+  <text x="1010" y="185" fill="#E2E8F0" font-size="34" font-family="Pretendard, Arial">RESET WINDOW</text>
+  <text x="1010" y="230" fill="#94A3B8" font-size="24" font-family="Pretendard, Arial">signal, log, restart</text>
+</svg>
