@@ -358,6 +358,53 @@ function StepGuideTable() {
   );
 }
 
+function WslVsDirectTable() {
+  const rows = [
+    { label: "안정성",       direct: "경로·권한 충돌 잦음",        wsl: "Linux 네이티브 — 안정적",       wslWin: true  },
+    { label: "호환성",       direct: "일부 npm 패키지 미지원",      wsl: "오픈클로 공식 권장 환경",        wslWin: true  },
+    { label: "설치 난이도",  direct: "Node.js만 설치하면 됨",       wsl: "WSL 먼저 설치 필요",             wslWin: false },
+    { label: "패키지 관리",  direct: "npm만 사용",                  wsl: "apt + npm 함께 사용",             wslWin: true  },
+    { label: "파일 접근",    direct: "윈도우 파일 직접 접근",       wsl: "윈도우 파일 /mnt/c/ 로 접근",    wslWin: false },
+    { label: "메모리 사용",  direct: "추가 자원 없음",              wsl: "WSL 약 100~300MB 추가 사용",     wslWin: false },
+    { label: "오류 발생률",  direct: "EACCES, 경로 오류 빈번",      wsl: "오류 거의 없음",                  wslWin: true  },
+    { label: "권장 여부",    direct: "⚠ 비권장",                   wsl: "✓ 공식 권장",                    wslWin: true  },
+  ];
+  return (
+    <div className="my-8 overflow-hidden rounded-[24px] border border-paperfolio-line bg-white shadow-[0_14px_40px_rgba(31,41,55,0.04)]">
+      <div className="grid grid-cols-3 bg-paperfolio-text">
+        <div className="px-5 py-4 text-[11px] font-semibold uppercase tracking-widest text-white/40">항목</div>
+        <div className="border-l border-white/10 px-5 py-4">
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-orange-300/70">비권장</p>
+          <p className="mt-0.5 text-sm font-bold text-orange-200">윈도우 직접 설치</p>
+        </div>
+        <div className="border-l border-white/10 bg-teal-600/20 px-5 py-4">
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-teal-300/70">권장</p>
+          <p className="mt-0.5 text-sm font-bold text-teal-200">WSL 환경 설치</p>
+        </div>
+      </div>
+      <div className="divide-y divide-paperfolio-line">
+        {rows.map((row) => (
+          <div key={row.label} className="grid grid-cols-3">
+            <div className="flex items-center px-5 py-3.5">
+              <span className="text-sm font-semibold text-paperfolio-text">{row.label}</span>
+            </div>
+            <div className={`flex items-start gap-2 border-l border-paperfolio-line px-5 py-3.5 ${row.wslWin ? "bg-red-50/40" : "bg-emerald-50/30"}`}>
+              {row.wslWin && <span className="mt-0.5 shrink-0 text-xs text-red-400">✕</span>}
+              {!row.wslWin && <span className="mt-0.5 shrink-0 text-xs text-emerald-500">✓</span>}
+              <span className="text-sm text-paperfolio-text-muted">{row.direct}</span>
+            </div>
+            <div className={`flex items-start gap-2 border-l border-paperfolio-line px-5 py-3.5 ${row.wslWin ? "bg-teal-50/60" : "bg-amber-50/40"}`}>
+              {row.wslWin && <span className="mt-0.5 shrink-0 text-xs font-bold text-teal-500">✓</span>}
+              {!row.wslWin && <span className="mt-0.5 shrink-0 text-xs text-amber-500">△</span>}
+              <span className={`text-sm ${row.wslWin ? "font-medium text-teal-700" : "text-paperfolio-text-muted"}`}>{row.wsl}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function VpsComparisonTable() {
   const rows = [
     { label: "안정성",   wsl: "절전/종료 시 중단됨",    vps: "24시간 지속 운영",     wslBad: true  },
@@ -510,6 +557,7 @@ export const MDXComponents = {
   BiosSettingsCard,
   StepGuideTable,
   SlackScopesTable,
+  WslVsDirectTable,
   VpsComparisonTable,
   SecurityThreatTable,
   StatusRow,
