@@ -1623,13 +1623,7 @@ openclaw onboard --auth-choice setup-token
 
 왼쪽 메뉴에서 "Features" 섹션의 "OAuth & Permissions"를 클릭합니다. 페이지를 아래로 스크롤하면 "Scopes" 섹션이 나타납니다. "Bot Token Scopes" 아래에 있는 "Add an OAuth Scope" 버튼을 클릭하고 아래 권한들을 하나씩 추가합니다.
 
-| Scope 이름 | 용도 |
-|------------|------|
-| \`chat:write\` | 메시지 전송 권한 |
-| \`im:history\` | DM 대화 기록 읽기 |
-| \`im:read\` | DM 채널 정보 읽기 |
-| \`im:write\` | DM 채널 열기 |
-| \`app_mentions:read\` | 채널에서 앱 멘션(@앱이름) 읽기 |
+<SlackScopesTable />
 
 각 항목을 검색창에 입력하면 자동완성 목록이 나타납니다. 선택하면 자동으로 추가됩니다.
 

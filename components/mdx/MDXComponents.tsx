@@ -358,6 +358,34 @@ function StepGuideTable() {
   );
 }
 
+function SlackScopesTable() {
+  const scopes = [
+    { name: "chat:write",        desc: "메시지 전송 권한",             color: "bg-teal-400",   badge: "bg-teal-50   text-teal-700   border-teal-200"   },
+    { name: "im:history",        desc: "DM 대화 기록 읽기",            color: "bg-blue-400",   badge: "bg-blue-50   text-blue-700   border-blue-200"   },
+    { name: "im:read",           desc: "DM 채널 정보 읽기",            color: "bg-blue-400",   badge: "bg-blue-50   text-blue-700   border-blue-200"   },
+    { name: "im:write",          desc: "DM 채널 열기",                 color: "bg-blue-400",   badge: "bg-blue-50   text-blue-700   border-blue-200"   },
+    { name: "app_mentions:read", desc: "채널에서 앱 멘션(@앱이름) 읽기", color: "bg-violet-400", badge: "bg-violet-50 text-violet-700 border-violet-200" },
+  ];
+  return (
+    <div className="my-8 overflow-hidden rounded-[24px] border border-paperfolio-line bg-white shadow-[0_14px_40px_rgba(31,41,55,0.04)]">
+      <div className="bg-paperfolio-text px-6 py-4">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40">Bot Token Scopes</p>
+        <p className="mt-1 text-sm text-white/70">추가해야 할 권한 <span className="font-bold text-paperfolio-accent-yellow">5개</span></p>
+      </div>
+      <div className="divide-y divide-paperfolio-line">
+        {scopes.map((s) => (
+          <div key={s.name} className="flex items-center gap-4 px-6 py-3.5">
+            <div className={`h-2 w-2 shrink-0 rounded-full ${s.color}`} />
+            <code className="w-44 shrink-0 rounded bg-paperfolio-accent-blue/10 px-2 py-0.5 font-mono text-sm font-semibold text-paperfolio-accent-blue">{s.name}</code>
+            <span className="flex-1 text-sm text-paperfolio-text-muted">{s.desc}</span>
+            <span className={`shrink-0 rounded-full border px-2.5 py-0.5 text-xs font-semibold ${s.badge}`}>필수</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function SecurityThreatTable() {
   const threats = [
     { type: "토큰 유출",    desc: "AI/Slack 무단 사용, 요금 청구",    fix: "환경 변수 + .gitignore",   level: "high"   },
@@ -436,6 +464,7 @@ export const MDXComponents = {
   DiskSpaceChart,
   BiosSettingsCard,
   StepGuideTable,
+  SlackScopesTable,
   SecurityThreatTable,
   StatusRow,
   StatusGrid,
