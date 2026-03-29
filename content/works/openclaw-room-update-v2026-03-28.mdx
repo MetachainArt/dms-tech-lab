@@ -360,14 +360,72 @@ openclaw config schema
 
 ### 2-12. 나머지 변경들 (요약)
 
-| 항목 | 내용 |
-|------|------|
-| Memory 플러그인 | 메모리 압축(compaction) 시 flush 로직을 memory-core 플러그인이 직접 관리하도록 이동. 더 일관된 메모리 관리 |
-| Plugins/runtime의 heartbeat | 플러그인에서 `runHeartbeatOnce`를 직접 호출해 특정 대상에게 하트비트 1회 전송 가능 |
-| Agents/compaction | 압축 후 AGENTS 파일 갱신이 더 안정적으로 유지됨. 취소 이유가 더 구체적으로 표시됨 |
-| TTS 설정 마이그레이션 | 구형 TTS API 키 형식을 자동 마이그레이션. `tts.<provider>` 형식 레거시 지원 종료 |
-| Tavily 요청 헤더 | `X-Client-Source: openclaw` 헤더 추가. Tavily가 오픈클로발 트래픽을 구분할 수 있게 됨 |
-| Doctor / 설정 마이그레이션 | 오래된 플러그인 경로를 자동으로 새 경로로 재작성 |
+<div className="my-8 overflow-hidden rounded-[28px] border border-paperfolio-line bg-paperfolio-surface shadow-[0_16px_55px_rgba(31,41,55,0.06)]">
+  <div className="border-b border-paperfolio-line px-6 py-4">
+    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-paperfolio-text-muted">나머지 변경 사항</p>
+  </div>
+  {[
+    {
+      icon: "🧠",
+      label: "Memory 플러그인",
+      bg: "bg-[#f5f0ff]",
+      dot: "bg-[#7c3aed]",
+      text: "text-[#3b0764]",
+      sub: "메모리 압축(compaction) 시 flush 로직을 memory-core 플러그인이 직접 관리하도록 이동. 더 일관된 메모리 관리.",
+    },
+    {
+      icon: "💓",
+      label: "Plugins/runtime — Heartbeat",
+      bg: "bg-[#fff0f3]",
+      dot: "bg-[#e11d48]",
+      text: "text-[#4c0519]",
+      sub: "플러그인에서 runHeartbeatOnce를 직접 호출해 특정 대상에게 하트비트 1회 전송 가능.",
+    },
+    {
+      icon: "📦",
+      label: "Agents/compaction",
+      bg: "bg-[#f0f9ff]",
+      dot: "bg-[#0284c7]",
+      text: "text-[#0c2a4a]",
+      sub: "압축 후 AGENTS 파일 갱신이 더 안정적으로 유지됨. 취소 이유가 더 구체적으로 표시됨.",
+    },
+    {
+      icon: "🔊",
+      label: "TTS 설정 마이그레이션",
+      bg: "bg-[#f0fdf4]",
+      dot: "bg-[#16a34a]",
+      text: "text-[#052e16]",
+      sub: "구형 TTS API 키 형식을 자동 마이그레이션. tts.<provider> 형식 레거시 지원 종료.",
+    },
+    {
+      icon: "🔍",
+      label: "Tavily 요청 헤더",
+      bg: "bg-[#fffbeb]",
+      dot: "bg-[#d97706]",
+      text: "text-[#451a03]",
+      sub: "X-Client-Source: openclaw 헤더 추가. Tavily가 오픈클로발 트래픽을 구분할 수 있게 됨.",
+    },
+    {
+      icon: "🩺",
+      label: "Doctor / 설정 마이그레이션",
+      bg: "bg-[#fdf4ff]",
+      dot: "bg-[#a21caf]",
+      text: "text-[#3b0764]",
+      sub: "오래된 플러그인 경로를 자동으로 새 경로로 재작성.",
+    },
+  ].map((item, i, arr) => (
+    <div key={item.label} className={`flex items-start gap-4 px-6 py-5 ${i < arr.length - 1 ? "border-b border-paperfolio-line" : ""}`}>
+      <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl text-lg ${item.bg}`}>
+        {item.icon}
+      </div>
+      <div className="min-w-0 flex-1 space-y-1">
+        <p className={`text-sm font-semibold ${item.text}`}>{item.label}</p>
+        <p className="text-sm leading-6 text-paperfolio-text-muted">{item.sub}</p>
+      </div>
+      <span className={`mt-2 h-2 w-2 shrink-0 rounded-full ${item.dot}`} />
+    </div>
+  ))}
+</div>
 
 ---
 
