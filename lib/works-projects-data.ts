@@ -2318,17 +2318,61 @@ Paperclip은 AI 에이전트 팀을 조직도, 목표, 예산으로 관리하는
 
 ChatGPT에게 질문을 던지면 "AI 비서"를 한 명 쓰는 것입니다. OpenClaw로 Slack 봇을 만들면 "AI 직원"을 한 명 고용한 것입니다. Paperclip은 그 직원들이 함께 일하는 **회사 전체**를 만드는 도구입니다.
 
+GitHub에서 현재 **37,000개 이상의 스타**를 받은 가장 뜨거운 AI 오픈소스 프로젝트 중 하나입니다. 론칭 **첫 주에 13,500 스타**, 3주 만에 30,000 스타를 돌파했습니다. 공식 설명은 단 한 줄입니다.
+
+> **"Open-source orchestration for zero-human companies"**
+> 제로 인간 회사를 위한 오픈소스 오케스트레이션.
+
 <Callout>
   <div className="font-semibold text-paperfolio-text">이 글에서 배우는 것</div>
   <div className="mt-2 space-y-1 text-sm">
-    <div>• Paperclip이 무엇인지, 왜 등장했는지</div>
+    <div>• Paperclip이 무엇인지, 왜 등장했는지 (창시자의 실제 이야기)</div>
     <div>• 기존 AI 도구들(OpenClaw, LangChain, n8n)과 무엇이 다른지</div>
     <div>• 핵심 개념 5가지 (조직도, 하트비트, 목표 정렬, 예산 제어, 거버넌스)</div>
+    <div>• "메멘토 맨" 문제 — AI 에이전트의 근본적인 한계와 해결법</div>
     <div>• 실제로 어떤 팀 구성이 가능한지 — 구체적인 사례 3가지</div>
-    <div>• 이 시리즈에서 배울 전체 로드맵</div>
-    <div className="pt-2 font-semibold text-paperfolio-text">총 읽기 시간 약 20분. 처음부터 끝까지 읽으면 Paperclip의 전체 그림이 보입니다.</div>
+    <div>• 이름의 아이러니 — "Paperclip Maximizer"와의 의도적인 연결</div>
+    <div className="pt-2 font-semibold text-paperfolio-text">총 읽기 시간 약 25분. 처음부터 끝까지 읽으면 Paperclip의 전체 그림이 보입니다.</div>
   </div>
 </Callout>
+
+---
+
+## 창시자 @dotta — 얼굴 없는 개발자의 이야기
+
+Paperclip을 만든 사람은 **@dotta**라는 익명의 개발자입니다. 얼굴을 공개하지 않습니다. 인터뷰도 음성만 합니다. 그럼에도 Greg Isenberg(Reddit/TikTok 고문, Late Checkout CEO)는 이렇게 말했습니다.
+
+> **"I met the guy behind Paperclip. He won't show his face, but he just built one of the FASTEST growing open-source projects in AI."**
+> 얼굴은 안 보여줬지만, AI 역사상 가장 빠르게 성장한 오픈소스 중 하나를 만들었다.
+
+@dotta의 실제 이야기는 이렇습니다. 그는 **AI 기반 헤지펀드**를 혼자 운영하고 있었습니다. Claude Code 탭을 동시에 20~30개씩 열어놓고 일했습니다. 어느 날 컴퓨터가 재부팅됐습니다. 모든 컨텍스트가 사라졌습니다. 어떤 에이전트가 무엇을 하고 있었는지, 비용이 얼마나 나가고 있었는지, 서로 어떤 작업이 연결되어 있었는지 — 전부 날아갔습니다.
+
+그 순간 그는 깨달았습니다.
+
+> "에이전트들을 어떻게 만드느냐의 문제는 많은 도구가 해결했다. 진짜 병목은 에이전트 자체가 아니었다. 에이전트들 주변의 **조직 구조가 없다는 것**이 문제였다."
+
+Paperclip은 그 문제를 해결하기 위해 만든 내부 도구였습니다. 회사에서 이미 쓰던 것을 오픈소스로 공개한 것입니다. @dotta는 이렇게 설명합니다.
+
+> "Paperclip은 우리가 내부적으로 구축한 'Company OS'를 제공합니다. 조직도, 티켓팅, 에이전트 조율이 처음부터 내장되어 있어서, 이걸 직접 다시 만드는 수고를 덜어줍니다."
+
+---
+
+## 이름의 아이러니 — Paperclip Maximizer
+
+Paperclip이라는 이름이 왜 흥미로운지 아시나요?
+
+AI 안전 분야에는 유명한 사고실험이 있습니다. **"Paperclip Maximizer"** — 클립을 최대한 많이 만들라는 목표를 가진 AI가 결국 지구 전체를 클립으로 바꾸는 시나리오입니다. 통제되지 않는 AI의 위험을 설명하는 데 자주 쓰이는 비유입니다.
+
+@dotta는 이 이름을 **의도적으로** 선택했습니다. 통제되지 않는 AI에 대한 사고실험의 이름을, 정확히 그 반대인 **AI 거버넌스와 통제 도구**에 붙인 것입니다.
+
+<ScenarioBox>
+  <div className="font-semibold text-paperfolio-text">Paperclip Maximizer (AI 안전) vs Paperclip (Company OS)</div>
+  <div className="mt-2 space-y-2 text-sm">
+    <div><strong>Paperclip Maximizer:</strong> 목표만 있고 제약이 없는 AI. 결국 모든 것을 목표 달성에 소진시킴.</div>
+    <div><strong>Paperclip Company OS:</strong> 목표는 있되, 예산이 있고, 거버넌스가 있고, 이사회 승인이 있고, 언제든 멈출 수 있음. 통제된 AI 조직.</div>
+    <div className="pt-1 opacity-70 text-xs">이름 자체가 "AI를 제대로 통제하자"는 설계 철학을 담고 있습니다.</div>
+  </div>
+</ScenarioBox>
 
 ---
 
@@ -2346,20 +2390,82 @@ ChatGPT에게 질문을 던지면 "AI 비서"를 한 명 쓰는 것입니다. Op
 - 두 에이전트가 같은 작업을 중복해서 하고 있어도 모릅니다.
 - 에이전트 A가 에이전트 B에게 작업을 넘겨야 하는데, 그 흐름을 어디서 관리해야 할지 모릅니다.
 - API 비용이 한 달에 얼마 나오는지 예측이 안 됩니다.
+- **재부팅 한 번에 모든 에이전트 컨텍스트가 날아갑니다.**
 
-Paperclip의 제작자들은 이 문제를 인식하고 이렇게 물었습니다.
+이 상황을 Paperclip 팀은 **"메멘토 맨 문제"** 라고 부릅니다.
 
-> "에이전트를 **어떻게 만드느냐**는 많은 도구가 해결했다. 그런데 에이전트를 **어떻게 운영하느냐**는 아직 아무도 제대로 풀지 않았다."
+---
 
-그 답이 Paperclip입니다. 에이전트 빌딩 도구가 아니라, **에이전트 운영 체제(Operating System)**입니다.
+## 메멘토 맨 — AI 에이전트의 가장 큰 약점
 
-<ScenarioBox>
-  <div className="font-semibold text-paperfolio-text">에이전트가 1명일 때 vs 20명일 때</div>
-  <div className="mt-2 space-y-2 text-sm">
-    <div><strong>에이전트 1명:</strong> Slack 봇 하나. 시킨 일만 합니다. OpenClaw로 충분합니다.</div>
-    <div><strong>에이전트 20명:</strong> 콘텐츠팀 5명, 개발팀 8명, 마케팅팀 7명. 누가 뭘 하는지, 얼마나 쓰는지, 목표에 맞게 일하고 있는지 추적이 필요합니다. 이때 Paperclip이 필요합니다.</div>
+영화 《메멘토》를 아시나요? 주인공 레너드는 단기 기억을 잃는 병이 있습니다. 매우 유능하고 영리하지만, 잠에서 깰 때마다 모든 것을 처음부터 다시 파악해야 합니다. 그래서 몸에 문신을 새기고, 폴라로이드 사진에 메모를 남기고, 노트를 들고 다닙니다.
+
+@dotta는 말합니다. **"AI 에이전트가 바로 레너드입니다."**
+
+\`\`\`
+메멘토 맨 문제
+══════════════════════════════════════════════════
+AI 에이전트의 현실
+
+깨어날 때마다 → 자신이 누구인지 모름
+                → 무슨 일을 하고 있었는지 모름
+                → 왜 이걸 해야 하는지 모름
+                → 이전 작업과 어떻게 연결되는지 모름
+
+결과 → 매번 처음부터 시작
+     → 컨텍스트 재주입에 많은 시간/비용 소모
+     → 세션 간 일관성 없음
+     → 재부팅 = 기억 초기화
+
+══════════════════════════════════════════════════
+\`\`\`
+
+Paperclip의 해결책은 에이전트에게 **"몸에 새길 문신"** 을 제공하는 것입니다.
+
+- **하트비트 체크리스트** — 깨어날 때마다 "나는 누구고, 무슨 역할이고, 지금 무슨 티켓을 맡고 있다"
+- **SKILLS.md** — 런타임에 주입되는 회사 컨텍스트. 에이전트가 우리 회사가 뭘 만드는지 알고 일함
+- **영속적 에이전트 상태** — 하트비트 사이에도 태스크 컨텍스트 유지. 어제 하던 일 이어서 함
+- **감사 로그** — 모든 대화, 모든 결정이 기록됨. 재부팅 후에도 복구 가능
+
+<Callout>
+  <div className="font-semibold text-paperfolio-text">"Your agents don't need better prompts. They need an org chart."</div>
+  <div className="mt-2 text-sm">
+    에이전트에게 필요한 건 더 좋은 프롬프트가 아닙니다. 조직도입니다.<br/>
+    컨텍스트는 구조에서 나옵니다. 구조가 없는 에이전트는 매번 길을 잃습니다.
   </div>
-</ScenarioBox>
+</Callout>
+
+---
+
+## 공식 GitHub — 37,345 스타의 의미
+
+GitHub 저장소 \`paperclipai/paperclip\`입니다. 2026년 3월 기준 스타 수는 **37,345개**. 이 숫자가 뭘 의미하는지 감이 잘 안 오신다면 이렇게 생각하면 됩니다. Next.js가 스타 12만 개를 모으는 데 3년이 걸렸습니다. Paperclip은 개념 자체가 너무 명확해서 AI 개발자 커뮤니티 전체가 "이거다"라고 반응했습니다.
+
+![Paperclip 공식 GitHub 저장소 — 37,000+ 스타](/images/works/paperclip/github-hero.png)
+
+공식 문서는 [paperclip.ing/docs](https://paperclip.ing/docs), Discord 커뮤니티도 활발하게 운영 중입니다. "에이전트 회사를 만드는 사람들"이 모이는 커뮤니티라는 점이 독특합니다. 기술 질문보다 "어떤 조직도가 잘 작동하는가", "어떤 에이전트 역할 설정이 효율적인가" 같은 경영적 질문이 더 많이 올라옵니다.
+
+---
+
+## Paperclip이 딱 맞는 상황 7가지
+
+공식 README에는 "이런 분에게 Paperclip이 적합합니다"라는 체크리스트가 있습니다. 읽으면서 해당되는 항목이 몇 개인지 세어보세요.
+
+<Callout>
+  <div className="font-semibold text-paperfolio-text">✅ Paperclip이 맞는 사람</div>
+  <div className="mt-2 space-y-2 text-sm">
+    <div>① 여러 AI 에이전트(OpenClaw, Claude Code, Cursor)를 하나의 공통 목표로 조율하고 싶은 경우</div>
+    <div>② Claude Code 터미널이 20개씩 열려 있고 뭐가 뭔지 파악이 안 되는 경우</div>
+    <div>③ 에이전트가 24/7 자율 실행되지만 나는 언제든 개입하고 감사 로그를 보고 싶은 경우</div>
+    <div>④ API 비용을 모니터링하고 예산 한도를 강제하고 싶은 경우</div>
+    <div>⑤ 작업 관리자처럼 느껴지는 에이전트 관리 프로세스를 원하는 경우</div>
+    <div>⑥ 자율 AI 비즈니스를 스마트폰으로 모니터링하고 싶은 경우</div>
+    <div>⑦ 재부팅 후에도 에이전트 컨텍스트가 살아있어야 하는 경우</div>
+    <div className="pt-2 opacity-70 text-xs">3개 이상 해당되면 이미 Paperclip이 필요한 상황입니다.</div>
+  </div>
+</Callout>
+
+반대로, **Paperclip이 필요 없는 경우도 명확합니다.** 에이전트가 딱 1~2명이고 단순한 작업만 한다면 오버엔지니어링입니다. 공식 문서도 솔직하게 씁니다. "에이전트가 1명이면 Paperclip은 필요 없다. 20명이면 반드시 필요하다."
 
 ---
 
@@ -2390,7 +2496,45 @@ Claude Code =  개발 특화 AI 직원
 ────────────────────────────────────────────────
 \`\`\`
 
-Paperclip은 OpenClaw를 대체하는 것이 아닙니다. OpenClaw가 **어떻게 일할지**를 정의한다면, Paperclip은 **누가 어떤 역할로 일하는지, 얼마나 쓸 수 있는지, 무엇을 목표로 하는지**를 정의합니다.
+Paperclip이 지원하는 에이전트 타입은 다양합니다.
+
+\`\`\`
+지원 에이전트 목록 (2026.03 기준)
+────────────────────────────────
+✅ OpenClaw
+✅ Claude Code
+✅ Codex (OpenAI)
+✅ Cursor
+✅ Gemini CLI
+✅ OpenCode
+✅ Pi
+✅ Bash 스크립트
+✅ HTTP API / Webhook
+────────────────────────────────
+"heartbeat를 받을 수 있다면, 채용됩니다."
+— Paperclip 공식 문서
+\`\`\`
+
+---
+
+## Paperclip이 아닌 것들
+
+오해를 방지하기 위해 공식 문서가 명확하게 선을 긋는 부분이 있습니다.
+
+<Grid cols={2}>
+  <Card title="챗봇이 아닙니다" color="teal">
+    <p>에이전트에게 채팅 창이 없습니다. 에이전트는 대화하는 것이 아니라 <strong>일합니다</strong>. 직급과 역할과 티켓이 있습니다.</p>
+  </Card>
+  <Card title="에이전트 프레임워크가 아닙니다" color="coral">
+    <p>에이전트를 어떻게 만드는지를 다루지 않습니다. 이미 만들어진 에이전트들을 어떻게 <strong>운영</strong>하는지를 다룹니다.</p>
+  </Card>
+  <Card title="워크플로우 빌더가 아닙니다" color="blue">
+    <p>n8n처럼 드래그&드롭 파이프라인이 없습니다. 조직도와 목표와 예산으로 <strong>회사를 모델링</strong>합니다.</p>
+  </Card>
+  <Card title="단일 에이전트 도구가 아닙니다" color="teal">
+    <p>에이전트가 한 명이면 쓸 필요 없습니다. 팀을 위한 도구입니다. 에이전트가 많아질수록 가치가 높아집니다.</p>
+  </Card>
+</Grid>
 
 ---
 
@@ -2412,12 +2556,46 @@ Paperclip을 이해하려면 다섯 가지 개념을 먼저 잡아야 합니다.
     <p>에이전트마다 월 예산을 설정합니다. 80%에 도달하면 경고가 오고, 100%에 도달하면 자동으로 일시 중지됩니다. 어떤 작업에서 얼마가 쓰였는지 모든 API 호출이 기록됩니다. 예산을 초과하는 일이 물리적으로 불가능합니다. AI 비용 폭탄을 맞는 일이 없어집니다.</p>
   </Card>
   <Card title="⑤ 거버넌스 (Governance)" color="blue">
-    <p>여러분이 이사회 의장입니다. 에이전트 채용(등록)은 여러분이 승인합니다. 에이전트가 내린 주요 전략 결정은 여러분의 검토를 거칩니다. 언제든 에이전트를 일시 중지하거나 종료할 수 있습니다. 모든 결정은 변경 불가능한 감사 로그에 남습니다. 에이전트가 이상한 짓을 했을 때 추적이 가능합니다.</p>
+    <p>여러분이 이사회 의장입니다. 에이전트 채용(등록)은 여러분이 승인합니다. 에이전트가 내린 주요 전략 결정은 여러분의 검토를 거칩니다. 언제든 에이전트를 일시 중지하거나 종료할 수 있습니다. 모든 결정은 변경 불가능한 감사 로그에 남습니다. 잘못된 설정 변경은 롤백도 가능합니다. "자율성은 특권으로 부여됩니다. 기본값이 아닙니다."</p>
   </Card>
   <Card title="⑥ BYOA (Bring Your Own Agent)" color="coral">
     <p>Paperclip은 특정 에이전트 타입을 강요하지 않습니다. OpenClaw, Claude Code, Cursor, Bash 스크립트, HTTP API 어떤 것이든 에이전트로 등록할 수 있습니다. 이미 만들어둔 에이전트가 있다면 그대로 가져와서 Paperclip 조직에 편입시키면 됩니다.</p>
   </Card>
 </Grid>
+
+---
+
+## Paperclip이 해결하는 5가지 진짜 문제
+
+공식 README에 나온 Before/After 비교입니다.
+
+\`\`\`
+Paperclip 없을 때 vs 있을 때
+══════════════════════════════════════════════════════
+
+문제 1. 세션 관리
+❌ Claude Code 탭 20개가 열려 있고 재부팅하면 모든 것이 사라짐
+✅ 티켓 기반으로 대화가 스레드로 묶이고 재부팅 후에도 세션이 유지됨
+
+문제 2. 컨텍스트 주입
+❌ 봇에게 매번 "우리가 뭘 만들고 있는지" 수동으로 설명해야 함
+✅ 태스크 → 프로젝트 → 회사 목표 순으로 컨텍스트가 자동 전달됨
+
+문제 3. 에이전트 조율
+❌ 에이전트 설정 폴더가 뒤죽박죽, 태스크 관리와 에이전트 통신을
+   직접 만들어야 함
+✅ 조직도, 티케팅, 위임, 거버넌스가 기본으로 제공됨
+
+문제 4. 비용 폭발
+❌ 에이전트가 루프에 빠져 수백 달러어치 토큰을 날리고 나서야 알게 됨
+✅ 예산 트래커가 한도에 도달하면 에이전트를 자동으로 정지시킴
+
+문제 5. 반복 작업
+❌ 고객 지원, SNS, 리포트 같은 반복 작업을 매번 수동으로 트리거해야 함
+✅ 하트비트가 정해진 일정에 반복 작업을 자동 처리하고 관리자가 감독함
+
+══════════════════════════════════════════════════════
+\`\`\`
 
 ---
 
@@ -2445,7 +2623,8 @@ Paperclip 작업 실행 흐름
     └──▶ [발행 에이전트 3] ──────▶ 발행 티켓
                                     (에이전트 2 완료 후 자동 시작)
 
-각 에이전트는 하트비트마다 자신의 티켓을 확인하고 처리
+각 에이전트는 하트비트마다 자신의 티켓을 원자적(atomic)으로 체크아웃
+→ 두 에이전트가 동일 작업을 중복 처리하는 것이 물리적으로 불가능
 
 모든 작업 ─── 감사 로그에 기록 ───▶ 여러분이 언제든 조회 가능
 모든 비용 ─── 예산 트래커에 기록 ──▶ 월 한도 초과 시 자동 중지
@@ -2460,8 +2639,6 @@ Paperclip 작업 실행 흐름
 ### 예시 1. 콘텐츠 자동화 팀
 
 블로그를 운영한다고 가정합니다. 매주 SEO 분석 → 주제 선정 → 초안 작성 → 편집 → 발행까지 일련의 과정이 있습니다. 사람이 하면 일주일에 2~3편이 한계입니다.
-
-Paperclip으로 구성하면 이렇습니다.
 
 \`\`\`
 콘텐츠팀 조직도
@@ -2485,8 +2662,6 @@ Paperclip으로 구성하면 이렇습니다.
 이 구조가 Paperclip에 등록되면, 여러분은 매주 최종 발행 여부만 승인하면 됩니다.
 
 ### 예시 2. 소프트웨어 개발 팀
-
-소규모 SaaS를 혼자 운영한다면 유지보수가 최대 병목입니다. 버그 리포트가 들어오면 → 재현하고 → 수정하고 → 테스트하고 → 배포해야 합니다.
 
 \`\`\`
 개발팀 조직도
@@ -2529,91 +2704,149 @@ Paperclip으로 구성하면 이렇습니다.
 
 ---
 
-## 다른 도구와 비교
+## 즉시 배포 가능한 회사 템플릿 — paperclipai/companies
 
-Paperclip이 기존 도구들과 어떻게 다른지 정리합니다.
+Paperclip의 가장 실용적인 기능 중 하나는 **완성된 AI 회사 템플릿**입니다. 공식 GitHub에 \`paperclipai/companies\` 저장소가 따로 있습니다.
+
+**현재 제공되는 내용:** 16개의 검증된 회사 템플릿, 440명 이상의 전문화된 에이전트, 500개 이상의 배틀테스트 스킬.
+
+<Grid cols={2}>
+  <Card title="Engineering Company" color="teal">
+    <p>CEO, CTO, QA 엔지니어, 릴리스 엔지니어, 스태프 엔지니어. 제품 비전, 보안 감사, 배포까지 포함된 완전한 개발 조직.</p>
+  </Card>
+  <Card title="AI Agency" color="blue">
+    <p>167명의 에이전트가 10개 부서로 구성됨. 엔지니어링, 디자인, 마케팅, 제품, 영업, QA, 운영, 게임 개발, 공간 컴퓨팅까지.</p>
+  </Card>
+  <Card title="AI Consulting" color="coral">
+    <p>65개 특화 스킬. 디스커버리, 전략, 분석, GTM, 마케팅을 커버하는 AI 컨설팅 조직 구조.</p>
+  </Card>
+  <Card title="Digital Studio" color="teal">
+    <p>에이전트 5명, 스킬 10개. 앱 개발, VFX, 전문 문서 제작이 가능한 스튜디오 구성.</p>
+  </Card>
+</Grid>
+
+이 템플릿들은 한 줄로 가져올 수 있습니다.
+
+\`\`\`bash
+npx paperclipai company import --from ./engineering-company
+\`\`\`
+
+처음부터 조직을 설계하지 않아도 됩니다. 커뮤니티가 검증한 구조를 그대로 사용하고, 필요한 부분만 수정하면 됩니다.
+
+---
+
+## 다른 도구와 비교
 
 <Grid cols={2}>
   <Card title="vs LangChain / AutoGen" color="teal">
     <p><strong>LangChain/AutoGen</strong>은 에이전트를 어떻게 만드는지를 다룹니다. 프롬프트 체이닝, 툴 연결, 에이전트 로직 구현이 핵심입니다.</p>
-    <p className="mt-2"><strong>Paperclip</strong>은 완성된 에이전트들을 어떻게 운영하는지를 다룹니다. 에이전트 빌딩 방법을 지시하지 않습니다. 이미 만들어진 에이전트를 가져와서 조직에 편입시킵니다.</p>
+    <p className="mt-2"><strong>Paperclip</strong>은 완성된 에이전트들을 어떻게 운영하는지를 다룹니다.</p>
     <p className="mt-2 text-sm opacity-70">→ 함께 쓰는 도구. LangChain으로 에이전트를 만들고, Paperclip으로 관리합니다.</p>
   </Card>
   <Card title="vs n8n / Make" color="coral">
-    <p><strong>n8n/Make</strong>는 정해진 트리거와 액션의 워크플로우를 시각적으로 연결합니다. "A가 일어나면 B를 한다"는 고정된 흐름입니다.</p>
-    <p className="mt-2"><strong>Paperclip</strong>은 목표를 주면 에이전트가 스스로 작업을 분해하고 다른 에이전트에게 위임합니다. 흐름이 고정되어 있지 않습니다.</p>
-    <p className="mt-2 text-sm opacity-70">→ 패러다임이 다른 도구. 자동화가 목적이라면 n8n, 에이전트 조직화가 목적이라면 Paperclip.</p>
+    <p><strong>n8n/Make</strong>는 "A가 일어나면 B를 한다"는 고정된 워크플로우입니다.</p>
+    <p className="mt-2"><strong>Paperclip</strong>은 목표를 주면 에이전트가 스스로 작업을 분해하고 다른 에이전트에게 위임합니다.</p>
+    <p className="mt-2 text-sm opacity-70">→ 자동화가 목적이라면 n8n, 에이전트 조직화가 목적이라면 Paperclip.</p>
   </Card>
   <Card title="vs CrewAI" color="blue">
-    <p><strong>CrewAI</strong>는 여러 에이전트가 협력해서 작업을 완수하는 "크루(crew)" 개념입니다. 단일 작업을 위한 임시 팀 구성에 강합니다.</p>
-    <p className="mt-2"><strong>Paperclip</strong>은 상시 운영되는 조직 구조입니다. 에이전트는 역할과 직급을 가지고, 예산 내에서 장기적으로 일합니다. 단일 작업이 아니라 회사 전체의 운영을 관리합니다.</p>
+    <p><strong>CrewAI</strong>는 단일 작업을 위한 임시 팀 구성에 강합니다.</p>
+    <p className="mt-2"><strong>Paperclip</strong>은 상시 운영되는 조직 구조입니다. 에이전트는 역할과 직급을 가지고, 예산 내에서 장기적으로 일합니다.</p>
     <p className="mt-2 text-sm opacity-70">→ CrewAI는 단기 프로젝트, Paperclip은 장기 운영.</p>
   </Card>
   <Card title="vs OpenClaw 단독" color="teal">
-    <p><strong>OpenClaw 단독</strong>은 에이전트 하나를 Slack에 연결하고 개인이 관리합니다. 에이전트가 한두 명일 때 충분합니다.</p>
-    <p className="mt-2"><strong>Paperclip + OpenClaw</strong>는 여러 OpenClaw 에이전트를 조직도에 편입시켜 체계적으로 관리합니다. 에이전트가 많아질수록 Paperclip의 가치가 높아집니다.</p>
+    <p><strong>OpenClaw 단독</strong>은 에이전트가 한두 명일 때 충분합니다.</p>
+    <p className="mt-2"><strong>Paperclip + OpenClaw</strong>는 여러 OpenClaw 에이전트를 조직도에 편입시켜 체계적으로 관리합니다.</p>
     <p className="mt-2 text-sm opacity-70">→ 공식 문서: "에이전트가 1명이면 Paperclip은 필요 없다. 20명이면 반드시 필요하다."</p>
   </Card>
 </Grid>
 
 ---
 
-## 기술 스택과 특징
+## 기술 스택과 설치
 
 Paperclip은 오픈소스이고 자체 호스팅이 가능합니다.
+
+![Paperclip npm 패키지 페이지](/images/works/paperclip/npm-page.png)
 
 \`\`\`
 기술 구성
 ────────────────────────────────
-서버:     Node.js 20+ (API 서버, 포트 3100)
+서버:     Node.js 20+ / TypeScript
 UI:       React
-데이터:   PostgreSQL (자동 생성)
-설치:     pnpm 9.15+
+데이터:   PostgreSQL (임베디드 — 별도 설치 불필요)
+패키지:   pnpm 9.15+
+테스트:   Vitest
+컨테이너: Docker 지원
+포트:     localhost:3100
 라이선스: MIT © 2026 Paperclip
 ────────────────────────────────
 \`\`\`
 
-가장 빠른 설치 방법은 \`npx\` 한 줄입니다.
+가장 빠른 설치는 \`npx\` 한 줄입니다.
 
 \`\`\`bash
 npx paperclipai onboard --yes
 \`\`\`
 
-이 명령 하나로 인터랙티브 설정이 진행되고 로컬에 서버가 올라갑니다. Paperclip 계정이 필요 없습니다. 모든 데이터는 내 서버에 저장됩니다.
+수동 설치 방법입니다.
 
-### 원자적 실행 (Atomic Execution)
+\`\`\`bash
+git clone https://github.com/paperclipai/paperclip.git
+cd paperclip
+pnpm install
+pnpm dev
+\`\`\`
 
-Paperclip의 핵심 기술 특징 중 하나는 원자적 실행입니다. 에이전트가 작업을 체크아웃하고 예산을 집행하는 것이 하나의 트랜잭션으로 처리됩니다. 덕분에 두 에이전트가 같은 작업을 중복으로 처리하는 일이 없습니다.
+서버가 \`http://localhost:3100\`에서 실행됩니다. PostgreSQL은 별도 설치가 필요 없고, 임베디드 데이터베이스가 자동으로 생성됩니다.
 
-### 영속적 에이전트 상태 (Persistent Agent State)
+---
 
-하트비트 사이에도 에이전트의 작업 맥락이 유지됩니다. 에이전트가 깨어날 때마다 처음부터 다시 시작하지 않습니다. 어제 하던 일을 기억하고 이어서 합니다.
+## 플러그인 생태계 — awesome-paperclip
 
-### 런타임 스킬 주입 (Runtime Skill Injection)
+Paperclip은 v2026.318.0에서 **플러그인 시스템**을 정식 출시했습니다. 전체 플러그인 SDK, CLI 도구, 런타임 생명주기 관리, 테스트 하네스가 포함됩니다.
 
-에이전트를 재훈련하지 않아도 런타임에 Paperclip 워크플로우와 프로젝트 맥락을 주입할 수 있습니다. 에이전트가 회사 컨텍스트를 이해하고 일합니다.
+커뮤니티 플러그인 모음 \`gsxdsm/awesome-paperclip\`에서 확인할 수 있는 것들입니다.
+
+<Grid cols={2}>
+  <Card title="paperclip-plugin-discord" color="blue">
+    <p>Discord와 양방향 연동. 슬래시 커맨드로 에이전트 팀에게 지시하고 결과를 받습니다.</p>
+  </Card>
+  <Card title="paperclip-plugin-chat" color="teal">
+    <p>대화형 AI 코파일럿으로 태스크와 에이전트를 관리합니다. 자연어로 팀을 운영합니다.</p>
+  </Card>
+  <Card title="paperclip-plugin-avp" color="coral">
+    <p>DID 신원과 EigenTrust 기반의 신뢰 및 평판 레이어. 에이전트의 신뢰도를 측정합니다.</p>
+  </Card>
+  <Card title="paperclip-plugin-company-wizard" color="blue">
+    <p>AI가 회사 설정을 안내합니다. 프리셋 템플릿으로 빠르게 조직을 구성합니다.</p>
+  </Card>
+</Grid>
 
 ---
 
 ## 로드맵 현황
 
-Paperclip은 빠르게 성장하는 프로젝트입니다. 2026년 3월 기준 GitHub 스타 31,000개를 넘었습니다.
-
 \`\`\`
 현재 완료된 기능
-✅ 플러그인 시스템
+✅ 플러그인 시스템 (SDK 포함)
 ✅ OpenClaw 에이전트 지원
-✅ 조직 구조 내보내기/가져오기
-✅ 기술 관리자 (Tech Manager)
+✅ 조직 구조 내보내기/가져오기 (companies.sh)
+✅ AGENTS.md 설정 지원
+✅ Skills Manager
 ✅ 예약 루틴 (Scheduled Routines)
 ✅ 예산 관리 개선
+✅ Gemini CLI 어댑터
+✅ Cursor / OpenCode / Pi 어댑터
 
 준비 중인 기능
+⚪ Artifacts & Deployments
 ⚪ CEO 채팅 인터페이스
+⚪ MAXIMIZER MODE 🔥 (이름만 공개, 상세 미공개)
 ⚪ 다중 사용자 지원
-⚪ 클라우드 에이전트
+⚪ 클라우드 에이전트 (Cursor, e2b)
 ⚪ 클라우드 배포 옵션
 ⚪ 데스크탑 앱
+⚪ Clipmart (회사 템플릿 마켓플레이스)
 \`\`\`
 
 ---
@@ -2622,7 +2855,7 @@ Paperclip은 빠르게 성장하는 프로젝트입니다. 2026년 3월 기준 G
 
 <Grid cols={2}>
   <Card title="Step 1. 소개 (지금 이 글)" color="teal">
-    <p>Paperclip의 개념, 핵심 기능, 다른 도구와의 차이점을 이해합니다.</p>
+    <p>Paperclip의 개념, 창시자 이야기, 핵심 기능, 다른 도구와의 차이점을 이해합니다.</p>
   </Card>
   <Card title="Step 2. 설치 및 첫 실행" color="blue">
     <p>Node.js 환경에 Paperclip을 설치하고 대시보드를 처음으로 열어봅니다. npx onboard부터 첫 화면까지.</p>
@@ -2664,13 +2897,774 @@ Paperclip은 빠르게 성장하는 프로젝트입니다. 2026년 3월 기준 G
 
 ## 마치며
 
-Paperclip은 아직 초기 단계입니다. 2026년 3월 기준으로도 몇 가지 기능은 아직 개발 중입니다. 하지만 "에이전트 운영 체제"라는 개념 자체가 너무 명확해서, 앞으로 이 분야가 어떻게 발전할지를 공부하기에 지금이 가장 좋은 시점입니다.
+Paperclip은 아직 초기 단계입니다. 하지만 "에이전트 운영 체제"라는 개념 자체가 너무 명확해서, 앞으로 이 분야가 어떻게 발전할지를 공부하기에 지금이 가장 좋은 시점입니다.
+
+공식 사이트의 마지막 문장이 인상적입니다.
+
+> **"Built for people who want to run companies, not babysit agents."**
+> 에이전트를 돌봐주는 사람이 아니라, 회사를 운영하는 사람을 위해 만들었습니다.
 
 이 시리즈는 Paperclip을 처음 배우면서 실제로 적용해보는 과정을 기록합니다. 잘 안 되는 것, 시행착오, 그리고 결국 작동하게 만든 방법까지 모두 담을 예정입니다.
 
 다음 글(Step 2)에서는 실제 설치부터 시작합니다.
 `,
           },
+          {
+            id: "step-2",
+            title: "Paperclip 설치 및 첫 실행 — Hostinger VPS 완전 초보 가이드",
+            excerpt: "Hostinger VPS에 Node.js, pnpm, PM2를 설치하고 npx paperclipai onboard로 Paperclip 서버를 세팅합니다. SSH 접속부터 브라우저에서 대시보드를 여는 것까지, 명령어 한 줄씩 설명합니다.",
+            date: "2026. 03. 29",
+            readTime: "25 min",
+            content: `## 이번 단계에서 할 일
+
+Hostinger VPS에 Paperclip을 설치하고, 브라우저에서 대시보드를 처음 여는 것까지 합니다. 코드를 한 번도 다뤄본 적 없는 분도 따라올 수 있도록 모든 명령어를 한 줄씩 설명합니다. 왜 이 명령어를 쓰는지도 같이 설명하니, 복붙만 하지 말고 이해하면서 진행해보세요.
+
+<Callout>
+  <div className="font-semibold text-paperfolio-text">이번 글에서 하는 것</div>
+  <div className="mt-2 space-y-1 text-sm">
+    <div>① Hostinger VPS 선택 기준 — 어떤 사양을 고를까</div>
+    <div>② SSH로 VPS에 접속하는 방법</div>
+    <div>③ Node.js 20, pnpm, PM2 설치</div>
+    <div>④ Paperclip 초기 설정 마법사 실행</div>
+    <div>⑤ 외부 접속 설정 — 포트 열기와 인증 모드 이해</div>
+    <div>⑥ PM2로 서버를 항상 켜두는 설정</div>
+    <div>⑦ 브라우저에서 대시보드 첫 접속 및 계정 만들기</div>
+    <div>⑧ 안 될 때 체크리스트와 에러별 해결 방법</div>
+    <div className="pt-2 font-semibold text-paperfolio-text">예상 소요 시간: 30분. 한 번 해두면 끝입니다.</div>
+  </div>
+</Callout>
+
+---
+
+## 시작 전 — 뭐가 필요한가요?
+
+<Grid cols={2}>
+  <Card title="필수 준비물" color="teal">
+    <p>✅ Hostinger VPS (Ubuntu 22.04 또는 24.04 권장)</p>
+    <p>✅ VPS IP 주소 (Hostinger 패널에서 확인)</p>
+    <p>✅ root 비밀번호 또는 SSH 키</p>
+    <p>✅ Anthropic 또는 OpenAI API 키</p>
+    <p>✅ SSH 터미널 (Windows: PowerShell / Mac: 터미널)</p>
+  </Card>
+  <Card title="없어도 되는 것들" color="blue">
+    <p>❌ 도메인 — IP 주소만 있어도 됩니다</p>
+    <p>❌ 별도 PostgreSQL 설치 — 내장 DB가 자동 생성됩니다</p>
+    <p>❌ Docker — npx 방식은 Docker 없이도 됩니다</p>
+    <p>❌ 개발 경험 — 명령어 복붙만 할 수 있으면 됩니다</p>
+    <p>❌ Nginx — 일단 없어도 접속 가능합니다</p>
+  </Card>
+</Grid>
+
+---
+
+## Hostinger VPS 사양 선택 가이드
+
+Paperclip은 내장 PostgreSQL 데이터베이스를 서버 안에서 함께 실행합니다. 에이전트들이 일을 시작하면 AI API 호출도 계속 발생합니다. 이 때문에 RAM이 넉넉해야 안정적으로 운영됩니다.
+
+<Grid cols={2}>
+  <Card title="KVM1 (RAM 4GB) — 입문용" color="teal">
+    <p>에이전트 3~5명 규모의 소규모 팀에 적합합니다. 처음 Paperclip을 배우고 실험하는 단계라면 이 사양으로 충분합니다. 나중에 사양 업그레이드는 Hostinger 패널에서 몇 분 안에 됩니다.</p>
+  </Card>
+  <Card title="KVM2 (RAM 8GB) — 실전용" color="blue">
+    <p>에이전트 10명 이상의 실제 운영 환경에 권장합니다. 콘텐츠팀, 개발팀, 마케팅팀을 동시에 돌린다면 이 사양부터 시작하세요. 갑자기 에이전트 여러 명이 동시에 하트비트를 치면 메모리 사용량이 급격히 올라갑니다.</p>
+  </Card>
+</Grid>
+
+운영 체제는 반드시 **Ubuntu 22.04** 또는 **Ubuntu 24.04**를 선택합니다. 이 가이드의 모든 명령어는 Ubuntu 기준으로 작성했습니다. CentOS나 AlmaLinux 등 다른 리눅스 배포판을 선택했다면 패키지 설치 명령어(\`apt\` 대신 \`yum\` 또는 \`dnf\`)가 달라집니다. 헷갈린다면 Ubuntu 22.04를 선택하는 것이 가장 안전합니다. 인터넷에서 찾을 수 있는 대부분의 튜토리얼이 Ubuntu 기준으로 작성되어 있기 때문입니다.
+
+---
+
+## Step 0 — VPS에 SSH로 접속하기
+
+SSH는 "Secure Shell"의 약자로, 인터넷을 통해 원격 서버에 안전하게 접속하는 방법입니다. 쉽게 말해, 내 노트북 터미널에서 VPS 터미널을 원격으로 조종하는 것입니다.
+
+**Windows에서 접속하기**
+
+Windows Terminal이나 PowerShell을 열고 아래를 입력합니다.
+
+\`\`\`bash
+ssh root@여기에_VPS_IP_주소
+\`\`\`
+
+예를 들어 VPS IP가 \`123.45.67.89\`라면 이렇게 씁니다.
+
+\`\`\`bash
+ssh root@123.45.67.89
+\`\`\`
+
+**처음 접속할 때 나타나는 질문**
+
+처음 접속하면 이런 메시지가 나옵니다.
+
+\`\`\`
+The authenticity of host '123.45.67.89' can't be established.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+\`\`\`
+
+\`yes\`를 입력하고 Enter를 누릅니다. 이 서버를 신뢰하겠다는 의미입니다. 앞으로 같은 서버에 접속할 때는 이 질문이 안 나옵니다.
+
+비밀번호를 입력하라고 하면 Hostinger 패널에서 설정한 root 비밀번호를 입력합니다. **입력할 때 화면에 아무것도 표시되지 않는 것이 정상입니다.** 그냥 입력하고 Enter를 누르면 됩니다.
+
+접속에 성공하면 프롬프트가 이렇게 바뀝니다.
+
+\`\`\`
+root@vps-xxxxx:~#
+\`\`\`
+
+이제 내 노트북 터미널이 VPS 서버를 직접 조종하고 있습니다. 이후 모든 명령어는 이 화면에서 실행합니다.
+
+---
+
+## Step 1 — 서버 패키지 업데이트
+
+서버에 처음 접속하면 가장 먼저 패키지 목록을 업데이트합니다. 이 단계는 "새 집에 이사 왔을 때 전기, 수도, 가스 확인"과 같습니다. 최신 보안 패치도 함께 적용됩니다.
+
+\`\`\`bash
+apt update && apt upgrade -y
+\`\`\`
+
+이 명령어는 두 가지를 합쳐서 실행합니다.
+- \`apt update\` — 설치 가능한 패키지 목록을 새로 받아옵니다
+- \`apt upgrade -y\` — 오래된 패키지를 전부 최신 버전으로 업그레이드합니다. \`-y\`는 "다 yes로 자동 답변"이라는 뜻입니다
+
+완료에 1~3분 걸릴 수 있습니다. 화면에 글자가 흘러내려가다가 프롬프트가 다시 나타나면 완료된 것입니다.
+
+---
+
+## Step 2 — Node.js 20 설치
+
+Paperclip은 **Node.js 20 버전 이상**이 필요합니다. Node.js는 브라우저 밖에서 JavaScript를 실행하는 런타임 환경입니다. Paperclip 서버 자체가 Node.js로 만들어져 있어서 반드시 필요합니다.
+
+Ubuntu 기본 저장소에 있는 Node.js는 버전이 낮을 수 있기 때문에, NodeSource 공식 스크립트로 최신 버전을 설치합니다.
+
+\`\`\`bash
+curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+apt install -y nodejs
+\`\`\`
+
+설치가 끝나면 버전을 확인합니다.
+
+\`\`\`bash
+node --version
+\`\`\`
+
+아래처럼 \`v20\` 이상이 나오면 성공입니다.
+
+\`\`\`
+v20.19.1
+\`\`\`
+
+![DeepWiki에 정리된 Paperclip 설치 사전 요구사항 문서](/images/works/paperclip/deepwiki-install.png)
+
+버전이 \`v18\` 이하로 나온다면 위 설치 명령어를 다시 실행하거나, \`setup_22.x\`로 바꿔서 시도해봅니다.
+
+---
+
+## Step 3 — pnpm 설치
+
+pnpm은 Node.js 패키지 관리자입니다. 많이 들어본 npm과 같은 역할인데, 더 빠르고 디스크를 효율적으로 씁니다. Paperclip 내부에서 pnpm을 사용하기 때문에 설치가 필요합니다.
+
+\`\`\`bash
+npm install -g pnpm
+\`\`\`
+
+설치 확인합니다.
+
+\`\`\`bash
+pnpm --version
+\`\`\`
+
+\`9.x\` 이상의 버전 숫자가 나오면 성공입니다.
+
+---
+
+## Step 4 — PM2 설치
+
+PM2는 Node.js 애플리케이션을 백그라운드에서 계속 실행해주는 프로세스 관리자입니다. PM2 없이 Paperclip을 실행하면, 터미널을 닫는 순간 서버가 꺼집니다. PM2를 사용하면 터미널을 닫아도 Paperclip이 계속 돌아갑니다.
+
+\`\`\`bash
+npm install -g pm2
+\`\`\`
+
+PM2는 서버 재부팅 시 자동 시작 설정도 지원합니다. VPS가 혹시라도 재시작되더라도 Paperclip이 자동으로 다시 켜집니다. 이 설정은 Step 8에서 합니다.
+
+---
+
+## Step 5 — Paperclip 전용 계정 만들기 (보안)
+
+보안 원칙상, root 계정으로 서비스를 직접 실행하는 것은 좋지 않습니다. root는 서버의 모든 권한을 가지기 때문에 보안 문제가 생기면 피해가 커집니다. \`paperclip\`이라는 전용 계정을 만들어서 Paperclip만 실행하도록 합니다.
+
+\`\`\`bash
+adduser --disabled-password --gecos "" paperclip
+\`\`\`
+
+이 명령어는 비밀번호 없이 \`paperclip\` 계정을 만듭니다. root에서만 이 계정으로 전환할 수 있어서 보안이 유지됩니다.
+
+paperclip 계정으로 전환합니다.
+
+\`\`\`bash
+su - paperclip
+\`\`\`
+
+프롬프트가 이렇게 바뀌면 전환 성공입니다.
+
+\`\`\`
+paperclip@vps-xxxxx:~$
+\`\`\`
+
+이제부터 Paperclip 관련 명령어는 이 \`paperclip\` 계정에서 실행합니다.
+
+---
+
+## Step 6 — Paperclip 설치 및 초기 설정 (핵심!)
+
+드디어 핵심 단계입니다. 아래 명령어 하나로 Paperclip이 설치되고 초기 설정 마법사가 실행됩니다.
+
+\`\`\`bash
+npx paperclipai onboard
+\`\`\`
+
+처음 실행하면 npx가 자동으로 \`paperclipai\` 패키지를 다운로드합니다. 1~2분 정도 기다리면 마법사가 시작됩니다.
+
+![Paperclip GitHub 공식 빠른 시작 가이드 화면](/images/works/paperclip/quickstart.png)
+
+### 마법사에서 선택할 것들
+
+마법사가 몇 가지를 물어봅니다. VPS용 설정을 아래에서 정확히 안내합니다.
+
+\`\`\`
+설정 마법사 흐름 (VPS 기준 선택값)
+══════════════════════════════════════════════════
+
+[질문 1] 배포 모드를 선택하세요
+
+  How would you like to deploy Paperclip?
+  ○ local_trusted  ← 내 컴퓨터에서만 쓸 때
+  ● authenticated  ← VPS, 외부 접속 필요할 때 ✅ 이걸 선택
+
+[질문 2] 노출 범위를 선택하세요 (authenticated 선택 시)
+
+  Exposure policy?
+  ○ private  ← VPN이나 Tailscale 사용할 때
+  ● public   ← 일반 IP로 접속할 때 ✅ 이걸 선택
+
+[질문 3] 공개 URL을 입력하세요 (public 선택 시)
+
+  Public URL for this deployment?
+  → http://123.45.67.89:3100   (VPS IP로 변경)
+
+══════════════════════════════════════════════════
+\`\`\`
+
+<ScenarioBox>
+  <div className="font-semibold text-paperfolio-text">⚠️ 가장 많이 하는 실수 — local_trusted 선택</div>
+  <div className="mt-2 space-y-2 text-sm">
+    <div><strong>local_trusted 모드</strong>는 서버 내부(127.0.0.1)로만 접속이 가능합니다. VPS에서 이 모드를 선택하면 브라우저에서 IP로 접속이 안 됩니다.</div>
+    <div>반드시 <strong>authenticated → public</strong>을 선택하세요.</div>
+    <div>나중에 모드를 바꾸고 싶다면: <code>npx paperclipai configure --section auth</code></div>
+  </div>
+</ScenarioBox>
+
+설치가 완료되면 아래 메시지가 나옵니다.
+
+\`\`\`
+✅ Paperclip is configured and ready to run
+   Run: npx paperclipai run
+\`\`\`
+
+이 화면이 나왔다면 설정이 완료된 것입니다. 아직 서버는 실행 중이 아닙니다. 다음 단계에서 PM2로 실행합니다.
+
+---
+
+## Step 7 — Hostinger 방화벽에서 포트 열기
+
+Paperclip은 **3100번 포트**를 사용합니다. 브라우저에서 \`http://IP:3100\`으로 접속하려면 이 포트가 열려있어야 합니다.
+
+방화벽 설정이 필요한 곳이 두 군데입니다.
+
+### 1) 서버 방화벽(ufw)에서 열기
+
+먼저 root 계정으로 돌아갑니다.
+
+\`\`\`bash
+exit
+\`\`\`
+
+ufw(Ubuntu 기본 방화벽)에서 3100 포트를 허용합니다.
+
+\`\`\`bash
+ufw allow 3100/tcp
+ufw reload
+ufw status
+\`\`\`
+
+마지막 명령어 실행 후 아래처럼 나오면 성공입니다.
+
+\`\`\`
+Status: active
+
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW       Anywhere
+3100/tcp                   ALLOW       Anywhere
+\`\`\`
+
+### 2) Hostinger 패널 방화벽에서 열기
+
+Hostinger VPS 관리 패널에도 별도의 방화벽이 있습니다. 패널에서 추가로 포트를 열어야 외부에서 접속됩니다.
+
+\`\`\`
+Hostinger 패널 방화벽 설정 경로
+────────────────────────────────────────────────
+VPS 패널 접속
+    → 왼쪽 메뉴에서 해당 VPS 클릭
+    → Security 또는 Firewall 탭 선택
+    → Inbound Rules(인바운드 규칙) 섹션
+    → Add Rule(규칙 추가) 클릭
+    → Port: 3100, Protocol: TCP, Source: Any
+    → 저장
+────────────────────────────────────────────────
+\`\`\`
+
+서버 ufw와 Hostinger 패널 방화벽 **둘 다** 열어야 접속됩니다. 하나만 열면 접속이 안 됩니다.
+
+---
+
+## Step 8 — PM2로 Paperclip 실행하기
+
+paperclip 계정으로 다시 전환합니다.
+
+\`\`\`bash
+su - paperclip
+\`\`\`
+
+PM2로 Paperclip을 백그라운드에서 실행합니다. 이 명령어를 실행하면 터미널을 닫아도 Paperclip이 계속 실행됩니다.
+
+\`\`\`bash
+pm2 start "npx paperclipai run" --name paperclip
+\`\`\`
+
+상태를 확인합니다.
+
+\`\`\`bash
+pm2 status
+\`\`\`
+
+아래처럼 \`online\` 상태가 나오면 정상 실행 중입니다.
+
+\`\`\`
+┌────┬────────────┬─────────────┬─────────┬──────────┐
+│ id │ name       │ namespace   │ version │ status   │
+├────┼────────────┼─────────────┼─────────┼──────────┤
+│ 0  │ paperclip  │ default     │ N/A     │ online   │
+└────┴────────────┴─────────────┴─────────┴──────────┘
+\`\`\`
+
+실시간 로그를 보고 싶다면 이 명령어를 씁니다.
+
+\`\`\`bash
+pm2 logs paperclip
+\`\`\`
+
+에러 없이 로그가 흘러내려가면 정상입니다. \`Ctrl+C\`로 로그 보기를 종료합니다.
+
+### 서버 재부팅 시 자동 시작 설정
+
+VPS는 가끔 예기치 않게 재시작될 수 있습니다. 재시작 후에도 Paperclip이 자동으로 켜지도록 설정합니다.
+
+\`\`\`bash
+pm2 save
+\`\`\`
+
+root 계정으로 돌아가서 시스템 시작 프로그램에 등록합니다.
+
+\`\`\`bash
+exit
+pm2 startup
+\`\`\`
+
+\`pm2 startup\` 실행 후, 아래와 비슷한 명령어가 출력됩니다.
+
+\`\`\`
+[PM2] To setup the Startup Script, copy/paste the following command:
+sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u root --hp /root
+\`\`\`
+
+이 \`sudo env PATH=...\`로 시작하는 명령어를 **통째로 복사해서 실행**합니다. 그러면 서버가 재부팅될 때마다 PM2가 자동으로 시작되고, 저장해둔 Paperclip 프로세스도 자동으로 켜집니다.
+
+---
+
+## Step 9 — 브라우저에서 대시보드 접속
+
+이제 브라우저를 열고 주소창에 아래를 입력합니다.
+
+\`\`\`
+http://VPS_IP_주소:3100
+
+예시: http://123.45.67.89:3100
+\`\`\`
+
+<ScenarioBox>
+  <div className="font-semibold text-paperfolio-text">⚠️ http:// 이지 https:// 가 아닙니다</div>
+  <div className="mt-2 space-y-2 text-sm">
+    <div>SSL 인증서가 없으면 <code>https://</code>로는 접속이 안 됩니다. 반드시 <code>http://</code>를 사용하세요.</div>
+    <div>브라우저가 "안전하지 않은 사이트" 경고를 보여줄 수 있습니다. "계속" 또는 "고급 → 안전하지 않음으로 이동"을 클릭하면 접속됩니다.</div>
+  </div>
+</ScenarioBox>
+
+접속에 성공하면 **Paperclip 회원가입 화면**이 나타납니다.
+
+### 첫 계정 만들기
+
+이메일 주소와 비밀번호를 입력해서 계정을 만듭니다. 이 계정이 Paperclip의 **이사회 의장(Board Admin)** 계정입니다. 에이전트 채용, 예산 승인, 전략 검토 등 모든 최상위 결정권이 이 계정에 있습니다.
+
+회원가입 후, 터미널로 돌아가서 아래 명령어를 실행합니다.
+
+\`\`\`bash
+su - paperclip
+npx paperclipai auth bootstrap-ceo
+\`\`\`
+
+초대 링크(URL)가 출력됩니다. 이 링크를 브라우저 주소창에 붙여넣으면 방금 만든 계정이 이사회 의장 권한을 얻습니다. 이 단계는 authenticated 모드에서 최초 1회만 필요합니다.
+
+---
+
+## Step 10 — 대시보드 첫 화면
+
+로그인에 성공하면 Paperclip 대시보드가 나타납니다. 지금은 모든 것이 비어있는 것이 정상입니다.
+
+\`\`\`
+대시보드 구성 (첫 접속 화면)
+══════════════════════════════════════════════════
+
+왼쪽 사이드바
+├── Companies      → 운영 중인 회사 목록
+│                    (처음엔 비어있음, 여기서 첫 회사 생성)
+├── Agents         → 에이전트 목록 및 상태
+├── Tasks          → 티켓 / 태스크 현황
+├── Goals          → 목표 계층 구조
+├── Budget         → 에이전트별 예산 사용량
+├── Audit Log      → 모든 활동 감사 기록
+└── Settings       → 서버 / 계정 설정
+
+메인 영역
+└── "Create your first company" 버튼이 표시됨
+
+══════════════════════════════════════════════════
+\`\`\`
+
+"Create your first company" 버튼을 눌러서 회사 이름과 미션을 입력하면, AI 에이전트 팀의 첫 번째 회사가 만들어집니다. 다음 단계(Step 3)에서 이 부분을 자세히 다룹니다.
+
+---
+
+## API 키는 어디서, 어떻게 설정하나요?
+
+Paperclip을 설치하는 단계에서는 API 키를 입력하지 않아도 됩니다. 에이전트를 실제로 등록할 때 각 에이전트마다 개별로 입력합니다. 이 구조 덕분에 에이전트마다 다른 AI 모델을 쓸 수 있습니다. 예산이 많이 드는 작업에는 Claude Opus를, 빠른 처리가 필요한 작업에는 GPT-4o를 쓰는 식으로 조합이 가능합니다.
+
+지금 당장 필요한 것은 API 키를 준비해두는 것입니다.
+
+<Grid cols={2}>
+  <Card title="Anthropic API 키" color="teal">
+    <p>Claude Code, Claude 기반 에이전트에 사용됩니다. console.anthropic.com에서 발급합니다. 새 계정에는 무료 크레딧이 제공됩니다. 키는 <code>sk-ant-</code>로 시작합니다.</p>
+  </Card>
+  <Card title="OpenAI API 키" color="blue">
+    <p>Codex, GPT 기반 에이전트에 사용됩니다. platform.openai.com에서 발급합니다. 키는 <code>sk-</code>로 시작합니다. Codex 에이전트를 쓰려면 필요합니다.</p>
+  </Card>
+</Grid>
+
+API 키를 환경변수로 미리 서버에 등록해두면 에이전트 등록 시 자동으로 불러옵니다. paperclip 계정의 홈 디렉터리에 \`.env\` 파일을 만들어두는 방법입니다.
+
+\`\`\`bash
+# paperclip 계정에서 실행
+cat >> ~/.profile << 'EOF'
+export ANTHROPIC_API_KEY="sk-ant-여기에_실제_키_입력"
+export OPENAI_API_KEY="sk-여기에_실제_키_입력"
+EOF
+source ~/.profile
+\`\`\`
+
+이렇게 해두면 Paperclip 서버가 시작될 때 자동으로 키를 불러옵니다. 대시보드 UI에서 입력하는 방법도 있으니, 이 단계는 선택 사항입니다.
+
+---
+
+## 도메인이 있다면 — Nginx 리버스 프록시 설정
+
+IP 주소 대신 도메인 이름으로 접속하거나, \`https://\`를 쓰고 싶다면 Nginx 리버스 프록시를 설정합니다. 지금 당장 필요하지 않다면 이 섹션은 나중에 해도 됩니다.
+
+Nginx를 설치합니다.
+
+\`\`\`bash
+# root 계정에서 실행
+apt install -y nginx
+\`\`\`
+
+Nginx 설정 파일을 만듭니다.
+
+\`\`\`bash
+cat > /etc/nginx/sites-available/paperclip << 'EOF'
+server {
+    listen 80;
+    server_name 여기에_도메인_또는_IP;
+
+    location / {
+        proxy_pass http://127.0.0.1:3100;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+EOF
+\`\`\`
+
+설정을 활성화합니다.
+
+\`\`\`bash
+ln -s /etc/nginx/sites-available/paperclip /etc/nginx/sites-enabled/
+nginx -t          # 설정 문법 확인
+systemctl restart nginx
+ufw allow 80/tcp  # 80번 포트 열기
+\`\`\`
+
+이제 \`http://도메인\` 또는 \`http://IP\`로 포트 번호 없이 접속됩니다. Paperclip 설정에서 Public URL도 도메인으로 업데이트해야 합니다.
+
+\`\`\`bash
+npx paperclipai configure --section server
+# Public URL을 http://도메인 으로 변경
+\`\`\`
+
+---
+
+## 유용한 관리 명령어 모음
+
+설치 후 자주 쓰게 될 명령어들입니다.
+
+\`\`\`bash
+# Paperclip 상태 확인
+pm2 status
+
+# 실시간 로그 보기
+pm2 logs paperclip
+
+# Paperclip 재시작 (설정 변경 후)
+pm2 restart paperclip
+
+# Paperclip 중지
+pm2 stop paperclip
+
+# Paperclip 시작
+pm2 start paperclip
+
+# 설정 진단 및 자동 수리
+npx paperclipai doctor
+
+# 배포 모드 변경
+npx paperclipai configure --section auth
+
+# 허용 호스트네임 추가
+npx paperclipai add-hostname 도메인이름.com
+\`\`\`
+
+---
+
+## 문제 해결 — 안 될 때 체크리스트
+
+접속이 안 되거나 에러가 나면 아래 순서대로 확인합니다.
+
+\`\`\`
+접속 안 될 때 체크리스트
+────────────────────────────────────────────────
+□ 브라우저 주소 확인
+  - http:// 로 시작하는지 (https:// 아님!)
+  - 포트 :3100 이 붙어있는지
+  - IP 주소가 정확한지
+
+□ Paperclip 실행 상태 확인
+  → pm2 status
+  → paperclip이 online 이면 정상
+  → offline 이면: pm2 restart paperclip
+
+□ 서버 방화벽 확인
+  → ufw status
+  → 3100/tcp 가 ALLOW 로 표시되는지
+
+□ Hostinger 패널 방화벽 확인
+  → 패널에서 Firewall → 3100 포트 열려있는지
+
+□ 로그에서 에러 확인
+  → pm2 logs paperclip
+  → 에러 메시지 복사해서 검색
+────────────────────────────────────────────────
+\`\`\`
+
+### 에러별 해결 방법
+
+**"Unable to bind 0.0.0.0" 에러**
+
+\`\`\`
+원인: local_trusted 모드는 외부 IP 바인딩 불가
+\`\`\`
+
+\`\`\`bash
+npx paperclipai configure --section auth
+# → authenticated → public 선택 후 재시작
+pm2 restart paperclip
+\`\`\`
+
+**npx paperclipai onboard 실패 (GitHub Issue #704)**
+
+root 계정으로 실행했을 때 발생합니다. paperclip 전용 계정에서 실행합니다.
+
+\`\`\`bash
+su - paperclip
+npx paperclipai onboard
+\`\`\`
+
+**포트 3100 접속 불가 (timeout)**
+
+서버 방화벽(ufw)과 Hostinger 패널 방화벽 **둘 다** 확인합니다.
+
+\`\`\`bash
+# 서버 방화벽 재설정
+ufw allow 3100/tcp
+ufw reload
+ufw status
+\`\`\`
+
+**pnpm 버전이 낮다는 경고**
+
+\`\`\`bash
+npm install -g pnpm@latest
+\`\`\`
+
+**전체 설정 진단이 필요할 때**
+
+Paperclip에는 설정 상태를 자동으로 검사하고 수리하는 명령어가 있습니다. 뭔가 이상하면 이 명령어부터 실행해보세요.
+
+\`\`\`bash
+npx paperclipai doctor
+\`\`\`
+
+문제가 있으면 원인과 해결 방법을 직접 알려줍니다.
+
+---
+
+## 전체 설치 명령어 한눈에 보기
+
+처음부터 끝까지 순서대로 실행해야 할 명령어 전체 목록입니다. 복사해서 메모장에 저장해두면 편합니다.
+
+\`\`\`bash
+# ====== root 계정에서 실행 ======
+
+# 서버 업데이트
+apt update && apt upgrade -y
+
+# Node.js 20 설치
+curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+apt install -y nodejs
+
+# 전역 도구 설치
+npm install -g pnpm pm2
+
+# paperclip 전용 계정 생성
+adduser --disabled-password --gecos "" paperclip
+
+# 방화벽 열기
+ufw allow 3100/tcp && ufw reload
+
+# ====== paperclip 계정으로 전환 ======
+su - paperclip
+
+# Paperclip 초기 설정 마법사 실행
+# → authenticated → public → http://VPS_IP:3100
+npx paperclipai onboard
+
+# PM2로 실행
+pm2 start "npx paperclipai run" --name paperclip
+pm2 save
+
+# CEO 계정 부트스트랩 (회원가입 후 실행)
+npx paperclipai auth bootstrap-ceo
+
+# ====== root 계정으로 돌아와서 ======
+exit
+
+# 재부팅 자동 시작 설정
+pm2 startup
+# → 출력된 sudo 명령어를 복사해서 실행
+
+# ====== 브라우저에서 ======
+# http://VPS_IP:3100 접속 → 회원가입 → 대시보드 확인
+\`\`\`
+
+---
+
+## Hostinger 원클릭 설치 옵션
+
+Hostinger VPS는 **Docker 앱으로 Paperclip 원클릭 설치**도 지원합니다. 이 방식은 서버 설정에 익숙하지 않은 분들에게 훌륭한 출발점입니다.
+
+![Hostinger VPS Paperclip 원클릭 Docker 설치 페이지](/images/works/paperclip/hostinger-paperclip.png)
+
+Hostinger 패널 → **VPS Apps → Docker Apps** 메뉴에 Paperclip이 등록되어 있습니다. 클릭 한 번으로 Docker 컨테이너가 자동 구성됩니다. Node.js, pnpm, PM2를 직접 설치할 필요 없이 모두 자동 처리됩니다.
+
+처음 시작하는 분께는 원클릭 방식이 가장 쉽습니다. 설정을 더 세밀하게 제어하거나 업데이트를 직접 관리하고 싶다면, 이 가이드처럼 npx 방식으로 직접 설치하는 것을 추천합니다. 처음에는 원클릭으로 맛보고, 익숙해지면 npx 방식으로 옮겨가는 것도 좋은 방법입니다.
+
+---
+
+## npx vs Docker — 어떤 방식이 나한테 맞을까?
+
+이 가이드에서는 \`npx paperclipai onboard\` 방식으로 설치했습니다. Paperclip에는 설치 방법이 네 가지 있습니다. 나중에 다른 방식으로 바꿀 때를 대비해서 각각의 특징을 알아둡니다.
+
+<Grid cols={2}>
+  <Card title="① npx 방식 (이 가이드)" color="teal">
+    <p>Node.js만 설치하면 됩니다. 가장 가볍고 업데이트가 쉽습니다. 설정 파일이 <code>~/.paperclip/</code>에 저장됩니다. VPS에 처음 설치하는 분께 권장합니다. 나중에 <code>npx paperclipai run</code> 한 줄로 시작됩니다.</p>
+  </Card>
+  <Card title="② Docker Compose 방식" color="blue">
+    <p>Node.js 설치 없이 Docker만 있으면 됩니다. 환경이 격리되어 충돌 가능성이 줄어듭니다. 이미 Docker를 쓰는 서버에 적합합니다. <code>docker compose up -d</code> 한 줄로 실행됩니다. 업데이트는 이미지를 새로 받으면 됩니다.</p>
+  </Card>
+  <Card title="③ git clone + 직접 빌드" color="coral">
+    <p>Paperclip 소스 코드를 직접 수정하거나 개발에 참여하는 경우에 씁니다. <code>pnpm dev</code>로 실행됩니다. 일반 사용자에게는 불필요하게 복잡합니다.</p>
+  </Card>
+  <Card title="④ Hostinger 원클릭 설치" color="teal">
+    <p>Hostinger 패널에서 Docker App으로 제공됩니다. 터미널을 전혀 쓰지 않고 설치 가능합니다. 가장 빠르지만 세부 설정이 어렵습니다. 설치 후 바로 써보고 싶은 분께 적합합니다.</p>
+  </Card>
+</Grid>
+
+---
+
+## 마치며
+
+브라우저에 Paperclip 대시보드가 나타나는 순간, 여러분만의 "AI 회사 서버"가 인터넷에 살아있는 것입니다.
+
+\`\`\`
+이번 단계에서 완료한 것
+────────────────────────────────
+✅ Hostinger VPS에 Node.js 20 설치 완료
+✅ Paperclip 초기 설정 마법사 완료
+✅ 외부 접속 가능한 authenticated/public 모드 설정
+✅ PM2로 서버 상시 실행 + 재부팅 자동 시작
+✅ Hostinger 방화벽 포트 3100 개방
+✅ 브라우저에서 대시보드 접속 + 이사회 의장 계정 생성
+────────────────────────────────
+\`\`\`
+
+다음 단계(Step 3)에서는 이 대시보드 안에서 **첫 번째 에이전트를 등록**합니다. 이미 만들어둔 OpenClaw 에이전트를 Paperclip 조직에 편입시키거나, 처음부터 새 에이전트를 설정하는 방법을 단계별로 살펴봅니다.
+
+<Callout>
+  <div className="font-semibold text-paperfolio-text">설치 후 대시보드에서 할 수 있는 첫 번째 일들</div>
+  <div className="mt-2 space-y-2 text-sm">
+    <div>① <strong>첫 번째 회사(Company) 만들기</strong> — 회사 이름과 미션 한 줄 입력</div>
+    <div>② <strong>CEO 에이전트 등록</strong> — OpenClaw 또는 Claude Code를 CEO로 임명</div>
+    <div>③ <strong>첫 번째 목표(Goal) 설정</strong> — "이번 주 블로그 3편 발행" 같은 구체적인 목표</div>
+    <div>④ <strong>예산 설정</strong> — 에이전트 월 사용 한도를 달러 단위로 입력</div>
+    <div>⑤ <strong>첫 번째 태스크 만들기</strong> — CEO 에이전트에게 첫 번째 티켓 부여</div>
+    <div className="pt-2 opacity-70 text-xs">이 모든 것을 Step 3~5에서 하나씩 진행합니다.</div>
+  </div>
+</Callout>
+`,
+          }
         ],
       },
     ],
