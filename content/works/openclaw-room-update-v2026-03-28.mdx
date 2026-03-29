@@ -32,6 +32,7 @@ subtitle: "Grok 검색 · MiniMax 이미지 · 승인 요청 훅 · Gemini CLI �
     <p className="mt-1 font-playfair text-2xl text-white">v2026.3.28 업데이트</p>
   </div>
   <div className="grid grid-cols-1 divide-y divide-paperfolio-line md:grid-cols-3 md:divide-x md:divide-y-0">
+
     <div className="bg-[#fff5f5] px-6 py-7">
       <div className="mb-5 flex items-center gap-2.5">
         <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#fee2e2] text-base">🔴</span>
@@ -42,16 +43,17 @@ subtitle: "Grok 검색 · MiniMax 이미지 · 승인 요청 훅 · Gemini CLI �
       </div>
       <ul className="space-y-3">
         <li className="flex items-start gap-2.5">
-          <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ef4444]" />
-          <span className="text-sm leading-6 text-[#7f1d1d]">Qwen 로그인 방식 변경<br/><span className="text-xs text-[#b91c1c]/70">OAuth → ModelStudio API 키</span></span>
+          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ef4444]" />
+          <span className="text-sm leading-6 text-[#7f1d1d]">Qwen 로그인 방식 변경<br /><span className="text-xs text-[#b91c1c]/70">OAuth → ModelStudio API 키</span></span>
         </li>
         <li className="flex items-start gap-2.5">
-          <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ef4444]" />
-          <span className="text-sm leading-6 text-[#7f1d1d]">구형 설정 자동수정 폐지<br/><span className="text-xs text-[#b91c1c]/70">2개월+ 오래된 설정은 수동 정리 필요</span></span>
+          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ef4444]" />
+          <span className="text-sm leading-6 text-[#7f1d1d]">구형 설정 자동수정 폐지<br /><span className="text-xs text-[#b91c1c]/70">2개월+ 오래된 설정은 수동 정리 필요</span></span>
         </li>
       </ul>
       <p className="mt-5 rounded-xl bg-[#fee2e2] px-4 py-2.5 text-center text-xs font-semibold text-[#991b1b]">총 2가지</p>
     </div>
+
     <div className="bg-[#f0f9ff] px-6 py-7">
       <div className="mb-5 flex items-center gap-2.5">
         <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#dbeafe] text-base">✨</span>
@@ -61,24 +63,42 @@ subtitle: "Grok 검색 · MiniMax 이미지 · 승인 요청 훅 · Gemini CLI �
         </div>
       </div>
       <ul className="space-y-2.5">
-        {[
-          "Grok 실시간 웹 검색 (x_search)",
-          "MiniMax 이미지 생성",
-          "도구 실행 전 승인 요청 훅",
-          "현재 채널을 AI 작업공간으로",
-          "Gemini CLI 백엔드 추가",
-          "Slack · Teams · Google Chat 파일 업로드",
-          "Matrix TTS 음성 버블",
-          "openclaw config schema 명령어",
-        ].map((item) => (
-          <li key={item} className="flex items-start gap-2.5">
-            <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3b82f6]" />
-            <span className="text-sm leading-6 text-[#1e3a5f]">{item}</span>
-          </li>
-        ))}
+        <li className="flex items-start gap-2.5">
+          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3b82f6]" />
+          <span className="text-sm leading-6 text-[#1e3a5f]">Grok 실시간 웹 검색 (x_search)</span>
+        </li>
+        <li className="flex items-start gap-2.5">
+          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3b82f6]" />
+          <span className="text-sm leading-6 text-[#1e3a5f]">MiniMax 이미지 생성</span>
+        </li>
+        <li className="flex items-start gap-2.5">
+          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3b82f6]" />
+          <span className="text-sm leading-6 text-[#1e3a5f]">도구 실행 전 승인 요청 훅</span>
+        </li>
+        <li className="flex items-start gap-2.5">
+          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3b82f6]" />
+          <span className="text-sm leading-6 text-[#1e3a5f]">현재 채널을 AI 작업공간으로</span>
+        </li>
+        <li className="flex items-start gap-2.5">
+          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3b82f6]" />
+          <span className="text-sm leading-6 text-[#1e3a5f]">Gemini CLI 백엔드 추가</span>
+        </li>
+        <li className="flex items-start gap-2.5">
+          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3b82f6]" />
+          <span className="text-sm leading-6 text-[#1e3a5f]">Slack · Teams · Google Chat 파일 업로드</span>
+        </li>
+        <li className="flex items-start gap-2.5">
+          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3b82f6]" />
+          <span className="text-sm leading-6 text-[#1e3a5f]">Matrix TTS 음성 버블</span>
+        </li>
+        <li className="flex items-start gap-2.5">
+          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3b82f6]" />
+          <span className="text-sm leading-6 text-[#1e3a5f]">openclaw config schema 명령어</span>
+        </li>
       </ul>
       <p className="mt-5 rounded-xl bg-[#dbeafe] px-4 py-2.5 text-center text-xs font-semibold text-[#1d4ed8]">총 16가지</p>
     </div>
+
     <div className="bg-[#f0fdf4] px-6 py-7">
       <div className="mb-5 flex items-center gap-2.5">
         <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#dcfce7] text-base">🔧</span>
@@ -88,24 +108,42 @@ subtitle: "Grok 검색 · MiniMax 이미지 · 승인 요청 훅 · Gemini CLI �
         </div>
       </div>
       <ul className="space-y-2.5">
-        {[
-          "Discord 재연결 무한루프",
-          "WhatsApp 셀프챗 에코 루프",
-          "Telegram 단어 중간 잘림",
-          "429 레이트리밋이 전 모델 차단",
-          "Gemini 3.1 모델 인식 오류",
-          "Claude Sonnet 4.6 컨텍스트 표시",
-          "메모리 검색 unknown provider",
-          "GitHub Copilot 토큰 무한루프",
-        ].map((item) => (
-          <li key={item} className="flex items-start gap-2.5">
-            <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#22c55e]" />
-            <span className="text-sm leading-6 text-[#14532d]">{item}</span>
-          </li>
-        ))}
+        <li className="flex items-start gap-2.5">
+          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#22c55e]" />
+          <span className="text-sm leading-6 text-[#14532d]">Discord 재연결 무한루프</span>
+        </li>
+        <li className="flex items-start gap-2.5">
+          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#22c55e]" />
+          <span className="text-sm leading-6 text-[#14532d]">WhatsApp 셀프챗 에코 루프</span>
+        </li>
+        <li className="flex items-start gap-2.5">
+          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#22c55e]" />
+          <span className="text-sm leading-6 text-[#14532d]">Telegram 단어 중간 잘림</span>
+        </li>
+        <li className="flex items-start gap-2.5">
+          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#22c55e]" />
+          <span className="text-sm leading-6 text-[#14532d]">429 레이트리밋이 전 모델 차단</span>
+        </li>
+        <li className="flex items-start gap-2.5">
+          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#22c55e]" />
+          <span className="text-sm leading-6 text-[#14532d]">Gemini 3.1 모델 인식 오류</span>
+        </li>
+        <li className="flex items-start gap-2.5">
+          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#22c55e]" />
+          <span className="text-sm leading-6 text-[#14532d]">Claude Sonnet 4.6 컨텍스트 표시</span>
+        </li>
+        <li className="flex items-start gap-2.5">
+          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#22c55e]" />
+          <span className="text-sm leading-6 text-[#14532d]">메모리 검색 unknown provider</span>
+        </li>
+        <li className="flex items-start gap-2.5">
+          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#22c55e]" />
+          <span className="text-sm leading-6 text-[#14532d]">GitHub Copilot 토큰 무한루프</span>
+        </li>
       </ul>
       <p className="mt-5 rounded-xl bg-[#dcfce7] px-4 py-2.5 text-center text-xs font-semibold text-[#166534]">총 70가지 이상</p>
     </div>
+
   </div>
 </div>
 
