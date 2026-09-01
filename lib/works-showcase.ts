@@ -8,6 +8,20 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "광통신 트레이닝",
+    summary: "FTTx 망 구조부터 광 파워 버짓, OTDR 장애 추적까지. 장비를 처음 만지는 엔지니어도 현장에서 스스로 판단할 수 있도록 설계한 실무 교육 트랙입니다.",
+    tags: ["FTTx", "광통신", "현장 실무"],
+    image: "/images/instructor_group.webp",
+    link: "/education/optical-training",
+  },
+  {
+    title: "AX 전환 설계",
+    summary: "도구를 붙이는 자동화가 아니라 업무 흐름 전체를 AI 기준으로 다시 설계하는 과정입니다. 업무 지도, 핸드오프, 90일 측정까지 단계별로 정리했습니다.",
+    tags: ["AX", "업무 재설계", "핸드오프"],
+    image: "/images/AIauto.webp",
+    link: "/works/ax",
+  },
+  {
     title: "업무 자동화 실험실",
     summary: "메일, 보고서, 문서 작성처럼 반복되는 업무를 자동화한 사례들입니다.",
     tags: ["자동화", "실무", "생산성"],

@@ -1,3 +1,5 @@
+import { AX_LANDING } from "@/lib/works-ax-data";
+
 export interface WorkStep {
   id: string;
   title: string;
@@ -4220,4 +4222,5 @@ netsh advfirewall firewall add rule name="Allow CouchDB Local" dir=in action=all
       },
     ],
   },
+  "ax": AX_LANDING,
 };

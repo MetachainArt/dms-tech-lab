@@ -3,6 +3,8 @@ import { getAllPosts } from '@/lib/mdx';
 import { getSeriesIdsWithContent } from '@/lib/series-content';
 import { getAllWorks } from '@/lib/work-mdx';
 import { WORKS_DATA } from '@/lib/works-projects-data';
+import { EDUCATION_TRACKS } from '@/lib/education-data';
+import { getCourseStructure } from '@/lib/education-fs';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://dmssolution.co.kr';
@@ -60,6 +62,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
+  // 교육 트랙 / 레슨 자동 수집
+  const educationRoutes: MetadataRoute.Sitemap = [];
+  for (const track of Object.values(EDUCATION_TRACKS)) {
+    educationRoutes.push({
+      url: `${baseUrl}/education/${track.id}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    });
+
+    const course = getCourseStructure(track.id);
+    if (!course) continue;
+
+    for (const chapter of course.chapters) {
+      for (const lesson of chapter.lessons) {
+        educationRoutes.push({
+          url: `${baseUrl}/education/${track.id}/${lesson.slug}`,
+          lastModified: new Date(),
+          changeFrequency: 'monthly' as const,
+          priority: 0.6,
+        });
+      }
+    }
+  }
+
   const sitemap: MetadataRoute.Sitemap = [
     // 메인 페이지
     ...mainRoutes.map((route) => ({
@@ -68,6 +95,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: route.changeFrequency,
       priority: route.priority,
     })),
+    // 교육 트랙 (자동)
+    ...educationRoutes,
     // 프로젝트 시리즈 (자동)
     ...projectRoutes,
     // 블로그 포스트 (자동)

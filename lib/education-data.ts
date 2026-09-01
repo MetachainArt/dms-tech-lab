@@ -95,5 +95,27 @@ export const EDUCATION_TRACKS: Record<string, EducationTrack> = {
         ]
       }
     ]
+  },
+  "optical-training": {
+    id: "optical-training",
+    title: "광통신 트레이닝",
+    description: "FTTx 광통신 인프라의 구조부터 현장 시공·측정·유지보수까지. 장비를 처음 만지는 엔지니어도 원리를 이해하고 스스로 판단할 수 있도록 설계한 실무 트랙입니다.",
+    image: "/icons/3d-curriculum-hw.png",
+    color: "blue",
+    vol: "04",
+    tags: ["FTTx", "광통신", "현장 실무"],
+    chapters: [
+      {
+        id: "chapter-01",
+        title: "FTTx 기초와 현장 판단",
+        description: "망 구조부터 파워 버짓, OTDR 측정까지 현장에서 바로 쓰는 기본기",
+        lessons: [
+          { id: "01-fttx-network-structure", title: "FTTx 망 구조를 한 장으로 이해하기", description: "국사에서 가입자까지 광신호가 지나가는 경로 전체", duration: "12 min" },
+          { id: "02-pon-and-splitter", title: "PON과 광 스플리터", description: "하나의 광선로를 32가구가 나눠 쓰는 원리", duration: "14 min" },
+          { id: "03-optical-power-budget", title: "광 파워 버짓", description: "링크가 살고 죽는 계산과 여유 설계", duration: "15 min" },
+          { id: "04-otdr-fault-finding", title: "OTDR로 장애 지점 찾기", description: "파형을 읽고 사고 지점을 특정하는 법", duration: "16 min" }
+        ]
+      }
+    ]
   }
 };
