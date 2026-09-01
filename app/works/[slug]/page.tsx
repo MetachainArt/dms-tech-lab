@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import AuthorCard from "@/components/blog/AuthorCard";
 import { MDXComponents } from "@/components/mdx/MDXComponents";
 import { BLOG_SERIES } from "@/lib/blog-data";
@@ -128,7 +129,7 @@ export default async function WorkDetailPage(props: { params: Promise<{ slug: st
       <section className="border-t border-paperfolio-line bg-paperfolio-surface px-6 py-20">
         <div className="mx-auto max-w-3xl">
           <article className="editorial-prose">
-            <MDXRemote source={work.content} components={MDXComponents} />
+            <MDXRemote source={work.content} components={MDXComponents} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
           </article>
           <AuthorCard />
         </div>

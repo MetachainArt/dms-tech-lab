@@ -118,26 +118,26 @@ export default async function AutomationPage() {
   const formattedAutomations = automations.map(mapAutomation);
 
   return (
-    <main className="w-full min-h-screen bg-[#FDFCF8] text-stone-900 font-poppins relative selection:bg-stone-200 selection:text-stone-900">
+    <main className="w-full min-h-screen bg-[#f7f3ea] text-paperfolio-text font-sans relative selection:bg-paperfolio-accent-yellow/70 selection:text-paperfolio-text">
       <section className="relative w-full pt-40 pb-20 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FDFCF8] via-[#FDFCF8]/80 to-[#FDFCF8] z-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#f7f3ea] via-[#f7f3ea]/80 to-[#f7f3ea] z-0" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.03),transparent_70%)] z-0" />
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <p className="mb-4 text-sm font-semibold tracking-[0.24em] uppercase text-stone-500">자동화</p>
+          <p className="mb-4 text-sm font-semibold tracking-[0.24em] uppercase text-paperfolio-text-muted">자동화</p>
           <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6">
             반복 업무를 줄이는
             <br />
-            <span className="text-stone-500">실무형 자동화 템플릿.</span>
+            <span className="text-paperfolio-text-muted">실무형 자동화 템플릿.</span>
           </h1>
-          <p className="text-xl text-stone-500 max-w-2xl leading-relaxed">
+          <p className="text-xl text-paperfolio-text-muted max-w-2xl leading-relaxed">
             반복되는 작업은 덜어내고, 판단이 필요한 일에 더 집중할 수 있도록 검증된 워크플로우를 모았습니다.
           </p>
         </div>
       </section>
 
       <section className="px-6 pb-32 relative z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#FDFCF8]/50 to-[#FDFCF8] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#f7f3ea]/50 to-[#f7f3ea] pointer-events-none" />
         <div className="max-w-7xl mx-auto relative">
           <AutomationContainer initialTemplates={formattedAutomations} />
         </div>

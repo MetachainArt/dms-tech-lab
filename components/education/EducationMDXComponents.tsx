@@ -25,6 +25,31 @@ export const EducationMDXComponents = {
   ),
   hr: (props: any) => <hr className="my-12 border-gray-200" {...props} />,
   
+
+  // Tables (GFM)
+  table: (props: any) => (
+    <div className="my-8 overflow-x-auto rounded-2xl border border-paperfolio-line bg-white">
+      <table className="w-full border-collapse text-left text-sm" {...props} />
+    </div>
+  ),
+  thead: (props: any) => <thead className="bg-paperfolio-bg" {...props} />,
+  th: (props: any) => (
+    <th className="border-b border-paperfolio-line px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-paperfolio-text" {...props} />
+  ),
+  td: (props: any) => (
+    <td className="border-b border-paperfolio-line/60 px-5 py-3 align-top leading-7 text-paperfolio-text-muted" {...props} />
+  ),
+  tr: (props: any) => <tr className="last:border-0" {...props} />,
+  code: (props: any) => (
+    <code className="rounded bg-paperfolio-bg px-1.5 py-0.5 text-[0.9em] text-paperfolio-accent-blue" {...props} />
+  ),
+  pre: (props: any) => (
+    <pre className="my-8 overflow-x-auto rounded-2xl bg-paperfolio-text p-6 text-sm leading-7" {...props} />
+  ),
+  a: (props: any) => (
+    <a className="text-paperfolio-accent-blue underline underline-offset-4 hover:text-paperfolio-accent-coral" {...props} />
+  ),
+
   // Custom Components & Icons
   Bot, Workflow, Users, Zap, Terminal, Network, Battery,
   Clock, Calendar, Cpu, Lightbulb, Brain, TrendingUp, AlertTriangle, DollarSign,

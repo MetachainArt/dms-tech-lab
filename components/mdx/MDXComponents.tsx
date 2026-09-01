@@ -562,6 +562,23 @@ export const MDXComponents = {
   pre: (props: PreProps) => <pre className="my-8 overflow-x-auto rounded-[24px] bg-paperfolio-text p-5 text-sm leading-7 text-white [&_code]:!bg-transparent [&_code]:!text-white [&_code]:!p-0 [&_code]:!rounded-none [&_code]:!font-mono" {...props} />,
   code: (props: CodeProps) => <code className="rounded bg-paperfolio-accent-blue/10 px-1.5 py-0.5 text-[0.92em] text-paperfolio-accent-blue" {...props} />,
   img: (props: ImageProps) => <img className="my-10 w-full rounded-[28px] border border-paperfolio-line" alt={props.alt ?? ""} {...props} />,
+  a: (props: ComponentPropsWithoutRef<"a">) => (
+    <a className="text-paperfolio-accent-blue underline underline-offset-4 hover:text-paperfolio-accent-coral" {...props} />
+  ),
+
+  // Tables (GFM)
+  table: (props: ComponentPropsWithoutRef<"table">) => (
+    <div className="my-8 overflow-x-auto rounded-[24px] border border-paperfolio-line bg-white">
+      <table className="w-full border-collapse text-left text-base" {...props} />
+    </div>
+  ),
+  thead: (props: ComponentPropsWithoutRef<"thead">) => <thead className="bg-paperfolio-bg" {...props} />,
+  th: (props: ComponentPropsWithoutRef<"th">) => (
+    <th className="border-b border-paperfolio-line px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-paperfolio-text" {...props} />
+  ),
+  td: (props: ComponentPropsWithoutRef<"td">) => (
+    <td className="border-b border-paperfolio-line/60 px-5 py-3 align-top leading-8 text-paperfolio-text-muted" {...props} />
+  ),
 
   Bot,
   Workflow,

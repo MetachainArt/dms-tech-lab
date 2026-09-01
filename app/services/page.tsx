@@ -66,7 +66,7 @@ const expertise = [
 
 export default function ServicesPage() {
   return (
-    <main className="w-full min-h-screen bg-[#FDFCF8] text-stone-900 font-poppins selection:bg-stone-200 selection:text-stone-900 pt-32 pb-20 relative">
+    <main className="w-full min-h-screen bg-[#f7f3ea] text-paperfolio-text font-sans selection:bg-paperfolio-accent-yellow/70 selection:text-paperfolio-text pt-32 pb-20 relative">
       {/* Header Section */}
       <section className="max-w-7xl mx-auto px-6 mb-24 relative z-10">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.03),transparent_70%)] -z-10" />
@@ -76,15 +76,15 @@ export default function ServicesPage() {
              transition={{ duration: 0.6 }}
         >
             <div className="flex items-center gap-4 mb-6">
-                <span className="h-[2px] w-12 bg-stone-300" />
-                <span className="text-stone-500 font-semibold tracking-widest text-sm uppercase">하는 일</span>
+                <span className="h-[2px] w-12 bg-paperfolio-line" />
+                <span className="text-paperfolio-text-muted font-semibold tracking-widest text-sm uppercase">하는 일</span>
              </div>
              <h1 className="text-5xl md:text-6xl font-serif font-bold leading-tight">
                 지금 필요한 문제를
                 <br />
-                <span className="text-stone-500">이런 방식으로 돕습니다.</span>
+                <span className="text-paperfolio-text-muted">이런 방식으로 돕습니다.</span>
              </h1>
-             <p className="mt-6 max-w-2xl text-lg leading-8 text-stone-500">
+             <p className="mt-6 max-w-2xl text-lg leading-8 text-paperfolio-text-muted">
                광통신 트레이닝 전문가이자 AX 전문가로서, 거창한 서비스 카탈로그보다 실제로 도움이 되는 자동화와 도구, 작업 방식을 중심으로 정리했습니다.
              </p>
          </motion.div>
@@ -99,7 +99,7 @@ export default function ServicesPage() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: idx * 0.1 }}
-                    className="group bg-white rounded-[2rem] overflow-hidden hover:-translate-y-2 transition-transform duration-300 shadow-sm border border-stone-200 hover:shadow-md"
+                    className="group bg-white rounded-[2rem] overflow-hidden hover:-translate-y-2 transition-transform duration-300 shadow-sm border border-paperfolio-line hover:shadow-md"
                 >
                     <Link href={service.link} className="flex flex-col h-full">
                         {/* Image Area */}
@@ -112,20 +112,20 @@ export default function ServicesPage() {
                              />
                              <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-300" />
                              
-                             <div className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-stone-100 z-10">
+                             <div className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-paperfolio-line z-10">
                                 <service.icon className={`w-5 h-5 ${service.color}`} />
                              </div>
                         </div>
 
                         {/* Content */}
                         <div className="p-8 flex flex-col bg-white h-full relative z-20">
-                            <div className="text-xs font-bold text-stone-400 tracking-widest uppercase mb-3">{service.category}</div>
-                            <h3 className="text-2xl font-bold text-stone-900 mb-4 group-hover:text-stone-600 transition-colors">{service.title}</h3>
-                            <p className="text-stone-600 text-sm leading-relaxed mb-8 line-clamp-3">
+                            <div className="text-xs font-bold text-paperfolio-text-muted tracking-widest uppercase mb-3">{service.category}</div>
+                            <h3 className="text-2xl font-bold text-paperfolio-text mb-4 group-hover:text-paperfolio-text-muted transition-colors">{service.title}</h3>
+                            <p className="text-paperfolio-text-muted text-sm leading-relaxed mb-8 line-clamp-3">
                                 {service.desc}
                             </p>
                             
-                            <div className="mt-auto self-start px-6 py-3 rounded-full border border-stone-200 text-stone-900 font-bold text-sm flex items-center gap-2 group-hover:bg-stone-900 group-hover:text-white group-hover:border-stone-900 transition-all">
+                            <div className="mt-auto self-start px-6 py-3 rounded-full border border-paperfolio-line text-paperfolio-text font-bold text-sm flex items-center gap-2 group-hover:bg-paperfolio-text group-hover:text-white group-hover:border-paperfolio-accent-blue transition-all">
                                 자세히 보기 <ArrowRight className="w-4 h-4" />
                             </div>
                         </div>
@@ -138,28 +138,28 @@ export default function ServicesPage() {
       {/* Expertise Band */}
       <section className="max-w-7xl mx-auto px-6 mt-24 relative z-10">
         <div className="flex items-center gap-4 mb-6">
-          <span className="h-[2px] w-12 bg-stone-300" />
-          <span className="text-stone-500 font-semibold tracking-widest text-sm uppercase">전문 분야</span>
+          <span className="h-[2px] w-12 bg-paperfolio-line" />
+          <span className="text-paperfolio-text-muted font-semibold tracking-widest text-sm uppercase">전문 분야</span>
         </div>
         <h2 className="text-3xl md:text-4xl font-serif font-bold leading-tight mb-10">
           광통신 트레이닝, AX 전환, 해외무역.
           <br />
-          <span className="text-stone-500">세 축으로 일합니다.</span>
+          <span className="text-paperfolio-text-muted">세 축으로 일합니다.</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {expertise.map((item) => (
             <Link
               key={item.title}
               href={item.link}
-              className="group bg-white rounded-[2rem] border border-stone-200 p-8 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col"
+              className="group bg-white rounded-[2rem] border border-paperfolio-line p-8 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col"
             >
-              <div className="w-12 h-12 rounded-full bg-stone-50 border border-stone-100 flex items-center justify-center mb-6">
+              <div className="w-12 h-12 rounded-full bg-paperfolio-bg border border-paperfolio-line flex items-center justify-center mb-6">
                 <item.icon className={`w-6 h-6 ${item.color}`} />
               </div>
-              <div className="text-xs font-bold text-stone-400 tracking-widest uppercase mb-3">{item.category}</div>
-              <h3 className="text-2xl font-bold text-stone-900 mb-4 group-hover:text-stone-600 transition-colors">{item.title}</h3>
-              <p className="text-stone-600 text-sm leading-relaxed mb-8">{item.desc}</p>
-              <div className="mt-auto self-start px-6 py-3 rounded-full border border-stone-200 text-stone-900 font-bold text-sm flex items-center gap-2 group-hover:bg-stone-900 group-hover:text-white group-hover:border-stone-900 transition-all">
+              <div className="text-xs font-bold text-paperfolio-text-muted tracking-widest uppercase mb-3">{item.category}</div>
+              <h3 className="text-2xl font-bold text-paperfolio-text mb-4 group-hover:text-paperfolio-text-muted transition-colors">{item.title}</h3>
+              <p className="text-paperfolio-text-muted text-sm leading-relaxed mb-8">{item.desc}</p>
+              <div className="mt-auto self-start px-6 py-3 rounded-full border border-paperfolio-line text-paperfolio-text font-bold text-sm flex items-center gap-2 group-hover:bg-paperfolio-text group-hover:text-white group-hover:border-paperfolio-accent-blue transition-all">
                 자세히 보기 <ArrowRight className="w-4 h-4" />
               </div>
             </Link>
