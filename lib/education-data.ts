@@ -151,6 +151,18 @@ export const EDUCATION_TRACKS: Record<string, EducationTrack> = {
           { id: "04-rogue-onu", title: "Rogue ONU", description: "When one unit breaks the whole PON, and how to find it", duration: "12 min" },
           { id: "05-emergency-restoration", title: "Emergency Restoration", description: "Getting service back at night without creating a future problem", duration: "12 min" }
         ]
+      },
+      {
+        id: "chapter-05",
+        title: "PON Technology and Plant Strategy",
+        description: "Wavelength plans, coexistence, capacity decisions and what higher rates demand from the plant",
+        lessons: [
+          { id: "01-gpon-xgspon-wavelength-plan", title: "GPON, XGS-PON and the Wavelength Plan", description: "How generations share one fiber, and what blocks an upgrade", duration: "12 min" },
+          { id: "02-coexistence-on-existing-plant", title: "Coexistence on Existing Plant", description: "Migrating subscribers without a forklift replacement", duration: "12 min" },
+          { id: "03-capacity-planning", title: "Capacity Planning", description: "Split ratio as a business decision, not just an optical one", duration: "11 min" },
+          { id: "04-in-building-distribution", title: "In-building Distribution", description: "Why the last thirty metres cost more than the last three kilometres", duration: "11 min" },
+          { id: "05-what-changes-with-higher-rate-pon", title: "What Changes as Rates Rise", description: "Which decisions become irreversible, and what to do now", duration: "11 min" }
+        ]
       }
     ]
   }

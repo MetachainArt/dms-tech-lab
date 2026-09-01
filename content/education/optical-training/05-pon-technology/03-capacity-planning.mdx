@@ -1,0 +1,86 @@
+---
+title: "Capacity Planning — Split Ratio as a Business Decision"
+date: "2026-09-01"
+desc: "How many subscribers should share a port. Balancing loss budget, bandwidth per subscriber and construction cost, and why the answer changes over time."
+coverImage: "/images/a21.webp"
+readTime: "11 min"
+---
+
+# The Number That Decides Everything Downstream
+
+Choosing a split ratio looks like an optical engineering decision. It is really a decision about **cost per subscriber, service quality, and how long the plant stays adequate.**
+
+As covered in the PON lesson, every doubling of the split adds roughly 3 dB. What that lesson did not address is the other half: every doubling also **halves the bandwidth available per subscriber.**
+
+Both constraints move together, and capacity planning is about finding where they cross for a particular deployment.
+
+## The Two Ceilings
+
+**Optical ceiling.** How much loss the system tolerates. Determined by the equipment's loss class, the fiber distance, splice and connector count, and the margin you intend to preserve. This ceiling is hard — exceed it and the link does not work.
+
+**Bandwidth ceiling.** How much traffic the port can deliver, divided by how many subscribers share it. This ceiling is soft — exceed it and service degrades at peak times rather than failing.
+
+A GPON port delivers 2.5 Gbit/s downstream. Across 32 subscribers that is roughly 78 Mbit/s each if everyone transmits simultaneously — which they do not. Across 64 it is 39 Mbit/s.
+
+## Oversubscription Is Normal and Has a Limit
+
+Nobody dimensions for every subscriber using full capacity at once, because that never happens. Real usage is bursty and concentrated in evening peaks.
+
+The planning question is therefore **what happens at peak**, not on average. Two networks with identical split ratios behave very differently if one serves households streaming video in the evening and the other serves businesses uploading during the day.
+
+Which is why the honest answer to "what split ratio should we use" is: **it depends on the traffic profile, and you should measure it rather than assume it.**
+
+## What Pushes the Ratio Down
+
+**Long distances.** Distance consumes budget, leaving less for splitting.
+
+**Existing plant with accumulated repairs.** As covered in the route types lesson, each repair adds splices permanently. Older plant has less headroom.
+
+**Plans to upgrade to a higher rate later.** As covered in the wavelength plan lesson, higher-rate systems tolerate less loss. A ratio that works for GPON today may block XGS-PON tomorrow.
+
+**Business or high-value subscribers** with committed rates.
+
+## What Pushes the Ratio Up
+
+**High subscriber density.** Apartment blocks make aggressive splitting economical.
+
+**Constrained duct capacity.** If there is no room for more feeder fiber, splitting harder is the only way to serve more subscribers.
+
+**Cost pressure on the feeder.** Each doubling halves the feeder fiber count required.
+
+## The Two-Stage Question, Revisited
+
+The PON lesson introduced single-stage versus two-stage splitting as an architecture choice. From a capacity planning perspective the trade-off sharpens:
+
+**Single-stage** makes the loss budget simple and the capacity picture uniform. Every subscriber on the port sees the same architecture.
+
+**Two-stage** lets you match splitting to actual subscriber distribution — a light split at the first stage, then heavier splits only where density justifies it. It also lets you **add capacity incrementally**, by populating second-stage splitters as demand appears rather than building for the final count on day one.
+
+That incremental property is often the deciding factor in areas where take-up is uncertain. You build the feeder and first stage, and defer the rest.
+
+## Planning for Take-up, Not for Homes Passed
+
+A common planning error is dimensioning for every home passed rather than for realistic take-up.
+
+If take-up is expected to reach 40%, a 1:32 splitter serves roughly 80 homes passed. Dimensioning as though all 80 will subscribe wastes budget on splitting you never need — and, worse, consumes optical margin permanently.
+
+Conversely, dimensioning for today's 15% take-up and finding yourself at 60% in five years means revisiting plant. **The workable approach is to build the passive infrastructure for the long-term case and populate it progressively**, which is exactly what two-stage architectures enable.
+
+## A Checklist Before Committing
+
+1. **Measured or estimated peak traffic profile**, not average.
+2. **Loss budget at the intended ratio**, with 3 dB of margin preserved.
+3. **Same calculation for the next-generation system** you might deploy later.
+4. **Take-up projection** over the intended life, not today's number.
+5. **Duct and feeder capacity** available for future expansion.
+6. **Repair allowance** — how many future splices the budget can absorb.
+
+Item 6 is the one that is almost never in a design document, and it is the one that decides whether the plant is still healthy in ten years.
+
+## Summary
+
+- Split ratio trades optical budget against bandwidth per subscriber, and both move with every doubling.
+- The optical ceiling is hard; the bandwidth ceiling is soft and shows up at peak.
+- Distance, accumulated repairs and future upgrades push the ratio down. Density and duct constraints push it up.
+- Two-stage architectures let you defer capacity, which suits uncertain take-up.
+- Plan for realistic take-up over the plant's life, and explicitly budget for future repair splices.

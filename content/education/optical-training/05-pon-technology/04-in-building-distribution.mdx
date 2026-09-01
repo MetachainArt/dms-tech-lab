@@ -1,0 +1,79 @@
+---
+title: "In-building Distribution — Where Most Installation Time Goes"
+date: "2026-09-01"
+desc: "Getting fiber from the building entry to the apartment. Riser design, bend-insensitive cable, and why the last thirty metres cost more than the last three kilometres."
+coverImage: "/images/c1.webp"
+readTime: "11 min"
+---
+
+# The Expensive Thirty Metres
+
+Feeder and distribution work is planned, mechanised and predictable. In-building work is none of those things. It happens in occupied buildings, around other people's property, with a resident waiting.
+
+Per metre, **the last stretch inside a building is by far the most expensive part of an FTTH deployment**, and it is where schedules slip.
+
+## The Two Building Types
+
+**New build.** Conduit exists, routes are designed, and the work is straightforward. Fiber can be installed before occupancy. If you get to influence the design, ask for conduit to every unit and a properly sized communications room.
+
+**Existing building.** No conduit, or conduit already full. Routes have to be found — stairwells, existing risers, external walls, ducting behind trim. Access requires coordination with residents and building management. **This is the normal case**, and it is why in-building surveys matter more than any other survey in access work.
+
+## Riser Topologies
+
+**Home run.** A dedicated fiber from the building's distribution point to each unit. Simplest to understand and to fault-find, and the most fiber. Practical in smaller buildings.
+
+**Floor-by-floor.** A riser cable with floor-level enclosures, from which drops run to units on that floor. Fewer fibers in the riser, more enclosures. Standard in larger buildings.
+
+**Distributed splitting in the building.** A splitter in the building serving units directly. Minimises fiber from outside but constrains capacity per building and complicates later changes.
+
+The choice interacts with the capacity planning discussed in the previous lesson. Splitting inside the building saves feeder fiber but fixes the architecture in place; if take-up exceeds expectation, changing it means working in the building again — the expensive place.
+
+## Why Bend-insensitive Fiber Changed This Work
+
+As covered in the fiber types lesson, G.657 tolerates much tighter bends than standard G.652.
+
+Inside a building that is not a marginal improvement. It is the difference between routing behind trim, around door frames, and along skirting boards — or not being able to at all. **G.657.A2 and B3 are what make discreet in-building installation practical.**
+
+The caveat from that lesson still applies: bend-insensitive fiber buys margin, it does not eliminate the limit. A fiber stapled hard against a corner will still lose light, and the installation will still be the cause of a fault report later.
+
+## Installation Realities
+
+**The route must be agreed before you start.** Residents care what the cable looks like. Going back to reroute because someone objected costs more than the original run.
+
+**Fire stopping is mandatory when penetrating compartment boundaries.** This is a legal and safety requirement, not an optional finish, and it is regularly the reason an installation fails inspection.
+
+**Label at both ends, immediately.** In a riser with dozens of identical fibers, an unlabelled drop is found only by testing. As covered in the VFL lesson, this is exactly what a visual fault locator is for — but doing it right the first time is faster.
+
+**Leave slack at the unit and at the floor enclosure.** As covered in the slack lesson, the next repair depends on it. Inside buildings the temptation to trim tight is strong because slack is visible.
+
+**Test after installation, before leaving.** The resident is present, access is available, and a fault found now costs minutes instead of a return visit.
+
+## Handover Records That Matter Here
+
+In-building plant is where records decay fastest, because changes happen often and are made by whoever is on site.
+
+Minimum per unit:
+
+- Which riser fiber, which floor enclosure, which port
+- Measured loss at handover
+- ONU serial and location within the unit
+- Route taken, if not obvious
+
+That last one sounds excessive until someone has to trace a cable behind three rooms of trim.
+
+## The Survey Is the Whole Job
+
+If there is a single lesson from in-building work, it is that **the survey determines the cost, and a bad survey cannot be recovered later.**
+
+A good survey establishes: where the entry point is, where the distribution point will sit, what riser routes exist and whether they have capacity, what the unit-level route looks like, who grants access, and what the building's rules require.
+
+Getting this wrong produces the most common failure in FTTH programmes: an appointment booked, an engineer dispatched, and the job abandoned on the day because the route was not viable.
+
+## Summary
+
+- The last thirty metres inside a building cost more per metre than the kilometres outside.
+- Existing buildings without conduit are the normal case; survey quality decides cost.
+- Home run, floor-by-floor and in-building splitting each trade fiber count against future flexibility.
+- G.657 bend-insensitive fiber is what makes discreet routing possible, but the limits still exist.
+- Agree the route with residents first, fire-stop properly, label immediately, leave slack, test before leaving.
+- Record riser fiber, enclosure, port, measured loss and route per unit.

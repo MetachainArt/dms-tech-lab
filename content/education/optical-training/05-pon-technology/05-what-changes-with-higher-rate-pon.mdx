@@ -1,0 +1,91 @@
+---
+title: "What Changes as PON Rates Keep Rising"
+date: "2026-09-01"
+desc: "50G PON and beyond. Which field practices matter more at higher rates, which plant decisions become irreversible, and what to do now."
+coverImage: "/images/a15.webp"
+readTime: "11 min"
+---
+
+# The Fiber Does Not Change. Everything Around It Does.
+
+Each PON generation raises the line rate while using the same glass in the ground. That is the fundamental economics of fiber: **the passive plant outlives many generations of electronics.**
+
+But "the fiber does not change" is only half true in practice. What changes is how much the plant's imperfections matter.
+
+## Higher Rates Are Less Forgiving
+
+Three things tighten as rates rise.
+
+**Loss tolerance.** Receiver sensitivity does not improve in proportion to rate. As covered in the wavelength plan lesson, a split that closed comfortably at 2.5G may not close at 10G, and less so beyond. **The plant does not degrade; the requirement rises.**
+
+**Reflection tolerance.** Reflections that were tolerable become error sources. This is why APC connectors, capped unused splitter ports, and good end-face hygiene — all covered in the connector lesson — get more important with every generation, not less.
+
+**Dispersion over distance.** Longer reaches become harder. Distances that were unremarkable start to constrain design.
+
+The practical implication is uncomfortable but clear: **the marginal decisions you make today determine which future generations your plant can carry.** A 1 dB shortcut now is a generation you cannot deploy later.
+
+## What Stays Constant
+
+It is worth being equally clear about what does not change, because it is most of the job.
+
+- Splice quality, and the cleaver discipline behind it
+- End-face cleanliness and the inspect-clean-inspect habit
+- Bend radius and slack management
+- Enclosure sealing and water exclusion
+- Accurate as-built records and slack documentation
+- The triage order when something fails
+
+**Every one of these matters more at higher rates, and none of them changes in method.** The engineer who does these well has plant that carries the next generation; the one who does not has plant that needs rework before any upgrade.
+
+That is the reassuring part of this subject. Chasing each new standard is far less important than doing the fundamentals to a standard that leaves margin.
+
+## What Becomes Effectively Irreversible
+
+Some decisions are cheap now and expensive or impossible later.
+
+**Split ratio and architecture.** Changing it means touching plant, often in the street.
+
+**Connector type throughout the plant.** Mixed UPC and APC creates a permanent constraint and a permanent risk of mismating.
+
+**Duct capacity.** If there is no room to add fiber, options narrow permanently.
+
+**In-building routes.** As covered in the previous lesson, going back into occupied buildings is the most expensive work there is.
+
+**Records.** Lost as-builts cannot be reconstructed cheaply. Every future upgrade survey starts from measurement instead of knowledge.
+
+Contrast these with things that are genuinely easy to change later: OLT and ONU electronics, wavelengths in use, service configuration. **Spend design effort on the irreversible list.**
+
+## What to Do Now
+
+For plant being built today:
+
+1. **Preserve margin deliberately.** The 3 dB from the power budget lesson is a minimum, and recording remaining margin at handover tells the next engineer what generations are still available.
+2. **APC everywhere**, and cap every unused port.
+3. **Conservative split** where duct and cost allow, with two-stage architecture to defer capacity.
+4. **G.652.D minimum**, G.657 where bends require it.
+5. **Duct capacity for a future cable**, not just today's.
+6. **Records that survive handover**, in the form described in the documentation lesson.
+
+For existing plant facing an upgrade:
+
+1. **Measure, do not calculate.** Loss and reflectance at the new wavelengths.
+2. **Reclaim margin first** — clean, re-terminate, replace poor splices. Often recovers more than expected.
+3. **Pilot at the far end**, where margin is thinnest.
+4. **Expect the split ratio to be the blocker**, not the fiber.
+
+## The Judgement That Does Not Automate
+
+Standards will keep advancing, and equipment will keep changing. What does not change is the question an engineer answers on site:
+
+**Given what I measured, what is actually wrong, and what is the cheapest correct action?**
+
+That question is why this course spends more time on triage order, reference methods, and margin than on line rates. **The rate is a specification. The judgement is the skill.**
+
+## Summary
+
+- The fiber outlives the electronics, but higher rates tolerate less loss, less reflection and less distance.
+- Splice quality, cleanliness, bend management, sealing and records matter more at every generation — and none of them change in method.
+- Split ratio, connector type, duct capacity, in-building routes and records are effectively irreversible. Electronics are not.
+- On new plant: preserve and document margin, APC throughout, conservative split, spare duct.
+- On existing plant: measure at the new wavelengths, reclaim margin before spending it, pilot at the far end.
+- The specification changes. The judgement on site does not.

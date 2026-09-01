@@ -1,0 +1,85 @@
+---
+title: "Coexistence — Running a New PON Over Existing Plant"
+date: "2026-09-01"
+desc: "Upgrading without a forklift replacement. How coexistence elements work, what they cost you in budget, and the migration sequence that avoids outages."
+coverImage: "/images/a16.webp"
+readTime: "12 min"
+---
+
+# Nobody Replaces a Network at Once
+
+An operator with GPON serving thousands of subscribers cannot switch everyone to XGS-PON on one night. Subscribers have working ONUs, and replacing all of them simultaneously is neither affordable nor operationally sane.
+
+So the two generations run **on the same fiber at the same time**, and subscribers migrate individually. That is coexistence, and it is the normal upgrade path.
+
+## How It Works Physically
+
+As covered in the wavelength plan lesson, GPON and XGS-PON use different wavelengths in both directions. A passive filter can therefore combine and separate them.
+
+That component sits at the OLT side and is called a coexistence element, or WDM1r in the standards. It:
+
+- Combines GPON downstream (1490 nm) and XGS-PON downstream (1577 nm) onto the shared feeder
+- Separates GPON upstream (1310 nm) from XGS-PON upstream (1270 nm) coming back
+- Passes the RF video overlay at 1550 nm if present
+
+Downstream, every ONU receives everything and ignores what is not on its wavelength — the same filtering principle as the broadcast behaviour covered in the PON lesson, one level up.
+
+## What It Costs You
+
+The coexistence element is passive, but it is not free in budget terms. **Insertion loss is typically around 1 dB in each direction.**
+
+That number lands directly on a budget that, as covered in the power budget lesson, is usually dominated by split loss and may already be tight after years of repair splices.
+
+The practical consequence: **check the budget before ordering the equipment.** A plant running at 1.5 dB of margin cannot absorb a 1 dB coexistence element and remain safe. Options at that point are reducing the split ratio, shortening the path, or replacing degraded connectors to reclaim margin.
+
+## The Migration Sequence
+
+A sequence that avoids surprises:
+
+**1. Survey and measure.** End-to-end loss at both generations' wavelengths, reflectance on all connectors, actual split ratio, real distances. As covered in the previous lesson, measure rather than trusting the design.
+
+**2. Reclaim margin first.** Before adding anything, clean and re-terminate marginal connectors, and replace any splices that measured poorly at acceptance. This is cheap and it often recovers more than the coexistence element will consume.
+
+**3. Install the coexistence element and the new OLT ports** with no subscribers on them. Verify that existing GPON service is unaffected — this is the step people rush, and it is the one that causes mass outages.
+
+**4. Migrate a small pilot group.** A handful of subscribers, ideally at varying distances including the furthest, since the far end has the least margin.
+
+**5. Measure the pilot group at the new wavelengths** and confirm received power is comfortably inside the window, not just barely inside.
+
+**6. Migrate in batches**, keeping the ability to roll a subscriber back to GPON if their ONU or path misbehaves.
+
+**7. Reclaim the GPON ports** once a tree is fully migrated.
+
+## What Goes Wrong
+
+**Insufficient margin discovered mid-migration.** Because the survey was done on paper. The result is a partially migrated tree and an unplanned plant project.
+
+**Reflections that were tolerable become intolerable.** Higher-rate systems are less forgiving. A connector that passed at GPON may fail at XGS-PON, which is why step 1 includes reflectance and not just loss.
+
+**Furthest subscribers fail while nearby ones work.** Predictable, and the reason the pilot group should deliberately include the far end.
+
+**Video overlay disturbed.** If RF video at 1550 nm is present, the coexistence element must pass it correctly. Verify video specifically, because subscribers notice it immediately and it is not covered by data testing.
+
+**Differential distance violations.** As covered in the registration lesson, PON systems specify a maximum difference between nearest and furthest ONU. Changing which subscribers are on which port during migration can breach it.
+
+## Documentation During Migration
+
+A tree in mid-migration is the most confusing state a network can be in: two generations, two OLT ports, subscribers split between them.
+
+Minimum records to keep current:
+
+- Which subscribers are on which generation, updated as you go
+- Measured received power per subscriber after migration
+- Remaining margin per path after the coexistence element was added
+- Which GPON ports are still in service and which are reclaimable
+
+Without this, a fault during migration takes far longer to diagnose because nobody can say which system a given subscriber should be on.
+
+## Summary
+
+- Coexistence lets two PON generations share one fiber, with subscribers migrating individually.
+- The coexistence element is passive but costs roughly 1 dB each way — check the budget before ordering.
+- Reclaim margin by cleaning and re-terminating before you spend it on the new element.
+- Verify existing service is unaffected before migrating anyone, then pilot with subscribers at the far end.
+- Reflections, video overlay and differential distance are the constraints that bite during migration.
+- Keep per-subscriber generation and margin records current while the tree is mixed.
