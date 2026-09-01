@@ -55,12 +55,6 @@ export default function Hero() {
               작업 보기
               <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link
-              href="/#contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-paperfolio-line bg-white/80 px-7 py-4 text-sm font-semibold text-paperfolio-text hover:border-paperfolio-accent-coral/40 hover:text-paperfolio-accent-coral"
-            >
-              편하게 문의하기
-            </Link>
           </div>
         </motion.div>
 
