@@ -1,0 +1,85 @@
+---
+title: "The ONU Will Not Register — Working Through the Layers"
+date: "2026-09-01"
+desc: "A new install that will not come up is usually not a fiber problem. Separating optical faults from provisioning faults, in order."
+coverImage: "/images/a6.webp"
+readTime: "11 min"
+---
+
+# Light Is Arriving and It Still Does Not Work
+
+An ONU is installed, the power measurement is fine, and the unit will not register. This is one of the most common field situations and one of the most commonly misdiagnosed, because the engineer on site has optical instruments and reaches for them.
+
+**If the optical level is within specification, the problem is above the fiber.** Going straight to an OTDR here wastes an hour.
+
+The useful skill is separating the layers and working through them in order.
+
+## Layer 1 — Is the Light Right?
+
+Two numbers, not one.
+
+**Received power at the ONU.** Within the specified window for the class of optics. Too low is the obvious failure. **Too high also fails** — an ONU installed close to the OLT with insufficient split loss can overload the receiver, and the symptom looks similar.
+
+**Received power at the OLT from this ONU.** Available in the OLT statistics. If the OLT sees nothing during the ONU's transmit window, the upstream path or the ONU transmitter is the problem, even though downstream looks fine.
+
+Asymmetric faults are common and invisible if you only measure one direction. A dirty connector affects both, but a damaged transmitter or a wavelength-specific problem may not.
+
+## Layer 2 — Does the OLT See It At All?
+
+Check whether the ONU appears in the OLT's discovery list.
+
+**Not discovered at all** — the OLT is not receiving its registration attempts. Back to layer 1, upstream direction, or the ONU is not transmitting.
+
+**Discovered but not activated** — the optical path works in both directions. This is now a provisioning problem, and no fiber instrument will help.
+
+That distinction is the entire value of this step. It is a query on a management interface and it should happen before anything else optical.
+
+## Layer 3 — Provisioning
+
+Once the OLT can see the unit, the usual causes are administrative.
+
+**Serial number mismatch.** The serial provisioned does not match the unit actually installed. Transcription errors, or a swapped unit at the depot. Compare the OLT's discovered serial against the provisioning record, character by character.
+
+**Wrong PON port.** The service is provisioned on a port the ONU is not connected to. This happens after patching changes and is easy to miss because everything else looks correct.
+
+**Profile or line-profile mismatch.** The ONU model does not match the profile assigned.
+
+**Duplicate serial.** The same unit still provisioned on a previous port or previous subscriber, blocking registration.
+
+**Reached the split limit.** The port already has its maximum number of registered ONUs.
+
+## Layer 4 — Ranging and Distance
+
+As covered in the PON lesson, the OLT assigns transmit time slots and compensates for each subscriber's distance. Registration includes a ranging exchange.
+
+Two things go wrong here:
+
+**Beyond the supported differential distance.** PON systems specify a maximum difference between the nearest and furthest ONU on the same port. A subscriber far outside that window may fail to range even with adequate optical power.
+
+**Reflections confusing ranging.** A strong reflection — a badly mated connector, an unterminated open end on the same tree — can interfere with the ranging exchange. This is one reason APC connectors are specified in PON, and one reason unterminated splitter ports should be capped rather than left open.
+
+## Layer 5 — The Unit Itself
+
+Last, not first. Swap the ONU with a known-good unit of the same model. If the replacement registers, the original was faulty.
+
+Doing this first is tempting and misleading — a swap that appears to fix things may simply have reseated a marginal connector.
+
+## A Practical Order
+
+1. Read ONU received power. In window, too low, or too high?
+2. Read OLT received power from this ONU. Is upstream working?
+3. Is the ONU in the discovery list?
+4. If discovered: check serial, port, profile, duplicates, split count.
+5. If not discovered: check upstream path, reflections on the tree, and distance/ranging limits.
+6. Only then substitute the unit.
+
+Steps 1 to 3 take a few minutes and route the entire investigation correctly.
+
+## Summary
+
+- Correct optical power means the fault is above the fiber. Stop reaching for the OTDR.
+- Measure both directions. Too much light fails as surely as too little.
+- "Discovered but not activated" means the optics are fine and the problem is provisioning.
+- Serial mismatch, wrong port, duplicates and split limits cover most provisioning failures.
+- Ranging problems come from excessive differential distance or reflections on the tree — another reason to cap unused splitter ports.
+- Swap the unit last, not first.

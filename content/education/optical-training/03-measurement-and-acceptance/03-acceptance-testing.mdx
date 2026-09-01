@@ -1,0 +1,88 @@
+---
+title: "Acceptance Testing — What to Record and Why It Matters Later"
+date: "2026-09-01"
+desc: "Handover is the one moment when measuring everything is cheap. What belongs in the acceptance pack, and the omissions that cost years later."
+coverImage: "/images/a4.webp"
+readTime: "12 min"
+---
+
+# The Only Cheap Moment to Measure
+
+At handover, everything is open, the crew is on site, and the equipment is already out. Measuring one more span costs minutes.
+
+Three years later, the same measurement means a truck roll, a customer outage window, and an engineer who has never seen this plant before trying to work out what should be there.
+
+**Acceptance testing is not paperwork. It is the baseline that every future fault diagnosis is measured against.** That framing changes what you choose to record.
+
+## The Minimum Acceptance Pack
+
+For each fiber path:
+
+**Bidirectional OTDR traces, both wavelengths.** Saved as native trace files, not screenshots. A screenshot cannot be re-analysed with different markers; a trace file can.
+
+**End-to-end insertion loss, both wavelengths.** With the reference method recorded, as covered in the insertion loss lesson.
+
+**Optical return loss** where the specification calls for it — particularly on PON plant with video overlay.
+
+**Connector end-face images** for the terminations that were made or mated during the work. This one is skipped almost universally and is disproportionately valuable, because connector degradation is the most common later fault.
+
+**Fiber length** measured, alongside the design length. A significant discrepancy at handover is a finding worth chasing immediately.
+
+## The Metadata That Makes It Usable
+
+The measurements are only half of it. What turns a folder of files into a usable baseline:
+
+- **Which fiber, in which cable, on which route.** Named the same way the drawings name it.
+- **Which direction** each trace was taken in.
+- **Reference method** used for loss measurement.
+- **Instrument model and serial**, and pulse width and range settings.
+- **Launch cable used**, and its length.
+- **Date and technician.**
+
+The instrument settings matter more than people expect. When a future engineer compares their trace against yours and gets a different answer, **the first question is whether the settings match.** Without that record, the comparison is worthless.
+
+## Pass Criteria Have to Be Agreed Before Testing
+
+This sounds obvious and is routinely violated. If the criteria are settled after the numbers are in, the discussion becomes a negotiation instead of a test.
+
+What needs to be agreed in writing beforehand:
+
+- **Maximum end-to-end loss** per path, derived from the design budget rather than just the equipment limit.
+- **Maximum individual splice loss**, and whether it is judged on the bidirectional average.
+- **Maximum connector loss** and minimum return loss.
+- **Reference method** for insertion loss.
+- **What happens on a marginal result** — retest, rework, or accept with a note.
+
+That last item prevents the most common dispute. A splice at 0.28 dB against a 0.3 dB limit passes, but if three of them appear on the same span, something systematic is happening and "it passed" is the wrong conclusion.
+
+## Read the Results as a Set
+
+Individual pass marks hide patterns. Before signing off, look across the whole job:
+
+**Are splice losses clustered high?** As covered in the splicing lesson, that usually means tooling — a worn cleaver blade — not bad luck.
+
+**Is one crew's work consistently different?** Worth knowing, and worth addressing as training rather than rework.
+
+**Do measured lengths track the design?** Systematic overlength suggests slack storage that was not in the plan, which will matter when someone converts fiber distance to dig location.
+
+**How much margin is left?** As covered in the power budget lesson, a link that passes with 1 dB spare is a link that will fail on its second repair. **Recording the remaining margin at handover gives the operator a way to prioritise.**
+
+## What Handover Should Include
+
+The acceptance pack is one part. The full handover also needs:
+
+- **As-built drawings** reflecting what was actually installed, not what was designed.
+- **Splice schedules** — which fiber connects to which, in which tray, in which closure.
+- **Slack locations and lengths**, which is what makes future fault localisation accurate.
+- **Closure and hand-hole locations**, ideally with coordinates.
+
+A network with perfect test results and missing as-builts behaves during a fault like an undocumented network, because that is what it is.
+
+## Summary
+
+- Handover is the only cheap moment to measure. Treat the results as the baseline for the plant's whole life.
+- Save native trace files, not screenshots. Record instrument settings, direction, reference method and launch cable.
+- Agree pass criteria — including what happens on marginal results — before testing starts.
+- Read results as a set. Clustered marginal splices are a tooling signal, not luck.
+- Record remaining margin. It tells the operator how much future repair the link can absorb.
+- As-builts, splice schedules and slack locations are part of the deliverable, not an afterthought.

@@ -1,0 +1,79 @@
+---
+title: "Insertion Loss Testing — The Measurement That Actually Decides Acceptance"
+date: "2026-09-01"
+desc: "Power meter and light source, reference methods, and why the number you get depends entirely on how you set the reference."
+coverImage: "/images/a1.webp"
+readTime: "12 min"
+---
+
+# The OTDR Is Not the Acceptance Test
+
+Engineers new to fiber often assume the OTDR is the definitive instrument. It is the best diagnostic tool, but it is **not** what decides whether a link passes.
+
+The OTDR measures backscatter and infers loss. An optical power meter with a light source measures **the actual light that arrives**. For acceptance, that is the number that matters, and most specifications are written against it.
+
+The setup is simple: a stabilised light source at one end, a power meter at the other. The difference between what you launched and what arrived is the insertion loss.
+
+Everything difficult about this test is in the word *reference*.
+
+## Why the Reference Method Changes the Answer
+
+Before measuring the link, you measure your test leads alone and set that as zero. That step is referencing, and how you do it determines **which connectors get counted**.
+
+Three methods exist, and they do not produce the same number.
+
+**One-jumper reference.** Connect the source to the meter with a single test cord and zero it. When you then insert the link, both the near-end and far-end connectors are included in the measurement. This is the strictest method, and generally the right one for access networks — the connectors are part of the plant you are handing over.
+
+**Two-jumper reference.** Zero with two cords mated through an adapter. The connection at the middle is excluded, so **one of the link's connectors disappears from the result.** The link looks roughly 0.3–0.5 dB better than it is.
+
+**Three-jumper reference.** Excludes both end connectors. The most permissive.
+
+None of these is wrong. What is wrong is **not recording which one you used.** A pass result at three-jumper and a fail at one-jumper can come from the same fiber on the same day, and if the record does not say, nobody can reconcile them later.
+
+## Do It in Both Windows
+
+Measure at 1310 nm and 1550 nm, and record both.
+
+The reason is diagnostic, not bureaucratic. As covered in the bend-radius lesson, **macrobend loss is significantly worse at 1550 nm**. If a link measures acceptably at 1310 but poorly at 1550, you almost certainly have a bend somewhere — before you have opened a single enclosure.
+
+For PON plant carrying video overlay, 1490 nm and 1550 nm behaviour matters commercially too, not just diagnostically.
+
+## Testing Through a Splitter
+
+This is where access work differs from point-to-point.
+
+Once the splitter is in the path, the measured loss includes the split ratio. A 1:32 splitter contributes 15–17 dB before any fiber, splice or connector loss. Your pass/fail threshold has to account for that, and it has to match the architecture in the drawing.
+
+Two practical consequences:
+
+**Test the feeder separately before the splitter goes in, when you can.** A clean feeder measurement is a baseline you will want on the day something goes wrong three years from now.
+
+**Know which splitter port you are on.** Ports of the same splitter are not perfectly identical, and more importantly, testing the wrong port produces a puzzling result that wastes an afternoon.
+
+## The Discipline That Makes the Number Real
+
+**Inspect and clean every connector before referencing.** As covered in the connector lesson, a dirty test lead makes your reference wrong, which makes every measurement afterwards wrong in the same direction. You will not notice, because the error is consistent.
+
+**Never break the reference.** Once you have zeroed, do not disconnect the cord at the source end. If you do, you have to reference again. This is the single most common source of unexplained drift across a day of testing.
+
+**Let the source stabilise.** A few minutes of warm-up. A drifting source produces results that trend across the morning.
+
+**Use the same lead set all day.** Swapping in a spare cord mid-session invalidates the reference.
+
+## What Pass Actually Means
+
+A pass is a measurement against a budget, and that budget came from the design. Which means:
+
+- The measured value should be **compared against the calculated budget**, not just the equipment maximum.
+- If the measurement passes but is far worse than the calculation predicted, **that is a finding, not a pass.** Something in the plant is not what the drawing says.
+
+This is the difference between testing to certify and testing to understand. Certification asks "is it under the limit." Understanding asks "is it what we designed." The second question is the one that prevents the call-out in year three.
+
+## Summary
+
+- Power meter and light source, not the OTDR, is the acceptance measurement.
+- The reference method decides which connectors are counted. One-jumper is strictest and usually correct for access plant. Always record which you used.
+- Measure at 1310 and 1550 nm. A gap between them points at a bend.
+- Through a splitter, the split ratio dominates the budget. Know your port.
+- Clean before referencing, never break the reference, warm the source, keep the same leads.
+- Compare against the design budget, not just the equipment limit.

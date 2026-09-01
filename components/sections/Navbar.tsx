@@ -12,7 +12,6 @@ const desktopLinks = [
   { name: "작업",   href: "/works" },
   { name: "글",     href: "/blog"  },
   { name: "아이디어", href: "/gallery" },
-  { name: "EN",     href: "/fttx-training" },
 ] as const;
 
 export default function Navbar() {

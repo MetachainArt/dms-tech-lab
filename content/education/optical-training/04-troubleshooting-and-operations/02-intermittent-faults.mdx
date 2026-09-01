@@ -1,0 +1,77 @@
+---
+title: "Intermittent Faults — Temperature, Water and Movement"
+date: "2026-09-01"
+desc: "The faults that pass every test you run. How to catch a problem that only appears at 4 a.m. in February."
+coverImage: "/images/a11.webp"
+readTime: "12 min"
+---
+
+# The Fault That Is Not There When You Arrive
+
+A subscriber reports drops every evening. You attend, measure, and everything is within specification. You leave. It happens again that night.
+
+Intermittent faults are the most expensive category in fiber operations, not because they are hard to fix but because they are hard to **catch**. The repair is usually trivial once located.
+
+The good news is that intermittent optical faults have a small number of causes, and each one leaves a signature.
+
+## The Three Physical Causes
+
+**Temperature.** Materials expand and contract. A splice under slight tension, a fiber pressed against a tray edge, or a connector in a marginally mated state will behave differently across a 20 degree swing. Symptoms follow a **daily cycle** — worst in the coldest hours or the hottest part of the afternoon.
+
+**Water.** Water in a closure or hand-hole causes loss directly, and much worse when it freezes and expands. Symptoms follow **rainfall and season**, and often appear days after the rain rather than during it.
+
+**Movement.** Aerial cable moving in wind, a duct cable shifting as traffic passes, a jumper being knocked in a cabinet. Symptoms are **irregular and correlate with activity** — wind, traffic, or someone working in a rack.
+
+If you can establish which of the three patterns applies, you have narrowed the search enormously before touching an instrument.
+
+## Get the Timing Data First
+
+The essential move is to stop guessing about when it happens.
+
+**Ask for exact times.** Not "in the evenings" — actual timestamps. Subscriber-reported times are imprecise but even rough ones reveal a daily cycle.
+
+**Pull the ONU's own history.** Most OLTs record per-ONU optical levels and loss-of-signal events with timestamps. This is the single most useful data source and it is often forgotten. A graph of received power over a week usually answers the question outright.
+
+**Correlate with weather.** Temperature curve and rainfall for the affected days. This takes minutes and either confirms or eliminates two of the three causes.
+
+## Then Measure While It Is Happening
+
+If the pattern is predictable, be there — or leave something there.
+
+**Continuous power monitoring.** Leave a meter logging on a spare fiber in the same cable, or use the OLT's own per-ONU statistics. **A logged level that dips at 4 a.m. and recovers by 8 a.m. localises the cause to temperature immediately.**
+
+**Compare wavelengths during the event.** As covered in the bend radius lesson, macrobend loss is much worse at 1550 nm. If the loss during an event is disproportionately at 1550, it is mechanical — a bend or pressure — not a break or a dirty connector.
+
+**Capture an OTDR trace during the event.** Hard to arrange, and decisive when you manage it. The event appears at a specific distance and the search is over.
+
+## Where They Actually Are
+
+In practice, intermittent faults concentrate in a few places:
+
+**Inside closures.** Slack under stress, a splice at the edge of its protection sleeve, water ingress. As covered in the enclosure lesson, most closure failures are sealing failures.
+
+**At connectors.** A marginally mated connector that moves with thermal cycling. Contamination that is borderline.
+
+**Where cable enters a building or a hand-hole.** Transition points concentrate mechanical stress and water.
+
+**Aerial spans near attachment points.** Movement is greatest where the cable is constrained.
+
+Notice that all four are accessible without excavation. **Intermittent faults are rarely mid-span cable damage** — a damaged cable tends to fail and stay failed.
+
+## The Trap
+
+The trap is declaring victory. You open a closure, find nothing obviously wrong, reseat everything, reseal it, and the fault does not recur for two weeks.
+
+Did you fix it, or did you disturb it into a temporarily stable state? Often the latter. Which is why:
+
+**Leave monitoring in place after the repair.** For a full thermal cycle at minimum, and through the next rainfall if water was suspected.
+
+**Record what you actually changed.** "Reseated tray 3, resealed gland" is a real record. "Repaired" tells the next engineer nothing when it recurs in spring.
+
+## Summary
+
+- Intermittent optical faults are almost always temperature, water, or movement, and each has a distinct timing signature.
+- Get timestamps before instruments. The OLT's per-ONU power history is the most underused source.
+- A 1550 nm loss much worse than 1310 during an event means mechanical stress, not contamination.
+- They cluster at closures, connectors, entry points and aerial attachments — all reachable without digging.
+- Disturbing a fault can mask it. Monitor through a full thermal cycle before closing the ticket.

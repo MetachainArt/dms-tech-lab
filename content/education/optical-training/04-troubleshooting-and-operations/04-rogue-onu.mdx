@@ -1,0 +1,85 @@
+---
+title: "Rogue ONU — When One Unit Breaks the Whole PON"
+date: "2026-09-01"
+desc: "A single misbehaving ONU can take down every subscriber on the port. Why the shared upstream makes this possible, and how to find the culprit."
+coverImage: "/images/a8.webp"
+readTime: "12 min"
+---
+
+# Everyone on the Port Is Down and the Fiber Is Fine
+
+A whole PON port degrades or drops. The feeder measures clean. The OTDR shows nothing. Subscribers come and go seemingly at random.
+
+This is the signature of a **rogue ONU**: one subscriber unit transmitting when it should not, corrupting everyone else's upstream traffic.
+
+It is worth understanding because it is the one fault type where **the plant is healthy and the diagnosis is entirely logical rather than optical.**
+
+## Why One Unit Can Do This
+
+As covered in the PON lesson, the upstream direction is time-shared. The OLT tells each ONU exactly when to transmit, and every ONU stays silent otherwise. All those bursts travel up the same fiber and arrive at one receiver.
+
+That arrangement has no defence against a unit that ignores its schedule. An ONU transmitting continuously, or during other units' slots, **collides with every other subscriber's traffic on that port.** Downstream is unaffected, because downstream is broadcast from the OLT.
+
+Hence the characteristic symptom set:
+
+- Downstream levels normal, downstream service partially working
+- Upstream errors across many or all subscribers on one port
+- Multiple ONUs dropping and re-registering
+- No optical fault anywhere in the plant
+- Other PON ports on the same OLT completely unaffected
+
+That last point is important. **A fault confined to exactly one PON port, with clean fiber, points strongly at something on that tree rather than at the OLT or the feeder.**
+
+## How to Recognise It Quickly
+
+Look at the OLT statistics for the affected port:
+
+**Many ONUs with upstream errors simultaneously.** A physical fault usually degrades a subset — those beyond the damage. A rogue affects everyone indiscriminately.
+
+**Repeated deregistration and re-registration** across multiple units.
+
+**Upstream received power elevated or present outside expected windows.** Some OLTs report this directly; it is the clearest single indicator.
+
+**No corresponding downstream degradation.** Physical faults hit both directions. A rogue transmitter does not.
+
+## Finding the Culprit
+
+Modern OLTs increasingly include rogue ONU detection that isolates and disables the offending unit automatically. Check whether the platform supports it before doing anything manual — it turns hours into minutes.
+
+Without that, the method is elimination:
+
+**Disable ONUs administratively in groups.** Disable half the units on the port. If the problem clears, the rogue is in the disabled half. Halve again. This is a binary search and it converges quickly — 32 subscribers takes about five steps.
+
+**Or disconnect at the splitter.** Physically unmate splitter output ports in groups. Faster to reason about, but it means a site visit and it puts connectors at risk of contamination, so cap what you unmate.
+
+**Prefer administrative disabling where possible.** It is remote, reversible and does not touch the plant.
+
+Once identified, replace the unit. A rogue is a hardware or firmware fault in the ONU; it does not get fixed on site.
+
+## What Makes It More Likely
+
+**Firmware faults on a specific ONU model or version.** If you find one rogue, check whether other units of the same model and firmware are deployed on other ports. This is frequently a fleet issue rather than an isolated failure.
+
+**Power problems at the subscriber.** Marginal power supplies can put an ONU into odd states. Worth checking before blaming the unit itself.
+
+**Damaged or aged units**, particularly after lightning or surge events in the area.
+
+**Unauthorised or mismatched equipment** installed by a subscriber.
+
+## Reducing the Damage in Advance
+
+**Enable rogue detection if the OLT supports it.** The single most effective measure.
+
+**Keep firmware consistent and current across the ONU fleet.** Mixed firmware makes fleet-wide problems harder to recognise.
+
+**Record ONU model and firmware per subscriber.** When a rogue is found, this is what lets you check whether more are waiting to fail.
+
+**Cap unused splitter ports.** Not a rogue defence directly, but as covered in the registration lesson, reflections from open ports complicate the ranging behaviour that this diagnosis depends on.
+
+## Summary
+
+- The shared upstream time slot arrangement means one misbehaving ONU can disrupt an entire PON port.
+- Signature: upstream errors across many subscribers, downstream normal, fiber clean, other ports unaffected.
+- Check for OLT rogue detection first; it isolates automatically.
+- Otherwise binary-search by disabling ONUs administratively — five steps for 32 subscribers.
+- Rogues are hardware or firmware faults. Replace the unit, then check the fleet for the same model and firmware.

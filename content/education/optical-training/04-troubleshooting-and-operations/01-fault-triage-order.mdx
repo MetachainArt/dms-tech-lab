@@ -1,0 +1,92 @@
+---
+title: "A Triage Order for Fiber Faults"
+date: "2026-09-01"
+desc: "Most outages are resolved by the first two steps. A fixed sequence that stops engineers from opening enclosures on a hunch."
+coverImage: "/images/a10.webp"
+readTime: "11 min"
+---
+
+# Why a Fixed Order Beats Experience
+
+Experienced engineers develop intuition about faults, and intuition is genuinely valuable. It is also how people end up excavating a duct because the symptom "felt like" a cut, when the actual cause was a connector nobody cleaned.
+
+A fixed triage order is not a substitute for skill. It is a way of **making sure the cheap checks happen before the expensive ones**, every time, including at 3 a.m. when judgement is worst.
+
+## The Order
+
+**1. Confirm the fault is real and scope it.**
+
+Before touching anything: how many subscribers are affected? One, a group, or everyone on a PON port?
+
+- **One subscriber** — drop cable, ONU, or the subscriber's own equipment. The plant is probably fine.
+- **A group sharing a splitter** — distribution segment or the splitter itself.
+- **Everyone on the PON port** — feeder, OLT port, or the port's optics.
+
+This single question eliminates most of the network before you have left the office. It costs nothing and it is skipped constantly.
+
+**2. Check optical power at the nearest access point.**
+
+Is there light, and how much? This separates three cases immediately:
+
+- **No light at all** — a break, a disconnected connector, or a dead transmitter.
+- **Light but weak** — degradation. Contamination, bend, water, or an ageing joint.
+- **Light at normal level** — the fault is probably not optical. Look at configuration, the ONU, or the service layer.
+
+The third outcome saves more time than the other two combined, and it is only available if you measure before assuming.
+
+**3. Inspect and clean connectors.**
+
+As covered in the connector lesson, this is the highest-yield step in the entire sequence. Inspect, clean, inspect. Both sides. Then measure again.
+
+A large share of faults end here. The discipline is to actually do it before moving on, rather than doing it half-heartedly on the way to something more interesting.
+
+**4. Use a visual fault locator locally.**
+
+Jumpers, pigtails, and everything inside the enclosure you are standing at. Under a minute, and it covers the region the OTDR cannot see.
+
+**5. Run an OTDR from the accessible end.**
+
+Now the expensive instrument comes out. Short pulse first for the near section, longer pulse for the full span. Compare against the baseline trace if one exists.
+
+**6. Measure from the far end.**
+
+Especially if the fault is near the end of the span, where noise is worst, or if you need an accurate splice loss.
+
+**7. Convert optical distance to physical location.**
+
+The step that decides whether the excavation is in the right place. Subtract slack at each closure, account for duct routing. As covered in the route types lesson, this is where most digging errors originate.
+
+**8. Excavate, splice, verify, document.**
+
+Verify with the same measurement type used at acceptance, and update the records — the splice you just added changes the budget.
+
+## What the Order Protects Against
+
+**Anchoring on the first hypothesis.** If someone says "it's probably that new construction on Route 12," everyone starts there and stops looking. Scoping in step 1 either supports that or kills it in two minutes.
+
+**Skipping cheap checks because the fault feels serious.** A total outage feels like a cut, so people go straight to the OTDR. Total outages are also produced by a connector that fell out of an FDF port.
+
+**Spending money on the wrong end.** Steps 1 to 4 cost minutes. Step 8 costs a crew, a permit and a road closure.
+
+## When to Break the Order
+
+Deliberately, and only with evidence:
+
+- **A known third-party excavation** on the route, confirmed, with the outage timed to it. Go to step 5 directly, but still scope first.
+- **Multiple routes down at once** — look at the central office and power before the plant.
+- **Seasonal or weather-correlated symptoms** — as covered in the next lesson, that points at water and closures rather than a fresh break.
+
+## The Handover Note
+
+Whatever the outcome, write down what you found and what you ruled out. The next engineer on this route needs to know that the connectors were clean and the near section was verified, so they do not repeat it.
+
+**A fault record that says only "repaired" teaches nobody anything.**
+
+## Summary
+
+- Scope by subscriber count first. It eliminates most of the network for free.
+- Measure power before assuming. "Normal light" redirects the whole investigation.
+- Clean connectors before opening anything. Highest-yield step in the sequence.
+- VFL locally, then OTDR from both ends, then convert distance to location.
+- Break the order only with evidence, not with a hunch.
+- Record what you ruled out, not just what you fixed.

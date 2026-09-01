@@ -1,0 +1,88 @@
+---
+title: "Emergency Restoration — Getting Service Back, Then Doing It Properly"
+date: "2026-09-01"
+desc: "A cut cable at night is a different job from a planned splice. What to do first, what to defer, and how to make sure the temporary repair does not become permanent by accident."
+coverImage: "/images/a9.webp"
+readTime: "12 min"
+---
+
+# Two Different Jobs
+
+A cable cut during business hours with a crew and a plan is one job. The same cut at 2 a.m. in the rain with one engineer is a different job with different rules.
+
+The mistake is running the second like the first — attempting a full, permanent, documented repair while thousands of subscribers are down. **Restoration and repair are separate objectives, and doing them in the wrong order costs hours of outage.**
+
+## Restore First, Perfect Later
+
+The priority sequence during an outage:
+
+1. **Restore service** to as many subscribers as possible, as fast as possible
+2. **Stabilise** so it survives until a planned repair
+3. **Return** with a crew and do the permanent repair properly
+4. **Update records**
+
+Step 3 is the one that gets skipped, and skipping it is how networks accumulate invisible fragility.
+
+## Locate Before You Mobilise
+
+As covered in the triage lesson, scope by how many subscribers are affected, then measure, then OTDR from the accessible end.
+
+For a suspected cut, the additional questions are:
+
+**Is there recent excavation activity on the route?** A call to the operator's damage line or a look at recent permit notifications frequently gives you the location before the OTDR does.
+
+**Does the measured distance match a known access point?** If the fault is near a hand-hole or closure, you may be able to work without excavation.
+
+**Convert distance carefully.** Slack coils at closures accumulate, as covered in the route types lesson. Getting this wrong at 2 a.m. means a hole in the wrong place, and no second attempt before dawn.
+
+## Restoration Techniques, in Order of Preference
+
+**Reroute or switch.** If the network has diverse paths or spare fibers on an alternate route, use them. Fastest restoration available and no glass gets cut. This is only possible if the spare capacity was designed in and documented — another argument for the as-built discipline.
+
+**Splice in a replacement section.** The standard field repair: cut back to undamaged fiber both sides, splice in a new length. Adds two splices and a closure permanently.
+
+**Mechanical splices for speed.** Higher loss than fusion, typically 0.1–0.5 dB each, and less stable over time. Legitimate as an emergency measure when a fusion splicer is unavailable or conditions are impossible. **Must be replaced with a fusion splice at the planned repair.**
+
+**Temporary aerial or surface run.** A cable laid on the surface or slung temporarily to bypass the damage. Restores service quickly, is vulnerable to everything, and needs a hard deadline for replacement.
+
+## The Budget Question Nobody Asks at Night
+
+Every restoration adds loss. Two fusion splices and a closure is perhaps 0.2 dB; two mechanical splices might be 1 dB.
+
+**If the link was designed with 1 dB of margin, an emergency repair can push it out of specification.** Service comes back, subscribers at the far end of the tree work marginally, and a second incident months later becomes inexplicable.
+
+So: after restoring, **measure end to end and compare against the design budget.** If margin is now inadequate, that fact belongs in the ticket and in the plan for the permanent repair — it may mean replacing a longer section rather than patching.
+
+This is the practical reason the power budget lesson insists on 3 dB of margin. Margin is what lets you restore service at night without creating a future problem.
+
+## Making Sure the Temporary Repair Does Not Persist
+
+Temporary repairs become permanent because the outage ends, the pressure disappears, and nothing forces a return.
+
+What actually works:
+
+**Raise the follow-up work order before leaving site.** Not tomorrow. Before leaving.
+
+**Record the temporary measure explicitly** in the route notes: what was done, where, what it must be replaced with.
+
+**Set a deadline in the record**, and make the remaining margin visible so the risk is legible to whoever prioritises work.
+
+**Flag the route.** A route carrying a known temporary repair should be identifiable, so the next fault on it is investigated with that knowledge.
+
+## Safety, Because It Is Night
+
+**Traffic management before anything else.** No measurement is worth working in a live carriageway unprotected.
+
+**Assume other utilities are present** at any excavation, and treat unidentified services as live.
+
+**Fiber ends are hazardous.** Cleaved offcuts are nearly invisible and get into skin and eyes. Use an offcut container even at night, especially at night.
+
+**Never look into a fiber end**, as covered in the VFL lesson. Fatigue makes people careless with exactly this.
+
+## Summary
+
+- Restoration and permanent repair are separate jobs. Restore, stabilise, return, document.
+- Reroute if diversity exists; otherwise splice a section. Mechanical splices are an emergency measure with a replacement deadline.
+- Every repair consumes margin. Measure end to end afterwards and compare against the design budget.
+- Raise the follow-up work order before leaving site, and record what was done and what must replace it.
+- Traffic management, utility assumptions, offcut discipline and eye safety matter more at night, not less.

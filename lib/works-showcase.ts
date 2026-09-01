@@ -12,7 +12,7 @@ export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
     summary: "FTTx architecture, optical power budget and OTDR fault finding. A hands-on training track written in English for engineers who need to make their own calls in the field.",
     tags: ["FTTx", "Optical Network", "Field Training"],
     image: "/images/Service/real_automation_server.png",
-    link: "/education/optical-training",
+    link: "/fttx-training",
   },
   {
     title: "AX 전환 설계",

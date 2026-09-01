@@ -1,0 +1,71 @@
+---
+title: "The Visual Fault Locator — When Red Light Beats an OTDR"
+date: "2026-09-01"
+desc: "A cheap red laser solves a class of problems the OTDR cannot touch. What it finds, what it cannot, and how to use it without hurting anyone."
+coverImage: "/images/a12.webp"
+readTime: "9 min"
+---
+
+# The Instrument Everyone Underestimates
+
+A visual fault locator is a red laser, usually 650 nm, that you inject into a fiber. Where the fiber is broken or sharply bent, the light escapes and **you can see it glowing through the jacket.**
+
+It costs a fraction of an OTDR and it is often the faster tool. The reason is simple: the OTDR has a dead zone and limited resolution over short distances, and a great many real faults are within a few metres of where you are standing.
+
+## What It Finds That an OTDR Struggles With
+
+**Breaks inside a patch cord.** A metre-long jumper is entirely inside the OTDR's dead zone. The VFL shows the break instantly.
+
+**Faults inside an enclosure.** Trays, pigtails, the coil of slack — all too close together for an OTDR to separate, and all easily visible with red light.
+
+**Tight bends causing loss.** As covered in the bend radius lesson, macrobend loss is invisible. Under a VFL, a bad bend often glows.
+
+**Which fiber is which.** Injecting red light at one end and looking for it at the other is the fastest way to confirm continuity and identify a strand in a bundle. This is the everyday use, not fault finding.
+
+**Bad splice protection.** A splice that is not properly seated in its sleeve frequently shows a glow at the joint.
+
+## What It Cannot Do
+
+**It does not measure anything.** There is no loss number. Seeing light or not seeing light is the entire output.
+
+**Range is short.** Typically usable over a few kilometres at best, and much less through anything opaque. It is a local tool.
+
+**It does not see through dark jackets or conduit.** A break inside a buried cable will not glow visibly through the ground. For that you still need the OTDR and the drawing.
+
+**It cannot distinguish a small loss from none.** A 0.5 dB splice looks the same as a 0.05 dB splice.
+
+So the division of labour is clear: **VFL for continuity, identification, and anything within arm's reach. OTDR for distance and loss over the span.**
+
+## Safety Is Not Optional Here
+
+This is a laser, and it is aimed down a fiber that somebody may look into.
+
+**Never look directly into a fiber end.** Not with a VFL connected, not without. This applies to the live network too — communications wavelengths are infrared and invisible, so there is no blink reflex and no discomfort to warn you.
+
+**Cap unused connectors** — which is also the contamination discipline from the connector lesson, so there is no conflict between the two habits.
+
+**Check that the fiber is dark before injecting.** Do not fire a VFL into a live network path.
+
+**Use a fiber inspection scope with a filter** if you need to look at end faces. That is what it is for.
+
+## Practical Technique
+
+**Use continuous mode for tracing, flashing mode for identification.** A blinking source is much easier to pick out at the far end in daylight or in a crowded panel.
+
+**Work in shade.** Bright sunlight makes a marginal glow invisible. Cupping a hand over the suspect area is often enough.
+
+**Follow the fiber slowly with the jacket in view.** The glow can be faint, especially through coloured buffer tubes.
+
+**On APC connectors, expect less light.** The angled face couples less of the red light, and the visible output at the far end is dimmer than with UPC. Do not conclude there is a break.
+
+## Where It Fits in the Triage
+
+In the fault sequence covered later in this course, the VFL sits early: after cleaning connectors and before rolling out the OTDR for a full trace. If the fault is in a jumper, a pigtail or the closure you are already standing next to, you will find it in under a minute, and the OTDR never comes out of the case.
+
+## Summary
+
+- A VFL finds breaks and sharp bends within a few kilometres by making them visible.
+- It excels exactly where the OTDR is weak: patch cords, pigtails, inside enclosures.
+- It measures nothing. Continuity and identification are its real everyday value.
+- Never look into a fiber end. Communications light is invisible and gives no warning.
+- Expect dimmer output through APC connectors — that is not a fault.

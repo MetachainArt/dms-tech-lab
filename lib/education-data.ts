@@ -127,6 +127,30 @@ export const EDUCATION_TRACKS: Record<string, EducationTrack> = {
           { id: "04-bend-radius-and-slack", title: "Bend Radius, Slack and Enclosure Discipline", description: "Why light leaks at corners and how much slack to leave", duration: "11 min" },
           { id: "05-route-types-and-failure-modes", title: "Aerial, Duct and Direct-buried", description: "Route types and how each one fails over a decade", duration: "12 min" }
         ]
+      },
+      {
+        id: "chapter-03",
+        title: "Measurement and Acceptance",
+        description: "Insertion loss, OTDR event tables, handover records — the measurements every later diagnosis is compared against",
+        lessons: [
+          { id: "01-insertion-loss-testing", title: "Insertion Loss Testing", description: "The measurement that decides acceptance, and why the reference method changes the answer", duration: "12 min" },
+          { id: "02-reading-otdr-event-table", title: "Reading an OTDR Event Table", description: "Verifying automated results, and the artefacts that fool the software", duration: "13 min" },
+          { id: "03-acceptance-testing", title: "Acceptance Testing", description: "What to record at handover and why it matters years later", duration: "12 min" },
+          { id: "04-visual-fault-locator", title: "The Visual Fault Locator", description: "When a red laser beats an OTDR, and the safety rules that go with it", duration: "9 min" },
+          { id: "05-test-documentation", title: "Documentation That Survives", description: "Why most fiber records become unusable, and the minimum that works", duration: "10 min" }
+        ]
+      },
+      {
+        id: "chapter-04",
+        title: "Troubleshooting and Operations",
+        description: "Triage order, intermittent faults, registration failures and emergency restoration",
+        lessons: [
+          { id: "01-fault-triage-order", title: "A Triage Order for Fiber Faults", description: "A fixed sequence that puts the cheap checks before the expensive ones", duration: "11 min" },
+          { id: "02-intermittent-faults", title: "Intermittent Faults", description: "Temperature, water and movement — catching what is gone when you arrive", duration: "12 min" },
+          { id: "03-onu-will-not-register", title: "The ONU Will Not Register", description: "Separating optical faults from provisioning faults, in order", duration: "11 min" },
+          { id: "04-rogue-onu", title: "Rogue ONU", description: "When one unit breaks the whole PON, and how to find it", duration: "12 min" },
+          { id: "05-emergency-restoration", title: "Emergency Restoration", description: "Getting service back at night without creating a future problem", duration: "12 min" }
+        ]
       }
     ]
   }
