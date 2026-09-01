@@ -14,7 +14,7 @@ export default function Intro() {
           className="space-y-4"
         >
           <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">About</p>
-          <h2 className="paperfolio-h2 text-paperfolio-text">Hello,<br />I'm Reedo.</h2>
+          <h2 className="paperfolio-h2 text-paperfolio-text">기술을 현장의<br />언어로 옮깁니다.</h2>
         </motion.div>
 
         <motion.div

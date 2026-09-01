@@ -8,6 +8,8 @@ type SurveyData = {
   name: string;
   contact: string;
   email: string;
+  q0: string[];
+  q0_other: string;
   q1: string[];
   q2: string;
   q3: { newsletter: string; blog: string; image: string; portfolio: string };
@@ -42,6 +44,7 @@ type SurveyData = {
 
 const initialData: SurveyData = {
   company: "", name: "", contact: "", email: "",
+  q0: [], q0_other: "",
   q1: [], q2: "", q3: { newsletter: "", blog: "", image: "", portfolio: "" },
   q4: "", q5: "", q6: [], q7: [], q8: "", q9: "", q10: "", q11: "",
   q12: [], q13: "", q14: [], q15: "", q16: "", q17: [], q18: "",
@@ -115,7 +118,8 @@ const PDFReport = forwardRef<HTMLDivElement, { data: SurveyData }>(({ data }, re
         <div className="flex flex-col gap-6">
           <section>
             <h2 className="text-[18px] font-bold border-b pb-2 mb-5" style={{ ...borderBottomStyle, ...h2Style }}>1. 현재 해결 과제</h2>
-            <ReportItem label="Q1. 시간을 가장 많이 쓰는 작업" value={data.q1.map(v => v === '기타' && data.q1_other ? `기타(${data.q1_other})` : v)} />
+            <ReportItem label="Q0. 문의 유형" value={data.q0.map(v => v === '기타' && data.q0_other ? `기타(${data.q0_other})` : v)} />
+          <ReportItem label="Q1. 시간을 가장 많이 쓰는 작업" value={data.q1.map(v => v === '기타' && data.q1_other ? `기타(${data.q1_other})` : v)} />
             <ReportItem label="Q2. 1순위 해결 과제" value={data.q2 === '기타' && data.q2_other ? `기타(${data.q2_other})` : data.q2} />
             <div className="mb-5 break-inside-avoid">
               <p className="text-[13px] font-semibold mb-2" style={{ color: '#9ca3af' }}>Q3. 우선순위</p>
@@ -366,6 +370,24 @@ export default function ConsultingSurveyForm() {
           </div>
         </div>
       </div>
+
+      <SectionTitle title="0. 어떤 문의로 오셨나요" />
+
+      <QuestionBlock title="Q0. 문의 유형을 선택해 주세요 (복수 선택 가능)">
+        {["AX 전환 문의", "광통신 트레이닝 문의", "무역대행 문의", "해외 무역 교육 문의", "기술지원 문의", "자동화 및 기술교육 문의", "3D 설계 문의", "콘텐츠 제작 문의", "기타"].map((opt) => (
+          <label key={opt} className="flex flex-col items-start gap-3">
+            <div className="flex items-center gap-3">
+              <input type="checkbox" className="h-4 w-4 rounded border-gray-300 text-paperfolio-accent-blue focus:ring-paperfolio-accent-blue"
+                checked={data.q0.includes(opt)} onChange={() => handleCheckbox("q0", opt)} />
+              <span className="text-paperfolio-text font-medium">{opt}</span>
+            </div>
+            {opt === "기타" && data.q0.includes("기타") && (
+              <input type="text" className="ml-7 mt-1 w-full max-w-sm rounded-lg border border-paperfolio-line bg-gray-50 px-3 py-2 outline-none focus:border-paperfolio-accent-blue focus:bg-white text-sm"
+                placeholder="어떤 문의인지 적어주세요" value={data.q0_other} onChange={(e) => handleText("q0_other", e.target.value)} />
+            )}
+          </label>
+        ))}
+      </QuestionBlock>
 
       <SectionTitle title="1. 현재 가장 해결하고 싶은 문제" />
       
