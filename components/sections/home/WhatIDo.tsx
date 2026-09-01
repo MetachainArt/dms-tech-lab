@@ -21,7 +21,7 @@ const services = [
   {
     icon: Ship,
     title: "무역대행 및 교육",
-    description: "20년간의 해외 무역과 현장 트레이닝 경험을 바탕으로, 수출입 실무 대행과 무역 담당자 교육을 함께 제공합니다.",
+    description: "중동·동남아·유럽을 중심으로 광통신 장비 수출입을 20년간 다뤄왔습니다. 수출입 실무 대행부터 무역 담당자 교육까지 함께 맡습니다.",
     accent: "text-paperfolio-accent-coral",
     bg: "bg-paperfolio-accent-coral/10",
   },
@@ -41,8 +41,8 @@ const services = [
   },
   {
     icon: Cuboid,
-    title: "3D 설계",
-    description: "생각 속 아이디어를 실제로 검토할 수 있는 형태로 바꾸고, 제품 설계와 구조 검토, FTTx 기반 하드웨어 개발 경험까지 연결합니다.",
+    title: "3D 설계 · 모델링",
+    description: "아이디어를 실제로 검토할 수 있는 형태로 바꿉니다. 제품 3D 모델링과 구조 검토, FTTx 기반 하드웨어 개발 경험까지 연결합니다.",
     accent: "text-paperfolio-accent-blue",
     bg: "bg-paperfolio-accent-blue/10",
   },

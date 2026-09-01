@@ -47,7 +47,7 @@ const stats = [
   { value: "FTTx", label: "광통신 트레이닝·인프라" },
 ];
 
-const focusAreas = ["AX(AI 전환) 컨설팅", "광통신 트레이닝·FTTx", "AI 자동화 워크플로우", "실무형 AI 교육", "꿈꾸는 카메라", "기술 기반 콘텐츠 제작"];
+const focusAreas = ["AX(AI 전환) 컨설팅", "광통신 트레이닝·FTTx", "광통신 장비 수출입 대행", "중동·동남아·유럽 무역", "3D 설계·모델링", "AI 자동화 워크플로우", "실무형 AI 교육", "기술 기반 콘텐츠 제작"];
 
 export default function AboutPage() {
   return (

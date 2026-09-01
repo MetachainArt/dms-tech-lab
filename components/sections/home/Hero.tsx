@@ -35,8 +35,8 @@ export default function Hero() {
               <span className="italic">truly matters.</span>
             </h1>
             <p className="max-w-2xl text-lg leading-relaxed text-gray-500 font-medium md:text-xl">
-              AX 전환 전문가이자 광통신 트레이닝 전문가, 그리고 20년 해외무역 실무자입니다. <br className="hidden sm:block" />
-              업무 재설계와 광통신 교육, 무역대행과 기술지원까지 현장 조건에 맞춰 설계하고, 직접 쓸 수 있도록 가르칩니다.
+              AX 전환 전문가이자 광통신 트레이닝 전문가, 그리고 20년간 중동·동남아·유럽에서 광통신 장비를 다뤄온 무역 실무자입니다. <br className="hidden sm:block" />
+              업무 재설계와 광통신 교육, 장비 수출입 대행과 3D 모델링까지 현장 조건에 맞춰 설계하고, 직접 쓸 수 있도록 가르칩니다.
             </p>
           </div>
 

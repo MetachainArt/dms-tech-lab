@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Settings2, FileText, AppWindow, Network, BrainCircuit } from "lucide-react";
+import { ArrowRight, Settings2, FileText, AppWindow, Network, BrainCircuit, Ship } from "lucide-react";
 
 // Service Data (Formerly Projects)
 // Service Data (Formerly Projects)
@@ -52,6 +52,14 @@ const expertise = [
     desc: "도구 몇 개를 붙이는 자동화가 아니라, 조직의 업무 흐름 전체를 AI 기준으로 다시 설계합니다. 무엇을 자동화하고 무엇을 사람이 판단할지부터 함께 정리합니다.",
     icon: BrainCircuit,
     color: "text-indigo-600",
+    link: "/contact",
+  },
+  {
+    category: "무역대행",
+    title: "광통신 장비 수출입 대행",
+    desc: "중동·동남아·유럽을 중심으로 20년간 광통신 장비를 다뤄왔습니다. 사양 검토와 소싱부터 수출입 실무 대행, 담당자 교육까지 한 흐름으로 맡습니다.",
+    icon: Ship,
+    color: "text-amber-600",
     link: "/contact",
   },
 ];
@@ -134,11 +142,11 @@ export default function ServicesPage() {
           <span className="text-stone-500 font-semibold tracking-widest text-sm uppercase">전문 분야</span>
         </div>
         <h2 className="text-3xl md:text-4xl font-serif font-bold leading-tight mb-10">
-          광통신 트레이닝과 AX 전환,
+          광통신 트레이닝, AX 전환, 무역대행.
           <br />
-          <span className="text-stone-500">두 축으로 일합니다.</span>
+          <span className="text-stone-500">세 축으로 일합니다.</span>
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {expertise.map((item) => (
             <Link
               key={item.title}
