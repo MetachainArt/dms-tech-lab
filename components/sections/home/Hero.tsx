@@ -24,7 +24,7 @@ export default function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-paperfolio-accent-blue opacity-40"></span>
               <span className="relative inline-flex h-2 w-2 rounded-full bg-paperfolio-accent-blue"></span>
             </span>
-            AI & Automation Consulting
+            AX · AI Automation · 광통신 트레이닝
           </div>
 
           <div className="space-y-6">
@@ -35,8 +35,8 @@ export default function Hero() {
               <span className="italic">truly matters.</span>
             </h1>
             <p className="max-w-2xl text-lg leading-relaxed text-gray-500 font-medium md:text-xl">
-              AI 자동화, 3D 설계, 실무형 교육까지. <br className="hidden sm:block" />
-              현장에 맞춰 최적화된 시스템을 설계하고, 직접 사용할 수 있도록 가르칩니다.
+              광통신 트레이닝 전문가이자 AX(AI Transformation) 전문가입니다. <br className="hidden sm:block" />
+              AI 자동화와 3D 설계, FTTx 광통신 교육까지 현장에 맞춰 설계하고, 직접 사용할 수 있도록 가르칩니다.
             </p>
           </div>
 
@@ -87,7 +87,7 @@ export default function Hero() {
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="rounded-[24px] border border-paperfolio-line bg-white p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.22em] text-paperfolio-accent-coral">Focus</p>
-                <p className="mt-3 text-lg font-semibold text-paperfolio-text">업무 자동화와 설계, 교육의 연결</p>
+                <p className="mt-3 text-lg font-semibold text-paperfolio-text">AX 전환과 광통신 트레이닝의 연결</p>
               </div>
               <div className="rounded-[24px] border border-paperfolio-line bg-white p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.22em] text-paperfolio-accent-blue">Approach</p>

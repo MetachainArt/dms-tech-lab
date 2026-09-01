@@ -3,14 +3,14 @@ import { generateMetadata as generateSeoMetadata } from "@/lib/metadata";
 
 export const metadata = generateSeoMetadata({
   title: "리도와 DMS",
-  description: "리도의 작업과 DMS Solution의 운영 기반이 어떻게 연결되는지 소개합니다.",
+  description: "광통신 트레이닝 전문가이자 AX 전문가인 리도의 작업과 DMS Solution의 운영 기반이 어떻게 연결되는지 소개합니다.",
   path: "/company",
 });
 
 const pillars = [
   {
     title: "리도의 작업실",
-    description: "사이트의 전면은 리도 개인의 작업과 문제 해결 방식에 초점을 맞춥니다. 만들고, 설명하고, 같이 정리하는 사람이 앞에 나옵니다.",
+    description: "사이트의 전면은 광통신 트레이닝 전문가이자 AX 전문가인 리도 개인의 작업과 문제 해결 방식에 초점을 맞춥니다. 만들고, 설명하고, 같이 정리하는 사람이 앞에 나옵니다.",
   },
   {
     title: "DMS Solution의 운영 기반",
@@ -29,11 +29,11 @@ const timelines = [
   },
   {
     title: "교육과 전달 방식의 확장",
-    body: "기술을 시연하고 가르치며 복잡한 내용을 이해 가능한 언어로 옮기는 감각을 키웠습니다.",
+    body: "9개국 현장에서 FTTx 광통신 장비를 시연하고 엔지니어를 가르치며, 복잡한 내용을 이해 가능한 언어로 옮기는 광통신 트레이닝 전문성을 쌓았습니다.",
   },
   {
-    title: "AI 자동화와 실무형 도구 제작",
-    body: "지금은 자동화, 교육, 설계, 콘텐츠를 연결해 작은 팀도 밀도 있게 일할 수 있는 구조를 만드는 데 집중하고 있습니다.",
+    title: "AX 전환과 AI 자동화 실무 도구 제작",
+    body: "지금은 AX 전문가로서 조직의 업무를 AI 기준으로 다시 설계하고, 자동화와 교육, 설계, 콘텐츠를 연결해 작은 팀도 밀도 있게 일할 수 있는 구조를 만드는 데 집중하고 있습니다.",
   },
 ];
 
@@ -46,7 +46,7 @@ export default function CompanyPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">리도와 DMS</p>
             <h1 className="paperfolio-display max-w-4xl">브랜드의 전면은 리도지만, 실행의 기반에는 DMS가 있습니다.</h1>
             <p className="max-w-2xl text-lg leading-8 text-paperfolio-text-muted">
-              이 페이지는 리도 개인 브랜드와 DMS Solution이라는 운영 기반의 관계를 설명합니다. 사이트는 사람 중심으로 보이되, 실제 협업과 운영은 안정적인 구조 위에서 진행됩니다.
+              이 페이지는 리도 개인 브랜드와 DMS Solution이라는 운영 기반의 관계를 설명합니다. 광통신 트레이닝 전문가이자 AX 전문가로서의 작업은 사람 중심으로 보이되, 실제 협업과 운영은 안정적인 구조 위에서 진행됩니다.
             </p>
           </div>
           <div className="rounded-[36px] border border-paperfolio-line bg-white p-8 shadow-[0_24px_80px_rgba(31,41,55,0.08)]">

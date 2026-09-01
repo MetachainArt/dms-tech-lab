@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/mdx';
 import { getSeriesIdsWithContent } from '@/lib/series-content';
 import { getAllWorks } from '@/lib/work-mdx';
+import { WORKS_DATA } from '@/lib/works-projects-data';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://dmssolution.co.kr';
@@ -19,13 +20,45 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/automation', priority: 0.8, changeFrequency: 'weekly' as const },
     { path: '/prompts', priority: 0.8, changeFrequency: 'weekly' as const },
     { path: '/vibe-coding', priority: 0.8, changeFrequency: 'weekly' as const },
+    { path: '/gallery', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/apps', priority: 0.7, changeFrequency: 'monthly' as const },
+    { path: '/survey', priority: 0.6, changeFrequency: 'monthly' as const },
+    { path: '/newsletter', priority: 0.6, changeFrequency: 'monthly' as const },
     { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' as const },
     { path: '/terms', priority: 0.3, changeFrequency: 'yearly' as const },
   ];
 
   // 블로그 포스트 자동 수집
   const [blogPosts, works, seriesSlugs] = await Promise.all([getAllPosts(), getAllWorks(), getSeriesIdsWithContent()]);
+
+  // 프로젝트 시리즈(랜딩 / 프로젝트 / 스텝) 자동 수집
+  const projectRoutes: MetadataRoute.Sitemap = [];
+  for (const landing of Object.values(WORKS_DATA)) {
+    projectRoutes.push({
+      url: `${baseUrl}/works/${landing.id}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    });
+
+    for (const project of landing.projects) {
+      projectRoutes.push({
+        url: `${baseUrl}/works/${landing.id}/${project.id}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.7,
+      });
+
+      for (const step of project.steps) {
+        projectRoutes.push({
+          url: `${baseUrl}/works/${landing.id}/${project.id}/${step.id}`,
+          lastModified: new Date(),
+          changeFrequency: 'monthly' as const,
+          priority: 0.6,
+        });
+      }
+    }
+  }
 
   const sitemap: MetadataRoute.Sitemap = [
     // 메인 페이지
@@ -35,6 +68,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: route.changeFrequency,
       priority: route.priority,
     })),
+    // 프로젝트 시리즈 (자동)
+    ...projectRoutes,
     // 블로그 포스트 (자동)
     ...blogPosts.map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,

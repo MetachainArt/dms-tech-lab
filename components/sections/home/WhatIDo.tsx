@@ -6,8 +6,8 @@ import { Bot, Cuboid, GraduationCap, PenSquare } from "lucide-react";
 const services = [
   {
     icon: Bot,
-    title: "AI Automation",
-    description: "반복되는 정리, 문서, 보고, 콘텐츠 제작 같은 일을 AI와 자동화로 더 간단하게 만듭니다.",
+    title: "AX · AI Automation",
+    description: "반복되는 정리, 문서, 보고, 콘텐츠 제작을 AI로 자동화하고, 조직의 업무 흐름 전체를 AI 기준으로 다시 설계하는 AX 전환을 돕습니다.",
     accent: "text-paperfolio-accent-blue",
     bg: "bg-paperfolio-accent-blue/10",
   },
@@ -20,8 +20,8 @@ const services = [
   },
   {
     icon: GraduationCap,
-    title: "AI Training & Education",
-    description: "처음 배우는 사람도 바로 써볼 수 있게 쉽고 실용적인 방식으로 AI를 설명하고 교육합니다.",
+    title: "광통신 · AI 트레이닝",
+    description: "FTTx 광통신 장비와 현장 기술을 9개국에서 교육해온 경험으로, 처음 배우는 사람도 바로 써볼 수 있게 광통신과 AI를 함께 가르칩니다.",
     accent: "text-paperfolio-accent-yellow",
     bg: "bg-paperfolio-accent-yellow/15",
   },

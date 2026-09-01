@@ -3,15 +3,15 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Settings2, FileText, AppWindow } from "lucide-react";
+import { ArrowRight, Settings2, FileText, AppWindow, Network, BrainCircuit } from "lucide-react";
 
 // Service Data (Formerly Projects)
 // Service Data (Formerly Projects)
 const services = [
   {
-    category: "업무 자동화",
+    category: "AX · 업무 자동화",
     title: "워크플로우 자동화",
-    desc: "24시간 멈추지 않는 비즈니스. N8N, Opal 등 최적의 도구를 조합해 반복 업무를 완벽하게 자동화합니다.",
+    desc: "24시간 멈추지 않는 비즈니스. N8N, Opal 등 최적의 도구를 조합해 반복 업무를 자동화하고, 업무 흐름 전체를 AI 기준으로 다시 설계하는 AX 전환을 돕습니다.",
     icon: Settings2,
     image: "/images/Service/real_automation_server.png",
     color: "text-blue-500",
@@ -37,6 +37,25 @@ const services = [
   }
 ];
 
+const expertise = [
+  {
+    category: "광통신 트레이닝",
+    title: "광통신 트레이닝 전문가",
+    desc: "FTTx 광통신 인프라와 장비 개발을 20년 가까이 해왔고, 9개국 현장에서 엔지니어를 직접 교육했습니다. 장비 원리부터 현장 시공·유지보수까지 실무 기준으로 가르칩니다.",
+    icon: Network,
+    color: "text-sky-600",
+    link: "/education",
+  },
+  {
+    category: "AX",
+    title: "AX(AI 전환) 전문가",
+    desc: "도구 몇 개를 붙이는 자동화가 아니라, 조직의 업무 흐름 전체를 AI 기준으로 다시 설계합니다. 무엇을 자동화하고 무엇을 사람이 판단할지부터 함께 정리합니다.",
+    icon: BrainCircuit,
+    color: "text-indigo-600",
+    link: "/contact",
+  },
+];
+
 export default function ServicesPage() {
   return (
     <main className="w-full min-h-screen bg-[#FDFCF8] text-stone-900 font-poppins selection:bg-stone-200 selection:text-stone-900 pt-32 pb-20 relative">
@@ -58,7 +77,7 @@ export default function ServicesPage() {
                 <span className="text-stone-500">이런 방식으로 돕습니다.</span>
              </h1>
              <p className="mt-6 max-w-2xl text-lg leading-8 text-stone-500">
-               거창한 서비스 카탈로그보다, 실제로 도움이 되는 자동화와 도구, 작업 방식을 중심으로 정리했습니다.
+               광통신 트레이닝 전문가이자 AX 전문가로서, 거창한 서비스 카탈로그보다 실제로 도움이 되는 자동화와 도구, 작업 방식을 중심으로 정리했습니다.
              </p>
          </motion.div>
       </section>
@@ -105,6 +124,38 @@ export default function ServicesPage() {
                     </Link>
                 </motion.div>
             ))}
+        </div>
+      </section>
+
+      {/* Expertise Band */}
+      <section className="max-w-7xl mx-auto px-6 mt-24 relative z-10">
+        <div className="flex items-center gap-4 mb-6">
+          <span className="h-[2px] w-12 bg-stone-300" />
+          <span className="text-stone-500 font-semibold tracking-widest text-sm uppercase">전문 분야</span>
+        </div>
+        <h2 className="text-3xl md:text-4xl font-serif font-bold leading-tight mb-10">
+          광통신 트레이닝과 AX 전환,
+          <br />
+          <span className="text-stone-500">두 축으로 일합니다.</span>
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {expertise.map((item) => (
+            <Link
+              key={item.title}
+              href={item.link}
+              className="group bg-white rounded-[2rem] border border-stone-200 p-8 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col"
+            >
+              <div className="w-12 h-12 rounded-full bg-stone-50 border border-stone-100 flex items-center justify-center mb-6">
+                <item.icon className={`w-6 h-6 ${item.color}`} />
+              </div>
+              <div className="text-xs font-bold text-stone-400 tracking-widest uppercase mb-3">{item.category}</div>
+              <h3 className="text-2xl font-bold text-stone-900 mb-4 group-hover:text-stone-600 transition-colors">{item.title}</h3>
+              <p className="text-stone-600 text-sm leading-relaxed mb-8">{item.desc}</p>
+              <div className="mt-auto self-start px-6 py-3 rounded-full border border-stone-200 text-stone-900 font-bold text-sm flex items-center gap-2 group-hover:bg-stone-900 group-hover:text-white group-hover:border-stone-900 transition-all">
+                자세히 보기 <ArrowRight className="w-4 h-4" />
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 

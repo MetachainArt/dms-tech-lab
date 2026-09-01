@@ -3,7 +3,7 @@ import { generateMetadata as generateSeoMetadata } from "@/lib/metadata";
 
 export const metadata = generateSeoMetadata({
   title: "소개",
-  description: "리도의 하드웨어 설계, 자동화, 교육 경험과 일하는 방식, 그리고 지금 집중하는 작업을 소개합니다.",
+  description: "광통신 트레이닝 전문가이자 AX 전문가인 리도의 하드웨어 설계, 자동화, 교육 경험과 일하는 방식, 그리고 지금 집중하는 작업을 소개합니다.",
   path: "/about",
 });
 
@@ -30,13 +30,13 @@ const timeline = [
   },
   {
     year: "2015-2024",
-    title: "9개국 글로벌 현장 지원과 교육 경험 확장",
-    description: "베트남, 태국, 뉴질랜드, 프랑스, 카타르, 레바논, 중국, 인도네시아, 오만 현장에서 기술 지원과 교육을 진행하며 설명과 전달의 감각을 다졌습니다.",
+    title: "9개국 현장 지원과 광통신 트레이닝 전문성 확립",
+    description: "베트남, 태국, 뉴질랜드, 프랑스, 카타르, 레바논, 중국, 인도네시아, 오만 현장에서 FTTx 광통신 장비 기술 지원과 엔지니어 트레이닝을 진행하며 설명과 전달의 감각을 다졌습니다.",
   },
   {
     year: "2024-현재",
-    title: "AI 자동화와 실무형 콘텐츠·교육의 확장",
-    description: "요즘은 AI 자동화, 꿈꾸는 카메라 프로젝트, 실무형 교육, 유튜브 채널 운영을 연결해 기술을 더 쉽게 써보게 만드는 구조를 만들고 있습니다.",
+    title: "AX 전환과 AI 자동화·실무형 교육의 확장",
+    description: "요즘은 AX 전문가로서 조직의 업무를 AI 기준으로 다시 설계하고, AI 자동화와 실무형 교육, 꿈꾸는 카메라 프로젝트, 유튜브 채널 운영을 연결해 기술을 더 쉽게 써보게 만드는 구조를 만들고 있습니다.",
   },
 ];
 
@@ -44,10 +44,10 @@ const stats = [
   { value: "20년 가까이", label: "설계·개발 경험" },
   { value: "9개국", label: "글로벌 현장 지원" },
   { value: "17건", label: "핵심 특허" },
-  { value: "FTTx", label: "광통신 인프라 경험" },
+  { value: "FTTx", label: "광통신 트레이닝·인프라" },
 ];
 
-const focusAreas = ["광통신 인프라·FTTx", "AI 자동화 워크플로우", "실무형 AI 교육", "꿈꾸는 카메라", "기술 기반 콘텐츠 제작"];
+const focusAreas = ["AX(AI 전환) 컨설팅", "광통신 트레이닝·FTTx", "AI 자동화 워크플로우", "실무형 AI 교육", "꿈꾸는 카메라", "기술 기반 콘텐츠 제작"];
 
 export default function AboutPage() {
   return (
@@ -58,7 +58,7 @@ export default function AboutPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">소개</p>
             <h1 className="paperfolio-display max-w-4xl">리도는 기술을 현장에서 다시 쓸 수 있게 만드는 사람입니다.</h1>
             <p className="max-w-2xl text-lg leading-8 text-paperfolio-text-muted">
-              3D 설계와 하드웨어 디자인, 광통신 인프라 장비 개발, 기술 교육을 20년 가까이 해왔습니다. 지금은 AI 자동화와 실무형 도구, 콘텐츠 제작까지 연결하며 복잡한 일을 더 단순하게 만드는 작업을 하고 있습니다.
+              3D 설계와 하드웨어 디자인, 광통신 인프라 장비 개발, 기술 교육을 20년 가까이 해온 광통신 트레이닝 전문가입니다. 지금은 AX(AI Transformation) 전문가로서 AI 자동화와 실무형 도구, 콘텐츠 제작까지 연결하며 복잡한 일을 더 단순하게 만드는 작업을 하고 있습니다.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
               <Link href="/works" className="inline-flex items-center justify-center rounded-full bg-paperfolio-text px-7 py-4 text-sm font-semibold text-white hover:bg-paperfolio-accent-blue">
@@ -170,7 +170,7 @@ export default function AboutPage() {
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">지금 집중하는 것</p>
               <h2 className="paperfolio-h1">작고 강한 실행 시스템을 만드는 일</h2>
               <p className="paperfolio-body">
-                지금은 AI 자동화와 교육, 설계, 콘텐츠를 연결해 혼자 혹은 작은 팀도 더 멀리 갈 수 있는 구조를 만드는 데 집중하고 있습니다. 꿈꾸는 카메라 프로젝트와 AI 실무 유튜브 채널 운영도 같은 문제의식에서 이어지고 있습니다.
+                지금은 AX 전환 컨설팅과 광통신 트레이닝을 축으로, AI 자동화와 교육, 설계, 콘텐츠를 연결해 혼자 혹은 작은 팀도 더 멀리 갈 수 있는 구조를 만드는 데 집중하고 있습니다. 꿈꾸는 카메라 프로젝트와 AI 실무 유튜브 채널 운영도 같은 문제의식에서 이어지고 있습니다.
               </p>
             </div>
             <div className="flex flex-wrap gap-3 self-center">
