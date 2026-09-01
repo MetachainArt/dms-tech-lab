@@ -12,6 +12,7 @@ const desktopLinks = [
   { name: "작업",   href: "/works" },
   { name: "글",     href: "/blog"  },
   { name: "아이디어", href: "/gallery" },
+  { name: "EN",     href: "/fttx-training" },
 ] as const;
 
 export default function Navbar() {
@@ -45,9 +46,9 @@ export default function Navbar() {
             <Link
               href="/"
               className="absolute left-1/2 -translate-x-1/2 font-playfair text-[1.5rem] leading-none text-paperfolio-text tracking-tight hover:opacity-70 transition-opacity"
-              aria-label="Reedo 홈"
+              aria-label="DMS.Labs 홈"
             >
-              Reedo
+              DMS.Labs
             </Link>
 
             {/* Right: Desktop nav links + CTA */}
@@ -126,7 +127,7 @@ export default function Navbar() {
             aria-modal="true"
           >
             <div className="flex items-center justify-between mb-12">
-              <span className="font-playfair text-2xl text-paperfolio-text">Reedo</span>
+              <span className="font-playfair text-2xl text-paperfolio-text">DMS.Labs</span>
               <button onClick={handleMenuClose} aria-label="메뉴 닫기">
                 <X className="w-6 h-6 text-paperfolio-text-muted" strokeWidth={1.5} />
               </button>

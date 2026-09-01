@@ -23,6 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/prompts', priority: 0.8, changeFrequency: 'weekly' as const },
     { path: '/vibe-coding', priority: 0.8, changeFrequency: 'weekly' as const },
     { path: '/gallery', priority: 0.7, changeFrequency: 'monthly' as const },
+    { path: '/fttx-training', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/apps', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/survey', priority: 0.6, changeFrequency: 'monthly' as const },
     { path: '/newsletter', priority: 0.6, changeFrequency: 'monthly' as const },

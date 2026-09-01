@@ -89,7 +89,7 @@ export default function Footer() {
             {/* Minimal monogram */}
             <div className="w-[72px] h-[88px] bg-white border border-paperfolio-line shadow-sm flex flex-col items-center justify-center gap-1 rotate-1">
               <span className="font-playfair text-[2rem] italic text-paperfolio-text leading-none">R</span>
-              <span className="text-[8px] tracking-[0.25em] text-paperfolio-text-muted uppercase">Reedo</span>
+              <span className="text-[8px] tracking-[0.25em] text-paperfolio-text-muted uppercase">DMS.Labs</span>
             </div>
 
             <div className="text-right space-y-1.5">
@@ -120,7 +120,7 @@ export default function Footer() {
           <div className="flex items-center gap-5 text-xs text-paperfolio-text-muted">
             <Link href="/privacy" className="hover:text-paperfolio-text transition-colors">개인정보처리방침</Link>
             <Link href="/terms" className="hover:text-paperfolio-text transition-colors">이용약관</Link>
-            <span className="opacity-50">© {new Date().getFullYear()} Reedo</span>
+            <span className="opacity-50">© {new Date().getFullYear()} DMS.Labs</span>
           </div>
         </div>
       </div>

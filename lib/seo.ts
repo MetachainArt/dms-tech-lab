@@ -1,12 +1,14 @@
 export const SITE_CONFIG = {
-  name: "Reedo",
-  title: "리도 | 자동화 · 설계 · 교육",
+  name: "DMS.Labs",
+  title: "DMS.Labs | 자동화 · 설계 · 교육",
   description:
     "광통신 트레이닝 전문가이자 AX 전문가. 광통신 하드웨어·FTTx 현장 경험을 바탕으로 AI 자동화, 3D 설계, 실무형 교육을 리도만의 방식으로 연결합니다.",
   url: "https://dmssolution.co.kr",
   locale: "ko_KR",
   type: "website",
   keywords: [
+    "DMS.Labs",
+    "DMS Labs",
     "리도",
     "Reedo",
     "AI",
@@ -27,7 +29,7 @@ export const SITE_CONFIG = {
     "실무형 교육",
   ],
   author: {
-    name: "Reedo",
+    name: "DMS.Labs",
     url: "https://dmssolution.co.kr",
   },
   social: {
@@ -36,16 +38,16 @@ export const SITE_CONFIG = {
     kakao: "https://open.kakao.com/o/sSPHn33g",
   },
   og: {
-    title: "리도 | 자동화 · 설계 · 교육",
+    title: "DMS.Labs | 자동화 · 설계 · 교육",
     description:
       "광통신 트레이닝 전문가이자 AX 전문가. 광통신 하드웨어·FTTx 현장 경험을 바탕으로 AI 자동화, 3D 설계, 실무형 교육을 리도만의 방식으로 연결합니다.",
     image:
       "https://dmssolution.co.kr/images/a21.webp",
-    alt: "리도 - 자동화 · 설계 · 교육",
+    alt: "DMS.Labs - 자동화 · 설계 · 교육",
   },
   twitter: {
     card: "summary_large_image",
-    title: "리도 | 자동화 · 설계 · 교육",
+    title: "DMS.Labs | 자동화 · 설계 · 교육",
     description:
       "복잡한 일은 줄이고, 필요한 건 직접 만듭니다.",
     image:

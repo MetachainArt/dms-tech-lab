@@ -6,6 +6,8 @@ interface PageMetadata {
   path: string;
   image?: string;
   noIndex?: boolean;
+  locale?: string;
+  keywords?: string[];
 }
 
 export function generateMetadata({
@@ -14,10 +16,12 @@ export function generateMetadata({
   path,
   image,
   noIndex = false,
+  locale,
+  keywords,
 }: PageMetadata) {
   const fullTitle = title === SITE_CONFIG.title
     ? title
-    : `${title} | Reedo`;
+    : `${title} | DMS.Labs`;
 
   const url = `${SITE_CONFIG.url}${path}`;
   const ogImage = image || SITE_CONFIG.og.image;
@@ -26,12 +30,12 @@ export function generateMetadata({
     metadataBase: new URL(SITE_CONFIG.url),
     title: fullTitle,
     description,
-    keywords: SITE_CONFIG.keywords.join(", "),
+    keywords: (keywords ?? SITE_CONFIG.keywords).join(", "),
     authors: [{ name: SITE_CONFIG.author.name, url: SITE_CONFIG.author.url }],
     creator: SITE_CONFIG.author.name,
     openGraph: {
       type: "website",
-      locale: SITE_CONFIG.locale,
+      locale: locale ?? SITE_CONFIG.locale,
       url,
       title: fullTitle,
       description,
