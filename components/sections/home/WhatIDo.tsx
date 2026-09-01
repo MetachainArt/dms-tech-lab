@@ -20,8 +20,8 @@ const services = [
   },
   {
     icon: Ship,
-    title: "무역대행 및 교육",
-    description: "중동·동남아·유럽을 중심으로 광통신 장비 수출입을 20년간 다뤄왔습니다. 수출입 실무 대행부터 무역 담당자 교육까지 함께 맡습니다.",
+    title: "글로벌 무역 에이전시",
+    description: "중동·동남아·유럽 시장에서 광통신 장비 수출입을 20년간 수행했습니다. 소싱과 사양 검토, 통관·물류를 포함한 수출입 실무, 담당자 실무 교육까지 일괄 수행합니다.",
     accent: "text-paperfolio-accent-coral",
     bg: "bg-paperfolio-accent-coral/10",
   },

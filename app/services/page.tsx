@@ -55,9 +55,9 @@ const expertise = [
     link: "/contact",
   },
   {
-    category: "무역대행",
-    title: "광통신 장비 수출입 대행",
-    desc: "중동·동남아·유럽을 중심으로 20년간 광통신 장비를 다뤄왔습니다. 사양 검토와 소싱부터 수출입 실무 대행, 담당자 교육까지 한 흐름으로 맡습니다.",
+    category: "무역 에이전시",
+    title: "광통신 장비 수출입 에이전시",
+    desc: "중동·동남아·유럽 시장에서 20년간 광통신 장비 수출입을 수행했습니다. 공급처 소싱과 사양 검토부터 통관·물류 실무, 담당자 교육까지 일괄 수행합니다.",
     icon: Ship,
     color: "text-amber-600",
     link: "/contact",
@@ -142,7 +142,7 @@ export default function ServicesPage() {
           <span className="text-stone-500 font-semibold tracking-widest text-sm uppercase">전문 분야</span>
         </div>
         <h2 className="text-3xl md:text-4xl font-serif font-bold leading-tight mb-10">
-          광통신 트레이닝, AX 전환, 무역대행.
+          광통신 트레이닝, AX 전환, 해외무역.
           <br />
           <span className="text-stone-500">세 축으로 일합니다.</span>
         </h2>

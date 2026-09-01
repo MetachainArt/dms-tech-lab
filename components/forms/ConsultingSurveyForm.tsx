@@ -374,7 +374,7 @@ export default function ConsultingSurveyForm() {
       <SectionTitle title="0. 어떤 문의로 오셨나요" />
 
       <QuestionBlock title="Q0. 문의 유형을 선택해 주세요 (복수 선택 가능)">
-        {["AX 전환 문의", "광통신 트레이닝 문의", "무역대행 문의", "해외 무역 교육 문의", "기술지원 문의", "자동화 및 기술교육 문의", "3D 설계 문의", "콘텐츠 제작 문의", "기타"].map((opt) => (
+        {["AX 전환 문의", "광통신 트레이닝 문의", "무역 에이전시 문의", "수출입 실무 교육 문의", "기술지원 문의", "자동화 및 기술교육 문의", "3D 설계 문의", "콘텐츠 제작 문의", "기타"].map((opt) => (
           <label key={opt} className="flex flex-col items-start gap-3">
             <div className="flex items-center gap-3">
               <input type="checkbox" className="h-4 w-4 rounded border-gray-300 text-paperfolio-accent-blue focus:ring-paperfolio-accent-blue"
