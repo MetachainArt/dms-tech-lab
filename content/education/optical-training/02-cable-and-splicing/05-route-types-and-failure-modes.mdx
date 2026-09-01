@@ -1,0 +1,94 @@
+---
+title: "Aerial, Duct and Direct-buried — Route Types and How Each One Fails"
+date: "2026-09-01"
+desc: "The three ways cable gets from A to B, what damages each of them, and how route choice quietly determines your maintenance workload for the next decade."
+coverImage: "/images/a9.webp"
+readTime: "12 min"
+---
+
+# Route Choice Is a Maintenance Decision
+
+Cable route is usually decided by what is available and what it costs. But the choice you make at construction determines **what will break, how often, and how long each repair takes** for the life of the plant.
+
+Three route types dominate access networks.
+
+## Aerial — On Poles
+
+Cable strung between poles, either self-supporting (figure-8 with an integrated messenger) or lashed to an existing strand.
+
+**Why it gets chosen:** fastest to deploy, cheapest by a wide margin, easy to inspect and repair because everything is visible and reachable.
+
+**How it fails:**
+
+- **Vehicle strikes.** A truck catches a low span and takes out the whole route. Common near junctions and construction sites.
+- **Vegetation.** Branches abrading the jacket over years, or a limb bringing a span down in a storm.
+- **Ice and wind loading.** Sag increases, tension rises, and hardware or the cable itself gives.
+- **Third-party work.** Other utilities working on shared poles.
+
+**The characteristic pattern:** aerial faults are sudden, total, and easy to find. You can often see the damage from the road. Restoration is fast.
+
+## Duct — In Conduit
+
+Cable pulled or blown into pre-installed conduit, usually with access at manholes and hand-holes.
+
+**Why it gets chosen:** protected from weather and traffic, and — the real argument — **you can add or replace cable later without new civil works.** That is a large long-term saving.
+
+**How it fails:**
+
+- **Excavation damage.** Someone digs where the duct runs. Still the single largest cause of major outages in duct plant.
+- **Water and silt ingress** into ducts and hand-holes, leading to closure flooding.
+- **Rodents**, where ducts are not sealed.
+- **Damage during a later pull** — pulling new cable past existing cable, exceeding tension or bend limits at a corner.
+
+**The characteristic pattern:** duct faults are less frequent than aerial but each one takes longer, because access is limited and the fault location has to be determined precisely before excavating.
+
+## Direct-buried — In the Ground
+
+Armoured cable laid directly into a trench, no conduit.
+
+**Why it gets chosen:** cheaper than building duct, and better protected than aerial. Common on long rural runs.
+
+**How it fails:**
+
+- **Excavation damage**, and worse than duct because there is no conduit to warn a digger and no way to re-pull.
+- **Ground movement**, frost heave, subsidence.
+- **Rodents and, in some regions, insects** attacking the sheath.
+
+**The characteristic pattern:** rare faults, but each repair means locating precisely, excavating, splicing in a new section, and re-burying. Days, not hours. **There is no cheap fix; every repair adds a splice and a closure to the route permanently.**
+
+## What This Means for Loss Budgeting
+
+Route type feeds back into the power budget in a way that is easy to overlook.
+
+Direct-buried and duct routes accumulate **repair splices** over their life. Each excavation-damage repair typically adds two splices and a closure. A route that has been cut four times over a decade carries eight splices that were not in the original design.
+
+**This is why the margin conversation matters.** A design with 1 dB of headroom is a design that fails on its third repair. When you choose a route type, you are also choosing how quickly the budget erodes.
+
+## Locating Before You Dig
+
+For buried and duct plant, fault localisation has to be right the first time. The sequence:
+
+1. **OTDR from both ends** to establish distance along the fiber.
+2. **Convert to route distance** using as-built records — subtract slack coils at each closure, account for duct routing that does not follow the straight line.
+3. **Correlate with surface features** — closures, hand-holes, road crossings.
+4. **Use a cable locator** on the tracer wire or metallic element if present.
+
+Step 2 is where most excavation errors come from. Slack stored at closures adds up. A route with six closures each holding twenty metres of slack carries an offset large enough to put you in the wrong property.
+
+## Choosing, in Practice
+
+If you get to choose:
+
+- **Dense urban, long life, expect growth** → duct. The ability to add cable later dominates.
+- **Rural long spans, low density, tight budget** → aerial where poles exist, direct-buried where they do not.
+- **Anywhere with high third-party excavation activity** → duct with good records and marker tape, and expect to defend the route.
+
+And whichever you choose, **the as-built record is part of the infrastructure.** A perfectly built duct route with lost records behaves, during a fault, like a direct-buried route.
+
+## Summary
+
+- Aerial: cheap and fast, fails often but visibly. Short restoration.
+- Duct: protected and extendable, fails rarely but repairs are slow. Excavation damage dominates.
+- Direct-buried: cheapest protection for long runs, worst repair cost. Every repair permanently adds splices.
+- Repair splices erode the power budget over the plant's life — design margin accordingly.
+- Fiber distance is not route distance. Slack at closures is the usual reason people excavate in the wrong place.

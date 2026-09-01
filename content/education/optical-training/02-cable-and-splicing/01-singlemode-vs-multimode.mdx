@@ -1,0 +1,68 @@
+---
+title: "Single-mode or Multimode — Choosing the Right Fiber"
+date: "2026-09-01"
+desc: "Why access networks are almost always single-mode, what actually differs between the two, and the mistakes that happen when the wrong fiber ends up on a reel."
+coverImage: "/images/a5.webp"
+readTime: "10 min"
+---
+
+# Two Fibers That Look Identical
+
+Pull a single-mode and a multimode fiber out of their jackets and you cannot tell them apart by eye. Both are glass strands about 125 micrometres across. The difference is inside, in the core.
+
+- **Single-mode** — core around 9 µm. Light travels essentially one path.
+- **Multimode** — core around 50 or 62.5 µm. Light bounces along many paths simultaneously.
+
+That one number decides almost everything else.
+
+## Why the Core Size Matters
+
+In a wide multimode core, light entering at slightly different angles takes paths of different lengths. Rays that bounce more arrive later than rays that go nearly straight. A pulse launched as a sharp spike arrives at the far end smeared out.
+
+This is **modal dispersion**, and it puts a hard ceiling on how far you can push data. Past a certain distance, consecutive pulses blur into each other and the receiver cannot tell them apart.
+
+A single-mode core is narrow enough that only one path is supported. No modal dispersion, so the reach is dramatically longer — tens of kilometres instead of hundreds of metres.
+
+## So Why Does Multimode Exist at All?
+
+Because the wide core is easier to work with, and historically the transceivers were much cheaper. Aligning light into a 50 µm target is far more forgiving than hitting 9 µm. Connector tolerances relax, and LED-based sources were adequate.
+
+Inside a data centre or a building riser, where runs are short and connector counts are high, multimode still makes economic sense.
+
+**In access networks — FTTx — it does not.** Spans are kilometres, splitters are in the path, and the wavelength plan assumes single-mode behaviour. Access plant is single-mode, full stop.
+
+## The Fiber Types You Will Actually See
+
+Single-mode is not one thing. The ITU-T G.65x designations matter in the field.
+
+| Type | Common name | What it gives you |
+|---|---|---|
+| G.652.D | Standard single-mode | The default. Low water peak, works across all common bands |
+| G.657.A1/A2 | Bend-insensitive | Tolerates tighter bends. Drop cables and in-building |
+| G.657.B3 | Extremely bend-insensitive | Very tight radius work, riser and apartment installs |
+
+**G.657 is what makes modern in-building work practical.** Ordinary G.652 loses meaningful power at the bend radii you are forced into behind a skirting board or around a doorframe. Bend-insensitive fiber holds its loss much better in the same geometry.
+
+The important compatibility fact: **G.657.A is designed to splice and interoperate with G.652.D.** You can run G.657 drop cable off a G.652 distribution network without a mismatch penalty worth worrying about. G.657.B is more specialised and can show a small mismatch when joined to G.652.
+
+## Where This Goes Wrong in the Field
+
+**Mixing multimode patch cords into a single-mode link.** It happens because the connectors mate perfectly. Nothing physically stops you. The link either fails outright or comes up with loss nobody can explain. The colour coding exists for this reason — **yellow jacket for single-mode, orange or aqua for multimode** — and it is worth enforcing even when the store room is disorganised.
+
+**Assuming all single-mode is interchangeable.** Splicing dissimilar fiber types produces a small mode-field mismatch loss. Individually tiny, but on a link that is already tight on budget it is one more thing you did not account for.
+
+**Ignoring the bend spec on drop cable.** Specifying bend-insensitive fiber and then still forcing it around a sharp corner does not make the loss disappear. G.657 buys margin; it does not repeal physics.
+
+## A Practical Rule
+
+For access plant, the decision is usually already made for you: **G.652.D on the feeder and distribution, G.657.A on the drop and inside the building.** The engineering question is not which fiber, but whether what actually arrived on site matches what the design specified.
+
+Check the cable print. It is written along the jacket. Two minutes there saves a day of chasing a loss reading that was never going to make sense.
+
+## Summary
+
+- Core diameter is the real difference: 9 µm single-mode, 50/62.5 µm multimode.
+- Multimode suffers modal dispersion, which caps distance. Access networks are single-mode.
+- G.652.D is the default; G.657 bend-insensitive fiber is what makes in-building work practical.
+- G.657.A interoperates with G.652.D. Mixing multimode into a single-mode link is a classic and avoidable failure.
+- Read the jacket print before you believe the drawing.

@@ -1,0 +1,83 @@
+---
+title: "Bend Radius, Slack and Enclosure Discipline"
+date: "2026-09-01"
+desc: "Why light leaks out of a bend, how much slack to leave and where, and the enclosure habits that decide whether the next engineer can work on your plant."
+coverImage: "/images/a8.webp"
+readTime: "11 min"
+---
+
+# Light Does Not Like Corners
+
+Light stays in a fiber core by total internal reflection. Bend the fiber tightly enough and the angle at the core boundary passes the critical angle, and some of the light simply leaves. It exits into the cladding and is gone.
+
+This is **macrobend loss**, and it has three properties that make it a field problem:
+
+1. It is invisible. Nothing looks broken.
+2. It is wavelength dependent — **worse at longer wavelengths**.
+3. It gets worse over time as materials relax and settle.
+
+That second point is the useful diagnostic. A link that measures acceptably at 1310 nm but poorly at 1550 nm is very often telling you there is a bend somewhere, not a splice problem.
+
+## Microbend Is the Other Half
+
+Macrobend is the visible loop. **Microbend** is microscopic deformation from pressure — a cable tie pulled too tight, a fiber pinched under a cover, cable crushed against a sharp edge in a duct.
+
+Microbend is harder to find because there is nothing to see even when you open the enclosure. If an OTDR shows loss at a point where the drawing says nothing should be happening, suspect pressure.
+
+## The Numbers
+
+Standards give minimum bend radii, and manufacturers give specifics per cable. Rough working values:
+
+| Condition | Rule of thumb |
+|---|---|
+| Bare fiber, long term | 30 mm radius minimum for standard G.652 |
+| G.657.A2 bend-insensitive | Down to 7.5 mm radius |
+| G.657.B3 | Down to 5 mm radius |
+| Cable under tension (pulling) | 20 × cable diameter |
+| Cable installed, no tension | 10 × cable diameter |
+
+**The pulling radius is larger than the installed radius**, and that catches people. A cable that is fine sitting in a duct can be damaged while being pulled around the same corner.
+
+Bend-insensitive fiber buys real margin, but the numbers above are minimums, not targets. Design to comfortable radii and keep the minimums for the places you had no choice.
+
+## Slack — How Much and Where
+
+Slack is the stored length that lets you work on the plant later. Too little and you cannot bring the cable to a splice trailer or re-terminate after a break. Too much and it becomes a coil somebody eventually crushes.
+
+Common practice:
+
+- **At each splice enclosure** — enough to reach a comfortable working position outside the enclosure, typically several metres per end.
+- **At poles and manholes near likely damage points** — a stored loop so a repair does not require a new cable pull.
+- **At building entry** — enough to reposition the termination panel.
+
+The principle worth internalising: **slack exists so that the next repair does not become a re-build.** Every metre you skip to save cost today is a decision you are handing to someone at 2 a.m. in the rain.
+
+## Enclosure Discipline
+
+Open a closure that was done well and you can trace every fiber in thirty seconds. Open one that was not and you will not touch anything, because you cannot tell what moving one tray will disturb.
+
+What good looks like:
+
+**Slack is coiled at a consistent, generous radius** inside the tray, not forced into whatever space was left.
+
+**Each tray holds a defined group**, and the grouping follows the drawing rather than the order the crew happened to splice.
+
+**Fibers are routed, not stuffed.** Routing guides exist in the tray for a reason.
+
+**Labels exist and match the documentation.** A closure with unlabelled trays is one where every future job starts with a measurement session.
+
+**The seal is done properly.** Most closure failures are water ingress, and water ingress is a sealing and gland problem, not a fiber problem.
+
+## Water Is the Long-term Enemy
+
+An enclosure that lets water in will eventually cause loss and, in freezing climates, mechanical damage. Symptoms are seasonal and intermittent, which makes them expensive to diagnose.
+
+If a fault appears reliably in one season, or after heavy rain, look at closures and hand-holes before you look at anything else.
+
+## Summary
+
+- Macrobend loss is invisible, worse at 1550 nm, and worsens over time. A 1310 versus 1550 comparison exposes it.
+- Microbend comes from pressure — over-tight ties, pinched covers, crushed duct runs.
+- Pulling radius is larger than installed radius. Damage often happens during the pull.
+- Slack exists so the next repair is not a rebuild. Coil it at a generous radius.
+- Most closure failures are water ingress. Seals and glands deserve the same care as the splices.

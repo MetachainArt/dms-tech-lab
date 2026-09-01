@@ -115,6 +115,18 @@ export const EDUCATION_TRACKS: Record<string, EducationTrack> = {
           { id: "03-optical-power-budget", title: "Optical Power Budget", description: "The calculation and the margin that keep a link alive", duration: "15 min" },
           { id: "04-otdr-fault-finding", title: "Finding Faults with an OTDR", description: "Reading the trace and locating the fault", duration: "16 min" }
         ]
+      },
+      {
+        id: "chapter-02",
+        title: "Cable, Splicing and Installation",
+        description: "Fiber types, splice quality, connector hygiene and the installation habits that decide long-term loss",
+        lessons: [
+          { id: "01-singlemode-vs-multimode", title: "Single-mode or Multimode", description: "Choosing the right fiber, and what G.652 and G.657 actually mean", duration: "10 min" },
+          { id: "02-fusion-splicing", title: "Fusion Splicing", description: "What actually makes a good splice, and what the loss estimate hides", duration: "12 min" },
+          { id: "03-connectors-and-contamination", title: "Connectors and End-face Contamination", description: "The number one field fault, and the habit that prevents it", duration: "11 min" },
+          { id: "04-bend-radius-and-slack", title: "Bend Radius, Slack and Enclosure Discipline", description: "Why light leaks at corners and how much slack to leave", duration: "11 min" },
+          { id: "05-route-types-and-failure-modes", title: "Aerial, Duct and Direct-buried", description: "Route types and how each one fails over a decade", duration: "12 min" }
+        ]
       }
     ]
   }
