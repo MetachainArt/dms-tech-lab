@@ -10,7 +10,7 @@ export const AX_LANDING: WorkLanding = {
       "title": "AX 전환 플레이북",
       "subtitle": "AI TRANSFORMATION",
       "description": "업무 지도 작성부터 핸드오프 설계, 도입 후 90일 측정까지. 조직의 일을 AI 기준으로 다시 설계할 때 실제로 밟게 되는 순서를 4단계로 정리한 실무 가이드입니다.",
-      "coverImage": "/images/AIauto.webp",
+      "coverImage": "/images/Service/real_modern_workspace.png",
       "color": "blue",
       "tags": [
         "AX",

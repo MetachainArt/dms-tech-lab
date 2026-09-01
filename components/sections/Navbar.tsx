@@ -11,7 +11,7 @@ import { navLinks } from "@/constants/navigation";
 const desktopLinks = [
   { name: "작업",   href: "/works" },
   { name: "글",     href: "/blog"  },
-  { name: "미술관", href: "/gallery" },
+  { name: "아이디어", href: "/gallery" },
 ] as const;
 
 export default function Navbar() {

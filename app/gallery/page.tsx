@@ -63,7 +63,7 @@ function BodyContent({ piece, textColor = "text-paperfolio-text-muted", maxWidth
 }
 
 export const metadata: Metadata = {
-  title: "미술관 — Reedo",
+  title: "아이디어 — Reedo",
   description: "사진과 글이 만나는 공간. 작업, 생각, 감각을 기록합니다.",
 };
 
@@ -255,11 +255,11 @@ export default function GalleryPage() {
         <div className="mx-auto max-w-7xl flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-paperfolio-accent-coral mb-4">
-              Gallery
+              Ideas
             </p>
             <h1 className="font-playfair text-paperfolio-text"
               style={{ fontSize: "clamp(3.5rem, 9vw, 7rem)", lineHeight: 1.0, letterSpacing: "-0.02em" }}>
-              미술관
+              아이디어
             </h1>
             <p className="font-playfair italic text-paperfolio-text-muted mt-4"
               style={{ fontSize: "clamp(1rem, 2vw, 1.35rem)" }}>

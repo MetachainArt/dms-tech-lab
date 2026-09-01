@@ -1,114 +1,114 @@
 ---
-title: "광 파워 버짓 — 링크가 살고 죽는 계산"
+title: "Optical Power Budget — Where a Link Lives or Dies"
 date: "2026-09-01"
-desc: "dB와 dBm의 차이부터 실제 링크 손실 계산까지. 설계가 현장에서 실패하지 않으려면 어디에 여유를 남겨야 하는지 정리합니다."
+desc: "The difference between dB and dBm, how to add up real link loss, and which margins you have to reserve so a design survives contact with the field."
 coverImage: "/images/a10.webp"
 readTime: "15 min"
 ---
 
-# 왜 계산대로 안 되는가
+# Why the Numbers Do Not Hold Up in the Field
 
-설계서에는 링크 손실 24 dB, 장비 허용치 28 dB라고 적혀 있습니다. 여유가 4 dB나 있으니 문제없어 보입니다. 그런데 현장에서 측정하니 27.5 dB가 나옵니다. 링크는 간신히 살아 있지만, 겨울에 케이블이 수축하거나 접속점 하나가 추가되면 바로 죽습니다.
+The design document says 24 dB of link loss against a 28 dB equipment budget. Four decibels of headroom, which looks fine. Then you measure on site and get 27.5 dB. The link is technically alive, but one cold snap or one additional splice will kill it.
 
-이런 일이 생기는 이유는 계산이 틀려서가 아니라 **계산에 넣지 않은 것들이 있어서**입니다.
+This happens not because the arithmetic was wrong, but because **something was left out of the arithmetic.**
 
-## dB와 dBm부터 구분하기
+## First, Separate dB from dBm
 
-가장 많이 헷갈리는 지점입니다.
+This is where most confusion starts.
 
-- **dBm** — 절대적인 광 파워 값입니다. "지금 이 지점의 빛 세기는 -20 dBm이다."
-- **dB** — 상대적인 차이입니다. "이 구간을 지나며 3 dB 손실됐다."
+- **dBm** is an absolute power level. "The optical power at this point is -20 dBm."
+- **dB** is a relative difference. "This section cost us 3 dB."
 
-**dBm은 위치, dB는 이동량**이라고 기억하면 편합니다. 온도로 치면 dBm은 "지금 20도", dB는 "5도 떨어졌다"에 해당합니다.
+**dBm is a position; dB is a movement.** In temperature terms, dBm is "it is 20 degrees" and dB is "it dropped 5 degrees."
 
-그래서 계산은 이렇게 됩니다.
+Which gives you the working equation:
 
 ```
-수신 광 파워(dBm) = 송신 광 파워(dBm) − 전체 손실(dB)
+Received power (dBm) = Transmit power (dBm) - Total loss (dB)
 ```
 
-송신이 +3 dBm이고 전체 손실이 25 dB면, 수신은 -22 dBm입니다.
+Transmit at +3 dBm through 25 dB of loss and you arrive at -22 dBm.
 
-## 3 dB의 의미
+## What 3 dB Actually Means
 
-dB는 로그 스케일이라 감이 잘 안 옵니다. 이것만 외워두면 충분합니다.
+Decibels are logarithmic, which makes them hard to feel. These three are enough:
 
-- **3 dB 손실 = 세기가 절반**
-- **10 dB 손실 = 세기가 10분의 1**
-- **20 dB 손실 = 세기가 100분의 1**
+- **3 dB loss = half the power**
+- **10 dB loss = one tenth**
+- **20 dB loss = one hundredth**
 
-1:32 스플리터의 분기 손실 15 dB가 얼마나 큰지 여기서 드러납니다. 원래 빛의 3% 정도만 남습니다. 그런데도 통신이 되는 건 수광 소자가 그만큼 예민하기 때문입니다.
+That puts the 15 dB split loss of a 1:32 splitter in perspective: roughly 3 percent of the original light survives. Communication still works only because the receiver is that sensitive.
 
-## 손실은 어디서 생기는가
+## Where the Loss Comes From
 
-전체 링크 손실은 다음 항목의 합입니다.
+Total link loss is the sum of these terms.
 
-**1. 광섬유 자체 손실**
+**1. Fiber attenuation**
 
-거리에 비례합니다. 파장에 따라 다릅니다.
+Proportional to distance, and wavelength dependent.
 
-- 1310 nm — 약 0.35 dB/km
-- 1550 nm — 약 0.22 dB/km
+- 1310 nm, about 0.35 dB/km
+- 1550 nm, about 0.22 dB/km
 
-10 km 구간이면 1310 nm에서 3.5 dB입니다. FTTx 액세스 구간은 대개 수 km 이내라 이 항목은 생각보다 작습니다.
+Ten kilometers at 1310 nm is 3.5 dB. Since FTTx access spans are usually a few kilometers at most, this term is smaller than people expect.
 
-**2. 스플리터 분기 손실**
+**2. Splitter loss**
 
-앞 수업에서 다룬 항목이고, 대개 **전체 손실의 절반 이상**을 차지합니다. 1:32면 약 15~17 dB.
+Covered in the previous lesson, and typically **more than half of the total budget**. Around 15 to 17 dB for 1:32.
 
-**3. 융착 접속 손실**
+**3. Fusion splice loss**
 
-케이블을 녹여 붙인 지점입니다. 잘 된 융착은 0.05~0.1 dB 수준입니다. 개별로는 작지만 접속점이 20개면 무시할 수 없습니다.
+A well-made splice runs 0.05 to 0.1 dB. Individually negligible; across twenty splices, not negligible at all.
 
-**4. 커넥터 손실**
+**4. Connector loss**
 
-탈착 가능한 연결 지점입니다. 정상이면 0.3~0.5 dB. **문제는 이 항목이 가장 잘 나빠진다는 것**입니다. 오염된 커넥터는 1 dB, 2 dB도 나옵니다.
+0.3 to 0.5 dB when healthy. **This is the term that degrades most readily.** A contaminated connector will happily read 1 dB or 2 dB.
 
-**5. 곡률 손실**
+**5. Bend loss**
 
-케이블을 너무 급하게 꺾은 지점에서 빛이 새어 나갑니다. 함체 안에서 여유 길이를 억지로 감아 넣었을 때 자주 생깁니다.
+Light escaping where the fiber has been bent too sharply, most often where slack was forced into an enclosure.
 
-## 실제 계산 예시
+## A Worked Example
 
-1:32 스플리터, 국사에서 가입자까지 3 km, 융착 8개, 커넥터 4개인 링크를 계산해 보겠습니다.
+A 1:32 split, 3 km from office to subscriber, 8 splices, 4 connectors.
 
-| 항목 | 계산 | 손실 |
+| Item | Calculation | Loss |
 |---|---|---|
-| 광섬유 (1310 nm) | 3 km × 0.35 | 1.05 dB |
-| 스플리터 1:32 | — | 17.0 dB |
-| 융착 8개 | 8 × 0.1 | 0.8 dB |
-| 커넥터 4개 | 4 × 0.5 | 2.0 dB |
-| **소계** | | **20.85 dB** |
+| Fiber (1310 nm) | 3 km x 0.35 | 1.05 dB |
+| Splitter 1:32 | — | 17.0 dB |
+| 8 splices | 8 x 0.1 | 0.8 dB |
+| 4 connectors | 4 x 0.5 | 2.0 dB |
+| **Subtotal** | | **20.85 dB** |
 
-장비 허용 손실이 28 dB라면 여유는 7.15 dB입니다. 여기까지가 설계서에 적히는 숫자입니다.
+Against a 28 dB equipment budget, that leaves 7.15 dB. This is the number that ends up in the design document.
 
-## 설계서에 안 적히는 것들
+## What the Design Document Leaves Out
 
-실제로는 여기에 더 붙습니다.
+In reality you also have to account for:
 
-- **노후화** — 케이블과 접속점은 시간이 지나며 나빠집니다. 보통 1~3 dB를 잡습니다.
-- **향후 접속** — 장애 복구를 하면 융착이 추가됩니다. 몇 번의 복구를 예상하고 여유를 둬야 합니다.
-- **온도 변화** — 계절에 따라 특성이 미세하게 변합니다.
-- **측정 오차** — 장비와 측정자에 따라 0.5 dB 정도는 흔들립니다.
+- **Ageing** — cable and joints degrade over time. Reserve 1 to 3 dB.
+- **Future splices** — every repair adds a splice. Budget for several over the life of the plant.
+- **Temperature** — characteristics shift slightly with the seasons.
+- **Measurement uncertainty** — half a decibel of spread between instruments and operators is routine.
 
-**그래서 실무에서는 3 dB 이상의 여유를 남기는 것을 기준으로 잡습니다.** 위 예시의 7.15 dB는 건강한 편입니다. 만약 여유가 1 dB였다면, 계산상으로는 통과지만 현장에서는 실패할 설계입니다.
+**The working rule is to keep at least 3 dB of margin.** The 7.15 dB above is healthy. Had it come out at 1 dB, the design would pass on paper and fail on site.
 
-## 측정값이 계산과 다를 때
+## When Measurement Disagrees with Calculation
 
-실측이 계산보다 3 dB 이상 나쁘면, 대개 원인은 정해져 있습니다.
+If the measured value is 3 dB or more worse than calculated, the cause is usually one of a short list.
 
-1. **커넥터 오염** — 가장 흔합니다. 먼저 청소하고 재측정하세요.
-2. **커넥터 미체결** — 끝까지 안 들어간 상태로 측정된 경우.
-3. **급격한 곡률** — 함체 안 여유 길이를 확인합니다.
-4. **불량 융착** — OTDR로 위치를 특정해야 합니다.
+1. **Dirty connector** — the most common by a wide margin. Clean it and measure again first.
+2. **Incompletely mated connector** — seated short.
+3. **Sharp bend** — check the slack management inside enclosures.
+4. **Bad splice** — needs an OTDR to localize.
 
-순서가 중요합니다. **가장 흔하고 가장 쉬운 것부터** 확인하세요. 융착 불량을 의심해 함체를 열기 전에, 커넥터를 닦는 데 1분을 쓰는 게 맞습니다.
+The order matters. **Start with the most common and the cheapest to check.** Spending one minute cleaning a connector beats opening an enclosure on a splice hunch.
 
-## 정리
+## Summary
 
-- dBm은 절대 파워, dB는 손실량입니다.
-- 3 dB는 세기 절반, 10 dB는 10분의 1입니다.
-- 전체 손실의 절반 이상은 스플리터 분기 손실입니다.
-- 계산에 노후화·향후 접속·측정 오차를 넣지 않으면 현장에서 실패합니다. 여유 3 dB 이상을 기준으로 잡으세요.
+- dBm is absolute power; dB is loss.
+- 3 dB is half the power; 10 dB is a tenth.
+- More than half the budget is usually splitter loss.
+- Leave ageing, future splices, and measurement spread out of the math and the design fails in the field. Hold at least 3 dB of margin.
 
-다음 수업에서는 계산이 아니라 **실제로 어디가 문제인지 찾아내는 OTDR 측정**을 다룹니다.
+The next lesson moves from calculation to localization: **finding out where the problem actually is, with an OTDR.**
