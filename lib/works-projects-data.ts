@@ -1,5 +1,7 @@
 import { AX_LANDING } from "@/lib/works-ax-data";
 import { AUTOMATION_LAB_PROJECT } from "@/lib/works-automation-lab-data";
+import { FIELD_DATA_PROJECT } from "@/lib/works-field-data-data";
+import { TRADE_DOCS_PROJECT } from "@/lib/works-trade-docs-data";
 
 export interface WorkStep {
   id: string;
@@ -1312,6 +1314,8 @@ AI가 만든 결과를 그대로 저장하거나 발행하는 구조는 처음�
         ],
       },
       AUTOMATION_LAB_PROJECT,
+      FIELD_DATA_PROJECT,
+      TRADE_DOCS_PROJECT,
     ],
   },
   "ai-skill": {
