@@ -4,7 +4,6 @@ import { getSeriesIdsWithContent } from '@/lib/series-content';
 import { getAllWorks } from '@/lib/work-mdx';
 import { WORKS_DATA } from '@/lib/works-projects-data';
 import { EDUCATION_TRACKS } from '@/lib/education-data';
-import { BLOG_SERIES } from '@/lib/blog-data';
 import { getCourseStructure } from '@/lib/education-fs';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -35,10 +34,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 블로그 포스트 자동 수집
   const [blogPosts, works, seriesSlugs] = await Promise.all([getAllPosts(), getAllWorks(), getSeriesIdsWithContent()]);
 
-  const hiddenSeriesIds = new Set(
-    Object.values(BLOG_SERIES).filter((series) => series.hidden).map((series) => series.id)
-  );
-
   // 프로젝트 시리즈(랜딩 / 프로젝트 / 스텝) 자동 수집
   const projectRoutes: MetadataRoute.Sitemap = [];
   for (const landing of Object.values(WORKS_DATA)) {
@@ -50,8 +45,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
 
     for (const project of landing.projects) {
-      if (project.hidden) continue;
-
       projectRoutes.push({
         url: `${baseUrl}/works/${landing.id}/${project.id}`,
         lastModified: new Date(),
@@ -73,8 +66,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 교육 트랙 / 레슨 자동 수집
   const educationRoutes: MetadataRoute.Sitemap = [];
   for (const track of Object.values(EDUCATION_TRACKS)) {
-    if (track.hidden) continue;
-
     educationRoutes.push({
       url: `${baseUrl}/education/${track.id}`,
       lastModified: new Date(),
@@ -116,22 +107,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     })),
-    ...works
-      .filter((work) => !hiddenSeriesIds.has(String(work.frontMatter.series ?? '')))
-      .map((work) => ({
-        url: `${baseUrl}/works/${work.slug}`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly' as const,
-        priority: 0.7,
-      })),
-    ...seriesSlugs
-      .filter((slug) => !hiddenSeriesIds.has(slug))
-      .map((slug) => ({
-        url: `${baseUrl}/blog/series/${slug}`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly' as const,
-        priority: 0.7,
-      })),
+    ...works.map((work) => ({
+      url: `${baseUrl}/works/${work.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+    ...seriesSlugs.map((slug) => ({
+      url: `${baseUrl}/blog/series/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    })),
   ];
 
   return sitemap;

@@ -24,8 +24,6 @@ export interface EducationTrack {
   tags: string[];
   chapters: EducationChapter[];
   externalLink?: string;
-  /** true 면 목록·사이트맵에서 감춘다. 직접 URL 로는 계속 접근할 수 있다. */
-  hidden?: boolean;
 }
 
 export const EDUCATION_TRACKS: Record<string, EducationTrack> = {
@@ -80,7 +78,6 @@ export const EDUCATION_TRACKS: Record<string, EducationTrack> = {
   },
   "automation": {
     id: "automation",
-    hidden: true,
     title: "Openclaw",
     description: "THE AI THAT ACTUALLY DOES THINGS. 이메일, 캘린더, 브라우저까지 제어하는 개인 AI 어시스턴트. WhatsApp, Telegram 등 어떤 채팅 앱에서든 바로 사용 가능.",
     image: "/images/Service/openclaw-features.png",

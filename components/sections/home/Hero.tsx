@@ -81,7 +81,7 @@ export default function Hero() {
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="rounded-[24px] border border-paperfolio-line bg-white p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.22em] text-paperfolio-accent-coral">Focus</p>
-                <p className="mt-3 text-lg font-semibold text-paperfolio-text">AX 전환 · 트레이닝 · 해외에이전시</p>
+                <p className="mt-3 text-lg font-semibold text-paperfolio-text">AX 전환 · 광통신 트레이닝 · 해외무역</p>
               </div>
               <div className="rounded-[24px] border border-paperfolio-line bg-white p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.22em] text-paperfolio-accent-blue">Approach</p>

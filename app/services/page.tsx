@@ -142,7 +142,7 @@ export default function ServicesPage() {
           <span className="text-paperfolio-text-muted font-semibold tracking-widest text-sm uppercase">전문 분야</span>
         </div>
         <h2 className="text-3xl md:text-4xl font-serif font-bold leading-tight mb-10">
-          트레이닝, AX 전환, 해외에이전시.
+          광통신 트레이닝, AX 전환, 해외무역.
           <br />
           <span className="text-paperfolio-text-muted">세 축으로 일합니다.</span>
         </h2>

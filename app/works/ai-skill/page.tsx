@@ -33,7 +33,7 @@ export default function AiSkillLandingPage() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {work.projects.filter((project) => !project.hidden).map((project) => (
+            {work.projects.map((project) => (
               <Link
                 key={project.id}
                 href={`/works/ai-skill/${project.id}`}

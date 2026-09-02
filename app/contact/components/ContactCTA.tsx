@@ -14,7 +14,7 @@ export default function ContactCTA() {
           </div>
           <div className="flex flex-col gap-4 sm:flex-row">
             <a
-              href="mailto:dms@dmssolution.co.kr"
+              href="mailto:reedo.dev@dmssolution.co.kr"
               className="inline-flex items-center justify-center rounded-full bg-white px-7 py-4 text-sm font-semibold text-paperfolio-text hover:bg-paperfolio-accent-yellow"
             >
               이메일 보내기

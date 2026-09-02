@@ -4,8 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 
-import { getCompanyInfoRows } from "@/constants/company";
-
 const WavyLine = () => (
   <svg width="80" height="12" viewBox="0 0 80 12" fill="none" aria-hidden="true">
     <path d="M2 6 Q12 2 22 6 Q32 10 42 6 Q52 2 62 6 Q72 10 78 6"
@@ -15,8 +13,6 @@ const WavyLine = () => (
 
 export default function Footer() {
   const pathname = usePathname();
-  const companyRows = getCompanyInfoRows();
-
   if (pathname?.startsWith("/admin")) return null;
 
   return (
@@ -110,26 +106,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* ── 사업자 정보 ── constants/company.ts 에 값이 채워진 항목만 노출된다 */}
-      {companyRows.length > 0 && (
-        <div className="border-t border-paperfolio-line">
-          <div className="mx-auto max-w-7xl px-8 md:px-12 py-5">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-paperfolio-text-muted">
-              Business info
-            </p>
-            <dl className="mt-2.5 flex flex-wrap gap-x-5 gap-y-1.5 text-xs leading-6 text-paperfolio-text-muted"
-              style={{fontFamily: "var(--font-korean), serif"}}>
-              {companyRows.map((row) => (
-                <div key={row.label} className="flex items-center gap-1.5">
-                  <dt className="opacity-60">{row.label}</dt>
-                  <dd>{row.value}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </div>
-      )}
-
       {/* ── Bottom bar ── */}
       <div className="border-t border-paperfolio-line">
         <div className="mx-auto max-w-7xl px-8 md:px-12 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
@@ -142,7 +118,6 @@ export default function Footer() {
             <span>실무형 교육</span>
           </div>
           <div className="flex items-center gap-5 text-xs text-paperfolio-text-muted">
-            <Link href="/company" className="hover:text-paperfolio-text transition-colors">회사소개</Link>
             <Link href="/privacy" className="hover:text-paperfolio-text transition-colors">개인정보처리방침</Link>
             <Link href="/terms" className="hover:text-paperfolio-text transition-colors">이용약관</Link>
             <span className="opacity-50">© {new Date().getFullYear()} DMS.Labs</span>

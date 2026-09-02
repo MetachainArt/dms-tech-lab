@@ -7,7 +7,7 @@ import Link from "next/link";
 import { EDUCATION_TRACKS } from "@/lib/education-data";
 
 export default function EducationPage() {
-  const tracks = Object.values(EDUCATION_TRACKS).filter((track) => !track.hidden);
+  const tracks = Object.values(EDUCATION_TRACKS);
 
   return (
     <main className="w-full min-h-screen bg-[#f7f3ea] text-paperfolio-text font-sans selection:bg-paperfolio-accent-yellow/70 selection:text-paperfolio-text relative">

@@ -1,5 +1,5 @@
 
-import { AppWindow, Briefcase, Calculator, Sparkles, Terminal, Dumbbell } from "lucide-react";
+import { AppWindow, Briefcase, Calculator, Palette, Sparkles, Terminal, Dumbbell } from "lucide-react";
 
 export type VibeCategory = "All" | "Productivity" | "Creative" | "Business" | "Utility";
 
@@ -23,6 +23,17 @@ export const VIBE_CATEGORIES: VibeCategory[] = [
 ];
 
 export const VIBE_APPS: VibeApp[] = [
+  {
+    id: "muse-canvas",
+    title: "PromptBlocks",
+    description: "AI가 프롬프트를 13가지 요소로 분해하고, 저장된 블록을 레고처럼 조립해 새로운 프롬프트를 만들어보세요.",
+    category: "Creative",
+    url: "https://promptblocks.dmssolution.co.kr/",
+    icon: Palette,
+    status: "Live",
+    tags: ["AI", "Canvas", "Ideation"],
+  },
+
   {
     id: "prompt-library",
     title: "AI Prompt Library",

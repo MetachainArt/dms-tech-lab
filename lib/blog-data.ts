@@ -6,8 +6,6 @@ export interface BlogSeries {
   coverImage: string;
   color: string;
   tags: string[];
-  /** true 면 목록·사이트맵에서 감춘다. 직접 URL 로는 계속 접근할 수 있다. */
-  hidden?: boolean;
 }
 
 export const BLOG_SERIES: Record<string, BlogSeries> = {
@@ -85,7 +83,6 @@ export const BLOG_SERIES: Record<string, BlogSeries> = {
   },
   "openclaw-room": {
     id: "openclaw-room",
-    hidden: true,
     title: "OpenClaw",
     subtitle: "CHAT AGENT & SKILLS",
     description: "메신저 기반 개인 AI 비서 OpenClaw를 설치, 연결, 스킬, 메모리, 자동화, 운영까지 실전 중심으로 배우는 가이드 시리즈입니다.",

@@ -26,7 +26,7 @@ export default function DataDeletionPage() {
               <h2 className="text-2xl font-semibold text-paperfolio-text mb-4">삭제 요청 방법</h2>
               <p className="text-paperfolio-text-muted leading-8 mb-6">아래 이메일로 데이터 삭제를 요청하실 수 있습니다.</p>
               <div className="rounded-[24px] border border-paperfolio-line bg-white p-6 space-y-4">
-                <p><span className="font-semibold text-paperfolio-text">이메일:</span> <a href="mailto:dms@dmssolution.co.kr?subject=[데이터 삭제 요청]" className="text-paperfolio-accent-blue hover:underline">dms@dmssolution.co.kr</a></p>
+                <p><span className="font-semibold text-paperfolio-text">이메일:</span> <a href="mailto:reedo.dev@gmail.com?subject=[데이터 삭제 요청]" className="text-paperfolio-accent-blue hover:underline">reedo.dev@gmail.com</a></p>
                 <p><span className="font-semibold text-paperfolio-text">제목:</span> [데이터 삭제 요청]</p>
               </div>
             </section>

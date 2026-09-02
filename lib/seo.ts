@@ -24,12 +24,9 @@ export const SITE_CONFIG = {
     "3D 설계",
     "3D 모델링",
     "광통신 장비 수출입",
-    "무역 에이전시",
-
-    "해외무역 전문가",
-
-    "수출입 에이전시",
-
+    "무역 에이전시",
+    "해외무역 전문가",
+    "수출입 에이전시",
     "국제무역",
     "중동 동남아 유럽 무역",
     "N8N",
@@ -43,9 +40,8 @@ export const SITE_CONFIG = {
     url: "https://dmssolution.co.kr",
   },
   social: {
-    // instagram / youtube: 계정 핸들이 확정되면 추가할 것.
-    // (푸터 @Reedodev 와 여기 @reedoinvest 가 엇갈려 있어 일단 뺐다.
-    //  값이 확정되면 metadata.ts 의 sameAs 에도 다시 넣어야 한다.)
+    instagram: "https://instagram.com",
+    youtube: "https://youtube.com/@reedoinvest",
     kakao: "https://open.kakao.com/o/sSPHn33g",
   },
   og: {
@@ -53,7 +49,7 @@ export const SITE_CONFIG = {
     description:
       "광통신 트레이닝 전문가이자 AX 전문가. 광통신 하드웨어·FTTx 현장 경험을 바탕으로 AI 자동화, 3D 설계, 실무형 교육을 리도만의 방식으로 연결합니다.",
     image:
-      "https://dmssolution.co.kr/og-default.png",
+      "https://dmssolution.co.kr/images/a21.webp",
     alt: "DMS.Labs - 자동화 · 설계 · 교육",
   },
   twitter: {
@@ -62,7 +58,8 @@ export const SITE_CONFIG = {
     description:
       "복잡한 일은 줄이고, 필요한 건 직접 만듭니다.",
     image:
-      "https://dmssolution.co.kr/og-default.png",
+      "https://dmssolution.co.kr/images/a21.webp",
+    creator: "@reedoinvest",
   },
 } as const;
 
