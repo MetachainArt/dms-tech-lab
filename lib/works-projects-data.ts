@@ -21,6 +21,8 @@ export interface WorkProject {
   status: string;
   category: string;
   steps: WorkStep[];
+  /** true 면 목록·사이트맵에서 감춘다. 직접 URL 로는 계속 접근할 수 있다. */
+  hidden?: boolean;
 }
 
 export interface WorkLanding {
@@ -1137,6 +1139,7 @@ AI가 만든 결과를 그대로 저장하거나 발행하는 구조는 처음�
     projects: [
       {
         id: "openclaw-sns",
+        hidden: true,
         title: "Openclaw + SNS 카드뉴스 자동화",
         subtitle: "AUTOMATION CASE",
         description: "Openclaw 에이전트와 SNS 카드뉴스 제작 흐름을 연결해, 아이디어 입력 하나로 이미지·텍스트·게시까지 자동화한 실전 사례입니다.",
@@ -1363,6 +1366,7 @@ AI가 만든 결과를 그대로 저장하거나 발행하는 구조는 처음�
       },
       {
         id: "openclaw-windows-guide",
+        hidden: true,
         title: "오픈클로 윈도우 설치 완벽 가이드",
         subtitle: "AI AGENT SETUP GUIDE",
         description: "윈도우에서 오픈클로(OpenClaw)를 처음 설치하는 분을 위한 단계별 설치 매뉴얼입니다. WSL 설치부터 Node.js, 오픈클로 설치, Slack 연결까지 초보자도 따라할 수 있게 정리했습니다.",

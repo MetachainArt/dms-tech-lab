@@ -24,7 +24,7 @@ export default function Contact() {
 
           <div className="flex flex-col justify-center gap-3 sm:flex-row">
             <a
-              href="mailto:reedo.dev@dmssolution.co.kr"
+              href="mailto:dms@dmssolution.co.kr"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-paperfolio-text hover:bg-paperfolio-accent-yellow"
             >
               <Mail className="h-4 w-4" />

@@ -15,10 +15,13 @@ export default async function BlogPage() {
   const allPosts = await getAllPosts();
   const seriesCountMap = await getSeriesCountMap();
 
-  const seriesWithCount = Object.values(BLOG_SERIES).map((series) => ({
-    ...series,
-    postCount: seriesCountMap[series.id] || 0,
-  })).filter((series) => series.postCount > 0);
+  const seriesWithCount = Object.values(BLOG_SERIES)
+    .filter((series) => !series.hidden)
+    .map((series) => ({
+      ...series,
+      postCount: seriesCountMap[series.id] || 0,
+    }))
+    .filter((series) => series.postCount > 0);
 
   const latestPosts = allPosts.slice(0, 3);
 

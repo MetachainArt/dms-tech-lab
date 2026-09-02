@@ -226,11 +226,11 @@ export default function Contact() {
             {/* Contact Info */}
             <div className="mt-8 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-center gap-6 text-white/50 text-sm">
               <a
-                href="mailto:reedo.dev@dmssolution.co.kr"
+                href="mailto:dms@dmssolution.co.kr"
                 className="flex items-center gap-2 hover:text-neon-sky transition-colors"
               >
                 <Mail className="w-4 h-4" />
-                reedo.dev@dmssolution.co.kr
+                dms@dmssolution.co.kr
               </a>
             </div>
           </div>

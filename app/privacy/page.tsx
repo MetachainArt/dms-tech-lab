@@ -80,7 +80,7 @@ export default function PrivacyPage() {
               <h2 className="text-2xl font-semibold text-paperfolio-text mb-4">7. 개인정보 보호책임자</h2>
               <div className="rounded-[24px] border border-paperfolio-line bg-paperfolio-surface p-6">
                 <p><strong className="text-paperfolio-text">담당자:</strong> 개인정보 보호 담당</p>
-                <p><strong className="text-paperfolio-text">이메일:</strong> reedo.dev@dmssolution.co.kr</p>
+                <p><strong className="text-paperfolio-text">이메일:</strong> dms@dmssolution.co.kr</p>
               </div>
             </section>
             <section>

@@ -6,7 +6,7 @@ const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
   : null;
 
-const RECIPIENT_EMAIL = process.env.CONTACT_EMAIL || "reedo.dev@dmssolution.co.kr";
+const RECIPIENT_EMAIL = process.env.CONTACT_EMAIL || "dms@dmssolution.co.kr";
 
 export async function POST(request: NextRequest) {
   try {
