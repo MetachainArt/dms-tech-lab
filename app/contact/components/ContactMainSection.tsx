@@ -120,7 +120,7 @@ export default function ContactMainSection({ assessmentPrefill }: ContactMainSec
             <div className="space-y-5">
               <div className="rounded-[24px] border border-paperfolio-line bg-paperfolio-surface px-5 py-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.22em] text-paperfolio-text-muted">이메일</p>
-                <a href="mailto:reedo.dev@dmssolution.co.kr" className="mt-3 block text-lg font-semibold text-paperfolio-text hover:text-paperfolio-accent-blue">reedo.dev@dmssolution.co.kr</a>
+                <a href="mailto:dms@dmssolution.co.kr" className="mt-3 block text-lg font-semibold text-paperfolio-text hover:text-paperfolio-accent-blue">dms@dmssolution.co.kr</a>
               </div>
               <div className="rounded-[24px] border border-paperfolio-line bg-paperfolio-surface px-5 py-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.22em] text-paperfolio-text-muted">응답</p>
@@ -135,7 +135,7 @@ export default function ContactMainSection({ assessmentPrefill }: ContactMainSec
                 </div>
               </div>
             </div>
-            <a href="mailto:reedo.dev@dmssolution.co.kr" className="inline-flex w-full items-center justify-center rounded-full bg-paperfolio-text px-6 py-4 text-sm font-semibold text-white hover:bg-paperfolio-accent-blue">이메일로 바로 문의하기</a>
+            <a href="mailto:dms@dmssolution.co.kr" className="inline-flex w-full items-center justify-center rounded-full bg-paperfolio-text px-6 py-4 text-sm font-semibold text-white hover:bg-paperfolio-accent-blue">이메일로 바로 문의하기</a>
           </div>
         </div>
 
@@ -198,7 +198,7 @@ export default function ContactMainSection({ assessmentPrefill }: ContactMainSec
               {status === "error" && errorMessage ? <p className="text-sm font-medium text-[#b25072]" role="alert">{errorMessage}</p> : null}
               <div className="flex flex-col gap-4 sm:flex-row">
                 <button type="submit" disabled={status === "loading"} className="inline-flex flex-1 items-center justify-center rounded-full bg-paperfolio-text px-6 py-4 text-sm font-semibold text-white hover:bg-paperfolio-accent-blue disabled:cursor-not-allowed disabled:opacity-60">{status === "loading" ? "보내는 중..." : "문의 보내기"}</button>
-                <a href="mailto:reedo.dev@dmssolution.co.kr" className="inline-flex items-center justify-center rounded-full border border-paperfolio-line bg-white px-6 py-4 text-sm font-semibold text-paperfolio-text hover:border-paperfolio-accent-coral/40 hover:text-paperfolio-accent-coral">이메일로 보내기</a>
+                <a href="mailto:dms@dmssolution.co.kr" className="inline-flex items-center justify-center rounded-full border border-paperfolio-line bg-white px-6 py-4 text-sm font-semibold text-paperfolio-text hover:border-paperfolio-accent-coral/40 hover:text-paperfolio-accent-coral">이메일로 보내기</a>
               </div>
             </form>
           )}
