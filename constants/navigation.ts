@@ -5,6 +5,7 @@ export const navLinks = [
   { name: "작업", href: "/works" },
   { name: "글", href: "/blog" },
   { name: "아이디어", href: "/gallery" },
+  { name: "회사소개", href: "/company" },
   { name: "문의", href: "/#contact" },
 ] as const;
 
