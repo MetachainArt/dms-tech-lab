@@ -93,7 +93,7 @@ export default function FttxTrainingPage() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <a
-                href="mailto:reedo.dev@dmssolution.co.kr?subject=FTTx%20training%20enquiry"
+                href="mailto:dms@dmssolution.co.kr?subject=FTTx%20training%20enquiry"
                 className="inline-flex items-center justify-center rounded-full border border-paperfolio-line bg-white px-7 py-4 text-sm font-semibold text-paperfolio-text hover:border-paperfolio-accent-coral/40 hover:text-paperfolio-accent-coral"
               >
                 Enquire about training
@@ -217,7 +217,7 @@ export default function FttxTrainingPage() {
               </p>
             </div>
             <a
-              href="mailto:reedo.dev@dmssolution.co.kr?subject=FTTx%20training%20enquiry"
+              href="mailto:dms@dmssolution.co.kr?subject=FTTx%20training%20enquiry"
               className="inline-flex items-center justify-center rounded-full bg-white px-7 py-4 text-sm font-semibold text-paperfolio-text hover:bg-paperfolio-accent-yellow"
             >
               Get in touch

@@ -54,7 +54,6 @@ export function generateMetadata({
       title: fullTitle,
       description,
       images: [ogImage],
-      creator: SITE_CONFIG.twitter.creator,
     },
     robots: {
       index: !noIndex,
@@ -94,10 +93,9 @@ export function generateStructuredData(type: "Organization" | "Person" | "WebSit
       url: SITE_CONFIG.url,
       logo: `${SITE_CONFIG.url}/logo.png`,
       description: SITE_CONFIG.description,
-      sameAs: [SITE_CONFIG.social.youtube],
       contactPoint: {
         "@type": "ContactPoint",
-        email: "reedo.dev@dmssolution.co.kr",
+        email: "dms@dmssolution.co.kr",
         contactType: "customer service",
         availableLanguage: ["Korean", "English"],
       },
@@ -113,8 +111,8 @@ export function generateStructuredData(type: "Organization" | "Person" | "WebSit
       description: SITE_CONFIG.description,
       jobTitle: "광통신 하드웨어 · AI 자동화 · 실무형 교육 파트너",
       image: `${SITE_CONFIG.url}/og-default.png`,
-      email: "reedo.dev@dmssolution.co.kr",
-      sameAs: [SITE_CONFIG.social.youtube, SITE_CONFIG.social.kakao],
+      email: "dms@dmssolution.co.kr",
+      sameAs: [SITE_CONFIG.social.kakao],
     };
   }
 

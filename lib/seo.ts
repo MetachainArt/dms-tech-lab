@@ -43,9 +43,9 @@ export const SITE_CONFIG = {
     url: "https://dmssolution.co.kr",
   },
   social: {
-    // instagram: 실제 계정 URL이 확정되면 추가할 것.
-    // (예전 값 "https://instagram.com" 은 플랫폼 홈이라 schema.org sameAs 에 넣으면 오류)
-    youtube: "https://youtube.com/@reedoinvest",
+    // instagram / youtube: 계정 핸들이 확정되면 추가할 것.
+    // (푸터 @Reedodev 와 여기 @reedoinvest 가 엇갈려 있어 일단 뺐다.
+    //  값이 확정되면 metadata.ts 의 sameAs 에도 다시 넣어야 한다.)
     kakao: "https://open.kakao.com/o/sSPHn33g",
   },
   og: {
@@ -63,7 +63,6 @@ export const SITE_CONFIG = {
       "복잡한 일은 줄이고, 필요한 건 직접 만듭니다.",
     image:
       "https://dmssolution.co.kr/og-default.png",
-    creator: "@reedoinvest",
   },
 } as const;
 
