@@ -619,6 +619,188 @@ function FlowDiagram({ caption, children }: { caption?: string; children: ReactN
   );
 }
 
+/* ── 2x2 매트릭스: 두 축으로 나눈 네 칸. 강조 칸을 tone 으로 지정한다 ── */
+interface MatrixCellProps {
+  label: string;
+  detail?: string;
+  tone?: "go" | "care" | "later" | "stop";
+}
+
+const matrixTone = {
+  go: "border-paperfolio-accent-blue/45 bg-paperfolio-accent-blue/10",
+  care: "border-paperfolio-accent-yellow/55 bg-paperfolio-accent-yellow/12",
+  later: "border-paperfolio-line bg-white",
+  stop: "border-paperfolio-accent-coral/40 bg-paperfolio-accent-coral/8",
+} as const;
+
+const matrixBadge = {
+  go: "bg-paperfolio-accent-blue text-white",
+  care: "bg-paperfolio-accent-yellow text-paperfolio-text",
+  later: "bg-paperfolio-line text-paperfolio-text-muted",
+  stop: "bg-paperfolio-accent-coral text-white",
+} as const;
+
+const matrixWord = { go: "먼저", care: "조건부", later: "나중에", stop: "제외" } as const;
+
+function MatrixCell({ label, detail, tone = "later" }: MatrixCellProps) {
+  return (
+    <div className={`rounded-2xl border p-5 ${matrixTone[tone]}`}>
+      <span className={`inline-block rounded-full px-2.5 py-0.5 text-[10px] font-bold tracking-[0.1em] ${matrixBadge[tone]}`}>
+        {matrixWord[tone]}
+      </span>
+      <p className="mt-3 text-[15px] font-semibold leading-snug text-paperfolio-text">{label}</p>
+      {detail ? <p className="mt-1.5 text-xs leading-relaxed text-paperfolio-text-muted">{detail}</p> : null}
+    </div>
+  );
+}
+
+function Matrix2x2({
+  xLabel,
+  yLabel,
+  caption,
+  children,
+}: {
+  xLabel: string;
+  yLabel: string;
+  caption?: string;
+  children: ReactNode;
+}) {
+  return (
+    <figure className="my-10">
+      <div className="rounded-[26px] border border-paperfolio-line bg-paperfolio-surface p-6">
+        <div className="mb-3 flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.16em] text-paperfolio-text-muted">
+          <span>{yLabel} ↑</span>
+          <span>{xLabel} →</span>
+        </div>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">{children}</div>
+      </div>
+      {caption ? (
+        <figcaption className="mt-3 text-center text-sm text-paperfolio-text-muted">{caption}</figcaption>
+      ) : null}
+    </figure>
+  );
+}
+
+/* ── 비율 띠: 40 / 30 / 30 처럼 전체를 나눠 보여준다 ── */
+interface ProportionItemProps {
+  label: string;
+  value: number;
+  tone?: "blue" | "teal" | "coral" | "muted";
+}
+
+const proportionTone = {
+  blue: "bg-paperfolio-accent-blue",
+  teal: "bg-[#3f9c8f]",
+  coral: "bg-paperfolio-accent-coral",
+  muted: "bg-paperfolio-text-muted/45",
+} as const;
+
+function Proportion({
+  caption,
+  items,
+}: {
+  caption?: string;
+  items: { label: string; value: number; tone?: keyof typeof proportionTone }[];
+}) {
+  const total = items.reduce((sum, item) => sum + item.value, 0) || 1;
+  return (
+    <figure className="my-10">
+      <div className="flex h-14 w-full overflow-hidden rounded-2xl border border-paperfolio-line">
+        {items.map((item) => (
+          <div
+            key={item.label}
+            className={`flex items-center justify-center ${proportionTone[item.tone ?? "muted"]}`}
+            style={{ width: `${(item.value / total) * 100}%` }}
+          >
+            <span className="px-1 text-sm font-bold text-white">{item.value}%</span>
+          </div>
+        ))}
+      </div>
+      <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5">
+        {items.map((item) => (
+          <div key={item.label} className="flex items-center gap-2">
+            <span className={`h-2.5 w-2.5 rounded-sm ${proportionTone[item.tone ?? "muted"]}`} />
+            <span className="text-sm text-paperfolio-text-muted">{item.label}</span>
+          </div>
+        ))}
+      </div>
+      {caption ? (
+        <figcaption className="mt-3 text-sm text-paperfolio-text-muted">{caption}</figcaption>
+      ) : null}
+    </figure>
+  );
+}
+
+/* ── 두 관점 대비: 자동화 vs AX 처럼 나란히 놓고 비교한다 ── */
+function CompareColumns({
+  leftTitle,
+  rightTitle,
+  caption,
+  rows,
+}: {
+  leftTitle: string;
+  rightTitle: string;
+  caption?: string;
+  rows: { left: string; right: string }[];
+}) {
+  return (
+    <figure className="my-10 overflow-hidden rounded-[26px] border border-paperfolio-line">
+      <div className="grid grid-cols-2">
+        <div className="bg-paperfolio-text-muted/12 px-5 py-3 text-[11px] font-bold uppercase tracking-[0.14em] text-paperfolio-text-muted">
+          {leftTitle}
+        </div>
+        <div className="bg-paperfolio-accent-blue px-5 py-3 text-[11px] font-bold uppercase tracking-[0.14em] text-white">
+          {rightTitle}
+        </div>
+      </div>
+      <div className="divide-y divide-paperfolio-line bg-white">
+        {rows.map((row) => (
+          <div key={row.left + row.right} className="grid grid-cols-2 divide-x divide-paperfolio-line">
+            <p className="px-5 py-4 text-sm leading-7 text-paperfolio-text-muted">{row.left}</p>
+            <p className="px-5 py-4 text-sm leading-7 text-paperfolio-text">{row.right}</p>
+          </div>
+        ))}
+      </div>
+      {caption ? (
+        <figcaption className="border-t border-paperfolio-line bg-paperfolio-surface px-5 py-3 text-sm text-paperfolio-text-muted">
+          {caption}
+        </figcaption>
+      ) : null}
+    </figure>
+  );
+}
+
+/* ── 눈금 타임라인: 90일 처럼 구간이 있는 일정 ── */
+function Timeline({
+  caption,
+  items,
+}: {
+  caption?: string;
+  items: { at: string; label: string; detail?: string }[];
+}) {
+  return (
+    <figure className="my-10">
+      <ol className="relative border-l-2 border-paperfolio-line pl-6">
+        {items.map((item) => (
+          <li key={item.at + item.label} className="relative pb-7 last:pb-0">
+            <span className="absolute -left-[31px] top-1 flex h-4 w-4 items-center justify-center rounded-full border-2 border-paperfolio-accent-blue bg-white">
+              <span className="h-1.5 w-1.5 rounded-full bg-paperfolio-accent-blue" />
+            </span>
+            <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-paperfolio-accent-blue">{item.at}</p>
+            <p className="mt-1 text-[15px] font-semibold text-paperfolio-text">{item.label}</p>
+            {item.detail ? (
+              <p className="mt-1 text-sm leading-7 text-paperfolio-text-muted">{item.detail}</p>
+            ) : null}
+          </li>
+        ))}
+      </ol>
+      {caption ? (
+        <figcaption className="mt-2 text-sm text-paperfolio-text-muted">{caption}</figcaption>
+      ) : null}
+    </figure>
+  );
+}
+
 export const MDXComponents = {
   h1: (props: HeadingProps) => <h1 className="mt-14 font-playfair text-4xl font-bold leading-tight tracking-tight text-paperfolio-text md:text-5xl" {...props} />,
   h2: (props: HeadingProps) => <h2 className="mt-12 font-playfair text-3xl font-semibold leading-tight tracking-tight text-paperfolio-text md:text-4xl" {...props} />,
@@ -689,6 +871,11 @@ export const MDXComponents = {
   MetricShiftItem,
   FlowDiagram,
   FlowStep,
+  Matrix2x2,
+  MatrixCell,
+  Proportion,
+  CompareColumns,
+  Timeline,
 
   Callout: ({ children, className = "" }: CalloutProps) => (
     <div className={`my-8 rounded-[24px] border border-paperfolio-line bg-paperfolio-surface px-6 py-6 shadow-[0_14px_40px_rgba(31,41,55,0.04)] ${className}`}>
