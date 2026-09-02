@@ -51,7 +51,7 @@ export const AUTOMATION_TEMPLATES: AutomationTemplate[] = [
     category: "Video",
     author: {
         name: "Reedo",
-        avatar: "/avatars/reedo.png",
+        avatar: "/reedo-profile-high.png",
         verified: true
     },
     stats: {

@@ -67,9 +67,11 @@ export function generateMetadata({
         "max-snippet": -1,
       },
     },
-    verification: {
-      google: "google-site-verification-token-here",
-    },
+    // GOOGLE_SITE_VERIFICATION 이 설정된 경우에만 메타 태그를 내보낸다.
+    // (예전에는 "google-site-verification-token-here" 플레이스홀더가 그대로 노출됐다)
+    ...(process.env.GOOGLE_SITE_VERIFICATION
+      ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+      : {}),
     alternates: {
       canonical: url,
     },
@@ -92,10 +94,7 @@ export function generateStructuredData(type: "Organization" | "Person" | "WebSit
       url: SITE_CONFIG.url,
       logo: `${SITE_CONFIG.url}/logo.png`,
       description: SITE_CONFIG.description,
-      sameAs: [
-        SITE_CONFIG.social.instagram,
-        SITE_CONFIG.social.youtube,
-      ],
+      sameAs: [SITE_CONFIG.social.youtube],
       contactPoint: {
         "@type": "ContactPoint",
         email: "reedo.dev@dmssolution.co.kr",
@@ -113,13 +112,9 @@ export function generateStructuredData(type: "Organization" | "Person" | "WebSit
       url: SITE_CONFIG.author.url,
       description: SITE_CONFIG.description,
       jobTitle: "광통신 하드웨어 · AI 자동화 · 실무형 교육 파트너",
-      image: `${SITE_CONFIG.url}/og-image.png`,
+      image: `${SITE_CONFIG.url}/og-default.png`,
       email: "reedo.dev@dmssolution.co.kr",
-      sameAs: [
-        SITE_CONFIG.social.instagram,
-        SITE_CONFIG.social.youtube,
-        SITE_CONFIG.social.kakao,
-      ],
+      sameAs: [SITE_CONFIG.social.youtube, SITE_CONFIG.social.kakao],
     };
   }
 
