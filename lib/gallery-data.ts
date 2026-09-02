@@ -24,6 +24,48 @@ export interface GalleryPiece {
 // ──────────────────────────────────────────────
 export const galleryPieces: GalleryPiece[] = [
   {
+    id: "what-you-cannot-say",
+    date: "2026. 09",
+    category: "Essay",
+    title: "설명할 수 없는 일은 넘길 수 없다",
+    subtitle: "What You Cannot Say, You Cannot Hand Over",
+    body: "AI 전환은 도구를 고르는 일에서 시작한다고 생각했다. 막상 시키려고 앉으니, 십 년을 해온 일의 첫 문장이 나오지 않았다.",
+    paragraphs: [
+      {
+        type: "text",
+        text: "처음에는 도구를 고르는 일이라고 생각했다.\n무엇을 붙이면 몇 시간이 줄어드는지,\n그 계산부터 했다.\n\n그런데 막상 시키려고 앉으니\n한 줄도 쓸 수가 없었다.\n십 년을 해온 일인데\n첫 문장이 나오지 않았다.",
+      },
+      {
+        type: "text",
+        text: "손은 알고 있었다.\n어디서 멈추고, 무엇을 먼저 열고,\n어떤 신호가 오면 되돌아가는지.\n몸이 기억하는 순서가 분명히 있었다.\n\n다만 그 순서에 이름이 없었다.\n이름이 없으니 넘길 수가 없었다.\n기계에게도, 사람에게도.",
+      },
+      {
+        type: "motto",
+        text: "— 넘길 수 없는 일은, 아직 내가 모르는 일이다. —",
+      },
+      {
+        type: "text",
+        text: "그래서 전환은 도입보다 받아쓰기에 가깝다.\n이미 하고 있던 일을\n처음으로 문장으로 옮겨 적는 일.\n\n적다 보면 이상한 것들이 보인다.\n왜 여기서 두 번 확인하지.\n이 단계는 누가 정했지.\n지난달에 바뀐 걸 왜 아직 이렇게 하고 있지.\n\n기계에게 시키려고 쓴 문장이\n사람의 일을 먼저 고친다.",
+      },
+      {
+        type: "quote",
+        text: "You cannot delegate what you cannot describe — and the describing turns out to be most of the work.",
+      },
+      {
+        type: "text",
+        text: "결국 자동화된 것은 절반쯤이었다.\n나머지 절반은 자동화할 필요가 없었다.\n적고 나서야\n원래 없어도 되는 일이었다는 걸 알았다.\n\n줄어든 시간보다\n사라진 단계가 더 많았다.",
+      },
+      {
+        type: "motto",
+        text: "— 도구가 일을 줄이기 전에, 문장이 먼저 줄인다. —",
+      },
+    ],
+    image: "/gallery/what-you-cannot-say.png",
+    imageAlt: "손으로 익힌 순서가 문장으로 옮겨지는 장면을 표현한 추상 이미지",
+    layout: "image-left",
+    accent: "blue",
+  },
+  {
     "id": "workshop-of-ideas",
     "date": "2026. 09",
     "category": "Essay",
@@ -68,48 +110,6 @@ export const galleryPieces: GalleryPiece[] = [
     "imageAlt": "오래된 작업장에서 부품을 조립하는 정비공",
     "layout": "image-right",
     "accent": "yellow"
-  },
-  {
-    id: "what-you-cannot-say",
-    date: "2026. 09",
-    category: "Essay",
-    title: "설명할 수 없는 일은 넘길 수 없다",
-    subtitle: "What You Cannot Say, You Cannot Hand Over",
-    body: "AI 전환은 도구를 고르는 일에서 시작한다고 생각했다. 막상 시키려고 앉으니, 십 년을 해온 일의 첫 문장이 나오지 않았다.",
-    paragraphs: [
-      {
-        type: "text",
-        text: "처음에는 도구를 고르는 일이라고 생각했다.\n무엇을 붙이면 몇 시간이 줄어드는지,\n그 계산부터 했다.\n\n그런데 막상 시키려고 앉으니\n한 줄도 쓸 수가 없었다.\n십 년을 해온 일인데\n첫 문장이 나오지 않았다.",
-      },
-      {
-        type: "text",
-        text: "손은 알고 있었다.\n어디서 멈추고, 무엇을 먼저 열고,\n어떤 신호가 오면 되돌아가는지.\n몸이 기억하는 순서가 분명히 있었다.\n\n다만 그 순서에 이름이 없었다.\n이름이 없으니 넘길 수가 없었다.\n기계에게도, 사람에게도.",
-      },
-      {
-        type: "motto",
-        text: "— 넘길 수 없는 일은, 아직 내가 모르는 일이다. —",
-      },
-      {
-        type: "text",
-        text: "그래서 전환은 도입보다 받아쓰기에 가깝다.\n이미 하고 있던 일을\n처음으로 문장으로 옮겨 적는 일.\n\n적다 보면 이상한 것들이 보인다.\n왜 여기서 두 번 확인하지.\n이 단계는 누가 정했지.\n지난달에 바뀐 걸 왜 아직 이렇게 하고 있지.\n\n기계에게 시키려고 쓴 문장이\n사람의 일을 먼저 고친다.",
-      },
-      {
-        type: "quote",
-        text: "You cannot delegate what you cannot describe — and the describing turns out to be most of the work.",
-      },
-      {
-        type: "text",
-        text: "결국 자동화된 것은 절반쯤이었다.\n나머지 절반은 자동화할 필요가 없었다.\n적고 나서야\n원래 없어도 되는 일이었다는 걸 알았다.\n\n줄어든 시간보다\n사라진 단계가 더 많았다.",
-      },
-      {
-        type: "motto",
-        text: "— 도구가 일을 줄이기 전에, 문장이 먼저 줄인다. —",
-      },
-    ],
-    image: "/gallery/what-you-cannot-say.png",
-    imageAlt: "손으로 익힌 순서가 문장으로 옮겨지는 장면을 표현한 추상 이미지",
-    layout: "image-left",
-    accent: "blue",
   },
   {
     id: "chaos-in-my-head",
