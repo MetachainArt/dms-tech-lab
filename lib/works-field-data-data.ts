@@ -6,7 +6,7 @@ export const FIELD_DATA_PROJECT: WorkProject = {
   subtitle: "FIELD DATA AUTOMATION",
   description:
     "현장에서 찍은 사진과 측정값이 카톡과 종이에 흩어져 사라지지 않도록, 입력 지점부터 월간 리포트까지 하나로 이은 기록입니다.",
-  coverImage: "/images/works/field-data-cover.png",
+  coverImage: "/images/works/field-data-cover.webp",
   color: "blue",
   tags: ["현장 데이터", "FTTx", "측정값", "리포트"],
   status: "연재 중",

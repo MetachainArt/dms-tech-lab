@@ -6,7 +6,7 @@ export const TRADE_DOCS_PROJECT: WorkProject = {
   subtitle: "TRADE DOCUMENT AUTOMATION",
   description:
     "같은 숫자를 다섯 번 옮겨 적던 수출입 문서 작업을, 사양서 하나를 원본으로 삼는 구조로 바꾼 기록입니다.",
-  coverImage: "/images/works/trade-docs-cover.png",
+  coverImage: "/images/works/trade-docs-cover.webp",
   color: "coral",
   tags: ["수출입", "견적", "선적", "문서 자동화"],
   status: "연재 중",
