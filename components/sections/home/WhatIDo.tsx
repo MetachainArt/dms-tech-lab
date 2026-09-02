@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowUpRight, Bot, Cuboid, GraduationCap, Headset, Network, PenSquare, Ship } from "lucide-react";
+import { Bot, Cuboid, GraduationCap, Headset, Network, PenSquare, Ship } from "lucide-react";
 
 const services = [
   {
@@ -89,17 +88,6 @@ export default function WhatIDo() {
               </motion.article>
             );
           })}
-        </div>
-
-        <div className="mt-12 flex justify-center">
-          <Link
-            href="/services"
-            className="inline-flex items-center gap-2 border border-paperfolio-text/30 bg-white/60 px-7 py-3 text-sm text-paperfolio-text transition-all duration-200 hover:bg-paperfolio-text hover:text-white"
-            style={{ fontFamily: "var(--font-korean), serif" }}
-          >
-            의뢰할 수 있는 일 자세히 보기
-            <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
-          </Link>
         </div>
       </div>
     </div>
