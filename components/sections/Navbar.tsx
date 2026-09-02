@@ -9,9 +9,9 @@ import { navLinks } from "@/constants/navigation";
 
 // 데스크탑: 핵심 3개만 (소개·하는일은 홈 앵커라 생략)
 const desktopLinks = [
-  { name: "작업",   href: "/works" },
-  { name: "글",     href: "/blog"  },
-  { name: "아이디어", href: "/gallery" },
+  { name: "Work",    href: "/works" },
+  { name: "Writing", href: "/blog"  },
+  { name: "Ideas",   href: "/gallery" },
 ] as const;
 
 export default function Navbar() {
@@ -73,7 +73,7 @@ export default function Navbar() {
                 href="/#contact"
                 className="hidden sm:flex items-center gap-1 text-sm font-medium text-paperfolio-text hover:text-paperfolio-accent-coral transition-colors"
               >
-                문의
+                Contact
                 <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={1.5} />
               </Link>
 

@@ -2,11 +2,11 @@ export const navLinks = [
   { name: "홈", href: "/" },
   { name: "소개", href: "/#intro" },
   { name: "하는 일", href: "/#what-i-do" },
-  { name: "작업", href: "/works" },
-  { name: "글", href: "/blog" },
-  { name: "아이디어", href: "/gallery" },
+  { name: "Work", href: "/works" },
+  { name: "Writing", href: "/blog" },
+  { name: "Ideas", href: "/gallery" },
   { name: "회사소개", href: "/company" },
-  { name: "문의", href: "/#contact" },
+  { name: "Contact", href: "/#contact" },
 ] as const;
 
 export type NavLink = (typeof navLinks)[number];
