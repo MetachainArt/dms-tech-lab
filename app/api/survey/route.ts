@@ -27,7 +27,7 @@ export async function POST(req: Request) {
 
     const { data, error } = await resend.emails.send({
       from: 'Acme <onboarding@resend.dev>', // Use onboarding@resend.dev for testing, it only sends to the verified email
-      to: ['reedo.dev@gmail.com'], // Send to the admin email
+      to: ['dms@dmssolution.co.kr'], // Send to the admin email
       subject: '[새로운 제출] 자동화 및 기술교육 사전 질의응답',
       text: text,
       html: html || text.replace(/\n/g, '<br/>'), // Fallback to basic HTML if not provided
