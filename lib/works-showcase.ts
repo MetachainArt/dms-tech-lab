@@ -29,13 +29,6 @@ export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
     link: "/works/automation",
   },
   {
-    title: "PromptBlocks",
-    summary: "프롬프트를 13개 구조 블록으로 분해하고 다시 조립해, 팀 단위로 재현 가능한 결과를 만드는 프롬프트 워크스페이스입니다.",
-    tags: ["프롬프트", "블록", "워크스페이스"],
-    image: "/images/a4.webp",
-    link: "https://promptblocks.dmssolution.co.kr/",
-  },
-  {
     title: "AI 스킬 및 구축",
     summary: "ComfyUI API 연동, 이미지 생성 파이프라인 구축 등 AI 스킬을 실전에서 직접 구현하고 기록한 공간입니다.",
     tags: ["ComfyUI", "AI", "파이프라인"],

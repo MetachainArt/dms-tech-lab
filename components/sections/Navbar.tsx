@@ -7,8 +7,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navLinks } from "@/constants/navigation";
 
-// 데스크탑: 핵심 4개만 (소개·하는일은 홈 앵커라 생략)
+// 데스크탑: 핵심 메뉴만. "하는 일"은 의뢰 가능한 항목이 정리된 /services 로 보낸다.
 const desktopLinks = [
+  { name: "하는 일", href: "/services" },
   { name: "작업",   href: "/works" },
   { name: "글",     href: "/blog"  },
   { name: "아이디어", href: "/gallery" },
