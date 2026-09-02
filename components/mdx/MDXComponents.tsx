@@ -546,6 +546,79 @@ function SecurityThreatTable() {
   );
 }
 
+/* ── 지표 변화: 19시간 → 2시간 처럼 before/after 를 강조해 보여준다 ── */
+interface MetricShiftItemProps {
+  label: string;
+  before: string;
+  after: string;
+  note?: string;
+}
+
+function MetricShiftItem({ label, before, after, note }: MetricShiftItemProps) {
+  return (
+    <div className="flex flex-col gap-3 px-6 py-5 sm:flex-row sm:items-center">
+      <div className="sm:w-44 shrink-0">
+        <p className="text-sm font-semibold text-paperfolio-text">{label}</p>
+        {note ? <p className="mt-0.5 text-xs text-paperfolio-text-muted">{note}</p> : null}
+      </div>
+      <div className="flex flex-1 items-center gap-4">
+        <span className="font-playfair text-2xl text-paperfolio-text-muted line-through opacity-45">{before}</span>
+        <span className="text-paperfolio-accent-blue" aria-hidden="true">&#8594;</span>
+        <span className="font-playfair text-3xl font-semibold text-paperfolio-accent-blue">{after}</span>
+      </div>
+    </div>
+  );
+}
+
+function MetricShift({ title, children }: { title?: string; children: ReactNode }) {
+  return (
+    <figure className="my-10 overflow-hidden rounded-[24px] border border-paperfolio-line bg-white shadow-[0_14px_40px_rgba(31,41,55,0.04)]">
+      <figcaption className="bg-paperfolio-text px-6 py-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/50">
+        {title ?? "지표 변화"}
+      </figcaption>
+      <div className="divide-y divide-paperfolio-line">{children}</div>
+    </figure>
+  );
+}
+
+/* ── 흐름도: 단계를 좌에서 우로 잇는다. 모바일에서는 세로로 쌓인다 ── */
+interface FlowStepProps {
+  label: string;
+  detail?: string;
+  tone?: "default" | "accent" | "muted";
+}
+
+function FlowStep({ label, detail, tone = "default" }: FlowStepProps) {
+  const box = {
+    default: "border-paperfolio-line bg-white text-paperfolio-text",
+    accent: "border-paperfolio-accent-blue/40 bg-paperfolio-accent-blue/8 text-paperfolio-accent-blue",
+    muted: "border-dashed border-paperfolio-line bg-paperfolio-bg text-paperfolio-text-muted",
+  }[tone];
+
+  return (
+    <div className="flex items-center gap-3">
+      <div className={`min-w-[112px] flex-1 rounded-2xl border px-4 py-3.5 text-center ${box}`}>
+        <p className="text-sm font-semibold leading-snug">{label}</p>
+        {detail ? <p className="mt-1 text-xs leading-relaxed opacity-70">{detail}</p> : null}
+      </div>
+      <span className="hidden shrink-0 text-paperfolio-text-muted/50 sm:inline" aria-hidden="true">&#8594;</span>
+    </div>
+  );
+}
+
+function FlowDiagram({ caption, children }: { caption?: string; children: ReactNode }) {
+  return (
+    <figure className="my-10">
+      <div className="flex flex-col gap-3 rounded-[24px] border border-paperfolio-line bg-paperfolio-surface p-6 sm:flex-row sm:items-stretch [&>div:last-child>span]:hidden">
+        {children}
+      </div>
+      {caption ? (
+        <figcaption className="mt-3 text-center text-sm text-paperfolio-text-muted">{caption}</figcaption>
+      ) : null}
+    </figure>
+  );
+}
+
 export const MDXComponents = {
   h1: (props: HeadingProps) => <h1 className="mt-14 font-playfair text-4xl font-bold leading-tight tracking-tight text-paperfolio-text md:text-5xl" {...props} />,
   h2: (props: HeadingProps) => <h2 className="mt-12 font-playfair text-3xl font-semibold leading-tight tracking-tight text-paperfolio-text md:text-4xl" {...props} />,
@@ -612,6 +685,10 @@ export const MDXComponents = {
   StatusGrid,
   ChangeRow,
   ChangeGrid,
+  MetricShift,
+  MetricShiftItem,
+  FlowDiagram,
+  FlowStep,
 
   Callout: ({ children, className = "" }: CalloutProps) => (
     <div className={`my-8 rounded-[24px] border border-paperfolio-line bg-paperfolio-surface px-6 py-6 shadow-[0_14px_40px_rgba(31,41,55,0.04)] ${className}`}>
