@@ -16,8 +16,8 @@
  *   · 개인정보보호책임자                → privacyOfficer    (선택, 개인정보처리방침에도 표기)
  */
 export const COMPANY_INFO = {
-  /** 상호 — 예: "디엠에스솔루션" */
-  name: "",
+  /** 상호 */
+  name: "DMS Solution",
   /** 대표자명 */
   ceo: "",
   /** 사업자등록번호 — 예: "123-45-67890" */
@@ -27,7 +27,7 @@ export const COMPANY_INFO = {
   /** 사업장 주소 */
   address: "",
   /** 대표 이메일 */
-  email: "reedo.dev@dmssolution.co.kr",
+  email: "dms@dmssolution.co.kr",
   /** 대표 전화번호 (선택) */
   tel: "",
   /** 개인정보보호책임자 (선택) */
