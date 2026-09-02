@@ -116,6 +116,14 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
 
             <div className="space-y-5">
               <h1 className="paperfolio-display max-w-4xl text-paperfolio-text">{String(post.frontMatter.title)}</h1>
+              {typeof post.frontMatter.subtitle === "string" && post.frontMatter.subtitle.trim() && (
+                <p
+                  className="max-w-3xl font-playfair italic text-paperfolio-text-muted"
+                  style={{ fontSize: "clamp(1.15rem, 2.2vw, 1.6rem)", lineHeight: 1.5 }}
+                >
+                  {post.frontMatter.subtitle}
+                </p>
+              )}
               <p className="max-w-2xl text-lg leading-8 text-paperfolio-text-muted">{String(post.frontMatter.excerpt)}</p>
             </div>
           </div>
