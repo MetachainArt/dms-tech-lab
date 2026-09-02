@@ -49,11 +49,4 @@ export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
     image: "/images/a13.webp",
     link: "https://storylens.dmssolution.co.kr/",
   },
-  {
-    title: "OpenClaw",
-    summary: "OpenClaw를 어디에 붙이고, 어떻게 쓰고, 어떤 식으로 운영하면 좋은지 설치부터 스킬, 메모리, 자동화까지 실전 중심으로 정리하는 학습 공간입니다.",
-    tags: ["OpenClaw", "실전 가이드", "AI 비서"],
-    image: "/images/a12.webp",
-    link: "/blog/series/openclaw-room",
-  },
 ];

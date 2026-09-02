@@ -33,7 +33,7 @@ export default function AutomationLandingPage() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {work.projects.map((project) => (
+            {work.projects.filter((project) => !project.hidden).map((project) => (
               <Link
                 key={project.id}
                 href={`/works/automation/${project.id}`}
