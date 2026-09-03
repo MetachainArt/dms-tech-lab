@@ -62,7 +62,7 @@ export default function WhatIDo() {
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="mb-14 space-y-4">
           <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">Services</p>
-          <h2 className="paperfolio-h1">The work that turns<br />technology into<br /><span className="italic">real outcomes.</span></h2>
+          <h2 className="paperfolio-h1 pixel-display">The work that turns<br />technology into<br /><span className="text-paperfolio-accent-blue">real outcomes.</span></h2>
           <p className="paperfolio-body max-w-2xl">
             전문용어보다 사용자가 얻게 되는 변화를 먼저 설명합니다. 결국 중요한 건 보기 좋은 기술이 아니라 실제로 편해지는 일입니다.
           </p>

@@ -12,7 +12,7 @@ export default function SelectedWorks() {
         <div className="mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="space-y-4">
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">Selected Works</p>
-            <h2 className="paperfolio-h1">The work speaks<br /><span className="italic">before the words do.</span></h2>
+            <h2 className="paperfolio-h1 pixel-display">The work speaks<br /><span className="text-paperfolio-accent-blue">before the words do.</span></h2>
             <p className="paperfolio-body max-w-2xl">
               Start with whatever feels closest to what you're working on right now.
             </p>

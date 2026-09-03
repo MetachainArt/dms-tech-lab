@@ -76,7 +76,7 @@ export default function FttxTrainingPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">
               Optical Network Training
             </p>
-            <h1 className="paperfolio-display max-w-4xl">
+            <h1 className="paperfolio-display pixel-display max-w-4xl">
               FTTx training written by someone who built the hardware.
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-paperfolio-text-muted">
@@ -146,7 +146,7 @@ export default function FttxTrainingPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 space-y-4">
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">Who it is for</p>
-            <h2 className="paperfolio-h1">Written for the person who has to decide on site</h2>
+            <h2 className="paperfolio-h1 pixel-display">Written for the person who has to decide on site</h2>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             {audience.map((item) => {
@@ -208,7 +208,7 @@ export default function FttxTrainingPage() {
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-yellow">
                 On-site training
               </p>
-              <h2 className="font-playfair text-3xl leading-tight md:text-4xl">
+              <h2 className="pixel-display text-2xl leading-tight md:text-3xl">
                 Need this delivered to your field team instead?
               </h2>
               <p className="max-w-2xl text-sm leading-7 text-white/72 md:text-base">

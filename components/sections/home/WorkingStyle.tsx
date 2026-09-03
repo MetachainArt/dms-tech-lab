@@ -28,7 +28,7 @@ export default function WorkingStyle() {
       <div className="relative z-10 mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr]">
         <div className="space-y-5">
           <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">How I Work</p>
-          <h2 className="paperfolio-h1">This is how<br /><span className="italic">I work.</span></h2>
+          <h2 className="paperfolio-h1 pixel-display">This is how<br /><span className="text-paperfolio-accent-blue">I work.</span></h2>
           <p className="paperfolio-body max-w-xl">
             멋있어 보이는 기술보다 실제로 도움이 되는 결과를 더 중요하게 생각합니다. 그래서 제 작업은 늘 설명 가능하고, 바로 시도 가능하고, 다음 단계가 보이도록 정리합니다.
           </p>

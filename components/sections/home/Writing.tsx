@@ -17,7 +17,7 @@ export default function Writing({ posts }: WritingProps) {
         <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="space-y-4">
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">Reedo Insights</p>
-            <h2 className="paperfolio-h1">Notes from<br /><span className="italic">the work.</span></h2>
+            <h2 className="paperfolio-h1 pixel-display">Notes from<br /><span className="text-paperfolio-accent-blue">the work.</span></h2>
             <p className="paperfolio-body max-w-2xl">
               자동화, 도구, 감각, 운영 방식에 대해 실무에서 부딪히며 정리한 생각들입니다.
             </p>

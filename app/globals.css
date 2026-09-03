@@ -248,3 +248,12 @@ select:focus-visible {
   font-feature-settings: normal;
   letter-spacing: 0.02em;
 }
+
+/* 큰 영문 제목에 픽셀을 얹을 때 쓴다. paperfolio-display / -h1 / -h2 위에 겹쳐
+   font-family 와 자간·행간만 덮어쓴다. 크기는 원래 클래스가 그대로 결정한다.
+   한글 제목에는 쓰지 말 것 (Pixelify Sans 에 한글 글리프 없음). */
+.pixel-display {
+  font-family: var(--font-pixel), ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.01em;
+  line-height: 1.24;
+}
