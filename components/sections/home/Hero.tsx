@@ -32,7 +32,7 @@ export default function Hero() {
               Reduce<br />
               <span className="text-paperfolio-accent-blue">the noise.</span><br />
               Build what<br />
-              <span className="text-paperfolio-accent-coral">truly matters.</span>
+              <span className="text-paperfolio-accent-blue">truly matters.</span>
             </h1>
             <p className="max-w-2xl text-lg leading-relaxed text-gray-500 font-medium md:text-xl">
               AX transformation, optical network training, and 20 years in international trade. <br className="hidden sm:block" />
@@ -68,9 +68,9 @@ export default function Hero() {
             <div className="mb-8 rounded-[28px] bg-[linear-gradient(135deg,#f3e5ab_0%,#fff7dd_34%,#ead9c4_100%)] p-8">
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-paperfolio-accent-blue">Reedo</p>
               <div className="mt-8 space-y-4">
-                <p className="font-playfair text-[2rem] leading-[1.25] tracking-[-0.01em] text-paperfolio-text">
+                <p className="pixel-display text-[1.65rem] leading-[1.3] text-paperfolio-text">
                   Technology,<br />
-                  <span className="italic">explained simply.</span>
+                  <span className="text-paperfolio-accent-blue">explained simply.</span>
                 </p>
                 <p className="text-base leading-7 text-paperfolio-text-muted">
                   현장에서 바로 써볼 수 있는 결과가 남도록 설계하고 자동화하고 가르칩니다.

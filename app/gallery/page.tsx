@@ -261,8 +261,8 @@ export default function GalleryPage() {
               style={{ fontSize: "clamp(3.5rem, 9vw, 7rem)", lineHeight: 1.0, letterSpacing: "-0.02em" }}>
               아이디어
             </h1>
-            <p className="font-playfair italic text-paperfolio-text-muted mt-4"
-              style={{ fontSize: "clamp(1rem, 2vw, 1.35rem)" }}>
+            <p className="pixel-display text-paperfolio-text-muted mt-4"
+              style={{ fontSize: "clamp(0.95rem, 1.7vw, 1.2rem)" }}>
               A space where images and words meet
             </p>
           </div>

@@ -22,7 +22,7 @@ export default function WorksPage() {
               style={{ fontSize: "clamp(3.5rem, 9vw, 7rem)", lineHeight: 1.0, letterSpacing: "-0.02em" }}>
               작업
             </h1>
-            <p className="font-playfair italic text-paperfolio-text-muted mt-4"
+            <p className="pixel-display text-paperfolio-text-muted mt-4"
               style={{ fontSize: "clamp(1rem, 2vw, 1.35rem)" }}>
               The work speaks before the words do
             </p>

@@ -33,7 +33,7 @@ export default function WorkingStyle() {
             멋있어 보이는 기술보다 실제로 도움이 되는 결과를 더 중요하게 생각합니다. 그래서 제 작업은 늘 설명 가능하고, 바로 시도 가능하고, 다음 단계가 보이도록 정리합니다.
           </p>
           <div className="rounded-[32px] border border-paperfolio-line bg-white px-7 py-8 shadow-[0_20px_60px_rgba(31,41,55,0.05)]">
-            <p className="font-playfair italic text-2xl leading-snug text-paperfolio-text">
+            <p className="pixel-display text-xl leading-relaxed text-paperfolio-text">
               Technology should help,<br />not merely impress.
             </p>
           </div>
