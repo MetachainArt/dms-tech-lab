@@ -34,7 +34,7 @@ export default function Hero() {
               Build what<br />
               <span className="text-paperfolio-accent-blue">truly matters.</span>
             </h1>
-            <p className="max-w-2xl text-lg leading-relaxed text-gray-500 font-medium md:text-xl">
+            <p className="max-w-2xl text-lg leading-relaxed text-paperfolio-text-muted md:text-xl">
               AX transformation, optical network training, and 20 years in international trade. <br className="hidden sm:block" />
               Optical equipment import and export across the Middle East, Southeast Asia and Europe. Field engineer training, workflow redesign and technical support — designed for real conditions, then handed over for your team to run.
             </p>
