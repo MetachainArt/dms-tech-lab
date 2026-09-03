@@ -28,11 +28,11 @@ export default function Hero() {
           </div>
 
           <div className="space-y-6">
-            <h1 className="font-playfair text-[3rem] leading-[1.1] tracking-[-0.02em] text-paperfolio-text md:text-[5rem] md:leading-[1.06]">
+            <h1 className="font-pixel text-[2.5rem] leading-[1.16] tracking-[-0.01em] text-paperfolio-text md:text-[4.25rem] md:leading-[1.12]">
               Reduce<br />
-              <span className="italic text-paperfolio-accent-blue">the noise.</span><br />
+              <span className="text-paperfolio-accent-blue">the noise.</span><br />
               Build what<br />
-              <span className="italic">truly matters.</span>
+              <span className="text-paperfolio-accent-coral">truly matters.</span>
             </h1>
             <p className="max-w-2xl text-lg leading-relaxed text-gray-500 font-medium md:text-xl">
               AX transformation, optical network training, and 20 years in international trade. <br className="hidden sm:block" />
