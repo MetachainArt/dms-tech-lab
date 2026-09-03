@@ -238,3 +238,13 @@ select:focus-visible {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
+
+/* ── 영문 픽셀 악센트 ──────────────────────────────────────────
+   Pixelify Sans 는 고정 픽셀 그리드라 작은 크기에서 획이 뭉개진다.
+   13px 아래로는 쓰지 않는다. 한글 글리프가 없으므로 영문 전용. */
+.font-pixel {
+  /* --font-pixel 은 next/font 가 <body> 에 심는다 (app/layout.tsx) */
+  font-family: var(--font-pixel), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-feature-settings: normal;
+  letter-spacing: 0.02em;
+}

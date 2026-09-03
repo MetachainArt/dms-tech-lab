@@ -57,9 +57,9 @@ export default function Navbar() {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className={`text-sm transition-colors ${
+                    className={`font-pixel text-[15px] transition-colors ${
                       pathname === link.href
-                        ? "text-paperfolio-text font-medium"
+                        ? "text-paperfolio-text"
                         : "text-paperfolio-text-muted hover:text-paperfolio-text"
                     }`}
                   >
@@ -71,7 +71,7 @@ export default function Navbar() {
               {/* 문의 CTA — 항상 표시 */}
               <Link
                 href="/#contact"
-                className="hidden sm:flex items-center gap-1 text-sm font-medium text-paperfolio-text hover:text-paperfolio-accent-coral transition-colors"
+                className="hidden sm:flex items-center gap-1 font-pixel text-[15px] text-paperfolio-text hover:text-paperfolio-accent-coral transition-colors"
               >
                 Contact
                 <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={1.5} />
@@ -143,7 +143,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={handleMenuClose}
-                    className="block font-playfair text-4xl text-paperfolio-text hover:text-paperfolio-accent-coral transition-colors py-2 border-b border-paperfolio-line"
+                    className="block font-pixel text-3xl text-paperfolio-text hover:text-paperfolio-accent-coral transition-colors py-3 border-b border-paperfolio-line"
                   >
                     {link.name}
                   </Link>

@@ -1,4 +1,4 @@
-import { Nanum_Pen_Script, Poppins, DM_Serif_Display, Noto_Serif_KR } from "next/font/google";
+import { Nanum_Pen_Script, Pixelify_Sans, Poppins, DM_Serif_Display, Noto_Serif_KR } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
 import Navbar from "@/components/sections/Navbar";
@@ -35,6 +35,17 @@ const notoSerifKr = Noto_Serif_KR({
   variable: "--font-korean",
   display: "swap",
   preload: false,
+});
+
+// 영문 악센트: 내비게이션과 히어로의 영문 값에만 쓰는 픽셀 디스플레이
+// 한글 글리프가 없으므로 한글이 섞이는 자리에는 쓰지 않는다
+const pixelifySans = Pixelify_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-pixel",
+  display: "swap",
+  preload: true,
+  fallback: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
 });
 
 const nanumPen = Nanum_Pen_Script({
@@ -101,7 +112,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={clsx(poppins.variable, dmSerif.variable, notoSerifKr.variable, nanumPen.variable, "antialiased bg-paperfolio-bg text-paperfolio-text")} suppressHydrationWarning>
+      <body className={clsx(poppins.variable, dmSerif.variable, notoSerifKr.variable, nanumPen.variable, pixelifySans.variable, "antialiased bg-paperfolio-bg text-paperfolio-text")} suppressHydrationWarning>
         <Script
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4327440469164693"
           strategy="lazyOnload"
