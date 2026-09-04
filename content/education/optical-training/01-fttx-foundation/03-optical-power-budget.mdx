@@ -1,5 +1,5 @@
 ---
-title: "Optical Power Budget: Where a Link Lives or Dies"
+title: "Optical Power Budget — Where a Link Lives or Dies"
 date: "2026-09-01"
 desc: "The difference between dB and dBm, how to add up real link loss, and which margins you have to reserve so a design survives contact with the field."
 coverImage: "/images/a10.webp"
@@ -75,7 +75,7 @@ A 1:32 split, 3 km from office to subscriber, 8 splices, 4 connectors.
 | Item | Calculation | Loss |
 |---|---|---|
 | Fiber (1310 nm) | 3 km x 0.35 | 1.05 dB |
-| Splitter 1:32 |, | 17.0 dB |
+| Splitter 1:32 | — | 17.0 dB |
 | 8 splices | 8 x 0.1 | 0.8 dB |
 | 4 connectors | 4 x 0.5 | 2.0 dB |
 | **Subtotal** | | **20.85 dB** |
@@ -86,10 +86,10 @@ Against a 28 dB equipment budget, that leaves 7.15 dB. This is the number that e
 
 In reality you also have to account for:
 
-- **Ageing**: cable and joints degrade over time. Reserve 1 to 3 dB.
-- **Future splices**: every repair adds a splice. Budget for several over the life of the plant.
-- **Temperature**: characteristics shift slightly with the seasons.
-- **Measurement uncertainty**: half a decibel of spread between instruments and operators is routine.
+- **Ageing** — cable and joints degrade over time. Reserve 1 to 3 dB.
+- **Future splices** — every repair adds a splice. Budget for several over the life of the plant.
+- **Temperature** — characteristics shift slightly with the seasons.
+- **Measurement uncertainty** — half a decibel of spread between instruments and operators is routine.
 
 **The working rule is to keep at least 3 dB of margin.** The 7.15 dB above is healthy. Had it come out at 1 dB, the design would pass on paper and fail on site.
 
@@ -97,10 +97,10 @@ In reality you also have to account for:
 
 If the measured value is 3 dB or more worse than calculated, the cause is usually one of a short list.
 
-1. **Dirty connector**: the most common by a wide margin. Clean it and measure again first.
-2. **Incompletely mated connector**: seated short.
-3. **Sharp bend**: check the slack management inside enclosures.
-4. **Bad splice**: needs an OTDR to localize.
+1. **Dirty connector** — the most common by a wide margin. Clean it and measure again first.
+2. **Incompletely mated connector** — seated short.
+3. **Sharp bend** — check the slack management inside enclosures.
+4. **Bad splice** — needs an OTDR to localize.
 
 The order matters. **Start with the most common and the cheapest to check.** Spending one minute cleaning a connector beats opening an enclosure on a splice hunch.
 

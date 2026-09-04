@@ -3,7 +3,7 @@ import { authOptions } from "@/lib/auth";
 
 const handler = NextAuth(authOptions);
 
-// Next.js 15+ passes params as Promise, next-auth v4 expects synchronous params
+// Next.js 15+ passes params as Promise — next-auth v4 expects synchronous params
 async function authHandler(
   req: Request,
   context: { params: Promise<{ nextauth: string[] }> }

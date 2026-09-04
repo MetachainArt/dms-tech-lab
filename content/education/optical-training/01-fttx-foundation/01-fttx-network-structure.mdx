@@ -1,7 +1,7 @@
 ---
 title: "Reading an FTTx Network in One Picture"
 date: "2026-09-01"
-desc: "From the central office to the subscriber premises: the full path an optical signal travels, and what each point on it actually does."
+desc: "From the central office to the subscriber premises — the full path an optical signal travels, and what each point on it actually does."
 coverImage: "/images/a20.webp"
 readTime: "12 min"
 ---
@@ -20,25 +20,25 @@ From the central office to a working internet connection in someone's living roo
 
 Let's walk through what each point does.
 
-### OLT: The Transmitting End
+### OLT — The Transmitting End
 
 The OLT (Optical Line Terminal) sits in the operator's central office. It connects upstream to the backbone network and pushes optical signals downstream toward subscribers. A single OLT chassis holds multiple line cards, and each card carries multiple PON ports.
 
 The key fact is this: **one PON port serves many subscribers.** Exactly how many is decided by the splitter ratio we'll cover shortly.
 
-### FDF: Where Cables Get Organized
+### FDF — Where Cables Get Organized
 
 The FDF (Fiber Distribution Frame) is the patch panel inside the central office where equipment-side patch cords meet the outside plant cables.
 
-The FDF matters in the field for a simple reason: **it is the first place you check when a link goes down.** A connector that is dirty, or seated slightly short, is enough to kill a link, and it happens more often than anyone expects.
+The FDF matters in the field for a simple reason: **it is the first place you check when a link goes down.** A connector that is dirty, or seated slightly short, is enough to kill a link — and it happens more often than anyone expects.
 
-### Splitter: Where One Becomes Many
+### Splitter — Where One Becomes Many
 
 An optical splitter is a passive component that divides one incoming optical signal into several outputs. No power required. We name them by ratio: 1:8, 1:16, 1:32.
 
 That "no power required" part is the economic core of FTTx. You don't have to run electricity to a mid-span point, which drops both installation and maintenance costs dramatically. The trade-off: **the more ways you split, the weaker each output gets.** Calculating that loss is the optical power budget, and it gets its own lesson.
 
-### ONU / ONT: The Receiving End
+### ONU / ONT — The Receiving End
 
 The subscriber-side terminating equipment. It converts the optical signal back to electrical and hands it off over Ethernet or Wi-Fi.
 
@@ -48,11 +48,11 @@ ONU and ONT often refer to effectively the same thing. If you want to draw the l
 
 FTTx stands for Fiber To The x, where x tells you **how far the fiber actually goes.**
 
-- **FTTH** (Home): fiber runs all the way into the subscriber's premises.
-- **FTTB** (Building): fiber reaches the building; existing copper carries it the rest of the way.
-- **FTTC** (Curb): fiber reaches a street-side cabinet; copper covers the last stretch.
+- **FTTH** (Home) — fiber runs all the way into the subscriber's premises.
+- **FTTB** (Building) — fiber reaches the building; existing copper carries it the rest of the way.
+- **FTTC** (Curb) — fiber reaches a street-side cabinet; copper covers the last stretch.
 
-The closer x gets to the subscriber, the better the speed and stability, and the higher the construction cost. In practice, which one you deploy is **less a technical decision than a cost-and-building-conditions decision.** Pushing FTTH into an older building with no usable conduit means climbing walls, and at that moment the job becomes something else entirely.
+The closer x gets to the subscriber, the better the speed and stability — and the higher the construction cost. In practice, which one you deploy is **less a technical decision than a cost-and-building-conditions decision.** Pushing FTTH into an older building with no usable conduit means climbing walls, and at that moment the job becomes something else entirely.
 
 ## What to Look at First in a Drawing
 
@@ -70,4 +70,4 @@ Those three answers tell you most of what kind of network you are looking at. Th
 - Splitters divide the signal without power, and the price you pay is attenuation.
 - The x in FTTx is how far the fiber goes, and it is usually decided by cost.
 
-In the next lesson we look at **PON and splitters**, how one fiber strand actually gets shared by dozens of households without the traffic colliding.
+In the next lesson we look at **PON and splitters** — how one fiber strand actually gets shared by dozens of households without the traffic colliding.

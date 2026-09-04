@@ -7,7 +7,7 @@ import { WORKS_DATA } from "@/lib/works-projects-data";
 
 export const metadata = generateSeoMetadata({
   title: "AI 활용 및 바이브코딩 자동화",
-  description: "생성형 AI 활용부터 이미지·영상·음악 생성, 바이브코딩, 자동화, Openclaw까지: 12회 격주 2시간, 실습 중심 AI 커리큘럼입니다.",
+  description: "생성형 AI 활용부터 이미지·영상·음악 생성, 바이브코딩, 자동화, Openclaw까지 — 12회 격주 2시간, 실습 중심 AI 커리큘럼입니다.",
   path: "/works/ai-education/icheon-ai",
 });
 

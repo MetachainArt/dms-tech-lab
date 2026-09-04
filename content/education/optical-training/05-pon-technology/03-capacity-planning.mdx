@@ -1,5 +1,5 @@
 ---
-title: "Capacity Planning: Split Ratio as a Business Decision"
+title: "Capacity Planning — Split Ratio as a Business Decision"
 date: "2026-09-01"
 desc: "How many subscribers should share a port. Balancing loss budget, bandwidth per subscriber and construction cost, and why the answer changes over time."
 coverImage: "/images/a21.webp"
@@ -16,11 +16,11 @@ Both constraints move together, and capacity planning is about finding where the
 
 ## The Two Ceilings
 
-**Optical ceiling.** How much loss the system tolerates. Determined by the equipment's loss class, the fiber distance, splice and connector count, and the margin you intend to preserve. This ceiling is hard, exceed it and the link does not work.
+**Optical ceiling.** How much loss the system tolerates. Determined by the equipment's loss class, the fiber distance, splice and connector count, and the margin you intend to preserve. This ceiling is hard — exceed it and the link does not work.
 
-**Bandwidth ceiling.** How much traffic the port can deliver, divided by how many subscribers share it. This ceiling is soft, exceed it and service degrades at peak times rather than failing.
+**Bandwidth ceiling.** How much traffic the port can deliver, divided by how many subscribers share it. This ceiling is soft — exceed it and service degrades at peak times rather than failing.
 
-A GPON port delivers 2.5 Gbit/s downstream. Across 32 subscribers that is roughly 78 Mbit/s each if everyone transmits simultaneously, which they do not. Across 64 it is 39 Mbit/s.
+A GPON port delivers 2.5 Gbit/s downstream. Across 32 subscribers that is roughly 78 Mbit/s each if everyone transmits simultaneously — which they do not. Across 64 it is 39 Mbit/s.
 
 ## Oversubscription Is Normal and Has a Limit
 
@@ -54,7 +54,7 @@ The PON lesson introduced single-stage versus two-stage splitting as an architec
 
 **Single-stage** makes the loss budget simple and the capacity picture uniform. Every subscriber on the port sees the same architecture.
 
-**Two-stage** lets you match splitting to actual subscriber distribution, a light split at the first stage, then heavier splits only where density justifies it. It also lets you **add capacity incrementally**, by populating second-stage splitters as demand appears rather than building for the final count on day one.
+**Two-stage** lets you match splitting to actual subscriber distribution — a light split at the first stage, then heavier splits only where density justifies it. It also lets you **add capacity incrementally**, by populating second-stage splitters as demand appears rather than building for the final count on day one.
 
 That incremental property is often the deciding factor in areas where take-up is uncertain. You build the feeder and first stage, and defer the rest.
 
@@ -62,7 +62,7 @@ That incremental property is often the deciding factor in areas where take-up is
 
 A common planning error is dimensioning for every home passed rather than for realistic take-up.
 
-If take-up is expected to reach 40%, a 1:32 splitter serves roughly 80 homes passed. Dimensioning as though all 80 will subscribe wastes budget on splitting you never need, and, worse, consumes optical margin permanently.
+If take-up is expected to reach 40%, a 1:32 splitter serves roughly 80 homes passed. Dimensioning as though all 80 will subscribe wastes budget on splitting you never need — and, worse, consumes optical margin permanently.
 
 Conversely, dimensioning for today's 15% take-up and finding yourself at 60% in five years means revisiting plant. **The workable approach is to build the passive infrastructure for the long-term case and populate it progressively**, which is exactly what two-stage architectures enable.
 
@@ -73,7 +73,7 @@ Conversely, dimensioning for today's 15% take-up and finding yourself at 60% in 
 3. **Same calculation for the next-generation system** you might deploy later.
 4. **Take-up projection** over the intended life, not today's number.
 5. **Duct and feeder capacity** available for future expansion.
-6. **Repair allowance**: how many future splices the budget can absorb.
+6. **Repair allowance** — how many future splices the budget can absorb.
 
 Item 6 is the one that is almost never in a design document, and it is the one that decides whether the plant is still healthy in ten years.
 

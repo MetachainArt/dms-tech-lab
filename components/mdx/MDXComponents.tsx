@@ -29,7 +29,7 @@ function ComfyWorkflowDiagram() {
   return (
     <div className="my-10 overflow-x-auto rounded-[24px] bg-[#0d1117] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
       <p className="mb-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30">
-        ComfyUI 워크플로우, 10 nodes
+        ComfyUI 워크플로우 — 10 nodes
       </p>
       <div className="flex items-stretch gap-3 min-w-[800px]">
 
@@ -360,7 +360,7 @@ function StepGuideTable() {
 
 function WslVsDirectTable() {
   const rows = [
-    { label: "안정성",       direct: "경로·권한 충돌 잦음",        wsl: "Linux 네이티브, 안정적",       wslWin: true  },
+    { label: "안정성",       direct: "경로·권한 충돌 잦음",        wsl: "Linux 네이티브 — 안정적",       wslWin: true  },
     { label: "호환성",       direct: "일부 npm 패키지 미지원",      wsl: "오픈클로 공식 권장 환경",        wslWin: true  },
     { label: "설치 난이도",  direct: "Node.js만 설치하면 됨",       wsl: "WSL 먼저 설치 필요",             wslWin: false },
     { label: "패키지 관리",  direct: "npm만 사용",                  wsl: "apt + npm 함께 사용",             wslWin: true  },
@@ -481,7 +481,7 @@ function SlackScopesTable() {
 function LogErrorTable() {
   const errors = [
     { msg: "token expired",      meaning: "토큰 만료",              fix: "api.slack.com에서 토큰 재발급 후 openclaw configure 재실행", color: "bg-red-50 text-red-700 border-red-200" },
-    { msg: "unknown user",       meaning: "허용되지 않은 사용자",     fix: "allowedUsers 설정 확인, 내 Slack ID가 목록에 있는지 체크",  color: "bg-amber-50 text-amber-700 border-amber-200" },
+    { msg: "unknown user",       meaning: "허용되지 않은 사용자",     fix: "allowedUsers 설정 확인 — 내 Slack ID가 목록에 있는지 체크",  color: "bg-amber-50 text-amber-700 border-amber-200" },
     { msg: "connection refused", meaning: "봇이 꺼진 상태",          fix: "openclaw gateway start 재실행",                            color: "bg-amber-50 text-amber-700 border-amber-200" },
     { msg: "rate limit",         meaning: "AI API 호출 과다",        fix: "잠시 기다리면 자동 복구됨 (보통 1분 이내)",                  color: "bg-blue-50 text-blue-700 border-blue-200" },
   ];

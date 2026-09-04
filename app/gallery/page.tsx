@@ -63,7 +63,7 @@ function BodyContent({ piece, textColor = "text-paperfolio-text-muted", maxWidth
 }
 
 export const metadata: Metadata = {
-  title: "아이디어: Reedo",
+  title: "아이디어 — Reedo",
   description: "사진과 글이 만나는 공간. 작업, 생각, 감각을 기록합니다.",
 };
 
@@ -176,7 +176,7 @@ function LayoutFullbleed({ piece }: { piece: GalleryPiece }) {
       {/* Text overlay */}
       <div className="relative z-10 w-full px-10 pb-16 lg:px-20 lg:pb-20 max-w-5xl">
         <p className={`text-xs font-semibold uppercase tracking-[0.22em] mb-4 ${ac.label}`}>
-          {piece.category}, {piece.date}
+          {piece.category} — {piece.date}
         </p>
         <h2 className="font-playfair text-white mb-4"
           style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", lineHeight: 1.08, letterSpacing: "-0.02em" }}>
@@ -203,7 +203,7 @@ function LayoutTextDominant({ piece }: { piece: GalleryPiece }) {
         {/* Text block */}
         <div>
           <p className={`text-xs font-semibold uppercase tracking-[0.22em] mb-6 ${ac.label}`}>
-            {piece.category}, {piece.date}
+            {piece.category} — {piece.date}
           </p>
           <h2 className="font-playfair text-paperfolio-text mb-6"
             style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
@@ -278,7 +278,7 @@ export default function GalleryPage() {
             {galleryPieces.length} pieces
           </span>
           <span className="text-xs tracking-[0.18em] uppercase text-paperfolio-text-muted">
-            2025 ~ 2026
+            2025 — 2026
           </span>
         </div>
       </header>

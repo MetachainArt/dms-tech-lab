@@ -1,5 +1,5 @@
 ---
-title: "Finding Faults with an OTDR: How to Read the Trace"
+title: "Finding Faults with an OTDR — How to Read the Trace"
 date: "2026-09-01"
 desc: "Telling splices, connectors and breaks apart on an OTDR trace, and the measurement settings that quietly change what you see."
 coverImage: "/images/a11.webp"
@@ -12,7 +12,7 @@ An optical power meter tells you how much loss there is. It cannot tell you **wh
 
 An OTDR answers that question.
 
-## The Principle: Send Light, Watch What Comes Back
+## The Principle — Send Light, Watch What Comes Back
 
 An OTDR (Optical Time Domain Reflectometer) launches short optical pulses into the fiber and **records the returning light against time**.
 
@@ -24,19 +24,19 @@ Knowing the return time gives you distance. The result is a graph with **distanc
 
 A healthy trace is a gentle downward slope from left to right, caused by the attenuation of the fiber itself. The features sitting on that slope are the information.
 
-### A Step Down with No Spike: Fusion Splice
+### A Step Down with No Spike — Fusion Splice
 
 The signal drops without any reflection. A fusion splice fuses the two fibers into one, so the index change is small and there is almost nothing to reflect.
 
 **The height of the drop is the loss of that splice.** Under 0.1 dB is good. Above 0.3 dB, it is usually worth redoing.
 
-### A Spike Then a Drop: Connector
+### A Spike Then a Drop — Connector
 
 A sharp peak appears, because the connector interface reflects strongly. The amount the signal settles lower after the peak is the loss.
 
 **The size of the reflection is itself a signal.** An unusually large reflection often means the connector is contaminated or not fully mated.
 
-### A Vertical Drop to the Noise Floor: End or Break
+### A Vertical Drop to the Noise Floor — End or Break
 
 The trace falls to the bottom and only noise follows. The fiber ends there.
 
@@ -54,8 +54,8 @@ This is where newcomers most often go wrong. The same fiber measured with differ
 
 Short pulses resolve nearby events precisely. Long pulses reach further but smear detail.
 
-**Short**, good resolution, able to separate two closely spaced events. Limited range.
-**Long**, reaches the far end. Closely spaced events merge into one.
+**Short** — good resolution, able to separate two closely spaced events. Limited range.
+**Long** — reaches the far end. Closely spaced events merge into one.
 
 Which is why, in practice, **you do not measure only once.** Use a short pulse for the near section and a longer one for the whole span, two or three captures in total.
 
@@ -67,7 +67,7 @@ Set it shorter than the actual span and the far end is cut off. Set it far too l
 
 Longer averaging suppresses noise and produces a cleaner trace. Rush it and small splice losses disappear into the noise.
 
-## Dead Zone: The Part You Cannot See
+## Dead Zone — The Part You Cannot See
 
 Connect an OTDR directly to the fiber and **the first few tens of meters are invisible.** The strong reflection from the first connector briefly saturates the receiver. That region is the dead zone.
 
@@ -87,10 +87,10 @@ The cause is that the two fibers being joined have slightly different backscatte
 
 A typical order of work after a fault report:
 
-1. **Measure optical power**: is the link dead, or merely weak?
-2. **Clean connectors and remeasure**: the most common cause, and the fastest to clear.
-3. **Run the OTDR**: localize by distance and event signature.
-4. **Compare against the drawing**: convert measured distance to a physical location. Because of slack coils and duct routing, **fiber length and ground distance are not the same.**
+1. **Measure optical power** — is the link dead, or merely weak?
+2. **Clean connectors and remeasure** — the most common cause, and the fastest to clear.
+3. **Run the OTDR** — localize by distance and event signature.
+4. **Compare against the drawing** — convert measured distance to a physical location. Because of slack coils and duct routing, **fiber length and ground distance are not the same.**
 5. **Verify on site and repair.**
 
 Skip step 4, trust the raw distance, and you will excavate in the wrong place. Slack stored at each enclosure adds up to a meaningful error over a long span.

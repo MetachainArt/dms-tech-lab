@@ -1,16 +1,16 @@
 ---
-title: "에이전트의 몸: 다중 환경 자동화 파이프라인"
-excerpt: "차은별 봇이 글을 쓰는 것만으로는 부족합니다. Linux 봇 서버에서 시작해 Windows ComfyUI로 이미지를 생성하고, 호스팅어 서버에 업로드하고, Threads API로 게시하기까지: 네 개의 서로 다른 환경이 하나로 연결되는 파이프라인을 해부합니다."
+title: "에이전트의 몸 — 다중 환경 자동화 파이프라인"
+excerpt: "차은별 봇이 글을 쓰는 것만으로는 부족합니다. Linux 봇 서버에서 시작해 Windows ComfyUI로 이미지를 생성하고, 호스팅어 서버에 업로드하고, Threads API로 게시하기까지 — 네 개의 서로 다른 환경이 하나로 연결되는 파이프라인을 해부합니다."
 date: "2026. 03. 22"
 readTime: "16 min"
 coverImage: "/images/a12.webp"
 series: "openclaw-room"
 chapter: "4"
 tags: ["OpenClaw", "자동화", "ComfyUI", "Threads API", "파이프라인", "다중환경", "Linux", "Windows"]
-subtitle: "Linux → Windows ComfyUI → 이미지 서버 → Threads: 네 환경을 하나로 연결하는 자동화 파이프라인"
+subtitle: "Linux → Windows ComfyUI → 이미지 서버 → Threads — 네 환경을 하나로 연결하는 자동화 파이프라인"
 ---
 
-3편에서는 차은별 봇의 뇌(MD 파일 6종)를 해부했습니다. 이번 편은 그 뇌가 실제로 어떻게 몸을 움직이는지, 이미지를 생성하고 SNS에 게시하는 자동화 파이프라인을 다룹니다.
+3편에서는 차은별 봇의 뇌(MD 파일 6종)를 해부했습니다. 이번 편은 그 뇌가 실제로 어떻게 몸을 움직이는지 — 이미지를 생성하고 SNS에 게시하는 자동화 파이프라인을 다룹니다.
 
 > 하나의 서버로 끝났다면 쉬운 작업이었다. 하지만 현실은 네 개의 다른 환경이 유기적으로 연결되어야 했다.
 
@@ -18,11 +18,11 @@ subtitle: "Linux → Windows ComfyUI → 이미지 서버 → Threads: 네 환�
 
 처음 설계할 때는 단순했습니다. "봇이 글 쓰고, 이미지 만들고, 올리면 되잖아." 하지만 실제로 구현하다 보니 세 가지 제약이 생겼습니다.
 
-제약 1, GPU는 Windows에 있다: ComfyUI로 이미지를 생성하려면 NVIDIA GPU가 필요합니다. GPU가 연결된 머신은 Windows 서버입니다. 봇은 Linux에서 돌아갑니다. 두 운영체제가 서로 통신해야 합니다.
+제약 1 — GPU는 Windows에 있다: ComfyUI로 이미지를 생성하려면 NVIDIA GPU가 필요합니다. GPU가 연결된 머신은 Windows 서버입니다. 봇은 Linux에서 돌아갑니다. 두 운영체제가 서로 통신해야 합니다.
 
-제약 2, Threads API는 공개 URL이 필요하다: Threads API에 이미지를 첨부하려면 인터넷에서 접근 가능한 공개 URL이 있어야 합니다. Windows 서버의 로컬 파일 경로(`C:\images\output.png`)는 Threads가 접근할 수 없습니다.
+제약 2 — Threads API는 공개 URL이 필요하다: Threads API에 이미지를 첨부하려면 인터넷에서 접근 가능한 공개 URL이 있어야 합니다. Windows 서버의 로컬 파일 경로(`C:\images\output.png`)는 Threads가 접근할 수 없습니다.
 
-제약 3, 봇은 24시간 돌아야 한다: 스케줄 기반으로 자동 실행되려면 항상 켜져 있는 서버가 필요합니다. Windows 데스크탑 PC는 재시작, 절전 등의 이유로 항상 켜있다고 보장할 수 없습니다.
+제약 3 — 봇은 24시간 돌아야 한다: 스케줄 기반으로 자동 실행되려면 항상 켜져 있는 서버가 필요합니다. Windows 데스크탑 PC는 재시작, 절전 등의 이유로 항상 켜있다고 보장할 수 없습니다.
 
 이 세 가지 제약이 모여 "다중 환경 파이프라인"이 탄생했습니다.
 
@@ -57,7 +57,7 @@ subtitle: "Linux → Windows ComfyUI → 이미지 서버 → Threads: 네 환�
 
 ---
 
-## 1단계: Linux 봇 서버: 텍스트 생성
+## 1단계 — Linux 봇 서버: 텍스트 생성
 
 차은별 봇은 Linux 서버의 Python 프로세스로 실행됩니다. APScheduler가 매일 아침 9시에 태스크를 트리거합니다.
 
@@ -101,7 +101,7 @@ TOOLS.md는 코드 작성 시 참조 문서로 씁니다. "어떤 API를 어떻�
 
 ---
 
-## 2단계: ComfyUI API 호출 (Linux → Windows)
+## 2단계 — ComfyUI API 호출 (Linux → Windows)
 
 이 단계가 가장 까다로운 부분입니다. Linux에서 Windows에 있는 ComfyUI 서버로 HTTP 요청을 보냅니다.
 
@@ -141,7 +141,7 @@ def generate_image(post_text: str) -> str:
 
 ---
 
-## 3단계: Windows ComfyUI: 이미지 생성
+## 3단계 — Windows ComfyUI: 이미지 생성
 
 Windows 서버에서는 ComfyUI가 항상 실행 중이어야 합니다. Windows 서비스 또는 시작 프로그램으로 등록해두면 재시작 후에도 자동 실행됩니다.
 
@@ -167,7 +167,7 @@ Windows 서버에서는 ComfyUI가 항상 실행 중이어야 합니다. Windows
 
 ---
 
-## 4단계: 이미지 호스팅어 업로드 (SFTP)
+## 4단계 — 이미지 호스팅어 업로드 (SFTP)
 
 Threads API는 이미지를 직접 업로드하지 않습니다. 공개 URL을 받아서 자체적으로 이미지를 가져갑니다(pull). 따라서 이미지를 공개 서버에 먼저 올려야 합니다.
 
@@ -204,7 +204,7 @@ def upload_to_hostinger(local_path: str) -> str:
 
 ---
 
-## 5~7단계: Threads API: 게시물 발행
+## 5~7단계 — Threads API: 게시물 발행
 
 Meta의 Threads API는 2단계로 게시물을 만듭니다. 먼저 컨테이너를 생성하고, 그다음 발행합니다.
 
@@ -291,29 +291,29 @@ def with_retry(func, max_retries=3, base_delay=2):
 
 19단계에 걸쳐 이 자동화를 구축하면서 얻은 통찰을 정리합니다.
 
-첫째, 환경의 이질성이 복잡도의 주범이다. Linux와 Windows가 섞이고, 로컬 네트워크와 공인 인터넷이 섞이면 예상치 못한 문제가 계속 나옵니다. 방화벽 설정, 경로 구분자 차이(`/` vs `\`), 줄바꿈 문자 차이(`\n` vs `\r\n`) 등 작은 것들이 시간을 잡아먹습니다.
+첫째 — 환경의 이질성이 복잡도의 주범이다. Linux와 Windows가 섞이고, 로컬 네트워크와 공인 인터넷이 섞이면 예상치 못한 문제가 계속 나옵니다. 방화벽 설정, 경로 구분자 차이(`/` vs `\`), 줄바꿈 문자 차이(`\n` vs `\r\n`) 등 작은 것들이 시간을 잡아먹습니다.
 
-둘째, 단순한 방법이 항상 옳지는 않다. kie.ai 같은 이미지 API를 쓰면 ComfyUI 연동 없이 바로 이미지 URL을 받을 수 있습니다. 훨씬 단순합니다. 하지만 로컬 ComfyUI를 연동하는 것은 다양한 환경을 유기적으로 연결하는 능력을 기르기 위한 의도적인 선택이었습니다. 비용도 절감되고 커스터마이즈도 자유롭습니다.
+둘째 — 단순한 방법이 항상 옳지는 않다. kie.ai 같은 이미지 API를 쓰면 ComfyUI 연동 없이 바로 이미지 URL을 받을 수 있습니다. 훨씬 단순합니다. 하지만 로컬 ComfyUI를 연동하는 것은 다양한 환경을 유기적으로 연결하는 능력을 기르기 위한 의도적인 선택이었습니다. 비용도 절감되고 커스터마이즈도 자유롭습니다.
 
-셋째, 파이프라인은 가장 약한 링크만큼만 강하다. 7단계 중 하나가 깨지면 전체가 멈춥니다. 따라서 각 단계의 신뢰성을 높이는 것이 전체 시스템의 신뢰성을 높이는 유일한 방법입니다. 모니터링과 알림이 핵심입니다.
+셋째 — 파이프라인은 가장 약한 링크만큼만 강하다. 7단계 중 하나가 깨지면 전체가 멈춥니다. 따라서 각 단계의 신뢰성을 높이는 것이 전체 시스템의 신뢰성을 높이는 유일한 방법입니다. 모니터링과 알림이 핵심입니다.
 
-넷째, 다중 환경 자동화는 좋은 훈련이다. 단일 서버에서 끝나는 자동화와 다르게, 다중 환경 자동화는 네트워크, API 설계, 에러 처리, 운영 모니터링까지 전 영역을 다룹니다. 복잡하지만 그만큼 배우는 것이 많습니다.
+넷째 — 다중 환경 자동화는 좋은 훈련이다. 단일 서버에서 끝나는 자동화와 다르게, 다중 환경 자동화는 네트워크, API 설계, 에러 처리, 운영 모니터링까지 전 영역을 다룹니다. 복잡하지만 그만큼 배우는 것이 많습니다.
 
 ---
 
 ## 전체 시리즈 정리
 
 <Grid cols={2}>
-  <Card icon="Bot" color="blue" title="1편, 조직도 설계">
+  <Card icon="Bot" color="blue" title="1편 — 조직도 설계">
     12명의 에이전트를 4대 서버에 배치하는 멀티에이전트 조직 구조를 설계한 이야기
   </Card>
-  <Card icon="Users" color="teal" title="2편, 첫 에이전트 만들기">
+  <Card icon="Users" color="teal" title="2편 — 첫 에이전트 만들기">
     터미널에서 에이전트를 생성하고, OAuth 인증을 마치고, SOUL/IDENTITY/USER를 주입하는 온보딩 흐름
   </Card>
-  <Card icon="Brain" color="blue" title="3편, MD 파일 구조 해부">
-    SOUL, IDENTITY, USER, MEMORY, TOOLS, SKILLS, 에이전트의 뇌를 구성하는 여섯 개 문서의 역할과 작성 원칙
+  <Card icon="Brain" color="blue" title="3편 — MD 파일 구조 해부">
+    SOUL, IDENTITY, USER, MEMORY, TOOLS, SKILLS — 에이전트의 뇌를 구성하는 여섯 개 문서의 역할과 작성 원칙
   </Card>
-  <Card icon="Network" color="teal" title="4편, 다중 환경 파이프라인">
+  <Card icon="Network" color="teal" title="4편 — 다중 환경 파이프라인">
     Linux → Windows ComfyUI → 호스팅어 → Threads API로 이어지는 네 환경의 자동화 파이프라인 (현재 편)
   </Card>
 </Grid>
