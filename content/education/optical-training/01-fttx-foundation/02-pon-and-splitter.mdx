@@ -1,5 +1,5 @@
 ---
-title: "PON and Optical Splitters — How 32 Homes Share One Fiber"
+title: "PON and Optical Splitters: How 32 Homes Share One Fiber"
 date: "2026-09-01"
 desc: "Why we do not run a dedicated fiber to every subscriber, how a passive optical network keeps traffic from colliding, and what the split ratio means in the field."
 coverImage: "/images/a15.webp"
@@ -14,7 +14,7 @@ The problem is **cable count**. Ten thousand subscribers means ten thousand stra
 
 PON is how we get around it.
 
-## PON — Splitting Without Power
+## PON: Splitting Without Power
 
 The P in PON (Passive Optical Network) stands for passive. It means **there is no powered equipment anywhere between the two ends.**
 
@@ -26,13 +26,13 @@ Because splitters need no power, they can sit on a pole, inside a manhole, or in
 
 If 32 homes share one strand, it is fair to ask whether a neighbor data stream arrives at your door. Physically, it does. Two mechanisms deal with that.
 
-### Downstream — Broadcast and Filter
+### Downstream: Broadcast and Filter
 
 From the OLT toward subscribers, **every frame is broadcast to all 32 homes.** Each ONU picks out what is addressed to it and discards the rest.
 
 This is why downstream traffic is encrypted. Reaching a device and being readable by that device are two different things.
 
-### Upstream — Taking Turns in Time
+### Upstream: Taking Turns in Time
 
 The subscriber-to-OLT direction is trickier. If 32 homes transmit simultaneously, their bursts collide on the shared fiber.
 
@@ -59,8 +59,8 @@ On top of that come connector loss, splice loss, and the attenuation of the fibe
 
 You can concentrate the split in one place (1:32 at a single point), or cascade it (1:4 first, then 1:8 on each branch).
 
-- **Single-stage, centralized** — easier to manage, simpler loss math. The cost is that cable concentrates at the splitter location.
-- **Two-stage, distributed** — saves more cable and adapts better to scattered subscribers. The cost is more junction points, therefore more loss contributors, and harder fault isolation.
+- **Single-stage, centralized**: easier to manage, simpler loss math. The cost is that cable concentrates at the splitter location.
+- **Two-stage, distributed**: saves more cable and adapts better to scattered subscribers. The cost is more junction points, therefore more loss contributors, and harder fault isolation.
 
 **Scattered subscribers generally favor two stages; dense apartment blocks favor one.** In reality, duct availability and maintenance staffing tend to drive the decision more than either principle.
 

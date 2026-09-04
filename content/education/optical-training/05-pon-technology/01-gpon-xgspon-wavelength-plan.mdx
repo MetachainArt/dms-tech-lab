@@ -19,11 +19,11 @@ That works because each system is assigned **its own wavelength**, and passive f
 | GPON | 1490 nm | 1310 nm | 2.5G down / 1.25G up |
 | XG-PON1 | 1577 nm | 1270 nm | 10G down / 2.5G up |
 | XGS-PON | 1577 nm | 1270 nm | 10G symmetric |
-| RF video overlay | 1550 nm | — | broadcast |
+| RF video overlay | 1550 nm |, | broadcast |
 
 Two observations matter more than the numbers.
 
-**GPON and XGS-PON occupy different windows in both directions.** That is deliberate, and it is what makes coexistence possible — the subject of the next lesson.
+**GPON and XGS-PON occupy different windows in both directions.** That is deliberate, and it is what makes coexistence possible, the subject of the next lesson.
 
 **The 1550 nm region is spoken for** where video overlay exists. This is why an operator carrying RF video has less freedom in later upgrades, and why reflections matter more on those networks.
 
@@ -33,7 +33,7 @@ Downstream wavelengths are comfortably separated. Upstream is tighter: GPON at 1
 
 The practical consequence is that **upstream filtering is harder than downstream filtering**, and the components that combine the two generations have to be good. On plant where coexistence is planned, this is not a place to save money.
 
-It also means the fiber's water peak region and its attenuation profile across 1260–1360 nm matter. This is one of the reasons G.652.D — with its low water peak — became the standard rather than older G.652 variants.
+It also means the fiber's water peak region and its attenuation profile across 1260–1360 nm matter. This is one of the reasons G.652.D, with its low water peak, became the standard rather than older G.652 variants.
 
 ## The Split Ratio Question Comes Back
 
@@ -41,7 +41,7 @@ As covered in the power budget lesson, split loss dominates the budget. Differen
 
 Higher-rate systems are generally **less tolerant**, not more. A 1:64 split that works for GPON may not leave enough margin for a 10G system on the same plant, because the receiver sensitivity does not improve proportionally with the rate.
 
-This is the single most common surprise during an upgrade project: **the fiber is fine, the split is the problem.** And splits are physical — changing them means touching plant.
+This is the single most common surprise during an upgrade project: **the fiber is fine, the split is the problem.** And splits are physical, changing them means touching plant.
 
 ## What Determines Whether Your Plant Can Take the Next Generation
 

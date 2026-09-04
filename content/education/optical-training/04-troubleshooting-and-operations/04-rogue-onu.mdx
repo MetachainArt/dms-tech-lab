@@ -1,5 +1,5 @@
 ---
-title: "Rogue ONU — When One Unit Breaks the Whole PON"
+title: "Rogue ONU: When One Unit Breaks the Whole PON"
 date: "2026-09-01"
 desc: "A single misbehaving ONU can take down every subscriber on the port. Why the shared upstream makes this possible, and how to find the culprit."
 coverImage: "/images/a8.webp"
@@ -34,7 +34,7 @@ That last point is important. **A fault confined to exactly one PON port, with c
 
 Look at the OLT statistics for the affected port:
 
-**Many ONUs with upstream errors simultaneously.** A physical fault usually degrades a subset — those beyond the damage. A rogue affects everyone indiscriminately.
+**Many ONUs with upstream errors simultaneously.** A physical fault usually degrades a subset, those beyond the damage. A rogue affects everyone indiscriminately.
 
 **Repeated deregistration and re-registration** across multiple units.
 
@@ -44,11 +44,11 @@ Look at the OLT statistics for the affected port:
 
 ## Finding the Culprit
 
-Modern OLTs increasingly include rogue ONU detection that isolates and disables the offending unit automatically. Check whether the platform supports it before doing anything manual — it turns hours into minutes.
+Modern OLTs increasingly include rogue ONU detection that isolates and disables the offending unit automatically. Check whether the platform supports it before doing anything manual, it turns hours into minutes.
 
 Without that, the method is elimination:
 
-**Disable ONUs administratively in groups.** Disable half the units on the port. If the problem clears, the rogue is in the disabled half. Halve again. This is a binary search and it converges quickly — 32 subscribers takes about five steps.
+**Disable ONUs administratively in groups.** Disable half the units on the port. If the problem clears, the rogue is in the disabled half. Halve again. This is a binary search and it converges quickly, 32 subscribers takes about five steps.
 
 **Or disconnect at the splitter.** Physically unmate splitter output ports in groups. Faster to reason about, but it means a site visit and it puts connectors at risk of contamination, so cap what you unmate.
 
@@ -81,5 +81,5 @@ Once identified, replace the unit. A rogue is a hardware or firmware fault in th
 - The shared upstream time slot arrangement means one misbehaving ONU can disrupt an entire PON port.
 - Signature: upstream errors across many subscribers, downstream normal, fiber clean, other ports unaffected.
 - Check for OLT rogue detection first; it isolates automatically.
-- Otherwise binary-search by disabling ONUs administratively — five steps for 32 subscribers.
+- Otherwise binary-search by disabling ONUs administratively: five steps for 32 subscribers.
 - Rogues are hardware or firmware faults. Replace the unit, then check the fleet for the same model and firmware.

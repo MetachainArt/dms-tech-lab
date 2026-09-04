@@ -33,7 +33,7 @@ export default function StepArticleHeader({
 
   return (
     <section className="relative overflow-hidden border-b border-paperfolio-line bg-paperfolio-bg px-6 pb-16 pt-36">
-      {/* 배경 도형 — 아주 옅게 깔리는 큰 원 */}
+      {/* 배경 도형, 아주 옅게 깔리는 큰 원 */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -right-32 -top-24 h-[420px] w-[420px] rounded-full border border-paperfolio-line/70"

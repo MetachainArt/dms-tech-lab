@@ -6,7 +6,7 @@ import { generateMetadata as generateSeoMetadata } from "@/lib/metadata";
 import { WORKS_DATA } from "@/lib/works-projects-data";
 
 export const metadata = generateSeoMetadata({
-  title: "Obsidian 활용 가이드 — 자체 동기화 서버 구축",
+  title: "Obsidian 활용 가이드: 자체 동기화 서버 구축",
   description: "옵시디언을 자체 호스팅 동기화 서버와 함께 운영하는 방법을 처음부터 차근차근 정리한 실전 가이드입니다.",
   path: "/works/ai-skill/obsidian-guide",
 });

@@ -1,5 +1,5 @@
 ---
-title: "Coexistence — Running a New PON Over Existing Plant"
+title: "Coexistence: Running a New PON Over Existing Plant"
 date: "2026-09-01"
 desc: "Upgrading without a forklift replacement. How coexistence elements work, what they cost you in budget, and the migration sequence that avoids outages."
 coverImage: "/images/a16.webp"
@@ -22,7 +22,7 @@ That component sits at the OLT side and is called a coexistence element, or WDM1
 - Separates GPON upstream (1310 nm) from XGS-PON upstream (1270 nm) coming back
 - Passes the RF video overlay at 1550 nm if present
 
-Downstream, every ONU receives everything and ignores what is not on its wavelength — the same filtering principle as the broadcast behaviour covered in the PON lesson, one level up.
+Downstream, every ONU receives everything and ignores what is not on its wavelength, the same filtering principle as the broadcast behaviour covered in the PON lesson, one level up.
 
 ## What It Costs You
 
@@ -40,7 +40,7 @@ A sequence that avoids surprises:
 
 **2. Reclaim margin first.** Before adding anything, clean and re-terminate marginal connectors, and replace any splices that measured poorly at acceptance. This is cheap and it often recovers more than the coexistence element will consume.
 
-**3. Install the coexistence element and the new OLT ports** with no subscribers on them. Verify that existing GPON service is unaffected — this is the step people rush, and it is the one that causes mass outages.
+**3. Install the coexistence element and the new OLT ports** with no subscribers on them. Verify that existing GPON service is unaffected, this is the step people rush, and it is the one that causes mass outages.
 
 **4. Migrate a small pilot group.** A handful of subscribers, ideally at varying distances including the furthest, since the far end has the least margin.
 
@@ -78,7 +78,7 @@ Without this, a fault during migration takes far longer to diagnose because nobo
 ## Summary
 
 - Coexistence lets two PON generations share one fiber, with subscribers migrating individually.
-- The coexistence element is passive but costs roughly 1 dB each way — check the budget before ordering.
+- The coexistence element is passive but costs roughly 1 dB each way: check the budget before ordering.
 - Reclaim margin by cleaning and re-terminating before you spend it on the new element.
 - Verify existing service is unaffected before migrating anyone, then pilot with subscribers at the far end.
 - Reflections, video overlay and differential distance are the constraints that bite during migration.

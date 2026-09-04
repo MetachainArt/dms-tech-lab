@@ -54,7 +54,7 @@ export const SITE_CONFIG = {
       "광통신 트레이닝 전문가이자 AX 전문가. 광통신 하드웨어·FTTx 현장 경험을 바탕으로 AI 자동화, 3D 설계, 실무형 교육을 리도만의 방식으로 연결합니다.",
     image:
       "https://dmssolution.co.kr/og-default.png",
-    alt: "DMS.Labs - 자동화 · 설계 · 교육",
+    alt: "DMS.Labs 자동화 · 설계 · 교육",
   },
   twitter: {
     card: "summary_large_image",

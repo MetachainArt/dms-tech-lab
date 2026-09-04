@@ -1,5 +1,5 @@
 ---
-title: "Single-mode or Multimode — Choosing the Right Fiber"
+title: "Single-mode or Multimode: Choosing the Right Fiber"
 date: "2026-09-01"
 desc: "Why access networks are almost always single-mode, what actually differs between the two, and the mistakes that happen when the wrong fiber ends up on a reel."
 coverImage: "/images/a5.webp"
@@ -10,8 +10,8 @@ readTime: "10 min"
 
 Pull a single-mode and a multimode fiber out of their jackets and you cannot tell them apart by eye. Both are glass strands about 125 micrometres across. The difference is inside, in the core.
 
-- **Single-mode** — core around 9 µm. Light travels essentially one path.
-- **Multimode** — core around 50 or 62.5 µm. Light bounces along many paths simultaneously.
+- **Single-mode**: core around 9 µm. Light travels essentially one path.
+- **Multimode**: core around 50 or 62.5 µm. Light bounces along many paths simultaneously.
 
 That one number decides almost everything else.
 
@@ -21,7 +21,7 @@ In a wide multimode core, light entering at slightly different angles takes path
 
 This is **modal dispersion**, and it puts a hard ceiling on how far you can push data. Past a certain distance, consecutive pulses blur into each other and the receiver cannot tell them apart.
 
-A single-mode core is narrow enough that only one path is supported. No modal dispersion, so the reach is dramatically longer — tens of kilometres instead of hundreds of metres.
+A single-mode core is narrow enough that only one path is supported. No modal dispersion, so the reach is dramatically longer, tens of kilometres instead of hundreds of metres.
 
 ## So Why Does Multimode Exist at All?
 
@@ -29,7 +29,7 @@ Because the wide core is easier to work with, and historically the transceivers 
 
 Inside a data centre or a building riser, where runs are short and connector counts are high, multimode still makes economic sense.
 
-**In access networks — FTTx — it does not.** Spans are kilometres, splitters are in the path, and the wavelength plan assumes single-mode behaviour. Access plant is single-mode, full stop.
+**In access networks, FTTx, it does not.** Spans are kilometres, splitters are in the path, and the wavelength plan assumes single-mode behaviour. Access plant is single-mode, full stop.
 
 ## The Fiber Types You Will Actually See
 
@@ -47,7 +47,7 @@ The important compatibility fact: **G.657.A is designed to splice and interopera
 
 ## Where This Goes Wrong in the Field
 
-**Mixing multimode patch cords into a single-mode link.** It happens because the connectors mate perfectly. Nothing physically stops you. The link either fails outright or comes up with loss nobody can explain. The colour coding exists for this reason — **yellow jacket for single-mode, orange or aqua for multimode** — and it is worth enforcing even when the store room is disorganised.
+**Mixing multimode patch cords into a single-mode link.** It happens because the connectors mate perfectly. Nothing physically stops you. The link either fails outright or comes up with loss nobody can explain. The colour coding exists for this reason, **yellow jacket for single-mode, orange or aqua for multimode**, and it is worth enforcing even when the store room is disorganised.
 
 **Assuming all single-mode is interchangeable.** Splicing dissimilar fiber types produces a small mode-field mismatch loss. Individually tiny, but on a link that is already tight on budget it is one more thing you did not account for.
 

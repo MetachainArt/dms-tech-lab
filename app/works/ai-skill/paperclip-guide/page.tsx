@@ -6,7 +6,7 @@ import { generateMetadata as generateSeoMetadata } from "@/lib/metadata";
 import { WORKS_DATA } from "@/lib/works-projects-data";
 
 export const metadata = generateSeoMetadata({
-  title: "Paperclip — AI 에이전트로 회사를 운영하다",
+  title: "Paperclip: AI 에이전트로 회사를 운영하다",
   description: "AI 에이전트 팀을 조직도, 예산, 목표로 관리하는 오픈소스 'Company OS' Paperclip을 처음부터 배우고 실전에 적용한 기록입니다.",
   path: "/works/ai-skill/paperclip-guide",
 });

@@ -1,5 +1,5 @@
 ---
-title: "Fusion Splicing — What Actually Makes a Good Splice"
+title: "Fusion Splicing: What Actually Makes a Good Splice"
 date: "2026-09-01"
 desc: "The five steps of a splice, what the splicer's loss estimate does and does not tell you, and why most bad splices fail before the arc ever fires."
 coverImage: "/images/a6.webp"
@@ -38,8 +38,8 @@ Cleaver blades wear. They have a position count and a rotation schedule, and ign
 
 The splicer aligns the two fibers. Two approaches you will meet:
 
-- **Core alignment** — the machine images the actual cores and aligns them directly. More accurate, more expensive.
-- **Cladding (V-groove) alignment** — aligns the outer glass and assumes the core is centred. Cheaper, adequate for well-made fiber.
+- **Core alignment**: the machine images the actual cores and aligns them directly. More accurate, more expensive.
+- **Cladding (V-groove) alignment**: aligns the outer glass and assumes the core is centred. Cheaper, adequate for well-made fiber.
 
 For access work either can be fine. For tight budgets or dissimilar fiber types, core alignment earns its cost.
 
@@ -51,13 +51,13 @@ The arc melts and joins. Modern splicers run an automatic program per fiber type
 
 After the splice the machine shows an estimated loss, usually something like 0.02 dB. It is easy to treat that as measurement. It is not.
 
-**The splicer estimates loss from the image of the joint.** It sees geometry — offset, deformation, bubbles — and infers a number. It cannot see mode-field mismatch between dissimilar fibers, and it cannot see how the joint will behave once it is coiled into a tray.
+**The splicer estimates loss from the image of the joint.** It sees geometry, offset, deformation, bubbles, and infers a number. It cannot see mode-field mismatch between dissimilar fibers, and it cannot see how the joint will behave once it is coiled into a tray.
 
 Which means:
 
 - A splicer reading of 0.01 dB is **not** proof of a good link.
 - The real number comes from an OTDR or an end-to-end insertion loss test.
-- A splicer reading that is unexpectedly **bad** is still useful — it is telling you something is wrong right now, while you can still redo it cheaply.
+- A splicer reading that is unexpectedly **bad** is still useful: it is telling you something is wrong right now, while you can still redo it cheaply.
 
 Treat it as a go/no-go indicator during work, and the OTDR as the record.
 
@@ -67,9 +67,9 @@ The splice point is bare glass. It needs a protection sleeve, heat-shrunk over t
 
 Two things go wrong here more often than the splice itself:
 
-**Sleeve not fully seated** — the joint sits at the edge of the sleeve instead of centred, so the strength member does not support it.
+**Sleeve not fully seated**, the joint sits at the edge of the sleeve instead of centred, so the strength member does not support it.
 
-**Slack forced into the tray** — you make a perfect splice and then bend it into a radius the fiber cannot take. The loss you measure afterwards is the tray, not the splice. When a measured splice loss is much worse than the splicer suggested, **open the tray and look at the coil before you cut and redo the joint.**
+**Slack forced into the tray**, you make a perfect splice and then bend it into a radius the fiber cannot take. The loss you measure afterwards is the tray, not the splice. When a measured splice loss is much worse than the splicer suggested, **open the tray and look at the coil before you cut and redo the joint.**
 
 ## Numbers Worth Remembering
 

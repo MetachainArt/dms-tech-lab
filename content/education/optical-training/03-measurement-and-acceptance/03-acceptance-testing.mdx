@@ -1,5 +1,5 @@
 ---
-title: "Acceptance Testing — What to Record and Why It Matters Later"
+title: "Acceptance Testing: What to Record and Why It Matters Later"
 date: "2026-09-01"
 desc: "Handover is the one moment when measuring everything is cheap. What belongs in the acceptance pack, and the omissions that cost years later."
 coverImage: "/images/a4.webp"
@@ -22,7 +22,7 @@ For each fiber path:
 
 **End-to-end insertion loss, both wavelengths.** With the reference method recorded, as covered in the insertion loss lesson.
 
-**Optical return loss** where the specification calls for it — particularly on PON plant with video overlay.
+**Optical return loss** where the specification calls for it, particularly on PON plant with video overlay.
 
 **Connector end-face images** for the terminations that were made or mated during the work. This one is skipped almost universally and is disproportionately valuable, because connector degradation is the most common later fault.
 
@@ -51,7 +51,7 @@ What needs to be agreed in writing beforehand:
 - **Maximum individual splice loss**, and whether it is judged on the bidirectional average.
 - **Maximum connector loss** and minimum return loss.
 - **Reference method** for insertion loss.
-- **What happens on a marginal result** — retest, rework, or accept with a note.
+- **What happens on a marginal result**: retest, rework, or accept with a note.
 
 That last item prevents the most common dispute. A splice at 0.28 dB against a 0.3 dB limit passes, but if three of them appear on the same span, something systematic is happening and "it passed" is the wrong conclusion.
 
@@ -59,7 +59,7 @@ That last item prevents the most common dispute. A splice at 0.28 dB against a 0
 
 Individual pass marks hide patterns. Before signing off, look across the whole job:
 
-**Are splice losses clustered high?** As covered in the splicing lesson, that usually means tooling — a worn cleaver blade — not bad luck.
+**Are splice losses clustered high?** As covered in the splicing lesson, that usually means tooling, a worn cleaver blade, not bad luck.
 
 **Is one crew's work consistently different?** Worth knowing, and worth addressing as training rather than rework.
 
@@ -72,7 +72,7 @@ Individual pass marks hide patterns. Before signing off, look across the whole j
 The acceptance pack is one part. The full handover also needs:
 
 - **As-built drawings** reflecting what was actually installed, not what was designed.
-- **Splice schedules** — which fiber connects to which, in which tray, in which closure.
+- **Splice schedules**: which fiber connects to which, in which tray, in which closure.
 - **Slack locations and lengths**, which is what makes future fault localisation accurate.
 - **Closure and hand-hole locations**, ideally with coordinates.
 
@@ -82,7 +82,7 @@ A network with perfect test results and missing as-builts behaves during a fault
 
 - Handover is the only cheap moment to measure. Treat the results as the baseline for the plant's whole life.
 - Save native trace files, not screenshots. Record instrument settings, direction, reference method and launch cable.
-- Agree pass criteria — including what happens on marginal results — before testing starts.
+- Agree pass criteria: including what happens on marginal results, before testing starts.
 - Read results as a set. Clustered marginal splices are a tooling signal, not luck.
 - Record remaining margin. It tells the operator how much future repair the link can absorb.
 - As-builts, splice schedules and slack locations are part of the deliverable, not an afterthought.

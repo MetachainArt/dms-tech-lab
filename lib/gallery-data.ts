@@ -41,7 +41,7 @@ export const galleryPieces: GalleryPiece[] = [
       },
       {
         type: "motto",
-        text: "— 넘길 수 없는 일은, 아직 내가 모르는 일이다. —",
+        text: ", 넘길 수 없는 일은, 아직 내가 모르는 일이다., ",
       },
       {
         type: "text",
@@ -49,7 +49,7 @@ export const galleryPieces: GalleryPiece[] = [
       },
       {
         type: "quote",
-        text: "You cannot delegate what you cannot describe — and the describing turns out to be most of the work.",
+        text: "You cannot delegate what you cannot describe, and the describing turns out to be most of the work.",
       },
       {
         type: "text",
@@ -57,7 +57,7 @@ export const galleryPieces: GalleryPiece[] = [
       },
       {
         type: "motto",
-        text: "— 도구가 일을 줄이기 전에, 문장이 먼저 줄인다. —",
+        text: ", 도구가 일을 줄이기 전에, 문장이 먼저 줄인다., ",
       },
     ],
     image: "/gallery/what-you-cannot-say.webp",
@@ -83,7 +83,7 @@ export const galleryPieces: GalleryPiece[] = [
       },
       {
         "type": "motto",
-        "text": "— 없던 것을 만드는 게 아니라, 붙지 않던 것을 붙이는 일. —"
+        "text": ", 없던 것을 만드는 게 아니라, 붙지 않던 것을 붙이는 일., "
       },
       {
         "type": "text",
@@ -103,7 +103,7 @@ export const galleryPieces: GalleryPiece[] = [
       },
       {
         "type": "motto",
-        "text": "— 번개를 기다리지 말고, 선반을 채워라. —"
+        "text": ", 번개를 기다리지 말고, 선반을 채워라., "
       }
     ],
     "image": "/images/a20.webp",
@@ -125,7 +125,7 @@ export const galleryPieces: GalleryPiece[] = [
       },
       {
         type: "motto",
-        text: "— 알수록, 더 모른다. —",
+        text: ", 알수록, 더 모른다., ",
       },
       {
         type: "text",
@@ -133,7 +133,7 @@ export const galleryPieces: GalleryPiece[] = [
       },
       {
         type: "quote",
-        text: "The more you learn, the more you realize you never know enough — and yet, that chaos is the only place where real thinking grows.",
+        text: "The more you learn, the more you realize you never know enough, and yet, that chaos is the only place where real thinking grows.",
       },
     ],
     image: "/images/art/1.webp",
@@ -155,7 +155,7 @@ export const galleryPieces: GalleryPiece[] = [
       },
       {
         type: "motto",
-        text: "— 기울어짐도, 사랑이다. —",
+        text: ", 기울어짐도, 사랑이다., ",
       },
       {
         type: "text",
@@ -163,7 +163,7 @@ export const galleryPieces: GalleryPiece[] = [
       },
       {
         type: "quote",
-        text: "To want to love is already an act of love — a leaning toward the world, before the world ever leans back.",
+        text: "To want to love is already an act of love, a leaning toward the world, before the world ever leans back.",
       },
     ],
     image: "/images/c1.webp",
@@ -185,7 +185,7 @@ export const galleryPieces: GalleryPiece[] = [
       },
       {
         type: "motto",
-        text: "— 상상을 디자인하라. —",
+        text: ", 상상을 디자인하라., ",
       },
       {
         type: "text",

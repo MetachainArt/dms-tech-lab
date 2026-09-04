@@ -41,7 +41,7 @@ export default function Navbar() {
               <span className="hidden sm:inline">Search</span>
             </button>
 
-            {/* Center: Brand — absolutely centered */}
+            {/* Center: Brand, absolutely centered */}
             <Link
               href="/"
               className="absolute left-1/2 -translate-x-1/2 font-playfair text-[1.5rem] leading-none text-paperfolio-text tracking-tight hover:opacity-70 transition-opacity"
@@ -68,7 +68,7 @@ export default function Navbar() {
                 ))}
               </nav>
 
-              {/* 문의 CTA — 항상 표시 */}
+              {/* 문의 CTA, 항상 표시 */}
               <Link
                 href="/#contact"
                 className="hidden sm:flex items-center gap-1 font-pixel text-[15px] text-paperfolio-text hover:text-paperfolio-accent-coral transition-colors"

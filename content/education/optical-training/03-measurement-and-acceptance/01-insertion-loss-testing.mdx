@@ -1,5 +1,5 @@
 ---
-title: "Insertion Loss Testing — The Measurement That Actually Decides Acceptance"
+title: "Insertion Loss Testing: The Measurement That Actually Decides Acceptance"
 date: "2026-09-01"
 desc: "Power meter and light source, reference methods, and why the number you get depends entirely on how you set the reference."
 coverImage: "/images/a1.webp"
@@ -22,7 +22,7 @@ Before measuring the link, you measure your test leads alone and set that as zer
 
 Three methods exist, and they do not produce the same number.
 
-**One-jumper reference.** Connect the source to the meter with a single test cord and zero it. When you then insert the link, both the near-end and far-end connectors are included in the measurement. This is the strictest method, and generally the right one for access networks — the connectors are part of the plant you are handing over.
+**One-jumper reference.** Connect the source to the meter with a single test cord and zero it. When you then insert the link, both the near-end and far-end connectors are included in the measurement. This is the strictest method, and generally the right one for access networks, the connectors are part of the plant you are handing over.
 
 **Two-jumper reference.** Zero with two cords mated through an adapter. The connection at the middle is excluded, so **one of the link's connectors disappears from the result.** The link looks roughly 0.3–0.5 dB better than it is.
 
@@ -34,7 +34,7 @@ None of these is wrong. What is wrong is **not recording which one you used.** A
 
 Measure at 1310 nm and 1550 nm, and record both.
 
-The reason is diagnostic, not bureaucratic. As covered in the bend-radius lesson, **macrobend loss is significantly worse at 1550 nm**. If a link measures acceptably at 1310 but poorly at 1550, you almost certainly have a bend somewhere — before you have opened a single enclosure.
+The reason is diagnostic, not bureaucratic. As covered in the bend-radius lesson, **macrobend loss is significantly worse at 1550 nm**. If a link measures acceptably at 1310 but poorly at 1550, you almost certainly have a bend somewhere, before you have opened a single enclosure.
 
 For PON plant carrying video overlay, 1490 nm and 1550 nm behaviour matters commercially too, not just diagnostically.
 

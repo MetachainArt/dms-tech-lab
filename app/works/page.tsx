@@ -37,7 +37,7 @@ export default function WorksPage() {
             {SHOWCASE_WORKS.length} works
           </span>
           <span className="text-xs tracking-[0.18em] uppercase text-paperfolio-text-muted">
-            2024 — 2026
+            2024 ~ 2026
           </span>
         </div>
       </header>
