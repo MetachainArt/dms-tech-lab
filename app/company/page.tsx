@@ -1,3 +1,5 @@
+import FiberPageHeader from "@/components/brand/FiberPageHeader";
+import styles from "@/components/brand/FiberPages.module.css";
 import Link from "next/link";
 import { generateMetadata as generateSeoMetadata } from "@/lib/metadata";
 
@@ -39,22 +41,15 @@ const timelines = [
 
 export default function CompanyPage() {
   return (
-    <main className="min-h-screen bg-paperfolio-bg text-paperfolio-text selection:bg-paperfolio-accent-yellow/70 selection:text-paperfolio-text">
-      <section className="px-6 pb-18 pt-36">
-        <div className="mx-auto max-w-7xl grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
-          <div className="space-y-6">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">리도와 DMS</p>
-            <h1 className="paperfolio-display max-w-4xl">브랜드의 전면은 리도지만, 실행의 기반에는 DMS가 있습니다.</h1>
-            <p className="max-w-2xl text-lg leading-8 text-paperfolio-text-muted">
-              이 페이지는 리도 개인 브랜드와 DMS Solution이라는 운영 기반의 관계를 설명합니다. 광통신 트레이닝 전문가이자 AX 전문가로서의 작업은 사람 중심으로 보이되, 실제 협업과 운영은 안정적인 구조 위에서 진행됩니다.
-            </p>
-          </div>
-          <div className="rounded-[36px] border border-paperfolio-line bg-white p-8 shadow-[0_24px_80px_rgba(31,41,55,0.08)]">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-coral">운영 원칙</p>
-            <p className="mt-5 font-playfair text-3xl leading-tight text-paperfolio-text">개인 브랜드의 신뢰감과 실행 조직의 안정감을 함께 가져갑니다.</p>
-          </div>
-        </div>
-      </section>
+    <main className={`${styles.page} ${styles.editorial}`}>
+      <FiberPageHeader
+        eyebrow="Company / 리도와 DMS" lead="Human by" accent="design." variant="company"
+        title="브랜드의 전면은 리도지만, 실행의 기반에는 DMS가 있습니다."
+        description="이 페이지는 리도 개인 브랜드와 DMS Solution이라는 운영 기반의 관계를 설명합니다. 광통신 트레이닝 전문가이자 AX 전문가로서의 작업은 사람 중심으로 보이되, 실제 협업과 운영은 안정적인 구조 위에서 진행됩니다."
+        note={<><span>DMS Solution / Operating foundation</span><span>05 — Structure</span></>}
+      >
+        <p>운영 원칙 / 개인 브랜드의 신뢰감과 실행 조직의 안정감을 함께 가져갑니다.</p>
+      </FiberPageHeader>
 
       <section className="bg-paperfolio-surface px-6 py-24">
         <div className="mx-auto max-w-7xl grid gap-6 md:grid-cols-3">

@@ -1,0 +1,44 @@
+.header { padding: 145px 5vw 64px; background: #f6f5f1; border-bottom: 1px solid #c9d1dc; color: #17283e; }
+.inner { max-width: 1360px; margin: 0 auto; }
+.breadcrumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding-top: 18px; border-top: 1px solid #bec8d5; font-size: 12px; color: #5b6778; }
+.breadcrumbs a { display: inline-flex; align-items: center; gap: 8px; }
+.breadcrumbs a:hover { color: #164fc5; }
+.breadcrumbs a:focus-visible, .caption a:focus-visible { outline: 2px solid #164fc5; outline-offset: 5px; }
+.composition { display: grid; grid-template-columns: minmax(160px, .23fr) minmax(0, 1fr); gap: 52px; align-items: start; padding-top: 64px; }
+.serialLabel { color: #637084; font-size: 9px; font-weight: 600; letter-spacing: .2em; }
+.number { margin: 8px 0 0 -8px; color: #164fc5; font-family: var(--font-playfair), Georgia, serif; font-size: clamp(120px, 15vw, 220px); font-weight: 400; line-height: .88; letter-spacing: -.07em; }
+.total { margin-top: 18px; color: #6c7787; font-size: 11px; letter-spacing: .12em; }
+.copy { min-width: 0; padding-top: 3px; }
+.eyebrow { color: #164fc5; font-size: 10px; letter-spacing: .16em; line-height: 1.8; font-weight: 600; }
+.title { margin-top: 22px; font-family: var(--font-pretendard), sans-serif; font-size: clamp(38px, 4.8vw, 68px); line-height: 1.27; letter-spacing: -.05em; font-weight: 650; word-break: keep-all; overflow-wrap: anywhere; text-wrap: balance; }
+.description { max-width: 760px; margin-top: 26px; color: #5c697a; font-size: 16px; line-height: 1.9; word-break: keep-all; overflow-wrap: anywhere; }
+.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 30px; color: #66758a; font-size: 11px; }
+.meta > :is(time, span) { display: inline-flex; align-items: center; gap: 8px; }
+.progress { display: flex; gap: 5px; margin-top: 56px; }
+.progress span { min-width: 0; height: 2px; flex: 1; background: #ccd4df; }
+.progress .complete { background: #164fc5; }
+.cover { width: 77%; margin: 42px 0 0 auto; }
+.image { position: relative; aspect-ratio: 16 / 9; border: 1px solid #d2d9e2; background: #e9edf1; }
+.image img { object-fit: contain; }
+.caption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 20px; padding-top: 13px; color: #627184; font-size: 11px; line-height: 1.7; }
+.caption a { margin-left: auto; color: #164fc5; white-space: nowrap; }
+.caption a:hover { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 767px) {
+  .header { padding: 112px 22px 44px; }
+  .breadcrumbs { gap: 10px; font-size: 11px; }
+  .composition { display: block; padding-top: 36px; }
+  .serial { display: flex; align-items: baseline; gap: 18px; margin-bottom: 34px; }
+  .serialLabel { align-self: flex-start; margin-top: 8px; font-size: 8px; }
+  .number { margin: 0; font-size: 98px; }
+  .total { margin: 0; font-size: 10px; }
+  .eyebrow { font-size: 9px; }
+  .title { margin-top: 16px; font-size: clamp(31px, 7.4vw, 52px); line-height: 1.32; }
+  .description { margin-top: 22px; font-size: 14px; }
+  .meta { margin-top: 24px; font-size: 10px; }
+  .progress { margin-top: 34px; gap: 3px; }
+  .cover { width: 100%; margin-top: 28px; }
+  .caption { font-size: 10px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .breadcrumbs a, .caption a { transition: color .3s ease; }
+}

@@ -1,46 +1,22 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { Mail, MessageSquare } from "lucide-react";
+import { ArrowUpRight, Mail, MessageSquare } from "lucide-react";
+import styles from "./Home.module.css";
+import Image from "next/image";
 
 export default function Contact() {
   return (
-    <div className="bg-paperfolio-text px-6 py-16 text-white">
-      <div className="mx-auto max-w-2xl rounded-[28px] border border-white/10 bg-white/[0.04] px-8 py-10 text-center shadow-[0_16px_60px_rgba(0,0,0,0.24)]">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.55 }}
-          className="space-y-5"
-        >
-          <div className="space-y-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-yellow">문의</p>
-            <h2 className="font-playfair text-4xl font-bold text-white">복잡함을 단순하게.</h2>
-            <p className="mx-auto max-w-sm text-sm leading-7 text-white/70">
-              부담 없이 이야기해 주세요. 지금 필요한 문제부터 같이 정리할 수 있습니다.
-            </p>
+    <div className={styles.contactSection}>
+      <div className={styles.contactMaterial} aria-hidden="true"><Image src="/images/brand/fiber-optics.png" alt="" fill sizes="50vw" /></div>
+      <div className={styles.container}>
+        <p className={styles.eyebrow}><span>06 /</span> CONTACT · 문의</p>
+        <div className={styles.contactGrid}>
+          <div><p className={styles.contactDisplay}>Let&apos;s make<br /><em>it matter.</em></p><h2>복잡함을 단순하게.</h2></div>
+          <div className={styles.contactAside}>
+            <ArrowUpRight className={styles.contactArrow} aria-hidden="true" />
+            <p>부담 없이 이야기해 주세요.<br />지금 필요한 문제부터 같이 정리할 수 있습니다.</p>
+            <a href="mailto:dms@dmssolution.co.kr" className={styles.contactLink}><Mail size={18} /><span>이메일 보내기<small>dms@dmssolution.co.kr</small></span><ArrowUpRight size={20} /></a>
+            <a href="https://open.kakao.com/o/sSPHn33g" target="_blank" rel="noopener noreferrer" className={styles.contactLink}><MessageSquare size={18} /><span>카카오톡으로 이야기하기</span><ArrowUpRight size={20} /></a>
           </div>
-
-          <div className="flex flex-col justify-center gap-3 sm:flex-row">
-            <a
-              href="mailto:dms@dmssolution.co.kr"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-paperfolio-text hover:bg-paperfolio-accent-yellow"
-            >
-              <Mail className="h-4 w-4" />
-              이메일 보내기
-            </a>
-            <a
-              href="https://open.kakao.com/o/sSPHn33g"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/18 bg-white/6 px-6 py-3 text-sm font-semibold text-white hover:border-paperfolio-accent-yellow/50 hover:text-paperfolio-accent-yellow"
-            >
-              <MessageSquare className="h-4 w-4" />
-              카카오톡으로 이야기하기
-            </a>
-          </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

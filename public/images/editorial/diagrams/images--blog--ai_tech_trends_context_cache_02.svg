@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Latency budget dashboard abstract" data-dms-edition="fiber-diagram-2026-09">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f4f3ee" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#f4f3ee" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="#f4f3ee"/>
+  <rect x="110" y="110" width="1380" height="680" rx="4" fill="#edf0f3" stroke="#123ecb"/>
+  <g stroke="#22d3ee" stroke-width="4" fill="none">
+    <polyline points="180,640 300,590 420,610 540,500 660,520 780,430 900,460 1020,350 1140,380 1260,300 1380,330" stroke="#2f7078"/>
+    <polyline stroke="#123ecb" points="180,690 300,680 420,640 540,630 660,600 780,560 900,550 1020,520 1140,500 1260,470 1380,460"/>
+  </g>
+  <g fill="#e2e8f0" font-family="Inter, Pretendard, sans-serif" font-size="30" font-weight="600">
+    <text x="180" y="190" fill="#171b21" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-weight="600">P95 Latency Budget</text>
+    <text x="180" y="250" fill="#171b21" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-weight="600">Retry Heatmap</text>
+    <text x="180" y="310" fill="#171b21" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-weight="600">Cost Per Request</text>
+  </g>
+  <g>
+    <rect x="1030" y="180" width="390" height="210" rx="4" fill="#edf0f3" stroke="#376958"/>
+    <rect x="1030" y="430" width="390" height="210" rx="4" fill="#edf0f3" stroke="#94622b"/>
+  </g>
+  <g fill="#dcfce7" font-family="Inter, Pretendard, sans-serif" font-size="26" font-weight="700">
+    <text x="1060" y="245" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-weight="600">Stable Window: 92%</text>
+    <text x="1060" y="290" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-weight="600">Cache Hit: 68%</text>
+    <text x="1060" y="335" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-weight="600">Queue Drift: +4m</text>
+  </g>
+  <g fill="#fef3c7" font-family="Inter, Pretendard, sans-serif" font-size="26" font-weight="700">
+    <text x="1060" y="495" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-weight="600">Alert: Router Spillover</text>
+    <text x="1060" y="540" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-weight="600">Impact: Tier-B traffic</text>
+    <text x="1060" y="585" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-weight="600">Action: Prompt Trim</text>
+  </g>
+</svg>

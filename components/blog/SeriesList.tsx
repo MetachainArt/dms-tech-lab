@@ -1,8 +1,8 @@
-"use client";
-
-import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import type { BlogSeries } from "@/lib/blog-data";
-import SeriesCard from "@/components/blog/SeriesCard";
+import styles from "@/components/brand/FiberContent.module.css";
 
 interface SeriesListProps {
   series: Array<BlogSeries & { postCount: number }>;
@@ -10,17 +10,18 @@ interface SeriesListProps {
 
 export default function SeriesList({ series }: SeriesListProps) {
   return (
-    <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
-      {series.map((item, index) => (
-        <motion.div
-          key={item.id}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.45, delay: index * 0.06 }}
-        >
-          <SeriesCard {...item} postCount={item.postCount} />
-        </motion.div>
+    <div className={styles.grid}>
+      {series.map((item) => (
+        <Link key={item.id} href={`/blog/series/${item.id}`} className={`${styles.entry} ${styles.seriesCard}`}>
+          <figure className={styles.image}>
+            <Image src={item.coverImage} alt={item.title} fill sizes="(max-width: 700px) 88vw, 44vw" />
+          </figure>
+          <div className={styles.meta}><span>{item.subtitle}</span><span>{item.postCount}개의 글</span></div>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+          <div className={styles.tags}>{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+          <span className={styles.button}>시리즈 보기 <ArrowRight size={16} aria-hidden="true" /></span>
+        </Link>
       ))}
     </div>
   );

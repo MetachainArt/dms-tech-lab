@@ -3,6 +3,7 @@ import ContactCTA from "./components/ContactCTA";
 import ContactHero from "./components/ContactHero";
 import ContactMainSection from "./components/ContactMainSection";
 import LocationSection from "./components/LocationSection";
+import styles from "@/components/brand/FiberPages.module.css";
 
 interface ContactPageProps {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
@@ -34,7 +35,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
   };
 
   return (
-    <main className="min-h-screen bg-paperfolio-bg text-paperfolio-text selection:bg-paperfolio-accent-yellow/70 selection:text-paperfolio-text">
+    <main className={`${styles.page} ${styles.editorial} ${styles.contactPage}`}>
       <ContactHero />
       <ContactMainSection assessmentPrefill={assessmentPrefill} />
       <LocationSection />

@@ -2,6 +2,7 @@ import AutomationContainer from "@/components/automation/AutomationMain";
 import { AUTOMATION_CATEGORIES, type AutomationCategory, type AutomationTemplate } from "@/lib/automation-data";
 import { generateMetadata as generateSeoMetadata } from "@/lib/metadata";
 import { prisma } from "@/lib/prisma";
+import styles from "@/components/brand/FiberContent.module.css";
 
 export const dynamic = "force-dynamic";
 
@@ -118,14 +119,12 @@ export default async function AutomationPage() {
   const formattedAutomations = automations.map(mapAutomation);
 
   return (
-    <main className="w-full min-h-screen bg-[#f7f3ea] text-paperfolio-text font-sans relative selection:bg-paperfolio-accent-yellow/70 selection:text-paperfolio-text">
-      <section className="relative w-full pt-40 pb-20 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#f7f3ea] via-[#f7f3ea]/80 to-[#f7f3ea] z-0" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.03),transparent_70%)] z-0" />
-
+    <main className={styles.page}>
+      <section className={styles.container}>
         <div className="max-w-7xl mx-auto relative z-10">
           <p className="mb-4 text-sm font-semibold tracking-[0.24em] uppercase text-paperfolio-text-muted">자동화</p>
-          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6">
+          <p className={styles.display} aria-hidden="true">Less repetition.<br /><em>More possibility.</em></p>
+          <h1 className={styles.title}>
             반복 업무를 줄이는
             <br />
             <span className="text-paperfolio-text-muted">실무형 자동화 템플릿.</span>
@@ -137,7 +136,6 @@ export default async function AutomationPage() {
       </section>
 
       <section className="px-6 pb-32 relative z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#f7f3ea]/50 to-[#f7f3ea] pointer-events-none" />
         <div className="max-w-7xl mx-auto relative">
           <AutomationContainer initialTemplates={formattedAutomations} />
         </div>

@@ -1,0 +1,35 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" data-dms-edition="fiber-diagram-2026-09" role="img">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4f3ee" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#f4f3ee" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="#f4f3ee"/>
+  <g fill="none" stroke="#818cf8" stroke-width="4">
+    <rect x="210" y="230" width="320" height="180" rx="4" stroke="#123ecb"/>
+    <rect x="640" y="230" width="320" height="180" rx="4" stroke="#123ecb"/>
+    <rect x="1070" y="230" width="320" height="180" rx="4" stroke="#123ecb"/>
+    <rect x="425" y="520" width="320" height="180" rx="4" stroke="#123ecb"/>
+    <rect x="855" y="520" width="320" height="180" rx="4" stroke="#123ecb"/>
+  </g>
+  <g stroke="#a5b4fc" stroke-width="5" fill="none" marker-end="url(#arrow)">
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L9,3 z" fill="#a5b4fc"/>
+      </marker>
+    </defs>
+    <path d="M530 320H640" stroke="#123ecb"/>
+    <path d="M960 320H1070" stroke="#123ecb"/>
+    <path d="M800 410V520" stroke="#123ecb"/>
+    <path d="M1175 410V520" stroke="#123ecb"/>
+  </g>
+  <g fill="#e5e7eb" font-family="Pretendard, Arial, sans-serif" text-anchor="middle">
+    <text x="800" y="110" font-size="54" font-weight="600" fill="#171b21" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Consent Log Decision Map</text>
+    <text x="370" y="325" font-size="36" fill="#171b21" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Input</text>
+    <text x="800" y="325" font-size="36" fill="#171b21" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Review</text>
+    <text x="1230" y="325" font-size="36" fill="#171b21" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Approve</text>
+    <text x="585" y="615" font-size="36" fill="#171b21" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Revise</text>
+    <text x="1015" y="615" font-size="36" fill="#171b21" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Hold</text>
+  </g>
+</svg>

@@ -1,0 +1,22 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg" data-dms-edition="fiber-diagram-2026-09" role="img">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f4f3ee" stop-opacity="1"/>
+      <stop offset="1" stop-color="#f4f3ee" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="#f4f3ee"/>
+  <rect x="180" y="130" width="1240" height="640" rx="4" fill="#edf0f3" stroke="#2f7078" stroke-opacity="0.55" stroke-width="2"/>
+  <circle cx="520" cy="440" r="180" fill="#dce3f4" fill-opacity="0.12" stroke="#123ecb" stroke-width="3"/>
+  <circle cx="1080" cy="440" r="180" fill="#dfe2eb" fill-opacity="0.12" stroke="#627391" stroke-width="3"/>
+  <path d="M700 440H900" stroke="#627391" stroke-width="10" stroke-linecap="round"/>
+  <path d="M860 410L910 440L860 470" stroke="#627391" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="380" y="300" width="280" height="56" rx="4" fill="#edf0f3" stroke="#123ecb"/>
+  <rect x="940" y="300" width="280" height="56" rx="4" fill="#dfe2eb" stroke="#627391"/>
+  <rect x="380" y="525" width="280" height="56" rx="4" fill="#edf0f3" stroke="#123ecb"/>
+  <rect x="940" y="525" width="280" height="56" rx="4" fill="#dfe2eb" stroke="#627391"/>
+  <text x="430" y="336" fill="#5c6470" font-size="24" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">Default</text>
+  <text x="1015" y="336" fill="#5c6470" font-size="24" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">Override</text>
+  <text x="430" y="561" fill="#5c6470" font-size="24" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">Rollback</text>
+  <text x="1010" y="561" fill="#5c6470" font-size="24" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">Publish</text>
+</svg>

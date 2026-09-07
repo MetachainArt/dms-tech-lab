@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import EducationAccordion from "@/components/education/EducationAccordion";
+import { editorialCover } from "@/lib/editorial-art";
+import styles from "@/components/brand/FiberContent.module.css";
 
 interface PageProps {
     params: Promise<{
@@ -37,11 +39,13 @@ export default async function EducationTrackPage({ params }: PageProps) {
     }
 
     const lessonCount = course.chapters.reduce((sum, chapter) => sum + chapter.lessons.length, 0);
+    const firstLesson = course.chapters.flatMap(chapter => chapter.lessons)[0];
+    const cover = firstLesson ? editorialCover(`content/education/${trackId}/${firstLesson.path.replaceAll('\\', '/')}`) : undefined;
 
     return (
-        <main className="min-h-screen bg-paperfolio-bg text-paperfolio-text selection:bg-paperfolio-accent-yellow/70 selection:text-paperfolio-text">
+        <main className={styles.page}>
             <section className="px-6 pb-16 pt-36">
-                <div className="mx-auto max-w-5xl">
+                <div className="mx-auto max-w-7xl">
                     <Link
                         href="/education"
                         className="mb-10 inline-flex items-center gap-2 text-sm font-semibold text-paperfolio-text-muted hover:text-paperfolio-accent-blue"
@@ -50,16 +54,16 @@ export default async function EducationTrackPage({ params }: PageProps) {
                         교육으로 돌아가기
                     </Link>
 
-                    <div className="grid gap-10 md:grid-cols-[minmax(0,0.32fr)_minmax(0,1fr)] md:items-start">
-                        <div className="relative aspect-[3/4] w-full max-w-[220px] overflow-hidden rounded-[28px] border border-paperfolio-line bg-paperfolio-surface shadow-[0_18px_60px_rgba(31,41,55,0.10)]">
-                            <Image src={track.image} alt={track.title} fill className="object-cover" />
+                    <div className="grid gap-12 md:grid-cols-2 md:items-center">
+                        <div className="relative order-2 aspect-[4/3] w-full overflow-hidden bg-paperfolio-surface">
+                            <Image src={cover || track.image} alt={track.title} fill sizes="(max-width: 767px) 90vw, 45vw" className="object-cover" />
                         </div>
 
-                        <div className="space-y-5">
+                        <div className="order-1 space-y-5">
                             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">
                                 Vol. {track.vol}
                             </p>
-                            <h1 className="paperfolio-h1">{track.title}</h1>
+                            <h1 className={styles.fttxTitle}>{track.title}</h1>
                             <p className="paperfolio-body max-w-2xl">{track.description}</p>
 
                             <div className="flex flex-wrap gap-2 pt-2">

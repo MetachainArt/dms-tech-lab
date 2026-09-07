@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Browser workspace with autonomous tabs, audit rails, and measured automation loops" data-dms-edition="fiber-diagram-2026-09">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4f3ee" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#f4f3ee" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="rail" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#123ecb" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#123ecb" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="#f4f3ee"/>
+  <g opacity="0.15">
+    <circle cx="1330" cy="180" r="170" fill="#dfe8e3"/>
+    <circle cx="290" cy="760" r="210" fill="#dce3f4"/>
+  </g>
+  <rect x="130" y="120" width="960" height="660" rx="4" fill="#edf0f3" stroke="#2f7078" stroke-opacity="0.55"/>
+  <rect x="1140" y="120" width="330" height="660" rx="4" fill="#edf0f3" stroke="#376958" stroke-opacity="0.55"/>
+  <rect x="180" y="190" width="860" height="110" rx="4" fill="#edf0f3" stroke="#aeb8c6" stroke-width="1.5"/>
+  <rect x="180" y="340" width="260" height="350" rx="4" fill="#edf0f3" stroke="#aeb8c6" stroke-width="1.5"/>
+  <rect x="480" y="340" width="260" height="350" rx="4" fill="#edf0f3" stroke="#aeb8c6" stroke-width="1.5"/>
+  <rect x="780" y="340" width="260" height="350" rx="4" fill="#edf0f3" stroke="#aeb8c6" stroke-width="1.5"/>
+  <rect x="1180" y="190" width="250" height="500" rx="4" fill="#edf0f3" stroke="#aeb8c6" stroke-width="1.5"/>
+  <rect x="1210" y="230" width="16" height="420" rx="4" fill="#edf0f3"/>
+  <g fill="#e6fffb" font-family="Arial, sans-serif">
+    <text x="210" y="255" font-size="34" font-weight="600" fill="#171b21" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Autonomous Browser Workspace</text>
+    <text x="1210" y="170" font-weight="600" fill="#171b21" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="30.7">Governance Rail</text>
+    <text x="220" y="395" font-size="28" font-weight="600" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Observe</text>
+    <text x="520" y="395" font-size="28" font-weight="600" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Decide</text>
+    <text x="820" y="395" font-size="28" font-weight="600" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Act</text>
+  </g>
+  <g fill="#99f6e4" font-family="Arial, sans-serif" font-size="21">
+    <text x="220" y="455" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Live DOM changes</text>
+    <text x="220" y="495" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Source capture</text>
+    <text x="220" y="535" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">UI state memory</text>
+    <text x="520" y="455" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Intent confidence</text>
+    <text x="520" y="495" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Tool selection</text>
+    <text x="520" y="535" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Risk scoring</text>
+    <text x="820" y="455" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Form fill</text>
+    <text x="820" y="495" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Cross-check</text>
+    <text x="820" y="535" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Rollback checkpoint</text>
+    <text x="1260" y="270" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Policy match</text>
+    <text x="1260" y="330" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">User consent</text>
+    <text x="1260" y="390" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Rate limit</text>
+    <text x="1260" y="450" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Error budget</text>
+    <text x="1260" y="510" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Audit trail</text>
+    <text x="1260" y="570" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Stop switch</text>
+  </g>
+  <g stroke="#5eead4" stroke-width="8" fill="none" stroke-linecap="round">
+    <path d="M440 515 C470 515, 480 515, 500 515" stroke="#2f7078"/>
+    <path d="M740 515 C770 515, 780 515, 800 515" stroke="#2f7078"/>
+  </g>
+</svg>

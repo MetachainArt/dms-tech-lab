@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getSeriesTitle } from "@/lib/blog-data";
+import styles from "@/components/brand/FiberContent.module.css";
 
 interface RelatedPostsProps {
   posts: {
@@ -14,45 +15,30 @@ interface RelatedPostsProps {
 }
 
 export default function RelatedPosts({ posts }: RelatedPostsProps) {
-  if (posts.length === 0) {
-    return null;
-  }
-
+  if (posts.length === 0) return null;
   return (
-    <div className="mt-16 border-t border-paperfolio-line pt-12">
-      <div className="mb-8 space-y-3">
-        <p className="text-sm font-semibold uppercase tracking-[0.22em] text-paperfolio-accent-blue">함께 읽기</p>
-        <h3 className="text-3xl font-semibold tracking-tight text-paperfolio-text">이 글도 같이 읽어보세요</h3>
-      </div>
-
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+    <aside className={styles.related} aria-label="함께 읽기">
+      <header>
+        <p className={styles.eyebrow}>함께 읽기 / Further reading</p>
+        <h3 className={styles.title}>이 글도 같이 읽어보세요</h3>
+      </header>
+      <div className={styles.relatedGrid}>
         {posts.map((post) => (
-          <Link
-            key={post.slug}
-            href={`/blog/${post.slug}`}
-            className="group overflow-hidden rounded-[28px] border border-paperfolio-line bg-white shadow-[0_16px_55px_rgba(31,41,55,0.05)] hover:-translate-y-0.5 hover:border-paperfolio-accent-blue/35"
-          >
+          <Link key={post.slug} href={`/blog/${post.slug}`} className={styles.entry}>
             {post.coverImage && (
-              <div className="relative h-40 w-full overflow-hidden bg-paperfolio-surface">
-                <Image src={post.coverImage} alt={post.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" />
-              </div>
+              <figure className={styles.image}>
+                <Image src={post.coverImage} alt={post.title} fill sizes="(max-width: 700px) 88vw, 28vw" />
+              </figure>
             )}
-
-            <div className="space-y-3 p-5">
-              <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-paperfolio-text-muted">
-                {post.series && (
-                  <span className="rounded-full border border-paperfolio-accent-blue/20 bg-paperfolio-accent-blue/10 px-2.5 py-1 text-paperfolio-accent-blue">
-                    {getSeriesTitle(post.series)}
-                  </span>
-                )}
-                {post.date && <span>{post.date}</span>}
-              </div>
-              <h4 className="text-lg font-semibold tracking-tight text-paperfolio-text group-hover:text-paperfolio-accent-blue">{post.title}</h4>
-              <p className="text-sm leading-7 text-paperfolio-text-muted">{post.excerpt}</p>
+            <div className={styles.meta}>
+              {post.series && <span>{getSeriesTitle(post.series)}</span>}
+              {post.date && <span>{post.date}</span>}
             </div>
+            <h4>{post.title}</h4>
+            <p>{post.excerpt}</p>
           </Link>
         ))}
       </div>
-    </div>
+    </aside>
   );
 }

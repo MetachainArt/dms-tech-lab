@@ -1,3 +1,5 @@
+import FiberPageHeader from "@/components/brand/FiberPageHeader";
+import styles from "@/components/brand/FiberPages.module.css";
 import Link from "next/link";
 import { generateMetadata as generateSeoMetadata } from "@/lib/metadata";
 
@@ -51,43 +53,16 @@ const focusAreas = ["AX(AI 전환) 컨설팅", "광통신 트레이닝·FTTx", "
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-paperfolio-bg text-paperfolio-text selection:bg-paperfolio-accent-yellow/70 selection:text-paperfolio-text">
-      <section className="px-6 pb-18 pt-36">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
-          <div className="space-y-7">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">소개</p>
-            <h1 className="paperfolio-display max-w-4xl">리도는 기술을 현장에서 다시 쓸 수 있게 만드는 사람입니다.</h1>
-            <p className="max-w-2xl text-lg leading-8 text-paperfolio-text-muted">
-              3D 설계와 하드웨어 디자인, 광통신 인프라 장비 개발, 기술 교육을 20년 가까이 해온 광통신 트레이닝 전문가입니다. 지금은 AX(AI Transformation) 전문가로서 AI 자동화와 실무형 도구, 콘텐츠 제작까지 연결하며 복잡한 일을 더 단순하게 만드는 작업을 하고 있습니다.
-            </p>
-            <div className="flex flex-col gap-4 sm:flex-row">
-              <Link href="/works" className="inline-flex items-center justify-center rounded-full bg-paperfolio-text px-7 py-4 text-sm font-semibold text-white hover:bg-paperfolio-accent-blue">
-                작업 보기
-              </Link>
-              <Link href="/contact" className="inline-flex items-center justify-center rounded-full border border-paperfolio-line bg-white px-7 py-4 text-sm font-semibold text-paperfolio-text hover:border-paperfolio-accent-coral/40 hover:text-paperfolio-accent-coral">
-                편하게 문의하기
-              </Link>
-            </div>
-          </div>
-
-          <div className="rounded-[36px] border border-paperfolio-line bg-paperfolio-surface p-8 shadow-[0_24px_80px_rgba(31,41,55,0.08)]">
-            <div className="rounded-[28px] bg-[linear-gradient(135deg,#f3e5ab_0%,#fff7dd_35%,#ead9c4_100%)] p-8">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">Reedo</p>
-              <p className="mt-6 font-playfair text-4xl leading-tight text-paperfolio-text">작고 예쁜 브랜딩보다, 믿고 같이 일할 수 있는 작업실을 지향합니다.</p>
-            </div>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-[24px] border border-paperfolio-line bg-white px-5 py-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-paperfolio-accent-coral">태도</p>
-                <p className="mt-3 text-lg font-semibold text-paperfolio-text">기술보다 사람을 먼저 이해하기</p>
-              </div>
-              <div className="rounded-[24px] border border-paperfolio-line bg-white px-5 py-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-paperfolio-accent-blue">기준</p>
-                <p className="mt-3 text-lg font-semibold text-paperfolio-text">설명 가능하고 다시 쓸 수 있는 결과</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <main className={`${styles.page} ${styles.editorial}`}>
+      <FiberPageHeader
+        eyebrow="About / Reedo" lead="Built on" accent="experience." variant="about"
+        title="리도는 기술을 현장에서 다시 쓸 수 있게 만드는 사람입니다."
+        description="3D 설계와 하드웨어 디자인, 광통신 인프라 장비 개발, 기술 교육을 20년 가까이 해온 광통신 트레이닝 전문가입니다. 지금은 AX(AI Transformation) 전문가로서 AI 자동화와 실무형 도구, 콘텐츠 제작까지 연결하며 복잡한 일을 더 단순하게 만드는 작업을 하고 있습니다."
+        note={<><span>태도 / 기술보다 사람을 먼저 이해하기</span><span>기준 / 설명 가능하고 다시 쓸 수 있는 결과</span></>}
+      >
+        <p>작고 예쁜 브랜딩보다, 믿고 같이 일할 수 있는 작업실을 지향합니다.</p>
+        <Link href="/works">작업 보기 ↗</Link><Link href="/contact">편하게 문의하기 ↗</Link>
+      </FiberPageHeader>
 
       <section className="px-6 py-6">
         <div className="mx-auto max-w-7xl rounded-[36px] bg-paperfolio-text px-6 py-8 text-white shadow-[0_28px_90px_rgba(31,41,55,0.18)] md:px-10">

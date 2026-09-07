@@ -14,6 +14,8 @@ export interface GalleryPiece {
   paragraphs?: BodyParagraph[];    // 다단락 렌더링 시 사용
   image: string;
   imageAlt: string;
+  imageWidth?: number;
+  imageHeight?: number;
   layout: "image-left" | "image-right" | "fullbleed" | "text-dominant";
   accent: "blue" | "coral" | "yellow";
 }
@@ -61,6 +63,8 @@ export const galleryPieces: GalleryPiece[] = [
       },
     ],
     image: "/gallery/what-you-cannot-say.webp",
+    imageWidth: 900,
+    imageHeight: 1600,
     imageAlt: "엉킨 유리 조각들이 오른쪽에서 순서도로 정리되고, 아래에서 손이 그것을 노트에 옮겨 적고 있는 장면",
     layout: "image-left",
     accent: "blue",
@@ -107,6 +111,8 @@ export const galleryPieces: GalleryPiece[] = [
       }
     ],
     "image": "/images/a20.webp",
+    imageWidth: 2000,
+    imageHeight: 1000,
     "imageAlt": "오래된 작업장에서 부품을 조립하는 정비공",
     "layout": "image-right",
     "accent": "yellow"
@@ -136,8 +142,10 @@ export const galleryPieces: GalleryPiece[] = [
         text: "The more you learn, the more you realize you never know enough — and yet, that chaos is the only place where real thinking grows.",
       },
     ],
-    image: "/images/art/1.webp",
-    imageAlt: "혼돈의 머릿속",
+    image: "/gallery/editorial/chaos-in-my-head-v1.webp",
+    imageAlt: "책을 읽는 사람 주위로 유리 서가의 경계가 넓어지며 더 큰 미지의 공간이 드러나는 장면",
+    imageWidth: 1086,
+    imageHeight: 1448,
     layout: "image-left",
     accent: "yellow",
   },
@@ -166,8 +174,10 @@ export const galleryPieces: GalleryPiece[] = [
         text: "To want to love is already an act of love — a leaning toward the world, before the world ever leans back.",
       },
     ],
-    image: "/images/c1.webp",
-    imageAlt: "사랑하고 싶다는 것",
+    image: "/gallery/editorial/want-to-love-v1.webp",
+    imageAlt: "보내지 않은 편지를 창가에 두고 열린 창의 빛을 향해 조심스럽게 손을 내미는 사람",
+    imageWidth: 1086,
+    imageHeight: 1448,
     layout: "image-right",
     accent: "coral",
   },
@@ -196,8 +206,10 @@ export const galleryPieces: GalleryPiece[] = [
         text: "Forget the polite whispers of fading youth; true style is a raw, unapologetic scream that shatters the illusion of time.",
       },
     ],
-    image: "/My_art/museum-library.jpg",
-    imageAlt: "나의 미술관 & 나의 도서관",
+    image: "/gallery/editorial/museum-library-v1.webp",
+    imageAlt: "서가와 작업대의 원고·모형이 코발트 금속 조각이 놓인 전시 공간으로 이어지는 개인 작업실",
+    imageWidth: 1086,
+    imageHeight: 1448,
     layout: "image-left",
     accent: "blue",
   },

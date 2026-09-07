@@ -1,7 +1,10 @@
+import { editorialCover } from "@/lib/editorial-art";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 
 import type { WorkProject, WorkStep } from "@/lib/works-projects-data";
+import styles from "./StepArticleHeader.module.css";
 
 interface StepArticleHeaderProps {
   project: WorkProject;
@@ -13,13 +16,7 @@ interface StepArticleHeaderProps {
   parentPath?: string;
 }
 
-/**
- * 연재 글 상단부.
- *
- * 기존 헤더는 뒤로가기 · 배지 · 제목 · 요약을 평평하게 쌓기만 했다.
- * 여기서는 몇 번째 글인지를 큰 숫자로 세우고, 그 아래에 진행 눈금을 둬서
- * 연재 중 어디쯤인지가 읽기 전에 보이게 한다.
- */
+/** Shared chapter header; source content and project navigation remain unchanged. */
 export default function StepArticleHeader({
   project,
   step,
@@ -30,54 +27,46 @@ export default function StepArticleHeader({
   const index = project.steps.findIndex((s) => s.id === step.id);
   const current = index < 0 ? 1 : index + 1;
   const total = project.steps.length;
+  // WorkStep has no cover field. Reuse the project's reference only when the chapter has no image.
+  const hasBodyImage = /!\[[^\]]*\]\(|<(?:img|Image)\b/.test(step.content);
+  const conceptCover = editorialCover(`project:${project.id}`);
+  const coverImage = !hasBodyImage ? conceptCover || project.coverImage : undefined;
 
   return (
-    <section className="relative overflow-hidden border-b border-paperfolio-line bg-paperfolio-bg px-6 pb-16 pt-36">
-      {/* 배경 도형 — 아주 옅게 깔리는 큰 원 */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-32 -top-24 h-[420px] w-[420px] rounded-full border border-paperfolio-line/70"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-8 top-24 h-[260px] w-[260px] rounded-full bg-paperfolio-accent-blue/[0.05]"
-      />
-
-      <div className="relative mx-auto max-w-3xl">
-        <nav className="flex flex-wrap items-center gap-2 text-sm text-paperfolio-text-muted">
-          <Link href={basePath} className="inline-flex items-center gap-1.5 hover:text-paperfolio-accent-blue">
+    <section className={styles.header}>
+      <div className={styles.inner}>
+        <nav className={styles.breadcrumbs} aria-label="프로젝트 경로">
+          <Link href={basePath}>
             <ArrowLeft className="h-4 w-4" />
             {project.title}
           </Link>
           {parentLabel && parentPath ? (
             <>
               <span className="opacity-40">·</span>
-              <Link href={parentPath} className="hover:text-paperfolio-accent-blue">
+              <Link href={parentPath}>
                 {parentLabel}
               </Link>
             </>
           ) : null}
         </nav>
 
-        <div className="mt-10 flex items-start gap-6">
-          <div className="shrink-0 pt-1">
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-paperfolio-text-muted">
+        <div className={styles.composition}>
+          <div className={styles.serial} aria-label={`전체 ${total}개 글 중 ${current}번째 글`}>
+            <p className={styles.serialLabel}>FIELD NOTES</p>
+            <p className={styles.number} aria-hidden="true">
               {String(current).padStart(2, "0")}
             </p>
-            <p className="font-playfair text-5xl leading-none text-paperfolio-accent-blue md:text-6xl">
-              {current}
-            </p>
-            <p className="mt-1 text-[11px] tracking-[0.16em] text-paperfolio-text-muted">/ {total}</p>
+            <p className={styles.total} aria-hidden="true">/ {String(total).padStart(2, "0")}</p>
           </div>
 
-          <div className="min-w-0 flex-1 space-y-5">
-            <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-paperfolio-accent-coral">
+          <div className={styles.copy}>
+            <p className={styles.eyebrow}>
               {project.subtitle}
             </p>
-            <h1 className="paperfolio-display text-paperfolio-text">{step.title}</h1>
-            <p className="text-lg leading-8 text-paperfolio-text-muted">{step.excerpt}</p>
+            <h1 className={styles.title}>{step.title}</h1>
+            <p className={styles.description}>{step.excerpt}</p>
 
-            <div className="flex flex-wrap items-center gap-4 pt-1 text-sm text-paperfolio-text-muted">
+            <div className={styles.meta}>
               <time dateTime={step.date} className="inline-flex items-center gap-2">
                 <Calendar className="h-4 w-4" />
                 {step.date}
@@ -91,16 +80,25 @@ export default function StepArticleHeader({
         </div>
 
         {/* 연재 진행 눈금 */}
-        <div className="mt-10 flex gap-1.5" aria-hidden="true">
+        <div className={styles.progress} aria-hidden="true">
           {project.steps.map((s, i) => (
             <span
               key={s.id}
-              className={`h-1 flex-1 rounded-full transition-colors ${
-                i < current ? "bg-paperfolio-accent-blue" : "bg-paperfolio-line"
-              }`}
+              className={i < current ? styles.complete : undefined}
             />
           ))}
         </div>
+        {coverImage ? (
+          <figure className={styles.cover}>
+            <div className={styles.image}>
+              <Image src={coverImage} alt={`${project.title} ${conceptCover ? "콘셉트 이미지" : "프로젝트 대표 이미지"}`} fill sizes="(max-width: 767px) 90vw, 70vw" />
+            </div>
+            <figcaption className={styles.caption}>
+              {!conceptCover ? <span>{`프로젝트 대표 이미지 · ${project.title}`}</span> : null}
+              <a href={coverImage} target="_blank" rel="noopener noreferrer">원본 전체 보기 ↗</a>
+            </figcaption>
+          </figure>
+        ) : null}
       </div>
     </section>
   );

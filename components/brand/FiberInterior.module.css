@@ -1,0 +1,70 @@
+.interior {
+  --color-paperfolio-bg: #f4f3ee;
+  --color-paperfolio-surface: #fafaf7;
+  --color-paperfolio-text: #171b21;
+  --color-paperfolio-text-muted: #5c6470;
+  --color-paperfolio-line: #d2d5d9;
+  --color-paperfolio-accent-blue: #123ecb;
+  --color-paperfolio-accent-coral: #123ecb;
+  --color-paperfolio-accent-yellow: #bcc8ed;
+  min-height: 100vh;
+  background: var(--fiber-paper);
+  color: var(--fiber-ink);
+  isolation: isolate;
+}
+
+.interior ::selection { background: #cbd5f5; color: #171b21; }
+.interior main { background-color: var(--fiber-paper); }
+
+/* Replace the former pixel accent while keeping serif quotations and long-form text. */
+.interior :global(.font-pixel),
+.interior :global(.pixel-display) {
+  font-family: var(--font-poppins), var(--font-pretendard), sans-serif;
+  letter-spacing: -.045em;
+}
+.interior :global(.pixel-display) { font-weight: 600; }
+
+.interior main > section:first-of-type h1,
+.interior main > header h1 {
+  font-family: var(--font-poppins), var(--font-pretendard), sans-serif;
+  font-weight: 600;
+  letter-spacing: -.055em;
+  line-height: 1.18;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+/* Editorial surfaces use the same machined edges as the home page.
+   Inputs, status pills, avatars and diagram shapes retain their own geometry. */
+.interior :global([class~="rounded-[36px]"]),
+.interior :global([class~="rounded-[34px]"]),
+.interior :global([class~="rounded-[32px]"]),
+.interior :global([class~="rounded-[30px]"]),
+.interior :global([class~="rounded-[28px]"]) {
+  border-radius: 0;
+  box-shadow: none;
+}
+.interior article:global([class*="shadow-"]) { box-shadow: none; }
+
+.interior :where(a, button, input, textarea, select):focus-visible {
+  outline: 2px solid var(--fiber-cobalt);
+  outline-offset: 4px;
+}
+.interior :global(.editorial-prose) {
+  --tw-prose-links: var(--fiber-cobalt);
+  line-height: 1.9;
+}
+.interior :global(.editorial-prose) :where(h2, h3, h4) { scroll-margin-top: 96px; }
+.interior :global(.editorial-prose) :where(h2, h3, h4) :global(.bg-clip-text) {
+  background-image: none;
+  color: var(--fiber-cobalt);
+  -webkit-text-fill-color: var(--fiber-cobalt);
+}
+.interior :global(.editorial-prose) img { border-radius: 0; }
+.interior :global(.editorial-prose) :where(pre, table) { max-width: 100%; }
+
+@media (max-width: 639px) {
+  .interior main > section:first-of-type h1,
+  .interior main > header h1 { letter-spacing: -.045em; line-height: 1.25; }
+}

@@ -1,0 +1,20 @@
+.universe {
+  --fiber-paper: #f4f3ee;
+  --fiber-ink: #171b21;
+  --fiber-cobalt: #123ecb;
+  --fiber-silver: #bcc2cb;
+  --fiber-line: #d2d5d9;
+  --fiber-ease: cubic-bezier(.22, .61, .36, 1);
+  animation: fiber-arrive 650ms var(--fiber-ease) both;
+}
+.universe a, .universe button {
+  transition-duration: 320ms;
+  transition-timing-function: var(--fiber-ease);
+}
+@keyframes fiber-arrive {
+  from { opacity: .65; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .universe, .universe * { animation: none !important; transition: none !important; }
+}

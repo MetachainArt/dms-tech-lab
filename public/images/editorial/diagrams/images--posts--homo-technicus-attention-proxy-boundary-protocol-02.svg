@@ -1,0 +1,25 @@
+﻿<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" data-dms-edition="fiber-diagram-2026-09" role="img">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4f3ee" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#f4f3ee" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="#f4f3ee"/>
+  <rect x="200" y="180" width="1200" height="540" rx="4" fill="#edf0f3" stroke="#123ecb" stroke-width="3"/>
+  <line x1="800" y1="180" x2="800" y2="720" stroke="#123ecb" stroke-width="3" stroke-dasharray="14 10"/>
+  <text x="500" y="250" fill="#171b21" font-size="44" text-anchor="middle" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">자동 보조</text>
+  <text x="1100" y="250" fill="#171b21" font-size="44" text-anchor="middle" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">인간 판단</text>
+  <rect x="270" y="310" width="460" height="90" rx="4" fill="#edf0f3" stroke="#aeb8c6" stroke-width="1.5"/>
+  <rect x="270" y="430" width="460" height="90" rx="4" fill="#dce8ea" stroke="#aeb8c6" stroke-width="1.5"/>
+  <rect x="270" y="550" width="460" height="90" rx="4" fill="#dce3f4" stroke="#aeb8c6" stroke-width="1.5"/>
+  <text x="500" y="367" fill="#171b21" font-size="30" text-anchor="middle" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">초안 생성</text>
+  <text x="500" y="487" fill="#171b21" font-size="30" text-anchor="middle" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">우선순위 추천</text>
+  <text x="500" y="607" fill="#171b21" font-size="30" text-anchor="middle" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">톤 자동 제안</text>
+  <rect x="870" y="310" width="460" height="90" rx="4" fill="#dce3f4" stroke="#aeb8c6" stroke-width="1.5"/>
+  <rect x="870" y="430" width="460" height="90" rx="4" fill="#dce3f4" stroke="#aeb8c6" stroke-width="1.5"/>
+  <rect x="870" y="550" width="460" height="90" rx="4" fill="#dce3f4" stroke="#aeb8c6" stroke-width="1.5"/>
+  <text x="1100" y="367" fill="#171b21" font-size="30" text-anchor="middle" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">근거 재확인</text>
+  <text x="1100" y="487" fill="#171b21" font-size="30" text-anchor="middle" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">보류 후 재검토</text>
+  <text x="1100" y="607" fill="#171b21" font-size="30" text-anchor="middle" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">반대안 비교</text>
+</svg>

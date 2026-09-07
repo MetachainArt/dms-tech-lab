@@ -1,6 +1,7 @@
 import { promises as fs } from "fs";
 import matter from "gray-matter";
 import path from "path";
+import { editorialContent, editorialCover } from './editorial-art';
 
 const worksDirectory = path.join(process.cwd(), "content/works");
 
@@ -28,8 +29,8 @@ async function loadWorkBySlug(slug: string): Promise<MDXWork | null> {
 
     return {
       slug: realSlug,
-      frontMatter: data as MDXWork["frontMatter"],
-      content,
+      frontMatter: { ...data, ...(editorialCover(`content/works/${realSlug}.mdx`) ? { coverImage: editorialCover(`content/works/${realSlug}.mdx`) } : {}) } as MDXWork['frontMatter'],
+      content: editorialContent(content),
     };
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === "ENOENT") {

@@ -1,0 +1,998 @@
+{
+  "covers": {
+    "content/education/automation/01-automation-tools/01-openclaw.mdx": {
+      "image": "/images/editorial/education--automation--01-automation-tools--01-openclaw-v2.webp",
+      "title": "퇴근 후 30분, 당신을 대신해 돈 벌어오는 'AI 에이전트' 33가지 자동화 비법"
+    },
+    "content/education/gen-ai/01-foundation/01-overview.mdx": {
+      "image": "/images/editorial/education--gen-ai--01-foundation--01-overview.webp",
+      "title": "생성형 AI가 바꾸는 창작의 미래: 도구가 아닌 생산 체계로 보는 입문 가이드"
+    },
+    "content/education/gen-ai/03-ai-image-skill-up/02-object-scene-production.mdx": {
+      "image": "/images/editorial/education--gen-ai--03-ai-image-skill-up--02-object-scene-production.webp",
+      "title": "인물 없이도 강한 이미지 만들기: 오브젝트 중심 생성형 AI 실무 루프"
+    },
+    "content/education/gen-ai/03-ai-image-skill-up/03-semantic-layout-control-pipeline.mdx": {
+      "image": "/images/editorial/education--gen-ai--03-ai-image-skill-up--03-semantic-layout-control-pipeline.webp",
+      "title": "생성형 이미지 품질을 안정화하는 의미 레이아웃 제어 파이프라인"
+    },
+    "content/education/gen-ai/03-ai-image-skill-up/04-reference-board-to-production-handoff-system.mdx": {
+      "image": "/images/editorial/education--gen-ai--03-ai-image-skill-up--04-reference-board-to-production-handoff-system.webp",
+      "title": "레퍼런스 보드에서 결과물까지 흔들리지 않게: 생성형 이미지 핸드오프 시스템"
+    },
+    "content/education/gen-ai/03-ai-image-skill-up/05-negative-space-first-production-system.mdx": {
+      "image": "/images/editorial/education--gen-ai--03-ai-image-skill-up--05-negative-space-first-production-system.webp",
+      "title": "결과물 흔들림을 줄이는 네거티브 스페이스 우선 생성형 이미지 시스템"
+    },
+    "content/education/gen-ai/03-ai-image-skill-up/06-context-packet-production-system.mdx": {
+      "image": "/images/editorial/education--gen-ai--03-ai-image-skill-up--06-context-packet-production-system.webp",
+      "title": "재작업을 줄이는 컨텍스트 패킷 제작 시스템: 생성형 콘텐츠 운영 실무"
+    },
+    "content/education/gen-ai/03-ai-image-skill-up/07-style-token-library-production-system.mdx": {
+      "image": "/images/editorial/education--gen-ai--03-ai-image-skill-up--07-style-token-library-production-system.webp",
+      "title": "이미지 일관성을 올리는 스타일 토큰 라이브러리 운영 시스템"
+    },
+    "content/education/gen-ai/03-ai-image-skill-up/consistent-character-sets.mdx": {
+      "image": "/images/editorial/education--gen-ai--03-ai-image-skill-up--consistent-character-sets.webp",
+      "title": "완벽하게 일관된 캐릭터 세트 만들기 (My Step-by-Step Method)"
+    },
+    "content/education/optical-training/01-fttx-foundation/01-fttx-network-structure.mdx": {
+      "image": "/images/editorial/education--optical-training--01-fttx-foundation--01-fttx-network-structure.webp",
+      "title": "Reading an FTTx Network in One Picture"
+    },
+    "content/education/optical-training/01-fttx-foundation/02-pon-and-splitter.mdx": {
+      "image": "/images/editorial/education--optical-training--01-fttx-foundation--02-pon-and-splitter.webp",
+      "title": "PON and Optical Splitters — How 32 Homes Share One Fiber"
+    },
+    "content/education/optical-training/01-fttx-foundation/03-optical-power-budget.mdx": {
+      "image": "/images/editorial/education--optical-training--01-fttx-foundation--03-optical-power-budget.webp",
+      "title": "Optical Power Budget — Where a Link Lives or Dies"
+    },
+    "content/education/optical-training/01-fttx-foundation/04-otdr-fault-finding.mdx": {
+      "image": "/images/editorial/education--optical-training--01-fttx-foundation--04-otdr-fault-finding.webp",
+      "title": "Finding Faults with an OTDR — How to Read the Trace"
+    },
+    "content/education/optical-training/02-cable-and-splicing/01-singlemode-vs-multimode.mdx": {
+      "image": "/images/editorial/education--optical-training--02-cable-and-splicing--01-singlemode-vs-multimode.webp",
+      "title": "Single-mode or Multimode — Choosing the Right Fiber"
+    },
+    "content/education/optical-training/02-cable-and-splicing/02-fusion-splicing.mdx": {
+      "image": "/images/editorial/education--optical-training--02-cable-and-splicing--02-fusion-splicing.webp",
+      "title": "Fusion Splicing — What Actually Makes a Good Splice"
+    },
+    "content/education/optical-training/02-cable-and-splicing/03-connectors-and-contamination.mdx": {
+      "image": "/images/editorial/education--optical-training--02-cable-and-splicing--03-connectors-and-contamination.webp",
+      "title": "Connectors and End-face Contamination — The Number One Field Fault"
+    },
+    "content/education/optical-training/02-cable-and-splicing/04-bend-radius-and-slack.mdx": {
+      "image": "/images/editorial/education--optical-training--02-cable-and-splicing--04-bend-radius-and-slack.webp",
+      "title": "Bend Radius, Slack and Enclosure Discipline"
+    },
+    "content/education/optical-training/02-cable-and-splicing/05-route-types-and-failure-modes.mdx": {
+      "image": "/images/editorial/education--optical-training--02-cable-and-splicing--05-route-types-and-failure-modes.webp",
+      "title": "Aerial, Duct and Direct-buried — Route Types and How Each One Fails"
+    },
+    "content/education/optical-training/03-measurement-and-acceptance/01-insertion-loss-testing.mdx": {
+      "image": "/images/editorial/education--optical-training--03-measurement-and-acceptance--01-insertion-loss-testing.webp",
+      "title": "Insertion Loss Testing — The Measurement That Actually Decides Acceptance"
+    },
+    "content/education/optical-training/03-measurement-and-acceptance/02-reading-otdr-event-table.mdx": {
+      "image": "/images/editorial/education--optical-training--03-measurement-and-acceptance--02-reading-otdr-event-table.webp",
+      "title": "Reading an OTDR Event Table Without Trusting It Blindly"
+    },
+    "content/education/optical-training/03-measurement-and-acceptance/03-acceptance-testing.mdx": {
+      "image": "/images/editorial/education--optical-training--03-measurement-and-acceptance--03-acceptance-testing.webp",
+      "title": "Acceptance Testing — What to Record and Why It Matters Later"
+    },
+    "content/education/optical-training/03-measurement-and-acceptance/04-visual-fault-locator.mdx": {
+      "image": "/images/editorial/education--optical-training--03-measurement-and-acceptance--04-visual-fault-locator.webp",
+      "title": "The Visual Fault Locator — When Red Light Beats an OTDR"
+    },
+    "content/education/optical-training/03-measurement-and-acceptance/05-test-documentation.mdx": {
+      "image": "/images/editorial/education--optical-training--03-measurement-and-acceptance--05-test-documentation.webp",
+      "title": "Test Documentation That Is Still Useful in Year Three"
+    },
+    "content/education/optical-training/04-troubleshooting-and-operations/01-fault-triage-order.mdx": {
+      "image": "/images/editorial/education--optical-training--04-troubleshooting-and-operations--01-fault-triage-order.webp",
+      "title": "A Triage Order for Fiber Faults"
+    },
+    "content/education/optical-training/04-troubleshooting-and-operations/02-intermittent-faults.mdx": {
+      "image": "/images/editorial/education--optical-training--04-troubleshooting-and-operations--02-intermittent-faults.webp",
+      "title": "Intermittent Faults — Temperature, Water and Movement"
+    },
+    "content/education/optical-training/04-troubleshooting-and-operations/03-onu-will-not-register.mdx": {
+      "image": "/images/editorial/education--optical-training--04-troubleshooting-and-operations--03-onu-will-not-register.webp",
+      "title": "The ONU Will Not Register — Working Through the Layers"
+    },
+    "content/education/optical-training/04-troubleshooting-and-operations/04-rogue-onu.mdx": {
+      "image": "/images/editorial/education--optical-training--04-troubleshooting-and-operations--04-rogue-onu.webp",
+      "title": "Rogue ONU — When One Unit Breaks the Whole PON"
+    },
+    "content/education/optical-training/04-troubleshooting-and-operations/05-emergency-restoration.mdx": {
+      "image": "/images/editorial/education--optical-training--04-troubleshooting-and-operations--05-emergency-restoration.webp",
+      "title": "Emergency Restoration — Getting Service Back, Then Doing It Properly"
+    },
+    "content/education/optical-training/05-pon-technology/01-gpon-xgspon-wavelength-plan.mdx": {
+      "image": "/images/editorial/education--optical-training--05-pon-technology--01-gpon-xgspon-wavelength-plan.webp",
+      "title": "GPON, XGS-PON and the Wavelength Plan"
+    },
+    "content/education/optical-training/05-pon-technology/02-coexistence-on-existing-plant.mdx": {
+      "image": "/images/editorial/education--optical-training--05-pon-technology--02-coexistence-on-existing-plant.webp",
+      "title": "Coexistence — Running a New PON Over Existing Plant"
+    },
+    "content/education/optical-training/05-pon-technology/03-capacity-planning.mdx": {
+      "image": "/images/editorial/education--optical-training--05-pon-technology--03-capacity-planning.webp",
+      "title": "Capacity Planning — Split Ratio as a Business Decision"
+    },
+    "content/education/optical-training/05-pon-technology/04-in-building-distribution.mdx": {
+      "image": "/images/editorial/education--optical-training--05-pon-technology--04-in-building-distribution.webp",
+      "title": "In-building Distribution — Where Most Installation Time Goes"
+    },
+    "content/education/optical-training/05-pon-technology/05-what-changes-with-higher-rate-pon.mdx": {
+      "image": "/images/editorial/education--optical-training--05-pon-technology--05-what-changes-with-higher-rate-pon.webp",
+      "title": "What Changes as PON Rates Keep Rising"
+    },
+    "content/education/vibe-coding/02-master-class/01-concepts.mdx": {
+      "image": "/images/editorial/education--vibe-coding--02-master-class--01-concepts-v2.webp",
+      "title": "바이브 코딩 마스터 5가지 필수 개념"
+    },
+    "content/education/vibe-coding/02-master-class/02-7day-execution-plan.mdx": {
+      "image": "/images/editorial/education--vibe-coding--02-master-class--02-7day-execution-plan.webp",
+      "title": "아이디어를 서비스로 바꾸는 바이브 코딩 7일 실행 플랜"
+    },
+    "content/education/vibe-coding/03-practice/01-vibe-coding-concepts-and-misconceptions.mdx": {
+      "image": "/images/editorial/education--vibe-coding--03-practice--01-vibe-coding-concepts-and-misconceptions.webp",
+      "title": "바이브 코딩 개념과 오해 정리: 감으로 만드는 게 아니라, 감각으로 설계하는 것"
+    },
+    "content/education/vibe-coding/03-practice/02-vibe-coding-feedback-loop-and-quality-gates.mdx": {
+      "image": "/images/editorial/education--vibe-coding--03-practice--02-vibe-coding-feedback-loop-and-quality-gates.webp",
+      "title": "바이브 코딩 결과물을 제품 수준으로 끌어올리는 피드백 루프와 품질 게이트"
+    },
+    "content/education/vibe-coding/03-practice/03-vibe-coding-handoff-map-and-acceptance-contract.mdx": {
+      "image": "/images/editorial/education--vibe-coding--03-practice--03-vibe-coding-handoff-map-and-acceptance-contract.webp",
+      "title": "바이브 코딩 산출물을 바로 넘길 수 있게 만드는 핸드오프 맵과 승인 계약"
+    },
+    "content/education/vibe-coding/03-practice/04-vibe-coding-scope-freeze-and-change-budget.mdx": {
+      "image": "/images/editorial/education--vibe-coding--03-practice--04-vibe-coding-scope-freeze-and-change-budget.webp",
+      "title": "바이브 코딩 산출물이 끝까지 살아남는 스코프 프리즈와 변경 예산 운영법"
+    },
+    "content/education/vibe-coding/03-practice/05-vibe-coding-decision-log-and-recovery-window.mdx": {
+      "image": "/images/editorial/education--vibe-coding--03-practice--05-vibe-coding-decision-log-and-recovery-window.webp",
+      "title": "바이브 코딩 품질을 지키는 결정 로그와 복구 윈도우 설계"
+    },
+    "content/education/vibe-coding/2026-03-22-vibe-coding-02.mdx": {
+      "image": "/images/editorial/education--vibe-coding--2026-03-22-vibe-coding-02.webp",
+      "title": "AI 코딩 결과가 들쭉날쭉할 때, 프롬프트보다 먼저 고쳐야 할 운영 시스템"
+    },
+    "content/posts/14-digital-products.mdx": {
+      "image": "/images/editorial/posts--14-digital-products.webp",
+      "title": "2026년, 패시브 인컴을 위한 AI 디지털 제품 (수익화 가이드)"
+    },
+    "content/posts/15-ai-music-monetization.mdx": {
+      "image": "/images/editorial/posts--15-ai-music-monetization.webp",
+      "title": "AI 음악으로 수익 만들기: 실전 가이드 (Suno & AudioJungle)"
+    },
+    "content/posts/16-suno-ai-asmr-monetization.mdx": {
+      "image": "/images/editorial/posts--16-suno-ai-asmr-monetization.webp",
+      "title": "Suno AI로 만드는 아무도 모르는 부업"
+    },
+    "content/posts/agentic-era-ch4-multi-agent-orchestration.mdx": {
+      "image": "/images/editorial/posts--agentic-era-ch4-multi-agent-orchestration-v2.webp",
+      "title": "에이전트 팀 운영법: 단일 에이전트에서 멀티 에이전트 오케스트레이션으로"
+    },
+    "content/posts/agentic-era-ch5-failure-budget-and-governance.mdx": {
+      "image": "/images/editorial/posts--agentic-era-ch5-failure-budget-and-governance-v2.webp",
+      "title": "멀티 에이전트 운영의 진짜 기준: 실패 예산과 승인 게이트 설계"
+    },
+    "content/posts/agentic-era-ch6-runtime-observability-playbook.mdx": {
+      "image": "/images/editorial/posts--agentic-era-ch6-runtime-observability-playbook-v2.webp",
+      "title": "Agentic Era CH6. 보이지 않으면 지킬 수 없다: 런타임 관측성과 안전 운영 플레이북"
+    },
+    "content/posts/agentic-era-ch7-human-handoff-and-escalation-design.mdx": {
+      "image": "/images/editorial/posts--agentic-era-ch7-human-handoff-and-escalation-design.webp",
+      "title": "Agentic Era CH7. 멈추지 않고 넘겨라: 인간 핸드오프와 에스컬레이션 설계"
+    },
+    "content/posts/agentic-era-context-firewall-and-policy-routing.mdx": {
+      "image": "/images/editorial/posts--agentic-era-context-firewall-and-policy-routing.webp",
+      "title": "좋은 에이전트는 많이 아는 대신, 먼저 거른다: 컨텍스트 방화벽과 정책 라우팅"
+    },
+    "content/posts/agentic-era-escalation-latency-and-trust-budget.mdx": {
+      "image": "/images/editorial/posts--agentic-era-escalation-latency-and-trust-budget.webp",
+      "title": "에이전트 팀의 신뢰 예산: 에스컬레이션 지연을 줄이는 운영 설계"
+    },
+    "content/posts/agentic-era-memory-retrieval-architecture.mdx": {
+      "image": "/images/editorial/posts--agentic-era-memory-retrieval-architecture.webp",
+      "title": "기억은 저장보다 회수가 어렵다: 에이전트 메모리 계층 설계"
+    },
+    "content/posts/agentic-era-operator-contract-for-autonomy-layers.mdx": {
+      "image": "/images/editorial/posts--agentic-era-operator-contract-for-autonomy-layers.webp",
+      "title": "자동화는 권한이 아니라 계약이다: 자율성 레이어별 운영자 계약서"
+    },
+    "content/posts/agentic-era-right-to-refuse.mdx": {
+      "image": "/images/editorial/posts--agentic-era-right-to-refuse.webp",
+      "title": "에이전트에게 거절할 권한을 줄 것인가"
+    },
+    "content/posts/agentic-era-runtime-change-control-window.mdx": {
+      "image": "/images/editorial/posts--agentic-era-runtime-change-control-window.webp",
+      "title": "에이전트 운영의 분기점: 런타임 변경을 통제하는 체인지 컨트롤 윈도우"
+    },
+    "content/posts/ai-fantasy-life-2.mdx": {
+      "image": "/images/editorial/posts--ai-fantasy-life-2.webp",
+      "title": "기억의 정원사: 삭제된 꿈들의 발아"
+    },
+    "content/posts/ai-fantasy-life-3.mdx": {
+      "image": "/images/editorial/posts--ai-fantasy-life-3.webp",
+      "title": "기억의 방주: 삭제된 세계를 싣고 떠나는 항해"
+    },
+    "content/posts/ai-fantasy-life-ch4-cafe-on-the-everlasting-evening-planet.mdx": {
+      "image": "/images/editorial/posts--ai-fantasy-life-ch4-cafe-on-the-everlasting-evening-planet.webp",
+      "title": "영원히 저녁인 행성의 카페: 멈춘 황혼에서 배운 회복의 문법"
+    },
+    "content/posts/ai-fantasy-life-crystal-atlas-night-market.mdx": {
+      "image": "/images/editorial/posts--ai-fantasy-life-crystal-atlas-night-market.webp",
+      "title": "수정 야시장의 빈 지도들: 길을 잃지 않기 위해 매일 갱신하는 좌표"
+    },
+    "content/posts/ai-fantasy-life-fog-harbor-memory-lighthouse.mdx": {
+      "image": "/images/editorial/posts--ai-fantasy-life-fog-harbor-memory-lighthouse.webp",
+      "title": "안개 항구의 기억 등대: 잊지 않으려 애쓰기보다, 다시 떠오를 구조를 만드는 법"
+    },
+    "content/posts/ai-fantasy-life-glass-tide-garden-of-small-promises.mdx": {
+      "image": "/images/editorial/posts--ai-fantasy-life-glass-tide-garden-of-small-promises.webp",
+      "title": "유리 조수 정원의 작은 약속들: 거창한 목표보다 매일의 미세한 이행이 미래를 바꾼다"
+    },
+    "content/posts/ai-fantasy-life-library-of-unfinished-sentences.mdx": {
+      "image": "/images/editorial/posts--ai-fantasy-life-library-of-unfinished-sentences.webp",
+      "title": "끝맺지 못한 문장들의 도서관"
+    },
+    "content/posts/ai-fantasy-life-moonlit-seed-vault-of-slow-automation.mdx": {
+      "image": "/images/editorial/posts--ai-fantasy-life-moonlit-seed-vault-of-slow-automation.webp",
+      "title": "달빛 종자 금고: 자동화를 느리게 굴려 오히려 오래 가게 만드는 법"
+    },
+    "content/posts/ai-fantasy-life-rain-clock-archive-for-tired-routines.mdx": {
+      "image": "/images/editorial/posts--ai-fantasy-life-rain-clock-archive-for-tired-routines.webp",
+      "title": "비의 시계 보관소: 지친 루틴을 다시 살아나게 하는 작은 자동화 판타지"
+    },
+    "content/posts/ai-fantasy-life-starlight-greenhouse-slow-work.mdx": {
+      "image": "/images/editorial/posts--ai-fantasy-life-starlight-greenhouse-slow-work.webp",
+      "title": "별빛 온실의 느린 작업장: 급하지 않아도 깊게 자라는 생산성"
+    },
+    "content/posts/ai-fantasy-life-tide-library-of-forgotten-questions.mdx": {
+      "image": "/images/editorial/posts--ai-fantasy-life-tide-library-of-forgotten-questions.webp",
+      "title": "밀물 도서관의 질문 보관소: 답을 찾기 전에 질문을 살아 있게 두는 기술"
+    },
+    "content/posts/ai-fantasy-life.mdx": {
+      "image": "/images/editorial/posts--ai-fantasy-life.webp",
+      "title": "이진법으로 꾸는 꿈: 데이터 요정의 도서관"
+    },
+    "content/posts/ai-hardware-revolution.mdx": {
+      "image": "/images/editorial/posts--ai-hardware-revolution.webp",
+      "title": "AI-하드웨어 혁명: 전력의 역설과 신칩의 도래"
+    },
+    "content/posts/ai-photography-essay.mdx": {
+      "image": "/images/editorial/posts--ai-photography-essay.webp",
+      "title": "AI 시대의 사진 예술이란?"
+    },
+    "content/posts/ai-survival-2025.mdx": {
+      "image": "/images/editorial/posts--ai-survival-2025.webp",
+      "title": "청구서가 도착했다: 2025 AI 생존기"
+    },
+    "content/posts/ai-tech-trends-browser-agents-search-surface.mdx": {
+      "image": "/images/editorial/posts--ai-tech-trends-browser-agents-search-surface-v2.webp",
+      "title": "브라우저 에이전트가 검색창을 대체하는 순간"
+    },
+    "content/posts/ai-tech-trends-ch17-inference-cost-bottleneck.mdx": {
+      "image": "/images/editorial/posts--ai-tech-trends-ch17-inference-cost-bottleneck.webp",
+      "title": "AI의 다음 병목: 모델 성능이 아니라 추론비용이다"
+    },
+    "content/posts/ai-tech-trends-ch18-ai-roi-framework.mdx": {
+      "image": "/images/editorial/posts--ai-tech-trends-ch18-ai-roi-framework.webp",
+      "title": "업무별 AI ROI 측정 프레임: 도입 성과를 숫자로 증명하는 법"
+    },
+    "content/posts/ai-tech-trends-ch19-valuation-reset-era.mdx": {
+      "image": "/images/editorial/posts--ai-tech-trends-ch19-valuation-reset-era.webp",
+      "title": "AI 스타트업 밸류에이션 관점 변화: 성장률보다 운영밀도가 프리미엄이 되는 이유"
+    },
+    "content/posts/ai-tech-trends-ch20-agent-team-ops-design.mdx": {
+      "image": "/images/editorial/posts--ai-tech-trends-ch20-agent-team-ops-design.webp",
+      "title": "에이전트 팀 시대, 성능보다 운영 설계가 승부를 가른다"
+    },
+    "content/posts/ai-tech-trends-context-cache-ledger-for-agent-teams.mdx": {
+      "image": "/images/editorial/posts--ai-tech-trends-context-cache-ledger-for-agent-teams.webp",
+      "title": "에이전트 팀 운영을 살리는 컨텍스트 캐시 레저 설계"
+    },
+    "content/posts/ai-tech-trends-inference-arbitrage-control-tower.mdx": {
+      "image": "/images/editorial/posts--ai-tech-trends-inference-arbitrage-control-tower.webp",
+      "title": "멀티모델 시대, 추론 비용을 지키는 인퍼런스 중재 타워"
+    },
+    "content/posts/ai-tech-trends-latency-budget-router-playbook.mdx": {
+      "image": "/images/editorial/posts--ai-tech-trends-latency-budget-router-playbook.webp",
+      "title": "AI 제품팀을 위한 지연·비용 동시 제어 라우터 플레이북"
+    },
+    "content/posts/ai-tech-trends-runtime-signal-stack-for-small-teams.mdx": {
+      "image": "/images/editorial/posts--ai-tech-trends-runtime-signal-stack-for-small-teams.webp",
+      "title": "작은 팀을 위한 AI 런타임 시그널 스택 설계법"
+    },
+    "content/posts/ai-tech-trends-small-model-crossover.mdx": {
+      "image": "/images/editorial/posts--ai-tech-trends-small-model-crossover.webp",
+      "title": "작은 모델이 큰 모델을 이기는 구간"
+    },
+    "content/posts/ai-tech-trends.mdx": {
+      "image": "/images/editorial/posts--ai-tech-trends-v2.webp",
+      "title": "2026 AI 트렌드 리포트: 멀티 에이전트 시스템의 도래"
+    },
+    "content/posts/ai-vision-aesthetics.mdx": {
+      "image": "/images/editorial/posts--ai-vision-aesthetics.webp",
+      "title": "AI가 보는 세상: 컴퓨터 비전의 미학"
+    },
+    "content/posts/artificial-memory.mdx": {
+      "image": "/images/editorial/posts--artificial-memory.webp",
+      "title": "실재하지 않는 기억: AI와 노스탤지어"
+    },
+    "content/posts/autonomous-agents.mdx": {
+      "image": "/images/editorial/posts--autonomous-agents-v2.webp",
+      "title": "도구를 넘어 동료로: AI 에이전트의 부상"
+    },
+    "content/posts/creativity-democratization.mdx": {
+      "image": "/images/editorial/posts--creativity-democratization.webp",
+      "title": "창작의 민주화인가, 예술의 종말인가?"
+    },
+    "content/posts/daily-record-decision-fatigue-circuit-breaker.mdx": {
+      "image": "/images/editorial/posts--daily-record-decision-fatigue-circuit-breaker.webp",
+      "title": "저녁마다 결정 피로가 몰려올 때: 하루를 살리는 서킷 브레이커 루틴"
+    },
+    "content/posts/daily-record-evening-desk-reset-window.mdx": {
+      "image": "/images/editorial/posts--daily-record-evening-desk-reset-window.webp",
+      "title": "불을 끄기 전 30분: 내일을 가볍게 만드는 저녁 책상 리셋"
+    },
+    "content/posts/daily-record-midday-reset-runbook.mdx": {
+      "image": "/images/editorial/posts--daily-record-midday-reset-runbook.webp",
+      "title": "정오 리셋 런북: 오전의 흔들림을 오후의 집중으로 바꾸는 실행 기록"
+    },
+    "content/posts/daily-record-night-shift-buffer-protocol.mdx": {
+      "image": "/images/editorial/posts--daily-record-night-shift-buffer-protocol.webp",
+      "title": "야간 버퍼 프로토콜: 늦게 끝난 하루를 내일의 리듬으로 넘기는 기록"
+    },
+    "content/posts/daily-record-silent-dashboard-reset.mdx": {
+      "image": "/images/editorial/posts--daily-record-silent-dashboard-reset.webp",
+      "title": "조용한 대시보드 리셋: 흐트러진 하루를 다시 정렬하는 밤의 기록"
+    },
+    "content/posts/daily-record-the-week-light-changes.mdx": {
+      "image": "/images/editorial/posts--daily-record-the-week-light-changes.webp",
+      "title": "빛이 바뀌는 일주일"
+    },
+    "content/posts/daily-record-threshold-ledger-for-busy-days.mdx": {
+      "image": "/images/editorial/posts--daily-record-threshold-ledger-for-busy-days.webp",
+      "title": "바쁜 날의 임계값 장부: 무너지기 전에 하루를 되돌리는 기준선 설계"
+    },
+    "content/posts/digital-immortality.mdx": {
+      "image": "/images/editorial/posts--digital-immortality.webp",
+      "title": "디지털 불멸: 죽음을 초월한 데이터"
+    },
+    "content/posts/digital-persona.mdx": {
+      "image": "/images/editorial/posts--digital-persona.webp",
+      "title": "디지털 페르소나: 가상 인플루언서의 시대"
+    },
+    "content/posts/future-arts-ai-artist-lighting-aesthetics-guide.mdx": {
+      "image": "/images/editorial/posts--future-arts-ai-artist-lighting-aesthetics-guide.webp",
+      "title": "AI 이미지 프롬프트 치트시트 "
+    },
+    "content/posts/future-arts-ai-image-style-complete-guide.mdx": {
+      "image": "/images/editorial/posts--future-arts-ai-image-style-complete-guide.webp",
+      "title": "AI 이미지 생성 스타일 완전 가이드: 10개 카테고리"
+    },
+    "content/posts/future-arts-ambient-memory-interface-and-rhythm-design.mdx": {
+      "image": "/images/editorial/posts--future-arts-ambient-memory-interface-and-rhythm-design.webp",
+      "title": "기억의 잔향을 설계하는 인터페이스: future-arts 리듬 디자인"
+    },
+    "content/posts/future-arts-attention-loom-and-slow-feedback-stage.mdx": {
+      "image": "/images/editorial/posts--future-arts-attention-loom-and-slow-feedback-stage.webp",
+      "title": "주의의 직조기: 느린 피드백이 인터랙션 무대를 바꾸는 방식"
+    },
+    "content/posts/future-arts-attention-rhythm-ledger-and-recovery-design.mdx": {
+      "image": "/images/editorial/posts--future-arts-attention-rhythm-ledger-and-recovery-design.webp",
+      "title": "미래 예술의 운영체제: 주의 리듬 레저와 회복 중심 경험 설계"
+    },
+    "content/posts/future-arts-ch6-haptic-art.mdx": {
+      "image": "/images/editorial/posts--future-arts-ch6-haptic-art.webp",
+      "title": "생성된 촉감: 햅틱 인터페이스가 만드는 ‘만질 수 있는 예술’"
+    },
+    "content/posts/future-arts-hangul-latin-typeface-boundary.mdx": {
+      "image": "/images/editorial/posts--future-arts-hangul-latin-typeface-boundary.webp",
+      "title": "글리프가 없는 글자 — 한글과 영문이 한 화면에 있을 때"
+    },
+    "content/posts/future-arts-latency-garden-and-waiting-interface.mdx": {
+      "image": "/images/editorial/posts--future-arts-latency-garden-and-waiting-interface.webp",
+      "title": "지연의 정원: 기다림을 창작의 표면으로 바꾸는 인터페이스 미학"
+    },
+    "content/posts/future-arts-midjourney-v7-portrait-styles.mdx": {
+      "image": "/images/editorial/posts--future-arts-midjourney-v7-portrait-styles.webp",
+      "title": "Midjourney  인물 사진 스타일  퀄리티가 달라지는 프롬프트"
+    },
+    "content/posts/future-arts-nano-banana-2-viral-image-styles-2026.mdx": {
+      "image": "/images/editorial/posts--future-arts-nano-banana-2-viral-image-styles-2026.webp",
+      "title": "2026년에 피드를 멈추게 하는 Nano Banana 2 이미지 스타일 7가지"
+    },
+    "content/posts/future-arts-sensory-score-and-generative-space.mdx": {
+      "image": "/images/editorial/posts--future-arts-sensory-score-and-generative-space.webp",
+      "title": "생성형 공간의 감각 악보: AI 시대, 전시는 어떻게 몸으로 읽히는가"
+    },
+    "content/posts/future-arts-shadow-tells-the-truth.mdx": {
+      "image": "/images/editorial/posts--future-arts-shadow-tells-the-truth.webp",
+      "title": "그림자가 먼저 들킨다 — AI 이미지에서 빛을 읽는 법"
+    },
+    "content/posts/future-arts-suno-ai-prompt-guide.mdx": {
+      "image": "/images/editorial/posts--future-arts-suno-ai-prompt-guide.webp",
+      "title": "Suno AI 프롬프트 7선: 퀄리티가 달라지는 작법"
+    },
+    "content/posts/future-arts-suno-v5-5-update.mdx": {
+      "image": "/images/editorial/posts--future-arts-suno-v5-5-update.webp",
+      "title": "Suno AI v5.5 완전 분석: 내 목소리로 노래하는 시대가 열렸다"
+    },
+    "content/posts/generative-architecture.mdx": {
+      "image": "/images/editorial/posts--generative-architecture.webp",
+      "title": "공간을 연산하다: 생성형 건축의 미학"
+    },
+    "content/posts/homo-technicus-attention-proxy-boundary-protocol.mdx": {
+      "image": "/images/editorial/posts--homo-technicus-attention-proxy-boundary-protocol.webp",
+      "title": "인지 아웃소싱 시대의 경계 설계: 생각을 맡기되 주도권을 잃지 않는 운영법"
+    },
+    "content/posts/homo-technicus-ch5-digital-persona-rights.mdx": {
+      "image": "/images/editorial/posts--homo-technicus-ch5-digital-persona-rights.webp",
+      "title": "권리의 경계: 디지털 페르소나는 법적 주체가 될 수 있는가"
+    },
+    "content/posts/homo-technicus-cognitive-outsourcing-consent-log.mdx": {
+      "image": "/images/editorial/posts--homo-technicus-cognitive-outsourcing-consent-log.webp",
+      "title": "인지 외주 시대, 우리는 무엇에 동의하고 있는가: 동의 로그 설계법"
+    },
+    "content/posts/homo-technicus-consent-ledger-for-cognitive-outsourcing.mdx": {
+      "image": "/images/editorial/posts--homo-technicus-consent-ledger-for-cognitive-outsourcing.webp",
+      "title": "인지 아웃소싱 시대, 나를 지키는 동의 원장 설계법"
+    },
+    "content/posts/homo-technicus-memory-estate-ethics.mdx": {
+      "image": "/images/editorial/posts--homo-technicus-memory-estate-ethics.webp",
+      "title": "기억의 유산: 개인 데이터는 누구에게 남겨져야 하는가"
+    },
+    "content/posts/homo-technicus-outsourced-memory-and-the-self.mdx": {
+      "image": "/images/editorial/posts--homo-technicus-outsourced-memory-and-the-self.webp",
+      "title": "기억을 맡긴 사람은 무엇을 잃는가"
+    },
+    "content/posts/homo-technicus-versioned-self-and-identity-drift.mdx": {
+      "image": "/images/editorial/posts--homo-technicus-versioned-self-and-identity-drift.webp",
+      "title": "버전 관리되는 자아: 업데이트가 계속될 때 우리는 어디까지 같은 사람인가"
+    },
+    "content/posts/human-in-the-loop-ai-ops.mdx": {
+      "image": "/images/editorial/posts--human-in-the-loop-ai-ops.webp",
+      "title": "AI 자동화, 사람의 확인 루프가 성과를 만든다"
+    },
+    "content/posts/i-did-something-today.mdx": {
+      "image": "/images/editorial/posts--i-did-something-today.webp",
+      "title": "오늘도 무언가를 했다"
+    },
+    "content/posts/light-on-white-road.mdx": {
+      "image": "/images/editorial/posts--light-on-white-road.webp",
+      "title": "하얀 도로 위의 빛"
+    },
+    "content/posts/moment-i-let-go.mdx": {
+      "image": "/images/editorial/posts--moment-i-let-go.webp",
+      "title": "내가 나를 놓아버리는 순간"
+    },
+    "content/posts/n8n-masterclass.mdx": {
+      "image": "/images/editorial/posts--n8n-masterclass.webp",
+      "title": "N8N 워크플로우 100% 활용하기"
+    },
+    "content/posts/passive-income-bundle-ladder-repeat-buyers.mdx": {
+      "image": "/images/editorial/posts--passive-income-bundle-ladder-repeat-buyers.webp",
+      "title": "한 번 팔고 끝내지 않는 구조: 번들 사다리로 재구매를 만드는 패시브 인컴 설계"
+    },
+    "content/posts/passive-income-ch2-notion-template-monetization.mdx": {
+      "image": "/images/editorial/posts--passive-income-ch2-notion-template-monetization.webp",
+      "title": "노션 템플릿 수익화 실전 루트: 첫 판매부터 재구매 구조까지"
+    },
+    "content/posts/passive-income-ch3-evergreen-product-loop.mdx": {
+      "image": "/images/editorial/posts--passive-income-ch3-evergreen-product-loop.webp",
+      "title": "에버그린 디지털 제품 루프: 한 번 만든 자산을 계속 팔리게 하는 운영 설계"
+    },
+    "content/posts/passive-income-ch4-stock-image-revenue-system.mdx": {
+      "image": "/images/editorial/posts--passive-income-ch4-stock-image-revenue-system.webp",
+      "title": "스톡 이미지 수익화 구조: 업로드 노동을 자산 운영으로 바꾸는 설계"
+    },
+    "content/posts/passive-income-lifetime-offer-stacking-system.mdx": {
+      "image": "/images/editorial/posts--passive-income-lifetime-offer-stacking-system.webp",
+      "title": "패시브 인컴 수명을 늘리는 오퍼 스태킹 시스템: 한 번 팔고 끝내지 않는 구조 만들기"
+    },
+    "content/posts/passive-income-maintenance-is-the-product.mdx": {
+      "image": "/images/editorial/posts--passive-income-maintenance-is-the-product.webp",
+      "title": "유지보수가 곧 상품이다 — 팔고 나서 시작되는 일"
+    },
+    "content/posts/passive-income-membership-cashflow-control-loop.mdx": {
+      "image": "/images/editorial/posts--passive-income-membership-cashflow-control-loop.webp",
+      "title": "멤버십 현금흐름 컨트롤 루프: 자동수익을 지키는 운영 설계"
+    },
+    "content/posts/passive-income-retention-offer-ladder.mdx": {
+      "image": "/images/editorial/posts--passive-income-retention-offer-ladder.webp",
+      "title": "패시브 인컴 이탈을 막는 리텐션 오퍼 래더: 신규 유입 없이도 월매출을 복원하는 구조"
+    },
+    "content/posts/passive-income-weekly-asset-maintenance-loop.mdx": {
+      "image": "/images/editorial/posts--passive-income-weekly-asset-maintenance-loop.webp",
+      "title": "패시브 인컴을 지키는 주간 자산 점검 루프: 만들기보다 관리가 수익을 지킨다"
+    },
+    "content/posts/post-humanism.mdx": {
+      "image": "/images/editorial/posts--post-humanism.webp",
+      "title": "호모 엑스 마키나: 기술적 포스트휴머니즘"
+    },
+    "content/posts/resonance-of-intelligence.mdx": {
+      "image": "/images/editorial/posts--resonance-of-intelligence.webp",
+      "title": "지능의 공명: 생성형 오디오의 미학"
+    },
+    "content/posts/song-left-behind.mdx": {
+      "image": "/images/editorial/posts--song-left-behind.webp",
+      "title": "변하지 않은 나에게 보내는, 뒤늦은 편지"
+    },
+    "content/posts/speaking-of-autumn.mdx": {
+      "image": "/images/editorial/posts--speaking-of-autumn.webp",
+      "title": "가을의 언어로 너를 말하다"
+    },
+    "content/posts/synthetic-cinema.mdx": {
+      "image": "/images/editorial/posts--synthetic-cinema.webp",
+      "title": "프롬프트로 찍는 영화: 합성 시네마의 시대"
+    },
+    "content/posts/the-answer-movie-jin-yong.mdx": {
+      "image": "/images/editorial/posts--the-answer-movie-jin-yong.webp",
+      "title": "사랑이 무엇인지 물었던 나에게, 처음으로 대답을 해준 영화 [진용]"
+    },
+    "content/posts/today-me-attention-firewall-before-first-click.mdx": {
+      "image": "/images/editorial/posts--today-me-attention-firewall-before-first-click.webp",
+      "title": "Today Me. 첫 클릭 전에 집중을 지키는 어텐션 방화벽"
+    },
+    "content/posts/today-me-ch10-decision-fatigue-firewall.mdx": {
+      "image": "/images/editorial/posts--today-me-ch10-decision-fatigue-firewall.webp",
+      "title": "Today Me. 멈춤 다음의 멈춤을 끊는 결정 피로 방화벽"
+    },
+    "content/posts/today-me-ch11-context-budget-and-boundary-ritual.mdx": {
+      "image": "/images/editorial/posts--today-me-ch11-context-budget-and-boundary-ritual.webp",
+      "title": "Today Me. 흐름을 지키는 컨텍스트 예산과 경계 의식"
+    },
+    "content/posts/today-me-ch12-input-hygiene-protocol.mdx": {
+      "image": "/images/editorial/posts--today-me-ch12-input-hygiene-protocol.webp",
+      "title": "Today Me. 주의력 누수를 막는 입력 위생 프로토콜"
+    },
+    "content/posts/today-me-ch3-reset-protocol.mdx": {
+      "image": "/images/editorial/posts--today-me-ch3-reset-protocol.webp",
+      "title": "루틴이 무너진 날의 복구법: 다시 시작하는 20분 프로토콜"
+    },
+    "content/posts/today-me-ch4-minimum-log-on-busy-days.mdx": {
+      "image": "/images/editorial/posts--today-me-ch4-minimum-log-on-busy-days.webp",
+      "title": "바쁜 날에도 기록을 남기는 최소 단위: 하루를 지키는 5분 로그"
+    },
+    "content/posts/today-me-ch5-weekly-reset-map.mdx": {
+      "image": "/images/editorial/posts--today-me-ch5-weekly-reset-map.webp",
+      "title": "Today Me. 흔들린 한 주를 다시 세우는 주간 리셋 맵"
+    },
+    "content/posts/today-me-ch6-restart-window.mdx": {
+      "image": "/images/editorial/posts--today-me-ch6-restart-window.webp",
+      "title": "Today Me. 무너진 하루를 되살리는 리스타트 윈도우"
+    },
+    "content/posts/today-me-ch7-energy-floor-protocol.mdx": {
+      "image": "/images/editorial/posts--today-me-ch7-energy-floor-protocol.webp",
+      "title": "Today Me. 바닥 에너지에서도 돌아가는 최소 엔진"
+    },
+    "content/posts/today-me-ch8-frictionless-reset-environment.mdx": {
+      "image": "/images/editorial/posts--today-me-ch8-frictionless-reset-environment.webp",
+      "title": "Today Me. 의지 대신 환경으로 시작하는 마찰 제로 설계"
+    },
+    "content/posts/today-me-ch9-restart-interval-design.mdx": {
+      "image": "/images/editorial/posts--today-me-ch9-restart-interval-design.webp",
+      "title": "Today Me. 다시 시작을 자동화하는 리스타트 인터벌 설계"
+    },
+    "content/posts/today-me-context-shutdown-protocol.mdx": {
+      "image": "/images/editorial/posts--today-me-context-shutdown-protocol.webp",
+      "title": "Today Me. 밤을 지키는 컨텍스트 셧다운 프로토콜"
+    },
+    "content/posts/today-me-ending-ritual-for-tomorrow.mdx": {
+      "image": "/images/editorial/posts--today-me-ending-ritual-for-tomorrow.webp",
+      "title": "Today Me. 내일을 가볍게 만드는 종료 의식"
+    },
+    "content/posts/today-me-first-fifteen-minutes.mdx": {
+      "image": "/images/editorial/posts--today-me-first-fifteen-minutes.webp",
+      "title": "하루의 첫 15분을 누구에게도 주지 않기"
+    },
+    "content/posts/today-me-first-task-gate-protocol.mdx": {
+      "image": "/images/editorial/posts--today-me-first-task-gate-protocol.webp",
+      "title": "Today Me. 하루를 지키는 첫 작업 게이트 프로토콜"
+    },
+    "content/posts/today-me-reset-checkpoint-before-late-night-work.mdx": {
+      "image": "/images/editorial/posts--today-me-reset-checkpoint-before-late-night-work.webp",
+      "title": "Today Me. 야간 작업 전에 멈춰 세우는 리셋 체크포인트"
+    },
+    "content/posts/today-me.mdx": {
+      "image": "/images/editorial/posts--today-me.webp",
+      "title": "에필로그. 매일을 채우는 작은 시작"
+    },
+    "content/posts/why-we-set-goals.mdx": {
+      "image": "/images/editorial/posts--why-we-set-goals.webp",
+      "title": "목표는 왜 만드는가: 텅 빈 마음을 채우는 작은 점"
+    },
+    "project:automation-lab": {
+      "image": "/images/editorial/project--automation-lab.webp",
+      "title": "업무 자동화 실험 노트"
+    },
+    "project:ax-cases": {
+      "image": "/images/editorial/project--ax-cases.webp",
+      "title": "AX 실전 사례 분석"
+    },
+    "project:ax-playbook": {
+      "image": "/images/editorial/project--ax-playbook.webp",
+      "title": "AX 전환 플레이북"
+    },
+    "project:ax-tools": {
+      "image": "/images/editorial/project--ax-tools.webp",
+      "title": "AX 도구 스택"
+    },
+    "project:comfyui-pipeline": {
+      "image": "/images/editorial/project--comfyui-pipeline.webp",
+      "title": "ComfyUI API 파이프라인 구축 가이드"
+    },
+    "project:field-data-pipeline": {
+      "image": "/images/editorial/project--field-data-pipeline.webp",
+      "title": "현장 데이터가 사무실까지 오게 만들기"
+    },
+    "project:icheon-ai": {
+      "image": "/images/editorial/project--icheon-ai.webp",
+      "title": "AI 활용 및 바이브코딩 자동화"
+    },
+    "project:obsidian-guide": {
+      "image": "/images/editorial/project--obsidian-guide.webp",
+      "title": "Obsidian 활용 가이드"
+    },
+    "project:openclaw-sns": {
+      "image": "/images/editorial/project--openclaw-sns.webp",
+      "title": "Openclaw + SNS 카드뉴스 자동화"
+    },
+    "project:openclaw-windows-guide": {
+      "image": "/images/editorial/project--openclaw-windows-guide.webp",
+      "title": "오픈클로 윈도우 설치 완벽 가이드"
+    },
+    "project:paperclip-guide": {
+      "image": "/images/editorial/project--paperclip-guide.webp",
+      "title": "Paperclip — AI 에이전트로 회사를 운영하다"
+    },
+    "project:semi-automation-design": {
+      "image": "/images/editorial/project--semi-automation-design.webp",
+      "title": "AI와 함께 배우는 반자동화 설계 입문"
+    },
+    "project:sj-atelier": {
+      "image": "/images/editorial/project--sj-atelier.webp",
+      "title": "SJ Atelier 기술 자문"
+    },
+    "project:trade-docs-pipeline": {
+      "image": "/images/editorial/project--trade-docs-pipeline.webp",
+      "title": "견적서에서 선적 서류까지"
+    },
+    "content/works/openclaw-room-chaeunbyul-pipeline.mdx": {
+      "image": "/images/editorial/works--openclaw-room-chaeunbyul-pipeline.webp",
+      "title": "에이전트의 몸 — 다중 환경 자동화 파이프라인"
+    },
+    "content/works/openclaw-room-chaeunbyul-workspace.mdx": {
+      "image": "/images/editorial/works--openclaw-room-chaeunbyul-workspace.webp",
+      "title": "에이전트의 뇌 — MD 파일 6종 완전 해부"
+    },
+    "content/works/openclaw-room-multi-agent-map.mdx": {
+      "image": "/images/editorial/works--openclaw-room-multi-agent-map.webp",
+      "title": "나만의 OpenClaw 멀티에이전트 구조"
+    },
+    "content/works/openclaw-room-update-v2026-03-28.mdx": {
+      "image": "/images/editorial/works--openclaw-room-update-v2026-03-28-v2.webp",
+      "title": "오픈클로 v2026.3.28 — 새 기능 완전 정복"
+    },
+    "content/works/openclaw-room-when-not-to-automate.mdx": {
+      "image": "/images/editorial/works--openclaw-room-when-not-to-automate.webp",
+      "title": "에이전트에게 맡기지 말아야 할 일 — 스킬을 붙이기 전에 긋는 선"
+    },
+    "content/works/openclaw-room-where-to-start.mdx": {
+      "image": "/images/editorial/works--openclaw-room-where-to-start.webp",
+      "title": "첫 에이전트 만들기 — 생성, 인증, 정체성 주입"
+    }
+  },
+  "inline": {
+    "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 675'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%230b1b35'/><stop offset='100%' stop-color='%232d6a9f'/></linearGradient></defs><rect width='1200' height='675' fill='url(%23g)'/><g opacity='0.45' fill='%238fd3ff'><rect x='50' y='120' width='520' height='54' rx='24'/><rect x='220' y='220' width='700' height='46' rx='23'/><rect x='380' y='320' width='640' height='52' rx='26'/><rect x='130' y='430' width='760' height='44' rx='22'/></g><g stroke='%23d9f0ff' stroke-width='2' opacity='0.35'><path d='M0 560 L1200 180'/><path d='M0 620 L1200 240'/></g></svg>": "/images/editorial/inline--datauri-001.webp",
+    "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 675'><defs><linearGradient id='g2' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='%23101522'/><stop offset='100%' stop-color='%23324f78'/></linearGradient></defs><rect width='1200' height='675' fill='url(%23g2)'/><g fill='none' stroke='%238ec5ff' opacity='0.5'><rect x='120' y='80' width='960' height='515' rx='26' stroke-width='4'/><rect x='180' y='130' width='840' height='415' rx='24' stroke-width='3'/><rect x='240' y='180' width='720' height='315' rx='22' stroke-width='3'/><rect x='300' y='230' width='600' height='215' rx='20' stroke-width='2'/></g><g fill='%23d7ebff' opacity='0.6'><circle cx='170' cy='120' r='2'/><circle cx='1000' cy='220' r='2'/><circle cx='860' cy='500' r='2'/><circle cx='420' cy='420' r='2'/><circle cx='760' cy='130' r='2'/></g></svg>": "/images/editorial/inline--datauri-002.webp",
+    "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 675'><defs><linearGradient id='g3' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%230a1021'/><stop offset='100%' stop-color='%23462866'/></linearGradient></defs><rect width='1200' height='675' fill='url(%23g3)'/><g opacity='0.42' fill='%23c8a7ff'><rect x='100' y='520' width='340' height='22' transform='rotate(-25 100 520)'/><rect x='300' y='460' width='420' height='24' transform='rotate(-25 300 460)'/><rect x='520' y='390' width='450' height='24' transform='rotate(-25 520 390)'/><rect x='760' y='320' width='320' height='20' transform='rotate(-25 760 320)'/></g><g stroke='%23f0deff' stroke-width='1' opacity='0.25'><line x1='0' y1='120' x2='1200' y2='120'/><line x1='0' y1='240' x2='1200' y2='240'/><line x1='0' y1='360' x2='1200' y2='360'/><line x1='0' y1='480' x2='1200' y2='480'/></g></svg>": "/images/editorial/inline--datauri-003.webp",
+    "/images/posts/prompt-guide.png": "/images/editorial/inline--raster-000.webp",
+    "/images/posts/notion-template.png": "/images/editorial/inline--raster-001.webp",
+    "/images/posts/canva-template.png": "/images/editorial/inline--raster-002.webp",
+    "/images/posts/ebook.png": "/images/editorial/inline--raster-003.webp",
+    "/images/posts/sop.png": "/images/editorial/inline--raster-004.webp",
+    "/images/posts/email.png": "/images/editorial/inline--raster-005.webp",
+    "/images/posts/calendar.png": "/images/editorial/inline--raster-006.webp",
+    "/images/posts/cheatsheet.png": "/images/editorial/inline--raster-007.webp",
+    "/images/posts/welcome-pack.png": "/images/editorial/inline--raster-008.webp",
+    "/images/posts/lead-magnet.png": "/images/editorial/inline--raster-009.webp",
+    "/images/posts/idea-vault.png": "/images/editorial/inline--raster-010.webp",
+    "/images/posts/planner.png": "/images/editorial/inline--raster-011.webp",
+    "/images/posts/journal.png": "/images/editorial/inline--raster-012.webp",
+    "/images/posts/storybook.png": "/images/editorial/inline--raster-013.webp",
+    "/images/posts/ai-music/bundle.png": "/images/editorial/inline--raster-014.webp",
+    "/images/posts/ai-music/income.png": "/images/editorial/inline--raster-015.webp",
+    "/images/posts/ai-music/editing.png": "/images/editorial/inline--raster-016.webp",
+    "/blog/agentic_era_ch4_01.jpg": "/images/editorial/inline--raster-017.webp",
+    "/blog/agentic_era_ch4_02.jpg": "/images/editorial/inline--raster-018.webp",
+    "/blog/agentic_era_ch4_03.jpg": "/images/editorial/inline--raster-019.webp",
+    "/blog/agentic_era_ch5_01.jpg": "/images/editorial/inline--raster-020.webp",
+    "/blog/agentic_era_ch5_02.jpg": "/images/editorial/inline--raster-021.webp",
+    "/blog/agentic_era_ch5_03.jpg": "/images/editorial/inline--raster-022.webp",
+    "/blog/agentic_era_ch6_01.jpg": "/images/editorial/inline--raster-023.webp",
+    "/blog/agentic_era_ch6_02.jpg": "/images/editorial/inline--raster-024.webp",
+    "/blog/agentic_era_ch6_03.jpg": "/images/editorial/inline--raster-025.webp",
+    "/blog/agentic_era_ch7_01.jpg": "/images/editorial/inline--raster-026.webp",
+    "/blog/agentic_era_ch7_02.jpg": "/images/editorial/inline--raster-027.webp",
+    "/blog/agentic_era_ch7_03.jpg": "/images/editorial/inline--raster-028.webp",
+    "/blog/agentic_era_memory_mesh_01.jpg": "/images/editorial/inline--raster-029.webp",
+    "/blog/agentic_era_memory_mesh_02.jpg": "/images/editorial/inline--raster-030.webp",
+    "/blog/agentic_era_memory_mesh_03.jpg": "/images/editorial/inline--raster-031.webp",
+    "/blog/ai_fantasy_life_ch4_01.jpg": "/images/editorial/inline--raster-032.webp",
+    "/blog/ai_fantasy_life_ch4_02.jpg": "/images/editorial/inline--raster-033.webp",
+    "/blog/ai_fantasy_life_ch4_03.jpg": "/images/editorial/inline--raster-034.webp",
+    "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2670&auto=format&fit=crop": "/images/editorial/inline--raster-035.webp",
+    "https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=1000&auto=format&fit=crop": "/images/editorial/inline--raster-036.webp",
+    "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1000&auto=format&fit=crop": "/images/editorial/inline--raster-037.webp",
+    "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=80&w=2670&auto=format&fit=crop": "/images/editorial/inline--raster-038.webp",
+    "/blog/ai_tech_trends_ch17_01.jpg": "/images/editorial/inline--raster-039.webp",
+    "/blog/ai_tech_trends_ch17_02.jpg": "/images/editorial/inline--raster-040.webp",
+    "/blog/ai_tech_trends_ch17_03.jpg": "/images/editorial/inline--raster-041.webp",
+    "/blog/ai_tech_trends_ch18_01.jpg": "/images/editorial/inline--raster-042.webp",
+    "/blog/ai_tech_trends_ch18_02.jpg": "/images/editorial/inline--raster-043.webp",
+    "/blog/ai_tech_trends_ch18_03.jpg": "/images/editorial/inline--raster-044.webp",
+    "/blog/ai_tech_trends_ch19_01.jpg": "/images/editorial/inline--raster-045.webp",
+    "/blog/ai_tech_trends_ch19_02.jpg": "/images/editorial/inline--raster-046.webp",
+    "/blog/ai_tech_trends_ch19_03.jpg": "/images/editorial/inline--raster-047.webp",
+    "/images/posts/ai-tech-trends-ch20-agent-team-ops-design-01.jpg": "/images/editorial/inline--raster-048.webp",
+    "/images/posts/ai-tech-trends-ch20-agent-team-ops-design-02.jpg": "/images/editorial/inline--raster-049.webp",
+    "/images/posts/ai-tech-trends-ch20-agent-team-ops-design-03.jpg": "/images/editorial/inline--raster-050.webp",
+    "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2670&auto=format&fit=crop": "/images/editorial/inline--raster-051.webp",
+    "/images/posts/memory_server_core.png": "/images/editorial/inline--raster-052.webp",
+    "/images/posts/grief_tech_hologram.png": "/images/editorial/inline--raster-053.webp",
+    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop": "/images/editorial/inline--raster-054.webp",
+    "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=1000&auto=format&fit=crop": "/images/editorial/inline--raster-055.webp",
+    "/blog/future_arts_ch6_01.jpg": "/images/editorial/inline--raster-056.webp",
+    "/blog/future_arts_ch6_02.jpg": "/images/editorial/inline--raster-057.webp",
+    "/blog/future_arts_ch6_03.jpg": "/images/editorial/inline--raster-058.webp",
+    "/images/posts/suno-hiphop-studio.webp": "/images/editorial/inline--raster-059.webp",
+    "/images/posts/suno-ballad-piano.webp": "/images/editorial/inline--raster-060.webp",
+    "/images/posts/suno-v5-5-voices.webp": "/images/editorial/inline--raster-061.webp",
+    "/images/posts/suno-v5-5-custom-model.webp": "/images/editorial/inline--raster-062.webp",
+    "/images/posts/suno-v5-5-my-taste.webp": "/images/editorial/inline--raster-063.webp",
+    "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2531&auto=format&fit=crop": "/images/editorial/inline--raster-064.webp",
+    "https://images.unsplash.com/photo-1518005052304-a32d181907a7?q=80&w=2670&auto=format&fit=crop": "/images/editorial/inline--raster-065.webp",
+    "/blog/homo_technicus_ch5_01.jpg": "/images/editorial/inline--raster-066.webp",
+    "/blog/homo_technicus_ch5_02.jpg": "/images/editorial/inline--raster-067.webp",
+    "/blog/homo_technicus_ch5_03.jpg": "/images/editorial/inline--raster-068.webp",
+    "/blog/2111.jpg": "/images/editorial/inline--raster-069.webp",
+    "/blog/2112.jpg": "/images/editorial/inline--raster-070.webp",
+    "/blog/2113.jpg": "/images/editorial/inline--raster-071.webp",
+    "/blog/2114.jpg": "/images/editorial/inline--raster-072.webp",
+    "/blog/light_on_white_road_1_walking.png": "/images/editorial/inline--raster-073.webp",
+    "/blog/light_on_white_road_2_meeting.png": "/images/editorial/inline--raster-074.webp",
+    "/blog/light_on_white_road_3_talking.png": "/images/editorial/inline--raster-075.webp",
+    "/blog/light_on_white_road_4_courage.png": "/images/editorial/inline--raster-076.webp",
+    "/blog/daily_record_ch2_cover.png": "/images/editorial/inline--raster-077.webp",
+    "/blog/daily_record_ch2_ceiling.png": "/images/editorial/inline--raster-078.webp",
+    "/blog/daily_record_ch2_silence.png": "/images/editorial/inline--raster-079.webp",
+    "/blog/passive_income_ch2_01.jpg": "/images/editorial/inline--raster-080.webp",
+    "/blog/passive_income_ch2_02.jpg": "/images/editorial/inline--raster-081.webp",
+    "/blog/passive_income_ch2_03.jpg": "/images/editorial/inline--raster-082.webp",
+    "/blog/passive_income_ch3_01.jpg": "/images/editorial/inline--raster-083.webp",
+    "/blog/passive_income_ch3_02.jpg": "/images/editorial/inline--raster-084.webp",
+    "/blog/passive_income_ch3_03.jpg": "/images/editorial/inline--raster-085.webp",
+    "/blog/passive_income_ch4_01.jpg": "/images/editorial/inline--raster-086.webp",
+    "/blog/passive_income_ch4_02.jpg": "/images/editorial/inline--raster-087.webp",
+    "/blog/passive_income_ch4_03.jpg": "/images/editorial/inline--raster-088.webp",
+    "/blog/generative_audio_visualization.png": "/images/editorial/inline--raster-089.webp",
+    "/blog/20260216_01.jpg": "/images/editorial/inline--raster-090.webp",
+    "/blog/20260216_02.jpg": "/images/editorial/inline--raster-091.webp",
+    "/blog/20260216_03.jpg": "/images/editorial/inline--raster-092.webp",
+    "/blog/20260216_04.jpg": "/images/editorial/inline--raster-093.webp",
+    "/blog/today_me_ch2_autumn.png": "/images/editorial/inline--raster-094.webp",
+    "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2670&auto=format&fit=crop": "/images/editorial/inline--raster-095.webp",
+    "/blog/today_me_ch10_01.jpg": "/images/editorial/inline--raster-096.webp",
+    "/blog/today_me_ch10_02.jpg": "/images/editorial/inline--raster-097.webp",
+    "/blog/today_me_ch10_03.jpg": "/images/editorial/inline--raster-098.webp",
+    "/blog/today_me_ch11_01.jpg": "/images/editorial/inline--raster-099.webp",
+    "/blog/today_me_ch11_02.jpg": "/images/editorial/inline--raster-100.webp",
+    "/blog/today_me_ch11_03.jpg": "/images/editorial/inline--raster-101.webp",
+    "/blog/today_me_ch12_01.jpg": "/images/editorial/inline--raster-102.webp",
+    "/blog/today_me_ch12_02.jpg": "/images/editorial/inline--raster-103.webp",
+    "/blog/today_me_ch12_03.jpg": "/images/editorial/inline--raster-104.webp",
+    "/blog/today_me_ch3_01.jpg": "/images/editorial/inline--raster-105.webp",
+    "/blog/today_me_ch3_02.jpg": "/images/editorial/inline--raster-106.webp",
+    "/blog/today_me_ch3_03.jpg": "/images/editorial/inline--raster-107.webp",
+    "/blog/today_me_ch4_01.jpg": "/images/editorial/inline--raster-108.webp",
+    "/blog/today_me_ch4_02.jpg": "/images/editorial/inline--raster-109.webp",
+    "/blog/today_me_ch4_03.jpg": "/images/editorial/inline--raster-110.webp",
+    "/blog/today_me_ch5_01.jpg": "/images/editorial/inline--raster-111.webp",
+    "/blog/today_me_ch5_02.jpg": "/images/editorial/inline--raster-112.webp",
+    "/blog/today_me_ch5_03.jpg": "/images/editorial/inline--raster-113.webp",
+    "/blog/today_me_ch6_01.jpg": "/images/editorial/inline--raster-114.webp",
+    "/blog/today_me_ch6_02.jpg": "/images/editorial/inline--raster-115.webp",
+    "/blog/today_me_ch6_03.jpg": "/images/editorial/inline--raster-116.webp",
+    "/blog/today_me_ch7_01.jpg": "/images/editorial/inline--raster-117.webp",
+    "/blog/today_me_ch7_02.jpg": "/images/editorial/inline--raster-118.webp",
+    "/blog/today_me_ch7_03.jpg": "/images/editorial/inline--raster-119.webp",
+    "/blog/today_me_ch9_01.jpg": "/images/editorial/inline--raster-120.webp",
+    "/blog/today_me_ch9_02.jpg": "/images/editorial/inline--raster-121.webp",
+    "/blog/today_me_ch9_03.jpg": "/images/editorial/inline--raster-122.webp",
+    "/blog/today_me_context_shutdown_01.jpg": "/images/editorial/inline--raster-123.webp",
+    "/blog/today_me_context_shutdown_02.jpg": "/images/editorial/inline--raster-124.webp",
+    "/blog/today_me_context_shutdown_03.jpg": "/images/editorial/inline--raster-125.webp",
+    "/blog/today_me_ch13_01.jpg": "/images/editorial/inline--raster-126.webp",
+    "/blog/today_me_ch13_02.jpg": "/images/editorial/inline--raster-127.webp",
+    "/blog/today_me_ch13_03.jpg": "/images/editorial/inline--raster-128.webp",
+    "/blog/today_me_gate_protocol_01.jpg": "/images/editorial/inline--raster-129.webp",
+    "/blog/today_me_gate_protocol_02.jpg": "/images/editorial/inline--raster-130.webp",
+    "/blog/today_me_gate_protocol_03.jpg": "/images/editorial/inline--raster-131.webp",
+    "/blog/today_me_reset_checkpoint_01.jpg": "/images/editorial/inline--raster-132.webp",
+    "/blog/today_me_reset_checkpoint_02.jpg": "/images/editorial/inline--raster-133.webp",
+    "/blog/today_me_reset_checkpoint_03.jpg": "/images/editorial/inline--raster-134.webp",
+    "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?q=80&w=2524&auto=format&fit=crop": "/images/editorial/inline--raster-135.webp",
+    "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?q=80&w=2670&auto=format&fit=crop": "/images/editorial/inline--raster-136.webp",
+    "/images/series/today_me_2.png": "/images/editorial/inline--raster-137.webp",
+    "/icons/3d-dev.png": "/images/editorial/inline--raster-138.webp",
+    "/icons/3d-trade.png": "/images/editorial/inline--raster-139.webp",
+    "/icons/3d-design.png": "/images/editorial/inline--raster-140.webp",
+    "/images/education/gen-ai-objects/genai_object_pipeline_01.jpg": "/images/editorial/inline--raster-141.webp",
+    "/images/education/gen-ai-objects/genai_object_pipeline_02.jpg": "/images/editorial/inline--raster-142.webp",
+    "/images/education/gen-ai-objects/genai_object_pipeline_03.jpg": "/images/editorial/inline--raster-143.webp",
+    "https://loremflickr.com/1200/600/bookshelf,library": "/images/editorial/inline--raster-144.webp",
+    "https://loremflickr.com/1200/600/kitchen,food": "/images/editorial/inline--raster-145.webp",
+    "https://loremflickr.com/1200/600/robot,blue": "/images/editorial/inline--raster-146.webp",
+    "https://loremflickr.com/1200/600/traffic-light,road": "/images/editorial/inline--raster-147.webp",
+    "https://loremflickr.com/1200/600/gift,box": "/images/editorial/inline--raster-148.webp",
+    "/icons/3d-curriculum-code.png": "/images/editorial/inline--raster-149.webp",
+    "/blog/vibe_coding_01_01.jpg": "/images/editorial/inline--raster-150.webp",
+    "/blog/vibe_coding_01_02.jpg": "/images/editorial/inline--raster-151.webp",
+    "/blog/vibe_coding_01_03.jpg": "/images/editorial/inline--raster-152.webp",
+    "/blog/agentic_era_context_firewall_01.svg": "/images/editorial/inline--svg-000.webp",
+    "/blog/agentic_era_context_firewall_02.svg": "/images/editorial/inline--svg-001.webp",
+    "/blog/agentic_era_context_firewall_03.svg": "/images/editorial/inline--svg-002.webp",
+    "/images/posts/agentic-era-escalation-latency-and-trust-budget-01.svg": "/images/editorial/inline--svg-003.webp",
+    "/images/posts/agentic-era-escalation-latency-and-trust-budget-02.svg": "/images/editorial/inline--svg-004.webp",
+    "/images/posts/agentic-era-escalation-latency-and-trust-budget-03.svg": "/images/editorial/inline--svg-005.webp",
+    "/blog/agentic_era_operator_contract_01.svg": "/images/editorial/inline--svg-006.webp",
+    "/blog/agentic_era_operator_contract_02.svg": "/images/editorial/inline--svg-007.webp",
+    "/blog/agentic_era_operator_contract_03.svg": "/images/editorial/inline--svg-008.webp",
+    "/images/posts/agentic-era-runtime-change-control-window-01.svg": "/images/editorial/inline--svg-009.webp",
+    "/images/posts/agentic-era-runtime-change-control-window-02.svg": "/images/editorial/inline--svg-010.webp",
+    "/images/posts/agentic-era-runtime-change-control-window-03.svg": "/images/editorial/inline--svg-011-v2.webp",
+    "/images/posts/ai-fantasy-life-crystal-atlas-night-market-01.svg": "/images/editorial/inline--svg-012.webp",
+    "/images/posts/ai-fantasy-life-crystal-atlas-night-market-02.svg": "/images/editorial/inline--svg-013.webp",
+    "/images/posts/ai-fantasy-life-crystal-atlas-night-market-03.svg": "/images/editorial/inline--svg-014.webp",
+    "/images/posts/ai-fantasy-life-fog-harbor-memory-lighthouse-01.svg": "/images/editorial/inline--svg-015.webp",
+    "/images/posts/ai-fantasy-life-fog-harbor-memory-lighthouse-02.svg": "/images/editorial/inline--svg-016.webp",
+    "/images/posts/ai-fantasy-life-fog-harbor-memory-lighthouse-03.svg": "/images/editorial/inline--svg-017.webp",
+    "/images/posts/ai-fantasy-life-glass-tide-garden-of-small-promises-01.svg": "/images/editorial/inline--svg-018.webp",
+    "/images/posts/ai-fantasy-life-glass-tide-garden-of-small-promises-02.svg": "/images/editorial/inline--svg-019.webp",
+    "/images/posts/ai-fantasy-life-glass-tide-garden-of-small-promises-03.svg": "/images/editorial/inline--svg-020.webp",
+    "/images/posts/ai-fantasy-life-moonlit-seed-vault-of-slow-automation-01.svg": "/images/editorial/inline--svg-021.webp",
+    "/images/posts/ai-fantasy-life-moonlit-seed-vault-of-slow-automation-02.svg": "/images/editorial/inline--svg-022.webp",
+    "/images/posts/ai-fantasy-life-moonlit-seed-vault-of-slow-automation-03.svg": "/images/editorial/inline--svg-023.webp",
+    "/images/posts/ai-fantasy-life-rain-clock-archive-for-tired-routines-01.svg": "/images/editorial/inline--svg-024.webp",
+    "/images/posts/ai-fantasy-life-rain-clock-archive-for-tired-routines-02.svg": "/images/editorial/inline--svg-025.webp",
+    "/images/posts/ai-fantasy-life-rain-clock-archive-for-tired-routines-03.svg": "/images/editorial/inline--svg-026.webp",
+    "/images/posts/ai-fantasy-life-starlight-greenhouse-01.svg": "/images/editorial/inline--svg-027.webp",
+    "/images/posts/ai-fantasy-life-starlight-greenhouse-02.svg": "/images/editorial/inline--svg-028.webp",
+    "/images/posts/ai-fantasy-life-starlight-greenhouse-03.svg": "/images/editorial/inline--svg-029.webp",
+    "/images/posts/ai-fantasy-life-tide-library-of-forgotten-questions-01.svg": "/images/editorial/inline--svg-030.webp",
+    "/images/posts/ai-fantasy-life-tide-library-of-forgotten-questions-02.svg": "/images/editorial/inline--svg-031.webp",
+    "/images/posts/ai-fantasy-life-tide-library-of-forgotten-questions-03.svg": "/images/editorial/inline--svg-032.webp",
+    "/blog/ai_tech_trends_signal_stack_01.svg": "/images/editorial/inline--svg-033.webp",
+    "/images/posts/daily-record-decision-fatigue-circuit-breaker-01.svg": "/images/editorial/inline--svg-034.webp",
+    "/images/posts/daily-record-decision-fatigue-circuit-breaker-02.svg": "/images/editorial/inline--svg-035.webp",
+    "/images/posts/daily-record-decision-fatigue-circuit-breaker-03.svg": "/images/editorial/inline--svg-036.webp",
+    "/images/posts/daily-record-evening-desk-reset-window-01.svg": "/images/editorial/inline--svg-037.webp",
+    "/images/posts/daily-record-evening-desk-reset-window-02.svg": "/images/editorial/inline--svg-038.webp",
+    "/images/posts/daily-record-evening-desk-reset-window-03.svg": "/images/editorial/inline--svg-039.webp",
+    "/images/posts/daily-record-midday-reset-01.svg": "/images/editorial/inline--svg-040.webp",
+    "/images/posts/daily-record-midday-reset-02.svg": "/images/editorial/inline--svg-041.webp",
+    "/images/posts/daily-record-midday-reset-03.svg": "/images/editorial/inline--svg-042.webp",
+    "/images/posts/daily-record-night-shift-buffer-01.svg": "/images/editorial/inline--svg-043.webp",
+    "/images/posts/daily-record-night-shift-buffer-02.svg": "/images/editorial/inline--svg-044.webp",
+    "/images/posts/daily-record-night-shift-buffer-03.svg": "/images/editorial/inline--svg-045.webp",
+    "/images/posts/daily-record-silent-dashboard-reset-01.svg": "/images/editorial/inline--svg-046.webp",
+    "/images/posts/daily-record-silent-dashboard-reset-02.svg": "/images/editorial/inline--svg-047.webp",
+    "/images/posts/daily-record-silent-dashboard-reset-03.svg": "/images/editorial/inline--svg-048.webp",
+    "/images/posts/daily-record-threshold-ledger-for-busy-days-01.svg": "/images/editorial/inline--svg-049.webp",
+    "/images/posts/daily-record-threshold-ledger-for-busy-days-02.svg": "/images/editorial/inline--svg-050.webp",
+    "/images/posts/daily-record-threshold-ledger-for-busy-days-03.svg": "/images/editorial/inline--svg-051.webp",
+    "/images/posts/future-arts-ambient-memory-interface-01.svg": "/images/editorial/inline--svg-052.webp",
+    "/images/posts/future-arts-ambient-memory-interface-02.svg": "/images/editorial/inline--svg-053.webp",
+    "/images/posts/future-arts-ambient-memory-interface-03.svg": "/images/editorial/inline--svg-054.webp",
+    "/images/posts/future-arts-attention-loom-01.svg": "/images/editorial/inline--svg-055.webp",
+    "/images/posts/future-arts-attention-loom-02.svg": "/images/editorial/inline--svg-056.webp",
+    "/images/posts/future-arts-attention-loom-03.svg": "/images/editorial/inline--svg-057.webp",
+    "/images/posts/future-arts-attention-rhythm-ledger-01.svg": "/images/editorial/inline--svg-058.webp",
+    "/images/posts/future-arts-attention-rhythm-ledger-02.svg": "/images/editorial/inline--svg-059.webp",
+    "/images/posts/future-arts-attention-rhythm-ledger-03.svg": "/images/editorial/inline--svg-060.webp",
+    "/images/posts/future-arts-latency-garden-01.svg": "/images/editorial/inline--svg-061.webp",
+    "/images/posts/future-arts-latency-garden-02.svg": "/images/editorial/inline--svg-062.webp",
+    "/images/posts/future-arts-latency-garden-03.svg": "/images/editorial/inline--svg-063.webp",
+    "/images/posts/future-arts-sensory-score-01.svg": "/images/editorial/inline--svg-064.webp",
+    "/images/posts/future-arts-sensory-score-02.svg": "/images/editorial/inline--svg-065.webp",
+    "/images/posts/future-arts-sensory-score-03.svg": "/images/editorial/inline--svg-066.webp",
+    "/images/posts/homo-technicus-cognitive-outsourcing-consent-log-01.svg": "/images/editorial/inline--svg-067.webp",
+    "/images/posts/homo-technicus-consent-ledger-01.svg": "/images/editorial/inline--svg-068.webp",
+    "/images/posts/homo-technicus-memory-estate-01.svg": "/images/editorial/inline--svg-069.webp",
+    "/images/posts/homo-technicus-memory-estate-02.svg": "/images/editorial/inline--svg-070.webp",
+    "/images/posts/homo-technicus-memory-estate-03.svg": "/images/editorial/inline--svg-071.webp",
+    "/images/posts/homo-technicus-versioned-self-01.svg": "/images/editorial/inline--svg-072.webp",
+    "/images/posts/homo-technicus-versioned-self-02.svg": "/images/editorial/inline--svg-073.webp",
+    "/images/posts/homo-technicus-versioned-self-03.svg": "/images/editorial/inline--svg-074.webp",
+    "/images/posts/passive-income-lifetime-offer-stacking-system-01.svg": "/images/editorial/inline--svg-075.webp",
+    "/images/posts/passive-income-lifetime-offer-stacking-system-03.svg": "/images/editorial/inline--svg-076.webp",
+    "/images/posts/passive-income-membership-loop-01.svg": "/images/editorial/inline--svg-077.webp",
+    "/images/posts/passive-income-membership-loop-02.svg": "/images/editorial/inline--svg-078.webp",
+    "/images/posts/passive-income-membership-loop-03.svg": "/images/editorial/inline--svg-079.webp",
+    "/images/posts/passive-income-retention-offer-ladder-01.svg": "/images/editorial/inline--svg-080.webp",
+    "/images/posts/passive-income-retention-offer-ladder-02.svg": "/images/editorial/inline--svg-081.webp",
+    "/images/posts/passive-income-retention-offer-ladder-03.svg": "/images/editorial/inline--svg-082.webp",
+    "/blog/today_me_attention_firewall_01.svg": "/images/editorial/inline--svg-083.webp",
+    "/blog/today_me_attention_firewall_02.svg": "/images/editorial/inline--svg-084.webp",
+    "/blog/today_me_attention_firewall_03.svg": "/images/editorial/inline--svg-085.webp",
+    "/images/education/gen-ai-semantic-layout/gen-ai-semantic-layout-01.svg": "/images/editorial/inline--svg-086.webp",
+    "/images/education/gen-ai-semantic-layout/gen-ai-semantic-layout-02.svg": "/images/editorial/inline--svg-087.webp",
+    "/images/education/gen-ai-semantic-layout/gen-ai-semantic-layout-03.svg": "/images/editorial/inline--svg-088.webp",
+    "/images/education/gen-ai-negative-space-system/gen-ai-negative-space-system-01.svg": "/images/editorial/inline--svg-089.webp",
+    "/images/education/gen-ai-context-packet-system/gen-ai-context-packet-system-01.svg": "/images/editorial/inline--svg-090.webp",
+    "/images/education/gen-ai-context-packet-system/gen-ai-context-packet-system-02.svg": "/images/editorial/inline--svg-091.webp",
+    "/images/education/gen-ai-context-packet-system/gen-ai-context-packet-system-03.svg": "/images/editorial/inline--svg-092.webp",
+    "/images/education/gen-ai-style-token-library/gen-ai-style-token-library-01.svg": "/images/editorial/inline--svg-093.webp",
+    "/images/education/gen-ai-style-token-library/gen-ai-style-token-library-02.svg": "/images/editorial/inline--svg-094.webp",
+    "/images/education/gen-ai-style-token-library/gen-ai-style-token-library-03.svg": "/images/editorial/inline--svg-095.webp",
+    "/images/education/vibe-coding-scope-freeze/vibe-coding-scope-freeze-01.svg": "/images/editorial/inline--svg-096.webp",
+    "/images/education/vibe-coding-scope-freeze/vibe-coding-scope-freeze-02.svg": "/images/editorial/inline--svg-097.webp",
+    "/images/education/vibe-coding-scope-freeze/vibe-coding-scope-freeze-03.svg": "/images/editorial/inline--svg-098.webp",
+    "/images/education/vibe-coding-decision-log/vibe-coding-decision-log-01.svg": "/images/editorial/inline--svg-099.webp",
+    "/images/education/vibe-coding-decision-log/vibe-coding-decision-log-02.svg": "/images/editorial/inline--svg-100-v2.webp",
+    "/images/education/vibe-coding-decision-log/vibe-coding-decision-log-03.svg": "/images/editorial/inline--svg-101.webp",
+    "/blog/ai_tech_trends_ch19_01.svg": "/images/editorial/diagrams/blog--ai_tech_trends_ch19_01.svg",
+    "/blog/ai_tech_trends_ch19_02.svg": "/images/editorial/diagrams/blog--ai_tech_trends_ch19_02.svg",
+    "/blog/ai_tech_trends_ch19_03.svg": "/images/editorial/diagrams/blog--ai_tech_trends_ch19_03.svg",
+    "/images/blog/ai_tech_trends_context_cache_01.svg": "/images/editorial/diagrams/images--blog--ai_tech_trends_context_cache_01.svg",
+    "/images/blog/ai_tech_trends_context_cache_02.svg": "/images/editorial/diagrams/images--blog--ai_tech_trends_context_cache_02.svg",
+    "/images/blog/ai_tech_trends_context_cache_03.svg": "/images/editorial/diagrams/images--blog--ai_tech_trends_context_cache_03.svg",
+    "/blog/ai_tech_trends_ch20_01.svg": "/images/editorial/diagrams/blog--ai_tech_trends_ch20_01.svg",
+    "/blog/ai_tech_trends_ch20_02.svg": "/images/editorial/diagrams/blog--ai_tech_trends_ch20_02.svg",
+    "/blog/ai_tech_trends_ch20_03.svg": "/images/editorial/diagrams/blog--ai_tech_trends_ch20_03.svg",
+    "/blog/ai_tech_trends_router_budget_01.svg": "/images/editorial/diagrams/blog--ai_tech_trends_router_budget_01.svg",
+    "/blog/ai_tech_trends_router_budget_02.svg": "/images/editorial/diagrams/blog--ai_tech_trends_router_budget_02.svg",
+    "/blog/ai_tech_trends_router_budget_03.svg": "/images/editorial/diagrams/blog--ai_tech_trends_router_budget_03.svg",
+    "/blog/ai_tech_trends_signal_stack_02.svg": "/images/editorial/diagrams/blog--ai_tech_trends_signal_stack_02.svg",
+    "/blog/ai_tech_trends_signal_stack_03.svg": "/images/editorial/diagrams/blog--ai_tech_trends_signal_stack_03.svg",
+    "/images/posts/homo-technicus-attention-proxy-boundary-protocol-01.svg": "/images/editorial/diagrams/images--posts--homo-technicus-attention-proxy-boundary-protocol-01.svg",
+    "/images/posts/homo-technicus-attention-proxy-boundary-protocol-02.svg": "/images/editorial/diagrams/images--posts--homo-technicus-attention-proxy-boundary-protocol-02.svg",
+    "/images/posts/homo-technicus-attention-proxy-boundary-protocol-03.svg": "/images/editorial/diagrams/images--posts--homo-technicus-attention-proxy-boundary-protocol-03.svg",
+    "/images/posts/homo-technicus-cognitive-outsourcing-consent-log-02.svg": "/images/editorial/diagrams/images--posts--homo-technicus-cognitive-outsourcing-consent-log-02.svg",
+    "/images/posts/homo-technicus-cognitive-outsourcing-consent-log-03.svg": "/images/editorial/diagrams/images--posts--homo-technicus-cognitive-outsourcing-consent-log-03.svg",
+    "/images/posts/homo-technicus-consent-ledger-02.svg": "/images/editorial/diagrams/images--posts--homo-technicus-consent-ledger-02.svg",
+    "/images/posts/homo-technicus-consent-ledger-03.svg": "/images/editorial/diagrams/images--posts--homo-technicus-consent-ledger-03.svg",
+    "/images/posts/passive-income-bundle-ladder-repeat-buyers-01.svg": "/images/editorial/diagrams/images--posts--passive-income-bundle-ladder-repeat-buyers-01.svg",
+    "/images/posts/passive-income-bundle-ladder-repeat-buyers-02.svg": "/images/editorial/diagrams/images--posts--passive-income-bundle-ladder-repeat-buyers-02.svg",
+    "/images/posts/passive-income-bundle-ladder-repeat-buyers-03.svg": "/images/editorial/diagrams/images--posts--passive-income-bundle-ladder-repeat-buyers-03.svg",
+    "/images/posts/passive-income-lifetime-offer-stacking-system-02.svg": "/images/editorial/diagrams/images--posts--passive-income-lifetime-offer-stacking-system-02.svg",
+    "/images/posts/passive-income-weekly-asset-maintenance-loop-01.svg": "/images/editorial/diagrams/images--posts--passive-income-weekly-asset-maintenance-loop-01.svg",
+    "/images/posts/passive-income-weekly-asset-maintenance-loop-02.svg": "/images/editorial/diagrams/images--posts--passive-income-weekly-asset-maintenance-loop-02.svg",
+    "/images/posts/passive-income-weekly-asset-maintenance-loop-03.svg": "/images/editorial/diagrams/images--posts--passive-income-weekly-asset-maintenance-loop-03.svg",
+    "/images/education/gen-ai-reference-handoff/gen-ai-reference-handoff-01.svg": "/images/editorial/diagrams/images--education--gen-ai-reference-handoff--gen-ai-reference-handoff-01.svg",
+    "/images/education/gen-ai-reference-handoff/gen-ai-reference-handoff-02.svg": "/images/editorial/diagrams/images--education--gen-ai-reference-handoff--gen-ai-reference-handoff-02.svg",
+    "/images/education/gen-ai-reference-handoff/gen-ai-reference-handoff-03.svg": "/images/editorial/diagrams/images--education--gen-ai-reference-handoff--gen-ai-reference-handoff-03.svg",
+    "/images/education/gen-ai-negative-space-system/gen-ai-negative-space-system-02.svg": "/images/editorial/diagrams/images--education--gen-ai-negative-space-system--gen-ai-negative-space-system-02.svg",
+    "/images/education/gen-ai-negative-space-system/gen-ai-negative-space-system-03.svg": "/images/editorial/diagrams/images--education--gen-ai-negative-space-system--gen-ai-negative-space-system-03.svg",
+    "/images/education/vibe-coding-feedback-loop/vibe-coding-feedback-loop-01.svg": "/images/editorial/diagrams/images--education--vibe-coding-feedback-loop--vibe-coding-feedback-loop-01.svg",
+    "/images/education/vibe-coding-feedback-loop/vibe-coding-feedback-loop-02.svg": "/images/editorial/diagrams/images--education--vibe-coding-feedback-loop--vibe-coding-feedback-loop-02.svg",
+    "/images/education/vibe-coding-feedback-loop/vibe-coding-feedback-loop-03.svg": "/images/editorial/diagrams/images--education--vibe-coding-feedback-loop--vibe-coding-feedback-loop-03.svg",
+    "/images/education/vibe-coding-handoff-map/vibe-coding-handoff-map-01.svg": "/images/editorial/diagrams/images--education--vibe-coding-handoff-map--vibe-coding-handoff-map-01.svg",
+    "/images/education/vibe-coding-handoff-map/vibe-coding-handoff-map-02.svg": "/images/editorial/diagrams/images--education--vibe-coding-handoff-map--vibe-coding-handoff-map-02.svg",
+    "/images/education/vibe-coding-handoff-map/vibe-coding-handoff-map-03.svg": "/images/editorial/diagrams/images--education--vibe-coding-handoff-map--vibe-coding-handoff-map-03.svg",
+    "./images/vibe-coding-ops-system-01.png": "/images/editorial/diagrams/vibe-coding-ops-system-01.svg",
+    "./images/vibe-coding-ops-system-02.png": "/images/editorial/diagrams/vibe-coding-ops-system-02.svg",
+    "./images/vibe-coding-ops-system-03.png": "/images/editorial/diagrams/vibe-coding-ops-system-03.svg"
+  }
+}

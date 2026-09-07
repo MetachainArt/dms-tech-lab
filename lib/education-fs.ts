@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { editorialContent, editorialCover } from './editorial-art';
 
 // Types for the FS based structure
 export interface FSLesson {
@@ -91,8 +92,8 @@ export function getLessonBySlug(trackId: string, lessonSlug: string) {
       const source = fs.readFileSync(fullPath, 'utf8');
       const { data, content } = matter(source);
       return {
-        frontmatter: data,
-        content,
+        frontmatter: { ...data, ...(editorialCover(`content/education/${trackId}/${lesson.path.replaceAll('\\', '/')}`) ? { coverImage: editorialCover(`content/education/${trackId}/${lesson.path.replaceAll('\\', '/')}`) } : {}) } as Record<string, unknown>,
+        content: editorialContent(content),
         chapter
       };
     }

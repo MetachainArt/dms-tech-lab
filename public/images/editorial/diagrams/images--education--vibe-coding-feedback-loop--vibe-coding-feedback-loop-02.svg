@@ -1,0 +1,41 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg" data-dms-edition="fiber-diagram-2026-09" role="img">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f4f3ee" stop-opacity="1"/>
+      <stop offset="1" stop-color="#f4f3ee" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="lane" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#d9dfe7" stop-opacity="1"/>
+      <stop offset="1" stop-color="#fafbf9" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="#f4f3ee"/>
+
+  <rect x="130" y="260" width="1340" height="360" rx="4" fill="#edf0f3" stroke="#123ecb" stroke-width="4"/>
+  <line x1="577" y1="260" x2="577" y2="620" stroke="#123ecb" stroke-width="4"/>
+  <line x1="1024" y1="260" x2="1024" y2="620" stroke="#123ecb" stroke-width="4"/>
+
+  <rect x="170" y="310" width="360" height="260" rx="4" fill="#edf0f3" stroke="#aeb8c6" stroke-width="1.5"/>
+  <rect x="620" y="310" width="360" height="260" rx="4" fill="#edf0f3" stroke="#aeb8c6" stroke-width="1.5"/>
+  <rect x="1070" y="310" width="360" height="260" rx="4" fill="#edf0f3" stroke="#aeb8c6" stroke-width="1.5"/>
+
+  <text x="230" y="365" fill="#171b21" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="40" font-weight="600" opacity="1">30분 점검</text>
+  <text x="225" y="430" fill="#171b21" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="30" opacity="1">구조/우선순위</text>
+  <text x="225" y="475" fill="#171b21" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="30" opacity="1">핵심 흐름 확인</text>
+
+  <text x="680" y="365" fill="#171b21" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="40" font-weight="600" opacity="1">60분 점검</text>
+  <text x="675" y="430" fill="#171b21" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="30" opacity="1">상호작용 안정성</text>
+  <text x="675" y="475" fill="#171b21" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="30" opacity="1">예외 케이스 검증</text>
+
+  <text x="1125" y="365" fill="#171b21" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="40" font-weight="600" opacity="1">90분 점검</text>
+  <text x="1125" y="430" fill="#171b21" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="30" opacity="1">배포 가능성 확인</text>
+  <text x="1125" y="475" fill="#171b21" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="30" opacity="1">로그/복구 경로 점검</text>
+
+  <path d="M360 660L800 780L1240 660" stroke="#123ecb" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="360" cy="660" r="14" fill="#376958"/>
+  <circle cx="800" cy="780" r="14" fill="#376958"/>
+  <circle cx="1240" cy="660" r="14" fill="#376958"/>
+
+  <text x="560" y="150" fill="#171b21" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="52" font-weight="600" opacity="1">90분 바이브 코딩 검증 루프</text>
+</svg>

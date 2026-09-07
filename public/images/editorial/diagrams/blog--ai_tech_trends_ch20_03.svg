@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Quality regression firewall board" data-dms-edition="fiber-diagram-2026-09">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4f3ee" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#f4f3ee" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d9dfe7" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#fafbf9" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="#f4f3ee"/>
+  <rect x="140" y="120" width="1320" height="660" rx="4" fill="#edf0f3" stroke="#123ecb" stroke-opacity="0.55"/>
+  <g fill="#f8fafc" font-family="Pretendard, Segoe UI, sans-serif">
+    <text x="210" y="220" font-size="44" font-weight="600" fill="#171b21" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Quality Regression Firewall</text>
+    <text x="210" y="270" font-size="24" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Canary checks before full-route promotion</text>
+  </g>
+  <g stroke="#93c5fd" stroke-width="4" fill="none">
+    <rect x="230" y="340" width="300" height="300" rx="4" stroke="#123ecb"/>
+    <rect x="650" y="340" width="300" height="300" rx="4" stroke="#123ecb"/>
+    <rect x="1070" y="340" width="300" height="300" rx="4" stroke="#123ecb"/>
+  </g>
+  <g fill="#e2e8f0" font-family="Pretendard, Segoe UI, sans-serif" font-size="28" text-anchor="middle">
+    <text x="380" y="430" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Canary Input Set</text>
+    <text x="800" y="430" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Evaluator Matrix</text>
+    <text x="1220" y="430" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">Promotion Gate</text>
+  </g>
+  <g stroke="#22d3ee" stroke-width="5" stroke-linecap="round">
+    <path d="M530 490 H650" stroke="#2f7078"/>
+    <path d="M950 490 H1070" stroke="#2f7078"/>
+  </g>
+  <g fill="#22d3ee">
+    <circle cx="590" cy="490" r="10" fill="#2f7078"/>
+    <circle cx="1010" cy="490" r="10" fill="#2f7078"/>
+  </g>
+</svg>

@@ -1,0 +1,26 @@
+﻿<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" data-dms-edition="fiber-diagram-2026-09" role="img">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4f3ee" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#f4f3ee" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#123ecb" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#123ecb" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="#f4f3ee"/>
+  <rect x="120" y="170" width="360" height="560" rx="4" fill="#edf0f3" stroke="#2f7078" stroke-width="2"/>
+  <rect x="620" y="120" width="360" height="660" rx="4" fill="#edf0f3" stroke="#123ecb" stroke-width="2"/>
+  <rect x="1120" y="170" width="360" height="560" rx="4" fill="#edf0f3" stroke="#123ecb" stroke-width="2"/>
+  <path d="M480 450 L620 450" stroke="#123ecb" stroke-width="6"/>
+  <path d="M980 450 L1120 450" stroke="#123ecb" stroke-width="6"/>
+  <circle cx="550" cy="450" r="10" fill="#2f7078"/>
+  <circle cx="1050" cy="450" r="10" fill="#123ecb"/>
+  <text x="300" y="260" fill="#171b21" font-size="42" text-anchor="middle" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">입력 영역</text>
+  <text x="800" y="210" fill="#171b21" font-size="42" text-anchor="middle" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">판단 코어</text>
+  <text x="1300" y="260" fill="#171b21" font-size="42" text-anchor="middle" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">출력 영역</text>
+  <text x="300" y="340" fill="#171b21" font-size="30" text-anchor="middle" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">기록 · 분류 · 요약</text>
+  <text x="800" y="340" fill="#171b21" text-anchor="middle" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1" font-size="28.7">우선순위 · 의미부여 · 승인</text>
+  <text x="1300" y="340" fill="#171b21" font-size="30" text-anchor="middle" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">문서 · 메시지 · 실행</text>
+</svg>

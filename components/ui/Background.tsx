@@ -1,16 +1,13 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { isFiberRoute } from "@/components/brand/fiber-routes";
 
 export default function Background() {
   const pathname = usePathname();
 
   if (
-    pathname === "/" ||
-    pathname === "/about" ||
-    pathname === "/contact" ||
-    pathname.startsWith("/blog") ||
-    pathname.startsWith("/works")
+    isFiberRoute(pathname)
   ) {
     return null;
   }

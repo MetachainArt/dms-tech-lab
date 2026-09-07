@@ -1,3 +1,5 @@
+import styles from "@/components/brand/FiberArticle.module.css";
+import Image from "next/image";
 import { EDUCATION_TRACKS } from "@/lib/education-data";
 import { getLessonBySlug } from "@/lib/education-fs";
 import { notFound } from "next/navigation";
@@ -41,19 +43,23 @@ export default async function LessonPage({ params }: PageProps) {
     const { frontmatter, content, chapter } = lessonData;
 
     return (
-        <main className="min-h-screen bg-paperfolio-bg text-paperfolio-text selection:bg-paperfolio-accent-yellow/70 selection:text-paperfolio-text">
-            <section className="px-6 pb-14 pt-36">
-                <div className="mx-auto max-w-3xl space-y-7">
+        <main className={styles.page}>
+            <section className={styles.header}>
+                <div className={styles.inner}>
+                  <div className={styles.copy}>
+                    <div className={styles.rail}>
                     <Link
                         href={`/education/${trackId}`}
-                        className="inline-flex items-center gap-2 text-sm font-semibold text-paperfolio-text-muted hover:text-paperfolio-accent-blue"
+                        className={styles.back}
                     >
                         <ArrowLeft className="h-4 w-4" />
                         {track.title}
                     </Link>
+                      <span className={styles.railLabel}>DMS ACADEMY / LEARNING NOTES</span>
+                    </div>
 
-                    <div className="flex flex-wrap items-center gap-3 text-sm text-paperfolio-text-muted">
-                        <span className="rounded-full border border-paperfolio-accent-blue/20 bg-paperfolio-accent-blue/10 px-3 py-1 font-semibold text-paperfolio-accent-blue">
+                    <div className={styles.meta}>
+                        <span className={styles.category}>
                             {chapter.title}
                         </span>
                         {frontmatter.date ? (
@@ -69,26 +75,35 @@ export default async function LessonPage({ params }: PageProps) {
                     </div>
 
                     <div className="space-y-5">
-                        <h1 className="paperfolio-display text-paperfolio-text">
+                        <h1 className={styles.title}>
                             {String(frontmatter.title || "Untitled Lesson")}
                         </h1>
                         {frontmatter.desc ? (
-                            <p className="text-lg leading-8 text-paperfolio-text-muted">{String(frontmatter.desc)}</p>
+                            <p className={styles.summary}>{String(frontmatter.desc)}</p>
                         ) : null}
                     </div>
+                  </div>
+                  {typeof frontmatter.coverImage === "string" && (
+                    <figure className={styles.cover}>
+                      <div className={styles.coverImage}>
+                        <Image src={frontmatter.coverImage} alt={String(frontmatter.title || track.title)} fill priority sizes="(max-width: 767px) 100vw, 78vw" />
+                      </div>
+                      <figcaption><span>DMS / LEARNING STUDY</span></figcaption>
+                    </figure>
+                  )}
                 </div>
             </section>
 
-            <section className="border-t border-paperfolio-line bg-paperfolio-surface px-6 py-20">
-                <div className="mx-auto max-w-3xl">
-                    <article className="editorial-prose">
-                        <MDXRemote source={content} components={EducationMDXComponents} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
+            <section className={styles.body}>
+                <div className={styles.reading}>
+                    <article className={`editorial-prose ${styles.prose}`}>
+                        <MDXRemote source={content} components={{ ...EducationMDXComponents, h1: EducationMDXComponents.h2 }} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
                     </article>
 
                     <div className="mt-16 border-t border-paperfolio-line pt-8">
                         <Link
                             href={`/education/${trackId}`}
-                            className="inline-flex items-center gap-2 text-sm font-semibold text-paperfolio-text-muted hover:text-paperfolio-accent-blue"
+                            className={styles.back}
                         >
                             <ArrowLeft className="h-4 w-4" />
                             커리큘럼으로 돌아가기
@@ -97,14 +112,14 @@ export default async function LessonPage({ params }: PageProps) {
                 </div>
             </section>
 
-            <section className="px-6 pb-24">
-                <div className="mx-auto max-w-5xl rounded-[36px] bg-paperfolio-text px-8 py-12 text-white shadow-[0_24px_90px_rgba(31,41,55,0.18)] md:px-12">
+            <section className={styles.cta}>
+                <div className={styles.ctaInner}>
                     <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
                         <div className="space-y-4">
                             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-yellow">
                                 Training
                             </p>
-                            <h2 className="font-playfair text-3xl leading-tight md:text-4xl">
+                            <h2 className={styles.ctaTitle}>
                                 현장 팀에 맞춘 교육이 필요하신가요?
                             </h2>
                             <p className="max-w-2xl text-sm leading-7 text-white/72 md:text-base">
@@ -113,7 +128,7 @@ export default async function LessonPage({ params }: PageProps) {
                         </div>
                         <Link
                             href="/#contact"
-                            className="inline-flex items-center justify-center rounded-full bg-white px-7 py-4 text-sm font-semibold text-paperfolio-text hover:bg-paperfolio-accent-yellow"
+                            className={styles.ctaLink}
                         >
                             문의하기
                         </Link>

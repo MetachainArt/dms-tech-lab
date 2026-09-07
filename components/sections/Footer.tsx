@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 
 import { getCompanyInfoRows } from "@/constants/company";
+import styles from "@/components/brand/FiberFooter.module.css";
+import { isFiberRoute } from "@/components/brand/fiber-routes";
 
 const WavyLine = () => (
   <svg width="80" height="12" viewBox="0 0 80 12" fill="none" aria-hidden="true">
@@ -16,11 +18,12 @@ const WavyLine = () => (
 export default function Footer() {
   const pathname = usePathname();
   const companyRows = getCompanyInfoRows();
+  const fiberRoute = isFiberRoute(pathname);
 
   if (pathname?.startsWith("/admin")) return null;
 
   return (
-    <footer className="w-full border-t border-paperfolio-line bg-paperfolio-bg">
+    <footer className={`w-full border-t border-paperfolio-line bg-paperfolio-bg ${fiberRoute ? styles.footer : ""}`}>
 
       {/* ── Main body ── */}
       <div className="mx-auto max-w-7xl px-8 md:px-12 py-16 md:py-20">
@@ -86,8 +89,7 @@ export default function Footer() {
           {/* ── Right: deco + contact ── */}
           <div className="flex flex-col items-end gap-5">
             <div className="text-paperfolio-text-muted/40 flex gap-2">
-              <WavyLine />
-              <WavyLine />
+              {fiberRoute ? <span className={styles.opticalRule} aria-hidden="true" /> : <><WavyLine /><WavyLine /></>}
             </div>
 
             {/* Minimal monogram */}

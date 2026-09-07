@@ -1,0 +1,36 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg" data-dms-edition="fiber-diagram-2026-09" role="img">
+  <rect width="1600" height="900" fill="#f4f3ee"/>
+  <rect x="72" y="72" width="1456" height="756" rx="4" fill="#edf0f3" stroke="#123ecb" stroke-width="2"/>
+  <text x="120" y="150" fill="#171b21" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="42" font-weight="600" opacity="1">Reference Board Handoff System</text>
+  <text x="120" y="192" fill="#5c6470" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="22" opacity="1">Tone, material, composition, function, constraints</text>
+  <rect x="120" y="250" width="250" height="470" rx="4" fill="#edf0f3" stroke="#aeb8c6" stroke-width="1.5"/>
+  <rect x="400" y="250" width="250" height="470" rx="4" fill="#edf0f3" stroke="#aeb8c6" stroke-width="1.5"/>
+  <rect x="680" y="250" width="250" height="470" rx="4" fill="#edf0f3" stroke="#aeb8c6" stroke-width="1.5"/>
+  <rect x="960" y="250" width="250" height="470" rx="4" fill="#dce3f4" stroke="#aeb8c6" stroke-width="1.5"/>
+  <rect x="1240" y="250" width="240" height="470" rx="4" fill="#dce3f4" stroke="#aeb8c6" stroke-width="1.5"/>
+  <text x="160" y="320" fill="#171b21" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="30" font-weight="600" opacity="1">Tone</text>
+  <text x="440" y="320" fill="#171b21" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="30" font-weight="600" opacity="1">Material</text>
+  <text x="720" y="320" fill="#171b21" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="30" font-weight="600" opacity="1">Composition</text>
+  <text x="1000" y="320" fill="#171b21" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="30" font-weight="600" opacity="1">Function</text>
+  <text x="1270" y="320" fill="#171b21" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="30" font-weight="600" opacity="1">Constraints</text>
+  <text x="160" y="390" fill="#5c6470" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="22" opacity="1">• quiet</text>
+  <text x="160" y="435" fill="#5c6470" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="22" opacity="1">• precise</text>
+  <text x="160" y="480" fill="#5c6470" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="22" opacity="1">• cool daylight</text>
+  <text x="440" y="390" fill="#5c6470" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="22" opacity="1">• glass panel</text>
+  <text x="440" y="435" fill="#5c6470" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="22" opacity="1">• brushed metal</text>
+  <text x="440" y="480" fill="#5c6470" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="22" opacity="1">• matte surface</text>
+  <text x="720" y="390" fill="#5c6470" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="22" opacity="1">• top safe space</text>
+  <text x="720" y="435" fill="#5c6470" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="22" opacity="1">• centered object</text>
+  <text x="720" y="480" fill="#5c6470" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="22" opacity="1">• left-to-right flow</text>
+  <text x="1000" y="390" fill="#5c6470" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="22" opacity="1">• cover image</text>
+  <text x="1000" y="435" fill="#5c6470" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="22" opacity="1">• inline support</text>
+  <text x="1000" y="480" fill="#5c6470" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="22" opacity="1">• text overlay ready</text>
+  <text x="1270" y="390" fill="#5c6470" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="22" opacity="1">• no human</text>
+  <text x="1270" y="435" fill="#5c6470" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="22" opacity="1">• no face</text>
+  <text x="1270" y="480" fill="#5c6470" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="22" opacity="1">• no silhouette</text>
+  <rect x="170" y="560" width="220" height="100" rx="4" fill="#dce3f4" stroke="#aeb8c6" stroke-width="1.5"/>
+  <rect x="450" y="560" width="180" height="100" rx="4" fill="#dce3f4" stroke="#aeb8c6" stroke-width="1.5"/>
+  <rect x="740" y="550" width="120" height="120" rx="4" fill="#dce3f4"/>
+  <rect x="1000" y="565" width="170" height="90" rx="4" fill="#dce3f4" stroke="#aeb8c6" stroke-width="1.5"/>
+  <rect x="1280" y="555" width="130" height="110" rx="4" fill="#e9e3d7"/>
+</svg>

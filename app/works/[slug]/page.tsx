@@ -1,3 +1,4 @@
+import styles from "@/components/brand/FiberArticle.module.css";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -72,22 +73,25 @@ export default async function WorkDetailPage(props: { params: Promise<{ slug: st
   };
 
   return (
-    <main className="min-h-screen bg-paperfolio-bg text-paperfolio-text selection:bg-paperfolio-accent-yellow/70 selection:text-paperfolio-text">
+    <main className={styles.page}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
 
-      <section className="px-6 pb-14 pt-36">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(320px,0.75fr)] lg:items-end">
-          <div className="space-y-7">
+      <section className={styles.header}>
+        <div className={styles.inner}>
+          <div className={styles.copy}>
+            <div className={styles.rail}>
             <Link
               href={backHref}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-paperfolio-text-muted hover:text-paperfolio-accent-blue"
+              className={styles.back}
             >
               <ArrowLeft className="h-4 w-4" />
               {backLabel}
             </Link>
+              <span className={styles.railLabel}>DMS LABS / FIELD NOTES</span>
+            </div>
 
-            <div className="flex flex-wrap items-center gap-3 text-sm text-paperfolio-text-muted">
-              <span className="rounded-full border border-paperfolio-accent-blue/20 bg-paperfolio-accent-blue/10 px-3 py-1 font-semibold text-paperfolio-accent-blue">
+            <div className={styles.meta}>
+              <span className={styles.category}>
                 대표 작업
               </span>
               <time dateTime={String(work.frontMatter.date)} className="inline-flex items-center gap-2">
@@ -103,51 +107,50 @@ export default async function WorkDetailPage(props: { params: Promise<{ slug: st
             </div>
 
             <div className="space-y-5">
-              <h1 className="paperfolio-display max-w-4xl text-paperfolio-text">{String(work.frontMatter.title)}</h1>
-              <p className="max-w-2xl text-lg leading-8 text-paperfolio-text-muted">{String(work.frontMatter.excerpt)}</p>
+              <h1 className={styles.title}>{String(work.frontMatter.title)}</h1>
+              <p className={styles.summary}>{String(work.frontMatter.excerpt)}</p>
             </div>
           </div>
 
           {typeof work.frontMatter.coverImage === "string" && (
-            <div className="relative overflow-hidden rounded-[36px] border border-paperfolio-line bg-paperfolio-surface shadow-[0_24px_80px_rgba(31,41,55,0.10)]">
-              <div className="relative aspect-[4/3]">
+            <figure className={styles.cover}>
+              <div className={styles.coverImage}>
                 <Image
                   src={work.frontMatter.coverImage}
                   alt={String(work.frontMatter.title)}
                   fill
                   priority
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover"
+                  sizes="(max-width: 767px) 100vw, 78vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-paperfolio-text/10 via-transparent to-transparent" />
               </div>
-            </div>
+              <figcaption><span>DMS / VISUAL ESSAY</span></figcaption>
+            </figure>
           )}
         </div>
       </section>
 
-      <section className="border-t border-paperfolio-line bg-paperfolio-surface px-6 py-20">
-        <div className="mx-auto max-w-3xl">
-          <article className="editorial-prose">
-            <MDXRemote source={work.content} components={MDXComponents} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
+      <section className={styles.body}>
+        <div className={styles.reading}>
+          <article className={`editorial-prose ${styles.prose}`}>
+            <MDXRemote source={work.content} components={{ ...MDXComponents, h1: MDXComponents.h2 }} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
           </article>
           <AuthorCard />
         </div>
       </section>
 
-      <section className="px-6 pb-24">
-        <div className="mx-auto max-w-5xl rounded-[36px] bg-paperfolio-text px-8 py-12 text-white shadow-[0_24px_90px_rgba(31,41,55,0.18)] md:px-12">
+      <section className={styles.cta}>
+        <div className={styles.ctaInner}>
           <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
             <div className="space-y-4">
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-yellow">다음 대화</p>
-              <h2 className="font-playfair text-3xl leading-tight md:text-4xl">읽고 끝내지 말고, 실제 문제로 이어가도 좋습니다.</h2>
+              <h2 className={styles.ctaTitle}>읽고 끝내지 말고, 실제 문제로 이어가도 좋습니다.</h2>
               <p className="max-w-2xl text-sm leading-7 text-white/72 md:text-base">
                 자동화, 설계, 교육, 콘텐츠 중 무엇이든 지금 필요한 문제부터 같이 정리해볼 수 있습니다.
               </p>
             </div>
             <Link
               href="/#contact"
-              className="inline-flex items-center justify-center rounded-full bg-white px-7 py-4 text-sm font-semibold text-paperfolio-text hover:bg-paperfolio-accent-yellow"
+              className={styles.ctaLink}
             >
               편하게 문의하기
             </Link>

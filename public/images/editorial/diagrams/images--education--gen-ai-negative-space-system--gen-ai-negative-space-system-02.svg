@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="블록 프롬프트 매트릭스" data-dms-edition="fiber-diagram-2026-09">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4f3ee" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#f4f3ee" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="#f4f3ee"/>
+  <rect x="130" y="130" width="1340" height="640" rx="4" fill="#edf0f3" stroke="#123ecb" stroke-opacity="0.55"/>
+  <rect x="180" y="190" width="380" height="220" rx="4" fill="#dce3f4" fill-opacity="0.28" stroke="#123ecb"/>
+  <rect x="610" y="190" width="380" height="220" rx="4" fill="#dce3f4" fill-opacity="0.24" stroke="#2f7078"/>
+  <rect x="1040" y="190" width="380" height="220" rx="4" fill="#dce8ea" fill-opacity="0.22" stroke="#2f7078"/>
+  <rect x="180" y="460" width="590" height="250" rx="4" fill="#dce3f4" fill-opacity="0.4" stroke="#123ecb"/>
+  <rect x="830" y="460" width="590" height="250" rx="4" fill="#dce8ea" fill-opacity="0.25" stroke="#2f7078"/>
+  <path d="M560 300 L610 300" stroke="#627391" stroke-width="5"/>
+  <path d="M990 300 L1040 300" stroke="#627391" stroke-width="5"/>
+  <text x="190" y="170" fill="#171b21" font-size="40" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">Prompt Block Matrix</text>
+  <text x="210" y="270" fill="#171b21" font-size="30" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">구도 블록</text>
+  <text x="640" y="270" fill="#171b21" font-size="30" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">질감 블록</text>
+  <text x="1070" y="270" fill="#171b21" font-size="30" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">제약 블록</text>
+</svg>

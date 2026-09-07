@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="상단 요약 바와 체크포인트가 포함된 번들 운영 대시보드" data-dms-edition="fiber-diagram-2026-09">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4f3ee" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#f4f3ee" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="#f4f3ee"/>
+  <rect x="120" y="120" width="1360" height="120" rx="4" fill="#edf0f3" stroke="#123ecb" stroke-width="4"/>
+  <g fill="#e0e7ff" font-family="Arial, sans-serif">
+    <text x="210" y="195" font-size="34" fill="#171b21" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">전환 흐름 계기판</text>
+    <text x="760" y="195" font-size="30" fill="#171b21" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">입문 → 핵심</text>
+    <text x="1050" y="195" font-size="30" fill="#171b21" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">핵심 → 확장</text>
+    <text x="1320" y="195" font-size="30" fill="#171b21" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">문의 / 환불</text>
+  </g>
+  <g>
+    <rect x="180" y="340" width="360" height="320" rx="4" fill="#edf0f3" stroke="#376958" stroke-width="4"/>
+    <rect x="620" y="340" width="360" height="320" rx="4" fill="#edf0f3" stroke="#2f7078" stroke-width="4"/>
+    <rect x="1060" y="340" width="360" height="320" rx="4" fill="#edf0f3" stroke="#627391" stroke-width="4"/>
+  </g>
+  <g fill="#f8fafc" font-family="Arial, sans-serif">
+    <text x="250" y="430" fill="#171b21" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-size="27.5">1. 다음 단계 노출 위치</text>
+    <text x="250" y="495" font-size="28" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">구매 직후 안내</text>
+    <text x="250" y="545" font-size="28" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">첫 성과 체크포인트</text>
+    <text x="250" y="595" font-size="28" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">재방문 동선</text>
+
+    <text x="690" y="430" font-size="34" fill="#171b21" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">2. 메시지 점검</text>
+    <text x="690" y="495" font-size="28" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">사용 전후 차이</text>
+    <text x="690" y="545" font-size="28" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">역할이 선명한 묶음</text>
+    <text x="690" y="595" font-size="28" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">과한 보너스 제거</text>
+
+    <text x="1130" y="430" font-size="34" fill="#171b21" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">3. 운영 수치 추적</text>
+    <text x="1130" y="495" font-size="28" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">단계별 전환율</text>
+    <text x="1130" y="545" font-size="28" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">문의 빈도</text>
+    <text x="1130" y="595" font-size="28" fill="#5c6470" opacity="1" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif">재구매 비중</text>
+  </g>
+</svg>

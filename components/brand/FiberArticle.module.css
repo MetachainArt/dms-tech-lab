@@ -1,0 +1,75 @@
+.page {
+  min-height: 100vh;
+  background: #f6f5f1;
+  color: #17283e;
+}
+.header { padding: 152px 5vw 80px; }
+.inner { width: 100%; max-width: 1440px; margin: 0 auto; }
+.rail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid #bfc7d1;
+  padding-top: 20px;
+  margin-bottom: 64px;
+}
+.railLabel { color: #164fc0; font-size: 10px; font-weight: 600; letter-spacing: .2em; }
+.back { display: inline-flex; align-items: center; gap: 9px; color: #536174; font-size: 12px; }
+.back:hover { color: #124fc5; }
+.back:focus-visible, .ctaLink:focus-visible { outline: 2px solid #164fc0; outline-offset: 5px; }
+.copy { max-width: 1190px; }
+.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-bottom: 28px; color: #677184; font-size: 12px; }
+.meta > :is(time, span) { display: inline-flex; align-items: center; gap: 8px; }
+.meta .category { color: #164fc0; font-weight: 600; border-bottom: 1px solid #164fc0; padding-bottom: 4px; }
+.title {
+  max-width: 1190px;
+  margin: 0;
+  font-family: var(--font-pretendard), var(--font-poppins), sans-serif;
+  font-size: clamp(42px, 5.4vw, 82px);
+  font-weight: 650;
+  line-height: 1.23;
+  letter-spacing: -.055em;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+.subtitle { max-width: 860px; margin-top: 25px; font-family: var(--font-playfair), Georgia, serif; font-size: clamp(20px, 2.2vw, 30px); font-style: italic; color: #667389; line-height: 1.5; }
+.summary { max-width: 760px; margin-top: 28px; color: #5d6877; font-size: 16px; line-height: 1.95; word-break: keep-all; overflow-wrap: anywhere; }
+.cover { width: 86%; margin: 64px 0 0 auto; }
+.coverImage { position: relative; aspect-ratio: 16 / 9; background: #e8ebed; overflow: hidden; }
+.coverImage img { object-fit: cover; }
+.cover figcaption { display: flex; justify-content: space-between; gap: 20px; padding-top: 15px; color: #647085; font-size: 11px; line-height: 1.7; }
+.cover figcaption span:first-child { color: #124fc5; font-size: 9px; letter-spacing: .15em; }
+.body { padding: 80px 5vw 112px; border-top: 1px solid #ced4dc; background: #fbfaf7; }
+.reading { width: 100%; max-width: 860px; margin: 0 auto; min-width: 0; }
+.prose { min-width: 0; overflow-wrap: anywhere; }
+.prose > :is(h2, h3, h4) { word-break: keep-all; overflow-wrap: anywhere; }
+.prose > :is(p, ul, ol) { font-size: 17px; line-height: 1.95; }
+.prose > h2 { font-family: var(--font-pretendard), sans-serif; font-size: clamp(27px, 3vw, 37px); font-weight: 600; letter-spacing: -.035em; }
+.cta { padding: 0 5vw 100px; }
+.ctaInner { max-width: 1280px; margin: 0 auto; padding: 64px; background: #182a43; color: white; border-top: 3px solid #2765da; }
+.ctaTitle { max-width: 780px; font-size: clamp(27px, 3vw, 42px); line-height: 1.45; font-weight: 500; letter-spacing: -.04em; word-break: keep-all; }
+.ctaLink { display: inline-flex; justify-content: space-between; align-items: center; gap: 40px; padding: 18px 0; border-bottom: 1px solid #bacde8; white-space: nowrap; font-size: 13px; font-weight: 500; color: white; }
+.ctaLink:hover { border-color: white; color: #adc8ff; }
+@media (max-width: 767px) {
+  .header { padding: 112px 22px 48px; }
+  .rail { margin-bottom: 42px; gap: 15px; padding-top: 15px; }
+  .railLabel { font-size: 8px; letter-spacing: .12em; }
+  .back { font-size: 11px; }
+  .meta { gap: 12px 18px; font-size: 10px; margin-bottom: 24px; }
+  .meta svg { width: 12px; height: 12px; }
+  .title { font-size: clamp(32px, 7.4vw, 54px); letter-spacing: -.05em; line-height: 1.3; }
+  .summary { margin-top: 22px; font-size: 14px; line-height: 1.9; }
+  .cover { width: 100%; margin-top: 36px; }
+  .coverImage { aspect-ratio: 4 / 3; }
+  .cover figcaption { flex-direction: column; gap: 4px; font-size: 10px; }
+  .body { padding: 48px 22px 64px; }
+  .prose > :is(p, ul, ol) { font-size: 15px; }
+  .cta { padding: 0 22px 64px; }
+  .ctaInner { padding: 32px 24px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .back, .ctaLink { transition: color .3s ease, border-color .3s ease; }
+}

@@ -1,75 +1,34 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
-import Image from "next/image";
+import ProjectCover from "@/components/brand/ProjectCover";
+import { ArrowUpRight } from "lucide-react";
 import { SHOWCASE_WORKS } from "@/lib/works-showcase";
+import styles from "./Home.module.css";
 
 export default function SelectedWorks() {
   return (
-    <div className="bg-paperfolio-surface px-6 py-24">
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div className="space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">Selected Works</p>
-            <h2 className="paperfolio-h1 pixel-display">The work speaks<br /><span className="text-paperfolio-accent-blue">before the words do.</span></h2>
-            <p className="paperfolio-body max-w-2xl">
-              Start with whatever feels closest to what you're working on right now.
-            </p>
+    <div className={`${styles.section} ${styles.worksSection}`}>
+      <div className={styles.container}>
+        <div className={styles.sectionHeader}>
+          <div>
+            <p className={styles.eyebrow}><span>03 /</span> SELECTED WORKS</p>
+            <h2 className={styles.sectionTitle}>The work speaks<br /><em>before the words do.</em></h2>
+            <p className={styles.sectionDescription}>Start with whatever feels closest to what you&apos;re working on right now.</p>
           </div>
-          <Link href="/works" className="inline-flex items-center gap-2 text-sm font-semibold text-paperfolio-text hover:text-paperfolio-accent-coral">
-            See all work
-          </Link>
+          <Link href="/works" className={styles.textLink}>See all work <ArrowUpRight size={17} /></Link>
         </div>
-
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className={styles.worksGrid}>
           {SHOWCASE_WORKS.map((work, index) => {
-            const isExternalLink = Boolean(work.link?.startsWith("http"));
-            const MotionComponent = work.link ? motion.a : motion.article;
-            const linkProps = work.link
-              ? isExternalLink
-                ? { href: work.link, target: "_blank", rel: "noopener noreferrer" }
-                : { href: work.link }
-              : {};
-
-            return (
-              <MotionComponent
-                key={work.title}
-                {...linkProps}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.45, delay: index * 0.06 }}
-                className={`rounded-[30px] border border-paperfolio-line bg-white p-7 shadow-[0_18px_70px_rgba(31,41,55,0.05)] ${
-                  work.link ? "block transition-shadow hover:shadow-[0_20px_80px_rgba(31,41,55,0.08)]" : ""
-                }`}
-              >
-                <div className="mb-8 aspect-[4/3] rounded-[24px] bg-[linear-gradient(135deg,rgba(47,93,124,0.10),rgba(201,111,74,0.10),rgba(210,167,95,0.18))] relative overflow-hidden">
-                  {work.image && (
-                    <Image
-                      src={work.image}
-                      alt={work.title}
-                      fill
-                      className="object-cover"
-                    />
-                  )}
-                </div>
-                <div className="space-y-4">
-                  <h3 className="text-2xl font-semibold tracking-tight text-paperfolio-text">{work.title}</h3>
-                  <p className="text-sm leading-7 text-paperfolio-text-muted">{work.summary}</p>
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {work.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full border border-paperfolio-line bg-paperfolio-bg px-3 py-1 text-xs font-semibold text-paperfolio-text-muted"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </MotionComponent>
-            );
+            const content = <>
+              <div className={styles.workImage}>
+                <ProjectCover work={work} index={index} />
+              </div>
+              <div className={styles.workTags}>{work.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+              <h3>{work.title}</h3>
+              <p className={styles.workSummary}>{work.summary}</p>
+            </>;
+            return work.link ? (
+              <a key={work.title} href={work.link} className={styles.workCard} {...(work.link.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{content}</a>
+            ) : <article key={work.title} className={styles.workCard}>{content}</article>;
           })}
         </div>
       </div>

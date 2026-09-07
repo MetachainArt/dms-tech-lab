@@ -7,12 +7,13 @@ import WhatIDo from "@/components/sections/home/WhatIDo";
 import WorkingStyle from "@/components/sections/home/WorkingStyle";
 import Writing from "@/components/sections/home/Writing";
 import { getAllPosts } from "@/lib/mdx";
+import styles from "@/components/sections/home/Home.module.css";
 
 export default async function Home() {
   const latestPosts = (await getAllPosts()).slice(0, 3);
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-paperfolio-bg text-paperfolio-text selection:bg-paperfolio-accent-yellow/70 selection:text-paperfolio-text">
+    <main className={styles.home}>
       <section id="hero" className="scroll-mt-32" aria-label="첫 화면">
         <Hero />
       </section>

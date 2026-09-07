@@ -27,7 +27,7 @@ function FlowArrow() {
 
 function ComfyWorkflowDiagram() {
   return (
-    <div className="my-10 overflow-x-auto rounded-[24px] bg-[#0d1117] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
+    <div tabIndex={0} role="region" aria-label="ComfyUI 워크플로우 — 좌우 스크롤 가능" className="my-10 max-w-full overflow-x-auto border-t-2 border-paperfolio-accent-blue bg-[#182535] p-6 focus-visible:outline-2 focus-visible:outline-paperfolio-accent-blue">
       <p className="mb-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30">
         ComfyUI 워크플로우 — 10 nodes
       </p>
@@ -107,7 +107,7 @@ import {
   Zap,
   type LucideIcon,
 } from "lucide-react";
-import Image from "next/image";
+import { ArticleCodeBlock, ArticleFigure, ArticleNextImage, ArticleTable } from "./ArticleFigure";
 import Link from "next/link";
 import AudioPlayer from "./AudioPlayer";
 
@@ -134,9 +134,7 @@ type ParagraphProps = ComponentPropsWithoutRef<"p">;
 type ListProps = ComponentPropsWithoutRef<"ul">;
 type ListItemProps = ComponentPropsWithoutRef<"li">;
 type BlockquoteProps = ComponentPropsWithoutRef<"blockquote">;
-type PreProps = ComponentPropsWithoutRef<"pre">;
 type CodeProps = ComponentPropsWithoutRef<"code">;
-type ImageProps = ComponentPropsWithoutRef<"img">;
 
 interface CalloutProps {
   children: ReactNode;
@@ -196,14 +194,14 @@ function StatusRow({ file, status, action, variant = "done" }: StatusRowProps) {
 
 function StatusGrid({ children }: { children: ReactNode }) {
   return (
-    <div className="my-8 overflow-hidden rounded-[20px] border border-paperfolio-line">
-      <div className="flex items-center gap-4 bg-paperfolio-text px-5 py-3">
+    <div tabIndex={0} role="region" aria-label="파일 상태 표 — 좌우 스크롤 가능" className="my-8 max-w-full overflow-x-auto border-y border-paperfolio-line focus-visible:outline-2 focus-visible:outline-paperfolio-accent-blue">
+      <div className="flex min-w-[600px] items-center gap-4 bg-paperfolio-text px-5 py-3">
         <div className="w-2 shrink-0" />
         <div className="w-52 shrink-0 text-[10px] font-semibold uppercase tracking-[0.15em] text-white/40">파일 / 폴더</div>
         <div className="flex-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-white/40">상태</div>
         <div className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/40">판단</div>
       </div>
-      <div className="divide-y divide-paperfolio-line bg-white">{children}</div>
+      <div className="min-w-[600px] divide-y divide-paperfolio-line bg-white">{children}</div>
     </div>
   );
 }
@@ -227,13 +225,13 @@ function ChangeRow({ item, before, after }: ChangeRowProps) {
 
 function ChangeGrid({ children }: { children: ReactNode }) {
   return (
-    <div className="my-8 overflow-hidden rounded-[20px] border border-paperfolio-line">
-      <div className="flex items-center gap-4 bg-paperfolio-text px-5 py-3">
+    <div tabIndex={0} role="region" aria-label="변경 전후 비교 표 — 좌우 스크롤 가능" className="my-8 max-w-full overflow-x-auto border-y border-paperfolio-line focus-visible:outline-2 focus-visible:outline-paperfolio-accent-blue">
+      <div className="flex min-w-[560px] items-center gap-4 bg-paperfolio-text px-5 py-3">
         <div className="w-28 shrink-0 text-[10px] font-semibold uppercase tracking-[0.15em] text-white/40">항목</div>
         <div className="flex-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-white/40">이전</div>
         <div className="flex-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-white/40">이후</div>
       </div>
-      <div className="divide-y divide-paperfolio-line bg-white">{children}</div>
+      <div className="min-w-[560px] divide-y divide-paperfolio-line bg-white">{children}</div>
     </div>
   );
 }
@@ -699,16 +697,15 @@ function ProportionItem({
   tone?: keyof typeof proportionTone;
 }) {
   return (
-    <div className="flex items-center gap-4 px-5 py-3">
-      <span className="w-40 shrink-0 text-sm font-medium text-paperfolio-text">{label}</span>
-      <span className="h-7 flex-1 overflow-hidden rounded-md bg-paperfolio-bg">
+    <div className="flex flex-wrap items-center gap-3 px-5 py-3">
+      <span className="w-full shrink-0 text-sm font-medium text-paperfolio-text sm:w-40">{label}</span>
+      <span className="h-7 min-w-0 flex-1 overflow-hidden bg-paperfolio-bg" aria-hidden="true">
         <span
-          className={`flex h-full items-center justify-end rounded-md pr-2 ${proportionTone[tone]}`}
+          className={`block h-full ${proportionTone[tone]}`}
           style={{ width: `${Math.max(0, Math.min(100, value))}%` }}
-        >
-          <span className="text-xs font-bold text-white">{value}%</span>
-        </span>
+        />
       </span>
+      <span className="w-12 shrink-0 text-right text-xs font-bold tabular-nums text-paperfolio-text">{value}%</span>
     </div>
   );
 }
@@ -802,22 +799,18 @@ export const MDXComponents = {
   li: (props: ListItemProps) => <li className="pl-1 leading-8" {...props} />,
   strong: (props: ComponentPropsWithoutRef<"strong">) => <strong className="font-semibold text-paperfolio-text" {...props} />,
   blockquote: (props: BlockquoteProps) => (
-    <blockquote className="my-8 rounded-[24px] border border-paperfolio-line bg-paperfolio-surface px-6 py-5 font-playfair text-2xl leading-10 text-paperfolio-text" {...props} />
+    <blockquote className="my-8 border-l-2 border-paperfolio-accent-blue bg-paperfolio-surface px-6 py-5 font-playfair text-2xl leading-10 text-paperfolio-text" {...props} />
   ),
   hr: (props: ComponentPropsWithoutRef<"hr">) => <hr className="my-10 border-paperfolio-line" {...props} />,
-  pre: (props: PreProps) => <pre className="my-8 overflow-x-auto rounded-[24px] bg-paperfolio-text p-5 text-sm leading-7 text-white [&_code]:!bg-transparent [&_code]:!text-white [&_code]:!p-0 [&_code]:!rounded-none [&_code]:!font-mono" {...props} />,
+  pre: ArticleCodeBlock,
   code: (props: CodeProps) => <code className="rounded bg-paperfolio-accent-blue/10 px-1.5 py-0.5 text-[0.92em] text-paperfolio-accent-blue" {...props} />,
-  img: (props: ImageProps) => <img className="my-10 w-full rounded-[28px] border border-paperfolio-line" alt={props.alt ?? ""} {...props} />,
+  img: ArticleFigure,
   a: (props: ComponentPropsWithoutRef<"a">) => (
     <a className="text-paperfolio-accent-blue underline underline-offset-4 hover:text-paperfolio-accent-coral" {...props} />
   ),
 
   // Tables (GFM)
-  table: (props: ComponentPropsWithoutRef<"table">) => (
-    <div className="my-8 overflow-x-auto rounded-[24px] border border-paperfolio-line bg-white">
-      <table className="w-full border-collapse text-left text-base" {...props} />
-    </div>
-  ),
+  table: ArticleTable,
   thead: (props: ComponentPropsWithoutRef<"thead">) => <thead className="bg-paperfolio-bg" {...props} />,
   th: (props: ComponentPropsWithoutRef<"th">) => (
     <th className="border-b border-paperfolio-line px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-paperfolio-text" {...props} />
@@ -842,7 +835,7 @@ export const MDXComponents = {
   AlertTriangle,
   DollarSign,
   Link,
-  Image,
+  Image: ArticleNextImage,
   AudioPlayer,
 
   ComfyWorkflowDiagram,

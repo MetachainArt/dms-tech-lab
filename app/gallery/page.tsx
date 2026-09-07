@@ -74,33 +74,45 @@ const accentMap = {
   yellow: { label: "text-paperfolio-accent-yellow", border: "border-paperfolio-accent-yellow/30",bg: "bg-paperfolio-accent-yellow/8"},
 };
 
+/** Keep the whole scene readable even beside a long essay. */
+function GalleryImage({ piece, showDate = false }: { piece: GalleryPiece; showDate?: boolean }) {
+  return (
+    <figure className="lg:sticky lg:top-24">
+      <Image
+        src={piece.image}
+        alt={piece.imageAlt}
+        width={piece.imageWidth ?? 1200}
+        height={piece.imageHeight ?? 1600}
+        className="block w-full h-auto object-contain lg:max-h-[calc(100svh-180px)]"
+        sizes="(max-width:1024px) 100vw, 50vw"
+      />
+      <figcaption className="flex flex-wrap items-center justify-between gap-3 border-t border-paperfolio-line mt-5 pt-4 text-xs text-paperfolio-text-muted">
+        <span>{showDate ? piece.date : piece.title}</span>
+        <a href={piece.image} target="_blank" rel="noopener noreferrer"
+          className="text-paperfolio-accent-blue hover:underline underline-offset-4"
+          aria-label={`${piece.title} 이미지 전체 보기 (새 탭)`}>
+          이미지 전체 보기 ↗
+        </a>
+      </figcaption>
+    </figure>
+  );
+}
+
 /* ── Layout: Image Left, Text Right ── */
 function LayoutImageLeft({ piece }: { piece: GalleryPiece }) {
   const ac = accentMap[piece.accent];
   return (
     <article className="grid grid-cols-1 lg:grid-cols-2 min-h-[80vh]">
       {/* Image */}
-      <div className="relative overflow-hidden bg-paperfolio-surface min-h-[55vw] lg:min-h-0">
-        <Image
-          src={piece.image}
-          alt={piece.imageAlt}
-          fill
-          className="object-cover transition-transform duration-700 hover:scale-105"
-          sizes="(max-width:1024px) 100vw, 50vw"
-        />
-        {/* Date badge */}
-        <div className="absolute top-6 left-6 bg-paperfolio-bg/90 backdrop-blur-sm px-3 py-1.5">
-          <span className="text-xs font-medium tracking-[0.2em] uppercase text-paperfolio-text-muted">
-            {piece.date}
-          </span>
-        </div>
+      <div className="bg-paperfolio-surface p-6 lg:p-10">
+        <GalleryImage piece={piece} showDate />
       </div>
       {/* Text */}
       <div className="flex flex-col justify-center px-10 py-16 lg:px-16 bg-paperfolio-bg">
         <p className={`text-xs font-semibold uppercase tracking-[0.22em] mb-5 ${ac.label}`}>
           {piece.category}
         </p>
-        <h2 className="font-playfair text-paperfolio-text mb-3"
+        <h2 className="font-playfair text-paperfolio-text mb-3 break-keep"
           style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)", lineHeight: 1.12, letterSpacing: "-0.01em" }}>
           {piece.title}
         </h2>
@@ -126,7 +138,7 @@ function LayoutImageRight({ piece }: { piece: GalleryPiece }) {
         <p className={`text-xs font-semibold uppercase tracking-[0.22em] mb-5 ${ac.label}`}>
           {piece.category}
         </p>
-        <h2 className="font-playfair text-paperfolio-text mb-3"
+        <h2 className="font-playfair text-paperfolio-text mb-3 break-keep"
           style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)", lineHeight: 1.12, letterSpacing: "-0.01em" }}>
           {piece.title}
         </h2>
@@ -142,14 +154,8 @@ function LayoutImageRight({ piece }: { piece: GalleryPiece }) {
         </div>
       </div>
       {/* Image */}
-      <div className="relative overflow-hidden bg-paperfolio-surface min-h-[50vw] lg:min-h-0 order-1 lg:order-2">
-        <Image
-          src={piece.image}
-          alt={piece.imageAlt}
-          fill
-          className="object-cover transition-transform duration-700 hover:scale-105"
-          sizes="(max-width:1024px) 100vw, 50vw"
-        />
+      <div className="bg-paperfolio-surface p-6 lg:p-10 order-1 lg:order-2">
+        <GalleryImage piece={piece} />
       </div>
     </article>
   );
@@ -178,7 +184,7 @@ function LayoutFullbleed({ piece }: { piece: GalleryPiece }) {
         <p className={`text-xs font-semibold uppercase tracking-[0.22em] mb-4 ${ac.label}`}>
           {piece.category} — {piece.date}
         </p>
-        <h2 className="font-playfair text-white mb-4"
+        <h2 className="font-playfair text-white mb-4 break-keep"
           style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", lineHeight: 1.08, letterSpacing: "-0.02em" }}>
           {piece.title}
         </h2>
@@ -205,7 +211,7 @@ function LayoutTextDominant({ piece }: { piece: GalleryPiece }) {
           <p className={`text-xs font-semibold uppercase tracking-[0.22em] mb-6 ${ac.label}`}>
             {piece.category} — {piece.date}
           </p>
-          <h2 className="font-playfair text-paperfolio-text mb-6"
+          <h2 className="font-playfair text-paperfolio-text mb-6 break-keep"
             style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             {piece.title}
           </h2>

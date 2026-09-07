@@ -1,0 +1,78 @@
+.figure {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 2.5rem 0;
+  background: #f5f4f0;
+  border: 1px solid #d7dce2;
+}
+.imageFrame {
+  display: block;
+  position: relative;
+  padding: clamp(10px, 2vw, 24px);
+  background: #eef0f2;
+}
+.imageFrame .image {
+  display: block;
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  margin: 0 !important;
+  border: 0;
+  border-radius: 0 !important;
+  object-fit: contain !important;
+}
+.caption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  border-top: 1px solid #d7dce2;
+  padding: 14px 18px;
+  color: #526070;
+  font-size: 12px;
+  line-height: 1.7;
+  font-style: normal;
+  text-align: left;
+}
+.caption > span { min-width: 0; overflow-wrap: anywhere; }
+.caption .sourceLink {
+  flex-shrink: 0;
+  color: #124fc5;
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.sourceLink:hover { text-decoration: underline; text-underline-offset: 4px; }
+.sourceLink:focus-visible, .tableScroll:focus-visible, .code:focus-visible {
+  outline: 2px solid #124fc5;
+  outline-offset: 4px;
+}
+.tableFrame { max-width: 100%; margin: 2rem 0; border-block: 1px solid #c7ced8; }
+.tableFrame .scrollHint { margin: 0; padding: 10px 16px; color: #637082; background: #f3f4f5; font-size: 11px; line-height: 1.6; }
+.tableScroll { max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; }
+.table { width: 100%; min-width: 560px; border-collapse: collapse; text-align: left; font-size: 14px; }
+.table th { background: #e9edf3; color: #152b47; }
+.table th, .table td { padding: 14px 18px; border-bottom: 1px solid #dce1e7; line-height: 1.8; }
+.code {
+  max-width: 100%;
+  margin: 2rem 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  border-radius: 0;
+  border-top: 3px solid #245fd2;
+  background: #182535;
+  color: #f0f4fb;
+  padding: 24px;
+  font-size: 13px;
+  line-height: 1.9;
+}
+.code code { background: transparent !important; padding: 0 !important; color: inherit !important; border-radius: 0; font-family: monospace; }
+@media (max-width: 600px) {
+  .figure { margin: 1.75rem 0; }
+  .caption { flex-direction: column; gap: 8px; padding: 12px; }
+  .code { padding: 18px; font-size: 12px; }
+}

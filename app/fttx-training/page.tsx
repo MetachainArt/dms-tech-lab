@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import styles from "@/components/brand/FiberContent.module.css";
 import { ArrowRight, Globe2, Layers, Wrench } from "lucide-react";
 import { generateMetadata as generateSeoMetadata } from "@/lib/metadata";
 import { EDUCATION_TRACKS } from "@/lib/education-data";
@@ -68,7 +70,7 @@ export default function FttxTrainingPage() {
   return (
     <main
       lang="en"
-      className="min-h-screen bg-paperfolio-bg text-paperfolio-text selection:bg-paperfolio-accent-yellow/70 selection:text-paperfolio-text"
+      className={`${styles.page} ${styles.editorial}`}
     >
       <section className="px-6 pb-16 pt-36">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
@@ -76,7 +78,7 @@ export default function FttxTrainingPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">
               Optical Network Training
             </p>
-            <h1 className="paperfolio-display pixel-display max-w-4xl">
+            <h1 className={styles.fttxTitle}>
               FTTx training written by someone who built the hardware.
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-paperfolio-text-muted">
@@ -87,43 +89,30 @@ export default function FttxTrainingPage() {
             <div className="flex flex-col gap-4 sm:flex-row">
               <Link
                 href={`/education/${track.id}`}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-paperfolio-text px-7 py-4 text-sm font-semibold text-white hover:bg-paperfolio-accent-blue"
+                className={styles.button}
               >
                 Start the course
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <a
                 href="mailto:dms@dmssolution.co.kr?subject=FTTx%20training%20enquiry"
-                className="inline-flex items-center justify-center rounded-full border border-paperfolio-line bg-white px-7 py-4 text-sm font-semibold text-paperfolio-text hover:border-paperfolio-accent-coral/40 hover:text-paperfolio-accent-coral"
+                className={styles.button}
               >
                 Enquire about training
               </a>
             </div>
           </div>
 
-          <div className="rounded-[36px] border border-paperfolio-line bg-paperfolio-surface p-8 shadow-[0_24px_80px_rgba(31,41,55,0.08)]">
-            <div className="rounded-[28px] bg-[linear-gradient(135deg,#f3e5ab_0%,#fff7dd_35%,#ead9c4_100%)] p-8">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">Reedo</p>
-              <p className="mt-6 font-playfair text-3xl leading-tight text-paperfolio-text">
-                Equipment is easy to demonstrate. Judgement is what has to be taught.
-              </p>
+          <aside className={styles.fieldStudy}>
+            <div className={styles.fieldImage}>
+              <Image src="/images/brand/fiber-exploded.png" alt="Optical connector assembly — DMS brand concept study" fill priority sizes="(max-width: 1024px) 90vw, 44vw" />
             </div>
-            <div className="mt-6 rounded-[24px] border border-paperfolio-line bg-white px-6 py-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-paperfolio-accent-coral">
-                Field experience
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {countries.map((country) => (
-                  <span
-                    key={country}
-                    className="rounded-full border border-paperfolio-line bg-paperfolio-bg px-3 py-1 text-xs font-semibold text-paperfolio-text-muted"
-                  >
-                    {country}
-                  </span>
-                ))}
-              </div>
+            <p className={styles.eyebrow}>Reedo / Field experience</p>
+            <blockquote>Equipment is easy to demonstrate. Judgement is what has to be taught.</blockquote>
+            <div className={styles.countries}>
+              {countries.map((country) => <span key={country}>{country}</span>)}
             </div>
-          </div>
+          </aside>
         </div>
       </section>
 
@@ -181,7 +170,7 @@ export default function FttxTrainingPage() {
               <li key={lesson.id}>
                 <Link
                   href={`/education/${track.id}/${lesson.id}`}
-                  className="flex flex-col gap-3 rounded-[28px] border border-paperfolio-line bg-white p-7 shadow-[0_16px_55px_rgba(31,41,55,0.05)] transition-shadow hover:shadow-[0_20px_70px_rgba(31,41,55,0.08)] md:flex-row md:items-center md:justify-between"
+                  className="flex flex-col gap-3 border-b border-paperfolio-line py-7 transition-colors hover:text-blue-700 focus-visible:outline-2 focus-visible:outline-blue-700 md:flex-row md:items-center md:justify-between"
                 >
                   <div className="space-y-2">
                     <p className="text-xs font-semibold uppercase tracking-[0.22em] text-paperfolio-accent-coral">

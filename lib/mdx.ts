@@ -1,6 +1,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { editorialContent, editorialCover } from './editorial-art';
 
 const postsDirectory = path.join(process.cwd(), 'content/posts');
 
@@ -30,8 +31,8 @@ async function loadPostBySlug(slug: string): Promise<MDXPost | null> {
 
     return {
       slug: realSlug,
-      frontMatter: data as MDXPost['frontMatter'],
-      content,
+      frontMatter: { ...data, ...(editorialCover(`content/posts/${realSlug}.mdx`) ? { coverImage: editorialCover(`content/posts/${realSlug}.mdx`) } : {}) } as MDXPost['frontMatter'],
+      content: editorialContent(content),
     };
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === 'ENOENT') {

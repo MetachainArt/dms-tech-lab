@@ -1,0 +1,22 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg" data-dms-edition="fiber-diagram-2026-09" role="img">
+  <rect width="1600" height="900" rx="4" fill="#f4f3ee"/>
+  <rect x="70" y="70" width="1460" height="760" rx="4" fill="#edf0f3" stroke="#123ecb"/>
+  <text x="110" y="150" fill="#171b21" font-size="44" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-weight="600" opacity="1">Acceptance Contract for the Next 30 Minutes</text>
+  <text x="110" y="200" fill="#5c6470" font-size="24" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">Design the handoff so the next contributor can act, not just read</text>
+  <circle cx="310" cy="470" r="120" fill="#edf0f3" stroke="#123ecb" stroke-width="8"/>
+  <circle cx="800" cy="470" r="120" fill="#edf0f3" stroke="#376958" stroke-width="8"/>
+  <circle cx="1290" cy="470" r="120" fill="#edf0f3" stroke="#94622b" stroke-width="8"/>
+  <text x="246" y="455" fill="#5c6470" font-size="28" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-weight="600" opacity="1">10 min</text>
+  <text x="218" y="495" fill="#5c6470" font-size="22" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">understand</text>
+  <text x="217" y="525" fill="#5c6470" font-size="22" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">the purpose</text>
+  <text x="736" y="455" fill="#5c6470" font-size="28" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-weight="600" opacity="1">20 min</text>
+  <text x="691" y="495" fill="#5c6470" font-size="22" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">identify safe</text>
+  <text x="695" y="525" fill="#5c6470" font-size="22" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">edit boundaries</text>
+  <text x="1223" y="455" fill="#5c6470" font-size="28" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" font-weight="600" opacity="1">30 min</text>
+  <text x="1186" y="495" fill="#5c6470" font-size="22" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">start first</text>
+  <text x="1177" y="525" fill="#5c6470" font-size="22" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">fix or validation</text>
+  <path d="M430 470H680" stroke="#123ecb" stroke-width="12" stroke-linecap="round"/>
+  <path d="M920 470H1170" stroke="#376958" stroke-width="12" stroke-linecap="round"/>
+  <rect x="180" y="690" width="1240" height="74" rx="4" fill="#edf0f3" stroke="#123ecb"/>
+  <text x="220" y="737" fill="#5c6470" font-size="24" font-family="Arial, 'Malgun Gothic', 'Noto Sans KR', sans-serif" opacity="1">If the next person cannot move within 30 minutes, the handoff still needs work.</text>
+</svg>

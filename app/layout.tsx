@@ -3,6 +3,7 @@ import "./globals.css";
 import clsx from "clsx";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
+import FiberMotion from "@/components/brand/FiberMotion";
 import Background from "@/components/ui/Background";
 import NextAuthProvider from "@/components/providers/NextAuthProvider";
 import BookingEventBridge from "@/components/providers/BookingEventBridge";
@@ -23,6 +24,7 @@ const poppins = Poppins({
 const dmSerif = DM_Serif_Display({
   subsets: ["latin"],
   weight: "400",
+  style: ["normal", "italic"],
   variable: "--font-playfair", // 기존 변수명 유지 → 컴포넌트 코드 변경 불필요
   display: "swap",
   preload: true,
@@ -124,7 +126,7 @@ export default function RootLayout({
           <Navbar />
         </NextAuthProvider>
         <div className="relative z-10 w-full">
-          {children}
+          <FiberMotion>{children}</FiberMotion>
           <Footer />
         </div>
       </body>

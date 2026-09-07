@@ -1,38 +1,25 @@
-"use client";
-
-import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Settings2, FileText, AppWindow, Network, BrainCircuit, Ship } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import FiberPageHeader from "@/components/brand/FiberPageHeader";
+import styles from "@/components/brand/FiberPages.module.css";
 
-// Service Data (Formerly Projects)
-// Service Data (Formerly Projects)
 const services = [
   {
     category: "AX · 업무 자동화",
     title: "워크플로우 자동화",
     desc: "24시간 멈추지 않는 비즈니스. N8N, Opal 등 최적의 도구를 조합해 반복 업무를 자동화하고, 업무 흐름 전체를 AI 기준으로 다시 설계하는 AX 전환을 돕습니다.",
-    icon: Settings2,
-    image: "/images/Service/real_automation_server.png",
-    color: "text-blue-500",
     link: "/automation",
   },
   {
     category: "프롬프트",
     title: "프롬프트 라이브러리",
     desc: "시행착오를 줄여주는 솔루션. 개발과 비즈니스 효율을 극대화하는 검증된 프롬프트 모음입니다.",
-    icon: FileText,
-    image: "/images/Service/real_ai_code_macro.png",
-    color: "text-purple-500",
     link: "/prompts",
   },
   {
     category: "실험적인 웹앱",
     title: "바이브 코딩 웹앱",
     desc: "상상을 현실로. 뮤즈캔버스를 비롯해 바이브 코딩으로 제작된 다양한 웹 애플리케이션을 소개합니다.",
-    icon: AppWindow,
-    image: "/images/Service/real_modern_workspace.png",
-    color: "text-green-500",
     link: "/vibe-coding",
   }
 ];
@@ -42,131 +29,58 @@ const expertise = [
     category: "광통신 트레이닝",
     title: "광통신 트레이닝 전문가",
     desc: "FTTx 광통신 인프라와 장비 개발을 20년 가까이 해왔고, 9개국 현장에서 엔지니어를 직접 교육했습니다. 장비 원리부터 현장 시공·유지보수까지 실무 기준으로 가르칩니다.",
-    icon: Network,
-    color: "text-sky-600",
     link: "/education",
   },
   {
     category: "AX",
     title: "AX(AI 전환) 전문가",
     desc: "도구 몇 개를 붙이는 자동화가 아니라, 조직의 업무 흐름 전체를 AI 기준으로 다시 설계합니다. 무엇을 자동화하고 무엇을 사람이 판단할지부터 함께 정리합니다.",
-    icon: BrainCircuit,
-    color: "text-indigo-600",
     link: "/contact",
   },
   {
     category: "무역 에이전시",
     title: "광통신 장비 수출입 에이전시",
     desc: "중동·동남아·유럽 시장에서 20년간 광통신 장비 수출입을 수행했습니다. 공급처 소싱과 사양 검토부터 통관·물류 실무, 담당자 교육까지 일괄 수행합니다.",
-    icon: Ship,
-    color: "text-amber-600",
     link: "/contact",
   },
 ];
 
 export default function ServicesPage() {
   return (
-    <main className="w-full min-h-screen bg-[#f7f3ea] text-paperfolio-text font-sans selection:bg-paperfolio-accent-yellow/70 selection:text-paperfolio-text pt-32 pb-20 relative">
-      {/* Header Section */}
-      <section className="max-w-7xl mx-auto px-6 mb-24 relative z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.03),transparent_70%)] -z-10" />
-        <motion.div
-             initial={{ opacity: 0, y: 20 }}
-             animate={{ opacity: 1, y: 0 }}
-             transition={{ duration: 0.6 }}
-        >
-            <div className="flex items-center gap-4 mb-6">
-                <span className="h-[2px] w-12 bg-paperfolio-line" />
-                <span className="text-paperfolio-text-muted font-semibold tracking-widest text-sm uppercase">하는 일</span>
-             </div>
-             <h1 className="text-5xl md:text-6xl font-serif font-bold leading-tight">
-                지금 필요한 문제를
-                <br />
-                <span className="text-paperfolio-text-muted">이런 방식으로 돕습니다.</span>
-             </h1>
-             <p className="mt-6 max-w-2xl text-lg leading-8 text-paperfolio-text-muted">
-               광통신 트레이닝 전문가이자 AX 전문가로서, 거창한 서비스 카탈로그보다 실제로 도움이 되는 자동화와 도구, 작업 방식을 중심으로 정리했습니다.
-             </p>
-         </motion.div>
-      </section>
-
-      {/* Services Grid */}
-      <section className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, idx) => (
-                <motion.div
-                    key={service.title}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: idx * 0.1 }}
-                    className="group bg-white rounded-[2rem] overflow-hidden hover:-translate-y-2 transition-transform duration-300 shadow-sm border border-paperfolio-line hover:shadow-md"
-                >
-                    <Link href={service.link} className="flex flex-col h-full">
-                        {/* Image Area */}
-                        <div className="h-64 w-full relative overflow-hidden flex-shrink-0">
-                             <Image 
-                                src={service.image} 
-                                alt={service.title}
-                                fill
-                                className="object-cover transition-transform duration-700 group-hover:scale-110"
-                             />
-                             <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-300" />
-                             
-                             <div className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-paperfolio-line z-10">
-                                <service.icon className={`w-5 h-5 ${service.color}`} />
-                             </div>
-                        </div>
-
-                        {/* Content */}
-                        <div className="p-8 flex flex-col bg-white h-full relative z-20">
-                            <div className="text-xs font-bold text-paperfolio-text-muted tracking-widest uppercase mb-3">{service.category}</div>
-                            <h3 className="text-2xl font-bold text-paperfolio-text mb-4 group-hover:text-paperfolio-text-muted transition-colors">{service.title}</h3>
-                            <p className="text-paperfolio-text-muted text-sm leading-relaxed mb-8 line-clamp-3">
-                                {service.desc}
-                            </p>
-                            
-                            <div className="mt-auto self-start px-6 py-3 rounded-full border border-paperfolio-line text-paperfolio-text font-bold text-sm flex items-center gap-2 group-hover:bg-paperfolio-text group-hover:text-white group-hover:border-paperfolio-accent-blue transition-all">
-                                자세히 보기 <ArrowRight className="w-4 h-4" />
-                            </div>
-                        </div>
-                    </Link>
-                </motion.div>
-            ))}
-        </div>
-      </section>
-
-      {/* Expertise Band */}
-      <section className="max-w-7xl mx-auto px-6 mt-24 relative z-10">
-        <div className="flex items-center gap-4 mb-6">
-          <span className="h-[2px] w-12 bg-paperfolio-line" />
-          <span className="text-paperfolio-text-muted font-semibold tracking-widest text-sm uppercase">전문 분야</span>
-        </div>
-        <h2 className="text-3xl md:text-4xl font-serif font-bold leading-tight mb-10">
-          트레이닝, AX 전환, 해외에이전시.
-          <br />
-          <span className="text-paperfolio-text-muted">세 축으로 일합니다.</span>
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {expertise.map((item) => (
-            <Link
-              key={item.title}
-              href={item.link}
-              className="group bg-white rounded-[2rem] border border-paperfolio-line p-8 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col"
-            >
-              <div className="w-12 h-12 rounded-full bg-paperfolio-bg border border-paperfolio-line flex items-center justify-center mb-6">
-                <item.icon className={`w-6 h-6 ${item.color}`} />
-              </div>
-              <div className="text-xs font-bold text-paperfolio-text-muted tracking-widest uppercase mb-3">{item.category}</div>
-              <h3 className="text-2xl font-bold text-paperfolio-text mb-4 group-hover:text-paperfolio-text-muted transition-colors">{item.title}</h3>
-              <p className="text-paperfolio-text-muted text-sm leading-relaxed mb-8">{item.desc}</p>
-              <div className="mt-auto self-start px-6 py-3 rounded-full border border-paperfolio-line text-paperfolio-text font-bold text-sm flex items-center gap-2 group-hover:bg-paperfolio-text group-hover:text-white group-hover:border-paperfolio-accent-blue transition-all">
-                자세히 보기 <ArrowRight className="w-4 h-4" />
-              </div>
+    <main className={styles.page}>
+      <FiberPageHeader
+        eyebrow="Services / 하는 일" lead="Applied" accent="intelligence." variant="services"
+        title="지금 필요한 문제를 이런 방식으로 돕습니다."
+        description="광통신 트레이닝 전문가이자 AX 전문가로서, 거창한 서비스 카탈로그보다 실제로 도움이 되는 자동화와 도구, 작업 방식을 중심으로 정리했습니다."
+        note={<><span>AX · Fiber optics · Engineering</span><span>01 — Capabilities</span></>}
+      />
+      <section className={styles.section}>
+        <p className={styles.sectionLabel}>Tools & systems / 도구와 시스템</p>
+        <div className={styles.serviceList}>
+          {services.map((service, index) => (
+            <Link key={service.title} href={service.link} className={styles.serviceRow}>
+              <span>0{index + 1}</span>
+              <div><small>{service.category}</small><h2>{service.title}</h2></div>
+              <p>{service.desc}</p>
+              <span className={styles.serviceLink}>자세히 보기 <ArrowRight size={14} /></span>
             </Link>
           ))}
         </div>
       </section>
-
+      <section className={styles.section}>
+        <p className={styles.sectionLabel}>Expertise / 전문 분야</p>
+        <h2 className={styles.sectionTitle}>트레이닝, AX 전환, 해외에이전시.<br />세 축으로 일합니다.</h2>
+        <div className={styles.serviceList}>
+          {expertise.map((item, index) => (
+            <Link key={item.title} href={item.link} className={styles.serviceRow}>
+              <span>0{index + 1}</span>
+              <div><small>{item.category}</small><h3>{item.title}</h3></div>
+              <p>{item.desc}</p>
+              <span className={styles.serviceLink}>자세히 보기 <ArrowRight size={14} /></span>
+            </Link>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
