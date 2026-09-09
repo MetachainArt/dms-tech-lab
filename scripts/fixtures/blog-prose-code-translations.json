@@ -1,0 +1,62 @@
+[
+  {
+    "file": "future-arts-hangul-latin-typeface-boundary.mdx",
+    "original": "본문      Pretendard Variable\n제목      Pixelify Sans\n폴백      \"Courier New\", monospace",
+    "translated": "Body      Pretendard Variable\nHeading   Pixelify Sans\nFallback  \"Courier New\", monospace"
+  },
+  {
+    "file": "future-arts-hangul-latin-typeface-boundary.mdx",
+    "original": "/* 고정 픽셀 그리드라 작은 크기에서 획이 뭉개진다.\n   13px 아래로는 쓰지 않는다. 한글 글리프 없음 — 영문 전용. */",
+    "translated": "/* The fixed pixel grid blurs strokes at small sizes.\n   Do not use below 13px. No Hangul glyphs — English only. */"
+  },
+  {
+    "file": "future-arts-hangul-latin-typeface-boundary.mdx",
+    "original": "The work speaks\nbefore the words do.     ← 이탤릭",
+    "translated": "The work speaks\nbefore the words do.     ← Italic"
+  },
+  {
+    "file": "future-arts-hangul-latin-typeface-boundary.mdx",
+    "original": "The work speaks\nbefore the words do.     ← 파랑",
+    "translated": "The work speaks\nbefore the words do.     ← Blue"
+  },
+  {
+    "file": "passive-income-maintenance-is-the-product.mdx",
+    "original": "1  스크린샷과 화면 설명    바뀐 게 있으면 교체. 가장 자주 낡는 부분\n2  링크                    죽은 링크는 즉시 신뢰를 깎는다\n3  리뷰와 문의             반복되는 질문은 상품에 넣어야 할 내용\n4  갱신 날짜               고친 게 없어도 확인했다면 올린다",
+    "translated": "1  Screenshots and screen descriptions    Replace anything changed; these age most often.\n2  Links                                  Dead links immediately undermine trust.\n3  Reviews and inquiries                  Repeated questions belong in the product.\n4  Update date                            Advance it when checked, even if nothing changed."
+  },
+  {
+    "file": "future-arts-ai-artist-lighting-aesthetics-guide.mdx",
+    "original": "[피사체] + [아티스트 스타일] + [조명] + [미학] + [매체]",
+    "translated": "[Subject] + [Artist style] + [Lighting] + [Aesthetics] + [Medium]"
+  },
+  {
+    "file": "future-arts-ai-artist-lighting-aesthetics-guide.mdx",
+    "original": "새벽 3시 강남 편의점 앞에 혼자 앉은 직장인, Edward Hopper 스타일,\n형광등 low key lighting, urban loneliness aesthetic,\nCinestill 800T 필름, 디지털 페인팅",
+    "translated": "An office worker sitting alone outside a convenience store in Gangnam at 3 a.m., Edward Hopper style,\nfluorescent low key lighting, urban loneliness aesthetic,\nCinestill 800T film, digital painting"
+  },
+  {
+    "file": "future-arts-ai-artist-lighting-aesthetics-guide.mdx",
+    "original": "북악산 정상에 선 여인, Yoshitaka Amano 스타일,\nbioluminescent lighting, Studio Ghibli 미학,\n수채화 일러스트레이션, 달빛 glowing",
+    "translated": "A woman standing atop Bugaksan, Yoshitaka Amano style,\nbioluminescent lighting, Studio Ghibli aesthetics,\nwatercolor illustration, moonlight glowing"
+  },
+  {
+    "file": "future-arts-ai-artist-lighting-aesthetics-guide.mdx",
+    "original": "홍대 골목 비 오는 밤, Moebius clean line art 스타일,\nneon lighting + volumetric light, cyberpunk aesthetic,\n잉크와 수채 혼합 매체",
+    "translated": "A Hongdae alley on a rainy night, Moebius clean line art style,\nneon lighting + volumetric light, cyberpunk aesthetic,\nmixed-media ink and watercolor"
+  },
+  {
+    "file": "future-arts-ai-artist-lighting-aesthetics-guide.mdx",
+    "original": "경복궁 광화문 앞 한복 입은 여인, Alphonse Mucha 스타일,\ngolden hour 조명, Art Nouveau 미학,\n장식 테두리와 금박 디테일, 디지털 페인팅",
+    "translated": "A woman in hanbok before Gwanghwamun Gate at Gyeongbokgung Palace, Alphonse Mucha style,\ngolden hour lighting, Art Nouveau aesthetics,\nornamental borders and gold-leaf details, digital painting"
+  },
+  {
+    "file": "future-arts-shadow-tells-the-truth.mdx",
+    "original": "왼쪽 위 커다란 창에서 들어오는 부드러운 오후 빛\n바닥에 긴 그림자, 턱 아래 짙은 그늘",
+    "translated": "Soft afternoon light entering through a large window at the upper left\nLong shadows on the floor, deep shade beneath the chin"
+  },
+  {
+    "file": "daily-record-the-week-light-changes.mdx",
+    "original": "9/1   다섯 시, 모서리\n9/4   모서리 넘음\n9/6   키보드 왼쪽\n9/9   손등",
+    "translated": "9/1   Five o’clock, corner\n9/4   Past the corner\n9/6   Left of the keyboard\n9/9   Back of my hand"
+  }
+]

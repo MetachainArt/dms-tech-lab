@@ -14,23 +14,23 @@ function sourceUrl(src: unknown): string | undefined {
   return undefined;
 }
 
-function FigureFrame({ children, alt, src }: { children: ReactNode; alt: string; src?: string }) {
+function FigureFrame({ children, alt, src, locale = "ko" }: { children: ReactNode; alt: string; src?: string; locale?: "ko" | "en" }) {
   // Markdown images can live inside a paragraph; span keeps that HTML valid.
   return (
-    <span className={styles.figure} role="figure" aria-label={alt || "본문 이미지"}>
+    <span className={styles.figure} role="figure" aria-label={alt || (locale === "en" ? "Article image" : "본문 이미지")}>
       <span className={styles.imageFrame}>{children}</span>
       <span className={styles.caption}>
-        <span>{alt || "본문 이미지"}</span>
-        {src ? <a href={src} target="_blank" rel="noopener noreferrer" className={styles.sourceLink} aria-label={`${alt || "본문 이미지"} 원본 전체 보기 (새 탭)`}>원본 전체 보기 <span aria-hidden="true">↗</span></a> : null}
+        <span>{alt || (locale === "en" ? "Article image" : "본문 이미지")}</span>
+        {src ? <a href={src} target="_blank" rel="noopener noreferrer" className={styles.sourceLink} aria-label={`${alt || (locale === "en" ? "Article image" : "본문 이미지")} ${locale === "en" ? "View original (new tab)" : "원본 전체 보기 (새 탭)"}`}>{locale === "en" ? "View original" : "원본 전체 보기"} <span aria-hidden="true">↗</span></a> : null}
       </span>
     </span>
   );
 }
 
-export function ArticleFigure({ alt = "", className = "", loading = "lazy", ...props }: ComponentPropsWithoutRef<"img">) {
+export function ArticleFigure({ alt = "", className = "", loading = "lazy", locale = "ko", ...props }: ComponentPropsWithoutRef<"img"> & { locale?: "ko" | "en" }) {
   const src = typeof props.src === "string" ? editorialImage(props.src) : props.src;
   return (
-    <FigureFrame alt={alt} src={sourceUrl(src)}>
+    <FigureFrame locale={locale} alt={alt} src={sourceUrl(src)}>
       {/* MDX sources include original SVGs and external screenshots; retain their source URLs. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img {...props} src={src} alt={alt} loading={loading} decoding="async" className={`${className} ${styles.image}`} />
@@ -38,20 +38,20 @@ export function ArticleFigure({ alt = "", className = "", loading = "lazy", ...p
   );
 }
 
-export function ArticleNextImage({ alt, className = "", ...props }: ImageProps) {
+export function ArticleNextImage({ alt, className = "", locale = "ko", ...props }: ImageProps & { locale?: "ko" | "en" }) {
   const src = typeof props.src === "string" ? editorialImage(props.src) : props.src;
   return (
-    <FigureFrame alt={alt} src={sourceUrl(src)}>
+    <FigureFrame locale={locale} alt={alt} src={sourceUrl(src)}>
       <Image {...props} src={src} alt={alt} className={`${className} ${styles.image}`} />
     </FigureFrame>
   );
 }
 
-export function ArticleTable({ className = "", ...props }: ComponentPropsWithoutRef<"table">) {
+export function ArticleTable({ className = "", locale = "ko", ...props }: ComponentPropsWithoutRef<"table"> & { locale?: "ko" | "en" }) {
   return (
     <div className={styles.tableFrame}>
-      <p className={styles.scrollHint}>표가 넓으면 좌우로 스크롤하여 확인하세요.</p>
-      <div className={styles.tableScroll} tabIndex={0} role="region" aria-label="본문 표 — 좌우 스크롤 가능">
+      <p className={styles.scrollHint}>{locale === "en" ? "Scroll horizontally to view a wide table." : "표가 넓으면 좌우로 스크롤하여 확인하세요."}</p>
+      <div className={styles.tableScroll} tabIndex={0} role="region" aria-label={locale === "en" ? "Article table — scroll horizontally" : "본문 표 — 좌우 스크롤 가능"}>
         <table {...props} className={`${styles.table} ${className}`} />
       </div>
     </div>

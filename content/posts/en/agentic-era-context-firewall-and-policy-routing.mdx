@@ -1,0 +1,67 @@
+---
+title: "Good Agents Filter First: Context Firewalls and Policy Routing"
+excerpt: "Most performance degradation and dangerous automation arise from disordered context intake rather than inadequate models. Context firewalls and policy routing can improve quality, speed and safety together."
+date: "2026. 03. 12"
+readTime: "16 min"
+coverImage: "/blog/agentic_era_context_firewall_01.svg"
+series: "agentic-era"
+chapter: "09"
+tags: ["Agentic AI", "Context Firewall", "Policy Routing", "AI Operations"]
+subtitle: "Before enlarging the prompt, design a gate that selects incoming context"
+translationSourceHash: "5ec2217f39e410bf75de21b7aedbd1cb988d06c0ea2b230d5a414a102297bf2f"
+---
+
+<div className="lead text-2xl text-white font-sans font-medium mb-12 leading-relaxed">
+Most agent incidents happen because the model was shown context it should not see right now, rather than simply because the model was wrong. Performance optimization begins with a stricter gate, not a larger model.
+</div>
+
+Similar scenes recur in agent operations. Initially, teams eagerly collect as much data as possible: conversations, operating rules, user preferences, failures and past deliverables. More context seems likely to bring better answers. In real services, however, this does not last. Responses slow, tone fluctuates, and last week’s history frequently overrides the latest request. Some days, clearly identical questions produce inconsistent results.
+
+Teams then often consider replacing the model first: a more expensive model, a longer context window, more retries. These sometimes help, but with a flawed structure, upgrades only conceal the problem. The cause is usually simple: **we designed what to include without designing what to block**. Stable agent work requires a context firewall and policy routing.
+
+## <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">1. Context Firewall: A Layer Controlling Context Before It Reaches the Model</span>
+
+A context firewall resembles a network firewall. Rather than admitting every packet, it passes only those matching rules. The same applies to agents. When user input, search results, long-term memory, tool output and external documents arrive mixed together, the model must judge importance itself. That judgment is not always consistent. The firewall therefore organizes this at the system layer instead of handing responsibility for judgment to the model.
+
+At least four stages work in practice. First, **source classification**: tag direct user instructions, historical summaries and automatically collected logs. Second, **confidence scoring**: do not weight human-verified facts and unverified inferences equally. Third, **expiration checks**: automatically discard time-sensitive prices, policies and schedules past their TTL. Fourth, **sensitivity filtering**: remove personal information unrelated to the task and unnecessary internal metadata.
+
+Blocking matters more here than summarizing. Many teams focus on compressing long context, but compression is a temporary fix when the material should never have entered. However finely you chop a wrong ingredient, it remains wrong. A context firewall improves model performance while reducing operational risk—one of the rare places where accuracy and security improve in the same direction.
+
+![Context firewall diagram 1](/blog/agentic_era_context_firewall_01.svg)
+
+## <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">2. Policy Routing: Even Similar Questions Need Different Paths</span>
+
+After filtering intake comes routing. Production requests are not equivalent. “Summarize this” and “send this externally” may both be short sentences, but carry entirely different risks. Many pipelines nevertheless send everything down one line with the same model, prompt and tool permissions. Easy tasks then receive excessively heavy processing, while dangerous ones are handled too lightly.
+
+Policy routing branches requests by **intent + impact + reversibility**. Drafting an internal document, for example, is low-risk and highly reversible, so it takes a fast path. External sending, spending money and deleting data are high-risk and less reversible, so they must pass approval gates. Separating paths within automation provides speed and safety together.
+
+Three practical criteria help design routing.
+
+- **Recovery time on failure:** Does reversing a failure take 1 minute or 1 week?
+- **External exposure:** Does it stay in internal logs or immediately reach customers or the public?
+- **Verifiability:** Can rules automatically verify the result?
+
+Record these criteria as metadata, and the system can explain which path it took and why. This also makes a major difference during incident replay. Incidents cannot be eliminated, but a structure that quickly finds their causes and prevents recurrence can be designed.
+
+![Policy routing diagram 2](/blog/agentic_era_context_firewall_02.svg)
+
+## <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500">3. Operating Tip: Measure Upstream Rule Quality Before Prompt Engineering</span>
+
+Agent-quality meetings often miss something: most metrics attach only to model output. Accuracy, hallucination rate and token cost matter. But without separating input-stage causes from output-stage causes when metrics fluctuate, the team circles the same ground. It changes prompts today, adds samples tomorrow and switches models the day after, only for the same issue to return next week.
+
+Measure upstream rule quality separately. For example:
+
+1. **Blocking effectiveness:** How well did the firewall stop context that should have been excluded?  
+2. **Routing accuracy:** What proportion of high-risk requests incorrectly entered low-risk paths?  
+3. **Policy conflict rate:** How often did different rules conflict on the same request?  
+4. **Reclassification frequency:** How many cases required a human to change the path afterward?
+
+Even a month of these measures reveals patterns: conflicts concentrated in a category, excessive expired data entering at certain times, or repeated misclassification caused by a tool-output format. Fixing rules based on these signals can greatly improve perceived quality without changing the model.
+
+One more point: stricter is not always better for firewalls and routing. Excessive strictness blocks necessary context and reduces creativity and productivity. The goal is **precise selection**, not maximum prohibition: pass important context quickly and block only unnecessary or dangerous material accurately. Teams that find this balance are strong over the long term.
+
+![Operations monitoring diagram 3](/blog/agentic_era_context_firewall_03.svg)
+
+Finally, context in an agent architecture is both fuel and an attack surface. Adding fuel indiscriminately may overheat an engine rather than improve it. Good systems build the gate first, then add fuel. Anyone can quickly learn to write a longer prompt, but designing the entry and exit of context requires accumulated operational skill.
+
+The difference ultimately lies here: not the team that adds more, but **the team that can decide what to leave out**. Competitive strength in the agent era shows first in input policies rather than model-selection tables.

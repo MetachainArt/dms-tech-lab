@@ -2,11 +2,12 @@
 
 interface AudioPlayerProps {
   src: string;
+  locale?: "ko" | "en";
   title?: string;
   description?: string;
 }
 
-export default function AudioPlayer({ src, title, description }: AudioPlayerProps) {
+export default function AudioPlayer({ src, title, description, locale = "ko" }: AudioPlayerProps) {
   return (
     <div className="my-8 rounded-[24px] border border-paperfolio-line bg-paperfolio-surface px-6 py-5">
       <div className="mb-3 flex items-center gap-3">
@@ -27,7 +28,7 @@ export default function AudioPlayer({ src, title, description }: AudioPlayerProp
       >
         <source src={src} type="audio/mpeg" />
         <source src={src} type="audio/wav" />
-        브라우저가 오디오를 지원하지 않습니다.
+        {locale === "en" ? "Your browser does not support audio playback." : "브라우저가 오디오를 지원하지 않습니다."}
       </audio>
     </div>
   );

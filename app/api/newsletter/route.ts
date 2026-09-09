@@ -19,56 +19,48 @@ export async function POST(request: NextRequest) {
     }
 
     const { email } = await request.json();
-    if (!email || !email.includes("@")) {
+    if (typeof email !== "string" || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json({ error: "유효한 이메일을 입력해주세요." }, { status: 400 });
     }
 
     if (!resend || !AUDIENCE_ID) {
-      console.log(`구독 시도 (API 키 미설정): email=${email}, resend=${!!resend}, AUDIENCE_ID=${AUDIENCE_ID}`);
-      return NextResponse.json({ success: true, message: "구독이 완료되었습니다." });
+      return NextResponse.json({ error: "현재 구독 서비스를 이용할 수 없습니다. 잠시 후 다시 시도해주세요." }, { status: 503 });
     }
 
     // Resend Audiences에 연락처 저장
     try {
-      await resend.contacts.create({
+      const contact = await resend.contacts.create({
         email,
         audienceId: AUDIENCE_ID,
         unsubscribed: false,
       });
-      console.log(`✅ Contact created: ${email}`);
-    } catch (contactError: unknown) {
-      const isAlreadyExists =
-        contactError &&
-        typeof contactError === "object" &&
-        ("statusCode" in contactError
-          ? (contactError as { statusCode: number }).statusCode === 422
-          : "status" in contactError
-            ? (contactError as { status: number }).status === 422
-            : false);
-      if (isAlreadyExists) {
-        console.log(`ℹ️ Already subscribed: ${email}`);
-        return NextResponse.json({ success: true, message: "이미 구독 중인 이메일입니다." });
+      if (contact.error || !contact.data?.id) {
+        return NextResponse.json({ error: "구독 처리 중 오류가 발생했습니다." }, { status: 502 });
       }
-      console.error("contacts.create error:", JSON.stringify(contactError));
+    } catch (contactError: unknown) {
+      void contactError;
+      console.error("Newsletter contact creation failed");
       return NextResponse.json({ error: "구독 처리 중 오류가 발생했습니다." }, { status: 500 });
     }
 
     // 환영 이메일 발송 (실패해도 구독은 성공 처리)
     try {
-      const sendResult = await resend.emails.send({
+      await resend.emails.send({
         from: FROM_EMAIL,
         to: [email],
         subject: "Reedo 뉴스레터 구독을 환영합니다 ✦",
         html: welcomeEmailHtml({ email, siteUrl: SITE_URL }),
       });
-      console.log(`✅ Welcome email sent to ${email}:`, JSON.stringify(sendResult));
+
     } catch (emailError: unknown) {
-      console.error(`❌ Welcome email failed for ${email}:`, JSON.stringify(emailError));
+      void emailError;
+      console.error("Newsletter welcome email failed");
     }
 
     return NextResponse.json({ success: true, message: "구독이 완료되었습니다." });
   } catch (error: unknown) {
-    console.error("Newsletter subscribe error:", error);
+    void error;
+    console.error("Newsletter subscription failed");
     return NextResponse.json({ error: "구독 처리 중 오류가 발생했습니다." }, { status: 500 });
   }
 }

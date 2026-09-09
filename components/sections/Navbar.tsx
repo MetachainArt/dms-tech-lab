@@ -8,6 +8,8 @@ import { usePathname } from "next/navigation";
 import { navLinks } from "@/constants/navigation";
 import homeStyles from "@/components/sections/home/Home.module.css";
 import { isFiberRoute } from "@/components/brand/fiber-routes";
+import LanguageSwitch from "@/components/ui/LanguageSwitch";
+import { getLocale, localizePath } from "@/lib/i18n";
 
 // 데스크탑: 핵심 3개만 (소개·하는일은 홈 앵커라 생략)
 const desktopLinks = [
@@ -22,6 +24,15 @@ export default function Navbar() {
   const pathname = usePathname();
   const reducedMotion = useReducedMotion();
   const fiberRoute = isFiberRoute(pathname);
+  const locale = getLocale(pathname);
+  const english = locale === "en";
+  const links = english ? [
+    { name: "About", href: "/en/about" },
+    { name: "Work", href: "/en/works" },
+    { name: "Writing", href: "/en/blog" },
+    { name: "Ideas (KO)", href: "/gallery" },
+  ] : desktopLinks;
+  const mobileLinks = english ? [...links, { name: "Contact", href: "/en/contact" }] : navLinks;
 
   const handleMenuOpen = useCallback(() => setIsMobileMenuOpen(true), []);
   const handleMenuClose = useCallback(() => setIsMobileMenuOpen(false), []);
@@ -39,7 +50,7 @@ export default function Navbar() {
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
               className="flex items-center gap-2 text-sm text-paperfolio-text-muted hover:text-paperfolio-text transition-colors"
-              aria-label="검색"
+              aria-label={english ? "Search" : "검색"}
             >
               <Search className="w-4 h-4" strokeWidth={1.5} />
               <span className="hidden sm:inline">Search</span>
@@ -47,17 +58,18 @@ export default function Navbar() {
 
             {/* Center: Brand — absolutely centered */}
             <Link
-              href="/"
+              href={localizePath("/", locale)}
+              data-site-brand
               className={`absolute ${fiberRoute ? "left-0" : "left-1/2 -translate-x-1/2"} font-playfair text-[1.5rem] leading-none text-paperfolio-text tracking-tight hover:opacity-70 transition-opacity`}
-              aria-label="DMS.Labs 홈"
+              aria-label={english ? "DMS.Labs home" : "DMS.Labs 홈"}
             >
               DMS.Labs
             </Link>
 
             {/* Right: Desktop nav links + CTA */}
-            <div className="flex items-center gap-2">
-              <nav className="hidden lg:flex items-center gap-8 mr-6" aria-label="주요 메뉴">
-                {desktopLinks.map((link) => (
+            <div className="flex items-center gap-1 sm:gap-2">
+              <nav className="hidden lg:flex items-center gap-5 mr-4" aria-label={english ? "Main navigation" : "주요 메뉴"}>
+                {links.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
@@ -75,18 +87,23 @@ export default function Navbar() {
 
               {/* 문의 CTA — 항상 표시 */}
               <Link
-                href="/#contact"
+                href={english ? "/en/contact" : "/#contact"}
+                data-contact-link
                 className="hidden sm:flex items-center gap-1 font-pixel text-[15px] text-paperfolio-text hover:text-paperfolio-accent-coral transition-colors"
               >
                 Contact
                 <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={1.5} />
               </Link>
 
+              <div className="ml-0 sm:ml-2"><LanguageSwitch /></div>
+
               {/* Mobile: hamburger */}
               <button
-                className="lg:hidden ml-3 p-1 text-paperfolio-text-muted hover:text-paperfolio-text transition-colors"
+                className="lg:hidden ml-1 sm:ml-3 p-1 text-paperfolio-text-muted hover:text-paperfolio-text transition-colors"
                 onClick={handleMenuOpen}
-                aria-label="메뉴 열기"
+                aria-label={english ? "Open menu" : "메뉴 열기"}
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-navigation"
               >
                 <Menu className="w-5 h-5" strokeWidth={1.5} />
               </button>
@@ -108,7 +125,8 @@ export default function Navbar() {
                 <input
                   autoFocus
                   type="search"
-                  placeholder="검색어를 입력하세요..."
+                  placeholder={english ? "Enter a search term..." : "검색어를 입력하세요..."}
+                  aria-label={english ? "Search term" : "검색어"}
                   className="w-full bg-transparent text-sm text-paperfolio-text placeholder:text-paperfolio-text-muted outline-none"
                   onKeyDown={(e) => e.key === "Escape" && setIsSearchOpen(false)}
                 />
@@ -129,16 +147,18 @@ export default function Navbar() {
             className={`fixed inset-0 z-[60] bg-paperfolio-surface flex flex-col px-8 py-6 lg:hidden ${fiberRoute ? homeStyles.fiberMenu : ""}`}
             role="dialog"
             aria-modal="true"
+            aria-label={english ? "Navigation menu" : "내비게이션 메뉴"}
+            id="mobile-navigation"
           >
             <div className="flex items-center justify-between mb-12">
               <span className="font-playfair text-2xl text-paperfolio-text">DMS.Labs</span>
-              <button onClick={handleMenuClose} aria-label="메뉴 닫기">
+              <button onClick={handleMenuClose} aria-label={english ? "Close menu" : "메뉴 닫기"}>
                 <X className="w-6 h-6 text-paperfolio-text-muted" strokeWidth={1.5} />
               </button>
             </div>
 
-            <nav className="flex flex-col gap-2" aria-label="모바일 메뉴">
-              {navLinks.map((link, i) => (
+            <nav className="flex flex-col gap-2" aria-label={english ? "Mobile navigation" : "모바일 메뉴"}>
+              {mobileLinks.map((link, i) => (
                 <motion.div
                   key={link.name}
                   initial={{ opacity: reducedMotion ? 1 : 0, x: reducedMotion ? 0 : -12 }}
@@ -156,8 +176,9 @@ export default function Navbar() {
               ))}
             </nav>
 
-            <div className="mt-auto pt-8 text-sm text-paperfolio-text-muted">
-              AI 자동화 · 3D 설계 · 실무형 교육
+            <div className="mt-auto pt-8 text-sm text-paperfolio-text-muted space-y-5">
+              <div className="flex"><LanguageSwitch onNavigate={handleMenuClose} /></div>
+              <p>{english ? "AI automation · 3D design · Hands-on education" : "AI 자동화 · 3D 설계 · 실무형 교육"}</p>
             </div>
           </motion.div>
         )}

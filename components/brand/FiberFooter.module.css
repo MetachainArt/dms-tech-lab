@@ -7,8 +7,8 @@
 .footer h2 { font-style: normal; font-size: 24px !important; line-height: 1.7 !important; }
 .footer a { transition: color 320ms cubic-bezier(.22,.61,.36,1), background-color 320ms cubic-bezier(.22,.61,.36,1); }
 .footer a:hover { color: #123ecb; }
-.footer a[href="/#contact"] { border-color: #a9b1c0; }
-.footer a[href="/#contact"]:hover { background: #123ecb; color: #fff; }
+.footer a[data-contact-link] { border-color: #a9b1c0; }
+.footer a[data-contact-link]:hover { background: #123ecb; color: #fff; }
 .footer :global([class*="rounded-"]) { border-radius: 0; }
 .footer :global([class*="shadow-"]) { box-shadow: none; }
 .footer :global([class*="rotate-"]) { rotate: 0deg; background: #e9ecef; border-color: #adb6c5; }

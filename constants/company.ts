@@ -35,7 +35,7 @@ export const COMPANY_INFO = {
 } as const;
 
 /** 푸터에 실제로 찍을 항목만 라벨과 함께 추려낸다. 값이 빈 항목은 제외. */
-export function getCompanyInfoRows(): { label: string; value: string }[] {
+export function getCompanyInfoRows(locale: "ko" | "en" = "ko"): { label: string; value: string }[] {
   const rows: { label: string; value: string }[] = [
     { label: "상호", value: COMPANY_INFO.name },
     { label: "대표", value: COMPANY_INFO.ceo },
@@ -47,5 +47,12 @@ export function getCompanyInfoRows(): { label: string; value: string }[] {
     { label: "개인정보보호책임자", value: COMPANY_INFO.privacyOfficer },
   ];
 
-  return rows.filter((row) => row.value.trim().length > 0);
+  const englishLabels: Record<string, string> = {
+    "상호": "Company", "대표": "Representative", "사업자등록번호": "Business registration",
+    "통신판매업신고": "Online sales registration", "주소": "Address", "이메일": "Email",
+    "전화": "Phone", "개인정보보호책임자": "Privacy officer",
+  };
+  return rows.filter((row) => row.value.trim().length > 0).map((row) => ({
+    ...row, label: locale === "en" ? englishLabels[row.label] || row.label : row.label,
+  }));
 }

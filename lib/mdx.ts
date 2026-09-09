@@ -1,5 +1,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
+import { createHash } from 'crypto';
+import type { Locale } from './i18n';
 import matter from 'gray-matter';
 import { editorialContent, editorialCover } from './editorial-art';
 
@@ -21,13 +23,18 @@ export interface MDXPost {
   content: string;
 }
 
-async function loadPostBySlug(slug: string): Promise<MDXPost | null> {
+async function loadPostBySlug(slug: string, locale: Locale = "ko"): Promise<MDXPost | null> {
   const realSlug = slug.replace(/\.mdx$/, '');
-  const fullPath = path.join(postsDirectory, `${realSlug}.mdx`);
+  if (!/^[a-zA-Z0-9_-]+$/.test(realSlug)) return null;
+  const fullPath = path.join(postsDirectory, locale === "en" ? "en" : "", `${realSlug}.mdx`);
 
   try {
     const fileContents = await fs.readFile(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
+    if (locale === "en") {
+      const source = (await fs.readFile(path.join(postsDirectory, `${realSlug}.mdx`), 'utf8')).replace(/\r\n/g, '\n');
+      if (data.translationSourceHash !== createHash("sha256").update(source).digest("hex")) return null;
+    }
 
     return {
       slug: realSlug,
@@ -48,14 +55,14 @@ function normalizeDateStr(dateStr: string): string {
   return dateStr.replace(/\D/g, '').slice(0, 8).padEnd(8, '0');
 }
 
-async function getAllPostsInternal(): Promise<MDXPost[]> {
+async function getAllPostsInternal(locale: Locale = "ko"): Promise<MDXPost[]> {
   try {
     const files = await fs.readdir(postsDirectory);
     const postSlugs = files
       .filter((fileName) => !fileName.startsWith('_') && fileName.endsWith('.mdx'))
       .map((fileName) => fileName.replace(/\.mdx$/, ''));
 
-    const loadedPosts = await Promise.all(postSlugs.map((slug) => loadPostBySlug(slug)));
+    const loadedPosts = await Promise.all(postSlugs.map((slug) => loadPostBySlug(slug, locale)));
 
     return loadedPosts
       .filter((post): post is MDXPost => post !== null)
@@ -73,16 +80,8 @@ async function getAllPostsInternal(): Promise<MDXPost[]> {
   }
 }
 
-async function getPostsBySlugIndex(): Promise<Record<string, MDXPost>> {
-  const posts = await getAllPostsInternal();
-  return posts.reduce<Record<string, MDXPost>>((acc, post) => {
-    acc[post.slug] = post;
-    return acc;
-  }, {});
-}
-
-async function getPostsBySeriesInternal(seriesId: string): Promise<MDXPost[]> {
-  const allPosts = await getAllPostsInternal();
+async function getPostsBySeriesInternal(seriesId: string, locale: Locale): Promise<MDXPost[]> {
+  const allPosts = await getAllPostsInternal(locale);
   return allPosts
     .filter((post) => post.frontMatter.series === seriesId)
     .sort((a, b) => {
@@ -93,14 +92,14 @@ async function getPostsBySeriesInternal(seriesId: string): Promise<MDXPost[]> {
     });
 }
 
-async function getRelatedPostsInternal(slug: string, maxCount: number): Promise<MDXPost[]> {
-  const postsBySlug = await getPostsBySlugIndex();
-  const currentPost = postsBySlug[slug];
+async function getRelatedPostsInternal(slug: string, maxCount: number, locale: Locale): Promise<MDXPost[]> {
+  const posts = await getAllPostsInternal(locale);
+  const currentPost = posts.find(post => post.slug === slug);
   if (!currentPost) {
     return [];
   }
 
-  const allPosts = (await getAllPostsInternal()).filter((post) => post.slug !== slug);
+  const allPosts = posts.filter((post) => post.slug !== slug);
   const related: MDXPost[] = [];
 
   if (currentPost.frontMatter.series) {
@@ -134,28 +133,22 @@ async function getRelatedPostsInternal(slug: string, maxCount: number): Promise<
   return related.slice(0, maxCount);
 }
 
-export async function getPostBySlug(slug: string): Promise<MDXPost | null> {
+export async function getPostBySlug(slug: string, locale: Locale = "ko"): Promise<MDXPost | null> {
   const realSlug = slug.replace(/\.mdx$/, '');
-  const postsBySlug = await getPostsBySlugIndex();
-  const post = postsBySlug[realSlug];
-
-  if (!post) {
-    return null;
-  }
-
-  return post;
+  if (realSlug.startsWith('_')) return null;
+  return loadPostBySlug(realSlug, locale);
 }
 
-export async function getAllPosts(): Promise<MDXPost[]> {
-  return getAllPostsInternal();
+export async function getAllPosts(locale: Locale = "ko"): Promise<MDXPost[]> {
+  return getAllPostsInternal(locale);
 }
 
-export async function getPostsBySeries(seriesId: string): Promise<MDXPost[]> {
-  return getPostsBySeriesInternal(seriesId);
+export async function getPostsBySeries(seriesId: string, locale: Locale = "ko"): Promise<MDXPost[]> {
+  return getPostsBySeriesInternal(seriesId, locale);
 }
 
-export async function getRelatedPosts(slug: string, maxCount: number = 3): Promise<MDXPost[]> {
+export async function getRelatedPosts(slug: string, maxCount: number = 3, locale: Locale = "ko"): Promise<MDXPost[]> {
   const realSlug = slug.replace(/\.mdx$/, '');
-  return getRelatedPostsInternal(realSlug, maxCount);
+  return getRelatedPostsInternal(realSlug, maxCount, locale);
 }
 

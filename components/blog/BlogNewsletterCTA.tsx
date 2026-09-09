@@ -3,7 +3,8 @@
 import { useRef, useState } from "react";
 import { ArrowRight, CheckCircle2, Mail } from "lucide-react";
 
-export default function BlogNewsletterCTA() {
+export default function BlogNewsletterCTA({ locale = "ko" }: { locale?: "ko" | "en" }) {
+  const english = locale === "en";
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -11,21 +12,21 @@ export default function BlogNewsletterCTA() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !email.includes("@")) return;
+    if (status === "loading" || !email || !email.includes("@")) return;
     setStatus("loading");
 
     try {
       const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, locale }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? "오류");
+      if (!res.ok || data.success !== true) throw new Error(english ? "Subscription could not be completed. Please try again later." : data.error ?? "구독 중 오류가 발생했습니다.");
       setStatus("success");
       setEmail("");
     } catch (err) {
-      setErrorMsg(err instanceof Error ? err.message : "구독 중 오류가 발생했습니다.");
+      setErrorMsg(english ? "Subscription could not be completed. Please try again later." : err instanceof Error ? err.message : "구독 중 오류가 발생했습니다.");
       setStatus("error");
       setTimeout(() => setStatus("idle"), 4000);
     }
@@ -40,10 +41,10 @@ export default function BlogNewsletterCTA() {
             Newsletter
           </p>
           <h2 className="font-playfair text-2xl leading-tight md:text-3xl">
-            새 글이 나오면<br />이메일로 받아보세요
+            {english ? <>New writing,<br />in your inbox.</> : <>새 글이 나오면<br />이메일로 받아보세요</>}
           </h2>
           <p className="text-sm leading-7 text-white/60">
-            AI, 자동화, 수익화에 대한 현장의 기록을 꾸준히 보내드립니다. 스팸 없이, 새 글이 발행될 때만 발송됩니다.
+            {english ? "Receive notes on AI, automation, and building income. The newsletter is currently sent in Korean; English articles are available here on the blog." : "AI, 자동화, 수익화에 대한 현장의 기록을 꾸준히 보내드립니다. 스팸 없이, 새 글이 발행될 때만 발송됩니다."}
           </p>
         </div>
 
@@ -53,7 +54,7 @@ export default function BlogNewsletterCTA() {
             <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
               <CheckCircle2 className="h-5 w-5 shrink-0 text-green-400" />
               <p className="text-sm font-medium text-white">
-                구독 완료! 환영 이메일을 확인해 주세요 🎉
+                {english ? "You are subscribed. Thank you for reading." : "구독이 완료되었습니다. 감사합니다."}
               </p>
             </div>
           ) : (
@@ -69,7 +70,8 @@ export default function BlogNewsletterCTA() {
                       hasStarted.current = true;
                     }
                   }}
-                  placeholder="이메일 주소를 입력하세요"
+                  aria-label={english ? "Email address" : "이메일 주소"}
+                  placeholder={english ? "Enter your email address" : "이메일 주소를 입력하세요"}
                   required
                   className="w-full rounded-xl border border-white/10 bg-white/5 py-3.5 pl-11 pr-4 text-sm text-white placeholder:text-white/30 focus:border-paperfolio-accent-yellow/60 focus:outline-none focus:ring-1 focus:ring-paperfolio-accent-yellow/30"
                   suppressHydrationWarning
@@ -82,19 +84,19 @@ export default function BlogNewsletterCTA() {
                 suppressHydrationWarning
               >
                 {status === "loading" ? (
-                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-paperfolio-text/20 border-t-paperfolio-text" />
+                  <span role="status" aria-label={english ? "Subscribing" : "구독 처리 중"} className="h-4 w-4 animate-spin rounded-full border-2 border-paperfolio-text/20 border-t-paperfolio-text" />
                 ) : (
                   <>
-                    구독하기
+                    {english ? "Subscribe" : "구독하기"}
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                   </>
                 )}
               </button>
               {status === "error" && (
-                <p className="text-center text-xs text-red-400">{errorMsg}</p>
+                <p role="alert" className="text-center text-xs text-red-400">{errorMsg}</p>
               )}
               <p className="text-center text-xs text-white/30">
-                새 글 발행 시에만 발송됩니다 · 언제든 구독 해지 가능
+                {english ? "New articles only · Unsubscribe anytime" : "새 글 발행 시에만 발송됩니다 · 언제든 구독 해지 가능"}
               </p>
             </form>
           )}

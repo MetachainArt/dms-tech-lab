@@ -1,0 +1,95 @@
+---
+title: "The Real Standard for Multi-Agent Operations: Failure Budgets and Approval Gates"
+excerpt: "Agent-team performance is determined more by operating rules than model performance. The key is allowing failures while controlling losses."
+date: "2026. 03. 05"
+readTime: "15 min"
+coverImage: "/blog/agentic_era_ch5_01.jpg"
+series: "agentic-era"
+chapter: "05"
+tags: ["Agents", "AI Ops", "Governance", "Reliability"]
+subtitle: "Running automated teams measured by resilience rather than success rate"
+translationSourceHash: "7305038ffecfa0e050d92ca2c64a6dc4e5fc1e8e3fb238056a27bc8c6891084c"
+---
+
+<div className="lead text-2xl text-white font-sans font-medium mb-12 leading-relaxed">
+Introducing a multi-agent team immediately improves productivity, but without control rules, risk grows too. Operational success depends on designing for failure rather than a smarter model.
+</div>
+
+Teams moving from one agent to many first encounter this illusion: dividing roles will automatically improve stability. In practice, the opposite happens. More roles mean more dependencies, and a small error in one stage grows at the next. A Worker rapidly executes a task the Planner divided incorrectly; if the Reviewer detects it late, deployment has already happened. The issue is where the work should have stopped more than who was wrong.
+
+The core KPI for multi-agent operations is therefore not simple success rate.
+- How quickly are incidents detected?
+- How much is loss limited after detection?
+- How much is the same failure reduced after recovery?
+
+In other words, teams must manage **resilience** rather than accuracy alone.
+
+![Agentic era chapter 5 visual 1](/blog/agentic_era_ch5_01.jpg)
+
+## <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">1. Define a Failure Budget Before Automation Can Run</span>
+
+Just as SRE uses error budgets to manage reliability, agent teams must specify failure budgets. Zero failure is unrealistic and aiming for it stifles experimentation. Instead, agree numerically on what is allowed and where stopping is mandatory.
+
+For example, with 40 automated tasks a day, budgets could be:
+- Minor failures (recovered by automatic retry): within 8%
+- Moderate failures (human approval required): within 2%
+- Critical failures (external transmission/deployment rollback): within 0.3%
+
+Separate budgets speed operational decisions. When failure occurs, examine which category exceeded its budget instead of asking emotionally, “Why did it break again?” Strengthen rules only in that category to reduce risk while maintaining overall productivity. Multi-agent control requires **different control intensity for different segments**, not locking everything down.
+
+## <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">2. Set Approval Gates by Context, Not Just Permission</span>
+
+Many teams use a single gate rule such as “deployment always needs approval.” This looks safe initially but soon becomes a bottleneck. Risk-context gating is a better approach.
+
+Four criteria generally work in practice.
+- Change scope: File count, directory sensitivity and whether production paths are included
+- External impact: User visibility and involvement of payments, personal information or external channels
+- Uncertainty: Model consistency, parser reliability and selector stability
+- Accumulated history: Recent failures for the same task and rollback frequency
+
+Use these four values to create a risk score and branch the processing path.
+- Low risk: Automatic execution + later log review
+- Medium risk: Dual Reviewer checks
+- High risk: Human approval + execution after passing a checklist
+
+Approval requests must result from a score rather than human instinct. This keeps criteria stable as the team grows.
+
+![Agentic era chapter 5 visual 2](/blog/agentic_era_ch5_02.jpg)
+
+## <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500">3. Automation Without Postmortems Repeats the Same Incidents</span>
+
+An automation organization’s true skill appears after an incident rather than when nothing goes wrong. Saving logs and stopping there almost guarantees a similar problem next week. A postmortem must design prevention rather than assign blame.
+
+An efficient postmortem template should be short and strong.
+1) Incident summary: When, what and where did things go wrong?
+2) Impact scope: How far did effects on users, data and deployment extend?
+3) Primary cause: Where did the first signal appear among Planner/Worker/Reviewer?
+4) Secondary cause: Why was that signal not blocked?
+5) Prevention: Rule changes, added tests and gate adjustments
+
+The important output is **working corrections**, not “lessons.” “Strengthen review” means nothing. Leave executable system changes instead: “add a pre-deployment frontmatter schema check hook,” “add +1 to high-risk scores for external-send tasks,” or “force handoff after 2 identical errors.”
+
+With this habit, failures turn from costs into assets. Each incident strengthens the next automation.
+
+## <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-fuchsia-500">4. Minimum Operating Rules for Multi-Agent Teams: Ready to Apply</span>
+
+Before a complex architecture, fix these 6 items for practical use.
+
+- **Fixed paths:** Specify the absolute production repository path; prohibit misspelled or substitute paths
+- **Input/output contracts:** Fix Planner/Worker/Reviewer result formats, including required JSON fields
+- **Preflight hooks:** Automate checks for file existence, schema, length, image references and links
+- **Approval policy:** Document risk-score branching rules
+- **Execution evidence:** Report commit hash, remote state and deployment-URL verification
+- **Post-incident review:** Write a postmortem within 24 hours of failure
+
+These six alone noticeably improve operations. A rule that verifies “committed” separately from “actually visible” is especially essential. The most expensive automation mistake is **failure falsely reported as success**, not execution failure itself.
+
+![Agentic era chapter 5 visual 3](/blog/agentic_era_ch5_03.jpg)
+
+Multi-agent competitiveness ultimately lies in an operational attitude: permit failure while limiting loss, then strengthen the system afterward. Teams running automation for the long term design what happens when it breaks better than what happens when it works.
+
+The question is simple.
+Does your agent team work quickly?
+Or does it recover when it breaks?
+
+In the long run, the second always survives.

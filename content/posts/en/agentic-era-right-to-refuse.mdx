@@ -1,0 +1,81 @@
+---
+title: "Should an Agent Have the Authority to Refuse?"
+excerpt: "An agent that does as it is told is easy to manage. But it also faithfully executes flawed instructions. The real boundary of autonomy lies in what it can choose not to do, rather than only what it can do."
+date: "2026-09-01"
+readTime: "10 min"
+coverImage: "/images/a12.webp"
+series: "agentic-era"
+chapter: "12"
+tags: ["Agents", "Autonomy", "Refusal", "Safeguards", "Delegation"]
+translationSourceHash: "349a0ee7ee7b9d1f3e7c898e196cdcbe2eb4164b78604298700c3b3709b00d06"
+---
+
+When building agents, we usually focus on expanding **what they can do**. We connect tools, grant permissions, and widen their access.
+
+But in actual operation, incidents come from the opposite side: **dutifully completing something that should never have been done**.
+
+## When Diligence Becomes a Risk
+
+Suppose you tell a human assistant, ‘Send an informational email to the customers on this list.’ If the list includes customers who have already canceled, the assistant usually pauses and asks, ‘These people canceled last year—is this right?’
+
+That question is **value**. It is judgment that fills a gap in the instruction.
+
+Agents generally do not ask. They received a list, so they send. Three hundred emails go out, 40 of them to customers who have already left. The instruction was executed precisely.
+
+The problem is not capability, but **the absence of a designed basis for refusal**.
+
+## Refusal Takes Three Forms
+
+There are different levels at which an agent can say ‘I won’t.’
+
+**Stop.** When conditions fall outside the expected range, do not execute; hand the situation to a person. This is the most basic and safest form.
+
+**Ask again.** If the instruction is ambiguous, confirm before executing. This greatly reduces incidents, but if the agent asks too often, no one will use it. **Managing frequency is the core design problem.**
+
+**Complete partially.** Do what can be done and report the rest. ‘Sent 260 of 300 messages; held 40 because their status did not match.’ This is the most useful form in practice.
+
+The third is especially important. The binary choice between doing everything and stopping everything does not fit real work.
+
+## What Should an Agent Refuse?
+
+‘Stop if something seems strange’ is not an actionable instruction. Conditions must be assessable. These are types that work well in practice.
+
+**Scale deviation.** If the usual volume is 30 but the request contains 3,000, stop. Most large-scale incidents can be caught here.
+
+**Target mismatch.** When the actual data does not match the instructed conditions. The canceled customers in the example above fall into this category.
+
+**Irreversible actions.** Sending, payment, deletion, publishing. All go through human approval, without exception.
+
+**First encounters.** An unfamiliar task type, a system accessed for the first time, an error never encountered before. Proceeding confidently in an unfamiliar situation is most dangerous.
+
+**Contradictions.** When instructions conflict. If ‘quickly’ arrives alongside ‘check everything,’ the agent must not be left to decide on its own which to discard.
+
+## The Quality of Refusal Matters More
+
+Merely stopping is half the job. **How it stops** determines its actual usefulness.
+
+Poor refusal: ‘Unable to execute.’
+
+Good refusal: ‘Of the 300 entries, 40 have canceled status. Should I send only to the 260, or would you like to review the list again? Here is the list of those 40 canceled entries.’
+
+The difference is **whether the next action is clear**. A refusal that forces the person to investigate again creates work. One that leaves only a judgment to make reduces work.
+
+## The Order for Expanding Autonomy
+
+Once the authority to refuse is in place, you can actually grant more autonomy. The sequence runs the other way around.
+
+1. **Define refusal conditions first.** What should make it stop?
+2. **Define what it should report alongside a refusal.**
+3. **Then expand permissions.**
+
+With this sequence, risk does not rise in proportion to permissions. Reverse it, and permissions expand while safeguards are added only after an incident.
+
+## The Remaining Problem
+
+Giving refusal authority raises a new question: **what happens when the agent refuses incorrectly?**
+
+An agent that stops too often goes unused, and an unused agent might as well not exist. So refusal records need as much attention as success records. **If refusals never decrease, the conditions are excessive; if there are no refusals at all, the conditions are not working.**
+
+Ultimately, this is the same issue as delegating work to a person. Who would you rather work with over the long term: someone who does anything they are told, or someone who asks, when necessary, ‘Have you checked this?’
+
+**The extent of autonomy reveals itself in the list of things an agent has chosen not to do, rather than the list of things it can do.**

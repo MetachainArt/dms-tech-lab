@@ -1,4 +1,5 @@
 import { SITE_CONFIG } from "@/lib/seo";
+import { getLocale, languageAlternates, type Locale } from "@/lib/i18n";
 
 interface PageMetadata {
   title: string;
@@ -25,6 +26,7 @@ export function generateMetadata({
 
   const url = `${SITE_CONFIG.url}${path}`;
   const ogImage = image || SITE_CONFIG.og.image;
+  const english = getLocale(path) === "en";
 
   return {
     metadataBase: new URL(SITE_CONFIG.url),
@@ -35,7 +37,8 @@ export function generateMetadata({
     creator: SITE_CONFIG.author.name,
     openGraph: {
       type: "website",
-      locale: locale ?? SITE_CONFIG.locale,
+      locale: locale ?? (english ? "en_US" : SITE_CONFIG.locale),
+      ...(languageAlternates(path, SITE_CONFIG.url) ? { alternateLocale: [english ? "ko_KR" : "en_US"] } : {}),
       url,
       title: fullTitle,
       description,
@@ -45,7 +48,7 @@ export function generateMetadata({
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: SITE_CONFIG.og.alt,
+          alt: english ? "DMS.Labs — Automation, design and education" : SITE_CONFIG.og.alt,
         },
       ],
     },
@@ -73,6 +76,7 @@ export function generateMetadata({
       : {}),
     alternates: {
       canonical: url,
+      languages: languageAlternates(path, SITE_CONFIG.url),
     },
   };
 }
@@ -80,7 +84,10 @@ export function generateMetadata({
 /**
  * JSON-LD 구조화된 데이터 생성
  */
-export function generateStructuredData(type: "Organization" | "Person" | "WebSite") {
+export function generateStructuredData(type: "Organization" | "Person" | "WebSite", locale: Locale = "ko") {
+  const description = locale === "en"
+    ? "Reedo connects optical network expertise, AI automation, 3D design and hands-on education to make complex work simpler."
+    : SITE_CONFIG.description;
   const base = {
     "@context": "https://schema.org",
   };
@@ -92,7 +99,7 @@ export function generateStructuredData(type: "Organization" | "Person" | "WebSit
       name: SITE_CONFIG.name,
       url: SITE_CONFIG.url,
       logo: `${SITE_CONFIG.url}/logo.png`,
-      description: SITE_CONFIG.description,
+      description,
       contactPoint: {
         "@type": "ContactPoint",
         email: "dms@dmssolution.co.kr",
@@ -108,9 +115,9 @@ export function generateStructuredData(type: "Organization" | "Person" | "WebSit
       "@type": "Person",
       name: SITE_CONFIG.author.name,
       url: SITE_CONFIG.author.url,
-      description: SITE_CONFIG.description,
-      jobTitle: "광통신 하드웨어 · AI 자동화 · 실무형 교육 파트너",
-      image: `${SITE_CONFIG.url}/og-default.png`,
+      description,
+      jobTitle: locale === "en" ? "Optical network, AI automation and hands-on education partner" : "광통신 하드웨어 · AI 자동화 · 실무형 교육 파트너",
+      image: SITE_CONFIG.og.image,
       email: "dms@dmssolution.co.kr",
       sameAs: [SITE_CONFIG.social.kakao],
     };
@@ -121,8 +128,9 @@ export function generateStructuredData(type: "Organization" | "Person" | "WebSit
       ...base,
       "@type": "WebSite",
       name: SITE_CONFIG.name,
-      url: SITE_CONFIG.url,
-      description: SITE_CONFIG.description,
+      url: `${SITE_CONFIG.url}${locale === "en" ? "/en" : ""}`,
+      description,
+      inLanguage: locale,
       potentialAction: {
         "@type": "SearchAction",
         target: `${SITE_CONFIG.url}/search?q={search_term_string}`,

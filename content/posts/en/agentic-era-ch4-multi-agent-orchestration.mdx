@@ -1,0 +1,54 @@
+---
+translationSourceHash: "67d5d1f8fa585f52bedb1abfc9fe8e287e20e14d84d3a8825835f8ba5f7b5e84"
+title: "Operating an Agent Team: From One Agent to Multi-Agent Orchestration"
+excerpt: "A team with separated roles delivers results more reliably than a capable agent working alone."
+date: "2026. 03. 02"
+readTime: "14 min"
+coverImage: "/blog/agentic_era_ch4_01.jpg"
+series: "agentic-era"
+chapter: "04"
+tags: ["Agents", "Automation", "Orchestration", "AI Ops"]
+subtitle: "The Planner-Worker-Reviewer Structure in Practice"
+---
+
+<div className="lead text-2xl text-white font-sans font-medium mb-12 leading-relaxed">
+A single agent is fast. Operations, however, need stability more than speed. Real results come from a team with separated roles, rather than one highly capable individual.
+</div>
+
+## <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">1. Why a Single Agent Quickly Reaches Its Limits</span>
+
+Most early automation begins with one smart agent that understands a request, gathers material, executes and reviews everything together. At the demo stage, this approach is the most impressive. Problems begin as the workload grows. When the same agent plans, executes and verifies, contexts mix, priorities waver and tracing failures becomes difficult.
+
+Especially damaging in repeated operation is that failures take different forms every time: a missing API key today, a changed selector tomorrow, a changed model response format the day after. In a single-agent structure, these failures look like one black box. Fixes take time and recurrence is hard to prevent. The intended time savings of automation are offset by incident-response work.
+
+![Multi-agent orchestration 1](/blog/agentic_era_ch4_01.jpg)
+
+## <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">2. Planner-Worker-Reviewer: Role Separation Creates Performance</span>
+
+The core of multi-agent operations is clear separation of roles, rather than complicated technology.
+
+- **Planner**: breaks the request into work units and sets priorities.
+- **Worker**: executes the work, including file changes, API calls and data transformations.
+- **Reviewer**: checks results against format, policy, quality criteria and failure patterns.
+
+The advantage is straightforward: the location of a problem becomes visible quickly. You can check stage by stage whether the plan was wrong, execution was incomplete or review was weak. A failed stage can be retried alone instead of rerunning everything, reducing operating costs.
+
+The important step is fixing each role’s **input/output contract**. The Planner might always produce a JSON checklist; the Worker might leave stage logs and artifact paths; the Reviewer might return pass/fail and required corrections. Fixed contracts keep the pipeline intact even when the model changes.
+
+![Multi-agent orchestration 2](/blog/agentic_era_ch4_02.jpg)
+
+## <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500">3. Practical Operations Depend on Recovery Loops and Approval Gates</span>
+
+Multi-agent success depends on how abnormal flows are handled, rather than normal flows. Failures inevitably happen in practice. Automation therefore needs a recovery loop designed around that assumption.
+
+The recommended loop is this: when the Reviewer returns fail, the Worker retries. If the same error repeats 2 times, it escalates to the Planner. The Planner splits the work into smaller units, replans, and sends high-risk tasks—deployment, deletion or external transmission—to an approval gate. Human approval or correction then sends the work back to the Worker.
+
+Adding two operating principles greatly improves stability.
+
+First, **least privilege**: let Workers access only necessary tools and block dangerous commands by default. Second, **observability**: log every stage and tag failure types to reveal recurrence patterns. Recovering quickly after a failure matters much more in automation than working well once.
+
+![Multi-agent orchestration 3](/blog/agentic_era_ch4_03.jpg)
+
+Multi-agent orchestration is ultimately an operable system design, not a flashy technology show. A single agent excels at fast prototypes; a team with separated roles excels at long-term operation. If today’s goal is daily, repeated results rather than a demo, the question becomes clear: not “Which model should I use?” but “What role structure should manage failure?”
+
+Automation’s next stage is not one smarter agent. It is a team of agents with different responsibilities collaborating toward the same goal. The moment we design that team, we become system operators rather than merely tool users.

@@ -1,0 +1,87 @@
+---
+title: "Where Small Models Beat Large Models"
+excerpt: "Large models always win on performance charts. Yet more teams choose small models for real work. Here is where the crossover happens and how to judge it."
+date: "2026-09-01"
+readTime: "9 min"
+coverImage: "/images/a6.webp"
+series: "ai-tech-trends"
+chapter: "25"
+tags: ["Model selection", "Inference cost", "Latency", "Routing", "sLM"]
+translationSourceHash: "6c72ce03923cd31a06a2fdc0fe0796baba56b1e41408856d4f5071ad9b419ea2"
+---
+
+Looking only at benchmark scores, the conclusion is simple. Large models win.
+
+Yet teams running real services are increasingly choosing differently. They choose **the best fit rather than the best model**, and increasingly that means a small model.
+
+Benchmarks do not show why.
+
+## Three things benchmarks do not measure
+
+**First, response time.** Users leave if a response arrives four seconds later, even when accuracy is 3% higher. In conversational interfaces, perceived quality is more sensitive to delay than to accuracy.
+
+**Second, unit cost × call volume.** The price difference for one call looks small. At 50,000 calls a day, the situation changes. This helps explain why several earlier surveys found production costs reaching 3–5 times initial estimates.
+
+**Third, stability.** Large models are more creative, which means **their answers vary more.** For classification or extraction, where the same input should produce the same output, this is a disadvantage.
+
+The third point is particularly underestimated in practice.
+
+## Tasks where a small model is enough
+
+The boundary generally looks like this.
+
+**Where a small model is enough**
+- Classification — inquiry type, sentiment, priority
+- Extraction — dates, amounts, and names from documents
+- Format conversion — free text into structured data
+- Short summaries — meeting notes and logs
+- Routing decisions — where to send a request
+
+**Where a large model is needed**
+- Problems requiring several steps of reasoning
+- Tasks synthesizing an entire long document
+- Code design and refactoring
+- Judgment in ambiguous situations
+- Creative work
+
+**The common question is whether the space of correct answers is narrowly defined.** If it is narrow, a small model is enough; if it is broad, a large model is needed.
+
+## Routing is the practical answer
+
+There is no need to frame this as choosing just one model. The approach taking hold in practice is **splitting work by task**.
+
+A small model first classifies incoming requests, handles simple ones itself, and passes only complex ones to a large model. The separation between the outer workflow and inner judgment discussed earlier in the tool stack applies here too.
+
+The effect is substantial. If a large share of requests in a service involve simple classification or retrieval, **the calls that accounted for most of the cost move down to a small model.**
+
+Watch out for **the cost and failures of routing itself**. If a wrong decision sends a difficult request to a small model, quality falls. It is safer to set conservative routing criteria and **send ambiguous cases to the larger model**.
+
+## Decision criteria
+
+Here are five questions to ask when choosing a model.
+
+1. **Is the range of correct answers narrow?** — If so, use a small model.
+2. **Must the same input produce the same output?** — If so, use a small model with a low temperature.
+3. **Does response time directly affect the user experience?** — If so, use a small model.
+4. **How many calls are made each day?** — Higher volume increases the advantage of a small model.
+5. **Is an incorrect answer costly?** — If so, use a large model or human review.
+
+Question 5 can override the others. For tasks such as contract review, where one error is expensive, use a large model even at high call volumes.
+
+## You cannot choose without measuring
+
+This is the most important point: **you cannot decide without comparing models on your own data.**
+
+Benchmarks measure performance on general tasks. Your work documents, your customers’ questions, and your organization’s terminology are different.
+
+The method is simple. Select 30–50 inputs from real work to create an evaluation set, feed the same inputs to candidate models, and have a person score the results. Half a day is enough.
+
+Once you create that set, you can assess each new model in 30 minutes. **Model replacement becomes a data-driven decision rather than a hunch.**
+
+## Recap
+
+- Benchmarks do not measure response time, unit cost × call volume, or output stability.
+- Small models are sufficient for tasks with a narrow answer space: classification, extraction, conversion, and short summaries.
+- Route instead of choosing only one model. A conservative rule that sends ambiguous cases to the larger model is safer.
+- When errors are expensive, let that override other conditions and use a large model.
+- Build an evaluation set from 30–50 inputs from your own work. Every subsequent model decision becomes faster.

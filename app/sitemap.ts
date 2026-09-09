@@ -6,6 +6,7 @@ import { WORKS_DATA } from '@/lib/works-projects-data';
 import { EDUCATION_TRACKS } from '@/lib/education-data';
 import { BLOG_SERIES } from '@/lib/blog-data';
 import { getCourseStructure } from '@/lib/education-fs';
+import { languageAlternates, localizePath, TRANSLATED_PATHS } from '@/lib/i18n';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://dmssolution.co.kr';
@@ -97,6 +98,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
+  const englishPosts = await getAllPosts("en");
+  const englishSeries = [...new Set(englishPosts.map(post => post.frontMatter.series).filter((id): id is string => Boolean(id)))].filter(id => !hiddenSeriesIds.has(id));
   const sitemap: MetadataRoute.Sitemap = [
     // 메인 페이지
     ...mainRoutes.map((route) => ({
@@ -104,7 +107,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: route.changeFrequency,
       priority: route.priority,
+      ...(languageAlternates(route.path || '/', baseUrl) ? { alternates: { languages: languageAlternates(route.path || '/', baseUrl) } } : {}),
     })),
+    ...TRANSLATED_PATHS.map((path) => ({
+      url: `${baseUrl}${localizePath(path, 'en')}`,
+      changeFrequency: 'monthly' as const,
+      priority: path === '/' ? 0.9 : 0.8,
+      alternates: { languages: languageAlternates(path, baseUrl) },
+    })),
+    ...englishPosts.map(post => ({ url: `${baseUrl}/en/blog/${post.slug}`, changeFrequency: "monthly" as const, priority: 0.6, alternates: { languages: languageAlternates(`/blog/${post.slug}`, baseUrl) } })),
+    ...englishSeries.map(id => ({ url: `${baseUrl}/en/blog/series/${id}`, changeFrequency: "weekly" as const, priority: 0.7, alternates: { languages: languageAlternates(`/blog/series/${id}`, baseUrl) } })),
     // 교육 트랙 (자동)
     ...educationRoutes,
     // 프로젝트 시리즈 (자동)
@@ -112,6 +124,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // 블로그 포스트 (자동)
     ...blogPosts.map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,
+      alternates: { languages: languageAlternates(`/blog/${post.slug}`, baseUrl) },
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.6,
@@ -128,6 +141,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .filter((slug) => !hiddenSeriesIds.has(slug))
       .map((slug) => ({
         url: `${baseUrl}/blog/series/${slug}`,
+        alternates: { languages: languageAlternates(`/blog/series/${slug}`, baseUrl) },
         lastModified: new Date(),
         changeFrequency: 'weekly' as const,
         priority: 0.7,

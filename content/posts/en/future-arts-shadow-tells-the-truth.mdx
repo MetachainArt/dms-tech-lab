@@ -1,0 +1,107 @@
+---
+title: "Shadows Give It Away First: Reading Light in AI Images"
+excerpt: "When an AI image feels wrong, the first giveaway is often neither the face nor the hands. It is the shadow. Trace where the light comes from and you can see what the image has failed to understand."
+date: "2026-09-01"
+readTime: "10 min"
+subtitle: "Light is physics, so it will eventually be learned. Why someone stood there is not physics."
+coverImage: "/images/a13.webp"
+series: "future-arts"
+chapter: "17"
+tags: ["AI images", "Light and shadow", "Aesthetics", "Image generation", "Visual grammar"]
+translationSourceHash: "6df961f36ac788bfe434a3770041ad3d92b936b46931398b9d1b4a94f4e8ff1e"
+---
+
+People count fingers when trying to identify an AI image.
+
+That method no longer works very well. Hands have improved. Even the fingernails look convincing.
+
+Yet some images still feel manufactured at first glance. It may take a while to pinpoint what is wrong, but the sense that something is wrong arrives immediately.
+
+Follow that feeling and it usually converges on one place. **The shadows.**
+
+## Light is a single sentence
+
+The light in a photograph may appear to come in many forms, but ultimately it tells one story.
+
+If a window is on the left, the left side of the face is bright. The nose casts its shadow to the right. Shade forms under the chin. The shadow of a cup on the desk runs in the same direction, as does the small patch of shade cast by its handle.
+
+They are all parts of the same sentence.
+
+This is **physics**, not aesthetics. People therefore understand it without being taught. When it goes wrong, they feel the discomfort accurately even if they cannot explain it.
+
+This is where AI images become awkward. Each element is drawn plausibly. What is missing is **an agreement that they share the same light**.
+
+The person is lit from the left, the plant behind them from the right, and there is no shadow on the floor at all.
+
+As a sentence, it has all the right words but mixes its tenses.
+
+## Check just three things
+
+Check these in order when looking at an image. With practice, it takes only a few seconds.
+
+**First, do all the shadows point in the same direction?**
+
+Every object in the frame should cast its shadow toward the same side. In an interior with multiple light sources, shadows may overlap in layers, but **even that overlap must be consistent**. If one object has two layers, another should too.
+
+**Second, does the softness of the shadow match the light source?**
+
+Direct sunshine on a clear day makes shadows with knife-sharp edges. An overcast day or a broad window makes shadows with blurred boundaries.
+
+If there are strong highlights but soft shadow edges, the image is claiming two kinds of weather at once.
+
+**Third, are there contact shadows?**
+
+There must be a narrow, dark patch of shade where an object touches the ground. It is a gap the light cannot reach.
+
+Without it, the object appears to float slightly. **This is usually what lies behind the impression that something looks suspended.**
+
+## Why are shadows particularly difficult?
+
+Image generation models learn the statistics of pixels.
+
+They learn that images like this usually have patterns of light and shade like that; they do not position a light source in three-dimensional space and calculate its shadows.
+
+That is why **they handle familiar combinations well**. A person sitting by a window. A street at sunset. Scenes that appeared often enough in the training data.
+
+Conversely, **they break down on unusual combinations**.
+
+Light coming from below. A stage with several colored light sources. Metal and glass with complex reflections.
+
+In these scenes, shadows become a matter of calculation rather than statistics. That is where things go wrong.
+
+## What image makers can do
+
+Addressing the problem as a creator, rather than a detector, also begins with shadows.
+
+**Specify the light first.**
+
+Before describing the subject, put the light source’s position, strength, and character into the sentence.
+
+```text
+Soft afternoon light entering through a large window at the upper left
+Long shadows on the floor, deep shade beneath the chin
+```
+
+This narrows the range of scenes the model can draw on, making the result more consistent.
+
+**Start with one light source.** Complex lighting creates more opportunities for inconsistency. A safer sequence is to obtain a stable result with a single light source, then add fill light.
+
+**Ask for shadows explicitly.** Treating shadows as **something to request**, rather than simply an outcome, changes the result.
+
+## The question that remains
+
+Technically, it is a matter of time. Once models acquire three-dimensional understanding, the shadow problem will disappear. Probably sooner than we expect.
+
+What comes afterward is more interesting.
+
+**How will we distinguish images once their shadows are perfect?**
+
+We will probably start looking elsewhere again.
+
+A photograph retains the position of the person who took it. Why stand precisely there, and why press the shutter at that particular moment? Moving just a little to the side would have made a different photograph; why did they not move? Traces of that choice remain inside the frame.
+
+**Light is physics, so it will eventually be learned. Why someone stood there is not physics.**
+
+That may be the difference that remains until the end.
+
+For now, start with the shadows. They are the most honest giveaway.

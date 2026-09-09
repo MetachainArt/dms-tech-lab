@@ -7,6 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 import { getCompanyInfoRows } from "@/constants/company";
 import styles from "@/components/brand/FiberFooter.module.css";
 import { isFiberRoute } from "@/components/brand/fiber-routes";
+import { getLocale } from "@/lib/i18n";
 
 const WavyLine = () => (
   <svg width="80" height="12" viewBox="0 0 80 12" fill="none" aria-hidden="true">
@@ -17,7 +18,9 @@ const WavyLine = () => (
 
 export default function Footer() {
   const pathname = usePathname();
-  const companyRows = getCompanyInfoRows();
+  const locale = getLocale(pathname);
+  const english = locale === "en";
+  const companyRows = getCompanyInfoRows(locale);
   const fiberRoute = isFiberRoute(pathname);
 
   if (pathname?.startsWith("/admin")) return null;
@@ -43,10 +46,10 @@ export default function Footer() {
                 <div>
                   <p className="text-sm font-medium text-paperfolio-text leading-snug"
                     style={{fontFamily: "var(--font-korean), serif"}}>
-                    AI 자동화 & 실무 설계
+                    {english ? "AI automation & practical design" : "AI 자동화 & 실무 설계"}
                   </p>
                   <p className="text-xs text-paperfolio-text-muted mt-0.5">
-                    DMS · 꿈꾸는카메라 · 교육
+                    {english ? "DMS · Dreaming Camera · Education" : "DMS · 꿈꾸는카메라 · 교육"}
                   </p>
                 </div>
               </div>
@@ -72,16 +75,17 @@ export default function Footer() {
               </p>
               <h2 className="font-playfair italic text-paperfolio-text"
                 style={{fontSize: "clamp(1.6rem, 3vw, 2.25rem)", lineHeight: 1.2, letterSpacing: "-0.01em"}}>
-                방문해주셔서<br />감사합니다.
+                {english ? <>Good things start<br />with a conversation.</> : <>방문해주셔서<br />감사합니다.</>}
               </h2>
             </div>
 
             <Link
-              href="/#contact"
+              href={english ? "/en/contact" : "/#contact"}
+              data-contact-link
               className="inline-flex items-center gap-2 border border-paperfolio-text/30 px-7 py-2.5 text-sm text-paperfolio-text hover:bg-paperfolio-text hover:text-white transition-all duration-200"
               style={{fontFamily: "var(--font-korean), serif"}}
             >
-              함께 일해요
+              {english ? "Let’s work together" : "함께 일해요"}
               <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={1.5} />
             </Link>
           </div>
@@ -101,7 +105,7 @@ export default function Footer() {
             <div className="text-right space-y-1.5">
               <a href="https://open.kakao.com/o/sSPHn33g" target="_blank" rel="noopener noreferrer"
                 className="block text-xs text-paperfolio-text-muted hover:text-paperfolio-text transition-colors">
-                KakaoTalk 문의
+                {english ? "Contact via KakaoTalk" : "KakaoTalk 문의"}
               </a>
               <a href="https://www.youtube.com/@Reedodev" target="_blank" rel="noopener noreferrer"
                 className="block text-xs text-paperfolio-text-muted hover:text-paperfolio-text transition-colors">
@@ -137,16 +141,17 @@ export default function Footer() {
         <div className="mx-auto max-w-7xl px-8 md:px-12 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-4 text-xs text-paperfolio-text-muted"
             style={{fontFamily: "var(--font-korean), serif"}}>
-            <span>AI 자동화</span>
+            <span>{english ? "AI automation" : "AI 자동화"}</span>
             <span className="opacity-30">·</span>
-            <span>3D 설계</span>
+            <span>{english ? "3D design" : "3D 설계"}</span>
             <span className="opacity-30">·</span>
-            <span>실무형 교육</span>
+            <span>{english ? "Hands-on education" : "실무형 교육"}</span>
           </div>
           <div className="flex items-center gap-5 text-xs text-paperfolio-text-muted">
-            <Link href="/company" className="hover:text-paperfolio-text transition-colors">회사소개</Link>
-            <Link href="/privacy" className="hover:text-paperfolio-text transition-colors">개인정보처리방침</Link>
-            <Link href="/terms" className="hover:text-paperfolio-text transition-colors">이용약관</Link>
+            {english && <Link href="/en/about" className="hover:text-paperfolio-text transition-colors">About</Link>}
+            <Link href="/company" className="hover:text-paperfolio-text transition-colors">{english ? "Company (Korean)" : "회사소개"}</Link>
+            <Link href="/privacy" className="hover:text-paperfolio-text transition-colors">{english ? "Privacy (Korean)" : "개인정보처리방침"}</Link>
+            <Link href="/terms" className="hover:text-paperfolio-text transition-colors">{english ? "Terms (Korean)" : "이용약관"}</Link>
             <span className="opacity-50">© {new Date().getFullYear()} DMS.Labs</span>
           </div>
         </div>

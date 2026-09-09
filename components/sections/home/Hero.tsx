@@ -5,8 +5,10 @@ import Link from "next/link";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import styles from "./Home.module.css";
+import type { HomeLocaleProps } from "@/lib/home-copy";
 
-export default function Hero() {
+export default function Hero({ locale = "ko" }: HomeLocaleProps) {
+  const english = locale === "en";
   const reduced = useReducedMotion();
   const { scrollY } = useScroll();
   // The home hero begins at the document origin; clamp the motion to its opening scroll.
@@ -32,15 +34,15 @@ export default function Hero() {
           <motion.figure
             className={styles.fiberObject}
             style={{ y: reduced ? 0 : objectY, rotate: reduced ? -8 : objectRotate }}
-            aria-label="Fiber Core — DMS의 광통신과 정밀 엔지니어링을 상징하는 브랜드 오브젝트"
+            aria-label={english ? "Fiber Core — a brand object representing DMS optical communications and precision engineering" : "Fiber Core — DMS의 광통신과 정밀 엔지니어링을 상징하는 브랜드 오브젝트"}
           >
-            <Image src="/images/brand/fiber-core-v2.png" alt="가공된 은색 프레임을 코발트 광섬유와 투명 광학 커넥터가 관통하는 Fiber Core" fill sizes="(max-width: 767px) 110vw, 65vw" priority className={styles.fiberCoreImage} />
+            <Image src="/images/brand/fiber-core-v2.png" alt={english ? "Cobalt optical fibers and transparent connectors passing through a machined silver frame" : "가공된 은색 프레임을 코발트 광섬유와 투명 광학 커넥터가 관통하는 Fiber Core"} fill sizes="(max-width: 767px) 110vw, 65vw" priority className={styles.fiberCoreImage} />
           </motion.figure>
           <div className={styles.heroIntent}>
-            <p>복잡한 기술과 업무를<br />작동하는 시스템으로 바꿉니다.</p>
+            <p>{english ? <>Turning complex technology<br />into systems that work.</> : <>복잡한 기술과 업무를<br />작동하는 시스템으로 바꿉니다.</>}</p>
             <div className={styles.actions}>
-              <Link href="/survey" className={styles.primaryButton}>사전 질의응답 작성 <ArrowUpRight size={17} /></Link>
-              <Link href="/works" className={styles.textLink}>작업 보기 <ArrowUpRight size={17} /></Link>
+              <Link href={english ? "/en/contact" : "/survey"} className={styles.primaryButton}>{english ? "Let's talk" : "사전 질의응답 작성"} <ArrowUpRight size={17} /></Link>
+              <Link href={english ? "/en/works" : "/works"} className={styles.textLink}>{english ? "View work" : "작업 보기"} <ArrowUpRight size={17} /></Link>
             </div>
           </div>
           <div className={styles.objectAnnotation} aria-hidden="true"><span>01 — FIBER CORE</span><span>PRECISION IN EVERY CONNECTION.</span></div>
