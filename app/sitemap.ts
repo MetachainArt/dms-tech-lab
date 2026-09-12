@@ -4,7 +4,7 @@ import { getSeriesIdsWithContent } from '@/lib/series-content';
 import { getAllWorks } from '@/lib/work-mdx';
 import { WORKS_DATA } from '@/lib/works-projects-data';
 import { EDUCATION_TRACKS } from '@/lib/education-data';
-import { BLOG_SERIES } from '@/lib/blog-data';
+import { BLOG_SERIES, getVisibleEmptySeriesIds } from '@/lib/blog-data';
 import { getCourseStructure } from '@/lib/education-fs';
 import { languageAlternates, localizePath, TRANSLATED_PATHS } from '@/lib/i18n';
 
@@ -99,7 +99,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   const englishPosts = await getAllPosts("en");
-  const englishSeries = [...new Set(englishPosts.map(post => post.frontMatter.series).filter((id): id is string => Boolean(id)))].filter(id => !hiddenSeriesIds.has(id));
+  const englishSeries = [...new Set([...englishPosts.map(post => post.frontMatter.series).filter((id): id is string => Boolean(id)), ...getVisibleEmptySeriesIds()])].filter(id => !hiddenSeriesIds.has(id));
   const sitemap: MetadataRoute.Sitemap = [
     // 메인 페이지
     ...mainRoutes.map((route) => ({
@@ -137,7 +137,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: 'monthly' as const,
         priority: 0.7,
       })),
-    ...seriesSlugs
+    ...[...new Set([...seriesSlugs, ...getVisibleEmptySeriesIds()])]
       .filter((slug) => !hiddenSeriesIds.has(slug))
       .map((slug) => ({
         url: `${baseUrl}/blog/series/${slug}`,

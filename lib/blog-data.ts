@@ -8,6 +8,8 @@ export interface BlogSeries {
   tags: string[];
   /** true 면 목록·사이트맵에서 감춘다. 직접 URL 로는 계속 접근할 수 있다. */
   hidden?: boolean;
+  /** 첫 글을 등록하기 전에도 카테고리와 안내 페이지를 공개한다. */
+  showWhenEmpty?: boolean;
 }
 
 export const BLOG_SERIES: Record<string, BlogSeries> = {
@@ -83,6 +85,16 @@ export const BLOG_SERIES: Record<string, BlogSeries> = {
     color: "yellow",
     tags: ["Money", "Asset", "Freedom"],
   },
+  "optical-communications": {
+    id: "optical-communications",
+    title: "광통신",
+    subtitle: "FIBER OPTICS & NETWORKS",
+    description: "광섬유의 기초부터 FTTx·PON 네트워크, 광케이블 접속과 측정, 현장 구축과 유지보수까지. 광통신 기술 문서와 실무 자료를 한곳에 모읍니다.",
+    coverImage: "/series/optical-communications.webp",
+    color: "blue",
+    tags: ["광섬유", "FTTx · PON", "측정 · 시공"],
+    showWhenEmpty: true,
+  },
   "openclaw-room": {
     id: "openclaw-room",
     hidden: true,
@@ -94,6 +106,12 @@ export const BLOG_SERIES: Record<string, BlogSeries> = {
     tags: ["설치", "채널", "모델", "스킬", "자동화", "운영"],
   }
 };
+
+export function getVisibleEmptySeriesIds(): string[] {
+  return Object.values(BLOG_SERIES)
+    .filter((series) => series.showWhenEmpty && !series.hidden)
+    .map((series) => series.id);
+}
 
 export function getSeriesTitle(seriesId?: string) {
   if (!seriesId) {

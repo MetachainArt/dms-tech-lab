@@ -1,5 +1,6 @@
 /** Public pages with reviewed English editions. Untranslated URLs stay in Korean. */
 import blogTranslations from "./blog-translation-index.json";
+import { getVisibleEmptySeriesIds } from "./blog-data";
 export type Locale = "ko" | "en";
 
 export const TRANSLATED_PATHS = ["/", "/about", "/works", "/contact", "/blog"] as const;
@@ -17,7 +18,8 @@ export function hasEnglishVersion(pathname: string): boolean {
   const path = withoutLocale(pathname);
   return TRANSLATED_PATHS.some((item) => item === path)
     || blogTranslations.slugs.some((slug) => path === `/blog/${slug}`)
-    || blogTranslations.series.some((id) => path === `/blog/series/${id}`);
+    || blogTranslations.series.some((id) => path === `/blog/series/${id}`)
+    || getVisibleEmptySeriesIds().some((id) => path === `/blog/series/${id}`);
 }
 
 export function localizePath(pathname: string, locale: Locale): string {

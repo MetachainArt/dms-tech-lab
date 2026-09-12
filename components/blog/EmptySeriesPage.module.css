@@ -1,0 +1,9 @@
+.hero .englishTitle {
+  font-size: clamp(28px, 4.2vw, 64px);
+}
+
+@media (max-width: 700px) {
+  .hero .englishTitle {
+    font-size: clamp(26px, 8.8vw, 38px);
+  }
+}

@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, MessageCircle } from "lucide-react";
 import { notFound } from "next/navigation";
-import { BLOG_SERIES } from "@/lib/blog-data";
+import { BLOG_SERIES, getVisibleEmptySeriesIds } from "@/lib/blog-data";
+import EmptySeriesPage from "@/components/blog/EmptySeriesPage";
 import { getAllPosts } from "@/lib/mdx";
 import { generateMetadata as generateSeoMetadata } from "@/lib/metadata";
 import { getSeriesContentItems, getSeriesIdsWithContent } from "@/lib/series-content";
@@ -10,7 +11,7 @@ import styles from "@/components/brand/FiberContent.module.css";
 
 export async function generateStaticParams() {
   const seriesIds = await getSeriesIdsWithContent();
-  return seriesIds.map((id) => ({ id }));
+  return [...new Set([...seriesIds, ...getVisibleEmptySeriesIds()])].map((id) => ({ id }));
 }
 
 export async function generateMetadata(props: { params: Promise<{ id: string }> }) {
@@ -32,7 +33,10 @@ export default async function SeriesDetailPage(props: { params: Promise<{ id: st
   const series = BLOG_SERIES[id];
   if (!series) notFound();
   const [posts, allPosts] = await Promise.all([getSeriesContentItems(id), getAllPosts()]);
-  if (posts.length === 0) notFound();
+  if (posts.length === 0) {
+    if (!series.showWhenEmpty) notFound();
+    return <EmptySeriesPage series={series} />;
+  }
   const seriesCover = allPosts.find((post) => post.frontMatter.series === id && post.frontMatter.coverImage)?.frontMatter.coverImage || series.coverImage;
   const coversBySlug = new Map(allPosts.map((post) => [post.slug, post.frontMatter.coverImage]));
 

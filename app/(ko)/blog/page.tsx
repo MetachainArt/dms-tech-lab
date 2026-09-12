@@ -24,7 +24,7 @@ export default async function BlogPage() {
       coverImage: allPosts.find((post) => post.frontMatter.series === series.id && post.frontMatter.coverImage)?.frontMatter.coverImage || series.coverImage,
       postCount: seriesCountMap[series.id] || 0,
     }))
-    .filter((series) => series.postCount > 0);
+    .filter((series) => series.postCount > 0 || series.showWhenEmpty);
 
   const latestPosts = allPosts.slice(0, 3);
 

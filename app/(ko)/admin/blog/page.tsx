@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from "react";
 import { Newspaper, Save, RefreshCw, ChevronRight, FileText, Eye, Code, Columns, ChevronDown, FolderOpen } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { BLOG_SERIES } from "@/lib/blog-data";
 
 interface FileItem {
   path: string;
@@ -169,6 +170,7 @@ export default function AdminBlogPage() {
 
   // Series name mapping for display
   const seriesNames: Record<string, string> = {
+    ...Object.fromEntries(Object.values(BLOG_SERIES).map((series) => [series.id, series.title])),
     "ai-fantasy-life": "🌿 AI Fantasy Life",
     "today-me": "✨ Today Me",
     "기타": "📝 기타",

@@ -14,7 +14,7 @@ export default async function EnglishBlogPage() {
     ...item,
     coverImage: posts.find(post => post.frontMatter.series === item.id)?.frontMatter.coverImage || item.coverImage,
     postCount: posts.filter(post => post.frontMatter.series === item.id).length,
-  })).filter(item => item.postCount > 0);
+  })).filter(item => item.postCount > 0 || item.showWhenEmpty);
   return <main className={styles.page}>
     <FiberPageHeader eyebrow="Insights / Reedo Insights" lead="Ideas in" accent="transmission." variant="insights" title="Writing" description="Notes from working with automation, design, education, creativity, and everyday systems. Ideas worth returning to and putting into practice." note={<><span>{posts.length} articles · {series.length} series</span><span>Notes from the work</span></>} />
     <section className={`${styles.section} ${styles.editorial}`} aria-labelledby="series-heading">
