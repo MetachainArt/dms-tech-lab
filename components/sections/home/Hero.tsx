@@ -39,9 +39,9 @@ export default function Hero({ locale = "ko" }: HomeLocaleProps) {
             <Image src="/images/brand/fiber-core-v2.png" alt={english ? "Cobalt optical fibers and transparent connectors passing through a machined silver frame" : "가공된 은색 프레임을 코발트 광섬유와 투명 광학 커넥터가 관통하는 Fiber Core"} fill sizes="(max-width: 767px) 110vw, 65vw" priority className={styles.fiberCoreImage} />
           </motion.figure>
           <div className={styles.heroIntent}>
-            <p>{english ? <>Turning complex technology<br />into systems that work.</> : <>복잡한 기술과 업무를<br />작동하는 시스템으로 바꿉니다.</>}</p>
+            <p>{english ? <>Redesigning work with AI.<br />Making optical networks work in the field.</> : <>AI로 업무를 다시 설계하고,<br />광통신 기술을 현장에서 쓰이게 합니다.</>}</p>
             <div className={styles.actions}>
-              <Link href={english ? "/en/contact" : "/survey"} className={styles.primaryButton}>{english ? "Let's talk" : "사전 질의응답 작성"} <ArrowUpRight size={17} /></Link>
+              <Link href={english ? "/en/contact" : "#contact"} className={styles.primaryButton}>{english ? "Let's talk" : "가볍게 문의하기"} <ArrowUpRight size={17} /></Link>
               <Link href={english ? "/en/works" : "/works"} className={styles.textLink}>{english ? "View work" : "작업 보기"} <ArrowUpRight size={17} /></Link>
             </div>
           </div>
@@ -51,7 +51,7 @@ export default function Hero({ locale = "ko" }: HomeLocaleProps) {
         <div className={styles.heroFoot}>
           <div className={styles.heroDescription}>
             <p className={styles.eyebrow}>REDUCE THE NOISE. BUILD WHAT TRULY MATTERS.</p>
-            <p>AX transformation, optical network training, and 20 years in international trade. Optical equipment import and export across the Middle East, Southeast Asia and Europe. Field engineer training, workflow redesign and technical support designed for real conditions, then handed over for your team to run.</p>
+            <p>{english ? "AI workflow redesign, optical network training and technical support grounded in 20 years of engineering and international trade. We leave your team with practical processes, materials and the confidence to run them." : "조직의 업무 흐름을 AI 기준으로 다시 설계하고, FTTx 현장 엔지니어를 교육합니다. 광통신 장비 개발과 20년의 수출입 경험을 바탕으로, 팀이 직접 운영할 수 있는 문서와 방법까지 남깁니다."}</p>
           </div>
           <dl className={styles.heroFacts}>
             <div><dt>FOCUS</dt><dd>AI Transformation · Training · Global Agency</dd></div>
