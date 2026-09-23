@@ -16,9 +16,9 @@ export default function SelectedWorks({ locale = "ko" }: HomeLocaleProps) {
           <div>
             <p className={styles.eyebrow}><span>03 /</span> SELECTED WORKS</p>
             <h2 className={styles.sectionTitle}>The work speaks<br /><em>before the words do.</em></h2>
-            <p className={styles.sectionDescription}>Start with whatever feels closest to what you&apos;re working on right now.</p>
+            <p className={styles.sectionDescription}>{english ? "Explore project work and practical guides. Start with the area closest to your challenge." : "실제 프로젝트와 실무 가이드를 함께 모았습니다. 필요한 분야부터 살펴보세요."}</p>
           </div>
-          <Link href={english ? "/en/works" : "/works"} className={styles.textLink}>See all work <ArrowUpRight size={17} /></Link>
+          <Link href={english ? "/en/works" : "/works"} className={styles.textLink}>{english ? "See all work" : "전체 작업 보기"} <ArrowUpRight size={17} /></Link>
         </div>
         <div className={styles.worksGrid}>
           {works.map((work, index) => {
