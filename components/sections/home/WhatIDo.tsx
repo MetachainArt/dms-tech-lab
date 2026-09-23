@@ -56,7 +56,7 @@ export default function WhatIDo({ locale = "ko" }: HomeLocaleProps) {
             <p className={styles.eyebrow}><span>02 /</span> SERVICES</p>
             <h2 className={styles.sectionTitle}>The work that turns<br />technology into <em>real outcomes.</em></h2>
           </div>
-          <p className={styles.sectionDescription}>{english ? "Start with the change you need. The value of technology is in making your everyday work easier, clearer and more reliable." : "전문용어보다 사용자가 얻게 되는 변화를 먼저 설명합니다. 결국 중요한 건 보기 좋은 기술이 아니라 실제로 편해지는 일입니다."}</p>
+          <p className={styles.sectionDescription}>{english ? "Our focus is AI workflow redesign and optical network training, backed by international trade, technical support and engineering experience." : "AX 전환과 광통신 현장 교육을 중심으로, 무역·기술지원·설계 경험을 필요한 곳에 연결합니다. 결과는 팀이 직접 쓰고 운영할 수 있는 형태로 남깁니다."}</p>
         </div>
         <div className={styles.serviceMaterial}>
           <div><span>ASSEMBLY STUDY / BRAND CONCEPT</span><p>Every part.<br /><em>One purpose.</em></p></div>
