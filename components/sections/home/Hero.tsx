@@ -41,7 +41,7 @@ export default function Hero({ locale = "ko" }: HomeLocaleProps) {
           <div className={styles.heroIntent}>
             <p>{english ? <>Redesigning work with AI.<br />Making optical networks work in the field.</> : <>AI로 업무를 다시 설계하고,<br />광통신 기술을 현장에서 쓰이게 합니다.</>}</p>
             <div className={styles.actions}>
-              <Link href={english ? "/en/contact" : "#contact"} className={styles.primaryButton}>{english ? "Let's talk" : "가볍게 문의하기"} <ArrowUpRight size={17} /></Link>
+              <Link href={english ? "/en/contact" : "#contact"} className={styles.primaryButton}>{english ? "Let's talk" : "문의하기"} <ArrowUpRight size={17} /></Link>
               <Link href={english ? "/en/works" : "/works"} className={styles.textLink}>{english ? "View work" : "작업 보기"} <ArrowUpRight size={17} /></Link>
             </div>
           </div>
