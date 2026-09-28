@@ -92,7 +92,7 @@ export default async function WorkDetailPage(props: { params: Promise<{ slug: st
 
             <div className={styles.meta}>
               <span className={styles.category}>
-                대표 작업
+                {work.frontMatter.kind === "guide" ? "Work / 실무 가이드" : "대표 작업"}
               </span>
               <time dateTime={String(work.frontMatter.date)} className="inline-flex items-center gap-2">
                 <Calendar className="h-4 w-4" />

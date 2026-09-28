@@ -4,6 +4,7 @@ import { getVisibleEmptySeriesIds } from "./blog-data";
 export type Locale = "ko" | "en";
 
 export const TRANSLATED_PATHS = ["/", "/about", "/works", "/contact", "/blog"] as const;
+export const TRANSLATED_WORK_SLUGS = ["bilingual-page-release-check"] as const;
 
 export function getLocale(pathname: string): Locale {
   return pathname === "/en" || pathname.startsWith("/en/") ? "en" : "ko";
@@ -17,6 +18,7 @@ export function withoutLocale(pathname: string): string {
 export function hasEnglishVersion(pathname: string): boolean {
   const path = withoutLocale(pathname);
   return TRANSLATED_PATHS.some((item) => item === path)
+    || TRANSLATED_WORK_SLUGS.some((slug) => path === `/works/${slug}`)
     || blogTranslations.slugs.some((slug) => path === `/blog/${slug}`)
     || blogTranslations.series.some((id) => path === `/blog/series/${id}`)
     || getVisibleEmptySeriesIds().some((id) => path === `/blog/series/${id}`);

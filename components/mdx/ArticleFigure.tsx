@@ -3,6 +3,11 @@ import Image, { type ImageProps } from "next/image";
 import styles from "./ArticleFigure.module.css";
 import { editorialImage } from "@/lib/editorial-art";
 
+const licensedPhotoSources: Record<string, string> = {
+  "/images/works/bilingual-release-check/notebook-review.jpg": "https://commons.wikimedia.org/wiki/File:Person_writing_in_notebook_while_using_laptop_at_a_modern_workspace.jpg",
+  "/images/works/bilingual-release-check/shared-workspace.jpg": "https://commons.wikimedia.org/wiki/File:Desks_in_an_open_office_space_%28Unsplash%29.jpg",
+};
+
 function sourceUrl(src: unknown): string | undefined {
   if (typeof src === "string") {
     return /^(?:https?:\/\/|\/|\.\/|\.\.\/)/i.test(src) ? src : undefined;
@@ -30,7 +35,7 @@ function FigureFrame({ children, alt, src, locale = "ko" }: { children: ReactNod
 export function ArticleFigure({ alt = "", className = "", loading = "lazy", locale = "ko", ...props }: ComponentPropsWithoutRef<"img"> & { locale?: "ko" | "en" }) {
   const src = typeof props.src === "string" ? editorialImage(props.src) : props.src;
   return (
-    <FigureFrame locale={locale} alt={alt} src={sourceUrl(src)}>
+    <FigureFrame locale={locale} alt={alt} src={typeof src === "string" ? licensedPhotoSources[src] || sourceUrl(src) : sourceUrl(src)}>
       {/* MDX sources include original SVGs and external screenshots; retain their source URLs. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img {...props} src={src} alt={alt} loading={loading} decoding="async" className={`${className} ${styles.image}`} />

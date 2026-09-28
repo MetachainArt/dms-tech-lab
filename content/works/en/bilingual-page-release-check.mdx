@@ -1,0 +1,64 @@
+---
+title: "Before you publish a page in two languages"
+excerpt: "A practical Work guide to checking the actual Korean and English pages, from reciprocal language links and metadata to licensed photographs, mobile layout and the production domain."
+date: "2026-09-28"
+readTime: "11 min"
+kind: "guide"
+tags: ["Work", "Multilingual sites", "Release review"]
+---
+
+Two working URLs can create a false sense of completion. The English link might return to the English homepage instead of the matching article. Both detail pages might read the same Korean file. A cover image might render while the two photographs promised inside the article fail to load. This is a practical publishing guide, not a report about a client's project or a claim that a particular deployment achieved a result.
+
+I would treat the source files and the production pages as two different kinds of evidence. Files show what the editor intended to publish. The public response shows what readers can actually reach. A bilingual release needs both. The English edition also needs to work as an article for an English reader, rather than as a row-by-row substitution for the Korean text. Shared facts and sources matter; identical sentence structure does not.
+
+## Start with the pair, not the switch
+
+Write down the Korean and English article URLs next to each other. For each, trace the path from the Work list to the detail page, then from the language switch to its counterpart. A translated card that still opens the Korean detail page is a preview of Korean work. It cannot serve as the English article. The test must reach the full body in the requested language.
+
+In a file-backed site, creating the English content file and creating a route that reads it are separate jobs. The file can exist while the public path returns 404. The route may instead read the wrong directory, serving Korean text under an English address. Check the file, loader, route and list link together. No single green check in the editor proves that chain is complete.
+
+Enter each URL directly in a fresh browser tab. From the Korean article, choose English and confirm the English title, date and opening paragraph. Switch back and make sure you return to the original Korean article, not the Work landing page or another topic. Do the same from the English list. If the switch works only in one direction, the pair still needs work.
+
+![A person writing in a notebook beside a laptop in a workspace; this is not a photograph of the project described here.](/images/works/bilingual-release-check/notebook-review.jpg)
+
+Photo: [Shixart1985 on Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Person_writing_in_notebook_while_using_laptop_at_a_modern_workspace.jpg), [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/). A 1280-pixel resized version of the original is used. It does not document work on this site.
+
+## Make the page describe itself accurately
+
+The language switch is for people. Search engines also need an explicit relationship between the two addresses. [Google's localized-version guidance](https://developers.google.com/search/docs/specialty/international/localized-versions) describes reciprocal language annotations: each version should list itself and its alternatives. Inspect the generated markup on both live pages. An alternate pointing to an English page that does not exist is not a useful substitute for publishing that page.
+
+Check each page's canonical URL too. If an independently written English article identifies the Korean page as its canonical, that can conflict with the intention to present two language editions. The purpose of this check is not to promise a search ranking. It is to make the public pages state their identity consistently. A sitemap entry, a submitted URL and confirmed indexing are different things; don't collapse them into a single success report.
+
+Language metadata is not merely a search concern. [W3C's explanation of WCAG 2.2's Language of Page criterion](https://www.w3.org/WAI/WCAG22/Understanding/language-of-page.html) says the default human language of a page should be programmatically determinable, so assistive technology can process it appropriately. Read the document's language declaration against the actual body. An English title above a Korean article, or an English article in a document still marked Korean, deserves a fix rather than a reassuring badge.
+
+Also compare what people see before they click. Browser titles, list summaries and social previews can lag behind the body. The English summary should describe the English article, not promise a different argument. Editing each language independently is compatible with keeping the same subject and evidence. Changing a source, date or condition in just one edition is a factual discrepancy, not a stylistic translation choice.
+
+## Count photographs in the article body
+
+One hero image does not become two in-body photographs. Open the production article, find two different photographic scenes inside its text and wait for both to load. Repeat on the other language page. A path in an MDX file, a thumbnail in an editor or an HTTP response for an unused asset does not prove the reader sees it. If the second photograph sits far down the page, inspect that part of the page as well.
+
+Rights and captions belong to the check. A freely licensed photograph of a desk may illustrate a workflow, but it must not be presented as a client's office or a record of a meeting that never happened. These photographs illustrate working environments only. Their original file pages, creators, licences and resizing are identified beside the images. Search-image thumbnails are discovery tools, not a grant of reuse rights; verify the original licence before storing a copy.
+
+Alternative text has a different job from attribution. It should describe what a meaningful image contributes, not repeat a filename or hide the licence. [W3C's image-alt decision tree](https://www.w3.org/WAI/tutorials/images/decision-tree/) distinguishes decorative images from informative and functional ones. Put visible source credit near the photograph. That helps readers assess the image without making a screen reader recite licensing details as though they described the scene.
+
+![A person using a laptop in a shared office space; this is not a client site or a production record.](/images/works/bilingual-release-check/shared-workspace.jpg)
+
+Photo: [Crew, file page on Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Desks_in_an_open_office_space_%28Unsplash%29.jpg), [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). A 1280-pixel resized version is used. This is an illustrative photograph, not a record of this article's production.
+
+## Read both editions on a narrow screen
+
+The Korean page fitting on a desktop monitor says little about the English page on a phone. A long word can push the reading column sideways; a wide table can overflow; a crop can remove the part of a photograph the caption describes. Check each edition at a narrow width. Look at heading wraps, line spacing, tap targets, captions and the full text of links. Do not infer the English result from a screenshot of the Korean page.
+
+[web.dev's responsive-image guidance](https://web.dev/learn/design/responsive-images) notes that an image's intrinsic size can exceed the viewport unless the layout constrains it. If the entire document scrolls sideways, identify the element that overflows. Adding `overflow: hidden` to the page may conceal the defect while clipping information. Tables or code samples sometimes need their own scrollable region; ordinary paragraphs and photos should fit the reading column.
+
+File size is part of the reader's experience. A small inline image need not send the full multi-megabyte original to every phone. This guide uses resized copies of the licensed originals, with the source and rights information retained. Compression is not a replacement for verifying the scene, the licence or the actual load. Compression helps only after the right image appears in the right place.
+
+## Separate deployment status from publication
+
+A local build can pass while the deployment is still running. A deployment can report Ready while the production domain still serves an older version. I would record the commit, the production deployment status and the response at each public URL separately. [Vercel distinguishes Preview and Production](https://vercel.com/docs/deployments/environments): a successful preview is useful QA evidence, but it is not proof that the public domain has changed.
+
+On production, check the title, date, Work classification, full body, source links and both in-body photographs on each URL. Follow the language switch in both directions. Inspect the rendered elements, not just the source file or an accessibility tree, and use a phone-size viewport as well as a desktop one. A photo can have a valid file path and still be absent from the article layout.
+
+If only one language passes, report a partial release. Do not advance a rotation that promises a verified bilingual pair. If the production page appears unchanged after a deployment, investigate the commit and deployment before retrying a publish action; an uncertain retry can create duplicates. A momentary editor error is not evidence that nothing reached the site, just as a green deployment badge is not evidence that both articles are visible.
+
+A short release record is enough: the two URLs, the deployed commit, each page's title and body length, the two photo sources and rights, the mobile check and anything unresolved. Keep that record with the work rather than dressing it up as a customer success story. The release is complete when a reader can open either article, read it in the chosen language and move to its real counterpart.

@@ -6,7 +6,7 @@ import { WORKS_DATA } from '@/lib/works-projects-data';
 import { EDUCATION_TRACKS } from '@/lib/education-data';
 import { BLOG_SERIES, getVisibleEmptySeriesIds } from '@/lib/blog-data';
 import { getCourseStructure } from '@/lib/education-fs';
-import { languageAlternates, localizePath, TRANSLATED_PATHS } from '@/lib/i18n';
+import { languageAlternates, localizePath, TRANSLATED_PATHS, TRANSLATED_WORK_SLUGS } from '@/lib/i18n';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://dmssolution.co.kr';
@@ -116,6 +116,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       alternates: { languages: languageAlternates(path, baseUrl) },
     })),
     ...englishPosts.map(post => ({ url: `${baseUrl}/en/blog/${post.slug}`, changeFrequency: "monthly" as const, priority: 0.6, alternates: { languages: languageAlternates(`/blog/${post.slug}`, baseUrl) } })),
+    ...TRANSLATED_WORK_SLUGS.map(slug => ({ url: `${baseUrl}/en/works/${slug}`, changeFrequency: "monthly" as const, priority: 0.7, alternates: { languages: languageAlternates(`/works/${slug}`, baseUrl) } })),
     ...englishSeries.map(id => ({ url: `${baseUrl}/en/blog/series/${id}`, changeFrequency: "weekly" as const, priority: 0.7, alternates: { languages: languageAlternates(`/blog/series/${id}`, baseUrl) } })),
     // 교육 트랙 (자동)
     ...educationRoutes,
@@ -133,6 +134,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .filter((work) => !hiddenSeriesIds.has(String(work.frontMatter.series ?? '')))
       .map((work) => ({
         url: `${baseUrl}/works/${work.slug}`,
+        ...(languageAlternates(`/works/${work.slug}`, baseUrl) ? { alternates: { languages: languageAlternates(`/works/${work.slug}`, baseUrl) } } : {}),
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,
         priority: 0.7,

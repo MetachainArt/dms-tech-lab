@@ -23,7 +23,7 @@ export default function EnglishWorksPage() {
         description="Explore how automation, engineering, education and creative technology become practical work. Start with the area that matters to you."
         note={<><span>{ENGLISH_SHOWCASE_WORKS.length} works · 2024 — 2026</span><span>The work speaks before the words do</span></>}
       >
-        <p>Optical network training is available in English. Other project details currently open in Korean, as marked below.</p>
+        <p>The bilingual publishing guide and optical network training are available in English. Other project details open in Korean, as marked below.</p>
         <Link href="/en/contact">Discuss a project in English ↗</Link>
       </FiberPageHeader>
 

@@ -19,9 +19,10 @@ export interface MDXWork {
   content: string;
 }
 
-async function loadWorkBySlug(slug: string): Promise<MDXWork | null> {
+async function loadWorkBySlug(slug: string, locale: "ko" | "en" = "ko"): Promise<MDXWork | null> {
   const realSlug = slug.replace(/\.mdx$/, "");
-  const fullPath = path.join(worksDirectory, `${realSlug}.mdx`);
+  const directory = locale === "en" ? path.join(worksDirectory, "en") : worksDirectory;
+  const fullPath = path.join(directory, `${realSlug}.mdx`);
 
   try {
     const fileContents = await fs.readFile(fullPath, "utf8");
@@ -29,7 +30,7 @@ async function loadWorkBySlug(slug: string): Promise<MDXWork | null> {
 
     return {
       slug: realSlug,
-      frontMatter: { ...data, ...(editorialCover(`content/works/${realSlug}.mdx`) ? { coverImage: editorialCover(`content/works/${realSlug}.mdx`) } : {}) } as MDXWork['frontMatter'],
+      frontMatter: { ...data, ...(editorialCover(`content/works/${locale === "en" ? "en/" : ""}${realSlug}.mdx`) ? { coverImage: editorialCover(`content/works/${locale === "en" ? "en/" : ""}${realSlug}.mdx`) } : {}) } as MDXWork['frontMatter'],
       content: editorialContent(content),
     };
   } catch (error) {
@@ -41,14 +42,14 @@ async function loadWorkBySlug(slug: string): Promise<MDXWork | null> {
   }
 }
 
-async function getAllWorksInternal(): Promise<MDXWork[]> {
+async function getAllWorksInternal(locale: "ko" | "en" = "ko"): Promise<MDXWork[]> {
   try {
-    const files = await fs.readdir(worksDirectory);
+    const files = await fs.readdir(locale === "en" ? path.join(worksDirectory, "en") : worksDirectory);
     const workSlugs = files
       .filter((fileName) => !fileName.startsWith("_") && fileName.endsWith(".mdx"))
       .map((fileName) => fileName.replace(/\.mdx$/, ""));
 
-    const loadedWorks = await Promise.all(workSlugs.map((slug) => loadWorkBySlug(slug)));
+    const loadedWorks = await Promise.all(workSlugs.map((slug) => loadWorkBySlug(slug, locale)));
 
     return loadedWorks
       .filter((work): work is MDXWork => work !== null)
@@ -62,17 +63,17 @@ async function getAllWorksInternal(): Promise<MDXWork[]> {
   }
 }
 
-async function getWorksBySlugIndex(): Promise<Record<string, MDXWork>> {
-  const works = await getAllWorksInternal();
+async function getWorksBySlugIndex(locale: "ko" | "en" = "ko"): Promise<Record<string, MDXWork>> {
+  const works = await getAllWorksInternal(locale);
   return works.reduce<Record<string, MDXWork>>((acc, work) => {
     acc[work.slug] = work;
     return acc;
   }, {});
 }
 
-export async function getWorkBySlug(slug: string): Promise<MDXWork | null> {
+export async function getWorkBySlug(slug: string, locale: "ko" | "en" = "ko"): Promise<MDXWork | null> {
   const realSlug = slug.replace(/\.mdx$/, "");
-  const worksBySlug = await getWorksBySlugIndex();
+  const worksBySlug = await getWorksBySlugIndex(locale);
   const work = worksBySlug[realSlug];
 
   if (!work) {
@@ -82,6 +83,6 @@ export async function getWorkBySlug(slug: string): Promise<MDXWork | null> {
   return work;
 }
 
-export async function getAllWorks(): Promise<MDXWork[]> {
-  return getAllWorksInternal();
+export async function getAllWorks(locale: "ko" | "en" = "ko"): Promise<MDXWork[]> {
+  return getAllWorksInternal(locale);
 }

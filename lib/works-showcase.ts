@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "한영 웹페이지 배포 검수",
+    summary: "같은 주제를 두 언어로 낼 때 본문·언어 전환·사진·모바일 화면을 공개 주소에서 확인하는 Work 실무 가이드입니다.",
+    tags: ["Work", "실무 가이드", "다국어 웹사이트"],
+    image: "/images/works/bilingual-release-check/notebook-review.jpg",
+    link: "/works/bilingual-page-release-check",
+  },
+  {
     title: "Optical Network Training",
     summary: "FTTx architecture, optical power budget and OTDR fault finding. A hands-on training track written in English for engineers who need to make their own calls in the field.",
     tags: ["FTTx", "Optical Network", "Field Training"],
