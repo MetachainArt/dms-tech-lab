@@ -1,0 +1,25 @@
+{
+  "date": "2026-09-28T00:49:07.512Z",
+  "tool": "imagegen.generate",
+  "model": "Not returned by tool",
+  "status": "Prepared for deployment; generated images replace stock photographs at user request.",
+  "images": [
+    {
+      "path": "C:\\Users\\ReedoC\\.aside\\u\\0\\sessions\\2026-09-28_9tmthxfrmm04SFzn\\artifacts\\imagegen-ucJfcZLPHz0fLWpM.png",
+      "prompt": "Create one original photorealistic editorial photograph for a thoughtful engineering and bilingual publishing journal, landscape 3:2. Use the reference only for its restrained warm cream, pale wood and deep green colour palette, soft available daylight and candid analog film mood, not its exact scene or person. New scene: a close oblique overhead view of an oak work desk beside a window. An adult in an olive cotton shirt checks two printed page-layout proofs beside an open cream notebook and an unbranded silver laptop, one natural anatomically correct hand holding a graphite pencil over the paper. Screen mostly outside the frame; page layouts show quiet grey text lines, no legible text or logos. Ceramic coffee cup, a tiny sprig of foliage, gentle lived-in paper texture. Off-centre composition with breathing space, believable human proportions, tactile materials, subtle 35mm colour-negative grain, soft highlight rolloff, gently faded blacks, muted saturation, real lens depth of field. Quiet unposed moment, not glossy advertising, no CGI, no illustration, no heavy sepia, no dramatic teal-orange grading, no labels, no watermark. Render an entirely new composition and different person, not a near-copy of the reference.",
+      "reference": "notebook-review.jpg, mood only"
+    },
+    {
+      "path": "C:\\Users\\ReedoC\\.aside\\u\\0\\sessions\\2026-09-28_9tmthxfrmm04SFzn\\artifacts\\imagegen-1lTQb08HQmW0EsGa.png",
+      "prompt": "Create one original photorealistic editorial photograph, landscape 3:2, for a quiet engineering and digital publishing journal. The reference is a mood guide only: warm wood and subdued olive tones, natural available light, plants softly obscuring a foreground edge, a genuine candid analog-film feel. Invent a clearly different location and person. New scene: side-rear three-quarter wide view of an adult East Asian editor in a soft grey overshirt seated at a long honey-oak table inside a modest sunlit neighbourhood co-working studio, checking a laptop and a phone held beside it, with two paper proofs nearby. The editor is mid-distance right of centre, no frontal portrait; laptop and phone screens are angled away and reveal no readable text. Tall rectangular windows, pale limewashed walls, simple bookshelves, leafy foreground blur at far left, an empty chair and generous negative space. No grand marble hall or metallic booths. Warm cream highlights and restrained green shadows, subtle fine 35mm film grain, natural skin, soft contrast and highlight rolloff, small real-life imperfections, honest lens perspective, not glossy corporate stock staging. Original scene and fictional person; no logos, captions or watermarks; no CGI, illustration, excessive sepia, strong teal-orange or artificial glow.",
+      "reference": "shared-workspace.jpg, mood only"
+    }
+  ],
+  "outputs": [
+    "/images/works/bilingual-release-check/film-desk-review.webp",
+    "/images/works/bilingual-release-check/film-workspace-check.webp"
+  ],
+  "referenceRights": "First reference CC BY 2.0 Shixart1985; second CC0 Crew. References used for mood only; distinct compositions generated. Historical attribution retained in public image CREDITS.md.",
+  "visualReview": "Both PASS from independent visual reviewer; distinct scenes, plausible anatomy, no glaring artifacts/logos/legible text.",
+  "editorialReview": "Scoped factual correction only: stock-photo descriptions removed, generated-image description and alt text updated. Sepia professional/technical/discourse/style -> conservative Korean -> Humanizer residual review. No full article rewrite. Author model GPT version unknown; executor unknown. Exact model attribution is not inferred."
+}

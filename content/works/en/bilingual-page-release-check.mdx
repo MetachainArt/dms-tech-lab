@@ -1,13 +1,13 @@
 ---
 title: "Before you publish a page in two languages"
-excerpt: "A practical Work guide to checking the actual Korean and English pages, from reciprocal language links and metadata to licensed photographs, mobile layout and the production domain."
+excerpt: "A practical Work guide to checking the actual Korean and English pages, from reciprocal language links and metadata to in-body images, mobile layout and the production domain."
 date: "2026-09-28"
 readTime: "11 min"
 kind: "guide"
 tags: ["Work", "Multilingual sites", "Release review"]
 ---
 
-Two working URLs can create a false sense of completion. The English link might return to the English homepage instead of the matching article. Both detail pages might read the same Korean file. A cover image might render while the two photographs promised inside the article fail to load. This is a practical publishing guide, not a report about a client's project or a claim that a particular deployment achieved a result.
+Two working URLs can create a false sense of completion. The English link might return to the English homepage instead of the matching article. Both detail pages might read the same Korean file. A cover image might render while the two images promised inside the article fail to load. This is a practical publishing guide, not a report about a client's project or a claim that a particular deployment achieved a result.
 
 I would treat the source files and the production pages as two different kinds of evidence. Files show what the editor intended to publish. The public response shows what readers can actually reach. A bilingual release needs both. The English edition also needs to work as an article for an English reader, rather than as a row-by-row substitution for the Korean text. Shared facts and sources matter; identical sentence structure does not.
 
@@ -19,9 +19,7 @@ In a file-backed site, creating the English content file and creating a route th
 
 Enter each URL directly in a fresh browser tab. From the Korean article, choose English and confirm the English title, date and opening paragraph. Switch back and make sure you return to the original Korean article, not the Work landing page or another topic. Do the same from the English list. If the switch works only in one direction, the pair still needs work.
 
-![A person writing in a notebook beside a laptop in a workspace; this is not a photograph of the project described here.](/images/works/bilingual-release-check/notebook-review.jpg)
-
-Photo: [Shixart1985 on Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Person_writing_in_notebook_while_using_laptop_at_a_modern_workspace.jpg), [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/). A 1280-pixel resized version of the original is used. It does not document work on this site.
+![Hands reviewing printed page proofs and a notebook on a naturally lit desk.](/images/works/bilingual-release-check/film-desk-review.webp)
 
 ## Make the page describe itself accurately
 
@@ -33,17 +31,15 @@ Language metadata is not merely a search concern. [W3C's explanation of WCAG 2.2
 
 Also compare what people see before they click. Browser titles, list summaries and social previews can lag behind the body. The English summary should describe the English article, not promise a different argument. Editing each language independently is compatible with keeping the same subject and evidence. Changing a source, date or condition in just one edition is a factual discrepancy, not a stylistic translation choice.
 
-## Count photographs in the article body
+## Count images in the article body
 
-One hero image does not become two in-body photographs. Open the production article, find two different photographic scenes inside its text and wait for both to load. Repeat on the other language page. A path in an MDX file, a thumbnail in an editor or an HTTP response for an unused asset does not prove the reader sees it. If the second photograph sits far down the page, inspect that part of the page as well.
+One hero image does not become two in-body images. Open the production article, find two different photographic scenes inside its text and wait for both to load. Repeat on the other language page. A path in an MDX file, a thumbnail in an editor or an HTTP response for an unused asset does not prove the reader sees it. If the second photograph sits far down the page, inspect that part of the page as well.
 
-Rights and captions belong to the check. A freely licensed photograph of a desk may illustrate a workflow, but it must not be presented as a client's office or a record of a meeting that never happened. These photographs illustrate working environments only. Their original file pages, creators, licences and resizing are identified beside the images. Search-image thumbnails are discovery tools, not a grant of reuse rights; verify the original licence before storing a copy.
+Rights and captions belong to the check. A stock photograph or generated image must not be presented as a client's office or a record of a meeting that never happened. The two images in this guide were generated in a photographic film style to illustrate reviewing drafts and checking screens. They do not document an actual project. When using an external photograph, verify its original licence and retain the required creator credit. A search thumbnail alone does not grant reuse rights.
 
 Alternative text has a different job from attribution. It should describe what a meaningful image contributes, not repeat a filename or hide the licence. [W3C's image-alt decision tree](https://www.w3.org/WAI/tutorials/images/decision-tree/) distinguishes decorative images from informative and functional ones. Put visible source credit near the photograph. That helps readers assess the image without making a screen reader recite licensing details as though they described the scene.
 
-![A person using a laptop in a shared office space; this is not a client site or a production record.](/images/works/bilingual-release-check/shared-workspace.jpg)
-
-Photo: [Crew, file page on Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Desks_in_an_open_office_space_%28Unsplash%29.jpg), [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). A 1280-pixel resized version is used. This is an illustrative photograph, not a record of this article's production.
+![An editor checking a laptop and phone beside a window in a shared workspace.](/images/works/bilingual-release-check/film-workspace-check.webp)
 
 ## Read both editions on a narrow screen
 
@@ -51,13 +47,13 @@ The Korean page fitting on a desktop monitor says little about the English page 
 
 [web.dev's responsive-image guidance](https://web.dev/learn/design/responsive-images) notes that an image's intrinsic size can exceed the viewport unless the layout constrains it. If the entire document scrolls sideways, identify the element that overflows. Adding `overflow: hidden` to the page may conceal the defect while clipping information. Tables or code samples sometimes need their own scrollable region; ordinary paragraphs and photos should fit the reading column.
 
-File size is part of the reader's experience. A small inline image need not send the full multi-megabyte original to every phone. This guide uses resized copies of the licensed originals, with the source and rights information retained. Compression is not a replacement for verifying the scene, the licence or the actual load. Compression helps only after the right image appears in the right place.
+File size is part of the reader's experience. A small inline image need not send the full multi-megabyte original to every phone. This guide uses generated originals resized and saved as WebP files for the article. For external photographs, retain the required attribution when optimizing the files. Compression is not a replacement for verifying the scene, the licence or the actual load. Compression helps only after the right image appears in the right place.
 
 ## Separate deployment status from publication
 
 A local build can pass while the deployment is still running. A deployment can report Ready while the production domain still serves an older version. I would record the commit, the production deployment status and the response at each public URL separately. [Vercel distinguishes Preview and Production](https://vercel.com/docs/deployments/environments): a successful preview is useful QA evidence, but it is not proof that the public domain has changed.
 
-On production, check the title, date, Work classification, full body, source links and both in-body photographs on each URL. Follow the language switch in both directions. Inspect the rendered elements, not just the source file or an accessibility tree, and use a phone-size viewport as well as a desktop one. A photo can have a valid file path and still be absent from the article layout.
+On production, check the title, date, Work classification, full body, source links and both in-body images on each URL. Follow the language switch in both directions. Inspect the rendered elements, not just the source file or an accessibility tree, and use a phone-size viewport as well as a desktop one. A photo can have a valid file path and still be absent from the article layout.
 
 If only one language passes, report a partial release. Do not advance a rotation that promises a verified bilingual pair. If the production page appears unchanged after a deployment, investigate the commit and deployment before retrying a publish action; an uncertain retry can create duplicates. A momentary editor error is not evidence that nothing reached the site, just as a green deployment badge is not evidence that both articles are visible.
 
