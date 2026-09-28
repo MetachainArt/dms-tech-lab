@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "node scripts/sync-blog-translations.cjs && next dev",
-    "build": "node scripts/sync-blog-translations.cjs && prisma generate && next build",
+    "build": "node scripts/sync-blog-translations.cjs && prisma generate && next build --webpack",
     "start": "next start",
     "lint": "eslint",
     "postinstall": "prisma generate"
