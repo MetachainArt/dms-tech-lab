@@ -26,6 +26,54 @@ export interface GalleryPiece {
 // ──────────────────────────────────────────────
 export const galleryPieces: GalleryPiece[] = [
   {
+    id: "before-the-threshold",
+    date: "2026. 09",
+    category: "Essay",
+    title: "문턱에서",
+    subtitle: "Before the First Step",
+    body: "문은 열려 있는데 발이 움직이지 않는 때가 있다. 어려운 것은 일이 아니라, 바닥에 그어진 좁은 선 하나를 넘는 순간이다.",
+    paragraphs: [
+      {
+        type: "text",
+        text: "문은 열려 있는데\n발이 움직이지 않는 때가 있다.\n안쪽에는 책상이 있고 종이가 있고\n연필도 이미 놓여 있다.\n필요한 것은 다 갖춰졌다.\n그런데 나는 문턱 앞에서 한참을 서 있다.",
+      },
+      {
+        type: "text",
+        text: "어려운 것은 일이 아니다.\n한 줄을 쓰고 나면 다음 줄이 오고,\n하나를 고치고 나면 고칠 곳이 더 보인다.\n일은 시작하고 나면 대체로 굴러간다.\n힘든 것은 바닥에 그어진\n그 좁은 선 하나를 넘는 순간이다.",
+      },
+      {
+        type: "motto",
+        text: "— 문턱은 한 걸음이면 넘는다. —",
+      },
+      {
+        type: "text",
+        text: "서 있는 동안에도 준비는 계속된다.\n더 좋은 자리, 더 맑은 정신, 더 긴 시간.\n기다리던 조건이 하나씩 채워져도\n문턱의 높이는 그대로다.\n준비에는 끝이 없어서\n멈춰 서 있기에 가장 그럴듯한 이유가 된다.",
+      },
+      {
+        type: "text",
+        text: "그래서 첫걸음은 작을수록 좋다.\n오늘 안에 끝낼 일은 떠올리지 않는다.\n연필을 집어 드는 것까지만 생각한다.\n종이 위에 점 하나를 찍는다.\n점이 찍히고 나면\n나는 이미 문 안쪽에 서 있다.",
+      },
+      {
+        type: "quote",
+        text: "The door is only as high as the pause before it.",
+      },
+      {
+        type: "text",
+        text: "문턱은 넘고 나면 아무것도 아니다.\n발밑에 얇은 나무 띠가 있었다는 것도\n금방 잊는다.\n넘기 전에만 산처럼 보인다.\n\n돌아보면 그 자리에는\n신발 한 켤레가 나란히 놓여 있을 것이다.\n망설임의 모양은 대개 그렇게 조용하다.",
+      },
+      {
+        type: "motto",
+        text: "— 한 걸음 안쪽에서, 일은 이미 시작되어 있다. —",
+      },
+    ],
+    image: "/gallery/editorial/threshold-v1.webp",
+    imageAlt: "열린 나무 문 앞 문턱에 신발이 멈춰 서 있고, 문 너머 햇빛이 든 방의 작은 책상에 빈 종이와 연필이 놓여 있는 장면",
+    imageWidth: 928,
+    imageHeight: 1232,
+    layout: "image-right",
+    accent: "coral",
+  },
+  {
     id: "what-you-cannot-say",
     date: "2026. 09",
     category: "Essay",
