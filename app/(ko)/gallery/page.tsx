@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { galleryPieces, type GalleryPiece } from "@/lib/gallery-data";
-import type { Metadata } from "next";
+import { generateMetadata as generateSeoMetadata } from "@/lib/metadata";
 import EssayPiece from "@/components/ideas/EssayPiece";
 import { watchingEssayKo } from "@/lib/ideas-essay-watching";
 
@@ -64,10 +64,11 @@ function BodyContent({ piece, textColor = "text-paperfolio-text-muted", maxWidth
   );
 }
 
-export const metadata: Metadata = {
+export const metadata = generateSeoMetadata({
   title: "아이디어 — Reedo",
   description: "사진과 글이 만나는 공간. 작업, 생각, 감각을 기록합니다.",
-};
+  path: "/gallery",
+});
 
 /* ── Accent colour map ── */
 const accentMap = {
