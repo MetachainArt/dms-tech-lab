@@ -30,7 +30,7 @@ export default function Navbar() {
     { name: "About", href: "/en/about" },
     { name: "Work", href: "/en/works" },
     { name: "Writing", href: "/en/blog" },
-    { name: "Ideas (KO)", href: "/gallery" },
+    { name: "Ideas", href: "/en/gallery" },
   ] : desktopLinks;
   const mobileLinks = english ? [...links, { name: "Contact", href: "/en/contact" }] : navLinks;
 

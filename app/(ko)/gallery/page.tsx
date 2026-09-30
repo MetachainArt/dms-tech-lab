@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { galleryPieces, type GalleryPiece } from "@/lib/gallery-data";
 import type { Metadata } from "next";
+import EssayPiece from "@/components/ideas/EssayPiece";
+import { watchingEssayKo } from "@/lib/ideas-essay-watching";
 
 /* ── Multi-paragraph body renderer ── */
 function BodyContent({ piece, textColor = "text-paperfolio-text-muted", maxWidth = "max-w-md" }: {
@@ -281,7 +283,7 @@ export default function GalleryPage() {
         {/* Divider with count */}
         <div className="mx-auto max-w-7xl mt-14 pt-8 border-t border-paperfolio-line flex items-center justify-between">
           <span className="text-xs tracking-[0.18em] uppercase text-paperfolio-text-muted">
-            {galleryPieces.length} pieces
+            {galleryPieces.length + 1} pieces
           </span>
           <span className="text-xs tracking-[0.18em] uppercase text-paperfolio-text-muted">
             2025 — 2026
@@ -291,6 +293,7 @@ export default function GalleryPage() {
 
       {/* ── Gallery pieces ── */}
       <main>
+        <div className="border-b border-paperfolio-line"><EssayPiece essay={watchingEssayKo} locale="ko" /></div>
         {galleryPieces.map((piece) => (
           <div
             key={piece.id}

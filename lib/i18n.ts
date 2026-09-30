@@ -3,7 +3,7 @@ import blogTranslations from "./blog-translation-index.json";
 import { getVisibleEmptySeriesIds } from "./blog-data";
 export type Locale = "ko" | "en";
 
-export const TRANSLATED_PATHS = ["/", "/about", "/works", "/contact", "/blog"] as const;
+export const TRANSLATED_PATHS = ["/", "/about", "/works", "/contact", "/blog", "/gallery"] as const;
 export const TRANSLATED_WORK_SLUGS = ["bilingual-page-release-check"] as const;
 
 export function getLocale(pathname: string): Locale {
