@@ -21,7 +21,11 @@ jobs:
         id: detect
         run: |
           NEW=$(git diff --name-only --diff-filter=A HEAD~1 HEAD -- 'content/posts/*.mdx' | grep -v '^_' || true)
-          echo "files=$NEW" >> $GITHUB_OUTPUT
+          {
+            echo "files<<NEWSLETTER_FILES_EOF"
+            echo "$NEW"
+            echo "NEWSLETTER_FILES_EOF"
+          } >> "$GITHUB_OUTPUT"
           if [ -n "$NEW" ]; then
             echo "found=true" >> $GITHUB_OUTPUT
             echo "새 포스트 감지: $NEW"
