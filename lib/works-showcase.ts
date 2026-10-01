@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "문의 양식, 보낸 뒤에 도착하는지까지",
+    summary: "성공 문구 대신 받은편지함과 발신 인증으로 확인하는 문의 양식 점검 순서를 정리한 Work 실무 가이드입니다.",
+    tags: ["Work", "실무 가이드", "문의 양식"],
+    image: "/images/works/contact-form-delivery-check/form-on-desk.webp",
+    link: "/works/contact-form-delivery-check",
+  },
+  {
     title: "한영 웹페이지 배포 검수",
     summary: "같은 주제를 두 언어로 낼 때 본문·언어 전환·사진·모바일 화면을 공개 주소에서 확인하는 Work 실무 가이드입니다.",
     tags: ["Work", "실무 가이드", "다국어 웹사이트"],
