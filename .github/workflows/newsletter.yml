@@ -20,7 +20,8 @@ jobs:
       - name: Detect newly added posts
         id: detect
         run: |
-          NEW=$(git diff --name-only --diff-filter=A HEAD~1 HEAD -- 'content/posts/*.mdx' | grep -v '^_' || true)
+          # 한국어 글만 발송: content/posts/en/ 등 하위 폴더(영어 번역본)는 제외
+          NEW=$(git diff --name-only --diff-filter=A HEAD~1 HEAD -- 'content/posts/*.mdx' | grep -E '^content/posts/[^/]+\.mdx$' | grep -v '^content/posts/_' || true)
           {
             echo "files<<NEWSLETTER_FILES_EOF"
             echo "$NEW"

@@ -46,6 +46,13 @@ function getNewPosts() {
   const posts = [];
 
   for (const filePath of files) {
+    // 한국어 글만 발송: content/posts 바로 아래 파일만 허용 (en/ 등 번역본 제외)
+    const normalized = filePath.replace(/\\/g, "/");
+    if (!/^content\/posts\/[^/]+\.mdx$/.test(normalized)) {
+      console.log(`⏭ 한국어 글이 아니라서 건너뜀: ${filePath}`);
+      continue;
+    }
+
     const fullPath = path.join(ROOT, filePath);
     if (!fs.existsSync(fullPath)) continue;
 
