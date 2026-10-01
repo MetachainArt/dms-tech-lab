@@ -8,11 +8,11 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
-    title: "문의 양식, 보낸 뒤에 도착하는지까지",
-    summary: "성공 문구 대신 받은편지함과 발신 인증으로 확인하는 문의 양식 점검 순서를 정리한 Work 실무 가이드입니다.",
-    tags: ["Work", "실무 가이드", "문의 양식"],
-    image: "/images/works/contact-form-delivery-check/form-on-desk.webp",
-    link: "/works/contact-form-delivery-check",
+    title: "AI 자동화, 권한을 세 단계로 나눠 주기",
+    summary: "업무 자동화에 AI를 붙일 때 읽기, 초안, 실행 순서로 권한을 넓혀 가는 방법을 정리한 Work 실무 가이드입니다.",
+    tags: ["Work", "실무 가이드", "업무 자동화"],
+    image: "/images/works/automation-permission-ladder/approve-draft.webp",
+    link: "/works/automation-permission-ladder",
   },
   {
     title: "한영 웹페이지 배포 검수",

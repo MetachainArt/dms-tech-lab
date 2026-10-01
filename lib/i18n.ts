@@ -4,7 +4,7 @@ import { getVisibleEmptySeriesIds } from "./blog-data";
 export type Locale = "ko" | "en";
 
 export const TRANSLATED_PATHS = ["/", "/about", "/works", "/contact", "/blog", "/gallery"] as const;
-export const TRANSLATED_WORK_SLUGS = ["bilingual-page-release-check", "contact-form-delivery-check"] as const;
+export const TRANSLATED_WORK_SLUGS = ["bilingual-page-release-check", "automation-permission-ladder"] as const;
 
 export function getLocale(pathname: string): Locale {
   return pathname === "/en" || pathname.startsWith("/en/") ? "en" : "ko";

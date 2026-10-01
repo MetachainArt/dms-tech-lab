@@ -1,0 +1,72 @@
+---
+title: "Giving AI automation permission in three steps"
+excerpt: "Hand an AI everything on day one and a small mistake becomes an incident. A practical Work guide to widening permissions in order, from read to draft to act, with what to check at each step."
+date: "2026-10-01"
+readTime: "10 min"
+kind: "guide"
+tags: ["Work", "Workplace automation", "AI adoption"]
+---
+
+More teams are connecting AI to sorting email, drafting reports and preparing documents for partners. The first real question is rarely which model to use. It is how far the AI should be allowed to reach. This is a practical guide, not a report on a client's rollout. It covers one part of the workplace automation and AX design work DMS.Labs does, kept general enough for any team.
+
+The method is simple. Do not hand over permission all at once. Split it into three steps, read, draft and act, and widen it one step at a time. Move up only after the current step has proven itself.
+
+## Why handing it all over at once is risky
+
+Once an AI can call tools, it stops being a program that only talks and becomes one that changes things. It can send mail, delete files and write values into systems. [OWASP's LLM risk list](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/) calls this Excessive Agency: the vulnerability that lets damaging actions happen in response to unexpected, ambiguous or manipulated model output, whatever caused the model to misbehave. It names three root causes: excessive functionality, excessive permissions and excessive autonomy.
+
+In everyday work that reads like this. If you only want email summaries but connect a tool that can also delete and send, the functionality is excessive. If reading is enough but the connection uses an account that can write, the permissions are excessive. If nothing requires a person to check, the autonomy is excessive. OWASP's own scenario looks much the same. An assistant summarises incoming mail, but its extension can also send messages, and a maliciously written email tricks it into scanning the inbox for sensitive information and forwarding it to an attacker. The same page says this could be avoided with an extension that only reads mail, a read-only OAuth scope, and a person manually reviewing and pressing send on every drafted message.
+
+The practical rule follows. Assume the AI can be wrong, and design permissions so that a wrong answer costs little. A stronger model does not make this design unnecessary. The design is what lets you use a strong model without worrying.
+
+## Step one: let it read
+
+At the first step the AI reads material, summarises it, sorts it or answers questions. It cannot change any system. Reading a mailbox, looking through a document folder and reviewing a draft report all belong here. The step has two purposes. One is to see how accurately the AI understands your own material. The other is to give people a feel for whether the output can be trusted.
+
+Connect it through a read-only account or a read-only scope. OWASP gives the example of an app that reads a product database to make recommendations: it should get read access to the table it needs, and no insert, update or delete rights. That limit has to be enforced by the permissions of the connected identity, not by asking the AI nicely. A line in the prompt saying "do not delete anything" is not a safeguard.
+
+What to check here is accuracy. Ask the same question about the same material several times and see whether the answers stay steady. See whether it points to the passage that supports its answer. See whether it invents anything the material does not say. Collect ten hard cases from real work and run the same ten each time, which makes change easy to spot. Someone who knows the right answers should read the results and mark them. An AI that often errs while only reading has no business moving up.
+
+![A hand holding a pen over a printed draft on a wooden desk, with an open laptop beside it.](/images/works/automation-permission-ladder/approve-draft.webp)
+
+## Step two: let it draft
+
+When reading results hold up, let the AI produce a draft of the output. That could be a reply email, tidied meeting notes, the opening paragraph of a report or the line items of a quote. The key point is that the draft does not go out by itself. It lands where a person reads it, edits it and approves it.
+
+At this step the approval must be real review, not a formality. If the reviewer skims and clicks approve every time, step two has quietly become step three. To prevent that, name the items to check. Is the recipient correct? Do the amounts and dates match the source? Does the text promise anything nobody agreed to? Is the right file attached? Showing the location of the source material the AI relied on next to the draft shortens review.
+
+OWASP lists human approval among its mitigations: require a person to approve high-impact actions before they happen. Its example is an app that posts social media content for a user, where the posting function itself should include a user approval routine. It also stresses that authorization should be enforced in the downstream system rather than left to the model to decide. The model should not be the one deciding whether an action is allowed.
+
+![A hand moving one of three rows of blank paper cards on a wooden table.](/images/works/automation-permission-ladder/three-columns.webp)
+
+Record how much people edited each draft. Some task types are rarely changed, and others are always heavily rewritten. Rarely edited types become candidates for the next step. Heavily edited types should stay at drafting longer, or the prompt and input material need work. The number does not need high precision. Telling "needs a lot of hands" from "needs few" per task type is enough.
+
+## Step three: give action in a narrow scope
+
+Acting means the AI sends the mail, changes the record or moves the file itself. Not every task needs to climb this high. When one does, cut the job as narrowly as you can. Not "handle my email," but "read the amount from receipt emails in this folder and append it to one column of this sheet." Fix the action and the target.
+
+OWASP points the same way. Avoid open-ended extensions, such as ones that run any shell command or fetch any URL, and use tools with granular functionality. If the job is writing a result to a file, build a function that writes only to that file instead of opening a shell. Run actions in the context of the individual user, with the minimum privileges needed. A shared high-privilege account that can reach everyone's files lets one person's request touch another person's data.
+
+For action, ask first whether it can be undone. Appending a row to a sheet can be reversed by deleting it. An email that has gone out cannot be called back. For hard-to-reverse actions, keep a human approval even after a task reaches step three. Deletion, payment, outbound messages and permission changes should by default wait for a person to press the last button. That is not distrust of the AI. The cost of an accident is lopsided.
+
+If you grant action, add activity logs and rate limits too. OWASP notes that logging, monitoring and rate limiting do not prevent excessive agency but can limit the damage. A cap on messages sent per hour buys time to notice when something odd begins. The log should show what was read and what was done, and a person should have a single way to stop everything.
+
+## Write down the rule for moving up
+
+The value of three steps lies in agreeing on the criteria for moving up beforehand. Without them, the level creeps upward because it is convenient or because people are busy. One line per task type is enough. For example, receipt sorting moves to step three after a set run of reviewed items with no errors. The number depends on how much risk the team accepts, and this guide recommends no specific figure. What matters is that there is a condition for moving up and a condition for moving down. Include the rule that one error drops the task a step while you look into the cause.
+
+Change one thing at a time when you move up. If you swap the model and raise action rights together, you cannot tell which change caused a problem. Editing the prompt, changing the input material and raising permissions should each happen separately, with the result observed in between.
+
+[NIST's AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) offers voluntary guidance for managing AI risk. The three steps here do not replace it, but a growing organisation may find it worth consulting on how to identify, measure and manage risk. For a small team, these three steps and a criteria sheet are enough to start.
+
+## A possible first week
+
+A team starting out picks the smallest repetitive task there is, low in risk and easy to check. On the first day, run step one: the AI reads the material, and a person compares the result with their own reading of the same material. A few days later, move to step two. The AI drafts, and a person approves it against the review list. Meanwhile, keep one page noting where the AI was wrong and where people edited. As the page fills, you have evidence on whether this task can move to step three or should stop at drafts.
+
+As tasks multiply, keep a table of each task type's current step. Some stay at reading, some reach drafting, and only a few reach action. There is no need to put every task at the same step. Different steps are the normal state.
+
+## In short
+
+The outcome of AI automation does not hang on model performance alone. It depends on which permissions are granted in what order, where people check, and where things stop when something goes wrong. Keeping the order from reading to drafting and from drafting to acting keeps the damage of a wrong answer small while you find out what the AI is good for. For teams in a hurry, the order tends to save time.
+
+The two images in this article were newly generated in a photographic film style to show a review scene on a desk. They are not photographs of an actual project or a client's site.

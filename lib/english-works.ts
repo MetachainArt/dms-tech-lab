@@ -6,10 +6,10 @@ type WorkTranslation = Pick<ShowcaseWorkItem, "title" | "summary" | "tags"> & {
 
 // Match translations by the original destination so order, assets and links stay shared.
 const translations: Record<string, WorkTranslation> = {
-  "/works/contact-form-delivery-check": {
-    title: "A contact form is not done until the message arrives",
-    summary: "A practical Work guide to checking contact-form fields, error messages, sender authentication and the real inbox, not just the thank-you screen.",
-    tags: ["Work", "Practical guide", "Contact forms"],
+  "/works/automation-permission-ladder": {
+    title: "Giving AI automation permission in three steps",
+    summary: "A practical Work guide to widening an AI automation's permissions in order: read, draft, then act.",
+    tags: ["Work", "Practical guide", "Workplace automation"],
     linkLabel: "Read the English guide",
   },
   "/works/bilingual-page-release-check": {
@@ -61,7 +61,7 @@ export const ENGLISH_SHOWCASE_WORKS = SHOWCASE_WORKS.map((work) => {
   return {
     ...work,
     ...translation,
-    link: work.link === "/works/bilingual-page-release-check" || work.link === "/works/contact-form-delivery-check" ? `/en${work.link}` : work.link,
+    link: work.link === "/works/bilingual-page-release-check" || work.link === "/works/automation-permission-ladder" ? `/en${work.link}` : work.link,
     // New untranslated work remains visible with an honest language label.
     linkLabel: translation?.linkLabel ?? "View the original in Korean",
     contentLanguage: translation ? "en" : "ko",
