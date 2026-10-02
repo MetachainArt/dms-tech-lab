@@ -7,7 +7,7 @@ readTime: "7 min"
 coverImage: "/images/posts/closure-capacity-144-to-288/overview-en.png"
 series: "optical-communications"
 chapter: "04"
-translationSourceHash: "9c0e21d41915e0c6057aca18ee0c48a082569969cac6d0c02b615381a3913ecb"
+translationSourceHash: "88a5667af8f1eeb1c18f70003f759d2a90dab334ba7deec64d75cfba59a2391d"
 tags:
   - Fiber Optics
   - Splice Closure
@@ -23,6 +23,10 @@ This is not a substitute for any product's datasheet or acceptance criteria. Tra
 
 *Concept diagram (self-made). Not a specific product or site.*
 
+![3D render of a closure cut in half showing the tray stack and slack storage basket](/images/posts/closure-capacity-144-to-288/render-cutaway.png)
+
+*3D render (made in Blender). Conceptual, not a specific product.*
+
 ## 1. The capacity figure is conditional
 
 One manufacturer's FAQ for a basket-style closure advises no more than 288-fiber cables when conventional 12-fiber loose tubes are used, because of packing density in the basket. Its highest single-fiber figure (432) is reserved for micro cables with smaller tubes or cables with 24 or more fibers per tube. The figure comes from the same closure, but the usable range changes with cable construction.
@@ -37,6 +41,10 @@ So trays are only one of several limits, and the others move at the same time.
 
 *Concept diagram (self-made). Not a specific product.*
 
+![3D render of the closure end face with cable ports and grommets](/images/posts/closure-capacity-144-to-288/render-entry.png)
+
+*3D render (made in Blender). Conceptual, not a specific product.*
+
 More fibers usually means more cables, or thicker ones. Each port has an allowed cable diameter range, and ranges differ between ports. Manufacturer documents also separate mid-span entry (passing a cable through uncut) from butt entry, and feeder ports from drop ports.
 
 Check three things: whether the number and outer diameter of your cables fit the port specifications, whether the design needs mid-span or butt entry, and whether ports remain free for cables you will add later. If ports run out, the trays do not matter.
@@ -47,13 +55,13 @@ Check three things: whether the number and outer diameter of your cables fit the
 
 *Concept diagram (self-made). Not a specific product.*
 
+![3D exploded view separating the closure shell, tray stack, and storage basket](/images/posts/closure-capacity-144-to-288/render-exploded.png)
+
+*3D render (made in Blender). Conceptual, not a specific product.*
+
 Tubes and ribbon that pass through unspliced, the express fibers, still need storage at their minimum bend radius. That space is shared with the trays, so stacking more trays shrinks it. This is why manufacturers say capacity depends on the volume of stored, unused fibers and tubes.
 
 It also means splicing 288 fibers and carrying a 288-fiber cable through the closure are not the same number. How many fibers of a 288-fiber cable you splice, and how many you express, changes both the tray count and the storage you need.
-
-![Illustration of cables and a storage loop sharing space inside one closure](/images/posts/closure-capacity-144-to-288/illust-shared-space.png)
-
-*Illustration (AI-generated, conceptual). Not a specific product.*
 
 ## 4. Splice method and tray density come with the number
 
@@ -61,15 +69,15 @@ It also means splicing 288 fibers and carrying a 288-fiber cable through the clo
 
 *Concept diagram (self-made). Not a specific product.*
 
+![3D render of one splice tray with fibers routed at a generous bend radius](/images/posts/closure-capacity-144-to-288/render-tray.png)
+
+*3D render (made in Blender). Conceptual, not a specific product.*
+
 Single fusion, mass fusion, and ribbon type change how many splices fit in one tray. One maker recommends half-loading flat ribbon trays, because congestion in the tray makes work and later inspection harder. It separately notes that rollable ribbon can use the full tray density. Always confirm whether a "288" is single-fiber, mass fusion, or ribbon.
 
 ## 5. Decide now how the closure will be reopened
 
 A packed closure is harder to reopen without touching live fibers. If a cable or branch will be added later, decide at design time which tray gets opened and where spare room remains. Re-entry sealing was covered in the previous article (chapter 03).
-
-![Illustration of a technician with a checklist looking into a handhole](/images/posts/closure-capacity-144-to-288/illust-planning.png)
-
-*Illustration (AI-generated, conceptual). Not a specific site.*
 
 ## What to write down before quoting 288
 
@@ -88,4 +96,4 @@ Only after each item is checked against the closure's own documents can 288 go i
 - Corning, Fiber Closures (CRR-912-AEN, 2021-03-25): https://www.corning.com/catalog/coc/documents/selection-guides/CRR-912-AEN.pdf
 - Corning, Fiber Optic Splice Closure 2178-L/S installation procedure (78-8130-1910-2, Issue 9): https://www.corning.com/catalog/coc/documents/standard-recommended-procedures/H78-8130-1910-2-9.pdf
 
-The diagrams are self-made, and the two illustrations are AI-generated conceptual art; no photos or drawings from manufacturer documents were used.
+The diagrams and 3D renders are self-made conceptual material; no photos or drawings from manufacturer documents were used.
