@@ -3,7 +3,9 @@ export const SITE_CONFIG = {
   title: "DMS.Labs | 자동화 · 설계 · 교육",
   description:
     "광통신 트레이닝 전문가이자 AX 전문가. 광통신 하드웨어·FTTx 현장 경험을 바탕으로 AI 자동화, 3D 설계, 실무형 교육을 리도만의 방식으로 연결합니다.",
-  url: "https://dmssolution.co.kr",
+  // 정식 호스트. apex(dmssolution.co.kr)는 Vercel 에서 www 로 리다이렉트되므로
+  // canonical·hreflang·sitemap·robots 는 모두 이 값(www)을 기준으로 맞춘다.
+  url: "https://www.dmssolution.co.kr",
   locale: "ko_KR",
   type: "website",
   keywords: [
@@ -40,7 +42,7 @@ export const SITE_CONFIG = {
   ],
   author: {
     name: "DMS.Labs",
-    url: "https://dmssolution.co.kr",
+    url: "https://www.dmssolution.co.kr",
   },
   social: {
     // instagram / youtube: 계정 핸들이 확정되면 추가할 것.
@@ -53,7 +55,7 @@ export const SITE_CONFIG = {
     description:
       "광통신 트레이닝 전문가이자 AX 전문가. 광통신 하드웨어·FTTx 현장 경험을 바탕으로 AI 자동화, 3D 설계, 실무형 교육을 리도만의 방식으로 연결합니다.",
     image:
-      "https://dmssolution.co.kr/og-fiber-noir-v1.jpg",
+      "https://www.dmssolution.co.kr/og-fiber-noir-v1.jpg",
     alt: "DMS.Labs - 자동화 · 설계 · 교육",
   },
   twitter: {
@@ -62,7 +64,7 @@ export const SITE_CONFIG = {
     description:
       "복잡한 일은 줄이고, 필요한 건 직접 만듭니다.",
     image:
-      "https://dmssolution.co.kr/og-fiber-noir-v1.jpg",
+      "https://www.dmssolution.co.kr/og-fiber-noir-v1.jpg",
   },
 } as const;
 

@@ -5,6 +5,8 @@ import { SITE_CONFIG } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "리도인사이트 뉴스레터 | Reedo",
   description: "AI, 자동화, 수익화에 대한 현장의 기록을 이메일로 받아보세요. 새 글이 발행될 때만 발송됩니다.",
+  // 없으면 레이아웃의 홈 canonical 을 상속한다.
+  alternates: { canonical: `${SITE_CONFIG.url}/newsletter` },
   openGraph: {
     title: "리도인사이트 뉴스레터",
     description: "AI, 자동화, 수익화에 대한 현장의 기록을 이메일로 받아보세요.",

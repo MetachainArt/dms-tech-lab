@@ -8,8 +8,33 @@ import { ArrowLeft, Share2, CornerUpRight, Download, CheckCircle, Copy } from "l
 
 // ... imports remain the same
 import { formatDate } from "@/lib/utils"; // Using utility for date formatting
+import { generateMetadata as generateSeoMetadata } from "@/lib/metadata";
 
 export const dynamic = 'force-dynamic';
+
+// 없으면 레이아웃의 홈 title·description·canonical 을 상속한다. (기존 제목·설명 사용)
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const automation = await prisma.automation.findUnique({
+    where: { id },
+    select: { id: true, title: true, description: true },
+  });
+  if (!automation) {
+    // 없는 템플릿 안내 화면은 색인하지 않는다.
+    return generateSeoMetadata({
+      title: "자동화",
+      description: "반복 업무를 줄이는 실무형 자동화 템플릿과 워크플로우를 살펴보세요.",
+      path: `/automation/${id}`,
+      noIndex: true,
+    });
+  }
+
+  return generateSeoMetadata({
+    title: automation.title,
+    description: automation.description,
+    path: `/automation/${automation.id}`,
+  });
+}
 
 export default async function TemplateDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const session = await getServerSession(authOptions);

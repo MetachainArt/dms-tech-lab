@@ -5,7 +5,7 @@ const origin = process.argv[2] || 'http://127.0.0.1:3100';
 assert.ok(new URL(origin).hostname === '127.0.0.1' || new URL(origin).hostname === 'localhost', 'Use the isolated local preview');
 const index = JSON.parse(fs.readFileSync(new URL('../lib/blog-translation-index.json', import.meta.url), 'utf8'));
 const routes = ['/en/blog', ...index.slugs.map(slug => `/en/blog/${slug}`), ...index.series.map(id => `/en/blog/series/${id}`)];
-const canonicalOrigin = 'https://dmssolution.co.kr';
+const canonicalOrigin = 'https://www.dmssolution.co.kr';
 const checked = [];
 let cursor = 0;
 await Promise.all(Array.from({ length: 6 }, async () => {

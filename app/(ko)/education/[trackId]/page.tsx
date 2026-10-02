@@ -7,11 +7,26 @@ import { ArrowLeft } from "lucide-react";
 import EducationAccordion from "@/components/education/EducationAccordion";
 import { editorialCover } from "@/lib/editorial-art";
 import styles from "@/components/brand/FiberContent.module.css";
+import { generateMetadata as generateSeoMetadata } from "@/lib/metadata";
 
 interface PageProps {
     params: Promise<{
         trackId: string;
     }>;
+}
+
+// 트랙별 고유 title·description·self canonical (기존 트랙 제목·설명 사용)
+export async function generateMetadata({ params }: PageProps) {
+    const { trackId } = await params;
+    const track = EDUCATION_TRACKS[trackId];
+    if (!track) return;
+
+    return generateSeoMetadata({
+        title: track.title,
+        description: track.description,
+        path: `/education/${track.id}`,
+        keywords: track.tags,
+    });
 }
 
 export default async function EducationTrackPage({ params }: PageProps) {

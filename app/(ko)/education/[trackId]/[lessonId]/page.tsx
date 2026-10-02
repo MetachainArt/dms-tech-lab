@@ -8,12 +8,40 @@ import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { EducationMDXComponents } from "@/components/education/EducationMDXComponents";
+import { generateMetadata as generateSeoMetadata } from "@/lib/metadata";
 
 interface PageProps {
     params: Promise<{
         trackId: string;
         lessonId: string;
     }>;
+}
+
+// 레슨별 고유 title·description·self canonical. 본문 frontmatter(title/desc/coverImage)를 그대로 쓴다.
+export async function generateMetadata({ params }: PageProps) {
+    const { trackId, lessonId } = await params;
+    const track = EDUCATION_TRACKS[trackId];
+    if (!track) return;
+
+    const lessonData = getLessonBySlug(trackId, lessonId);
+    const path = `/education/${track.id}/${lessonId}`;
+
+    if (!lessonData) {
+        // 준비 중 안내만 나오는 주소는 색인하지 않는다.
+        return generateSeoMetadata({ title: track.title, description: track.description, path, noIndex: true });
+    }
+
+    const { frontmatter } = lessonData;
+    const title = typeof frontmatter.title === "string" && frontmatter.title ? frontmatter.title : track.title;
+    const description = typeof frontmatter.desc === "string" && frontmatter.desc ? frontmatter.desc : track.description;
+
+    return generateSeoMetadata({
+        title,
+        description,
+        path,
+        image: typeof frontmatter.coverImage === "string" ? frontmatter.coverImage : undefined,
+        keywords: track.tags,
+    });
 }
 
 export default async function LessonPage({ params }: PageProps) {

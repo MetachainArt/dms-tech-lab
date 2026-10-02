@@ -7,9 +7,11 @@ import { EDUCATION_TRACKS } from '@/lib/education-data';
 import { BLOG_SERIES, getVisibleEmptySeriesIds } from '@/lib/blog-data';
 import { getCourseStructure } from '@/lib/education-fs';
 import { languageAlternates, localizePath, TRANSLATED_PATHS, TRANSLATED_WORK_SLUGS } from '@/lib/i18n';
+import { SITE_CONFIG } from '@/lib/seo';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://dmssolution.co.kr';
+  // canonical·hreflang 과 같은 정식 호스트(www)를 쓴다.
+  const baseUrl = SITE_CONFIG.url;
 
   // 메인 페이지 + 모든 서브 페이지
   const mainRoutes = [

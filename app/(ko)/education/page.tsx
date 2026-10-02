@@ -4,6 +4,14 @@ import Link from "next/link";
 import { EDUCATION_TRACKS } from "@/lib/education-data";
 import styles from "@/components/brand/FiberContent.module.css";
 import { editorialCover } from "@/lib/editorial-art";
+import { generateMetadata as generateSeoMetadata } from "@/lib/metadata";
+
+// 없으면 레이아웃의 홈 title·description·canonical 을 그대로 상속한다.
+export const metadata = generateSeoMetadata({
+  title: "AI & 엔지니어링 교육",
+  description: "다양한 AI & 엔지니어링 교육자료를 제공합니다. 시중에 널리 알려지지 않은 각종 고급 스킬들을 체계적으로 정리하여 지속적으로 업로드합니다.",
+  path: "/education",
+});
 
 const courseArtwork: Record<string, string> = {
   "gen-ai": "content/education/gen-ai/01-foundation/01-overview.mdx",
