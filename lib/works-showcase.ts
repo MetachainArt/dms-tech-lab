@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "AI 도입 성과 측정",
+    summary: "매출·비용·검수시간을 함께 보는 AX 실무 가이드입니다. KISDI 연구의 결과와 한계를 바탕으로 도입 전후 측정과 운영 판단을 정리했습니다.",
+    tags: ["Work", "AX 전환 설계", "성과 측정"],
+    image: "/images/works/ai-performance-measurement/measurement.webp",
+    link: "/works/ai-performance-measurement",
+  },
+  {
     title: "AI 자동화, 권한을 세 단계로 나눠 주기",
     summary: "업무 자동화에 AI를 붙일 때 읽기, 초안, 실행 순서로 권한을 넓혀 가는 방법을 정리한 Work 실무 가이드입니다.",
     tags: ["Work", "실무 가이드", "업무 자동화"],

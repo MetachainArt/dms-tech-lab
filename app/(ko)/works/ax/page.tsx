@@ -37,6 +37,16 @@ export default function AxLandingPage() {
           </header>
 
           <div className={styles.grid}>
+            <Link href="/works/ai-performance-measurement" className={styles.entry}>
+              <div className="space-y-4">
+                <div className={styles.image}><Image src="/images/works/ai-performance-measurement/measurement.webp" alt="업무 성과를 기록하는 책상 장면" fill sizes="(max-width: 700px) 88vw, 44vw" /></div>
+                <span className={styles.eyebrow}>실무 가이드 · 한국어 / English</span>
+                <p className={styles.eyebrow}>AI PERFORMANCE MEASUREMENT</p>
+                <h2>AI 도입 성과 측정</h2>
+                <p className="text-sm leading-7 text-paperfolio-text-muted">매출·비용·검수시간을 함께 보는 법. KISDI 연구를 바탕으로 기준선과 검수 비용, 확대·수정·중단 기준을 정리했습니다.</p>
+                <div className={styles.tags}><span>AX</span><span>성과 측정</span><span>실무 가이드</span></div>
+              </div>
+            </Link>
             {work.projects.map((project) => (
               <Link
                 key={project.id}

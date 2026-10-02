@@ -1,0 +1,105 @@
+---
+title: "Measuring AI adoption: revenue, costs and review time"
+excerpt: "Revenue growth, profit and time saved do not move together. A practical guide to baselines, review costs and rollout decisions, informed by a KISDI study of Korean firms."
+date: "2026-10-02"
+readTime: "12 min"
+kind: "guide"
+coverImage: "/images/works/ai-performance-measurement/measurement.webp"
+tags: ["Work", "AI transformation", "Performance measurement"]
+---
+
+[AI transformation design (Korean)](/works/ax) · [한국어로 읽기](/works/ai-performance-measurement)
+
+Imagine that AI has cut report-writing time in half. Customer enquiries receive faster responses, too. Yet at the end of the month, it is hard to explain what improved in the accounts. Software subscriptions cost more, and a person still has to check the output.
+
+It would be premature to call that rollout a success or a failure. Processing speed has improved, but the steps connecting that improvement to lower spending or additional revenue still need to be measured.
+
+A KISDI report by Seo Young-seon, examining AI adoption and firm performance through business reports in manufacturing and services, provides useful evidence. It links Korean firms' annual business reports with financial data for 2010–2024. Its findings show why a simple yes-or-no measure of AI adoption cannot explain business performance on its own.
+
+## Higher average revenue does not establish an AI effect
+
+In the report's 2024 service-sector sample, AI-related firms had average revenue of about KRW 808.0 billion, compared with KRW 339.1 billion for non-AI firms. Read in isolation, the difference can make AI look like a powerful revenue driver.
+
+The median reverses the order: about KRW 52.4 billion for AI-related firms and KRW 68.3 billion for non-AI firms. The company in the middle of the revenue distribution had lower revenue in the AI group. A number of very large firms were pulling that group's average upward.
+
+After controlling for financial conditions and firm characteristics, the researchers did not find a statistically significant association between the service sector's binary AI-adoption measure and same-period revenue. Within AI-related firms, however, a higher AI-engagement measure was associated with higher revenue.
+
+That engagement measure was not hours of use or money invested. It was the share of AI-related keywords in a firm's business report. The finding therefore cannot be translated into a rule that using more AI causes more revenue.
+
+The same caution applies when adopting another company's success story as an internal target. Differences in scale, existing customers, staff and capital can change what happens after a rollout.
+
+## Revenue and profit move at different speeds
+
+The study's same-period net-income results differed from its revenue findings. After financial conditions and firm characteristics were controlled for, neither the adoption measure nor AI engagement showed a statistically significant association with same-period net income.
+
+A separate event-time analysis found improvements in service-sector revenue and profit at some later points. This is not evidence that waiting a fixed number of years guarantees a return. The dataset ends in 2024, so its longer-run estimates mainly come from firms that adopted AI earlier. More data are needed before extending that trajectory to recent generative-AI adopters.
+
+In practice, data preparation, integration and training can create costs before benefits appear. Revenue may rise without immediately increasing profit. But having already paid the setup bill is also not a reason to keep a project whose benefits remain unclear.
+
+A decision to wait, revise or stop needs records showing where costs and benefits actually arise.
+
+## Establish the comparison before deployment
+
+The following is a practical measurement proposal informed by the study. It is not a framework or set of indicators validated by that research.
+
+Choose one workflow and record its current state before adding AI. A bounded task such as compiling weekly sales data into a draft report is easier to measure than a broad ambition such as improving reporting.
+
+| Measure | Record before deployment | Check after deployment |
+|---|---|---|
+| Processing time | Time from preparing inputs to final approval | Total time, including review rather than drafting alone |
+| Quality | Errors, omissions and rejected outputs | Errors and revision requests under the same criteria |
+| Human involvement | Steps handled or judged by people | Time spent on exceptions and rework |
+| Actual spending | Outsourcing, overtime and existing software costs | Added subscriptions, API usage and maintenance |
+| Business output | Throughput, delivery reliability and customer response | Additional throughput and revenue with quality maintained |
+
+Measuring draft-generation time alone can exaggerate the benefit. If fact-checking and correction take longer, the complete workflow may not be faster. Keep the measurement boundary consistent, ending when the output is usable.
+
+Comparison conditions matter as well. Giving AI only easier tasks, or presenting a trial supported by expert staff as routine operating performance, can inflate the apparent improvement. Record volume, difficulty, the people involved and exceptions so changes can be explained.
+
+## Saved time is not automatically cash saved
+
+Completing a two-hour task in one hour genuinely releases an hour of capacity. It does not automatically reduce the payroll by an hour's worth of wages.
+
+If outsourcing purchases or paid overtime actually fall, record a spending reduction. If the released time is used to fulfil an additional order, examine that order's revenue after its additional costs. If the time has not yet been redeployed, classify it as available capacity rather than cash profit.
+
+Small teams and solo businesses can easily omit their own time from the calculation. A service may look profitable when only software payments are counted, even as the owner spends more time correcting customer requests and recovering from errors.
+
+This does not make time savings unimportant. Less overtime and more reliable delivery are valuable changes. Keeping those operating improvements separate from reduced cash spending makes the next investment decision more reliable.
+
+![Inspection bench with components, a magnifier and measuring tools.](/images/works/ai-performance-measurement/review-cost.webp)
+
+## Count costs beyond the subscription
+
+An AI project's costs extend beyond its monthly software bill. Preparing inputs, connecting systems and reviewing outputs take staff time. A model or service change may require integration work, while outages require a manual fallback.
+
+One way to examine a project's financial contribution is to subtract the extra costs needed to produce its benefits from its additional revenue and actual spending reductions.
+
+Those extra costs include API usage and subscriptions, fulfilment costs for additional orders, review, rework, operations and maintenance. Track recovery of the initial setup cost separately. This is an internal project-economics measure, not the company's overall net income.
+
+Avoid counting the same benefit twice. Treating a released hour as a labour-cost saving and also adding the profit from an extra order completed in that hour can double-count the benefit. Define what spending actually fell and what additional business was delivered.
+
+## Manufacturing and services need different operating measures
+
+For customer support or sales assistance, response time, conversion and order throughput may connect to revenue. For inspection or equipment management in manufacturing, changes in defect rates, repeat inspections and downtime may be the more immediate measures.
+
+The study did not find statistically clear event-time revenue and net-income effects for manufacturing as a whole. It also did not directly measure productivity. The financial findings alone therefore cannot establish that process improvements were absent.
+
+A plant can check whether defect rates declined and then connect that change to actual reductions in scrap or rework costs. If inspection is faster, it must also check whether false detections or missed defects increased. A faster process is not a reason to relax quality or safety requirements.
+
+Revenue and profit remain important end measures. Recording the operating changes that precede them helps identify where to improve the system.
+
+## Use measurement to expand, revise or stop
+
+The purpose of an evaluation sheet is to support the next operating decision, not simply to populate a report with performance numbers.
+
+Lower end-to-end processing time and cost, with quality maintained, provide grounds to consider expansion. Faster drafts coupled with a heavier review burden may call for better inputs, a narrower scope or revised handoff rules. If error risks or maintenance costs cannot be controlled, stopping automation for that workflow is a legitimate decision.
+
+Set the review date and decision criteria when the project begins. Gather enough cases for the workflow's frequency and risk level, but do not wait for the scheduled review if safety, security or quality problems require action.
+
+Before introducing the next AI tool, record the processing time, cost and error rate of one target workflow. Add the actual post-deployment values to the same sheet. The record should show both where work improved and where new human work appeared. That is the evidence needed before expanding to the next workflow.
+
+## Source and limits of interpretation
+
+This guide draws on Seo Young-seon, KISDI AI Outlook, 2026, Vol. 26, “사업보고서를 활용한 기업의 AI 도입과 성과 분석: 제조업과 서비스업 비교” (a study of AI adoption and firm performance using business reports, comparing manufacturing and services). Means and medians appear on page 11; same-period revenue and net-income analysis on pages 14–19; event-time results and limits on generalisation on pages 19–20; and measurement limitations on pages 23–24.
+
+The study classified firms as AI firms when an AI-related keyword appeared at least once in the Business Description section of their reports. It did not contextually verify actual adoption or use. Observed relationships should not be treated as firm-specific causal effects or guaranteed returns from recent generative-AI adoption. The measurement table, cost-accounting approach and operating criteria above are practical proposals developed from the findings, not direct research results.
