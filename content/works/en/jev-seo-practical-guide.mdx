@@ -1,0 +1,135 @@
+---
+title: "How to use Jev: setup, costs and a 12-page SEO audit"
+excerpt: "A practical guide to Jev's three judgment types, a bounded Windows setup, API costs and the checks needed before acting on an automated audit."
+date: "2026-10-03"
+readTime: "10 min"
+kind: "guide"
+coverImage: "/images/works/jev-seo-practical-guide/hero.webp"
+tags: ["Work", "AI skills", "Workflow automation", "Jev"]
+---
+
+[한국어 원문](/works/jev-seo-practical-guide)
+
+A Jev SEO audit of 12 pages on metacint.com returned a score of 88. The sample covered the homepage, six category pages and five articles. It was not an assessment of the whole site.
+
+Missing H1 headings and meta descriptions on the six category pages were confirmed on a separate check. The five URLs flagged as broken, however, all returned HTTP 200 and normal page titles when requested independently. PageSpeed measurement failed because of a request limit.
+
+The useful result was a collection of findings and evidence to review. The score alone concealed important differences between confirmed issues, model judgments and missing measurements. This guide explains what Jev does, how to try it and what the cost actually covers.
+
+## Jev and Jev SEO are different things
+
+**Jev** is TypeSafe's judgment model. Instead of writing an article, it classifies or evaluates supplied material against a defined question. **Jev SEO** is a separate open-source tool that combines this model with website crawling and deterministic checks.
+
+Code checks whether a title tag exists and what response a link returns. Jev assesses meaning: the purpose of a page, for example, or how well its content answers a visitor's question. The broken-link alerts in this test came from code, not Jev. A finding that does not reproduce on a later request is not, by itself, evidence of a model error.
+
+## What else could you use it for?
+
+The following are possible applications of Jev's answer types. They are suggestions, not additional experiments completed in this test.
+
+| Task | Question | Use of the result |
+| --- | --- | --- |
+| Sort material | Is this lifestyle information, product information or opinion? | Use Choice to route it, with an “other” option for material that does not fit. |
+| Check support | Does the supplied source support this claim? | Use Noul and send uncertain passages for another review. |
+| Evaluate instructions | How concrete are the steps a reader can follow? | Define Score levels and prioritize material that needs more detail. |
+| Route inquiries | Is this about a refund, delivery or product use? | Route to the appropriate queue while keeping actual execution permissions separate. |
+
+The [TypeSafe primitives documentation](https://docs.typesafe.ai/primitives) describes Choice as a selection from options, Noul as a probability of “yes,” and Score as a position along specified levels. Noul does not have a separate confidence value. A Score must be interpreted against its configured levels rather than assumed to be a normalized zero-to-one rating.
+
+“Is this article good?” bundles accuracy, usefulness, clarity and audience fit into one vague question. Asking about these separately makes the next task more specific. A passage without source support needs another source check; an incomplete set of instructions needs missing steps. Also, support in a supplied source does not establish that the source itself is true.
+
+![A conceptual arrangement of document routing, API access and a bounded audit](/images/works/jev-seo-practical-guide/judgments.webp)
+
+## Start with a small, read-only site audit
+
+These instructions are for **Windows PowerShell**. You need Git and Python 3.10 or later. This is a local tool, not a web form where entering a URL is the whole setup. On an organizational device, check software installation and external API policies before proceeding.
+
+### Install the official project in its own environment
+
+Inspect the [official Jev SEO repository](https://github.com/AgriciDaniel/jev-seo), then create a project-specific virtual environment. This keeps the tool's dependencies separate from other Python work.
+
+~~~powershell
+git clone https://github.com/AgriciDaniel/jev-seo.git
+cd jev-seo
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+Copy-Item .env.example .env
+~~~
+
+### Connect a TypeSafe API key
+
+Put your issued key in the TYPESAFE_API_KEY field of the local .env file. Never commit that file to a public repository or paste its contents into a post. A password manager connected to a secure environment-variable path is another option.
+
+Without a TypeSafe key, the tool can still run but marks Jev's semantic assessment as unavailable. A report file existing is not proof that the model evaluated the site. In this test, an already stored credential was loaded into the temporary execution environment, not written into the report.
+
+PAGESPEED_API_KEY is optional. It can help reduce the rate limiting encountered by unkeyed requests, but a key does not guarantee that every measurement will succeed.
+
+### Limit the first audit to 12 pages
+
+Replace the example address with a site you control. Use public pages, respect crawl restrictions and do not use the tool to bypass a login or access control.
+
+~~~powershell
+.\.venv\Scripts\python.exe -m jevseo audit https://example.com/ --max-pages 12 --jev-pages 12 --max-depth 2 --time-budget 180 --jev-budget 0.05 --psi-pages 1 --render never --out reports/test
+~~~
+
+| Option | What it does |
+| --- | --- |
+| --max-pages 12 | Caps collected page records, not every network request made by the audit. |
+| --jev-pages 12 | Limits pages submitted for model assessment. Site-level questions mean this is not an API-call count. |
+| --jev-budget 0.05 | Sets a $0.05 Jev budget in the tool, based on token estimates and its usage ledger. |
+| --psi-pages 1 | Attempts mobile and desktop PageSpeed measurements for the homepage. |
+| --render never | Checks HTML without browser rendering. Content that appears only after JavaScript runs can be missed. |
+
+Leave out --full for an initial trial. That option adds separately billed DataForSEO services. Check a small report before increasing the scope, and review actual usage alongside the tool's budget setting. The budget is a safeguard, not a substitute for checking billing records.
+
+### Export the workbook
+
+~~~powershell
+.\.venv\Scripts\python.exe -m jevseo render reports/test --formats xlsx,md
+~~~
+
+Open report.xlsx and report.md in the reports/test directory. audit.json contains the underlying results and digest.md provides a compact summary. The workbook's Actions sheet brings together evidence, affected pages, review flags and work status.
+
+PDF output required native libraries that were not available in the Windows test environment, so this run exported Excel and Markdown. For PDF, follow WeasyPrint's operating-system-specific dependency instructions. If an existing Python configuration conflicts with the tool, isolate the current execution environment before changing global settings used by other jobs.
+
+## Delegating the setup to a coding agent
+
+An agent such as Aside or Claude Code can carry out the setup if its environment has the necessary execution tools and a secure API-key connection. A request does not give every chat product those capabilities. A bounded brief could read:
+
+> Inspect the official AgriciDaniel/jev-seo repository and install it in an isolated environment. Audit up to 12 public pages on the site I manage. Set the Jev budget to $0.05 and do not use DataForSEO. Load the API key securely without displaying or logging it. Do not change the website. Produce an Excel report, recheck high-priority findings and distinguish confirmed issues, model opinions and failed measurements.
+
+After installing and registering the Claude Code skill, its /jev-seo command can be used with a site address. Typing the command alone does not install the project or connect credentials. Ask the agent to report how many pages were actually judged and which external requests failed, not merely where it saved a file.
+
+![A conceptual balance comparing API costs with the material that still needs review](/images/works/jev-seo-practical-guide/review.webp)
+
+## What does it cost?
+
+The following figures were checked on **October 3, 2026**. The [TypeSafe model documentation](https://docs.typesafe.ai/models) gives the API rate; the audit ledger gives this run's usage.
+
+| Component | Cost and scope |
+| --- | --- |
+| Jev SEO code and local checks | Open source, with no separate subscription charge for the tool. |
+| Jev API | $0.042 per million input tokens; output tokens are free. |
+| This 12-page test | Model jev-1.13.0, 13 API requests and 66,884 input tokens. The usage-based calculation was $0.002809. |
+| PageSpeed Insights API | Free, subject to request limits. Both attempted measurements failed with HTTP 429 in this run. |
+| Optional DataForSEO mode | The developer gives about $0.30 per site as an example. Actual requests determine cost. It was not used in this test. |
+| Agent and operating costs | Claude or Aside fees, setup time and human review are not included in the API figure. |
+
+The small cost of this sample is not a fixed price for auditing any website. Page length, the number of questions and retries can change usage. Rates can also change. The figure above comes from the tool's token ledger; it is not a verified card-billing statement.
+
+## Benefits and limitations
+
+The main benefit is an organized review process. Answers arrive in defined shapes, while the workbook keeps findings, evidence and work status together. With well-scoped questions, the same approach can help sort source material or decide what deserves closer attention before anything is changed automatically.
+
+Installation and review still take work. A code-level alert may not reproduce. A category listing can be judged against expectations better suited to a complete explanatory article. Dates, author lines and required affiliate disclosures can enter the extracted opening text and affect the assessment. Do not remove a required disclosure merely to improve an automated rating.
+
+TypeSafe identifies English as Jev's strongest language and advises testing non-English workloads, including Korean. Inputs are text only, so images and video need separate preprocessing. Content submitted for assessment goes to an external API. A trial on a public website does not authorize sending internal documents or customer information through the same pipeline; check consent, contracts and security policy first.
+
+## Read the report in this order
+
+Start with **missing measurements**. With PageSpeed unavailable, the overall score does not establish that loading performance is good. The reported 88 is the tool's original partial score, including the link results before independent verification. It was not recalculated after those checks.
+
+Next, **recheck technical findings**. Open links again and inspect page structure for missing metadata. Record the time and request method so that a transient response can be distinguished from a recurring problem. Successful later GET responses do not explain the cause of the original errors.
+
+Finally, **review the model's judgments**. Check whether the supplied text and criteria fit the page. Keep uncertain items in a review queue. As the [confidence documentation](https://docs.typesafe.ai/confidence) explains, confidence summarizes an answer's probability distribution. It is not verified accuracy, and it does not grant permission to publish or delete.
+
+The confirmed category-heading and description omissions were retained as improvement candidates. The site was not modified, and no ranking or traffic uplift has been measured. The next step is to define the scope and approval process for those confirmed changes, rather than chase a higher score through automatic edits.

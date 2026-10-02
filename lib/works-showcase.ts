@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "Jev 사용법과 비용",
+    summary: "사이트 12페이지 실험으로 살펴본 Jev의 판단 방식, Windows 설치와 예산 설정, 장단점과 결과 검수 방법입니다.",
+    tags: ["Work", "AI 스킬", "업무 자동화"],
+    image: "/images/works/jev-seo-practical-guide/hero.webp",
+    link: "/works/jev-seo-practical-guide",
+  },
+  {
     title: "Claude Code가 일하는 동안, 사람이 놓치지 않아야 할 것",
     summary: "You should Know의 장점·한계·사용 조건과 작은 시험 방법을 정리한 공식 문서 기반 Work 가이드입니다.",
     tags: ["Work", "AI 교육", "Claude Code"],
