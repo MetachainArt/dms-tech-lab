@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "뮤즈·닷츠로 기존 자동화를 대체할 수 있을까요?",
+    summary: "38개 활성 반복 루틴과 공식 기능을 대조해 조사·원고, 다계정 게시, Windows 작업과 영상 제작의 이전 가능성을 살펴봤습니다.",
+    tags: ["Work", "AI 자동화", "AI 에이전트"],
+    image: "/images/works/muse-dots-automation-migration/comparison-3d.webp",
+    link: "/works/muse-dots-automation-migration",
+  },
+  {
     title: "Jev 사용법과 비용",
     summary: "사이트 12페이지 실험으로 살펴본 Jev의 판단 방식, Windows 설치와 예산 설정, 장단점과 결과 검수 방법입니다.",
     tags: ["Work", "AI 스킬", "업무 자동화"],

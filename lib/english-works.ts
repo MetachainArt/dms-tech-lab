@@ -6,6 +6,12 @@ type WorkTranslation = Pick<ShowcaseWorkItem, "title" | "summary" | "tags"> & {
 
 // Match translations by the original destination so order, assets and links stay shared.
 const translations: Record<string, WorkTranslation> = {
+  "/works/muse-dots-automation-migration": {
+    title: "Can Muse and dots replace an existing automation setup?",
+    summary: "A documentation-based comparison of 38 active routines: research, publishing, Windows workflows and video production, with migration limits kept explicit.",
+    tags: ["Work", "AI automation", "AI agents"],
+    linkLabel: "Read the English guide",
+  },
   "/works/jev-seo-practical-guide": {
     title: "How to use Jev: setup and costs",
     summary: "A 12-page trial covering structured judgments, Windows setup, budget settings, limitations and evidence-based review.",
