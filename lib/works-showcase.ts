@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "Claude Code가 일하는 동안, 사람이 놓치지 않아야 할 것",
+    summary: "You should Know의 장점·한계·사용 조건과 작은 시험 방법을 정리한 공식 문서 기반 Work 가이드입니다.",
+    tags: ["Work", "AI 교육", "Claude Code"],
+    image: "/images/works/claude-code-you-should-know/attention.webp",
+    link: "/works/claude-code-you-should-know",
+  },
+  {
     title: "AI 비서에게 일을 맡기는 법",
     summary: "OpenAI dots 시연을 따라가며 AI에게 일을 맡기는 다섯 가지 방법과 권한을 나누는 기준을 정리한 Work 실무 가이드입니다.",
     tags: ["Work", "AI 교육", "AI 에이전트"],

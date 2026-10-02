@@ -1,0 +1,91 @@
+---
+title: "What to keep in view while Claude Code works"
+excerpt: "A practical guide to You should Know: benefits, limits, activation requirements and a small trial. A useful note can guide a review, but it is not proof that the work is correct."
+date: "2026-10-03"
+readTime: "7 min"
+kind: "guide"
+coverImage: "/images/works/claude-code-you-should-know/attention.webp"
+tags: ["Work", "AI education", "Claude Code", "Review"]
+---
+
+[한국어로 읽기](/works/claude-code-you-should-know)
+
+Long AI tasks produce two things: the work itself and an expanding account of how it was done. Important qualifications can be easy to miss in that account. A finished response may still contain an unresolved dependency or something the agent could not verify. Claude Code's **You should Know** aims to help people notice information that matters.
+
+This guide draws on Anthropic's announcement and documentation checked on October 3, 2026. It is not a hands-on review or a performance test. The adoption advice and trial design below are DMS.Labs' recommendations.
+
+## What the feature does
+
+Anthropic describes You should Know as a feature that scans Claude's output for important information a user might miss. Its documentation says a side agent watches longer tasks and displays a note above the prompt when it finds something worth knowing. The built-in mod is disabled by default and appears in the plugin list when it is available to your organization.
+
+A note can direct your attention. It does not establish that the output is correct. No note does not mean every test passed or every file is usable. Review the changed code and its execution results. If the task publishes something, inspect the public result separately.
+
+![A conceptual workspace for reviewing the output of a long AI task](/images/works/claude-code-you-should-know/attention.webp)
+
+## Start with a long task you can watch
+
+A multi-file edit or a production-script task is a reasonable place to try it. When you return after doing something else, a useful note could reduce the effort of finding where to begin reading. Whether it actually saves time, and how often it identifies the right information, needs to be checked on your own work.
+
+For a short answer you can read in full, the benefit may be modest. Another note can simply add to what you need to read. Choose a task where missing a qualification is a real concern instead of enabling the feature everywhere at once.
+
+Unattended workflows need a separate assessment. The general Mods documentation says interface elements are displayed in the terminal and in the Code tab of Claude Desktop. They are not displayed in `claude -p` or the Agent SDK. That distinction does not prove how this particular plugin behaves in every non-interactive run. Nor does it establish that it sends alerts to an external automation tool. Verify the plugin's behavior and the notification path in the environment you actually use.
+
+## Check the requirements first
+
+| Check | What to establish |
+| --- | --- |
+| Version | Mods require Claude Code 2.1.287 or later. |
+| Availability | In `/plugin`, open Installed and Show disabled. The built-in item must be available to your organization. |
+| Session | The 2.1.287 release note specifies first-party sessions with telemetry on. |
+| Usage | This guide has not established the plugin's additional usage or cost. Do not assume it is free or has no effect on limits. |
+| Scope | Notes support review. They do not replace permissions, tests or inspection of the actual result. |
+
+Telemetry concerns the sending of analytics information. Do not change an existing privacy or security setting just to try the feature without reviewing that choice. In a workplace, check organizational policy and managed settings first. If the feature is unavailable or policy does not allow it, stop there.
+
+## How to enable it
+
+Check the installed version in your terminal:
+
+```text
+claude --version
+```
+
+If the version is older, finish active work before updating through your installation's supported method. Start a fresh Claude Code session. Open `/plugin`, then Installed → Show disabled, and look for `cc-plugin-you-should-know`. If it is available and the conditions are met, enter this command **at the Claude Code prompt**, not in your operating-system shell:
+
+```text
+/plugin enable cc-plugin-you-should-know@builtin
+```
+
+Check its enabled state in the plugin manager, then try a bounded, private task. There is no reason to install a similarly named third-party plugin or add an unrelated marketplace as a substitute. To stop using it, disable the built-in plugin through `/plugin`.
+
+![A conceptual scene of reviewing an output alongside a separate set of notes](/images/works/claude-code-you-should-know/review.webp)
+
+## A small trial that answers useful questions
+
+Use a copy of a project without customer data or secrets. Keep the task to reading and drafting, with no external publishing, deletion or payments. Do not loosen existing approval rules for this experiment.
+
+Run comparable tasks with the feature off and on, then compare each note with the underlying output. These runs will not be a controlled benchmark, so avoid generalizing from one or two examples. Write down known review points before the run to make useful notes and omissions easier to identify.
+
+| Record | Question |
+| --- | --- |
+| Useful notes | Did a note point to information that needed a second look or a decision? |
+| Noise | Did it repeat known information or flag something irrelevant? |
+| Omissions | Did a human reading the full result find important information the notes missed? |
+| Review time | Was the process easier after including the time spent checking notes against the source? |
+| Usage | Could you observe a change for the same kind of task? |
+
+This record helps you decide whether to keep the feature. It is not a safety score. Even when the notes are useful, retain the step where someone checks the source and the actual deliverable.
+
+## Improve completion reports, with or without this plugin
+
+A simple reporting practice is useful even without You should Know: ask for **verified results, unresolved checks and decisions needed from a person** in separate sections. The goal is to put unfinished business where the next reviewer will see it, rather than leave it buried at the end of a long explanation.
+
+A well-written report still does not prove that a check happened. Decoding a video file is different from watching its content. An accepted upload request is different from checking the public page. When designing an automated workflow, record the evidence behind each completion claim.
+
+Start with one long task in an interface you can watch. Record both useful notes and omissions, and decide whether it reduces your actual review burden before widening its use.
+
+## Official sources
+
+- ClaudeDevs, [You should Know announcement](https://x.com/ClaudeDevs/status/2106118517447876618)
+- Anthropic, [Mods overview](https://code.claude.com/docs/en/plugins/mods/overview)
+- Anthropic, [Claude Code 2.1.287 release-note revision](https://github.com/anthropics/claude-code/commit/52c76441cae91f6891e4712306bffb057ff6fec5)
