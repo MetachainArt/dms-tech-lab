@@ -1,0 +1,3 @@
+# Image provenance (2026-10-02)
+
+call-desk.webp and sorting-notes.webp were newly generated with Aside imagegen.generate (GPT image route; exact model identity not returned) in a photorealistic analog-film style. Prompts: a face-down smartphone on a wooden desk beside an open notebook with an illegible handwritten checklist, a pen and a coffee cup, a hand resting near the phone; an overhead wooden meeting table with paper sticky notes sorted into three loose groups and one hand moving a note, a closed laptop and a mug at the edge. Cropped and optimized to 1440x960 WebP. Not photographs of real projects, clients or the dots product. No external stock photos and no frames from OpenAI's video.

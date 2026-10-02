@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "AI 비서에게 일을 맡기는 법",
+    summary: "OpenAI dots 시연을 따라가며 AI에게 일을 맡기는 다섯 가지 방법과 권한을 나누는 기준을 정리한 Work 실무 가이드입니다.",
+    tags: ["Work", "AI 교육", "AI 에이전트"],
+    image: "/images/works/delegating-work-to-ai-agents/call-desk.webp",
+    link: "/works/delegating-work-to-ai-agents",
+  },
+  {
     title: "AI 도입 성과 측정",
     summary: "매출·비용·검수시간을 함께 보는 AX 실무 가이드입니다. KISDI 연구의 결과와 한계를 바탕으로 도입 전후 측정과 운영 판단을 정리했습니다.",
     tags: ["Work", "AX 전환 설계", "성과 측정"],

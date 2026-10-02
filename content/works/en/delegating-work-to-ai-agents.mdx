@@ -1,0 +1,65 @@
+---
+title: "How to hand work to an AI agent: five lessons from OpenAI's dots demo"
+excerpt: "A practical Work guide that walks through OpenAI's demo of dots, its always-on agents, and turns it into five habits for delegating to AI, plus where to draw the line on permissions."
+date: "2026-10-02"
+readTime: "9 min"
+kind: "guide"
+tags: ["Work", "AI education", "AI agents"]
+---
+
+What happens when one phone call kicks off both a last-minute business trip and a review of customer feedback? That is roughly what OpenAI showed in its recent demo of dots, its new AI agents. This guide walks through the demo and pulls out habits a beginner can start using today. It is not a client case study. Everything here comes from the demo itself and OpenAI's own announcement.
+
+## It is like giving a new hire their first task
+
+Tell a new hire on day one to "just handle it" and you will get something, but probably not what you wanted. They need to know the deadline, the rules they have to follow and what they should bring back. An AI agent is no different. A capable model will happily fill in whatever you leave blank, so the fewer blanks you leave, the more predictable the result.
+
+OpenAI [announced dots](https://openai.com/index/introducing-dots/) on September 29, 2026, describing them as always-on agents that run on their own cloud computer and work through the apps you connect, around the clock. You can message a dot in ChatGPT, Slack or Teams, or simply call it. The difference from a chatbot is that a dot keeps working after the conversation ends and comes back to you with progress, questions or decisions it needs you to make.
+
+## The three jobs handed off in the demo
+
+The live demo at DevDay ran into voice problems. The next day OpenAI posted a redo, [The dots demo, take two](https://www.youtube.com/watch?v=fHEIw5CcN5U). Over about nine minutes, the presenter hands off three jobs.
+
+The first is trip planning. The presenter needs to be in Hollywood by 3 p.m. tomorrow and can leave the office around 10 a.m. They ask for a flight that fits company policy and is refundable, plus a few hotel options with screenshots of the photos and of where they sit on a map. The dot finds flight options, then works through the time it takes to get out of LAX and drive across town, and suggests landing closer to noon to leave some margin. Once the presenter picks a hotel from the photos, it moves on to preparing a one-night booking and checking the cancellation terms.
+
+![A phone lying face-down on a wooden desk beside an open notebook with a handwritten checklist and a coffee cup, by a window.](/images/works/delegating-work-to-ai-agents/call-desk.webp)
+
+The second is making sense of customer feedback. The feedback channel has more than anyone can keep up with, so the presenter asks for the biggest themes and the problems that still have no fix. Before answering, the dot explains how feedback is handled today and admits that matching tickets to fixes is still incomplete. The presenter then adds a follow-up rule: when a fix ships, reply to the affected users in Slack with a link to it and ask them to try again.
+
+The third is clearing Slack. The presenter asks the dot to gather the important unanswered messages and draft replies. Not send them. Draft them. That small distinction matters more than it looks.
+
+## Five habits for handing off work
+
+These five habits are DMS.Labs' reading of the demo, not an official OpenAI guide. They work just as well when you ask a chat assistant like ChatGPT for help.
+
+1. State the goal and the deadline. "Be in Hollywood by 3 p.m. tomorrow" beats "sort out my LA trip".
+2. Say what the result has to satisfy. Company policy, refundability, budget. Leave these out and the AI will pick the most plausible answer, which may not be the one that fits your rules.
+3. Decide what the output should look like. A table, screenshots or a draft are all quick to check by eye. The hotel photos and map screenshots in the demo exist so a person can choose fast.
+4. Mark the points where a person decides. In the demo, the presenter chose the hotel, and the Slack replies stopped at drafts.
+5. Hand over the next step too. A rule like "when the fix ships, tell the user" saves you from coming back to give the same instruction again.
+
+Put together, a request might read: "Before Tuesday morning's meeting with the supplier (goal and deadline), go through the last three months of email with them and find every request we exchanged (what it must cover). Put it in a single table (output). Draft replies for anything that needs one, but do not send them (the human decision). After the meeting I will give you my notes. Turn them into a task list (next step)." It feels long the first time. After that you only swap out the blanks.
+
+![Hands sorting paper sticky notes into three loose groups on a wooden meeting table, with a closed laptop and a mug at the edge.](/images/works/delegating-work-to-ai-agents/sorting-notes.webp)
+
+## A quick exercise you can try today
+
+You do not need dots to practise this. Pick one task you have been putting off this week, ideally something whose result is easy to check, such as scheduling a meeting, a bit of research or a first draft of a report. Ask your usual AI tool in one line. Then ask again using all five habits. Put the two results side by side and count how many places you had to fix by hand. Whatever you fixed becomes a condition in your next request, so you stop making the same correction twice.
+
+## Decide how far it can reach first
+
+When you hand work to an AI agent, it is safer to split permission into levels: may it only read, may it draft, or may it actually act? Decide that per task. We cover this in more depth in [Giving AI automation permission in three steps](/en/works/automation-permission-ladder).
+
+OpenAI's announcement points the same way. Users can set custom rules that allow an action, require approval for it or block it, and certain sensitive actions, such as changing a password, always have to be done by the user. OpenAI also says that the background research a dot does on its own is limited to read-only tools. The Slack replies that stopped at drafts in the demo fit the same pattern.
+
+## What to keep in mind about demos
+
+A demo is a demo. The video ends with the flight still being booked. It shows one person in a prepared setting, which is not a promise that everyone will get the same result. OpenAI itself says dots can make mistakes and that important results should always be reviewed.
+
+One moment stands out. When the dot summarised recent feedback, the clearest theme was dots that looked active but did not reply or could not reach their tools. Its read was that people could not tell whether their dot was actually working. The more work you hand to an AI, the more you need a way to see what it is doing, not just what it produced.
+
+Dots are rolling out first to Pro and Business Premium plans in supported regions, and Enterprise workspaces need an admin to switch on the beta. Check OpenAI's help center for the current list of supported regions before planning around it.
+
+## References
+
+- OpenAI, [Introducing dots](https://openai.com/index/introducing-dots/), 2026-09-29
+- OpenAI, [The dots demo, take two, OpenAI DevDay 2026](https://www.youtube.com/watch?v=fHEIw5CcN5U), YouTube, 2026-10-01
