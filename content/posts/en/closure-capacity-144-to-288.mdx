@@ -1,0 +1,83 @@
+---
+title: "Adding Trays Does Not Turn a 144-Fiber Closure into a 288-Fiber Closure"
+subtitle: "Reading closure capacity through cable entry, slack storage, splice method, and re-entry"
+excerpt: "A closure's rated capacity looks like trays times splices per tray. Manufacturer documents attach conditions to that number. Here are four things to check when scaling from 144 to 288 fibers."
+date: "2026-10-02"
+readTime: "7 min"
+coverImage: "/images/posts/closure-capacity-144-to-288/cutaway-overview.png"
+series: "optical-communications"
+chapter: "04"
+translationSourceHash: "2c156c7f10593989acb2659fde9dae36042c18820d08c85310134197bda2f2d2"
+tags:
+  - Fiber Optics
+  - Splice Closure
+  - Capacity Design
+  - FTTx
+---
+
+A closure data sheet usually carries a single figure such as "up to 288 splices." It looks like tray count times splices per tray, so adding trays to a 144-fiber configuration seems like it should get you there. Manufacturer documents attach conditions to that number. The same closure can offer different usable capacity depending on which cable goes in and how it is handled.
+
+This is not a substitute for any product's datasheet or acceptance criteria. Tray counts, port counts, and allowed cable diameters differ by product, and real selection must follow the manufacturer's documents. What follows are the questions that keep appearing across those documents, arranged as a checklist.
+
+![Cutaway concept image of a closure showing trays, a slack storage basket, and cable entry ports](/images/posts/closure-capacity-144-to-288/cutaway-overview.png)
+
+*Generated image (3D concept). Not a specific product or site.*
+
+## 1. The capacity figure is conditional
+
+One manufacturer's FAQ for a basket-style closure advises no more than 288-fiber cables when conventional 12-fiber loose tubes are used, because of packing density in the basket. Its highest single-fiber figure (432) is reserved for micro cables with smaller tubes or cables with 24 or more fibers per tube. The figure comes from the same closure, but the usable range changes with cable construction.
+
+Another maker's closure guide shows similar conditions. In one size, microstructure cable allows 12 tray positions, while 3 mm loose tube stored mid-span drops that to 8. The same guide lists 144 fusion splices for standard-density trays with G.652D fiber and 288 for high-density trays with G.657 fiber, so fiber type and tray density alone can double the number. It also says capacity depends directly on the volume of stored, unused fibers and tubes.
+
+So trays are only one of several limits, and the others move at the same time.
+
+## 2. Cable entry can run out first
+
+![Closure end face with cable ports of different diameters and grommets](/images/posts/closure-capacity-144-to-288/cable-entry.png)
+
+*Generated image (3D concept). Not a specific product.*
+
+More fibers usually means more cables, or thicker ones. Each port has an allowed cable diameter range, and ranges differ between ports. Manufacturer documents also separate mid-span entry (passing a cable through uncut) from butt entry, and feeder ports from drop ports.
+
+Check three things: whether the number and outer diameter of your cables fit the port specifications, whether the design needs mid-span or butt entry, and whether ports remain free for cables you will add later. If ports run out, the trays do not matter.
+
+## 3. Fibers you do not splice still take room
+
+![Coiled buffer tubes in a slack storage basket next to a splice tray](/images/posts/closure-capacity-144-to-288/slack-basket.png)
+
+*Generated image (3D concept). Not a specific product.*
+
+Tubes and ribbon that pass through unspliced, the express fibers, still need storage at their minimum bend radius. That space is shared with the trays, so stacking more trays shrinks it. This is why manufacturers say capacity depends on the volume of stored, unused fibers and tubes.
+
+It also means splicing 288 fibers and carrying a 288-fiber cable through the closure are not the same number. How many fibers of a 288-fiber cable you splice, and how many you express, changes both the tray count and the storage you need.
+
+## 4. Splice method and tray density come with the number
+
+![A crowded tray stack compared with an orderly tray stack](/images/posts/closure-capacity-144-to-288/tray-density.png)
+
+*Generated image (3D concept). Not a specific product.*
+
+Single fusion, mass fusion, and ribbon type change how many splices fit in one tray. One maker recommends half-loading flat ribbon trays, because congestion in the tray makes work and later inspection harder. It separately notes that rollable ribbon can use the full tray density. Always confirm whether a "288" is single-fiber, mass fusion, or ribbon.
+
+## 5. Decide now how the closure will be reopened
+
+A packed closure is harder to reopen without touching live fibers. If a cable or branch will be added later, decide at design time which tray gets opened and where spare room remains. Re-entry sealing was covered in the previous article (chapter 03).
+
+## What to write down before quoting 288
+
+- Fiber type (G.652D, G.657, and so on) and cable construction (loose tube, ribbon, micro)
+- Splice method (single or mass fusion), tray model, and splices per tray
+- Number of spliced fibers and number of express fibers
+- Cable count, outer diameters, port layout, and spare ports
+- Which trays the next crew will open, and where storage space remains
+
+Only after each item is checked against the closure's own documents can 288 go into a quote. Capacity is a result of the whole layout, not of the tray count.
+
+## Documents consulted
+
+- AFL, Apex Sealed Fiber Optic Splice Closures Product FAQs (2020-11-30): https://learn.aflglobal.com/_pfcdn/assets/preprocessed/11221/014a6433-a5bb-40ae-9a0b-38b3c7355bc9/014a6433-a5bb-40ae-9a0b-38b3c7355bc9.6439b494-9eaa-4d98-9a91-ec39f52c5686
+- Corning, Fiber Closures BPEO (CRR-917-AEN, 2021-03-25): https://www.corning.com/catalog/coc/documents/brochures/CRR-917-AEN.pdf
+- Corning, Fiber Closures (CRR-912-AEN, 2021-03-25): https://www.corning.com/catalog/coc/documents/selection-guides/CRR-912-AEN.pdf
+- Corning, Fiber Optic Splice Closure 2178-L/S installation procedure (78-8130-1910-2, Issue 9): https://www.corning.com/catalog/coc/documents/standard-recommended-procedures/H78-8130-1910-2-9.pdf
+
+All images are generated concept illustrations; no photos or drawings from manufacturer documents were used.
