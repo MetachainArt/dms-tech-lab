@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "AI 교육은 도구 설명보다 '이 일을 맡겨도 되나'에서 시작합니다",
+    summary: "세 편의 연구를 바탕으로 업무 경계표를 만들고 교육 2주 뒤까지 확인하는 AI 교육 설계 가이드입니다.",
+    tags: ["Work", "AI 교육", "업무 자동화"],
+    image: "/images/works/ai-training-task-boundary-map/task-cards.webp",
+    link: "/works/ai-training-task-boundary-map",
+  },
+  {
     title: "뮤즈·닷츠로 기존 자동화를 대체할 수 있을까요?",
     summary: "38개 활성 반복 루틴과 공식 기능을 대조해 조사·원고, 다계정 게시, Windows 작업과 영상 제작의 이전 가능성을 살펴봤습니다.",
     tags: ["Work", "AI 자동화", "AI 에이전트"],
