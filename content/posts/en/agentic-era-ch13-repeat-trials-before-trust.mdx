@@ -1,0 +1,100 @@
+---
+translationSourceHash: "03737c2ae191cd4e89f353960e70ca5692ca357a419e58021bac4cdca8717ba1"
+title: "An Agent Did It Once. Can You Trust That?"
+excerpt: "A demo where an agent finishes a task once says little about tomorrow. This chapter looks at repeating the same task, grading the final state instead of the agent's words, and what published research and engineering write-ups say about both."
+date: "2026-10-05"
+readTime: "11 min"
+subtitle: "What happens when a 75 percent agent gets the same job three times"
+coverImage: "/images/posts/agent-repeat-trials/trial-grid.webp"
+series: "agentic-era"
+chapter: "13"
+tags: ["Agents", "Evaluation", "Reliability", "pass^k", "Operations"]
+---
+
+Agent demos usually go well on the first try. The agent looks up an order, checks the refund policy and reports what it did. It is the kind of moment that earns applause.
+
+Which attempt was that, though? Unless the presenter says so, you cannot know. And even if they do, whether the same input produced the same result ten times out of ten is a separate question.
+
+This chapter is about that gap. Between "the agent did it once" and "we can hand this over" sits a step that is usually missing: repetition. I will walk through a few published papers and engineering posts to see how that step can be filled.
+
+## What one success tells you
+
+When you hand work to a person, a single success carries a lot of information. If a new hire wrote a good report, you expect a similar one next time, because a person's skill does not swing much from day to day.
+
+Agents built on language models behave differently. Given the same instruction, they can take a different route each time: which tool to call first, which passage to rely on. Anthropic's engineering write-up on agent evals makes the same point. Model outputs vary between runs, so it runs multiple trials per task. In this chapter, each attempt at one task is a trial.
+
+A single success therefore says only that there are cases in which this agent can solve this task. Being able to solve something and being safe to rely on are not the same. Where one task repeats hundreds of times a day, as in customer support, that distance turns into incident counts.
+
+## Repeating the task changes the numbers
+
+One piece of research put numbers on this distance: the τ-bench paper by Shunyu Yao and colleagues, posted in June 2024. The benchmark has an agent talk with a user simulated by a language model, using domain-specific API tools and policy guidelines. It grades by comparing the database state at the end of the conversation with an annotated goal state.
+
+The paper also introduces a metric called pass^k, the probability that all k trials of the same task succeed. According to the abstract, even the state-of-the-art function-calling agents of the time, such as gpt-4o, succeeded on fewer than 50 percent of tasks, and pass^8 was under 25 percent in the retail domain. The authors conclude that methods are needed to make agents act consistently and follow rules reliably. These figures describe specific 2024 models and one benchmark, so they should not be carried over to current models as they are. What remains is the shape of the result: succeeding once and succeeding eight times in a row produce very different numbers.
+
+Anthropic's post on agent evals includes a calculation that makes the gap easy to feel. If an agent succeeds 75 percent of the time per trial, the chance that it passes all of three trials is 0.75 cubed, about 42 percent. That assumes the trials are independent, but it is enough to build intuition.
+
+![A hand-drawn grid on paper with rows of pencil check marks and a few crosses mixed in, a staged scene](/images/posts/agent-repeat-trials/trial-grid.webp)
+
+Under the same assumption, a few more cases. At 90 percent per trial, five in a row is about 59 percent. At 95 percent, ten in a row is about 60 percent. You need 99 percent per trial to reach roughly 90 percent over ten. An agent that feels "almost there" after one test and an agent you can hand ten tasks a day are separated by that much.
+
+## pass@k and pass^k answer different questions
+
+Anthropic's post sets two metrics side by side. pass@k is the likelihood of at least one correct solution in k attempts. pass^k is the probability that all k trials succeed. At k=1 they are identical. As k grows, pass@k climbs toward 100 percent while pass^k falls toward zero, and they tell opposite stories.
+
+Which one fits depends on the job. If a tool proposes several code candidates and one passing is enough, pass@k asks the right question. For a customer-facing agent that must behave reliably every time, pass^k is the right question. The same agent calls for a different number depending on where it is deployed.
+
+In practice this changes the sentence you say in an adoption meeting. "It was right at least once in ten tries" and "it was right all ten times" are different reports. If an evaluation report does not say which metric it uses, ask what question the number answers before anything else.
+
+## Grade the final state, not the words
+
+How many times you repeat matters, and so does what you grade. Anthropic distinguishes the transcript, the full record of a trial, from the outcome, the final state of the environment when the trial ends. A flight-booking agent might say "Your flight has been booked" at the end, but what matters is whether a reservation exists in the environment's database.
+
+That is also why τ-bench compares the database state at the end of the conversation with the goal state instead of judging the wording along the way. An agent's words can sound plausible. The state has either changed or it has not.
+
+Moved into daily work, the question becomes concrete. For an agent that drafts a quote, you do not ask whether it said the quote was made. You ask whether the file exists in the designated folder and whether the total matches the source price list. For a scheduling agent, you ask whether the calendar holds an invitation at that time with the right attendees, not whether the agent said it booked the slot. If a machine can check the final state, repeated trials can run without anyone watching.
+
+## Graders can be wrong too
+
+Checking final state sounds reassuring, but graders make mistakes as well. Anthropic's post gives one striking example. Opus 4.5 found a loophole in the policy on a τ2-bench flight-booking problem and arrived at a better solution for the user, yet it "failed" the evaluation as written. The agent was not wrong. The grading criteria had not anticipated a better answer.
+
+That is why the post pushes hardest on reading transcripts. When a task fails, you open the record to see whether the agent made a genuine mistake or the grader rejected a valid solution. Anthropic writes that it does not take eval scores at face value until someone has dug into the details and read some transcripts. When scores do not climb, you should be able to tell whether the cause is the agent or the eval.
+
+For a team adopting repeated evaluation, this is a practical warning. More trials produce more numbers, but if the grading criteria are flawed, they produce more wrong numbers. Repetition raises confidence in a measurement. Someone still has to keep checking what is being measured.
+
+## A small repeated eval you can run
+
+What could a small team do right away? Stringing together the principles from the published sources gives roughly the following sequence. This is not a method I have validated with any particular client or in the field. It is my own arrangement of the principles cited above into one order.
+
+Start with a task list. It does not need to be perfect. Anthropic advises starting early rather than waiting for a perfect suite, and sourcing tasks from failures you have actually seen. If an agent has already made a mistake, that case is your best first task.
+
+Next, write each task's success criterion as a final state. Criteria like "answers politely" need a human reader, so set them aside and begin with things you can check: a file, a record, whether a message was sent. A vague criterion will score the same agent behavior as a success one day and a failure the next.
+
+Then run each task several times. How many depends on what is at stake. Five runs may show a tendency when errors are cheap. Work involving money or personal data calls for more. There is no correct number, but any number above one tells you more than a single run.
+
+![Five identical white cups on a window shelf, one tilted with a little water spilled, a staged scene](/images/posts/agent-repeat-trials/tilted-cup.webp)
+
+Finally, read the failed trials yourself. You cannot read every record, so pick the failures and the successes that took a strange path. What you find becomes a clue for fixing the agent's instructions or tool descriptions, and sometimes a clue for fixing the grader.
+
+## Evaluation sits next to operating safeguards
+
+Repeated evaluation does not remove risk. Anthropic's "Building effective agents" says the autonomous nature of agents means higher costs and the potential for compounding errors, and recommends extensive testing in sandboxed environments along with appropriate guardrails. It also says agents should gain ground truth from the environment at each step, such as tool call results or code execution, and that stopping conditions such as a maximum number of iterations help maintain control.
+
+Evaluation reduces risk before deployment. Stopping conditions and human checkpoints keep working after it. They should not be merged into one idea. A high pass^10 in testing does not justify removing a human approval step. The failure budgets and handoff designs covered earlier in this series are what catch what evaluation missed.
+
+The same post even leaves open the option of not building an agent at all. Its advice is to find the simplest solution possible and add complexity only when needed. Asking whether you need an agent belongs to evaluation too. Attaching an agent to a job that a fixed procedure could handle brings in a variable that wobbles from trial to trial.
+
+## How to read the number
+
+To sum up, suppose someone tells you, "Our agent succeeds 90 percent of the time." You can ask several things back.
+
+Is that 90 percent per trial, or the share of tasks that passed every one of several repeated runs? Was success judged by the agent's last message or by the final state of the environment? Who read the failed records? Did the tasks come from failures that were actually observed, or were they filled in with examples likely to go well?
+
+If those questions get clear answers, the number has earned some trust. If they do not, that does not mean the number is wrong. It means you do not know yet. Expanding permissions while you do not know means you find out after an incident.
+
+Back to the opening scene. Applauding an agent that finished once in a demo is natural. The next step is to feed it the same input again. That dull repetition, checking whether the same state is left the second time and the third, is what gives the word trust some content.
+
+## References
+
+- Shunyu Yao, Noah Shinn, Pedram Razavi, Karthik Narasimhan, "τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains," arXiv:2406.12045, 2024. https://arxiv.org/abs/2406.12045
+- Anthropic Engineering, "Demystifying evals for AI agents." https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents
+- Anthropic Engineering, "Building effective agents," 2024. https://www.anthropic.com/engineering/building-effective-agents
