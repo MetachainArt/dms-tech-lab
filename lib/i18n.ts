@@ -17,7 +17,8 @@ export function withoutLocale(pathname: string): string {
 
 export function hasEnglishVersion(pathname: string): boolean {
   const path = withoutLocale(pathname);
-  return TRANSLATED_PATHS.some((item) => item === path)
+  return path === "/education/optical-training/closure-cable-preparation-tray-reentry"
+    || TRANSLATED_PATHS.some((item) => item === path)
     || TRANSLATED_WORK_SLUGS.some((slug) => path === `/works/${slug}`)
     || blogTranslations.slugs.some((slug) => path === `/blog/${slug}`)
     || blogTranslations.series.some((id) => path === `/blog/series/${id}`)

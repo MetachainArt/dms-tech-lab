@@ -92,6 +92,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       for (const lesson of chapter.lessons) {
         educationRoutes.push({
           url: `${baseUrl}/education/${track.id}/${lesson.slug}`,
+          ...(languageAlternates(`/education/${track.id}/${lesson.slug}`, baseUrl) ? { alternates: { languages: languageAlternates(`/education/${track.id}/${lesson.slug}`, baseUrl) } } : {}),
           lastModified: new Date(),
           changeFrequency: 'monthly' as const,
           priority: 0.6,
@@ -122,6 +123,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...englishSeries.map(id => ({ url: `${baseUrl}/en/blog/series/${id}`, changeFrequency: "weekly" as const, priority: 0.7, alternates: { languages: languageAlternates(`/blog/series/${id}`, baseUrl) } })),
     // 교육 트랙 (자동)
     ...educationRoutes,
+    { url: `${baseUrl}/en/education/optical-training/closure-cable-preparation-tray-reentry`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.6, alternates: { languages: languageAlternates("/education/optical-training/closure-cable-preparation-tray-reentry", baseUrl) } },
     // 프로젝트 시리즈 (자동)
     ...projectRoutes,
     // 블로그 포스트 (자동)
