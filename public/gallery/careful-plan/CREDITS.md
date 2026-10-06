@@ -1,0 +1,5 @@
+# Ideas essay images (2026-10-06)
+Two original images generated for the essay "꼼꼼히 짠 일정이 늘 늦는 이유 / Why a Careful Schedule Still Runs Late" with GPT imagegen (exact model id not returned by the tool).
+- wall-planner.webp: prompt: photorealistic 35mm color film photograph, soft natural window light, warm cream/beige/wood tones with restrained green, low saturation, soft contrast, fine film grain, natural shallow depth of field, no people, no readable text or numbers. A neatly planned paper wall calendar made of blank colored paper strips and small blank sticky notes pinned above a wooden desk, a pencil and an analog wall clock slightly out of focus, morning light from a side window. Source PNG 1536x1024, cropped to 1440x960 WebP.
+- archive-shelf.webp: same style prefix. A wooden shelf with a row of closed cloth-bound ledgers and cardboard archive boxes of different thickness, spines blank, one box pulled slightly out, afternoon light from a window, plant leaf at the edge of frame. Cropped to 1440x960 WebP.
+No stock or external photos. Generated images, not records of real places or projects.

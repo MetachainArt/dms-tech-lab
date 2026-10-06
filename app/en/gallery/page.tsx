@@ -5,6 +5,7 @@ import styles from "@/components/ideas/IdeasPage.module.css";
 import EssayPiece from "@/components/ideas/EssayPiece";
 import { watchingEssayEn } from "@/lib/ideas-essay-watching";
 import { savedMemoryEssayEn } from "@/lib/ideas-essay-saved";
+import { carefulPlanEssayEn } from "@/lib/ideas-essay-plan";
 import { generateMetadata as generateSeoMetadata } from "@/lib/metadata";
 
 export const metadata = generateSeoMetadata({
@@ -21,10 +22,11 @@ export default function EnglishIdeasPage() {
         eyebrow="Ideas / Reedo" lead="Images &" accent="words." variant="insights"
         title="Ideas"
         description="Notes and essays written alongside the work. Earlier pieces are still available in Korean, and new ones are being added in English."
-        note={<><span>2 English editions</span><span>A space where images and words meet</span></>}
+        note={<><span>3 English editions</span><span>A space where images and words meet</span></>}
       >
         <Link href="/gallery">Earlier pieces in Korean ↗</Link>
       </FiberPageHeader>
+      <div className={styles.essay}><EssayPiece essay={carefulPlanEssayEn} locale="en" /></div>
       <div className={styles.essay}><EssayPiece essay={savedMemoryEssayEn} locale="en" /></div>
       <div className={styles.essay}><EssayPiece essay={watchingEssayEn} locale="en" /></div>
     </main>
