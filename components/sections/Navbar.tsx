@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { Search, Menu, X, ArrowUpRight } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navLinks } from "@/constants/navigation";
-import homeStyles from "@/components/sections/home/Home.module.css";
+import navStyles from "./Navbar.module.css";
 import { isFiberRoute } from "@/components/brand/fiber-routes";
 import LanguageSwitch from "@/components/ui/LanguageSwitch";
 import { getLocale, localizePath } from "@/lib/i18n";
@@ -21,6 +21,8 @@ const desktopLinks = [
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const menuPanelRef = useRef<HTMLDivElement>(null);
+  const menuTriggerRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
   const reducedMotion = useReducedMotion();
   const fiberRoute = isFiberRoute(pathname);
@@ -37,12 +39,59 @@ export default function Navbar() {
   const handleMenuOpen = useCallback(() => setIsMobileMenuOpen(true), []);
   const handleMenuClose = useCallback(() => setIsMobileMenuOpen(false), []);
 
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const panel = menuPanelRef.current;
+    if (!panel) return;
+    const previousOverflow = document.body.style.overflow;
+    const trigger = menuTriggerRef.current;
+    const focusableElements = () => Array.from(
+      panel.querySelectorAll<HTMLElement>('button:not([disabled]), a[href]')
+    ).filter((element) => element.getClientRects().length > 0);
+
+    document.body.style.overflow = "hidden";
+    focusableElements()[0]?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        event.stopPropagation();
+        handleMenuClose();
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const elements = focusableElements();
+      const first = elements[0];
+      const last = elements[elements.length - 1];
+      if (!first || !last) return;
+      if (event.shiftKey && (document.activeElement === first || !panel.contains(document.activeElement))) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && (document.activeElement === last || !panel.contains(document.activeElement))) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const handleDesktop = (event: MediaQueryListEvent) => {
+      if (event.matches) handleMenuClose();
+    };
+    document.addEventListener("keydown", handleKeyDown, true);
+    desktop.addEventListener("change", handleDesktop);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown, true);
+      desktop.removeEventListener("change", handleDesktop);
+      document.body.style.overflow = previousOverflow;
+      trigger?.focus();
+    };
+  }, [isMobileMenuOpen, handleMenuClose]);
+
   if (pathname?.startsWith("/admin")) return null;
 
   return (
     <>
       {/* MAI-style full-width top navbar */}
-      <header className={`fixed top-0 inset-x-0 z-50 bg-paperfolio-surface/95 backdrop-blur-md border-b border-paperfolio-line animate-[fadeIn_0.4s_ease-out_both] ${fiberRoute ? homeStyles.homeNavbar : ""}`}>
+      <header className={`fixed top-0 inset-x-0 z-50 bg-paperfolio-surface/95 backdrop-blur-md border-b border-paperfolio-line animate-[fadeIn_0.4s_ease-out_both] ${fiberRoute ? navStyles.homeNavbar : ""}`}>
         <div className="mx-auto max-w-7xl px-6 md:px-10">
           <div className="relative flex h-[58px] items-center justify-between">
 
@@ -99,6 +148,7 @@ export default function Navbar() {
 
               {/* Mobile: hamburger */}
               <button
+                ref={menuTriggerRef}
                 className="lg:hidden ml-1 sm:ml-3 p-1 text-paperfolio-text-muted hover:text-paperfolio-text transition-colors"
                 onClick={handleMenuOpen}
                 aria-label={english ? "Open menu" : "메뉴 열기"}
@@ -144,7 +194,8 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: reducedMotion ? 0 : 0.32, ease: [0.22, 0.61, 0.36, 1] }}
-            className={`fixed inset-0 z-[60] bg-paperfolio-surface flex flex-col px-8 py-6 lg:hidden ${fiberRoute ? homeStyles.fiberMenu : ""}`}
+            className={`fixed inset-0 z-[60] bg-paperfolio-surface flex flex-col px-8 py-6 lg:hidden ${fiberRoute ? navStyles.fiberMenu : ""}`}
+            ref={menuPanelRef}
             role="dialog"
             aria-modal="true"
             aria-label={english ? "Navigation menu" : "내비게이션 메뉴"}

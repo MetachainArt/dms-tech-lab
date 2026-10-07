@@ -26,7 +26,7 @@ export default function Footer() {
   if (pathname?.startsWith("/admin")) return null;
 
   return (
-    <footer className={`w-full border-t border-paperfolio-line bg-paperfolio-bg ${fiberRoute ? styles.footer : ""}`}>
+    <footer className={`${styles.accessibleText} w-full border-t border-paperfolio-line bg-paperfolio-bg ${fiberRoute ? styles.footer : ""}`}>
 
       {/* ── Main body ── */}
       <div className="mx-auto max-w-7xl px-8 md:px-12 py-16 md:py-20">
@@ -99,16 +99,16 @@ export default function Footer() {
             {/* Minimal monogram */}
             <div className="w-[72px] h-[88px] bg-white border border-paperfolio-line shadow-sm flex flex-col items-center justify-center gap-1 rotate-1">
               <span className="font-playfair text-[2rem] italic text-paperfolio-text leading-none">R</span>
-              <span className="text-[8px] tracking-[0.25em] text-paperfolio-text-muted uppercase">DMS.Labs</span>
+              <span className="text-[10px] tracking-[0.25em] text-paperfolio-text-muted uppercase">DMS.Labs</span>
             </div>
 
             <div className="text-right space-y-1.5">
               <a href="https://open.kakao.com/o/sSPHn33g" target="_blank" rel="noopener noreferrer"
-                className="block text-xs text-paperfolio-text-muted hover:text-paperfolio-text transition-colors">
+                className="flex min-h-11 items-center justify-end text-xs text-paperfolio-text-muted hover:text-paperfolio-text transition-colors">
                 {english ? "Contact via KakaoTalk" : "KakaoTalk 문의"}
               </a>
               <a href="https://www.youtube.com/@Reedodev" target="_blank" rel="noopener noreferrer"
-                className="block text-xs text-paperfolio-text-muted hover:text-paperfolio-text transition-colors">
+                className="flex min-h-11 items-center justify-end text-xs text-paperfolio-text-muted hover:text-paperfolio-text transition-colors">
                 YouTube @Reedodev
               </a>
             </div>
@@ -127,7 +127,7 @@ export default function Footer() {
               style={{fontFamily: "var(--font-korean), serif"}}>
               {companyRows.map((row) => (
                 <div key={row.label} className="flex items-center gap-1.5">
-                  <dt className="opacity-60">{row.label}</dt>
+                  <dt>{row.label}</dt>
                   <dd>{row.value}</dd>
                 </div>
               ))}
@@ -152,7 +152,7 @@ export default function Footer() {
             <Link href="/company" className="hover:text-paperfolio-text transition-colors">{english ? "Company (Korean)" : "회사소개"}</Link>
             <Link href="/privacy" className="hover:text-paperfolio-text transition-colors">{english ? "Privacy (Korean)" : "개인정보처리방침"}</Link>
             <Link href="/terms" className="hover:text-paperfolio-text transition-colors">{english ? "Terms (Korean)" : "이용약관"}</Link>
-            <span className="opacity-50">© {new Date().getFullYear()} DMS.Labs</span>
+            <span>© {new Date().getFullYear()} DMS.Labs</span>
           </div>
         </div>
       </div>

@@ -1,0 +1,30 @@
+/* Shared navigation, preserving the original cascade and breakpoints. */
+.homeNavbar { background: rgba(245, 242, 234, .96); border-bottom-color: #d7d7ca; }
+.homeNavbar > div:first-child { width: min(1280px, calc(100% - 112px)); padding-inline: 0; }
+.homeNavbar nav[aria-label="주요 메뉴"] a, .homeNavbar nav[aria-label="Main navigation"] a, .homeNavbar a[data-contact-link] { font-family: var(--font-pretendard), sans-serif; font-size: 11px; letter-spacing: .06em; }
+@media (max-width: 1023px) {
+  .homeNavbar > div:first-child { width: calc(100% - 64px); }
+}
+@media (max-width: 767px) {
+  .homeNavbar > div:first-child { width: calc(100% - 40px); }
+}
+.homeNavbar { background: rgba(244,243,238,.94); border-bottom-color: #d2d5d9; }
+.homeNavbar > div:first-child { width: min(1440px, calc(100% - 112px)); max-width: 1440px; }
+.homeNavbar > div:first-child > div { justify-content: flex-end; gap: 36px; }
+.homeNavbar a[data-site-brand] { left: 0; transform: none; translate: none; font-family: var(--font-poppins), sans-serif; font-weight: 700; font-size: 24px; letter-spacing: -.07em; text-transform: uppercase; color: #171b21; }
+.homeNavbar nav[aria-label="주요 메뉴"] a, .homeNavbar nav[aria-label="Main navigation"] a, .homeNavbar a[data-contact-link] { color: #252b36; font-size: 11px; letter-spacing: .02em; }
+.fiberMenu { background: #f4f3ee; overflow-y: auto; }
+.fiberMenu > div:first-child > span { font-family: var(--font-poppins), sans-serif; font-weight: 700; letter-spacing: -.07em; text-transform: uppercase; }
+.fiberMenu nav a { font-family: var(--font-poppins), sans-serif; font-size: clamp(23px, 5vw, 36px); font-weight: 500; letter-spacing: -.05em; border-color: #c6cbd3; }
+.fiberMenu nav a:hover { color: #123ecb; }
+@media (max-width: 1023px) {
+  .homeNavbar > div:first-child { width: calc(100% - 64px); }
+}
+@media (max-width: 767px) {
+  .homeNavbar > div:first-child { width: calc(100% - 40px); }
+  .homeNavbar > div:first-child > div { gap: 20px; }
+  .homeNavbar a[data-site-brand] { font-size: 20px; }
+}
+@media (max-width: 380px) {
+  .homeNavbar > div:first-child > div { gap: 8px; }
+}

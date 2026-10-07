@@ -1,3 +1,6 @@
+.accessibleText {
+  --color-paperfolio-text-muted: #475569;
+}
 .footer {
   background: #f4f3ee;
   border-color: #c6cbd3;
