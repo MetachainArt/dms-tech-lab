@@ -124,6 +124,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // 교육 트랙 (자동)
     ...educationRoutes,
     { url: `${baseUrl}/en/education/optical-training/closure-cable-preparation-tray-reentry`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.6, alternates: { languages: languageAlternates("/education/optical-training/closure-cable-preparation-tray-reentry", baseUrl) } },
+    { url: `${baseUrl}/en/education/optical-training/dome-closure-seal-flash-test`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.6, alternates: { languages: languageAlternates("/education/optical-training/dome-closure-seal-flash-test", baseUrl) } },
     // 프로젝트 시리즈 (자동)
     ...projectRoutes,
     // 블로그 포스트 (자동)

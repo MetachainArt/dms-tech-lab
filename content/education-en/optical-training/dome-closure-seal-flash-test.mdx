@@ -1,0 +1,104 @@
+---
+title: "Dome Closure Seal Check and Leak Response"
+date: "2026-10-07"
+desc: "How to pressurize a dome splice closure right after assembly and check its seals. Using Panduit installation instructions FS152 as the example: cap tightening, gasket seating, soapy-water check and leak-location actions."
+coverImage: "/images/education/optical-training/dome-closure-seal-flash-test/cover.webp"
+readTime: "10 min"
+lang: "en"
+---
+
+Once the dome is on, a finished splice closure looks closed from every angle. Whether water can get in is not something the eye can tell. A closure placed in a manhole or handhole is hard to reopen once it is covered, so the check has to happen before the crew leaves.
+
+This lesson covers one topic: the seal check on a dome splice closure. The earlier lessons [Bend Radius, Slack and Enclosure Discipline](/en/education/optical-training/04-bend-radius-and-slack) and [Closure Cable Preparation and Tray Securing](/en/education/optical-training/closure-cable-preparation-tray-reentry) dealt with fiber handling inside the closure. This one deals with the outside: whether the end plate, the gasket and the cable entries are actually closed. The example document is Panduit's installation instruction FS152 for the 6.5 in x 17 in dome closure. Its figures and sequence belong to that product. They are not a criterion for other manufacturers or other models.
+
+## Learning objectives
+
+- Separate the three places where a dome closure seals: the cable port, the grommet and the gasket.
+- Explain the order of a pressure check performed right after assembly.
+- Connect each leak location to the cause and action given in the manufacturer's document.
+
+## Sealing happens in three places
+
+In FS152 the dome closure consists of the dome cover, an organizer with a 4-port end plate, a dome gasket, a collar and cable grommets. The sealing work can be grouped into three places. One is the corner of each cable port where the port cap presses against the end plate. Another is the cable entry, where a grommet sized for the cable wraps around it. The last is the gasket seated in the groove around the end plate, with the dome fitted over it. This grouping is DMS's way of explaining the closure. The instruction does not itself say there are three.
+
+Each of the three is made by a different task. The grommet is placed when the cable is fed into the port, the cap is made up when the port bolts are tightened, and the gasket is seated just before the dome goes on. That is why the location of a leak decides which task has to be redone. This is the central point of the lesson. A leak check is less a pass or fail gate than a way to find which task needs to be reopened.
+
+## What to confirm before pressurizing
+
+The pressure check comes last, but its result is set by earlier work. These are the items FS152 asks for before pressure is applied.
+
+Start with the cable caps. Step 26 has the caps fastened with hex bolts, by hand and evenly until each cap is fully seated, and it says not to use power tools. When a can wrench or nut driver is used, the installed torque is 35 to 40 in-lbs. Caps on unused ports must also be tightened. The strength member bracket is tightened after the caps. In step 44, before the dome goes on, all cap bolts are tightened once more to make sure the caps are fully seated.
+
+Next is the gasket. Steps 42 and 43 have the gasket slid onto the end plate and worked into its groove, with a note to make sure it is seated in the groove. Step 41 has silicone lubricant applied to all inner and outer surfaces of the gasket, and gives the reason as easy assembly and easy re-entry of the closure. The lubricant is described as an aid to assembly and re-entry. It is not described as the thing that makes the seal.
+
+Last come the dome and the collar. Step 49 says to check that the lip of the dome is captured within the collar half, and step 51 has the collar secured with its latch and pin. If the collar closes with only one side engaged, the gasket may not see even pressure. That is DMS's reading of the structure and not a sentence from the instruction.
+
+![Six-step seal check sequence: cable cap tightening, gasket seating, dome and collar assembly, pressurizing, soapy water, and pressure release](/images/education/optical-training/dome-closure-seal-flash-test/seal-sequence-en.webp)
+
+*A DMS concept diagram of the seal check sequence. Values are limited to Panduit FS152. It is not a product drawing.*
+
+## The pressure check sequence
+
+FS152 calls this the flash test. Step 52 removes the cap from the air valve on the end plate. Step 53 pressurizes the closure to a maximum of 10 psi. Step 54 has soapy water sprayed on all sealing surfaces of the dome and end plate to look for leaks. Step 55 releases the pressure using the bump on top of the air valve cap.
+
+Two phrases need care when reading it. First, 10 psi is written as an upper limit for pressurizing. It is not a target pressure or an acceptance value. Second, the FS152 text DMS reviewed does not say how long the pressure is held, how long the surfaces are watched, or how much bubbling counts as a leak. Those values should not be borrowed from another document or invented. They have to come from the manufacturer's instruction and the company's test procedure, and the absence of a value should itself be written down.
+
+One more distinction matters. The same manufacturer's datasheet lists this product family as following Telcordia GR-771-CORE and gives an IP68 rating, and it states the rating as the manufacturer's description for correct use of the grommet. A soapy-water pressure check in the field is not a test of that rating. A result of no visible leak means only that no leak showed at that moment, in that assembled condition. It does not certify the rating or long-term sealing performance.
+
+## Leak location, cause and action
+
+Page 14 of FS152 shows two common end plate leaks seen during the flash test.
+
+The first is a leak at the corner of a cable port. The instruction gives the cause as the cap of that port not being fully tightened. The action is to remove the collar, take the end plate and organizer assembly out of the dome, tighten the bolts on the end cap where the leak occurred, reassemble, and flash test again to confirm the leak has stopped.
+
+The second is a leak at the cable entry of the grommet. The instruction gives the cause as the cable not being within the stated diameter range of the grommet. The action begins the same way, by removing the collar and the end plate and organizer assembly. Then the end cap and grommet at the leak are removed, the cable is measured again with the tape provided, and the proper grommet is selected. The parts are reassembled and the closure is flash tested again.
+
+The two actions share a feature. Because the collar must be opened and the end plate pulled out of the dome, repair after the dome is on means reversing the original assembly. That is why the soapy-water check belongs right after the dome is closed, before the crew leaves the site. This judgment is DMS's interpretation.
+
+![Leak locations, the cable port corner and the grommet entry, linked to the manufacturer's cause and action sequence](/images/education/optical-training/dome-closure-seal-flash-test/leak-diagnosis-en.webp)
+
+*A DMS concept diagram linking leak location to action. It summarizes page 14 of the manufacturer's document and is not an approved procedure.*
+
+## Worked example (hypothetical)
+
+Suppose a worker feeds cables into two of the four ports on the end plate and leaves the other two empty. After the dome is closed and pressurized, soapy water produces bubbles at the corner of one of the empty ports. This example is made up for teaching. It is not a real customer case or a DMS test result.
+
+The grommet is the tempting suspect, but the leak is at a port with no cable. FS152 says caps on unused ports must also be tightened, and its end plate preparation page shows a plug being installed in an unused port. The first step is therefore to check whether the cap and plug at that port were installed and tightened as the instruction describes. This is the instruction's wording applied to a hypothetical case. The actual cause cannot be stated until the parts are separated and examined.
+
+## Seal check list
+
+The items below are a DMS review suggestion. They do not replace your internal approval process or a product's acceptance criteria.
+
+| Item | What to record |
+|---|---|
+| Product identification | Closure manufacturer, exact model, installation instruction number and revision |
+| Port configuration | Ports used, ports left empty, grommet part number used and measured cable diameter |
+| Cap tightening | Method, tool and the source of the torque figure, whether empty-port caps were tightened |
+| Gasket | Seated in the groove, whether lubricant was applied |
+| Collar | Dome lip captured, latch and pin secured |
+| Pressurizing | Pressure used and the source of the upper limit, source of the hold time |
+| Result | Where soapy water was applied, leak location, action taken and recheck result |
+| Open items | Values missing from the document and why the decision was held |
+
+On your next job, pick one closure installation instruction and check whether its pressure check step states a pressure limit, a hold time and an acceptance criterion. Leave any missing item as unconfirmed instead of filling it in.
+
+## Review questions
+
+**1. Can the 10 psi in FS152 be used as the pressure for every dome closure?**
+
+No. 10 psi is the upper limit this instruction gives for this product. Another model must use the value in its own document.
+
+**2. If no bubbles appear in the soapy-water check, can the closure be called IP68?**
+
+No. IP68 is a rating stated by the manufacturer, and the field soapy-water check is not a test of that rating. The result shows only that no leak was visible at that time in that assembled condition.
+
+**3. A leak is found at the grommet cable entry. What cause and action sequence does the manufacturer's document give?**
+
+The cause is a cable outside the grommet's diameter range. Remove the collar and the end plate and organizer assembly, take out the end cap and grommet at the leak, measure the cable again, choose the proper grommet, then reassemble and flash test again.
+
+## Sources and open items
+
+- [Panduit, Dome Closure 6-1/2" x 17" Installation Instructions FS152, 2019](https://pim.galco.com/Manufacturer/Panduit/TechDocument/Installation%20Manual/110033598.pdf): pages 2 to 4 for the contents and grommet chart, page 8 for cap tightening, pages 11 and 12 for the gasket, dome and collar, page 13 for the pressure check and page 14 for the leak examples. This is a distributor-hosted copy, so confirm the official Panduit revision before use.
+- [Panduit, Outdoor Dome Fiber Splice Closure datasheet, published 2024-12-18](https://www.panduit.com/content/dam/panduit/en/website/products/featured-products/broadband/documents/111603372.pdf): the GR-771-CORE listing, the IP68 listing and the grommet condition. These are the manufacturer's statements, not independent test results.
+
+The sources were checked on October 7, 2026. Only the two documents above were read. The text of GR-771-CORE, the latest revision of any shipping product and field test results were not checked. No original drawings were copied; the diagrams were composed separately for explanation.
