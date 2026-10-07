@@ -1,0 +1,93 @@
+---
+title: "Hanbok-Inspired Prompts: Separate Clothing from the Scene"
+subtitle: "Define the garment first, then add the setting. Original generations and unexecuted edit suggestions are clearly distinguished."
+excerpt: "A practical visual brief for keeping garment features inspectable: original prompts, observed output differences, preservation constraints and limits of generated costume or product imagery."
+date: "2026-10-07"
+readTime: "10 min"
+coverImage: "/images/posts/hanbok-prompt-garment-scene-separation/cover.png"
+series: "future-arts"
+tags: ["Prompting","Hanbok","AI images","Fashion concepts"]
+---
+
+A fashion image can have the right atmosphere and still leave the clothing unclear. Add ribbons, embroidery, flowers, clouds and architecture to the same request, and it becomes harder to decide what the output was supposed to preserve. For a hanbok-inspired concept, start by defining the garment. Describe the setting separately, then check whether it helps the clothing remain visible.
+
+This is a practical guide to organizing a visual brief, not a collection of secret commands. The examples are contemporary creative concepts. They are not verified historical dress, photographs of a real product, or evidence of textile composition. Those uses require reliable references and their own review.
+
+## What the source contributes
+
+Jessica (@aistudio.jessica) describes the difficulty of balancing multiple visual layers in her [public hanbok editorial post](https://www.instagram.com/aistudio.jessica/reel/Ddv09LYy0tp/). Her suggestion is to establish the core mood and then add details. This article takes that general idea into a quieter garment-planning exercise. It does not reproduce her shortcut list, scene sequence, images or private prompt pack. Giant animals, clouds and dramatic viewpoints from the source are not reused here.
+
+OpenAI's [image prompting guide](https://developers.openai.com/api/docs/guides/image-prompting) recommends organizing complex requests into scene, subject, details and constraints. It also recommends separating edits from things that must remain unchanged, refining one element at a time and inspecting the result. The sections below apply that guidance to clothing. Labels make a brief easier to maintain; they are not a special syntax that guarantees compliance.
+
+## Decide what the garment must show
+
+Start with large, visible features. Name the top and skirt separately: a plain cream short jacket inspired by a jeogori, and a long forest-green skirt. Ask for a distinct collar, one pair of front ribbon ties and a clear junction between the two garments. Keep embroidery and accessories out of the first composition if they are not part of the inspection goal.
+
+The crop should follow the question. A full-body frame is useful for silhouette and overall length. A shoulder-to-waist detail is useful for the collar and ties. Requesting both a full figure and a close inspection of small seams in one frame gives the model competing goals. Plan separate images when the important details live at different scales.
+
+Describe materials through visible properties rather than praise. A matte surface, visible weave and natural folds are more specific than luxurious fabric. But a texture that resembles linen or silk is not proof of fiber content. Keep appearance and material certification separate, especially when a generated image could be mistaken for a commercial product photograph.
+
+## Give the setting its own job
+
+A simple light wall is a reasonable starting background for a dark skirt. It leaves the garment's outline available to inspect. If the collar matters, avoid flowers or head ornaments around it. When a branch or prop belongs in the scene, specify where it may appear and which garment features it must not cover.
+
+Choose one main lighting condition. Soft daylight from a window on the left and even overcast outdoor light describe different setups; choose the one the image needs. Camera and lighting language guide appearance. They do not certify a physically simulated lens or lighting arrangement.
+
+![Generated planning example with a cream jacket, green skirt and separate ribbon ties](/images/posts/hanbok-prompt-garment-scene-separation/components.png)
+
+The flat lay above was generated to make the separate clothing components easy to discuss. Flowers and small dishes also appeared. A request for an uncluttered composition did not eliminate every extra prop. If an exact inventory matters, explicitly name the permitted objects and the exclusions, then count what the output actually contains.
+
+## A copyable brief to adapt
+
+The following structure is an original, unexecuted template. It has not been tested as one complete prompt. Replace the bracketed fields, remove irrelevant sections and retain the specific features that matter to your task.
+
+```text
+Purpose: A photographic concept for inspecting [silhouette/collar detail].
+Person: One anonymous adult, [pose].
+Clothing: The top is [color, length and shape]. The skirt is [color and shape].
+Required features: [collar, front ties and garment junction] remain visible.
+Composition: [full body/upper body], eye-level camera.
+Setting and light: [simple location], [one lighting condition].
+Exclusions: No [obstructing accessories], lettering or logos.
+Scope: Contemporary creative concept, not historical reconstruction or a real product.
+```
+
+Use one purpose for the first image. For a silhouette study, prioritize the whole figure and the top-to-skirt junction. For a collar study, prioritize the crop and unobstructed neckline. Specify the top and skirt separately when changing colors. Instead of asking for something more traditional, identify the visible shape that must be retained and the reference that supports it.
+
+## The first image we generated
+
+This is the exact English prompt used to create the cover image. It is an original scene description, not a translation or light rewrite of Jessica's prompt pack.
+
+```text
+Create an original photorealistic contemporary fashion concept photograph, horizontal 3:2 composition. An anonymous adult Korean woman wearing a hanbok-inspired outfit: a plain cream jeogori-style short jacket with clearly separated collar, two simple green front ribbon ties, and a deep forest-green long full skirt. Full body visible including simple shoes, relaxed standing pose, hands at her sides, eye-level camera. One person only. Minimal warm ivory studio backdrop, soft window daylight from the left, natural folds and matte silk-like textile, subtle 35mm film grain, restrained colors. The clothing is the visual focus. No ornate embroidery, no head ornaments, no props, no logos, no text. This is a contemporary creative concept, not a historical costume reconstruction or a real product photograph.
+```
+
+![Generated full-body concept with a cream jacket and forest-green skirt in a simple interior](/images/posts/hanbok-prompt-garment-scene-separation/cover.png)
+
+The output distinguishes the cream top from the dark skirt and leaves the shoes within the frame. The front ties appear as two long hanging ribbons with a small bow-like form. The fabric looks more visibly woven than the smooth silk-like texture requested. These are observations about this output, not findings about a traditional garment's construction. We have not certified the costume's historical accuracy.
+
+## A different composition is not a controlled experiment
+
+A second person image uses a pale blue top, a charcoal skirt, a light plaster wall and a leafy branch in the upper corner. Its prompt requests a three-quarter body frame rather than a full-body interior view. Clothing colors, location and framing all changed together. This is a separate composition example, not evidence that one phrase caused an improvement.
+
+![Separate generated concept with a pale blue jacket and gray skirt beside a plain wall](/images/posts/hanbok-prompt-garment-scene-separation/blue-wall.png)
+
+The collar and front ties are visible, but the hands are hidden behind the figure. That would fail a brief requiring visible hands. It may be acceptable for a study of the garment's front. Decide against the stated purpose rather than rating the image as universally good or bad. These separate generations also do not establish that the same face or exact clothing product was preserved.
+
+## State what stays fixed when editing
+
+If the background becomes busy, ask to replace only the background with a plain wall. Restate the jacket color, skirt color, collar, front ties, pose and camera height that must remain unchanged. If ties multiply, request one pair at the front while preserving the other garment features and setting. These are suggested edit instructions; we did not execute an image-editing trial in this session.
+
+After an edit, inspect more than the requested change. A simpler wall can arrive with a different skirt length or an altered collar. OpenAI notes that repeated editing can change details intended to remain fixed. Do not promise pixel-identical preservation through wording alone. Keep the approved original and edited version separately; where exact local preservation is required, use an appropriate editing or compositing workflow.
+
+## Check the final use, not just the generation screen
+
+Begin with the number of people and the crop. Check the top-to-skirt junction, collar, number and attachment of front ties, sleeves and folds. Look for props that cover an important feature, unwanted lettering and accidental branding. Then inspect the actual smaller output you intend to publish. A clear tie in the original may disappear when a landscape image is cropped into a portrait card.
+
+For real product communication, compare against the actual garment, including color, shape and material. For a historical claim, use trustworthy costume references and qualified review. These generated concepts replace neither process. If using a real person's photograph as an input, verify permission and consent. The examples here were generated without a real person's reference photograph.
+
+A useful next prompt comes from a clear difference between the request and the result. Write down which garment detail survived, what drifted and what the composition obscured. That record gives the next revision a specific task: change one problem while restating the features that matter.
+
+## Sources
+
+Starting idea: Jessica's [public hanbok editorial post](https://www.instagram.com/aistudio.jessica/reel/Ddv09LYy0tp/). Prompt-writing guidance: OpenAI's [image prompting guide](https://developers.openai.com/api/docs/guides/image-prompting). The planning structure, example prompts and generated images are original DMS.Labs material.
