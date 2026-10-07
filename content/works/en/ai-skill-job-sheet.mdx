@@ -1,0 +1,111 @@
+---
+title: "Before you ask AI to do the job, write the one-page job sheet"
+excerpt: "Rewriting the same instructions every time is a common reason AI use never spreads across a team. This guide borrows the structure of agent skills to show how to write and test a one-page job sheet."
+date: "2026-10-07"
+readTime: "11 min"
+kind: "guide"
+tags: ["Work", "AI skills", "Workplace automation"]
+---
+
+[AI skills and build](/en/works/ai-education) · [한국어로 읽기](/works/ai-skill-job-sheet)
+
+Look over the shoulder of someone who is good with AI at work and the first thing you usually see is a long instruction block. It says what format to use, what to leave out, which tone to avoid, and it runs ten lines or so. That block lives in one person's notes app. Nobody else has it. When a colleague asks for the same job, the result comes out different, and the cause is rarely the model. The document describing the job is different.
+
+This is a practical guide, not a report on a client build. It covers one part of the AI skill building and workplace automation design DMS.Labs works on: how to write and test a description of a job, using public documentation. One clarification first. The job sheet here is not a trick for writing longer prompts. It is closer to the handover note you would give a new hire, handed to an AI instead.
+
+## What the agent skill format teaches
+
+Anthropic introduced Agent Skills in an engineering blog post. As the post describes them, skills are folders of instructions, scripts and resources that an agent can discover and load when needed. The simplest skill is a folder with one SKILL.md file, which starts with two fields: name and description. The authors compare building a skill to putting together an onboarding guide for a new hire.
+
+The design worth noticing is that information loads in three layers. At startup the agent reads only the name and description of each installed skill. If it decides a skill is relevant to the current task, it reads the full body. Any extra files the body points to are opened only when needed. Anthropic calls this progressive disclosure and compares it to a well-organized manual that starts with a table of contents, moves to chapters, and ends with an appendix.
+
+You do not need an AI tool to benefit from the idea. It gives anyone writing a job sheet three rules. The first line decides whether the document gets opened. The body holds only what is needed. Rare exceptions go somewhere else. The sections below turn those rules into the parts of a one-page sheet.
+
+![A printed one-page checklist on a wooden desk, a hand holding a pencil beside it, with a notebook and a coffee cup.](/images/works/ai-skill-job-sheet/one-page-sheet.webp)
+
+## Six parts of a one-page sheet
+
+One page is enough. Past that, the author tends to forget what was written at the start. The six parts below are DMS.Labs' own arrangement, adapted from public guidance for office documents. They are not a fixed template.
+
+**1. Name and one-line description.** Say what the job is and when to use the sheet. Anthropic's best-practices guide says the description should state both what the skill does and when to use it, and warns against vague descriptions like "helps with documents" or "processes data," because the description is what lets an agent choose one skill out of many. The same holds for a human-readable sheet. "Monthly report draft" is thin. "Use on the first business day of the month, when you receive each team's metrics file and need a report draft" tells the reader when to open it.
+
+**2. What comes in.** List the files or information the job receives and what to do when something is missing. Date formats, file naming rules and required columns belong here. This is also where you decide whether a missing required field should be guessed or whether the work should stop and ask.
+
+**3. Steps.** Write the job as steps, but not every step at the same strictness. That gets its own section below.
+
+**4. What a good result looks like.** An example is faster than a description. Put one result that worked next to one that did not, and add a single line on why the second one failed. A pair like that is often clearer than ten lines about format.
+
+**5. Stop conditions.** Say when the AI stops and hands the work to a person: an amount over a set limit, a customer name in the data, two source files that disagree on a number. Be specific. This part connects directly to the permission steps in [Giving AI automation permission in three steps](/en/works/automation-permission-ladder). That guide decides how far to hand work over. This part decides how the work stops when it nears the line.
+
+**6. How to check.** List what the reviewer compares: totals against the source, quotes against the cited document, missing items. Keep it to a few checks. If review takes too long, the time saved by automation disappears, so shorter is better.
+
+## Start from a list of failures, not a blank page
+
+Starting from a blank page produces vague sentences. Anthropic's post suggests the reverse order: run the agent on representative tasks, observe where it struggles or needs more context, and build the skill step by step to address those gaps. In short, start with evaluation.
+
+Applied to office work, it looks like this.
+
+Collect about five real cases. Do not pick only easy ones; mix in one or two that gave a person trouble last month. If a case contains sensitive data such as customer details, anonymize it or swap in a sample.
+
+Run all five with your usual instruction and no sheet. Read the results by your normal standard and write one line per miss or disappointment. That list is the skeleton of the sheet. If the format keeps slipping, you need part 4. If the AI invents unsupported numbers, you need part 5. Each failure maps to a part.
+
+Then write the sheet and run the same five again. Check only whether the failure list got shorter. A sentence that did not reduce any failure was unrelated to the problem, so delete it.
+
+This also keeps the sheet short. There is no reason to write sentences that guard against failures that never happened. The best-practices guide makes a related point: do not explain what the agent already knows, and ask of each paragraph whether it justifies the cost of being read. It also advises keeping the SKILL.md body under 500 lines and splitting content into separate files as it nears that limit. The one-page limit is the office-document version of the same advice.
+
+## Do not write every step with the same strictness
+
+A common mistake in part 3 is writing every step at the same level of detail. Anthropic suggests matching the degree of freedom to how fragile the task is. Its analogy: on a narrow bridge with cliffs on both sides, give exact instructions; in an open field, give a general direction.
+
+In office terms:
+
+- High freedom: how to phrase the key points of a report, or in what order to explain them. Several approaches can be right, so give direction and criteria.
+- Medium freedom: things like the column layout of a table, where a preferred pattern exists but small variation is fine. Provide a template and allow adjustment.
+- Low freedom: calculating amounts, entering approval numbers, naming files. Mistakes here cause trouble. Write the exact procedure, and where possible have the AI run a tool or script that a person built.
+
+The last point matters. Anthropic's post notes that sorting a list by generating tokens is far more expensive than running a sorting algorithm, and that jobs needing consistency call for code. Instead of explaining sums and date arithmetic in sentences and hoping the AI gets them right, hand the calculation to a fixed tool and let the AI read the output and write it up.
+
+![Three paper folders of different thickness, a stack of index cards and a pencil on a pale oak table.](/images/works/ai-skill-job-sheet/three-folders.webp)
+
+## When it grows, split it, and go down only one level
+
+Some jobs are too complex for a single page. Keep the main sheet as an overview and move rarely needed content elsewhere. If a monthly report sheet covers refunds and an exception for an overseas branch, the main page can carry one line saying "for refunds, see the refund handling note," with the detail in a separate document. In a month without refunds, nobody has to read it.
+
+The best-practices guide adds one caution: keep references one level deep. When a document points to a second document that points to a third, the agent may only preview the files and miss information. The advice to put a table of contents at the top of reference files longer than 100 lines has the same reason. It holds for people too. If the answer sits three links down in a handover note, a new colleague will stop at the second.
+
+## Test again when the model changes
+
+The same guide says a skill adds to a model, so its effectiveness depends on the underlying model, and it recommends testing with every model you plan to use. For a fast, light model, ask whether the sheet gives enough guidance. For the most capable one, ask whether it over-explains.
+
+In daily work this becomes a simple rule. When the tool or model version changes, do not edit the sheet first. Run the same five cases again. If the results hold, leave the sheet alone. If something shifted, fix only the part that corresponds. A job sheet is not a document you write once and forget; keep it together with its test cases. How to connect those test results to performance measures is covered in [Measuring AI adoption](/en/works/ai-performance-measurement).
+
+## Borrowing someone else's sheet
+
+Once skills get shared, borrowing from outside is tempting. Anthropic's post is direct about the risk. Skills give an agent new abilities through instructions and code, so a malicious one can introduce vulnerabilities or direct the agent to exfiltrate data. It recommends installing skills only from trusted sources and, for less trusted ones, reading the bundled files first, paying particular attention to code dependencies, bundled resources such as images or scripts, and instructions that connect to untrusted external networks.
+
+The same applies to internal documents. Before using a sheet someone shared, skim it for a sentence telling the AI to send files to an outside address or to widen its own permissions. You only need to do this once, before it is adopted. A sheet that has not been through this check does not go into testing.
+
+## A first rollout for a team
+
+You do not need to turn every job into a document at once. Here is one order to try. It is DMS.Labs' suggestion; neither the research nor the official documents recommend this schedule or these counts.
+
+First, pick one job that repeats at least monthly and whose result a person can judge quickly. The task boundary map in [AI training should start with 'Should I hand this task over?'](/en/works/ai-training-task-boundary-map) works as the filter. Jobs in its "try handing over" column are the first candidates.
+
+Second, test five real cases without a sheet and write the failure list.
+
+Third, fill in the six parts on one page. The author is the person who does the job most often. The reader is the person who takes it on for the first time. Ask whether that newcomer could start the job from this page alone. The question is the same test for an AI and for a person.
+
+Fourth, run the same five cases again, check whether the failure list shortened, and delete sentences that changed nothing.
+
+Fifth, a few weeks later, look at how the sheet is used in real work. If readers skip a part, the position or wording of that part may be the problem.
+
+## Closing
+
+What separates a team where AI use stays a personal knack from one where it becomes a shared asset is usually where the instructions live. In one person's notes they are a knack. As a named, one-page document that the team reads and edits together, they are an asset. The requirement is not a big platform. It is a named document and five cases to test it against.
+
+This guide is general advice drawn from public documentation, not results from a specific organization. The sheet layout and the testing order are DMS.Labs' suggestions and are not guaranteed to fit every job. Features and recommendations in the cited documents can change, so check the current versions before applying them.
+
+## References
+
+- Zhang, B., Lazuka, K., & Murag, M. [Equipping agents for the real world with Agent Skills](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills). Anthropic Engineering.
+- Anthropic. [Skill authoring best practices](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices). Claude Docs.

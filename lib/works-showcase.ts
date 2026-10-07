@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "AI에게 일을 시키기 전에, 업무 설명서 한 장부터 씁니다",
+    summary: "에이전트 스킬의 구조를 빌려 여섯 칸짜리 업무 설명서를 쓰고, 실패 목록으로 시험하는 AI 스킬 구축 가이드입니다.",
+    tags: ["Work", "AI 스킬", "업무 자동화"],
+    image: "/images/works/ai-skill-job-sheet/one-page-sheet.webp",
+    link: "/works/ai-skill-job-sheet",
+  },
+  {
     title: "AI 교육은 도구 설명보다 '이 일을 맡겨도 되나'에서 시작합니다",
     summary: "세 편의 연구를 바탕으로 업무 경계표를 만들고 교육 2주 뒤까지 확인하는 AI 교육 설계 가이드입니다.",
     tags: ["Work", "AI 교육", "업무 자동화"],
