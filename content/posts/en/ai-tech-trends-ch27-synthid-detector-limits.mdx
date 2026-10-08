@@ -1,0 +1,94 @@
+---
+translationSourceHash: "e45b455892f45542756a7d43332a61e3ea04cbf5f4bcfb67c737793436286d5c"
+title: "SynthID Detector Is Open to Everyone: \"Not Detected\" Does Not Mean a Person Made It"
+excerpt: "Google has opened SynthID Detector, its AI watermark checker, to the public. This chapter covers what it tells you, what it cannot, how people who make images and video should read the result, and which records to keep on their own."
+date: "2026-10-08"
+readTime: "10 min"
+subtitle: "A watermark checker only finds files that carry a watermark"
+coverImage: "/images/posts/synthid-detector-limits/magnifier-print.webp"
+series: "ai-tech-trends"
+chapter: "27"
+tags: ["SynthID", "AI watermark", "Content provenance", "AI labeling", "Image generation"]
+---
+
+If you publish images or video made with AI, someone will eventually ask whether AI made them. The reverse happens too: you receive a draft from a contractor or a file from a client and want to know whether it came from an AI tool. A tool that helps with that check has just been opened to everyone.
+
+This chapter covers what Google's SynthID Detector can and cannot confirm. It also covers how far a maker can trust the result, and where records of your own become necessary. The facts were checked on October 8, 2026, and the chapter is based on Google's announcement and press coverage. I did not upload any files to test the tool myself. Where the sources differ, the text names who said what.
+
+## What has opened
+
+Google announced that SynthID Detector is now available worldwide, in English, to anyone. The address is synthid.com. You upload an image, video or audio file, and the site checks for a SynthID watermark to see whether Google's AI or a partner's AI made or edited it. The partners named are OpenAI, NVIDIA and Kakao, and Apple is expected to join "soon."
+
+SynthID works by embedding a signal that people can hardly see or hear into image pixels or audio waveforms. Google says it has watermarked more than 180 billion images and videos and 240,000 years of audio so far.
+
+According to Ars Technica, anyone outside Google's trusted tester program could previously check for SynthID only by uploading a file to Gemini and asking. The earlier detector also looked only for Google's own watermark, so watermarks that partners add, such as those on ChatGPT images, were not flagged. Now one site looks for the partners' watermarks as well. Google also says the verification features built into Search, the Gemini app and Chrome handle more than one million requests a day.
+
+![A printed photograph lies on a desk by a window, with a magnifying loupe over one corner showing a faint grid of dots](/images/posts/synthid-detector-limits/magnifier-print.webp)
+
+## Conditions to know before you use it
+
+Pulling the coverage together, the tool comes with several conditions.
+
+| Item | Detail | Where it was reported |
+| --- | --- | --- |
+| Cost and login | Free, but you must sign in with a Google, OpenAI or Apple account | Engadget, Ars Technica |
+| Daily use | About 10 checks a day across images, video and audio combined | Ars Technica (Google's description) |
+| Supported files | JPG, PNG, MP4, MP3 | The Decoder |
+| Language | English | Google |
+| Result | Says only whether SynthID was used; does not show where the watermark is | Ars Technica |
+
+Ars Technica says the number is "about" 10 for a reason: uploading many similar files can lock you out sooner. Google engineers reportedly explained that the limit exists so check results cannot be used to tune tools that strip SynthID. The reason sounds sensible, but it also means the limit does not suit bulk review of files.
+
+The missing location display is worth noting. Google's 2025 introduction of the early portal described highlighting the regions most likely to carry a watermark. According to Ars Technica, the public site gives no such detail and reports only whether SynthID was used.
+
+## How to read the result
+
+The result goes one of two ways, and each one lets you read different things.
+
+| Result | What you can read from it | What you cannot read from it |
+| --- | --- | --- |
+| Detected | A clue that a supported partner's AI made or edited the file | Whether the whole file is AI output, or which parts are synthetic |
+| Not detected | The tool did not find a watermark it knows about | Proof that a person made it |
+
+Engadget points out that the site does not distinguish a file made entirely by AI from one only edited with AI. So even "detected" is closer to a clue than a verdict. The Decoder warns against treating SynthID as a universal AI detector. It flags only content that carries a SynthID watermark.
+
+Read the point about removal alongside this. Google has described SynthID as a robust watermark that stays detectable when content is shared or goes through a range of transformations. Engadget, on the other hand, writes that watermarks can be stripped in some situations, and Ars Technica mentions the possibility that someone finds a removal method. These read less as a contradiction than as a question of degree. I have not tested which changes a watermark survives, so I will not judge it here.
+
+When you write a result down, write the date you checked as well. The range of partners the tool knows about is growing over time. Apple is still "soon," and according to Engadget, Google has said before that ElevenLabs committed to supporting SynthID. Ask the same question about the same file and the answer can change if the tool's range changes, so it is safer to note the date next to the result.
+
+## AI output that sits outside the watermark
+
+Output from companies that do not take part in SynthID will not be caught by this tool. Engadget uses Meta as its example. Meta is experimenting with its own web detection tool, which finds images made with its latest Muse Image models but not images from other companies or even Meta's earlier models. Some services use no watermark at all.
+
+The Decoder makes the same point: other detection systems, it explains, typically verify only the watermarks their own company adds. Text is a separate problem, and The Decoder reports that OpenAI built its own system for it. That is why a result that mixes images, video, audio and writing cannot be judged from one tool's answer alone.
+
+Ars Technica also points to open-weight models that people can run on their own hardware. These produce increasingly realistic content and may leave behind not even simple metadata labeling. Upload such a file to this site and the answer is "not detected." According to Ars Technica, the site will carry a notice about these limits.
+
+In the same article, Ars Technica suggests the opposite approach. Instead of labeling AI output, you would attach cryptographic provenance such as C2PA to real footage from the moment it is captured. Google Pixel phones are named as one of the few devices that already do this. Which approach will win is still open. What is confirmed today is that watermark checking finds only the files that someone chose to label.
+
+## How makers can use it
+
+This section is my own suggestion for use, based on the public material. It is not presented as a verified procedure.
+
+1. Use it as a clue on files you receive. If a draft from a contractor or a submitted image comes back "detected," you have grounds to ask whether a partner's tool was involved. If it comes back "not detected," do not conclude that a person made it. Asking about the working process is safer.
+2. Check your own labeling before you publish. Find out whether the service you used is a SynthID partner, and fill in the AI labeling fields on the platform where you post. Whether a watermark is embedded and what a platform requires you to label are separate matters, so read each platform's own rules for the latter.
+3. Keep production records separately. The detector tells you only yes or no. Which tool you used and when, which prompt and source files, and where a person made changes are things the maker has to write down.
+4. Spend the daily quota carefully. Use it on files that matter, and do not upload slightly altered versions of one file over and over.
+
+It is also worth remembering that the person receiving your file can run a similar check. According to Engadget, Google offers other ways to check for SynthID watermarks and C2PA content credentials besides this site, including Circle to Search and the Gemini app. If you know in advance what such a check would return for an image you publish, you can have an answer ready when someone asks.
+
+![An open blank notebook with a pencil, three stacks of printed photographs and a paper folder on a desk](/images/posts/synthid-detector-limits/record-notebook.webp)
+
+A team that uses generated images in AI training or workflow automation could add one line to its handover document: which tool made the image and how it was labeled. The reason is that the person who runs the work after the builder leaves should be able to answer the same question.
+
+## What this chapter does not say
+
+This chapter is not a DMS.Labs client case. It summarizes public announcements and press coverage. I did not upload files to SynthID Detector and check the results, and I did not test which edits a watermark survives. The login requirement, the limit of about 10 checks a day and the missing location display follow Ars Technica's reporting and do not appear in Google's announcement. Supported partners and limits may change, so read the guidance on synthid.com again before you rely on it. Detection of text watermarks is not covered here.
+
+## References
+
+- Google, "SynthID Detector expands globally," The Keyword. https://blog.google/innovation-and-ai/models-and-research/google-deepmind/synth-id-ai-content/
+- Ars Technica, "Google rolls out improved SynthID AI content detector, now available globally," 2026-10-07. https://arstechnica.com/ai/2026/10/google-rolls-out-improved-synthid-ai-content-detector-now-available-globally/
+- Engadget, "Google's AI Detection Website Is Now Available," 2026-10-07. https://www.engadget.com/2279565/google-synth-id-detector-ai-detection-website-is-now-available/
+- The Decoder, "Google says 180 billion images and videos now carry SynthID watermarks as detector goes public," 2026-10-07. https://the-decoder.com/google-says-180-billion-images-and-videos-now-carry-synthid-watermarks-as-detector-goes-public/
+- Google, "SynthID Detector — a new portal to help identify AI-generated content," introduction of the early version. https://blog.google/innovation-and-ai/products/google-synthid-ai-content-detector/
