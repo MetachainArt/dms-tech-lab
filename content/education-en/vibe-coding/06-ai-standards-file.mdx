@@ -1,0 +1,150 @@
+---
+title: "Teach Your AI Your Standards"
+date: "2026-10-08"
+desc: "Why the same request gives different results, and a three-step way to turn your corrections into one-line standards the AI reads first. A practical guide for beginners."
+coverImage: "/images/education/vibe-coding/ai-standards-file/cover.webp"
+readTime: "12 min"
+lang: "en"
+---
+
+# The Same Request, a Different Result Every Time
+
+Have you ever asked an AI for the same thing twice and received two very different answers? When you first build an automation, it follows your instructions closely. After a few days of use, odd results start to slip in. Many people conclude that the AI is not good enough yet, so they switch tools or wait for the next model.
+
+This guide looks for the cause somewhere else. The problem may not sit entirely with the AI. If you have only ever described your standards out loud, inside a conversation, those standards disappear the moment the conversation ends. Open a new chat the next day and the AI knows nothing about what you corrected yesterday. Results that keep changing are, in that case, exactly what you should expect.
+
+<div className="my-8 rounded-xl overflow-hidden border border-gray-200 shadow-lg">
+  <img
+    src="/images/education/vibe-coding/ai-standards-file/flatlay.webp"
+    alt="An overhead view of a wooden desk with a blank notebook, a pen, index cards and a cup of tea"
+    className="w-full h-auto object-cover"
+  />
+</div>
+
+## Why Spoken Standards Disappear
+
+An AI conversation remembers things only inside that conversation. Start a new one and it has no idea which requests you made before or what you asked it to change. It is like handing work to a stranger every morning, someone who has never met you.
+
+So you end up repeating yourself. When a post comes out in the wrong tone, you correct it. The next day the same tone appears, and you correct it again. Corrections pile up until you spend more time steering the AI than using it.
+
+It helps to separate two kinds of instructions. One is a request that matters only once, such as "keep this post short". The other is a standard that should hold every time, such as "social posts always use a polite tone". The second kind is the one you cannot afford to lose.
+
+## The Fix Is Simple
+
+Keep your standards in a file instead of in the conversation. A plain notepad is enough. Write down, one line at a time, the things you have asked the AI to change, and have the AI read that file before it starts any task.
+
+The idea is the same as giving a new colleague an operating manual. Instead of explaining everything aloud each time, you hand over a short manual once and say, "please read this before you begin." The manual does not need long explanations. A short, clear line is enough.
+
+## Three Steps You Can Follow Today
+
+### Step 1. Collect your corrections
+
+Start by writing down what you recently asked the AI to change. Five items are enough at first. If you cannot remember them, skim recent conversations and look for moments where you said, "no, do it this way." If you have made the same correction more than once, that is the first line to write.
+
+When you write them down, leave out feelings and background. Note only what went wrong: "the post came out in the wrong tone", "text spilled outside the shape on a card", "the title was too long".
+
+### Step 2. Turn each one into a one-line standard
+
+Rewrite each problem as a sentence that says what to do from now on. Be specific enough that the AI can follow it exactly.
+
+- "The post came out in the wrong tone" becomes "Social posts use a polite tone, and questions are phrased politely."
+- "Text spilled outside the shape" becomes "On cards, keep padding between the text and the edge of the shape."
+- "The title was too long" becomes "Titles are short, easy to read and fit on one line."
+
+Broad wishes such as "write something good" make poor standards, because the AI cannot know what you consider good. "Use a polite tone" is different: you can tell at a glance whether it was followed. A sentence you can check is a good standard.
+
+### Step 3. Have the AI read it first
+
+Save the list as a file and tell the AI to read it before a new task. The details depend on the tool, but the outline is the same.
+
+- If your tool accepts attachments or pasted text, put the list at the very top of the conversation.
+- If your tool can read files directly, add one line: "Before you start, read this file and follow it."
+- If you run the same automation repeatedly, put "read the standards file first" at the start of that automation's instructions.
+
+<div className="my-8 rounded-xl overflow-hidden border border-gray-200 shadow-lg">
+  <img
+    src="/images/education/vibe-coding/ai-standards-file/card-box.webp"
+    alt="A walnut card box holding blank index cards, with a few cards and a pencil in front"
+    className="w-full h-auto object-cover"
+  />
+</div>
+
+## When the List Grows, Split It Into Layers
+
+Once you have ten or twenty standards, making the AI read all of them for every task starts to get in the way. A rule about card layouts has nothing to do with writing an article. It is more convenient to sort the standards by type and pull out only what the task needs.
+
+Three groups are enough.
+
+- **Principles that always apply.** These hold for any task. For example, "never invent experiences or numbers" belongs here.
+- **Task rules.** These apply to one kind of task only, such as "blog posts use a calm, friendly tone" or "keep card text inside the shape". Attach a short tag to each rule so you can pick the right ones easily.
+- **Cases.** A short note on why a rule exists, for example "on Oct 2 a post went out in the wrong tone, so it was deleted and reposted." This is useful later when you judge whether a rule is out of date.
+
+The cases group matters more than it looks. Rules age. If your instructions change and an old rule stays in the file, the AI will keep following the old one faithfully. When the reason is written down, a person can quickly check whether it still applies.
+
+## What a Standards File Looks Like
+
+Here is an example you can paste into a notepad or a markdown file. Change the contents to fit your own situation.
+
+```
+# My Standards
+
+## Principles that always apply
+- Never invent experiences or numbers. Use only confirmed facts.
+- Replace difficult words with plain ones, and explain any English term.
+
+## Task rules
+- [social] Posts use a polite tone. Questions are phrased politely.
+- [card] Keep padding between text and the edge of the shape.
+- [title] Titles are short, easy to read and fit on one line.
+
+## Cases
+- Oct 2: a post went out in the wrong tone and was deleted and reposted. -> [social] rule
+- Oct 5: card text spilled outside the shape. -> [card] rule
+```
+
+## A Sentence That Makes the AI Read It
+
+With the file ready, you can give instructions like these. Feel free to copy them.
+
+```
+Before you start, read the "My Standards" list below.
+This task is a [social] post. Follow the rules with that tag, plus the principles that always apply.
+If a standard conflicts with this request, follow this request and tell me about the conflict.
+```
+
+The last line matters. If the AI silently picks one side when a standard and a request collide, the cause is hard to find later. Asking it to report conflicts gives you a chance to spot rules that have gone out of date.
+
+## Working With a Team
+
+This method shows its value even more clearly in a team than on your own. People using the same AI often word things differently and ask for different things, so results end up scattered. In that case, keep one file for the standards the whole team follows, and keep personal preferences in a separate file.
+
+Team standards can include the tone of anything sent to customers, how sources are cited when numbers appear, and the notices that must always be included. Personal standards can include preferred sentence length or favorite phrasing. If the two files overlap, add one line stating that the team standard comes first.
+
+The file also makes a good onboarding document for newcomers, because know-how that used to be passed along by word of mouth is now written down. One warning: without an owner and a schedule, a shared file quietly grows longer. Decide who reviews it and when.
+
+## Common Mistakes
+
+**Writing too many standards at once.** Do not try to build a perfect list on day one. Write down only what you actually corrected, so the list stays alive. Standards invented in the abstract are mostly never used.
+
+**Using broad, vague wording.** "Make it natural" and "make it look great" cannot be checked by the AI or by you. Rewrite them as sentences you can verify with your own eyes.
+
+**Promoting a one-time correction to a rule.** A remark made once, in one mood, can turn into a permanent rule and cause trouble. It is safer to promote a correction after you have made it at least twice.
+
+**Never reviewing the list.** When your instructions change, the list should change with them. Every few weeks, skim through it and delete the lines that no longer apply.
+
+## How to Check Whether It Helps
+
+To be honest, I cannot promise how much this improves results in general. It depends on the task and the tool, and I am still comparing outcomes myself. I suggest a small test.
+
+1. Choose one task you do often.
+2. Make the request once without the list, and save the result.
+3. Make the same request again with the list attached, and save that result.
+4. Put the two side by side and check only one thing: did the problems you corrected before appear less often?
+
+One question is enough: "Did the same problem come back?" If the answer is that it comes back less often, the list is doing its job. If nothing changes, first check whether your standards are too vague.
+
+## Summary
+
+A good part of why an AI behaves differently each time may be that your standards live only inside the conversation. The remedy is not elaborate. Turn your corrections into one-line standards, keep them in a file, and have the AI read the file before it starts.
+
+You can begin today with a single small step. Write down five things you recently asked an AI to change, and rewrite each as "from now on, do it this way." Those five lines are the start of your standards file. Not having to make the same correction twice is the first change you will notice.
