@@ -58,5 +58,10 @@
     "file": "daily-record-the-week-light-changes.mdx",
     "original": "9/1   다섯 시, 모서리\n9/4   모서리 넘음\n9/6   키보드 왼쪽\n9/9   손등",
     "translated": "9/1   Five o’clock, corner\n9/4   Past the corner\n9/6   Left of the keyboard\n9/9   Back of my hand"
+  },
+  {
+    "file": "meme-pose-pet-identity-prompt-roles.mdx",
+    "original": "첫 번째 이미지는 포즈 기준(밈 원본), 두 번째 이미지는 외모 기준([반려동물])입니다.\n첫 번째 이미지의 구도, 카메라 각도, 배경, 동작과 표정은 유지하고 등장 인물은 두 번째 이미지의 동물 한 마리로만 바꿉니다.\n두 번째 이미지에서 가져올 것: [얼굴형, 귀 모양, 털색, 무늬, 체형].\n지울 것: [사람, 옷, 신발, 넥타이처럼 동물에게 어울리지 않는 것].\n남길 소품: [안경, 헤드폰, 가방].\n동물의 몸은 자연스러운 비율과 [네 다리]를 유지하고 사람 손이나 사람 다리는 만들지 않습니다. 글자는 넣지 않습니다.",
+    "translated": "Image 1 is the pose reference (the meme), Image 2 is the appearance reference ([your pet]).\nKeep the composition, camera angle, background, action and expression of Image 1, and replace the character with one animal from Image 2 only.\nTake from Image 2: [face shape, ear shape, coat color, markings, body shape].\nRemove: [people, clothes, shoes, a necktie, or anything unsuited to an animal].\nKeep as props: [glasses, headphones, a bag].\nKeep natural animal proportions and [four legs]; do not create human hands or legs. No text."
   }
 ]
