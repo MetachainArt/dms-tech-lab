@@ -1,0 +1,115 @@
+---
+translationSourceHash: "af061befe30ec841e2d1f4c58eafb721bdaec915a2e45bc9c282767da024e8cd"
+title: "AI Models Have Retirement Dates: Why to Check the Calendar Before You Wire One In"
+excerpt: "An AI model is not a part you connect once and forget. This chapter lines up the deprecation documents from Anthropic, OpenAI and Google, compares their notice periods and real schedules, and describes the list worth building before a date arrives."
+date: "2026-10-08"
+readTime: "12 min"
+subtitle: "A model name is just a string in your code, and that string comes with a deadline"
+coverImage: "/images/posts/model-retirement-calendar/calendar-cards.webp"
+series: "ai-tech-trends"
+chapter: "26"
+tags: ["Model lifecycle", "Deprecation", "Migration", "Operations", "AI adoption"]
+---
+
+When you add AI to a business workflow, a model name ends up somewhere in your code or settings. It looks like `claude-sonnet-4-5-20250929`. At first it reads like a part number.
+
+That string has a deadline. Anthropic's documentation says plainly that requests to a retired model will fail. A feature that worked yesterday turns into an error once a date passes.
+
+This chapter covers how those dates are announced, what three vendors' public documents say about them, and what a team that uses AI can prepare ahead of time. The facts below were checked on October 8, 2026. Schedules change, so read each vendor's original page again before you plan real work.
+
+## The three vendors use slightly different words
+
+Anthropic describes four lifecycle states. Active means fully supported and recommended. Legacy means the model gets no more updates and may be deprecated later. Deprecated means it still works but is no longer recommended, and a replacement and retirement date have been assigned. Retired means it can no longer be used.
+
+OpenAI says a model becomes deprecated the moment a deprecation is announced, and every deprecated model gets a shutdown date. Legacy is a label for models and endpoints that no longer receive updates, a signal that deprecation will come at some point. The two vendors use legacy in nearly the same way.
+
+Google's Gemini API page puts each model's release date, shutdown date and recommended replacement in a table. The sentence worth reading sits above the table: the shutdown dates listed are the earliest possible dates, and the exact date will be communicated with advance notice. That is also how to read the many rows that say "No shutdown date announced." An empty date is not a promise that a model will last forever.
+
+Anthropic's table of active models has a similar column. `claude-haiku-4-5-20251001`, for example, shows a tentative retirement date of "Not sooner than October 15, 2026." That does not mean it goes away that day. It does mean the earliest date is weeks away, not next year, and that is worth writing on a calendar.
+
+## Notice periods differ by vendor and by model type
+
+Put the published minimum notice periods side by side and you get this.
+
+| Vendor | Applies to | Minimum notice in the docs |
+| --- | --- | --- |
+| Anthropic | Publicly released models | At least 60 days before retirement |
+| OpenAI | Generally available models | At least 6 months |
+| OpenAI | Specialized variants of GA models (chat, codex, deep research) | At least 3 months |
+| OpenAI | Models with "preview" in the name | Can be as short as 2 weeks |
+| Google Gemini | Dates in the table | Earliest possible date; exact date announced separately |
+
+OpenAI's page also notes that safety or compliance concerns can lead to a faster timeline. So read this table as a floor on the promise. It is not an average, and it is not what usually happens.
+
+Counting the gaps in Anthropic's recent notices suggests the floor has held. Claude Haiku 3.5 was announced on December 19, 2025 and retired on February 19, 2026, a gap of 62 days. Claude Haiku 3 went from February 19 to April 20, 2026, which is 60 days. Claude Sonnet 4 and Opus 4 went from April 14 to June 15, 2026, 62 days. Opus 4.1 went from June 5 to August 5, 61 days. The latest notice, for Claude Sonnet 4.5, came on September 30, 2026, with retirement on November 30, also 61 days. The recommended replacement is `claude-sonnet-5-5`.
+
+Two months can sound generous. Then list what has to happen inside it. You find where the model is used, test the replacement on your own inputs, fix what differs, get approval and deploy. I suspect many teams get stuck on the first item, finding where the model is used. That is my guess, not something the public documents establish.
+
+## It is not only models that go away
+
+Some migrations are a matter of swapping one model name. The documents show several that are not.
+
+OpenAI's page also lists products and features. The Assistants API was scheduled to shut down on August 26, 2026, with the Responses API and Conversations API as the recommended path. The Evals platform turns existing evals read-only on October 31, 2026, and its dashboard and API are scheduled to shut down on November 30. Agent Builder and reusable prompt objects are also scheduled for November 30, and the page tells you to move prompt content into application code. The Sora 2 models and the Videos API are listed for shutdown on September 24, 2026, and the recommended replacement column is empty. Some shutdowns come with no replacement.
+
+Parameters change too. According to Anthropic's page, `temperature`, `top_p` and `top_k` return a 400 error on Claude Opus 4.7 and later when set to a non-default value. In the Python SDK, version 1.0 and later removes them, so passing one raises a `TypeError`. If you swap the model name and get an error, this is one place to look.
+
+So a migration schedule splits into three pieces: the model name, the request options attached to it, and the tools and platform features around it.
+
+## Does an alias keep you safe?
+
+It is tempting to think that an alias such as `-latest` follows the newest model automatically. The documents suggest it does not always work that way.
+
+OpenAI's shutdown lists include `gpt-5.1-chat-latest`, `gpt-5-chat-latest`, `gpt-5.2-chat-latest`, `gpt-5.3-chat-latest` and `chatgpt-4o-latest`. A name with "latest" in it still has its own shutdown date. An alias may move to a new target, but the alias itself can also disappear. And when the target changes, the same code can give different answers one day. A pinned snapshot stays stable but has a shutdown date. An alias is convenient but leaves the timing to someone else. Which one fits depends on the job.
+
+## The dates already on the calendar
+
+Based on the public pages checked on October 8, 2026, here are some dates arriving in the next few months.
+
+![A paper wall calendar with a few dates circled in pencil, and a row of blank index cards and a pencil on a desk below](/images/posts/model-retirement-calendar/calendar-cards.webp)
+
+- October 23, 2026: OpenAI plans to remove older models such as `gpt-4-turbo`, `o1`, `o3-mini`, `o4-mini`, `gpt-4.1-nano` and `gpt-image-1`, plus some fine-tuned models. Replacements differ by model.
+- October 31, 2026: Existing OpenAI Evals become read-only.
+- November 17, 2026: Some Gemini preview models, including `gemini-3.1-flash-live-preview` and the TTS previews, reach their earliest shutdown date.
+- November 30, 2026: Anthropic retires Claude Sonnet 4.5, and OpenAI's Agent Builder, Evals and reusable prompt objects are scheduled to shut down.
+- December 1, 2026: OpenAI's `gpt-image-1-mini`, `gpt-image-1.5` and `chatgpt-image-latest` are scheduled to shut down.
+- December 11, 2026: OpenAI's `gpt-5-2025-08-07`, `o3-2025-04-16` and other older GPT-5 and o3 snapshots are scheduled to shut down.
+
+This is not the full list. That so many dates cluster in a few months is also the point of this chapter. Old models leave about as fast as new ones arrive.
+
+## What to build: one page listing your models
+
+This does not call for a complicated system. A single table is enough, with columns like these.
+
+1. Where it is called. Include code, config files, nodes in automation tools, stored prompts, and places a vendor connected on your behalf.
+2. Which route it takes. Note whether you connect to Anthropic or OpenAI directly, or go through another platform such as Amazon Bedrock or Google Cloud. Anthropic's page says Bedrock and Google Cloud set their own retirement schedules, so dates can differ.
+3. The exact model name, and whether it is an alias or a pinned snapshot.
+4. What the model does, and what it costs when it is wrong.
+5. The date from the official page, or its "earliest possible" date, plus the day you checked.
+6. The recommended replacement and who owns the migration.
+7. The set of test inputs to run before the move, and the pass criteria.
+
+Item 1 is the most tedious. Usage records can help. Anthropic's page tells you to open the Usage page in the Claude Console, click Export, and read the CSV of usage by API key and model to find where deprecated models are still used. Most vendors have some kind of usage view, so looking for one first can be quicker than searching the whole codebase.
+
+Item 7 connects to another series on this site. The Agentic Era series looked at running an agent several times instead of trusting one success. The same reasoning applies here: feed the replacement model the same inputs more than once and check the resulting state. Anthropic also advises testing applications with newer models well before the retirement date. When a model changes, the same instruction can produce different answer lengths, formats and refusal behavior. A newer model being billed as better says nothing yet about whether it is better for your work.
+
+![One half-packed moving box next to an empty box on a wooden floor by a window](/images/posts/model-retirement-calendar/half-packed-box.webp)
+
+## Give the schedule some slack
+
+Writing down only the shutdown date is too late. I suggest recording three dates. The first is the official shutdown date. The second is the day testing must be finished, at least a month before shutdown. The third is the day migration work starts. When a notice arrives, filling in these three dates turns the task into scheduled work.
+
+With Anthropic's recent notices running a little over 60 days, this arithmetic is tight. Start the day the notice arrives and you still have only about a month for testing and approval. At the other end, when a GA model gets six months or more, a long runway makes it easy to postpone. Either way, you need the list before you can reason about the schedule.
+
+Preview models deserve separate handling. OpenAI says preview models may be retired with notice as short as two weeks and advises against using them for business-critical production unless you can migrate quickly. It is worth checking whether a preview model connected for a trial has quietly moved into production.
+
+## What this chapter does not say
+
+This chapter is a reading of public documents, not a DMS.Labs client case. It does not say how any particular team was affected, and I do not know that. The dates are as of the day I checked, and as shown above, vendors can change them. Only three vendors are covered, so check other providers directly. Fine-tuned and self-hosted models follow different rules. OpenAI's page says inference on fine-tuned models continues until the underlying base model is deprecated.
+
+For automation and AX projects, my suggestion is a single one: add a line to the handover document that lists the models in use and their shutdown dates. The people who build a system will not always be around, and the people who run it should be able to see the next date.
+
+## References
+
+- Anthropic, "Model deprecations," Claude Platform Docs. https://platform.claude.com/docs/en/about-claude/model-deprecations
+- OpenAI, "Deprecations," OpenAI API Docs. https://developers.openai.com/api/docs/deprecations
+- Google, "Gemini deprecations," Gemini API Docs. https://ai.google.dev/gemini-api/docs/deprecations
