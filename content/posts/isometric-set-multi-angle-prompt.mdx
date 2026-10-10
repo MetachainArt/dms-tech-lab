@@ -1,0 +1,124 @@
+---
+title: "세트 이미지 한 장에서 같은 공간을 여러 각도로 뽑는 프롬프트"
+subtitle: "공간을 한 번 만들어 두고 카메라만 바꿀 때, 무엇을 문장에 적어야 가구와 색이 따라오는지 같은 방으로 비교했습니다."
+excerpt: "아이소메트릭 세트 한 장을 기준으로 눈높이 컷과 낮은 앵글 컷을 만든 시험 기록입니다. 기준 이미지를 넣었을 때와 글로만 설명했을 때의 차이, 복사해 쓸 수 있는 프롬프트 틀을 정리했습니다."
+date: "2026-10-10"
+readTime: "12 min"
+coverImage: "/images/posts/isometric-set-multi-angle-prompt/cover.png"
+series: "future-arts"
+tags: ["프롬프트","AI 이미지","세트 디자인","숏드라마"]
+---
+
+숏드라마나 제품 영상을 만들다 보면 같은 방을 여러 컷으로 보여줘야 할 때가 옵니다. 장면마다 "작은 원룸, 초록 소파, 노란 러그"라고 새로 적으면 컷마다 창문 위치와 커튼 색, 주방 구성이 조금씩 달라집니다. 인물은 같은데 방이 컷마다 바뀌는 영상이 되는 이유입니다.
+
+이 글은 그 문제를 줄이는 순서를 다룹니다. 공간 전체가 한눈에 보이는 세트 이미지를 먼저 한 장 만들고, 그 이미지를 기준으로 카메라 위치만 바꿔 다른 컷을 뽑습니다. 같은 방에서 기준 이미지를 넣은 경우와 글로만 설명한 경우를 각각 생성해 비교했고, 실제로 입력한 문장은 그대로 붙였습니다.
+
+## 출발점과 이 글의 범위
+
+yeonsidesign의 [Instagram 게시물](https://www.instagram.com/p/DeTCyBDp5vA/)은 이미지 한 장을 3D로 바꿔 같은 드라마 세트장을 여러 구도에서 보여주는 작업 흐름을 소개합니다. 공개 캡션에 따르면 작성자는 아이소메트릭 배경 이미지를 먼저 만들고, 그 이미지를 블렌더에서 3D로 바꾼 뒤, 원하는 구도를 뽑아 영상으로 만들었습니다. 캡션에는 제작 지원을 받았다는 표시가 있고, 특정 서비스의 링크는 댓글을 남긴 사람에게 보내는 방식입니다.
+
+저는 그 링크와 서비스를 쓰지 않았고, 블렌더로 3D 변환하는 단계도 하지 않았습니다. 아래 시험은 캡션에서 읽은 원리 하나, 곧 공간을 먼저 고정하고 카메라만 바꾼다는 생각만 가져와 이미지 생성 모델 하나로 새로 만든 것입니다. 작성자의 도구 조합이 어떤 품질을 내는지는 이 글로 알 수 없습니다.
+
+## 왜 공간부터 고정하는가
+
+이미지 모델은 요청마다 장면을 처음부터 그립니다. 문장에 적은 물건은 대체로 나오지만, 적지 않은 부분은 매번 새로 정해집니다. 방 안에서 가장 자주 바뀌는 것은 창문의 위치와 개수, 커튼의 재질, 가구의 배치 방향, 벽에 걸린 소품입니다.
+
+세트 이미지는 이 빈칸을 한 번에 채워 둔 설계도 역할을 합니다. 위에서 내려다본 컷에는 가구 배치와 벽, 문, 창이 한 화면에 들어옵니다. 이후 컷을 만들 때 이 이미지를 함께 넣고 "같은 방"이라고 말하면, 모델이 보는 단서가 글보다 훨씬 많아집니다.
+
+## 시험에 쓴 재료
+
+실제 촬영 사진이나 남이 만든 세트는 쓰지 않았습니다. 이 글을 위해 새로 생성한 이미지 한 장이 출발점입니다. 한국식 원룸을 단면으로 잘라 위에서 본 구도이고, 초록 소파와 노란 원형 러그, 타원형 탁자와 찻주전자, 흰 주방 수납장, 파란 커튼이 달린 창, 초록 격자 이불의 침대, 붉은 현관문, 화분이 들어 있습니다.
+
+![자체 생성한 아이소메트릭 원룸 세트 기준 이미지](/images/posts/isometric-set-multi-angle-prompt/ref-set.png)
+
+기준 이미지를 만든 문장은 다음과 같습니다.
+
+```text
+An isometric cutaway view of a small cozy Korean one-room apartment drama set, 3D render look: wooden floor, a green sofa on the left wall, a round yellow rug, a small kitchen with white cabinets on the back wall, a window with blue curtains on the right wall, a red door at the front-left, a potted plant, a low table with a teapot. Clean soft studio lighting, pastel background, no people, no text.
+```
+
+이 이미지는 생성물이라 실제 방의 기록이 아닙니다. 따라서 이 시험이 확인하는 것은 실제 공간을 얼마나 닮았는지가 아니라, 같은 세트가 컷을 바꿔도 유지되는지입니다.
+
+## 기준 이미지를 넣고 카메라만 바꾼 결과
+
+첫 번째 요청은 기준 이미지를 넣고, 붉은 현관문 쪽 눈높이에서 주방 벽을 바라보는 컷을 요청했습니다.
+
+```text
+This is the reference set (Image 1). Recreate the same room as a ground-level eye-height shot from the red door looking toward the kitchen wall. Keep the same objects, colors and layout: green sofa, round yellow rug, oval low table with teapot, white kitchen cabinets, blue curtains window, bed with green plaid blanket, plant. Do not add or remove furniture. No people, no text.
+```
+
+![기준 이미지를 넣어 만든 현관 쪽 눈높이 컷](/images/posts/isometric-set-multi-angle-prompt/eye-level.png)
+
+초록 소파와 노란 러그, 타원형 탁자 위 찻주전자, 주방 수납장과 후드, 파란 커튼의 창, 초록 격자 이불의 침대가 기준 이미지와 같은 위치 관계로 나왔습니다. 소파는 왼쪽, 침대는 오른쪽, 주방은 정면 안쪽입니다. 차이도 있었습니다. 기준 이미지에서 현관 앞에 놓였던 슬리퍼는 이 각도에서 보이지 않고, 천장에 작은 조명이 새로 생겼으며 침대 옆 선반의 모양이 조금 달라졌습니다. 가구는 지키고 작은 소품이 바뀌는 쪽으로 어긋났습니다.
+
+두 번째 요청은 같은 기준 이미지에서 침대 쪽 낮은 앵글로 소파와 현관문을 바라보게 했습니다.
+
+```text
+This is the reference set (Image 1). Recreate the same room as a low-angle view from the bed side looking toward the sofa and the red door. Keep the same objects, colors and layout: green sofa with yellow cushion, round yellow rug, oval low table with teapot, red door, blue curtains window, plant. Do not add or remove furniture. No people, no text.
+```
+
+![기준 이미지를 넣어 만든 침대 쪽 낮은 앵글 컷](/images/posts/isometric-set-multi-angle-prompt/bed-low.png)
+
+붉은 현관문과 슬리퍼, 현관 옆 수납장, 소파의 노란 쿠션과 격자 쿠션, 러그와 탁자의 위치가 기준 이미지와 맞습니다. 두 컷은 같은 방으로 읽힙니다. 다만 화면 왼쪽 아래에 기준 이미지에 없던 회색 벽 모서리가 걸려 있고, 화장실 벽이 이 각도에서 어색하게 잘려 보입니다. 앵글을 낮게 잡을수록 침대가 화면의 큰 부분을 차지해서, 요청에 적은 소파와 문이 상대적으로 작아졌습니다.
+
+## 기준 이미지 없이 글로만 설명한 결과
+
+비교를 위해 기준 이미지를 빼고, 첫 번째 요청의 문장 뒤에 방 설명 한 줄만 덧붙여 다시 생성했습니다.
+
+```text
+Recreate the same room as a ground-level eye-height shot from the red door looking toward the kitchen wall. Keep the same objects, colors and layout: green sofa, round yellow rug, oval low table with teapot, white kitchen cabinets, blue curtains window, bed with green plaid blanket, plant. Do not add or remove furniture. No people, no text. The room: a small cozy Korean one-room apartment with a green sofa, round yellow rug, oval low table with teapot, white kitchen cabinets, window with blue curtains, bed with green plaid blanket, red door, plant.
+```
+
+![기준 이미지 없이 글로만 설명해 만든 같은 구도의 컷](/images/posts/isometric-set-multi-angle-prompt/no-reference.png)
+
+문장에 이름을 적은 물건은 대부분 나왔습니다. 초록 소파, 노란 러그, 타원형 탁자와 찻주전자, 흰 수납장, 격자 이불의 침대, 붉은 문, 화분이 있습니다. 하지만 이름을 적지 않은 부분은 기준 세트와 달랐습니다. 창이 싱크대 바로 위 한가운데에 있고, 커튼은 파란 무늬 천이며, 후드가 없고, 오른쪽 벽에 기준 세트에 없던 문이 하나 더 생겼습니다. 방은 그럴듯하지만 첫 컷의 방과 같은 방은 아닙니다.
+
+이 비교로 말할 수 있는 범위는 좁습니다. 같은 문장으로 한 번씩만 생성했고, 기준 이미지를 넣는다고 항상 더 일치한다는 통계가 아닙니다. 이번 한 쌍에서는 기준 이미지가 이름 붙이지 않은 배치, 특히 창과 문과 후드를 붙잡아 주었다는 것까지만 확인했습니다.
+
+## 복사해 쓰는 프롬프트 틀
+
+세 번의 요청에서 공통으로 쓴 구조를 빈칸으로 바꾸면 다음과 같습니다. 괄호 안은 직접 바꿔 넣는 부분입니다.
+
+```text
+This is the reference set (Image 1). Recreate the same [공간 종류] as a [카메라 높이와 방향] shot from [카메라 위치] looking toward [바라보는 대상]. Keep the same objects, colors and layout: [꼭 유지할 물건 목록]. Do not add or remove furniture. No people, no text.
+```
+
+이 틀은 이번 방에서 사용한 문장을 일반화한 구성 예시입니다. 다른 공간에서 같은 결과가 나온다는 시험은 하지 않았습니다.
+
+## 빈칸을 채우는 방법
+
+공간 종류는 기준 이미지가 이미 보여 주는 단어로 적습니다. "원룸"처럼 하나의 이름이면 충분하고, 그 안의 물건은 아래 목록에서 따로 적습니다.
+
+카메라 높이와 방향은 한 요청에 하나만 정합니다. 이번 시험에서는 눈높이와 낮은 앵글을 각각 따로 요청했습니다. 높이, 위치, 방향을 한꺼번에 여러 개 섞으면 어느 요소가 결과를 바꿨는지 알 수 없습니다.
+
+카메라 위치와 바라보는 대상은 기준 이미지 안에서 눈으로 찾을 수 있는 물건으로 지정합니다. 이번에는 붉은 문, 침대, 소파, 주방 벽이 그 역할을 했습니다. 기준 이미지에 없는 물건을 위치로 쓰면 모델이 새로 만들어 넣습니다.
+
+유지할 물건 목록에는 해당 컷에서 화면에 들어오는 것만 적습니다. 두 번째 컷의 목록에서 수납장과 침대를 뺀 것도 그 때문인데, 목록에 없던 침대가 화면의 큰 부분을 차지하는 일이 생겼습니다. 화면에 들어올 만한 큰 가구는 목록에 넣는 편이 안전합니다.
+
+## 다른 공간에 적용할 때
+
+상점이나 카페처럼 물건 종류가 다른 공간에서도 같은 순서를 쓸 수 있습니다. 예를 들어 서점 카페라면 세트 이미지를 먼저 만들고, 계산대 쪽 눈높이 컷과 출입문 쪽 낮은 앵글 컷을 각각 요청합니다. 아래 이미지는 그 첫 단계에 해당하는 세트 장면을 새로 생성한 것입니다.
+
+![서점 카페 세트를 아이소메트릭으로 생성한 응용 예시](/images/posts/isometric-set-multi-angle-prompt/cover.png)
+
+이 서점 카페는 시험 결과가 아니라 응용을 보여 주는 예시 이미지입니다. 여기서 다른 각도 컷을 만들어 비교하지는 않았습니다.
+
+## 컷을 늘리기 전에 점검할 것
+
+새 각도를 요청할 때마다 기준 이미지와 두세 가지를 대조하면 어긋남을 일찍 잡을 수 있습니다. 창과 문의 개수, 큰 가구의 위치 관계, 색이 정해진 물건의 색입니다. 이번 시험에서 어긋난 곳도 대부분 이 목록에 있었습니다.
+
+작은 소품은 컷마다 바뀐다고 가정하는 편이 현실적입니다. 슬리퍼나 선반 위 장식처럼 연속성이 중요한 소품은 프롬프트에 개수와 위치를 적어 두거나, 그 소품이 보이지 않는 각도를 고릅니다.
+
+영상으로 이어 붙일 계획이라면 컷 사이의 광원 방향도 확인합니다. 이번 컷들은 따뜻한 오후 빛으로 통일됐지만, 이것도 문장에 적지 않은 부분이라 운이 좋았을 가능성이 있습니다. 필요하면 "warm afternoon light from the right window" 같은 문장을 틀에 한 줄 더하는 방법을 시험해 볼 수 있습니다. 이 문장은 제가 실제로 돌려 보지 않은 제안입니다.
+
+## 한계
+
+한 번의 생성 결과로 만든 비교라서 결과를 일반화할 수 없습니다. 이미지 생성은 같은 문장에도 매번 달라지기 때문에 같은 문장을 다시 돌리면 다른 어긋남이 나올 수 있습니다.
+
+기준 이미지를 넣어도 구조적으로 틀린 곳이 생깁니다. 낮은 앵글 컷의 화장실 벽처럼 기준 이미지에서 접근이 어려운 부분은 모델이 추측해서 그립니다. 정확한 치수와 일관성이 필요한 작업이라면 작성자가 쓴 방식처럼 실제 3D 모델을 거치는 편이 안정적일 가능성이 큽니다. 다만 그 방식을 제가 시험하지 않았으므로 어느 쪽이 낫다고 판단하지 않습니다.
+
+생성 이미지는 실제 장소의 사진이 아닙니다. 광고나 부동산처럼 실제 공간을 설명하는 용도에 쓰면 오해를 부를 수 있습니다.
+
+## 출처
+
+이 글의 아이디어는 yeonsidesign의 Instagram 게시물([원문 보기](https://www.instagram.com/p/DeTCyBDp5vA/))에서 공개 캡션으로 소개된 "공간을 먼저 고정하고 카메라를 바꾼다"는 작업 흐름에서 출발했습니다. 시험 이미지와 모든 프롬프트는 이 글을 위해 새로 만들었고 원작자의 이미지나 자료를 옮기지 않았습니다. 제작 지원 표시가 있는 게시물이므로 해당 서비스의 성능에 대해서는 이 글에서 평가하지 않았습니다.
