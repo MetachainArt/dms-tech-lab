@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "AI가 기억하는 지식사전 만들기",
+    summary: "옵시디언과 LLM Wiki 방식으로 AI가 정리하고 기억하는 개인 지식사전을 만드는 순서와, 내려받아 쓰는 빈 서식을 정리한 AI 교육 가이드입니다.",
+    tags: ["Work", "AI 교육", "업무 자동화"],
+    image: "/images/works/ai-knowledge-base-world-tree/scattered-and-sorted.webp",
+    link: "/works/ai-knowledge-base-world-tree",
+  },
+  {
     title: "AI에게 일을 시키기 전에, 업무 설명서 한 장부터 씁니다",
     summary: "에이전트 스킬의 구조를 빌려 여섯 칸짜리 업무 설명서를 쓰고, 실패 목록으로 시험하는 AI 스킬 구축 가이드입니다.",
     tags: ["Work", "AI 스킬", "업무 자동화"],
