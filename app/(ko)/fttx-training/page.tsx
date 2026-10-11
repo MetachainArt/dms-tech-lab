@@ -5,6 +5,10 @@ import styles from "@/components/brand/FiberContent.module.css";
 import { ArrowRight, Globe2, Layers, Wrench } from "lucide-react";
 import { generateMetadata as generateSeoMetadata } from "@/lib/metadata";
 import { EDUCATION_TRACKS } from "@/lib/education-data";
+import { getCourseStructure } from "@/lib/education-fs";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 
 export const metadata: Metadata = generateSeoMetadata({
   title: "FTTx Field Training",
@@ -63,9 +67,36 @@ const audience = [
   },
 ];
 
+// This page is in English. When an English version of a lesson exists (content/education-en), use its title,
+// summary and route so lessons that were written in Korean first are not listed with Korean titles.
+function englishLesson(trackId: string, slug: string) {
+  const file = path.join(process.cwd(), "content", "education-en", trackId, `${slug}.mdx`);
+  if (!fs.existsSync(file)) return null;
+  const { data } = matter(fs.readFileSync(file, "utf8"));
+  return { title: data.title as string | undefined, description: data.desc as string | undefined, duration: data.readTime as string | undefined };
+}
+
 export default function FttxTrainingPage() {
   const track = EDUCATION_TRACKS["optical-training"];
-  const lessons = track.chapters.flatMap((chapter) => chapter.lessons);
+  // Same source as the course page (/education/optical-training): read the lesson files so supplementary
+  // lessons added later are listed here too. Falls back to the static list if the files cannot be read.
+  const course = getCourseStructure(track.id);
+  const lessons: { id: string; title: string; description: string; duration?: string; href?: string }[] = course
+    ? course.chapters.flatMap((chapter) =>
+        chapter.lessons.map((lesson) => {
+          const en = englishLesson(track.id, lesson.slug);
+          return {
+            id: lesson.slug,
+            title: en?.title || lesson.title,
+            description: en?.description || lesson.description,
+            duration: en?.duration || lesson.duration,
+            href: en ? `/en/education/${track.id}/${lesson.slug}` : undefined,
+          };
+        }),
+      )
+    : track.chapters.flatMap((chapter) =>
+        chapter.lessons.map((lesson) => ({ id: lesson.id, title: lesson.title, description: lesson.description, duration: lesson.duration })),
+      );
 
   return (
     <main
@@ -169,7 +200,7 @@ export default function FttxTrainingPage() {
             {lessons.map((lesson, index) => (
               <li key={lesson.id}>
                 <Link
-                  href={`/education/${track.id}/${lesson.id}`}
+                  href={lesson.href ?? `/education/${track.id}/${lesson.id}`}
                   className="flex flex-col gap-3 border-b border-paperfolio-line py-7 transition-colors hover:text-blue-700 focus-visible:outline-2 focus-visible:outline-blue-700 md:flex-row md:items-center md:justify-between"
                 >
                   <div className="space-y-2">
