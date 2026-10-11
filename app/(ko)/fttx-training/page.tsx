@@ -76,6 +76,36 @@ function englishLesson(trackId: string, slug: string) {
   return { title: data.title as string | undefined, description: data.desc as string | undefined, duration: data.readTime as string | undefined };
 }
 
+// On-site training FAQ (2026-10-11 owner decision: duration, cost, group size and completion are "provided on enquiry")
+function trainingFaq(lessonCount: number) {
+  return [
+    {
+      q: "What does the FTTx field training cover?",
+      a: `It is built on the ${lessonCount}-lesson FTTx curriculum on this page: network structure, split loss, optical power budget, enclosure work and fault localisation — the decisions that decide whether a link comes up on site.`,
+    },
+    {
+      q: "How are duration, cost, group size and completion arranged?",
+      a: "They are set after a short consultation, based on who is being trained, how many people, the plant you operate and the site conditions. Include your team size and the tasks your team keeps getting stuck on when you enquire.",
+    },
+    {
+      q: "Can the training follow our own equipment?",
+      a: "Yes. Sessions can be built around the plant you actually operate: your split ratios, your enclosures and your measurement records.",
+    },
+    {
+      q: "Who teaches it?",
+      a: "Reedo (Jongsun Park). Nearly twenty years in optical infrastructure and FTTx equipment development, with field training delivered in nine countries: Vietnam, Thailand, New Zealand, France, Qatar, Lebanon, China, Indonesia and Oman.",
+    },
+    {
+      q: "Which languages and formats?",
+      a: "Korean or English. Based in Korea and available remotely, including Zoom or Google Meet; on-site delivery is discussed case by case.",
+    },
+    {
+      q: "How do I enquire?",
+      a: "Email dms@dmssolution.co.kr. Replies usually arrive within one to two business days.",
+    },
+  ];
+}
+
 export default function FttxTrainingPage() {
   const track = EDUCATION_TRACKS["optical-training"];
   // Same source as the course page (/education/optical-training): read the lesson files so supplementary
@@ -218,6 +248,37 @@ export default function FttxTrainingPage() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      <section className="px-6 pt-24">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: trainingFaq(lessons.length).map((item) => ({
+                "@type": "Question",
+                name: item.q,
+                acceptedAnswer: { "@type": "Answer", text: item.a },
+              })),
+            }),
+          }}
+        />
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-10 space-y-4">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">FAQ</p>
+            <h2 className="paperfolio-h1">On-site training questions</h2>
+          </div>
+          <dl className="space-y-8">
+            {trainingFaq(lessons.length).map((item) => (
+              <div key={item.q} className="border-b border-paperfolio-line pb-6">
+                <dt className="text-xl font-semibold tracking-tight text-paperfolio-text">{item.q}</dt>
+                <dd className="mt-3 text-sm leading-7 text-paperfolio-text-muted">{item.a}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 

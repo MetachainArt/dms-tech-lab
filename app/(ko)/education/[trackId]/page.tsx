@@ -9,6 +9,36 @@ import { editorialCover } from "@/lib/editorial-art";
 import styles from "@/components/brand/FiberContent.module.css";
 import { generateMetadata as generateSeoMetadata } from "@/lib/metadata";
 
+// 광통신 현장 교육 FAQ (2026-10-11 사용자 결정: 교육 일수·비용·정원·수료 방식은 '문의 시 안내'로 공개)
+function opticalTrainingFaq(lessonCount: number) {
+    return [
+        {
+            q: "광통신 현장 교육은 어떤 내용을 다루나요?",
+            a: `이 페이지의 FTTx 광통신 커리큘럼 ${lessonCount}강을 기본으로 합니다. 망 구조, 분기 손실, 광 파워 버지트, 접속함체 작업, 장애 위치 찾기처럼 현장에서 링크가 살아나는지를 가르는 판단을 다룹니다.`,
+        },
+        {
+            q: "현장 교육의 일수, 비용, 정원, 수료 방식은 어떻게 정해지나요?",
+            a: "교육 대상, 인원, 운영 중인 설비와 현장 조건에 맞춰 상담한 뒤 안내합니다. 문의하실 때 팀 규모와 자주 막히는 작업을 함께 적어 주시면 더 정확하게 답할 수 있습니다.",
+        },
+        {
+            q: "우리 팀이 쓰는 장비와 설비에 맞춰 교육할 수 있나요?",
+            a: "네. 실제로 운영하는 분기비, 접속함체, 측정 기록을 기준으로 내용을 구성합니다.",
+        },
+        {
+            q: "누가 가르치나요?",
+            a: "리도(박종선)가 직접 가르칩니다. 광통신 인프라와 FTTx 장비 설계·개발을 20년 가까이 해 왔고, 베트남·태국·뉴질랜드·프랑스·카타르·레바논·중국·인도네시아·오만 9개국 현장에서 엔지니어 교육을 진행했습니다.",
+        },
+        {
+            q: "어떤 언어와 방식으로 진행하나요?",
+            a: "한국어와 영어로 진행할 수 있고, 한국을 기반으로 화상 미팅(Zoom·Meet)을 포함해 원격으로도 협업합니다. 방문 교육 여부는 현장 조건에 맞춰 상담합니다.",
+        },
+        {
+            q: "어디로 문의하나요?",
+            a: "이메일 dms@dmssolution.co.kr 로 문의해 주세요. 영업일 기준 1~2일 안에 답장합니다.",
+        },
+    ];
+}
+
 interface PageProps {
     params: Promise<{
         trackId: string;
@@ -124,6 +154,45 @@ export default async function EducationTrackPage({ params }: PageProps) {
                     <EducationAccordion chapters={course.chapters} trackId={trackId} />
                 </div>
             </section>
+
+            {trackId === "optical-training" ? (
+                <section className="border-t border-paperfolio-line px-6 py-20">
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{
+                            __html: JSON.stringify({
+                                "@context": "https://schema.org",
+                                "@type": "FAQPage",
+                                mainEntity: opticalTrainingFaq(lessonCount).map((item) => ({
+                                    "@type": "Question",
+                                    name: item.q,
+                                    acceptedAnswer: { "@type": "Answer", text: item.a },
+                                })),
+                            }),
+                        }}
+                    />
+                    <div className="mx-auto max-w-3xl">
+                        <div className="mb-10 space-y-3">
+                            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-paperfolio-accent-blue">FAQ</p>
+                            <h2 className="paperfolio-h2 text-paperfolio-text">현장 교육 자주 묻는 질문</h2>
+                        </div>
+                        <dl className="space-y-8">
+                            {opticalTrainingFaq(lessonCount).map((item) => (
+                                <div key={item.q} className="border-b border-paperfolio-line pb-6">
+                                    <dt className="text-lg font-semibold text-paperfolio-text">{item.q}</dt>
+                                    <dd className="paperfolio-body mt-3">{item.a}</dd>
+                                </div>
+                            ))}
+                        </dl>
+                        <a
+                            href="mailto:dms@dmssolution.co.kr?subject=%EA%B4%91%ED%86%B5%EC%8B%A0%20%ED%98%84%EC%9E%A5%20%EA%B5%90%EC%9C%A1%20%EB%AC%B8%EC%9D%98"
+                            className="mt-10 inline-flex items-center justify-center rounded-full bg-paperfolio-text px-7 py-4 text-sm font-semibold text-white hover:bg-paperfolio-accent-blue"
+                        >
+                            현장 교육 문의하기
+                        </a>
+                    </div>
+                </section>
+            ) : null}
         </main>
     );
 }
