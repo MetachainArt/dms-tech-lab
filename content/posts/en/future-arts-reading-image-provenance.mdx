@@ -1,0 +1,83 @@
+---
+title: "Reading an Image's Provenance"
+excerpt: "A provenance badge does not establish the truth of a caption. Read C2PA's boundaries for signatures, identity, gaps in history, and ingredient validation before handing over an image."
+date: "2026-10-11"
+readTime: "10 min"
+subtitle: "Check the signed history separately from the depicted event"
+coverImage: "/images/posts/reading-image-provenance/print-and-card.webp"
+series: "future-arts"
+chapter: "20"
+tags: ["C2PA", "Content Credentials", "Image provenance", "Creative records"]
+translationSourceHash: "334486f75ecd0292c2d67aea82eac83165087559220bbdd6545fd03f1af8674d"
+---
+
+An image carries a provenance badge. The panel names an editing application and lists a few operations. How much confidence should that give you? It is tempting to read the badge as confirmation of the story in the caption, even though the file's recorded history and the caption's accuracy are separate questions.
+
+These are notes on reading image provenance, based on C2PA's public explainer and FAQ. They are not results from uploading files to a verification service. The aim is to make the information a creator hands over, and the information a viewer can check, less ambiguous.
+
+## A signed photograph can still have a false caption
+
+Consider a hypothetical example. Someone photographs an empty exhibition room with a camera, adjusts the exposure in a supported application, and exports it with a Content Credential. Successful validation gives evidence about the signature and its relationship to the file, including whether that relationship has remained intact. Someone then captions it as an exhibition that opened today. If the photograph was taken last year, the caption is wrong.
+
+The example illustrates a boundary, not an incident we investigated. A tool that validates the file's provenance does not automatically establish the date in a later caption. A misleading location or an omitted event outside the frame poses a similar problem. The pixels can remain unchanged while the reader receives a different story.
+
+C2PA's explainer states this boundary explicitly: provenance alone cannot establish that content is true, accurate, or factual. Validation concerns the record, signature, and association with the asset. Fact-checking remains a separate activity. My preference is to expose the history that can be checked instead of presenting a badge as a final verdict. For a news photograph, I would also check the original publisher and the date of the event.
+
+![A print of an exhibition room, a blank record card, and a pencil on a desk near a window](/images/posts/reading-image-provenance/print-and-card.webp)
+
+## Read what the signer actually asserts
+
+C2PA is an open standard for the origin and history of digital content. Content Credentials is the name used for the provenance records built with that standard. The standard also covers video, audio, and documents; this article concentrates on images.
+
+A record can contain assertions about creation, tools, and editing actions. A supporting application or device signs it cryptographically. A verifier checks the signature and the relationship between the record and the asset, and considers whether the signing implementation belongs to a recognized trust list. That adds a way to detect changes to the record, beyond simply writing an application name in a document.
+
+The displayed name need not identify the person who took the photograph. C2PA says its core specification does not directly address the identity of specific people or organizations. Extensions can add identity information, with privacy implications that users should consider. Validating the signature of an implementation is therefore not the same claim as verifying an artist's personal identity.
+
+When reading a panel, ask what was asserted and who signed it. A generic label saying that an image was edited tells you less than the recorded action and your reasons for trusting the party providing it. These notes describe the standard's structure. They do not imply that every product presents the same panel or exposes the same details.
+
+## An absent record leaves a question open
+
+Adding provenance is optional. A photograph without a visible record might come from a device that does not support the standard. Metadata might also have been lost during distribution. The explainer advises against assuming an asset's trustworthiness purely from its use of Content Credentials. Absence is not proof of synthesis.
+
+It is not proof of human creation either. Writing that you could not verify a provenance record in this file preserves the scope of your observation. Writing that the file has been verified as human-made asserts a production method you have not established.
+
+Our [earlier article on the limits of an AI watermark detector](/en/blog/ai-tech-trends-ch27-synthid-detector-limits) concerns a different question. Finding a supported watermark and reading a signed history inspect different things. In either case, an unresolved item should remain unresolved in the handover record.
+
+## The history may have gaps
+
+An image cropped in an application unaware of Content Credentials may not receive a corresponding history update. The explainer uses this case to explain why provenance is not always complete. Importing the result into a supported tool and issuing a new record does not reconstruct every earlier step in detail. The new signer's responsibility and the missing history need to be read separately.
+
+Embedded provenance metadata can also be removed. C2PA describes durable credentials that use watermarking or fingerprint lookup to rediscover a record stored externally. Having a recovery mechanism in the standard is different from recovering a record for the file in your hands. The relevant tools and distribution path need to support it, and the verifier must actually find the record.
+
+I recommend recording whether the history is visible, partially visible, or unverified. A description of a possible recovery mechanism does not justify promising that credentials survive every platform. Record the tool and date of the check as well, so a later reader knows where the observation came from.
+
+## Composite images have another verification boundary
+
+Suppose a poster combines a camera photograph, a generated background, and a separately prepared lettering image. C2PA calls source assets ingredients. Their provenance can be included in the finished asset's history, producing a structure of records linked to other records.
+
+There is a condition worth slowing down for. The actual data of an ingredient is usually not included in the finished asset's Content Credential. Without that data, a recipient cannot independently verify the ingredient's hard binding in the same way as the binding for the final asset. The explainer describes validating ingredients when they are added, then recording that validation. Seeing that earlier result is not the same as personally checking the source file now.
+
+A handover document should distinguish these observations. Did you validate the finished image's record, or did you also receive and compare its source assets? Provenance inspection also does not replace permission to use a reference image. A visible origin does not settle the permitted use, so retain the license or permission and any required attribution separately.
+
+![Two prints, a source-file envelope, and a closed laptop on a worktable](/images/posts/reading-image-provenance/source-envelope.webp)
+
+## A handover I would recommend
+
+The following is a proposed handover record alongside the standard, not a DMS.Labs client case or a procedure validated through deliveries. For a small project, start with a short document next to the final file.
+
+Name the file and version. Say whether it was photographed or made using a generative tool. If reference material was used, record where the original is and what permission covers. For a provenance check, note the verifier, date, displayed signer, and scope of the history. Mark unchecked items as unverified. Review personal information, including names or locations that need not be public, before sending the record outside the team.
+
+Keep the original and the publication copy separately. A resized or converted file needs its own check; a result observed in the original does not establish the state of the copy. If the converted file no longer exposes the record, say so. Where appropriate, deliver the original and an explanatory document with it.
+
+A recipient can use a few plain questions: Is this the final file? Who is the displayed signer? Which edits are recorded, and which stages are missing? Were the caption and usage permission checked against other material? These are prompts for a person reviewing the file, not an assertion that an automated test has answered them.
+
+The [one-page job sheet guide](/en/works/ai-skill-job-sheet) can help define the handover's scope. Our [guide to separating automation permissions](/en/works/automation-permission-ladder) offers a related operational boundary: permission to read a verification result need not include permission to publish the work. A visible provenance label should not silently trigger release.
+
+For a handover, I recommend a note describing what was checked and what still needs review. Include where the original publication and permission records can be found, so the recipient can perform those separate checks.
+
+## References
+
+- [C2PA explainer 2.4](https://spec.c2pa.org/specifications/specifications/2.4/explainer/Explainer.html), especially its goals and limits, completeness of provenance, removable metadata, identity, and ingredient validation.
+- [C2PA FAQ](https://c2pa.org/faqs/) for provenance records, signing, and interpretation of trust.
+
+The official documents were checked on October 11, 2026. The two images in this article were generated to illustrate the topic. They are not photographs of a delivery or a verification interface.
