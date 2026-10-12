@@ -124,6 +124,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // 교육 트랙 (자동)
     ...educationRoutes,
     { url: `${baseUrl}/en/education/optical-training/closure-cable-preparation-tray-reentry`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.6, alternates: { languages: languageAlternates("/education/optical-training/closure-cable-preparation-tray-reentry", baseUrl) } },
+    { url: `${baseUrl}/en/education/optical-training/connector-inspection-evidence-handover`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.6, alternates: { languages: languageAlternates("/education/optical-training/connector-inspection-evidence-handover", baseUrl) } },
     { url: `${baseUrl}/en/education/optical-training/dome-closure-seal-flash-test`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.6, alternates: { languages: languageAlternates("/education/optical-training/dome-closure-seal-flash-test", baseUrl) } },
     { url: `${baseUrl}/en/education/vibe-coding/06-ai-standards-file`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.6, alternates: { languages: languageAlternates("/education/vibe-coding/06-ai-standards-file", baseUrl) } },
     // 프로젝트 시리즈 (자동)
