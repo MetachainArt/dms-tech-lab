@@ -3,7 +3,7 @@
  * 한영 독립 편집본. figure 블록의 src는 /public 아래 내부 경로.
  */
 export type EssayBlock =
-  | { type: "p"; text: string }
+  | { type: "p"; text: string; links?: { label: string; href: string }[] }
   | { type: "h"; text: string }
   | { type: "motto"; text: string }
   | { type: "figure"; src: string; alt: string; caption: string; width: number; height: number };
@@ -17,6 +17,7 @@ export interface IdeasEssay {
   summary: string;
   blocks: EssayBlock[];
   sources: { label: string; href: string }[];
+  next?: { label: string; href: string };
 }
 
 const IMG_ONE = "/gallery/watching/night-console.webp";

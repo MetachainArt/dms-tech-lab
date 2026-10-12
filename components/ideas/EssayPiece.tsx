@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { EssayBlock, IdeasEssay } from "@/lib/ideas-essay-watching";
 import styles from "./IdeasPage.module.css";
 
@@ -65,7 +66,11 @@ export default function EssayPiece({ essay, locale }: { essay: IdeasEssay; local
                   return <p key={i} className="font-playfair italic text-center tracking-[0.04em] text-paperfolio-text"
                     style={{ fontSize: "clamp(1rem, 1.6vw, 1.25rem)", opacity: 0.8, paddingBlock: "1rem", borderTop: "1px solid var(--color-paperfolio-line)", borderBottom: "1px solid var(--color-paperfolio-line)" }}>{block.text}</p>;
                 }
-                return <p key={i} className="leading-[2] text-paperfolio-text-muted" style={bodyStyle}>{block.text}</p>;
+                return <p key={i} className="leading-[2] text-paperfolio-text-muted" style={bodyStyle}>{block.text}
+                  {block.type === "p" && block.links?.map((link) => (
+                    <Link key={link.href} href={link.href} className="ml-2 text-paperfolio-accent-blue underline underline-offset-4">{link.label}</Link>
+                  ))}
+                </p>;
               })}
             </div>
             {partIndex === sections.length - 1 && (
@@ -77,6 +82,11 @@ export default function EssayPiece({ essay, locale }: { essay: IdeasEssay; local
                   ))}
                 </ul>
               </section>
+            )}
+            {partIndex === sections.length - 1 && essay.next && (
+              <p className="mt-8 text-sm leading-7">
+                <Link href={essay.next.href} className="text-paperfolio-accent-blue underline underline-offset-4">{essay.next.label}</Link>
+              </p>
             )}
           </div>
         </div>
