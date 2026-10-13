@@ -1,0 +1,82 @@
+---
+title: "When to Restart an AI Automation"
+excerpt: "A practical guide to checking external results and approval before retrying an AI workflow, with completion states, request identifiers, restart points and conditions for human review."
+date: "2026-10-13"
+readTime: "12 min"
+kind: "guide"
+coverImage: "/images/works/ai-automation-safe-retry/reconcile-desk.webp"
+tags: ["Work", "Workplace automation", "AI skills"]
+---
+
+When an AI automation stops, rerunning the whole workflow can repeat work that already finished. Check the receiving system before retrying, and skip stages whose completion you can verify. If the outcome of a send or create operation is unclear, hold that operation for review instead of treating the error as proof that nothing happened.
+
+This is a practical design guide that connects AWS documentation on idempotency with DMS.Labs' job sheet and permission guides. It does not report a client deployment or claim that the procedure has been tested in every tool. The document registration example is hypothetical. The official source was checked on October 13, 2026.
+
+## Does a timeout mean the job never ran?
+
+A missing response does not establish that the receiving system did nothing. It may have completed the request before the response was lost. The request may also have failed to arrive. An error in the automation's own interface often leaves both possibilities open.
+
+The AWS Builders' Library illustrates this with a hypothetical request to create an EC2 instance. If the caller receives no response after a network timeout, it cannot easily tell whether the instance is running. Retrying immediately could create more than one instance, so the caller needs to reconcile the actual state. Applied to a document registration workflow, the same reasoning means checking the destination list and document identifier after a stalled submission.
+
+This distinction still matters when AI reads the error and decides what to do next. A model's summary that the job failed is not evidence of the destination's processing result. The original request must be connected to the result left in the receiving system. Reading a list again and creating a new document have different consequences, even when the automation exposes the same retry button for both.
+
+![Hands comparing an open notebook with a printed sheet on a wooden desk beside a window.](/images/works/ai-automation-safe-retry/reconcile-desk.webp)
+
+## Give each stage a state backed by evidence
+
+For this guide, DMS.Labs proposes four states: not attempted, in progress, completion verified, and outcome unknown. Record the evidence and next action alongside each state instead of copying the interface's success or failure label. The table is a design example for this article, not an industry standard or a feature included in a particular product.
+
+| State | Evidence to check | Next action |
+| --- | --- | --- |
+| Not attempted | A record showing no request was sent | Run within the existing approval |
+| In progress | An identifier for a job still processing | Query status and hold a new request |
+| Completion verified | Destination result identifier and content | Skip that stage |
+| Outcome unknown | A timeout or conflicting records | Reconcile read-only, then seek human review |
+
+Attach the state to each stage of the job. If drafting finished but registration is uncertain, do not mark the entire workflow as failed and generate the draft again. Preserve the approved draft and investigate the registration result. Completion verification also includes the intended account and document content. Finding a document in the wrong account does not make the job complete.
+
+For an in-progress operation, check whether the earlier request is still active. Closing a window or losing the AI's explanation does not prove a background job has stopped. If you cannot establish its state, move it to outcome unknown and hold any action that would create another external result. Put this stop condition in the job sheet before the workflow runs.
+
+## Use an identifier that expresses the intended job
+
+An idempotent operation allows a request to be repeated without additional side effects. AWS describes a caller-provided unique request identifier: a service can recognize requests from the same caller with the same identifier as duplicates. The article also explains why identical request content is not always enough. A caller may genuinely want to create two identical resources.
+
+The workflow owner therefore needs to distinguish another attempt at the same job from a new job with the same content. Suppose, as a design example, a monthly report registration has a job identifier. A retry for the same approved report keeps that identifier. If a newly approved report needs a separate registration, record that intent as a separate job. Matching file names alone should not decide whether two jobs are the same.
+
+Writing an identifier in a notebook does not implement duplicate protection in the server. AWS explains that recording the idempotency token and performing the mutations must meet atomicity requirements. They must succeed together or not take effect together. A token without a result, or a result without its token, can mislead the next attempt.
+
+If the service supports an idempotency key, check its scope and validity conditions in the official documentation. If it does not, a screen-based automation can reduce risk by reconciling the destination and involving a reviewer, but cannot promise the same protection. Concurrent runs also matter. A local file-existence check alone should not be treated as the whole safety mechanism.
+
+Here the implementation needs more care than the instruction wording. An AI can be told to check for duplicates, but the instruction does not make a remote read and write atomic. The team should identify which protections the receiving service actually offers and which cases still need reconciliation. Otherwise the apparent safeguard exists only in the description of the workflow.
+
+## What happens to approval during a retry?
+
+Check that recovery still concerns the same approved object and scope. Approval to register one document does not authorize creating several documents or switching accounts. If the draft or recipient changes, verify whether the original approval includes the change. This applies the distinction in the [read, draft and act permission guide](/en/works/automation-permission-ladder) to recovery work.
+
+Write both the restart point and the stop condition in the recovery rule. If the draft and approval record are intact, and evidence shows registration has not started, the workflow can resume at registration. If the completed registration is found, review that result without creating another one. When the records disagree, resolve the disagreement before increasing the retry count.
+
+Choose waiting intervals and attempt limits from the service's constraints, the task deadline and the time available for human intervention. This article does not prescribe a universal count. Permission failures and invalid input may persist regardless of waiting, so correct the cause rather than repeating the same request. Separate limits for read-only checks and external changes help the operator make that decision.
+
+![A closed document folder and clips beside an open work log on a quiet desk.](/images/works/ai-automation-safe-retry/handoff-folder.webp)
+
+## What should the DMS job sheet add?
+
+Add the destination check and restart point to the existing sheet's completion criteria and failure behavior. The [one-page job sheet guide](/en/works/ai-skill-job-sheet) covers the purpose, inputs, output format, completion criteria, prohibited actions and behavior on failure. For a document registration job, make those existing fields more specific before introducing another form.
+
+Completion criteria should identify the registered document address, destination account and match with the approved content. Failure behavior should say to query the destination after a timeout, avoid recreating a verified result, and hand the job to a reviewer if verification fails. The handover record needs the original job identifier and last verified stage. Do not put passwords or access tokens in that recovery note.
+
+Use test material in an authorized environment for training rather than actual external sends or customer document registrations. Suggested scenarios include a completed operation whose response is lost, a second attempt to start the same job, and a completion record that disagrees with the real result. These are proposed exercises, not test results from this article. Ask learners to explain where they would resume or stop without creating another external result.
+
+A manual resolution also belongs in the same record. If a person completes the job, connect the result to the original job identifier and mark completion verified. The returning automation can then skip the completed stage. Leave unresolved items visibly incomplete, with a way to check them and a responsible person. Hiding holds inside failure statistics makes the remaining work harder to see.
+
+The recovery record should lead the reviewer to evidence they can actually inspect. Link the result address, observation time and next place to query, rather than leaving only a success label. Keep only the identifiers needed for recovery instead of copying sensitive content into another log. Set access and retention according to the job's privacy and security requirements.
+
+Before resuming, verify the current account and permissions as well. A login prompt does not authorize switching to a different account. If access prevents you from checking the result, record that limitation for the reviewer instead of guessing the outcome.
+
+## Next step
+
+Start by writing the restart point beside the completion criteria in the job sheet. For workflows that also need execution stages and approval boundaries defined, see [DMS.Labs' automation and training inquiry page](/en/contact). Before an inquiry, list the stages that create external results and the records you can currently verify.
+
+## Source
+
+- [AWS Builders' Library, Making retries safe with idempotent APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/)

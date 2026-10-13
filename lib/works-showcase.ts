@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "AI 자동화 재시작 기준",
+    summary: "멈춘 자동화를 재시도하기 전에 외부 결과와 승인 범위를 확인하는 실무 가이드입니다. 완료 상태, 요청 식별자와 재시작 지점을 정리합니다.",
+    tags: ["Work", "업무 자동화", "AI 스킬"],
+    image: "/images/works/ai-automation-safe-retry/reconcile-desk.webp",
+    link: "/works/ai-automation-safe-retry",
+  },
+  {
     title: "AI가 기억하는 지식사전 만들기",
     summary: "옵시디언과 LLM Wiki 방식으로 AI가 정리하고 기억하는 개인 지식사전을 만드는 순서와, 내려받아 쓰는 빈 서식을 정리한 AI 교육 가이드입니다.",
     tags: ["Work", "AI 교육", "업무 자동화"],
