@@ -22,6 +22,7 @@ export function hasEnglishVersion(pathname: string): boolean {
     || path === "/education/optical-training/connector-inspection-evidence-handover"
     || path === "/education/optical-training/01-fiber-types-link-design"
     || path === "/education/optical-training/02-fiber-market-infrastructure"
+    || path === "/education/optical-training/01-rf-over-fiber-lecture"
     || path === "/education/vibe-coding/06-ai-standards-file"
     || TRANSLATED_PATHS.some((item) => item === path)
     || TRANSLATED_WORK_SLUGS.some((slug) => path === `/works/${slug}`)
