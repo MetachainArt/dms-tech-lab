@@ -1,0 +1,149 @@
+---
+title: "How 5G and FTTH Shape Fiber Demand"
+date: "2026-10-13"
+desc: "Part 2: connect broadband, 5G transport and AI data-centre demand to cable specifications, read market forecasts critically, and practise procurement and acceptance decisions."
+coverImage: "/images/education/optical-training/fiber-selection/cover-fiber-market-infrastructure.svg"
+readTime: "25 min"
+---
+
+# Part 2 How 5G and FTTH Shape Fiber Demand
+
+“5G and AI are growing the fibre market” describes a direction, not a cable specification. A residential drop, a radio transport link and a data-centre interconnect have different distances, connection densities and latency requirements. Treating them as demand for one interchangeable product obscures both engineering and commercial decisions.
+
+This lesson is for telecom and data-centre engineers, cable manufacturers, technical sales and purchasing teams. Allow approximately 25 minutes for explanation and 20 minutes for the three exercises. Read [Part 1, Choosing Fiber for the Link You Need](/en/education/optical-training/01-fiber-types-link-design) first. The examples combine public evidence with stated assumptions; they are not reports of installations or measurements performed by DMS.
+
+## Learning outcomes
+
+Identify the sections that fibre connects in FTTH, 5G and data centres. Translate demand into fibre counts, diameter, connections and acceptance records. Distinguish measured subscription statistics from supplier announcements and commercial forecasts, then prepare a proposal that separates cable, optics, installation and verification.
+
+## Terms used in this lesson
+
+| Term | Meaning and role |
+| --- | --- |
+| FTTH / FTTB | Fibre to the home / fibre to the building. |
+| PON | Passive optical network: passive optical distribution between powered endpoints, without electrical signal amplification in that distribution section. |
+| OLT | Optical line terminal, the exchange-side equipment controlling the PON. |
+| ONT / ONU | Optical network terminal / unit at the subscriber side or distribution-network endpoint; naming and placement depend on the system. |
+| RU / DU / CU | Radio unit / distributed unit / central unit: functional portions of the radio access system. |
+| FEC | Forward error correction; check the requirements of both optics and host equipment. |
+| CAGR | Compound annual growth rate, an equivalent annual rate across a multiyear interval. |
+
+## 1. Observed adoption is not a market forecast
+
+The OECD's October 2025 release reports that fibre represented 47% of fixed broadband subscriptions across its members at the end of 2024, compared with 28% in 2019. Korea's share was 90.5%. A mature high-fibre-share market and a market with substantial rollout potential are not at the same investment stage. These percentages describe the subscription mix, not cable revenue, fibre length or household coverage.
+
+The IG Transformation Partners page linked from the supplied post estimates the global cable market at USD 14.4 billion in 2025 and projects USD 33.2 billion in 2034, with a stated 9.7% CAGR for 2026–2034. These are that publisher's commercial estimates, not observed future sales or independently validated DMS figures. The “free sample” link leads to a request page. No personal information was submitted, no sample was requested and the paid report was not purchased or inspected.
+
+| Evidence | What was inspected | What it does not establish |
+| --- | --- | --- |
+| OECD statistics | End-2024 fibre share and comparison with 2019 | Cable sales or future market value |
+| ITU technical material | Functional splits and transport requirements | One universal speed or reach for all 5G sites |
+| Supplier announcement | Direction of AI high-density connectivity development | Independent market share or field-performance validation |
+| IG report introduction | Publisher's forecast and segmentation | Full methodology, underlying tables or predictive accuracy |
+
+CAGR expresses a multiyear change as an equivalent annual rate. It does not say that actual revenue rises by exactly 9.7% each year. When comparing forecasts, align the base year, period, currencies, nominal-price assumptions and scope: drawn fibre, finished cable, components and installation are different markets. A forecast with uninspected methodology is not a committed customer budget or a revenue guarantee.
+
+## 2. Three infrastructure paths
+
+![Where fibre connects FTTH, 5G and data-centre infrastructure](/images/education/optical-training/fiber-selection/networks-en.png)
+
+The arrows show functional relationships, not a deployment drawing or a universal operator architecture. Within a data centre, short server-side links and campus links can use different media and optics.
+
+### FTTH: the passive network into the home
+
+FTTH takes fibre into the home. FTTB can terminate it at the building and use another medium internally, so inspect the final segment. In PON-based FTTH, the optical distribution network between the OLT and subscriber ONT/ONU includes splitters, splices and connections. Splitter loss and route loss both enter the budget that supports subscriber operation.
+
+Demand divides into feeder, distribution and drop cables, together with closures and terminals. Feeder decisions include spare capacity and shared-duct use; drop decisions involve constrained routes, indoor fire requirements, bends and installation handling. Single-mode and suitable G.657 variants are candidates, but a fibre designation alone does not establish finished-cable suitability.
+
+An upgrade from GPON to XGS-PON does not automatically require replacing the whole passive network, or guarantee that it can all be reused. Check the existing split ratio, loss, coexistence filters, wavelength plan, OLT/ONT support and measurement records before deciding the reuse boundary.
+
+### 5G: wired transport behind the radio
+
+The handset-to-antenna section is wireless; the transport beyond the radio need not be. In a split architecture, fronthaul connects RU to DU, midhaul connects DU to CU, and backhaul links the base-station-side processing system towards the core. The physical layout depends on how functions are integrated. Microwave and other transport options can also serve some routes, so do not impose one optical cable on every site.
+
+Fronthaul bandwidth, latency and synchronisation depend on radio bandwidth, antenna configuration and the functional split. Densification can add routes and connections, but “5G” alone does not determine a Gbit/s requirement. Confirm the actual interfaces and permitted delay and synchronisation arrangement first.
+
+ITU's fronthaul material uses approximately 5 µs/km for one-way fibre propagation. A 10 km optical route therefore consumes roughly 50 µs in propagation alone. If an exercise assigns a 100 µs total one-way budget, equipment, queuing and processing must also fit inside it. The 100 µs value here is an assumption, not a universal 5G service limit.
+
+### AI and cloud: many links in limited space
+
+Servers, accelerators and switches concentrate connections in data centres. Higher line rates and larger clusters put pressure on patch panels, trays and connector space as well as on the number of optics and cables. Separate within-rack, rack-to-rack, building and campus segments. Depending on the application, short links can use copper, active electrical cables, multimode or single-mode fibre. “AI” does not justify specifying OM5 or one optical module everywhere.
+
+In March 2026, Corning announced an expansion of its high-density AI optical connectivity portfolio. The announcement supports the observation that density, installation and contamination sensitivity are design concerns; it is supplier evidence, not an independent test of a product's claimed benefits. Likewise, “400G” or “800G” identifies a port rate, not a complete lane, fibre or connector specification.
+
+## 3. Translate a demand trend into a requirement
+
+| Trend | Design and purchasing questions | Avoid |
+| --- | --- | --- |
+| More FTTH subscribers | Feeder/distribution/drop boundaries, spares, split ratio and loss | Equating homes directly with feeder fibre count |
+| Denser radio deployment | Routes, optical interfaces, delay, synchronisation and protection | One speed and reach for every site |
+| Larger AI clusters | Lane/fibre counts, panel density, polarity, power and cooling | Treating OM5 as the default answer to every fast link |
+| Congested ducts | Cable diameter, occupancy, pulling/blowing limits and maintenance | Assuming the thinnest cable always has the lowest total cost |
+| Faster restoration needs | Physical route diversity, spare fibres, records, parts and access | Calling two cables in the same duct independent protection |
+
+![From infrastructure demand to specification and acceptance evidence](/images/education/optical-training/fiber-selection/procurement-en.png)
+
+High-count ribbon constructions can support density and mass-fusion work, but the equipment, trays, skills and re-entry conditions must fit the design. Micro-cables may help use duct space efficiently, while still requiring compatible ducts, blowing equipment and environmental limits. These are candidate approaches, not verified promises of labour or performance improvements.
+
+## 4. Exercise A: extend FTTH to 500 homes
+
+**Inputs:** plan new connections for 500 homes and assume a single-stage 1:32 grouping for the exercise. Rounding 500 ÷ 32 upward gives a minimum of 16 groups, representing 512 splitter outputs.
+
+This is an arithmetic starting point, not a complete network. Take rate, OLT ports, splitter locations, cascaded splits, worst-case distance and loss, building distribution, spare ports and growth all remain to be assessed. Do not order solely on the conclusion that “16 is enough”. Shared PON feeder arrangements also mean that 500 homes do not automatically require 500 feeder fibres at the exchange.
+
+**Deliverable:** sketch feeder, distribution and drop sections, a spare-fibre plan, longest/shortest-path loss budgets and a closure/terminal list. Specify link IDs, wavelengths, test methods, limits and raw-file handover. Where required, record ONU registration and service tests separately from optical-plant tests.
+
+## 5. Exercise B: connect 5G equipment over 10 km
+
+**Inputs:** the installed optical route is 10 km and the assumed total one-way delay budget is 100 µs. Allocate roughly 50 µs to propagation, then include optics, transport equipment, queuing and processing. An apparent remaining 50 µs does not prove compliance with delay variation or synchronisation requirements.
+
+**Deliverable:** an interface specification including rate, FEC, delay and timing, plus proposed A/B route diagrams. Two cables in one duct can be severed by one excavation, so distinguish route diversity from buying a second cable. Discuss restoration using a hypothetical incident; do not present it as a measured real outage.
+
+## 6. Exercise C: an 80 m data-centre 100G channel
+
+**Inputs:** 80 m includes the patch cords and the present target is 100G. The OM4 100GBASE-SR4 example in Part 1 meets the reach condition. Its assumed four connections and two splices produced a design loss, including margin, of 2.14 dB against an assumed 1.90 dB module limit, so the connection design still needs revision.
+
+Before buying a higher fibre category, inspect the selected module, MPO lanes and polarity, connection count and guaranteed loss. SR4 uses parallel lanes; alternatives such as duplex-LC BiDi have different components and optical conditions. They are not interchangeable by changing a cable alone. A future 400G or 800G design requires new reach, loss, lane/fibre and module-power checks rather than an extrapolation from today's 100G result.
+
+**Deliverable:** compare at least two options on reach, connection design, installation, optics, testing and maintenance. If no quotation has been obtained, mark prices as “quotation required”; do not invent costs or claim that a candidate is necessarily cheaper or more reliable.
+
+## 7. Where opportunities become specific
+
+Manufacturers can offer density, diameter, bending performance and handling appropriate to a customer's route, backed by qualification evidence and supply capability. Technical sales should connect a product to a verifiable constraint, such as duct space or connection handling, rather than relying on a headline growth rate.
+
+Contractors should price pathway occupancy, closure capacity, fusion equipment and handover documentation as well as cable. Operators need traceable link IDs, spares, re-entry access and restoration parts. Compare total costs across optics, installation, acceptance, maintenance and upgrades. Growth in a broad market does not guarantee the revenue or margins of every supplier.
+
+## 8. Before ordering and before accepting
+
+1. Identify the endpoints, rates, installed routes and environments for each link.
+2. Match the cable category to the actual optical application's wavelength, reach and loss requirements.
+3. Record fibre/spare counts, connections, MPO polarity, polish and physical protection routes.
+4. Check diameter, tensile, crush, bend, moisture, temperature, fire and bonding requirements against applicable rules.
+5. Agree test wavelengths, methods, limits, instruments, link IDs and raw-file handover.
+6. Compare purchase, optics, installation, testing and operation within the same cost boundary.
+
+Metallic armour or strength members can require bonding, grounding and lightning precautions. “The fibre carries light” is not a reason to omit those procedures. Never look into an operating fibre or optical port; follow optical-source safety and site procedures.
+
+## 9. Review questions with answers
+
+**Is the OECD's 47% the global cable market share?** No. It is the fibre share of fixed broadband subscriptions across OECD members at the end of 2024, not a share of worldwide cable revenue.
+
+**Do 16 splitters complete a 500-home design?** No. The exercise only establishes 512 arithmetic outputs. Routes, loss, ports, take rate, spares and the actual split architecture remain.
+
+**Does wireless 5G eliminate fibre demand?** No. Inspect the transport beyond the radio and the requirements associated with the functional split.
+
+**Does a market's forecast growth rate guarantee similar revenue growth for a business?** No. Region, product mix, budgets, competition, pricing, lead times and execution still matter.
+
+## Final assignment
+
+Choose one case and prepare a one-page note containing the inputs, candidate specification, calculation or comparison, likely failure point, proposed revision and evidence needed at acceptance. Label unperformed installation and measurement as hypothetical. Leave unresolved details as explicit checks, such as “obtain quotation” or “confirm device timing requirement”.
+
+## Sources and how they are used
+
+- [OECD, Fibre and 5G drive digital transformation, 30 October 2025](https://www.oecd.org/en/data/insights/statistical-releases/2025/10/fibre-and-5g-drive-oecd-digital-transformation-as-broadband-markets-mature.html): end-2024 fibre share of 47%, Korea at 90.5%, and the 2019 comparison.
+- [ITU-T G Supplement 66, September 2020](https://www.itu.int/epublications/en/publication/itu-t-g-suppl-66-2020-09-5g-wireless-fronthaul-requirements-in-a-passive-optical-network-context/en): RU/DU/CU splits, bandwidth, latency and synchronisation in a PON context.
+- [Corning announcement, 11 March 2026](https://investor.corning.com/news-and-events/news/news-details/2026/Corning-Expands-AI-Data-Center-Connectivity-Portfolio-with-PRIZM-TMT-Technology/default.aspx): supplier evidence of high-density optical connectivity development.
+- [IG Transformation Partners, Fiber Optic Cable Market](https://www.igtps.com/report/fiber-optic-cable-market?P): estimates and projections on its public introduction dated 19 August 2026; the full report and methodology were not inspected.
+- [IG free-sample request page](https://www.igtps.com/download-free-sample/fiber-optic-cable-market?P03): destination of the supplied shortened link, not a PDF obtained by DMS.
+
+Public sources were checked on 13 October 2026. DMS independently edited this lesson rather than translating the promotional post or redistributing a paid report. Diagrams, exercises and checklists are educational reconstructions. Contracts, equipment documentation and site safety rules take precedence; forecasts are not investment advice or sales guarantees.
