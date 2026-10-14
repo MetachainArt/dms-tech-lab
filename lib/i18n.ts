@@ -20,6 +20,7 @@ export function hasEnglishVersion(pathname: string): boolean {
   return path === "/education/optical-training/closure-cable-preparation-tray-reentry"
     || path === "/education/optical-training/dome-closure-seal-flash-test"
     || path === "/education/optical-training/connector-inspection-evidence-handover"
+    || path === "/education/optical-training/otdr-far-end-connector-evidence"
     || path === "/education/optical-training/01-fiber-types-link-design"
     || path === "/education/optical-training/02-fiber-market-infrastructure"
     || path === "/education/optical-training/01-rf-over-fiber-lecture"
