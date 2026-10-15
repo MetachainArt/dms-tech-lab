@@ -30,11 +30,11 @@ export const waitingAverageEssayKo: IdeasEssay = {
     },
     {
       "type": "p",
-      "text": "비교를 위해 다섯 작업이 모두 6분씩 걸리는 경우도 생각해 봅니다. 합계와 평균은 앞의 경우와 같고 중앙값도 6분입니다. 첫 묶음에는 짧은 네 건과 긴 한 건이 있었지만 둘째 묶음에서는 차이가 없습니다. 평균 한 줄만 받은 사람은 두 묶음을 구분하지 못합니다. 대표값에 더해 어떤 기록을 남길지 고민해야 할 지점입니다."
+      "text": "걸린 시간의 크기대로 줄을 세웠을 때 가운데 값인 중앙값은 2분입니다. 이 값은 다섯 건 중 세 번째 작업이 걸린 시간을 그대로 보여 줍니다. 평균보다 평소의 짧은 작업을 설명하기에 가까워 보입니다. 그렇다고 중앙값 2분만 적어 놓으면, 22분 동안 끝나지 않은 한 건을 읽을 방법이 사라집니다. 값을 바꿨을 뿐 설명에서 빠지는 작업은 여전히 남습니다."
     },
     {
       "type": "p",
-      "text": "시간순으로 줄을 세웠을 때 가운데 값인 중앙값은 2분입니다. 이 값은 다섯 건 중 세 번째 작업이 걸린 시간을 그대로 보여 줍니다. 평균보다 평소의 짧은 작업을 설명하기에 가까워 보입니다. 그렇다고 중앙값 2분만 적어 놓으면, 22분 동안 끝나지 않은 한 건을 읽을 방법이 사라집니다. 값을 바꿨을 뿐 설명에서 빠지는 작업은 여전히 남습니다."
+      "text": "비교를 위해 다섯 작업이 모두 6분씩 걸리는 경우도 생각해 봅니다. 합계와 평균은 앞의 경우와 같고 중앙값도 6분입니다. 첫 묶음에는 짧은 네 건과 긴 한 건이 있었지만 둘째 묶음에서는 차이가 없습니다. 평균 한 줄만 받은 사람은 두 묶음을 구분하지 못합니다. 대표값에 더해 어떤 기록을 남길지 고민해야 할 지점입니다."
     },
     {
       "type": "p",
@@ -203,11 +203,11 @@ export const waitingAverageEssayEn: IdeasEssay = {
     },
     {
       "type": "p",
-      "text": "For comparison, imagine five tasks that each take six minutes. Their total and mean match the first group, and their median is six minutes too. The first group contains four quick tasks and one long one; the second has no variation. A reader given only the mean cannot distinguish the groups. That is a specific reason to retain information beyond the headline."
+      "text": "Put the durations in order and the median is two minutes, the middle observation. That seems closer to the four quick tasks. Replace the mean with the median, however, and the twenty-two-minute task becomes even harder to notice. Choosing a different central value has not supplied an account of the long wait."
     },
     {
       "type": "p",
-      "text": "Put the durations in order and the median is two minutes, the middle observation. That seems closer to the four quick tasks. Replace the mean with the median, however, and the twenty-two-minute task becomes even harder to notice. Choosing a different central value has not supplied an account of the long wait."
+      "text": "For comparison, imagine five tasks that each take six minutes. Their total and mean match the first group, and their median is six minutes too. The first group contains four quick tasks and one long one; the second has no variation. A reader given only the mean cannot distinguish the groups. That is a specific reason to retain information beyond the headline."
     },
     {
       "type": "p",
