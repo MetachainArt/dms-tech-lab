@@ -1,3 +1,4 @@
+import { waitingAverageEssayKo } from "@/lib/ideas-essay-average";
 import { undoBoundaryEssayKo } from "@/lib/ideas-essay-undo";
 import Image from "next/image";
 import { galleryPieces, type GalleryPiece } from "@/lib/gallery-data";
@@ -111,8 +112,9 @@ export default function GalleryPage() {
         eyebrow="Ideas / Reedo" lead="Images &" accent="words." variant="insights"
         title="아이디어"
         description="작업하면서 남긴 사진과 글. 기록이기도 하고 생각이기도 하고, 때로는 그냥 좋아서 담아둔 것들."
-        note={<><span>{galleryPieces.length + 5} pieces · 2025 — 2026</span><span>A space where images and words meet</span></>}
+        note={<><span>{galleryPieces.length + 6} pieces · 2025 — 2026</span><span>A space where images and words meet</span></>}
       />
+      <div className={styles.essay}><EssayPiece essay={waitingAverageEssayKo} locale="ko" /></div>
       <div className={styles.essay}><EssayPiece essay={undoBoundaryEssayKo} locale="ko" /></div>
       <div className={styles.essay}><EssayPiece essay={defaultSettingEssayKo} locale="ko" /></div>
       <div className={styles.essay}><EssayPiece essay={carefulPlanEssayKo} locale="ko" /></div>
