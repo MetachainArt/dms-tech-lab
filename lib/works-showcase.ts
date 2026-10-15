@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "공개와 기록을 나눈 이유",
+    summary: "DMS.Labs의 실제 공개 글과 공통 장부가 어긋난 사례입니다. 10월 11일의 보완 기록과 검사 코드로 재발행 없이 연결을 복구한 범위를 설명합니다.",
+    tags: ["Work", "AX 전환", "업무 자동화"],
+    image: "/images/works/reedo-publication-ledger-gap/publication-desk.webp",
+    link: "/works/reedo-publication-ledger-gap",
+  },
+  {
     title: "AI 자동화 재시작 기준",
     summary: "멈춘 자동화를 재시도하기 전에 외부 결과와 승인 범위를 확인하는 실무 가이드입니다. 완료 상태, 요청 식별자와 재시작 지점을 정리합니다.",
     tags: ["Work", "업무 자동화", "AI 스킬"],

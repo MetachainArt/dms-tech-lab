@@ -1,0 +1,86 @@
+---
+title: "Why Publication and Records Are Separate"
+excerpt: "A DMS.Labs article pair was public but absent from a shared ledger. The October 11 repair and the actual inspection code show why a recordkeeping gap needs a different response from a publishing failure."
+date: "2026-10-15"
+readTime: "9 min"
+kind: "guide"
+tags: ["Work", "AX transformation", "Workplace automation"]
+---
+
+If an automation publishes a page but its address is missing from the operating ledger, check publication and recordkeeping separately. On October 11, 2026, DMS.Labs reopened a Korean–English article pair before adding the missing ledger entries. The published articles stayed in place; the repair addressed a recordkeeping gap, not a publishing failure.
+
+This account draws on operating records and the inspection code reviewed on October 15, 2026. It describes Reedo's personal operation, not a customer implementation or a measured improvement in revenue.
+
+## What was missing at DMS?
+
+The missing item was the connection to a shared publication ledger. The morning run on October 11 reported that [Reading an Image's Provenance](/en/blog/future-arts-reading-image-provenance) had been published in Korean and English. A later check reopened both public pages in a browser and read their bodies and references. The evidence note recorded their titles, displayed date, category, and individual addresses.
+
+The handoff says that two baseline records were then added to a previously empty shared publication ledger. Those records corresponded to the two language URLs of one topic. They were not two additional publications. They connected existing results to the records used by later checks.
+
+That distinction prevented the wrong repair. Treating an absent ledger row as proof of an absent article could lead to a duplicate publication. Treating a completion message as proof that every record was saved could leave the article out of later measurement. In this case, the published work was retained and only the missing connection was added.
+
+![An open blank ledger and a laptop placed apart on a wooden desk beside a window](/images/works/reedo-publication-ledger-gap/publication-desk.webp)
+
+## What does completion actually establish?
+
+For this case, I separate the run report, the public result, and the operating ledger. The report tells us what the run claimed to have done. The page shows what a reader can currently access. The ledger connects that result to subsequent inspection and measurement. Evidence in one place does not settle the state of the other two.
+
+| Evidence | What was checked in this case | What it does not establish |
+|---|---|---|
+| Run report | A final statement that both languages were published | The current contents of either page |
+| Public result | Each language's body, title, date, and references | Whether its URL is recorded in the ledger |
+| Shared ledger | The correspondence between published and recorded URLs | More search clicks, inquiries, or contracts |
+
+This is a practical distinction for explaining this failure, not a claim of a universal operating standard. The same need for sources and verification states appears in [Build a Knowledge Base Your AI Remembers](/en/works/ai-knowledge-base-world-tree). A note saying that something happened is different from checking the result that the note describes.
+
+Bilingual work makes the boundary particularly visible. A working Korean page is not evidence that an English page is also available. The baseline note therefore kept both addresses. Each language required its own public-result check and its own connection to a recorded URL.
+
+## How much does the code decide?
+
+The current gap-detection function extracts DMS URLs from a completion report and compares them with the registered publication URLs. It removes repeated addresses and normalizes a limited set of differences, including the presence of www and a trailing slash. An address missing from the ledger is returned as a candidate for a recordkeeping gap.
+
+Candidate is the important word. The function does not open the page, read its body, inspect images, or compare translations. Its code comment explicitly leaves current publication status and whether the address belongs to the intended DMS result for human review. A returned URL is not an instruction to republish.
+
+While preparing this article, I ran the actual function again. A completion report containing the public URL returned a missing-record candidate when the ledger was empty. Registering the same address without www removed that candidate. A non-publication statement without completion wording did not return one. These tests establish the comparison behavior for those inputs, not reliable understanding of every possible report.
+
+There are limits. Different wording may escape the completion-expression check, and the URL normalization does not cover every possible representation of an address. I use this kind of inspection to narrow the review queue. It does not demonstrate that the whole automation is fault-free or that the next scheduled run will behave correctly.
+
+## How should the missing record be repaired?
+
+The reusable sequence from this case is to verify the result before repairing its record. I recommend the following order as an application of the operating evidence, not as a procedure validated in a separate customer project.
+
+1. Read the specific run's final report for its completion scope and public addresses.
+2. Open those addresses and check that the results are currently available. Check both languages independently.
+3. Compare the public addresses with the shared ledger, allowing for the supported formatting differences.
+4. If the result exists and only the ledger connection is missing, repair the record without editing or republishing the article.
+5. Mark the entry as a later baseline addition and leave unverified details unknown.
+
+![Hands comparing two plain record cards beside a closed folder on a softly lit worktable](/images/works/reedo-publication-ledger-gap/reconcile-cards.webp)
+
+The final note matters. The October 11 evidence document explicitly said that the repair did not prove a new publication or an article edit. It did not establish whether title candidates had been considered or which newly introduced writing rules the original run had followed. Those details were not reconstructed to make the historical record look complete.
+
+A URL appearing in the ledger today also does not prove that the original automation saved it successfully. A later repair should remain distinguishable from a record created by the original run. Otherwise, a subsequent review cannot tell whether the process improved or a person quietly filled the gap afterward.
+
+When repairing a record, decide which fields the evidence supports. A public URL, title, and check date let a later reviewer reopen the result. An unknown historical title-selection process should stay unknown. The date of a new inspection and the publication date displayed by the page serve different purposes; replacing one with the other would erase that distinction.
+
+Do not start a new publishing job while investigating an unclear completion report. Compare the public list and the reported address first. Not finding a result during one check does not by itself prove that it never existed. Record the scope of the unsuccessful check and what evidence is needed next. The lesson from this case is a recovery order that preserves an existing result, not a measured claim that recovery became faster.
+
+## Does a repaired ledger mean better performance?
+
+No. Restoring a connection makes an existing result traceable; it does not measure additional traffic or business. The case's evidence note specifically excludes claims about increased search clicks, inquiries, contracts, or revenue. This article makes no claim about later commercial results either.
+
+Keep those evidence types separate. A public URL supports a statement about publication. Search clicks describe activity from search. An inquiry or contract needs different evidence. If inquiries have not been verified, their status is unknown, not zero simply because a ledger field is empty.
+
+The repair can make it possible to identify which article a later measurement should examine. Turning that practical benefit into a claim about more sales would require actual measurement. The established result here is narrower: the missing connection was treated as its own issue and restored without duplicating published work.
+
+## Should detection automatically trigger recovery?
+
+This case does not justify expanding recovery permissions. Flagging a candidate address and modifying a public article are different actions. The operating handoff also distinguishes the check from republishing, releasing locks, or changing schedules. Finding a problem does not grant authority to take those additional steps.
+
+For a small automation, describe the completed boundary instead of assigning one failure label to the entire job. An existing result with a missing record needs a different response from a result that was never published. When the result exists, preserve it while repairing the connection. When public availability cannot be established, do not fill in a ledger row and call the job complete.
+
+## Where to go next
+
+[DMS.Labs AX transformation design](/works/ax) provides the existing service overview for work on task boundaries and handoffs. That overview is currently presented in Korean. This operating account covers a personal publication-and-recordkeeping repair; it does not promise implementation costs, time savings, or revenue effects.
+
+The two images were newly generated to illustrate the topic. They are not photographs of a customer site or screenshots of the operating system.

@@ -6,6 +6,12 @@ type WorkTranslation = Pick<ShowcaseWorkItem, "title" | "summary" | "tags"> & {
 
 // Match translations by the original destination so order, assets and links stay shared.
 const translations: Record<string, WorkTranslation> = {
+  "/works/reedo-publication-ledger-gap": {
+    title: "Why Publication and Records Are Separate",
+    summary: "An actual DMS.Labs publication-and-ledger gap: the October 11 repair and inspection code show how to restore the connection without republishing.",
+    tags: ["Work", "AI transformation", "Workplace automation"],
+    linkLabel: "Read the English operating note",
+  },
   "/works/ai-automation-safe-retry": {
     title: "When to Restart an AI Automation",
     summary: "A practical guide to checking external results and approval before a retry, with completion states, request identifiers and restart points.",
