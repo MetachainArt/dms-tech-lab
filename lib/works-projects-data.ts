@@ -45,7 +45,7 @@ export const WORKS_DATA: Record<string, WorkLanding> = {
         title: "SJ Atelier 기술 자문",
         subtitle: "AI AUTOMATION CONSULTING",
         description: "콘텐츠 운영과 GPT 활용 흐름을 실제 업무에 맞게 다시 정리하고, 자문 커리큘럼으로 연결한 교육 설계 프로젝트입니다.",
-        coverImage: "/images/sj.png",
+        coverImage: "/images/web-optimized/231-sj-fa0b53f2c38e.webp",
         color: "blue",
         tags: ["자동화", "교육", "컨설팅"],
         status: "진행 중",
@@ -1277,7 +1277,7 @@ AI가 만든 결과를 그대로 저장하거나 발행하는 구조는 처음�
             excerpt: "리눅스에서 job.json을 만들고 Windows 워커로 전송해 ComfyUI 이미지를 생성하는 첫 실전 테스트입니다. /tmp Permission denied 오류를 만나 경로를 바꾸는 과정, 전송 성공, 워커 실행, 이미지 저장까지 실제 터미널 출력을 그대로 기록합니다.",
             date: "2026. 03. 22",
             readTime: "12 min",
-            content: `## 이번 단계에서 만들어진 이미지\n\n아래가 ComfyUI에서 zimage-tubo 모델로 생성한 첫 번째 이미지입니다. 이 이미지가 카드뉴스 상단에 배치될 예정입니다.\n\n![ComfyUI zimage-tubo 생성 이미지](/images/works/zimage.jpg)\n\n장당 약 5초. 텍스트 카드뉴스에 붙이기에 충분한 속도입니다. 앞으로 카드뉴스 이미지 생성은 이 zimage 모델로 진행합니다.\n\n## job.json 만들기 — /tmp Permission denied\n\nSSH 연결이 성공한 직후, 테스트용 job.json을 만들었습니다. root 계정에서 /tmp에 파일을 쓰는 명령을 실행했습니다.\n\n\`\`\`bash\ncat > /tmp/job.json << 'JSON'\n{\n  "job_id": "test_001",\n  "topic": "card_test",\n  "image_prompt": "cozy korean chibi girl, cat-ear hoodie, warm pastel light, cinematic",\n  "negative_prompt": "blurry, watermark, text"\n}\nJSON\n\`\`\`\n\n결과는 Permission denied였습니다.\n\n\`\`\`\n-bash: /tmp/job.json: Permission denied\n\`\`\`\n\nroot 계정에서 /tmp 쓰기가 막힌 경우는 두 가지 원인이 있습니다. /tmp/job.json 파일이 이전에 이상한 권한으로 이미 존재하고 있거나, 현재 셸 환경이 제한된 상태인 경우입니다. 어느 쪽이든 /tmp 경로를 고집하는 것보다 작업 경로를 바꾸는 것이 빠릅니다.\n\n## 경로 변경 — reedo 계정 워크스페이스로\n\nOpenClaw 파이프라인 기준으로 job.json이 있어야 할 위치는 원래부터 차은별 워크스페이스의 outbox/ 폴더입니다. /tmp는 임시 테스트 경로였을 뿐입니다. 제대로 된 위치로 바꿨습니다.\n\n\`\`\`bash\ncat > /home/reedo/.openclaw/workspace-chaeunbyul/outbox/job.json << 'JSON'\n{\n  "job_id": "test_001",\n  "topic": "card_test",\n  "image_prompt": "cozy korean chibi girl, cat-ear hoodie, warm pastel light, cinematic",\n  "negative_prompt": "blurry, watermark, text"\n}\nJSON\n\`\`\`\n\n이 경로로 바꾸자 파일이 정상적으로 만들어졌습니다. 앞으로 job.json은 이 위치가 기준입니다. outbox/ 폴더는 차은별이 Windows 워커에게 작업을 넘길 때 쓰는 교환 공간으로 설계한 폴더입니다.\n\nSSH 키는 현재 /root/.ssh/ 에 있습니다. 키를 reedo 계정으로 옮기지 않고, 파일 경로만 outbox로 바꿔서 계속 진행했습니다. 연결 테스트가 먼저이고, 경로 정리는 나중에 해도 됩니다.\n\n## SCP로 Windows 서버에 전송\n\njob.json을 Windows 서버의 D:\\016_CardNew\\io\\ 폴더로 전송했습니다.\n\n\`\`\`bash\nscp -i /root/.ssh/id_ed25519_cardnews \\\n  /home/reedo/.openclaw/workspace-chaeunbyul/outbox/job.json \\\n  reedoc@125.132.162.227:"D:/016_CardNew/io/job.json"\n\`\`\`\n\n터미널 출력은 다음과 같았습니다.\n\n\`\`\`\njob.json                  100%  181    13.3KB/s   00:00\n\`\`\`\n\n181바이트짜리 파일이 0초에 전송 완료됐습니다. 네트워크가 빠른 편이라 실제 사용할 때도 전송 지연은 거의 없을 것으로 보입니다.\n\n## worker.ps1 실행 — 이미지 생성\n\njob.json이 Windows에 들어간 것을 확인하고 worker.ps1을 실행했습니다.\n\n\`\`\`bash\nssh -i /root/.ssh/id_ed25519_cardnews reedoc@125.132.162.227 \\\n  'powershell -NoProfile -ExecutionPolicy Bypass -File "D:\\016_CardNew\\scripts\\worker.ps1"'\n\`\`\`\n\nworker가 실행되면서 터미널에 로그가 찍혔습니다.\n\n\`\`\`\n[INFO] promptId=626d4d7c-6955-4577-a2b6-80d4cd80c172\n[OK] saved: D:\\016_CardNew\\output\\result_20260322_105758.jpg\n\`\`\`\n\n두 줄이 전부였습니다. worker가 ComfyUI API에 이미지 생성 요청을 넣고, 완료 후 결과 파일을 저장한 뒤 경로를 출력했습니다. 에러 없이 정상 종료됐습니다.\n\n## 파이프라인 동작 확인\n\n이번 테스트로 확인된 것들입니다.\n\n**job.json 전송**: 리눅스 outbox에서 Windows io 폴더로 SCP 전송 완료.\n\n**worker.ps1 실행**: SSH로 원격 PowerShell 실행 성공. worker가 job.json을 읽고 ComfyUI API를 호출했습니다.\n\n**ComfyUI 이미지 생성**: promptId가 정상 발급됐고, result_20260322_105758.jpg 파일이 D:\\016_CardNew\\output\\ 에 저장됐습니다. 장당 생성 시간은 약 5초입니다. GPU가 붙어있는 Windows 서버 환경에서 나온 속도입니다.\n\n**파이프라인 경로 확인**: 리눅스 → (SCP) → Windows io 폴더 → worker.ps1 → ComfyUI → output 폴더. 이 흐름이 처음으로 엔드투엔드로 작동했습니다.\n\n## 다음 단계\n\n이미지가 Windows D:\\016_CardNew\\output\\ 에 저장된 것까지 확인했습니다. 이제 이 이미지를 리눅스로 가져와서 slides.json에 연결하고 최종 카드뉴스를 렌더링하는 단계가 남아 있습니다.\n\n앞으로 사용할 이미지 모델은 zimage-tubo입니다. 이번 테스트 이미지처럼 카드뉴스 상단에 올라갈 비주얼을 이 모델로 생성합니다. 텍스트 카드뉴스 생성과 ComfyUI 이미지 생성이 각각 작동하는 것이 확인됐습니다. 이 둘을 합치는 것이 남은 작업입니다.`,
+            content: `## 이번 단계에서 만들어진 이미지\n\n아래가 ComfyUI에서 zimage-tubo 모델로 생성한 첫 번째 이미지입니다. 이 이미지가 카드뉴스 상단에 배치될 예정입니다.\n\n![ComfyUI zimage-tubo 생성 이미지](/images/web-optimized/246-zimage-75d0d624f6e6.webp)\n\n장당 약 5초. 텍스트 카드뉴스에 붙이기에 충분한 속도입니다. 앞으로 카드뉴스 이미지 생성은 이 zimage 모델로 진행합니다.\n\n## job.json 만들기 — /tmp Permission denied\n\nSSH 연결이 성공한 직후, 테스트용 job.json을 만들었습니다. root 계정에서 /tmp에 파일을 쓰는 명령을 실행했습니다.\n\n\`\`\`bash\ncat > /tmp/job.json << 'JSON'\n{\n  "job_id": "test_001",\n  "topic": "card_test",\n  "image_prompt": "cozy korean chibi girl, cat-ear hoodie, warm pastel light, cinematic",\n  "negative_prompt": "blurry, watermark, text"\n}\nJSON\n\`\`\`\n\n결과는 Permission denied였습니다.\n\n\`\`\`\n-bash: /tmp/job.json: Permission denied\n\`\`\`\n\nroot 계정에서 /tmp 쓰기가 막힌 경우는 두 가지 원인이 있습니다. /tmp/job.json 파일이 이전에 이상한 권한으로 이미 존재하고 있거나, 현재 셸 환경이 제한된 상태인 경우입니다. 어느 쪽이든 /tmp 경로를 고집하는 것보다 작업 경로를 바꾸는 것이 빠릅니다.\n\n## 경로 변경 — reedo 계정 워크스페이스로\n\nOpenClaw 파이프라인 기준으로 job.json이 있어야 할 위치는 원래부터 차은별 워크스페이스의 outbox/ 폴더입니다. /tmp는 임시 테스트 경로였을 뿐입니다. 제대로 된 위치로 바꿨습니다.\n\n\`\`\`bash\ncat > /home/reedo/.openclaw/workspace-chaeunbyul/outbox/job.json << 'JSON'\n{\n  "job_id": "test_001",\n  "topic": "card_test",\n  "image_prompt": "cozy korean chibi girl, cat-ear hoodie, warm pastel light, cinematic",\n  "negative_prompt": "blurry, watermark, text"\n}\nJSON\n\`\`\`\n\n이 경로로 바꾸자 파일이 정상적으로 만들어졌습니다. 앞으로 job.json은 이 위치가 기준입니다. outbox/ 폴더는 차은별이 Windows 워커에게 작업을 넘길 때 쓰는 교환 공간으로 설계한 폴더입니다.\n\nSSH 키는 현재 /root/.ssh/ 에 있습니다. 키를 reedo 계정으로 옮기지 않고, 파일 경로만 outbox로 바꿔서 계속 진행했습니다. 연결 테스트가 먼저이고, 경로 정리는 나중에 해도 됩니다.\n\n## SCP로 Windows 서버에 전송\n\njob.json을 Windows 서버의 D:\\016_CardNew\\io\\ 폴더로 전송했습니다.\n\n\`\`\`bash\nscp -i /root/.ssh/id_ed25519_cardnews \\\n  /home/reedo/.openclaw/workspace-chaeunbyul/outbox/job.json \\\n  reedoc@125.132.162.227:"D:/016_CardNew/io/job.json"\n\`\`\`\n\n터미널 출력은 다음과 같았습니다.\n\n\`\`\`\njob.json                  100%  181    13.3KB/s   00:00\n\`\`\`\n\n181바이트짜리 파일이 0초에 전송 완료됐습니다. 네트워크가 빠른 편이라 실제 사용할 때도 전송 지연은 거의 없을 것으로 보입니다.\n\n## worker.ps1 실행 — 이미지 생성\n\njob.json이 Windows에 들어간 것을 확인하고 worker.ps1을 실행했습니다.\n\n\`\`\`bash\nssh -i /root/.ssh/id_ed25519_cardnews reedoc@125.132.162.227 \\\n  'powershell -NoProfile -ExecutionPolicy Bypass -File "D:\\016_CardNew\\scripts\\worker.ps1"'\n\`\`\`\n\nworker가 실행되면서 터미널에 로그가 찍혔습니다.\n\n\`\`\`\n[INFO] promptId=626d4d7c-6955-4577-a2b6-80d4cd80c172\n[OK] saved: D:\\016_CardNew\\output\\result_20260322_105758.jpg\n\`\`\`\n\n두 줄이 전부였습니다. worker가 ComfyUI API에 이미지 생성 요청을 넣고, 완료 후 결과 파일을 저장한 뒤 경로를 출력했습니다. 에러 없이 정상 종료됐습니다.\n\n## 파이프라인 동작 확인\n\n이번 테스트로 확인된 것들입니다.\n\n**job.json 전송**: 리눅스 outbox에서 Windows io 폴더로 SCP 전송 완료.\n\n**worker.ps1 실행**: SSH로 원격 PowerShell 실행 성공. worker가 job.json을 읽고 ComfyUI API를 호출했습니다.\n\n**ComfyUI 이미지 생성**: promptId가 정상 발급됐고, result_20260322_105758.jpg 파일이 D:\\016_CardNew\\output\\ 에 저장됐습니다. 장당 생성 시간은 약 5초입니다. GPU가 붙어있는 Windows 서버 환경에서 나온 속도입니다.\n\n**파이프라인 경로 확인**: 리눅스 → (SCP) → Windows io 폴더 → worker.ps1 → ComfyUI → output 폴더. 이 흐름이 처음으로 엔드투엔드로 작동했습니다.\n\n## 다음 단계\n\n이미지가 Windows D:\\016_CardNew\\output\\ 에 저장된 것까지 확인했습니다. 이제 이 이미지를 리눅스로 가져와서 slides.json에 연결하고 최종 카드뉴스를 렌더링하는 단계가 남아 있습니다.\n\n앞으로 사용할 이미지 모델은 zimage-tubo입니다. 이번 테스트 이미지처럼 카드뉴스 상단에 올라갈 비주얼을 이 모델로 생성합니다. 텍스트 카드뉴스 생성과 ComfyUI 이미지 생성이 각각 작동하는 것이 확인됐습니다. 이 둘을 합치는 것이 남은 작업입니다.`,
           },
           {
             id: "step-17",
@@ -1328,7 +1328,7 @@ AI가 만든 결과를 그대로 저장하거나 발행하는 구조는 처음�
         title: "ComfyUI API 파이프라인 구축 가이드",
         subtitle: "AI SKILL GUIDE",
         description: "ComfyUI를 API로 연동해 외부 서버에서 이미지를 자동 생성하는 파이프라인을 처음부터 구축하는 단계별 가이드입니다. worker.ps1 작성부터 Linux에서 원격 호출까지 초보자도 따라할 수 있게 정리합니다.",
-        coverImage: "/images/works/zimage.jpg",
+        coverImage: "/images/web-optimized/246-zimage-75d0d624f6e6.webp",
         color: "blue",
         tags: ["ComfyUI", "PowerShell", "자동화", "이미지생성", "API"],
         status: "진행 중",
@@ -2483,7 +2483,7 @@ tail -f ~/openclaw.log
         title: "Paperclip — AI 에이전트로 회사를 운영하다",
         subtitle: "COMPANY OS STUDY",
         description: "AI 에이전트 팀을 조직도, 예산, 목표로 관리하는 오픈소스 'Company OS' Paperclip을 처음부터 배우고 실전에 적용한 기록입니다. OpenClaw와 연동해 완전 자율 운영 구조를 만드는 과정을 단계별로 정리합니다.",
-        coverImage: "/images/works/paperclip-cover.png",
+        coverImage: "/images/web-optimized/235-paperclip-cover-ece4419ef3ac.webp",
         color: "coral",
         tags: ["Paperclip", "AI에이전트", "오케스트레이션", "자동화", "CompanyOS"],
         status: "진행 중",
@@ -2624,7 +2624,7 @@ Paperclip의 해결책은 에이전트에게 **"몸에 새길 문신"** 을 제�
 
 GitHub 저장소 \`paperclipai/paperclip\`입니다. 2026년 3월 기준 스타 수는 **37,345개**. 이 숫자가 뭘 의미하는지 감이 잘 안 오신다면 이렇게 생각하면 됩니다. Next.js가 스타 12만 개를 모으는 데 3년이 걸렸습니다. Paperclip은 개념 자체가 너무 명확해서 AI 개발자 커뮤니티 전체가 "이거다"라고 반응했습니다.
 
-![Paperclip 공식 GitHub 저장소 — 37,000+ 스타](/images/works/paperclip/github-hero.png)
+![Paperclip 공식 GitHub 저장소 — 37,000+ 스타](/images/web-optimized/240-github-hero-12d17ab204f0.webp)
 
 공식 문서는 [paperclip.ing/docs](https://paperclip.ing/docs), Discord 커뮤니티도 활발하게 운영 중입니다. "에이전트 회사를 만드는 사람들"이 모이는 커뮤니티라는 점이 독특합니다. 기술 질문보다 "어떤 조직도가 잘 작동하는가", "어떤 에이전트 역할 설정이 효율적인가" 같은 경영적 질문이 더 많이 올라옵니다.
 
@@ -2949,7 +2949,7 @@ npx paperclipai company import --from ./engineering-company
 
 Paperclip은 오픈소스이고 자체 호스팅이 가능합니다.
 
-![Paperclip npm 패키지 페이지](/images/works/paperclip/npm-page.png)
+![Paperclip npm 패키지 페이지](/images/web-optimized/243-npm-page-041c0a27aba8.webp)
 
 \`\`\`
 기술 구성
@@ -3237,7 +3237,7 @@ node --version
 v20.19.1
 \`\`\`
 
-![DeepWiki에 정리된 Paperclip 설치 사전 요구사항 문서](/images/works/paperclip/deepwiki-install.png)
+![DeepWiki에 정리된 Paperclip 설치 사전 요구사항 문서](/images/web-optimized/237-deepwiki-install-1f3ac03d19e2.webp)
 
 버전이 \`v18\` 이하로 나온다면 위 설치 명령어를 다시 실행하거나, \`setup_22.x\`로 바꿔서 시도해봅니다.
 
@@ -3309,7 +3309,7 @@ npx paperclipai onboard
 
 처음 실행하면 npx가 자동으로 \`paperclipai\` 패키지를 다운로드합니다. 1~2분 정도 기다리면 마법사가 시작됩니다.
 
-![Paperclip GitHub 공식 빠른 시작 가이드 화면](/images/works/paperclip/quickstart.png)
+![Paperclip GitHub 공식 빠른 시작 가이드 화면](/images/web-optimized/244-quickstart-010f042642a4.webp)
 
 ### 마법사에서 선택할 것들
 
@@ -3788,7 +3788,7 @@ pm2 startup
 
 Hostinger VPS는 **Docker 앱으로 Paperclip 원클릭 설치**도 지원합니다. 이 방식은 서버 설정에 익숙하지 않은 분들에게 훌륭한 출발점입니다.
 
-![Hostinger VPS Paperclip 원클릭 Docker 설치 페이지](/images/works/paperclip/hostinger-paperclip.png)
+![Hostinger VPS Paperclip 원클릭 Docker 설치 페이지](/images/web-optimized/242-hostinger-paperclip-40a59862de1b.webp)
 
 Hostinger 패널 → **VPS Apps → Docker Apps** 메뉴에 Paperclip이 등록되어 있습니다. 클릭 한 번으로 Docker 컨테이너가 자동 구성됩니다. Node.js, pnpm, PM2를 직접 설치할 필요 없이 모두 자동 처리됩니다.
 

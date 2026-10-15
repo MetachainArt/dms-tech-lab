@@ -4,10 +4,10 @@ subtitle: "When you upload two images, say what to take from each and what to re
 excerpt: "A role-separated prompt for combining a meme's pose with a pet's appearance. It includes our own generated test pair, where the short request failed, and how to adapt each field."
 date: "2026-10-08"
 readTime: "11 min"
-coverImage: "/images/posts/meme-pose-pet-identity-prompt-roles/cover.png"
+coverImage: "/images/web-optimized/183-cover-8efc25c34fce.webp"
 series: "future-arts"
 tags: ["Prompting","AI images","Pets","Memes"]
-translationSourceHash: "5da4b22afdfe5e481837674076a11d43c1f3226c4e7878f3e0b947b4dcce4d2e"
+translationSourceHash: "61ccf9511b78e4012699c9de85add668965c13ea42867a79c7319c2af62c7564"
 ---
 
 Upload a meme and a pet photo, ask for the dog to take the character's place, and the result tends to miss in one of two ways. The pose is right but the animal looks like a different dog, or the face is close while the original necktie and dress shoes are still there. Either way, the model was never told which image supplies what.
@@ -24,9 +24,9 @@ We did not receive or reproduce the prompt that post sends to commenters. The se
 
 We used no real pet photo and no one else's meme. To avoid rights questions, every input is an image generated for this article. The identity reference is a tricolor beagle-type dog. The pose reference is an illustrated office worker slumped over a desk, arms hanging. A second test image shows a worker leaping with a tote bag.
 
-![Our generated tricolor dog reference photo](/images/posts/meme-pose-pet-identity-prompt-roles/dog-reference.png)
+![Our generated tricolor dog reference photo](/images/web-optimized/184-dog-reference-08c3add777f1.webp)
 
-![Our generated illustration of a worker slumped over a desk](/images/posts/meme-pose-pet-identity-prompt-roles/pose-source.png)
+![Our generated illustration of a worker slumped over a desk](/images/web-optimized/187-pose-source-c4fb2c0a25bf.webp)
 
 Both are generated images, not documentary photographs. So this test does not check likeness to a real animal. It only shows how output changes when the sentence structure changes on the same pair.
 
@@ -38,7 +38,7 @@ We started with the most common request. Image 1 is the pose illustration and Im
 Make the first image with the dog from the second image.
 ```
 
-![Short request result: the dog keeps a necktie and a human leg with a dress shoe remains under the chair](/images/posts/meme-pose-pet-identity-prompt-roles/short-prompt.png)
+![Short request result: the dog keeps a necktie and a human leg with a dress shoe remains under the chair](/images/web-optimized/188-short-prompt-35b7b3ab827d.webp)
 
 It half worked. The slumped posture, desk, laptop and headphones carried over, and the face followed the dog's white blaze and tricolor coat. But the blue necktie stayed on the dog's chest, and a human leg with a dress shoe remains under the chair. We never said what had to disappear, so the model treated those items as part of the scene.
 
@@ -50,7 +50,7 @@ The second request splits the sentence into five parts: the role of each image, 
 Image 1 is the pose reference (an illustration of a worker slumped over a desk). Image 2 is the identity reference (a real-looking dog). Recreate Image 1 with the dog from Image 2 as the only character, in the same pose, camera angle, desk, laptop, chair and pastel blue background. Keep the droopy, exhausted body language and closed eyes. Take the dog's face shape, ear shape, white blaze, brown eye patch and tricolor coat from Image 2. Remove the person, the shirt, the tie and the shoes. Keep the headphones around the neck and the round glasses as props. Keep the dog's natural body proportions and four legs; do not give it human hands. No text.
 ```
 
-![Role-based result: the dog slumped over the desk without a necktie or shoes](/images/posts/meme-pose-pet-identity-prompt-roles/cover.png)
+![Role-based result: the dog slumped over the desk without a necktie or shoes](/images/web-optimized/183-cover-8efc25c34fce.webp)
 
 This time the necktie, shoes and human leg were gone. The headphones and round glasses stayed as props, and the dangling front paws hang down in front of the chair. The eyes are closed, and the white blaze, tricolor coat and drooping ears read the same way as in the reference. However, the brown patch over the eye in the reference is hard to see here because the glasses cover that area. Naming a feature does not guarantee it will be visible.
 
@@ -62,7 +62,7 @@ To see whether the structure holds when the pose differs a lot, we generated a n
 Image 1 is the pose reference (an illustration of a worker jumping in celebration). Image 2 is the identity reference (a real-looking dog). Recreate Image 1 with the dog from Image 2 as the only character, in the same mid-air pose, camera angle and warm yellow background. Keep the joyful, energetic body language and the tote bag. Take the dog's face shape, ear shape, white blaze and tricolor coat from Image 2. Remove the person, the clothes, the lanyard and the shoes. Keep the dog's natural body proportions and four legs; do not give it human hands or human legs. No text.
 ```
 
-![Result of turning the leaping worker illustration into the dog with the same structure](/images/posts/meme-pose-pet-identity-prompt-roles/jump-result.png)
+![Result of turning the leaping worker illustration into the dog with the same structure](/images/web-optimized/185-jump-result-df8b2189840d.webp)
 
 The yellow background, the raised arm and the paw gripping the bag all carried over, and so did the white blaze and tricolor coat. No human clothes or shoes are visible. It is still a single generation, so we cannot promise the same sentence gives the same result every time. Each scene was tried once per prompt.
 

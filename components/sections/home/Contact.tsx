@@ -8,7 +8,7 @@ export default function Contact({ locale = "ko" }: HomeLocaleProps) {
   const english = locale === "en";
   return (
     <div className={styles.contactSection}>
-      <div className={styles.contactMaterial} aria-hidden="true"><Image src="/images/brand/fiber-optics.png" alt="" fill sizes="50vw" /></div>
+      <div className={styles.contactMaterial} aria-hidden="true"><Image src="/images/web-optimized/095-fiber-optics-397b3fc694d7.webp" alt="" fill sizes="50vw" /></div>
       <div className={styles.container}>
         <p className={styles.eyebrow}><span>06 /</span> {english ? "CONTACT" : "CONTACT · 문의"}</p>
         <div className={styles.contactGrid}>

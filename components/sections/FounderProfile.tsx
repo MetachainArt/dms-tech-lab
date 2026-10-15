@@ -70,7 +70,7 @@ export default function FounderProfile() {
               >
                 <div className="absolute inset-[-5%] w-[110%] h-[110%]">
                     <Image
-                      src="/about/founder-new.png"
+                      src="/images/web-optimized/001-founder-new-bde18bc7655a.webp"
                       alt="Reedo Profile"
                       fill
                       className="object-cover opacity-90"

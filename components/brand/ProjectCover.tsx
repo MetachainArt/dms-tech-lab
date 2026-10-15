@@ -12,10 +12,10 @@ const englishCaptions: Record<string, string> = {
 
 // Presentation-only source map. Original showcase data, destinations and assets stay intact.
 const materials: Record<string, { image: string; label: string; caption: string; treatment: string }> = {
-  "/works/automation": { image: "/images/brand/automation-flow.png", label: "AUTOMATION / CONNECTED FLOW", caption: "연결에서 실행으로 · 콘셉트 아트워크", treatment: "workflow" },
-  "/works/ai-skill": { image: "/images/brand/ai-creation.png", label: "AI / CREATIVE ENGINE", caption: "아이디어가 이미지로 · 콘셉트 아트워크", treatment: "output" },
-  "/works/ai-education": { image: "/images/brand/education-lab.png", label: "EDUCATION / LEARNING BY MAKING", caption: "만들며 이해하는 기술 · 콘셉트 아트워크", treatment: "workflow" },
-  "https://storylens.dmssolution.co.kr/": { image: "/images/brand/storylens-camera.png", label: "STORYLENS / OPTICAL STORIES", caption: "렌즈에서 이야기로 · 콘셉트 아트워크", treatment: "workflow" },
+  "/works/automation": { image: "/images/web-optimized/089-automation-flow-41862ff91b9a.webp", label: "AUTOMATION / CONNECTED FLOW", caption: "연결에서 실행으로 · 콘셉트 아트워크", treatment: "workflow" },
+  "/works/ai-skill": { image: "/images/web-optimized/088-ai-creation-561291d0c9b2.webp", label: "AI / CREATIVE ENGINE", caption: "아이디어가 이미지로 · 콘셉트 아트워크", treatment: "output" },
+  "/works/ai-education": { image: "/images/web-optimized/090-education-lab-6992a262f8df.webp", label: "EDUCATION / LEARNING BY MAKING", caption: "만들며 이해하는 기술 · 콘셉트 아트워크", treatment: "workflow" },
+  "https://storylens.dmssolution.co.kr/": { image: "/images/web-optimized/097-storylens-camera-6d82a74f9a6b.webp", label: "STORYLENS / OPTICAL STORIES", caption: "렌즈에서 이야기로 · 콘셉트 아트워크", treatment: "workflow" },
 };
 
 function NetworkDiagram({ locale }: { locale: Locale }) {

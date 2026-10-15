@@ -4,7 +4,7 @@ subtitle: "상의·치마·옷깃을 먼저 정하고 장면을 더합니다. �
 excerpt: "복잡한 한복풍 화보에서 옷의 형태를 확인하기 위한 요구 분리법입니다. 자체 프롬프트, 실제 생성 결과의 차이, 편집 시 유지할 조건과 고증·제품 검증의 한계를 다룹니다."
 date: "2026-10-07"
 readTime: "10 min"
-coverImage: "/images/posts/hanbok-prompt-garment-scene-separation/cover.png"
+coverImage: "/images/web-optimized/170-cover-2d11eaa2e957.webp"
 series: "future-arts"
 tags: ["프롬프트","한복","AI 이미지","의상 콘셉트"]
 ---
@@ -33,7 +33,7 @@ OpenAI의 [이미지 프롬프트 가이드](https://developers.openai.com/api/d
 
 빛은 옷과 배경이 같은 장면에 있다는 인상을 만드는 조건입니다. 왼쪽 창에서 들어오는 부드러운 낮빛, 흐린 날의 고른 빛처럼 한 방향을 정합니다. 서로 다른 조명 조건을 여러 개 쌓기보다는 필요한 하나를 먼저 선택합니다. 빛의 방향을 적는 것은 외관을 요청하는 방법이지 실제 광학 계산을 보장하는 장치가 아닙니다.
 
-![접힌 상의, 녹색 치마와 고름을 나눠 놓은 자체 생성 구성 예시](/images/posts/hanbok-prompt-garment-scene-separation/components.png)
+![접힌 상의, 녹색 치마와 고름을 나눠 놓은 자체 생성 구성 예시](/images/web-optimized/169-components-f41a2cdb18ba.webp)
 
 위 이미지는 의상 요소를 나눠 생각하기 위한 자체 생성 예시입니다. 출력에는 옷과 고름 외에 꽃과 작은 그릇도 생겼습니다. 정리된 화면이라는 요청만으로 모든 부가 소품이 사라지지는 않았습니다. 구성 요소를 정확히 제한하려면 허용할 물건과 제외할 물건을 더 분명히 적고 출력에서도 확인해야 합니다.
 
@@ -62,7 +62,7 @@ OpenAI의 [이미지 프롬프트 가이드](https://developers.openai.com/api/d
 Create an original photorealistic contemporary fashion concept photograph, horizontal 3:2 composition. An anonymous adult Korean woman wearing a hanbok-inspired outfit: a plain cream jeogori-style short jacket with clearly separated collar, two simple green front ribbon ties, and a deep forest-green long full skirt. Full body visible including simple shoes, relaxed standing pose, hands at her sides, eye-level camera. One person only. Minimal warm ivory studio backdrop, soft window daylight from the left, natural folds and matte silk-like textile, subtle 35mm film grain, restrained colors. The clothing is the visual focus. No ornate embroidery, no head ornaments, no props, no logos, no text. This is a contemporary creative concept, not a historical costume reconstruction or a real product photograph.
 ```
 
-![크림색 상의와 짙은 녹색 치마를 단순한 실내에서 보여주는 자체 생성 전신 컷](/images/posts/hanbok-prompt-garment-scene-separation/cover.png)
+![크림색 상의와 짙은 녹색 치마를 단순한 실내에서 보여주는 자체 생성 전신 컷](/images/web-optimized/170-cover-2d11eaa2e957.webp)
 
 출력에서는 크림색 상의와 짙은 녹색 치마가 구분되고, 발끝까지 화면에 남았습니다. 고름은 두 개의 길게 내려오는 끈과 작은 리본 모양으로 표현되었습니다. 천은 요청한 매끈한 비단풍보다 직조가 드러나는 질감으로 보입니다. 형태가 보기 좋다는 판단과 전통 복식의 정확성은 나누어야 합니다. 이 결과를 복식 고증을 통과한 이미지라고 부르지 않습니다.
 
@@ -70,7 +70,7 @@ Create an original photorealistic contemporary fashion concept photograph, horiz
 
 옅은 파란 상의와 회색 치마를 입은 인물을 밝은 벽 앞에 놓는 별도 문장도 생성했습니다. 여기서는 전신 대신 무릎 위까지 보이는 구도와 오른쪽 위의 나뭇잎을 지정했습니다. 상의 색, 치마 색, 프레이밍, 장소를 함께 바꿨으므로 한 변수의 효과를 입증하는 비교 실험은 아닙니다. 서로 다른 요구를 읽고 점검하는 예시입니다.
 
-![옅은 파란 상의와 회색 치마를 밝은 벽 앞에 둔 별도 자체 생성 컷](/images/posts/hanbok-prompt-garment-scene-separation/blue-wall.png)
+![옅은 파란 상의와 회색 치마를 밝은 벽 앞에 둔 별도 자체 생성 컷](/images/web-optimized/167-blue-wall-94f5e5432dbd.webp)
 
 두 번째 인물 컷에서는 옷깃과 고름이 보이지만 손은 뒤쪽으로 가려졌습니다. 손이 보여야 하는 과제라면 이 출력은 조건을 충족하지 못합니다. 반대로 옷의 앞면을 보는 과제에서는 손을 가리는 구도가 도움이 될 수 있습니다. 결과를 좋다거나 나쁘다고 평가하기 전에 처음 정한 목적과 대조합니다. 같은 얼굴이나 같은 제품이 유지되었다고 주장할 근거도 없습니다.
 

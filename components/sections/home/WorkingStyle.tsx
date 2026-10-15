@@ -30,7 +30,7 @@ export default function WorkingStyle({ locale = "ko" }: HomeLocaleProps) {
           <h2 className={styles.sectionTitle}>This is how<br /><em>I work.</em></h2>
           <p className={styles.sectionDescription}>{english ? "I care about results that help in practice. Every project should be easy to explain, possible to try and clear about what comes next." : "멋있어 보이는 기술보다 실제로 도움이 되는 결과를 더 중요하게 생각합니다. 그래서 제 작업은 늘 설명 가능하고, 바로 시도 가능하고, 다음 단계가 보이도록 정리합니다."}</p>
           <figure className={styles.methodImage}>
-            <Image src="/images/brand/fiber-refraction.png" alt={english ? "DMS brand concept: a material study of cobalt optical fibers, optical glass and aluminum" : "DMS 브랜드 콘셉트: 광학 유리를 통과하는 코발트 광섬유와 알루미늄의 소재 연구"} fill sizes="(max-width: 767px) 100vw, 45vw" />
+            <Image src="/images/web-optimized/096-fiber-refraction-b66fa62ba404.webp" alt={english ? "DMS brand concept: a material study of cobalt optical fibers, optical glass and aluminum" : "DMS 브랜드 콘셉트: 광학 유리를 통과하는 코발트 광섬유와 알루미늄의 소재 연구"} fill sizes="(max-width: 767px) 100vw, 45vw" />
             <figcaption>MATERIAL STUDY / CLARITY, BY DESIGN.</figcaption>
           </figure>
           <p className={styles.methodQuote}>Technology should help,<br /><em>not merely impress.</em></p>

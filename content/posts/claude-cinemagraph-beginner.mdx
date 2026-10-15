@@ -23,7 +23,7 @@ tags: ["Claude", "시네마그래프", "AI 실습", "영상 합성", "초보자 
 
 10초 반복 실습 영상입니다. 창문 안쪽의 빗줄기와 컵 위의 김만 추가했습니다. 재생 버튼을 눌러 두 번 이어서 보세요. 소리는 넣지 않았습니다. 큰 몸짓이나 카메라 이동 없이도 정지 장면에 움직임을 더할 수 있다는 예제입니다.
 
-[MP4 영상 내려받기](/images/posts/claude-cinemagraph-beginner/demo.mp4) · [실습 원본 PNG](/images/posts/claude-cinemagraph-beginner/base.png)
+[MP4 영상 내려받기](/images/posts/claude-cinemagraph-beginner/demo.mp4) · [실습 원본 PNG](/images/web-optimized/127-base-eaa36dae73be.webp)
 
 ![실습용 원본입니다. 비 오는 도시가 보이는 창문과 오른쪽의 컵을 움직일 영역으로 선택했습니다.](/images/posts/claude-cinemagraph-beginner/base.jpg)
 
@@ -31,7 +31,7 @@ tags: ["Claude", "시네마그래프", "AI 실습", "영상 합성", "초보자 
 
 그림을 움직이는 작업은 세 가지로 나눌 수 있습니다. 첫째는 그대로 둘 **원본**, 둘째는 움직여도 되는 영역을 정하는 **마스크**, 셋째는 그 영역에 올리는 **효과**입니다. 마스크는 구멍이 뚫린 종이와 비슷합니다. 구멍 안에서만 비가 보이고, 나머지 장면은 가려집니다.
 
-![원본, 마스크, 효과를 분리한 3D 개념도입니다. 판의 간격은 이해를 돕기 위한 표현이며 실제 합성은 평면 이미지에서 이루어집니다.](/images/posts/claude-cinemagraph-beginner/layers-3d.png)
+![원본, 마스크, 효과를 분리한 3D 개념도입니다. 판의 간격은 이해를 돕기 위한 표현이며 실제 합성은 평면 이미지에서 이루어집니다.](/images/web-optimized/129-layers-3d-773dc5e8d842.webp)
 
 여기서 3D 개념도는 원리를 보여 주는 설명 그림입니다. 원본 사진을 입체 공간으로 바꾸거나, 숨겨진 사물의 뒷면을 만들어 낸다는 뜻은 아닙니다. 실제로는 같은 크기의 평면 이미지들을 겹쳐 한 프레임을 만듭니다. 그 프레임을 여러 장 만들고 차례로 재생하면 영상이 됩니다.
 
@@ -84,7 +84,7 @@ Claude의 새 대화에서 첨부 버튼으로 그림을 올립니다. PNG/JPEG 
 
 완성 영상보다 마스크를 먼저 보세요. 창문 전체에 파란색이 칠해져 있어도 창틀과 화분까지 포함됐다면 수정해야 합니다. 마스크는 “어디에 효과를 허용했는지”를 보여 줍니다. 색으로 표시한 부분이 곧 자연스러운 비 효과라는 뜻은 아닙니다.
 
-![실제 예제의 영역 표시입니다. 파란색은 추가 효과를 허용한 창문 안쪽과 컵 위의 제한된 영역입니다.](/images/posts/claude-cinemagraph-beginner/mask.png)
+![실제 예제의 영역 표시입니다. 파란색은 추가 효과를 허용한 창문 안쪽과 컵 위의 제한된 영역입니다.](/images/web-optimized/132-mask-19cfca472e59.webp)
 
 경계가 잘못되면 좌표부터 공부하기보다 눈에 보이는 문제를 설명하세요. “왼쪽 아래 화분 잎에는 비가 보이지 않게 해 주세요”, “가운데 나무 창틀은 원본으로 남겨 주세요”처럼 말합니다. 수정된 마스크와 정지 프레임을 다시 받은 뒤 영상 출력으로 넘어갑니다.
 
@@ -102,7 +102,7 @@ Claude의 새 대화에서 첨부 버튼으로 그림을 올립니다. PNG/JPEG 
 
 10초 영상이라고 해서 자동으로 부드럽게 반복되는 것은 아닙니다. 마지막 프레임에서 빗방울이 아래쪽에 있는데 다음 순간 맨 위로 튀면 재생이 끊긴 것처럼 보입니다. 비나 김의 위치·밝기가 일정한 주기로 돌아오도록 설계해야 합니다.
 
-![같은 원본을 유지하며 효과의 위상을 바꾸고 시작 상태로 돌아오는 반복 개념도입니다.](/images/posts/claude-cinemagraph-beginner/loop-3d.png)
+![같은 원본을 유지하며 효과의 위상을 바꾸고 시작 상태로 돌아오는 반복 개념도입니다.](/images/web-optimized/131-loop-3d-6c5f1aa623fa.webp)
 
 프로그래밍에서는 시간을 0부터 1까지 반복하는 값으로 바꾸어 효과를 움직일 수 있습니다. 시작 상태와 정확히 10초 뒤 상태가 같아지도록 계산하는 식입니다. 실제 MP4에는 10초 지점의 중복 프레임을 꼭 넣어야 하는 것은 아닙니다. 마지막 프레임 다음에 첫 프레임이 자연스럽게 이어지는지가 중요합니다.
 
@@ -130,7 +130,7 @@ Python·OpenCV는 이미지와 마스크를 다루는 한 가지 조합이고, F
 
 아래 소스는 **이 글의 원본 그림에 맞춘 실습 코드**입니다. 다른 그림에 그대로 실행하면 창문과 컵 위치가 맞지 않을 수 있습니다. 범용 자동 인식 도구가 아닙니다. 코드를 검토할 수 있는 독자는 소스와 원본을 함께 보관해 예제의 구조를 살펴볼 수 있습니다.
 
-[실습 JavaScript 소스](/images/posts/claude-cinemagraph-beginner/cinemagraph.cjs) · [원본 PNG](/images/posts/claude-cinemagraph-beginner/base.png) · [완성 MP4](/images/posts/claude-cinemagraph-beginner/demo.mp4)
+[실습 JavaScript 소스](/images/posts/claude-cinemagraph-beginner/cinemagraph.cjs) · [원본 PNG](/images/web-optimized/127-base-eaa36dae73be.webp) · [완성 MP4](/images/posts/claude-cinemagraph-beginner/demo.mp4)
 
 로컬 코드 실행에 익숙한 분은 Node.js와 FFmpeg가 설치된 환경에서 새 폴더를 만들고, 소스를 `cinemagraph.cjs`, 원본을 `base.png`라는 이름으로 저장합니다. 그 폴더에서 아래 명령을 실행합니다. `npm install sharp`는 이미지 처리 패키지를 설치하는 명령입니다. FFmpeg가 명령줄에서 실행되지 않으면 먼저 설치 경로를 확인해야 합니다. 회사 PC에서는 설치 권한을 확인하세요.
 

@@ -36,7 +36,7 @@ export default function Hero({ locale = "ko" }: HomeLocaleProps) {
             style={{ y: reduced ? 0 : objectY, rotate: reduced ? -8 : objectRotate }}
             aria-label={english ? "Fiber Core — a brand object representing DMS optical communications and precision engineering" : "Fiber Core — DMS의 광통신과 정밀 엔지니어링을 상징하는 브랜드 오브젝트"}
           >
-            <Image src="/images/brand/fiber-core-v2.png" alt={english ? "Cobalt optical fibers and transparent connectors passing through a machined silver frame" : "가공된 은색 프레임을 코발트 광섬유와 투명 광학 커넥터가 관통하는 Fiber Core"} fill sizes="(max-width: 767px) 110vw, 65vw" priority className={styles.fiberCoreImage} />
+            <Image src="/images/web-optimized/091-fiber-core-v2-afefb31878f9.webp" alt={english ? "Cobalt optical fibers and transparent connectors passing through a machined silver frame" : "가공된 은색 프레임을 코발트 광섬유와 투명 광학 커넥터가 관통하는 Fiber Core"} fill sizes="(max-width: 767px) 110vw, 65vw" priority className={styles.fiberCoreImage} />
           </motion.figure>
           <div className={styles.heroIntent}>
             <p>{english ? <>Redesigning work with AI.<br />Making optical networks work in the field.</> : <>AI로 업무를 다시 설계하고,<br />광통신 기술을 현장에서 쓰이게 합니다.</>}</p>

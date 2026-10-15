@@ -62,8 +62,8 @@ export async function GET() {
                     description: "TikTok 업로드 자동화를 위한 외부 연동용 (Google Sheet → TikTok 파이프라인 구성)" 
                 }
             ],
-            diagramImage: "/images/automation/shortform-diagram.png",
-            previewImage: "/images/automation/shortform-diagram.png",
+            diagramImage: "/images/web-optimized/087-shortform-diagram-86815a73f183.webp",
+            previewImage: "/images/web-optimized/087-shortform-diagram-86815a73f183.webp",
             workflowCode: `{
               "nodes": [
                 { "id": "1", "name": "Start", "type": "n8n-nodes-base.start", "position": [100, 100] }

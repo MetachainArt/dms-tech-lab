@@ -4,10 +4,10 @@ subtitle: "Build the space once, then move only the camera. We compared a refere
 excerpt: "A test log that starts from one isometric set image and produces an eye-level shot and a low-angle shot. It shows what changed with and without the reference image, plus a copyable prompt template."
 date: "2026-10-10"
 readTime: "12 min"
-coverImage: "/images/posts/isometric-set-multi-angle-prompt/cover.png"
+coverImage: "/images/web-optimized/174-cover-0ecbe2f84644.webp"
 series: "future-arts"
 tags: ["Prompting","AI images","Set design","Short drama"]
-translationSourceHash: "97b9b4bf1c58c1beac01c30d780c560aadee144962ff5cc574c3c893adfba4a5"
+translationSourceHash: "c53c8db5ec7d03d6508fecb7d9944c9d3048fd8ca458d76344fabf92fba75a05"
 ---
 
 If you make short dramas or product videos, you will need the same room in several shots. Describe it fresh each time ("small studio, green sofa, yellow rug") and the window moves, the curtains change material, and the kitchen rearranges itself. The characters stay put while the room keeps changing.
@@ -30,7 +30,7 @@ A set image works like a blueprint that fills in those blanks in one go. A top-d
 
 No real photographs and nobody else's sets. The starting point is one image generated for this post: a cutaway of a Korean one-room apartment seen from above, containing a green sofa, a round yellow rug, an oval low table with a teapot, white kitchen cabinets, a window with blue curtains, a bed with a green plaid blanket, a red front door and a potted plant.
 
-![Self-generated isometric one-room set used as the reference](/images/posts/isometric-set-multi-angle-prompt/ref-set.png)
+![Self-generated isometric one-room set used as the reference](/images/web-optimized/177-ref-set-715464e28a78.webp)
 
 This is the sentence that produced the reference image.
 
@@ -48,7 +48,7 @@ The first request passed the reference image and asked for an eye-level shot fro
 This is the reference set (Image 1). Recreate the same room as a ground-level eye-height shot from the red door looking toward the kitchen wall. Keep the same objects, colors and layout: green sofa, round yellow rug, oval low table with teapot, white kitchen cabinets, blue curtains window, bed with green plaid blanket, plant. Do not add or remove furniture. No people, no text.
 ```
 
-![Eye-level shot from the red door, generated with the reference image](/images/posts/isometric-set-multi-angle-prompt/eye-level.png)
+![Eye-level shot from the red door, generated with the reference image](/images/web-optimized/175-eye-level-7c4898fd2039.webp)
 
 The green sofa, yellow rug, teapot on the oval table, kitchen cabinets and hood, blue-curtained window and plaid-covered bed landed in the same relationships as the reference. The sofa is on the left, the bed on the right, the kitchen at the back. There were differences too. The slippers by the front door are out of frame at this angle, small ceiling lights appeared, and the shelf beside the bed changed shape slightly. The furniture held, and the small props drifted.
 
@@ -58,7 +58,7 @@ The second request used the same reference and asked for a low angle from the be
 This is the reference set (Image 1). Recreate the same room as a low-angle view from the bed side looking toward the sofa and the red door. Keep the same objects, colors and layout: green sofa with yellow cushion, round yellow rug, oval low table with teapot, red door, blue curtains window, plant. Do not add or remove furniture. No people, no text.
 ```
 
-![Low-angle shot from the bed side, generated with the reference image](/images/posts/isometric-set-multi-angle-prompt/bed-low.png)
+![Low-angle shot from the bed side, generated with the reference image](/images/web-optimized/173-bed-low-550de5296b7a.webp)
 
 The red door, the slippers, the cabinet beside the door, the sofa's yellow and checked cushions, and the rug and table positions agree with the reference image. The two shots read as one room. A gray wall corner that is not in the reference hangs in the lower left, and the bathroom wall looks awkwardly cut at this angle. The lower the camera, the more the bed fills the frame, so the sofa and door we asked for came out relatively small.
 
@@ -70,7 +70,7 @@ For comparison we dropped the reference image and generated again, using the fir
 Recreate the same room as a ground-level eye-height shot from the red door looking toward the kitchen wall. Keep the same objects, colors and layout: green sofa, round yellow rug, oval low table with teapot, white kitchen cabinets, blue curtains window, bed with green plaid blanket, plant. Do not add or remove furniture. No people, no text. The room: a small cozy Korean one-room apartment with a green sofa, round yellow rug, oval low table with teapot, white kitchen cabinets, window with blue curtains, bed with green plaid blanket, red door, plant.
 ```
 
-![Same composition generated from text alone, without the reference image](/images/posts/isometric-set-multi-angle-prompt/no-reference.png)
+![Same composition generated from text alone, without the reference image](/images/web-optimized/176-no-reference-41e6e505b2bc.webp)
 
 Most things we named did appear: the green sofa, yellow rug, oval table and teapot, white cabinets, plaid-covered bed, red door and plant. What we did not name differed from the reference set. The window sits dead center above the sink, the curtains are a patterned blue fabric, there is no range hood, and a second door has appeared on the right wall. It is a plausible room, but it is not the same room as the first shot.
 
@@ -100,7 +100,7 @@ In the keep-list, include what will actually be in frame. Our second request lef
 
 The same order works for spaces with different objects, such as a shop or a cafe. For a bookstore cafe, make the set image first, then request one eye-level shot toward the counter and one low-angle shot from the entrance. The image below is the set-image stage of that idea, generated new.
 
-![A generated isometric bookstore cafe set, shown as an application example](/images/posts/isometric-set-multi-angle-prompt/cover.png)
+![A generated isometric bookstore cafe set, shown as an application example](/images/web-optimized/174-cover-0ecbe2f84644.webp)
 
 This bookstore cafe is an illustration of the application, not a test result. We did not generate other angles from it or compare them.
 

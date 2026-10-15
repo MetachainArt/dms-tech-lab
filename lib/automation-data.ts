@@ -51,7 +51,7 @@ export const AUTOMATION_TEMPLATES: AutomationTemplate[] = [
     category: "Video",
     author: {
         name: "Reedo",
-        avatar: "/reedo-profile-high.png",
+        avatar: "/images/web-optimized/254-reedo-profile-high-638ebffebc5e.jpg",
         verified: true
     },
     stats: {
@@ -105,7 +105,7 @@ export const AUTOMATION_TEMPLATES: AutomationTemplate[] = [
                 description: "TikTok 업로드 자동화를 위한 외부 연동용 (Google Sheet → TikTok 파이프라인 구성)" 
             }
         ],
-        diagramImage: "/images/automation/shortform-diagram.png",
+        diagramImage: "/images/web-optimized/087-shortform-diagram-86815a73f183.webp",
         workflowCode: `{
   "nodes": [
     {

@@ -6,7 +6,7 @@ date: "2026-10-02"
 readTime: "10 min"
 coverImage: "/images/posts/claude-cinemagraph-beginner/base.jpg"
 series: "future-arts"
-translationSourceHash: "8bf12614f9d9fdee621a581d00be99c9eab499786112923f9021d24a61676b56"
+translationSourceHash: "7fb251679f58cc82813a1d82c29f82879f9de4a09197736d43539aaaadaa82f0"
 tags: ["Claude", "Cinemagraph", "AI Practice", "Compositing", "Beginner Guide"]
 ---
 
@@ -24,7 +24,7 @@ The starting point is a public article by AI artist Shironagasu, who describes u
 
 This ten-second demonstration adds falling rain inside the window panes and a narrow steam plume above the cup. Press play and let it repeat twice. There is no audio. The example uses neither a camera move nor a change in the furniture’s shape.
 
-[Download the MP4](/images/posts/claude-cinemagraph-beginner/demo.mp4) · [Original practice PNG](/images/posts/claude-cinemagraph-beginner/base.png)
+[Download the MP4](/images/posts/claude-cinemagraph-beginner/demo.mp4) · [Original practice PNG](/images/web-optimized/127-base-eaa36dae73be.webp)
 
 ![The original practice image: a rainy city window and a cup, with clearly separated areas for added motion.](/images/posts/claude-cinemagraph-beginner/base.jpg)
 
@@ -32,7 +32,7 @@ This ten-second demonstration adds falling rain inside the window panes and a na
 
 Think of three sheets placed over one another. The first is the original image. The second is a **mask**, which determines where an effect is allowed. The third contains the moving effect. A mask works like a stencil: motion shows through the opening, while the rest of the image remains outside that effect.
 
-![An exploded 3D concept view of the original, mask, and effect layers. The spacing explains the relationship; the actual compositing happens on flat images.](/images/posts/claude-cinemagraph-beginner/layers-3d-en.png)
+![An exploded 3D concept view of the original, mask, and effect layers. The spacing explains the relationship; the actual compositing happens on flat images.](/images/web-optimized/128-layers-3d-en-e33419e23081.webp)
 
 The diagram does not mean that the photograph has been reconstructed as a 3D room. Nor does it reveal hidden surfaces behind objects. In the actual process, equally sized two-dimensional images are combined into a frame. Producing and playing a sequence of frames creates the video.
 
@@ -85,7 +85,7 @@ Ten seconds at 24 fps means 240 frames. Frames per second is simply the number o
 
 A blue rectangle over the window can look plausible while also covering the frame or plant. Inspect it first. The overlay shows where changes are allowed; it is not the finished rain effect.
 
-![The actual demonstration mask overlay. Blue marks the inset window areas and a confined region above the cup where effects may be added.](/images/posts/claude-cinemagraph-beginner/mask.png)
+![The actual demonstration mask overlay. Blue marks the inset window areas and a confined region above the cup where effects may be added.](/images/web-optimized/132-mask-19cfca472e59.webp)
 
 Describe visible errors in ordinary language: “Keep the plant leaves at the lower left free of rain” or “Preserve the wooden divider between the panes.” You do not need to start by learning pixel coordinates. Ask for the corrected mask and a still preview before the video render.
 
@@ -103,7 +103,7 @@ Show the updated permitted area and one preview frame first.
 
 A ten-second duration does not make a seamless loop. If a raindrop is near the bottom in the last frame and abruptly appears at the top on the next frame, the restart becomes visible. The effect’s position and brightness need a repeating cycle.
 
-![A 3D loop concept: the base scene remains the same while the effect changes phase and returns to its starting state.](/images/posts/claude-cinemagraph-beginner/loop-3d-en.png)
+![A 3D loop concept: the base scene remains the same while the effect changes phase and returns to its starting state.](/images/web-optimized/130-loop-3d-en-03a97b83f054.webp)
 
 Code can express time as a value that cycles from zero to one. Effects can then be designed so the state at zero equals the state exactly ten seconds later. An exported MP4 does not need a duplicate frame at the ten-second endpoint. The important test is the transition from its last frame into its first.
 
@@ -131,7 +131,7 @@ Python and OpenCV are one way to handle images and masks. FFmpeg can encode the 
 
 The source below is configured for **this exact practice image**. On another picture, the window and cup coordinates may be wrong. It is not a general-purpose automatic object detector. Readers who can review code can keep the source and base together to inspect or reproduce this local example.
 
-[Practice JavaScript source](/images/posts/claude-cinemagraph-beginner/cinemagraph.cjs) · [Original PNG](/images/posts/claude-cinemagraph-beginner/base.png) · [Finished MP4](/images/posts/claude-cinemagraph-beginner/demo.mp4)
+[Practice JavaScript source](/images/posts/claude-cinemagraph-beginner/cinemagraph.cjs) · [Original PNG](/images/web-optimized/127-base-eaa36dae73be.webp) · [Finished MP4](/images/posts/claude-cinemagraph-beginner/demo.mp4)
 
 If you are comfortable running local code, use a machine with Node.js and FFmpeg installed. Create an empty folder, save the source as `cinemagraph.cjs` and the original as `base.png`, then run the following commands in that folder. The first installs the image-processing package. FFmpeg must also be available from the command line. Check installation permissions on a managed computer.
 

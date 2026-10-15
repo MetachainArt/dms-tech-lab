@@ -3,7 +3,7 @@ title: "에이전트 팀 운영법: 단일 에이전트에서 멀티 에이전�
 excerpt: "혼자 잘하는 에이전트보다, 역할이 분리된 팀이 더 안정적으로 성과를 만든다."
 date: "2026. 03. 02"
 readTime: "14 min"
-coverImage: "/blog/agentic_era_ch4_01.jpg"
+coverImage: "/images/web-optimized/005-agentic_era_ch4_01-9e271b68ccf8.webp"
 series: "agentic-era"
 chapter: "04"
 tags: ["Agents", "Automation", "Orchestration", "AI Ops"]
@@ -20,7 +20,7 @@ subtitle: "Planner-Worker-Reviewer 구조의 실전"
 
 특히 반복 운영에서 치명적인 건 ‘실패의 형태가 매번 다르다’는 점이다. 오늘은 API 키 누락, 내일은 셀렉터 변경, 모레는 모델 응답 형식 변경으로 깨진다. 단일 에이전트 구조에서는 이 모든 실패가 하나의 블랙박스처럼 보인다. 고치는 데 시간이 걸리고, 재발을 막기도 어렵다. 결국 자동화의 목표였던 시간 절감이 오히려 장애 대응 시간으로 상쇄된다.
 
-![Multi-agent orchestration 1](/blog/agentic_era_ch4_01.jpg)
+![Multi-agent orchestration 1](/images/web-optimized/005-agentic_era_ch4_01-9e271b68ccf8.webp)
 
 ## <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">2. Planner-Worker-Reviewer: 역할 분리가 성능을 만든다</span>
 
@@ -34,7 +34,7 @@ subtitle: "Planner-Worker-Reviewer 구조의 실전"
 
 중요한 건 각 역할의 **입출력 계약**을 고정하는 것이다. 예를 들어 Planner는 항상 JSON 체크리스트를 내보내고, Worker는 단계별 로그와 산출물 경로를 남기고, Reviewer는 pass/fail과 수정 포인트를 남기게 한다. 계약이 고정되면 모델이 바뀌어도 파이프라인이 무너지지 않는다.
 
-![Multi-agent orchestration 2](/blog/agentic_era_ch4_02.jpg)
+![Multi-agent orchestration 2](/images/web-optimized/006-agentic_era_ch4_02-b8bf44cac4ec.webp)
 
 ## <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500">3. 실전 운영의 승부처: 실패 복구 루프와 승인 게이트</span>
 
@@ -46,7 +46,7 @@ subtitle: "Planner-Worker-Reviewer 구조의 실전"
 
 첫째, **권한 최소화**. Worker는 필요한 도구만 접근하게 하고, 위험 명령은 기본 차단한다. 둘째, **관측 가능성**. 각 단계 로그를 남기고, 실패 유형을 태깅해 재발 패턴을 본다. 자동화는 ‘한 번 잘 도는 것’보다 ‘망가졌을 때 빨리 복구되는 것’이 훨씬 중요하다.
 
-![Multi-agent orchestration 3](/blog/agentic_era_ch4_03.jpg)
+![Multi-agent orchestration 3](/images/web-optimized/007-agentic_era_ch4_03-319573ffea86.webp)
 
 결국 멀티 에이전트 오케스트레이션은 화려한 기술 쇼가 아니다. 운영 가능한 시스템 설계다. 단일 에이전트가 빠른 프로토타입에 강하다면, 역할 분리된 에이전트 팀은 장기 운영에 강하다. 오늘의 목표가 단순한 데모가 아니라 매일 반복되는 성과라면, 이제 질문은 분명해진다. “어떤 모델을 쓸까?”가 아니라 “어떤 역할 구조로 실패를 관리할까?”
 

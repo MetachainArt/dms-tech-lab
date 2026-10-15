@@ -62,7 +62,7 @@ export default function BlogTeaser({ posts, variant }: BlogTeaserProps) {
               >
                 <div className="relative h-44 w-full overflow-hidden">
                   <Image
-                    src={post.frontMatter.coverImage || "/og-image.png"}
+                    src={post.frontMatter.coverImage || "/images/web-optimized/250-og-image-1e10d2364e65.jpg"}
                     alt={String(post.frontMatter.title)}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"

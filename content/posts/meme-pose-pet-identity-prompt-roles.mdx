@@ -4,7 +4,7 @@ subtitle: "사진 두 장을 올릴 때 무엇을 가져오고 무엇을 지울�
 excerpt: "밈 속 동작과 반려동물의 외모를 합칠 때 쓰는 역할 분리 프롬프트입니다. 자체 생성 사진 두 장으로 실제 시험한 결과와 실패 지점, 직접 바꿔 쓰는 방법을 정리했습니다."
 date: "2026-10-08"
 readTime: "11 min"
-coverImage: "/images/posts/meme-pose-pet-identity-prompt-roles/cover.png"
+coverImage: "/images/web-optimized/183-cover-8efc25c34fce.webp"
 series: "future-arts"
 tags: ["프롬프트","AI 이미지","반려동물","밈"]
 ---
@@ -23,9 +23,9 @@ ai_newpd의 [밈 변환 게시물](https://www.instagram.com/ai_newpd/p/DeN9laIk
 
 실제 반려동물 사진이나 남이 만든 밈은 쓰지 않았습니다. 권리 문제를 피하려고 재료도 모두 이 글을 위해 생성한 이미지입니다. 정체성 기준 사진은 삼색 털의 비글 계열 강아지 한 장입니다. 포즈 기준 그림은 책상에 엎드려 팔을 늘어뜨린 직장인 한 명이고, 두 번째 시험용 그림은 가방을 들고 뛰어오르는 직장인입니다.
 
-![자체 생성한 삼색 강아지 기준 사진](/images/posts/meme-pose-pet-identity-prompt-roles/dog-reference.png)
+![자체 생성한 삼색 강아지 기준 사진](/images/web-optimized/184-dog-reference-08c3add777f1.webp)
 
-![자체 생성한 책상에 엎드린 직장인 포즈 기준 그림](/images/posts/meme-pose-pet-identity-prompt-roles/pose-source.png)
+![자체 생성한 책상에 엎드린 직장인 포즈 기준 그림](/images/web-optimized/187-pose-source-c4fb2c0a25bf.webp)
 
 두 장 모두 사람이 찍은 기록 사진이 아니고 생성 이미지입니다. 따라서 이 시험은 실제 사진의 얼굴 유사도를 검증하지 않습니다. 확인할 수 있는 것은 같은 사진 쌍에서 문장 구조가 달라질 때 결과가 어떻게 달라지는지입니다.
 
@@ -37,7 +37,7 @@ ai_newpd의 [밈 변환 게시물](https://www.instagram.com/ai_newpd/p/DeN9laIk
 Make the first image with the dog from the second image.
 ```
 
-![짧은 요청의 결과: 강아지에게 넥타이가 남았고 사람 다리와 구두가 의자 아래에 남은 이미지](/images/posts/meme-pose-pet-identity-prompt-roles/short-prompt.png)
+![짧은 요청의 결과: 강아지에게 넥타이가 남았고 사람 다리와 구두가 의자 아래에 남은 이미지](/images/web-optimized/188-short-prompt-35b7b3ab827d.webp)
 
 결과는 절반만 성공했습니다. 엎드린 자세, 책상, 노트북, 헤드폰은 유지됐고 얼굴은 흰 줄무늬와 삼색 털로 강아지 사진을 따랐습니다. 하지만 원본의 파란 넥타이가 개의 가슴 앞에 그대로 남았고, 의자 아래에는 사람 다리와 구두가 보입니다. 원본에서 사라져야 할 것을 말하지 않았으니 모델은 장면의 일부로 보고 남겼습니다.
 
@@ -49,7 +49,7 @@ Make the first image with the dog from the second image.
 Image 1 is the pose reference (an illustration of a worker slumped over a desk). Image 2 is the identity reference (a real-looking dog). Recreate Image 1 with the dog from Image 2 as the only character, in the same pose, camera angle, desk, laptop, chair and pastel blue background. Keep the droopy, exhausted body language and closed eyes. Take the dog's face shape, ear shape, white blaze, brown eye patch and tricolor coat from Image 2. Remove the person, the shirt, the tie and the shoes. Keep the headphones around the neck and the round glasses as props. Keep the dog's natural body proportions and four legs; do not give it human hands. No text.
 ```
 
-![역할을 나눈 요청의 결과: 강아지가 책상에 엎드려 있고 넥타이와 구두가 없는 이미지](/images/posts/meme-pose-pet-identity-prompt-roles/cover.png)
+![역할을 나눈 요청의 결과: 강아지가 책상에 엎드려 있고 넥타이와 구두가 없는 이미지](/images/web-optimized/183-cover-8efc25c34fce.webp)
 
 이번에는 넥타이, 구두, 사람 다리가 모두 사라졌습니다. 헤드폰과 둥근 안경은 소품으로 남았고, 늘어진 앞발이 의자 앞쪽으로 내려왔습니다. 눈은 감겨 있고 흰 줄무늬와 삼색 털, 늘어진 귀가 기준 사진과 같은 방향으로 읽힙니다. 다만 기준 사진에서 눈 위의 갈색 무늬는 이 컷에서 안경과 겹쳐 확인하기 어렵습니다. 얼굴 특징을 지정했다고 모든 특징이 보인다고 말할 수는 없습니다.
 
@@ -61,7 +61,7 @@ Image 1 is the pose reference (an illustration of a worker slumped over a desk).
 Image 1 is the pose reference (an illustration of a worker jumping in celebration). Image 2 is the identity reference (a real-looking dog). Recreate Image 1 with the dog from Image 2 as the only character, in the same mid-air pose, camera angle and warm yellow background. Keep the joyful, energetic body language and the tote bag. Take the dog's face shape, ear shape, white blaze and tricolor coat from Image 2. Remove the person, the clothes, the lanyard and the shoes. Keep the dog's natural body proportions and four legs; do not give it human hands or human legs. No text.
 ```
 
-![뛰어오르는 직장인 그림을 같은 구조로 강아지로 바꾼 결과](/images/posts/meme-pose-pet-identity-prompt-roles/jump-result.png)
+![뛰어오르는 직장인 그림을 같은 구조로 강아지로 바꾼 결과](/images/web-optimized/185-jump-result-df8b2189840d.webp)
 
 노란 배경, 위로 든 팔의 방향, 가방을 쥔 앞발이 유지됐습니다. 강아지의 흰 줄무늬와 삼색 털도 이어졌습니다. 이 컷에서는 사람 옷이나 신발이 보이지 않습니다. 다만 한 번 생성한 결과일 뿐이어서 같은 문장이 매번 같은 결과를 낸다고 보증하지는 않습니다. 이 실험의 시도 횟수는 장면마다 한 번이었습니다.
 

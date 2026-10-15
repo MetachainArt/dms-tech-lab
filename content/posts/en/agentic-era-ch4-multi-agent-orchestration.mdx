@@ -1,10 +1,10 @@
 ---
-translationSourceHash: "67d5d1f8fa585f52bedb1abfc9fe8e287e20e14d84d3a8825835f8ba5f7b5e84"
+translationSourceHash: "0df38d0e570f051c96c326832ecbbb9ba60e2508144b3e291df7ae90e15331d2"
 title: "Operating an Agent Team: From One Agent to Multi-Agent Orchestration"
 excerpt: "A team with separated roles delivers results more reliably than a capable agent working alone."
 date: "2026. 03. 02"
 readTime: "14 min"
-coverImage: "/blog/agentic_era_ch4_01.jpg"
+coverImage: "/images/web-optimized/005-agentic_era_ch4_01-9e271b68ccf8.webp"
 series: "agentic-era"
 chapter: "04"
 tags: ["Agents", "Automation", "Orchestration", "AI Ops"]
@@ -21,7 +21,7 @@ Most early automation begins with one smart agent that understands a request, ga
 
 Especially damaging in repeated operation is that failures take different forms every time: a missing API key today, a changed selector tomorrow, a changed model response format the day after. In a single-agent structure, these failures look like one black box. Fixes take time and recurrence is hard to prevent. The intended time savings of automation are offset by incident-response work.
 
-![Multi-agent orchestration 1](/blog/agentic_era_ch4_01.jpg)
+![Multi-agent orchestration 1](/images/web-optimized/005-agentic_era_ch4_01-9e271b68ccf8.webp)
 
 ## <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">2. Planner-Worker-Reviewer: Role Separation Creates Performance</span>
 
@@ -35,7 +35,7 @@ The advantage is straightforward: the location of a problem becomes visible quic
 
 The important step is fixing each role’s **input/output contract**. The Planner might always produce a JSON checklist; the Worker might leave stage logs and artifact paths; the Reviewer might return pass/fail and required corrections. Fixed contracts keep the pipeline intact even when the model changes.
 
-![Multi-agent orchestration 2](/blog/agentic_era_ch4_02.jpg)
+![Multi-agent orchestration 2](/images/web-optimized/006-agentic_era_ch4_02-b8bf44cac4ec.webp)
 
 ## <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500">3. Practical Operations Depend on Recovery Loops and Approval Gates</span>
 
@@ -47,7 +47,7 @@ Adding two operating principles greatly improves stability.
 
 First, **least privilege**: let Workers access only necessary tools and block dangerous commands by default. Second, **observability**: log every stage and tag failure types to reveal recurrence patterns. Recovering quickly after a failure matters much more in automation than working well once.
 
-![Multi-agent orchestration 3](/blog/agentic_era_ch4_03.jpg)
+![Multi-agent orchestration 3](/images/web-optimized/007-agentic_era_ch4_03-319573ffea86.webp)
 
 Multi-agent orchestration is ultimately an operable system design, not a flashy technology show. A single agent excels at fast prototypes; a team with separated roles excels at long-term operation. If today’s goal is daily, repeated results rather than a demo, the question becomes clear: not “Which model should I use?” but “What role structure should manage failure?”
 

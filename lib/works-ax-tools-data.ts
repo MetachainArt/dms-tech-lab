@@ -5,7 +5,7 @@ export const AX_TOOLS_PROJECT: WorkProject = {
   "title": "AX 도구 스택",
   "subtitle": "TOOLING FOR AX",
   "description": "오케스트레이션 도구 선택부터 MCP, 자체 호스팅 경계, 관측 구조까지. 실제 오픈소스 도구와 2026년 채택 현황을 근거로 AX를 지탱하는 기술 스택을 정리했습니다.",
-  "coverImage": "/images/Service/real_ai_code_macro.png",
+  "coverImage": "/images/web-optimized/072-real_ai_code_macro-50923e8f23fe.webp",
   "color": "blue",
   "tags": [
     "n8n",

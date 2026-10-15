@@ -6,7 +6,7 @@ export default function AuthorCard({ locale = "ko" }: { locale?: "ko" | "en" }) 
     <div className="mt-20 rounded-[32px] border border-paperfolio-line bg-white p-8 shadow-[0_18px_60px_rgba(31,41,55,0.05)] md:p-10">
       <div className="flex flex-col gap-6 md:flex-row md:items-center">
         <div className="relative h-24 w-24 overflow-hidden rounded-full border border-paperfolio-line bg-paperfolio-surface">
-          <Image src="/reedo-profile-high.png" alt={locale === "en" ? "Reedo portrait" : "리도 프로필"} fill sizes="96px" className="object-cover" />
+          <Image src="/images/web-optimized/254-reedo-profile-high-638ebffebc5e.jpg" alt={locale === "en" ? "Reedo portrait" : "리도 프로필"} fill sizes="96px" className="object-cover" />
         </div>
 
         <div className="flex-1 space-y-3">

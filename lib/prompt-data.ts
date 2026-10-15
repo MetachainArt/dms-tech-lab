@@ -146,7 +146,7 @@ export const PROMPTS: PromptItem[] = [
     promptContent: "A soft beauty still life inside a miniature world handcrafted entirely from yarn, wool, and plush textiles. Two knitted night cream jars float gently above a pastel pink felt backdrop. The hero jar is fully sculpted from thick knitted stitches wrapped around a felted cylinder, with embroidered gold lettering mimicking the original label. --ar 4:5 --v 6.0",
     tags: ["Midjourney", "Product", "Texture"],
     author: "ArtAI",
-    image: "/images/prompts/knitted-cream.png"
+    image: "/images/web-optimized/216-knitted-cream-71595ffc2801.webp"
   },
   {
     id: "luxury-beauty",
@@ -156,7 +156,7 @@ export const PROMPTS: PromptItem[] = [
     promptContent: "Luxury cosmetic holiday collection 2025, red velvet curtains background, golden lighting, sparkling champagne glass, elegant serum bottle and cream, festive atmosphere, high end advertising photography, 8k resolution, elegant, expensive look.",
     tags: ["Advertising", "Luxury", "Beauty"],
     author: "StudioAI",
-    image: "/images/prompts/luxury-beauty.png"
+    image: "/images/web-optimized/217-luxury-beauty-7d327d0dc862.webp"
   },
   {
     id: "cyberpunk-city",

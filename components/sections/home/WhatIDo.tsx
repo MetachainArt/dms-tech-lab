@@ -60,7 +60,7 @@ export default function WhatIDo({ locale = "ko" }: HomeLocaleProps) {
         </div>
         <div className={styles.serviceMaterial}>
           <div><span>ASSEMBLY STUDY / BRAND CONCEPT</span><p>Every part.<br /><em>One purpose.</em></p></div>
-          <Image src="/images/brand/fiber-exploded.png" alt={english ? "DMS brand concept: an exploded assembly of a metal flange, optical glass and cobalt collet" : "DMS 브랜드 콘셉트: 금속 플랜지, 광학 유리, 코발트 콜릿의 분해 조립도"} fill sizes="100vw" />
+          <Image src="/images/web-optimized/094-fiber-exploded-2039f111a67f.webp" alt={english ? "DMS brand concept: an exploded assembly of a metal flange, optical glass and cobalt collet" : "DMS 브랜드 콘셉트: 금속 플랜지, 광학 유리, 코발트 콜릿의 분해 조립도"} fill sizes="100vw" />
         </div>
         <div className={styles.servicesGrid}>
           {(english ? EN_HOME_SERVICES : services).map((service, index) => {

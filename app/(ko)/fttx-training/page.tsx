@@ -166,7 +166,7 @@ export default function FttxTrainingPage() {
 
           <aside className={styles.fieldStudy}>
             <div className={styles.fieldImage}>
-              <Image src="/images/brand/fiber-exploded.png" alt="Optical connector assembly — DMS brand concept study" fill priority sizes="(max-width: 1024px) 90vw, 44vw" />
+              <Image src="/images/web-optimized/094-fiber-exploded-2039f111a67f.webp" alt="Optical connector assembly — DMS brand concept study" fill priority sizes="(max-width: 1024px) 90vw, 44vw" />
             </div>
             <p className={styles.eyebrow}>Reedo / Field experience</p>
             <blockquote>Equipment is easy to demonstrate. Judgement is what has to be taught.</blockquote>

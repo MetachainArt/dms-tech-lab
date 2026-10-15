@@ -5,7 +5,7 @@ export const AUTOMATION_LAB_PROJECT: WorkProject = {
   "title": "업무 자동화 실험 노트",
   "subtitle": "AUTOMATION EXPERIMENTS",
   "description": "메일·회의록·보고서·파일·수집·알림·승인·백업까지, 실제로 돌려보고 무엇이 되고 무엇이 안 됐는지 기록한 10편의 실험 노트입니다.",
-  "coverImage": "/images/Service/real_automation_server.png",
+  "coverImage": "/images/web-optimized/073-real_automation_server-70d61c65803f.webp",
   "color": "blue",
   "tags": [
     "자동화",
