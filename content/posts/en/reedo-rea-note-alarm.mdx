@@ -1,0 +1,64 @@
+---
+title: "REA Note Alarms Without Cloning an App"
+subtitle: "Building a Note Alarm with REA Was Not the Same as Copying an Entire App"
+excerpt: "A personal learning exercise reimplements selected Windows Sticky Notes behaviors, distinguishing the demonstrated alarm from its operating conditions and missing features."
+date: "2026-10-16"
+readTime: "6 min"
+coverImage: "/images/reedo-notes-20261016/224443575530/image-1.webp"
+series: "agentic-era"
+sourceBlog: "https://blog.naver.com/jongsunpark9308/224443575530"
+tags: ["AI automation","Reedo","Operational notes"]
+translationSourceHash: "24abe0160bfa2b3b059db0720f895e163e9aa14e94a57d586db27f5b7c3d8e3d"
+---
+
+This is a republication of Reedo’s Naver article. It is not a new experiment or a DMS client case study. The cover and in-article photographs are AI-generated staged scenes, not evidence of actual work.
+
+If you write a note but fail to see it when you actually need it, an alarm would be useful. This video presents a personal learning exercise that analyzes the behavior of Windows Sticky Notes, then builds a new feature that brings a closed note back to the foreground at a set time.
+
+The interesting part is less the alarm than the process. Connecting REA to Claude Code did not clone the entire original app. Distinguishing the finished result from the fragments produced by the analysis tool makes it clearer what kinds of tasks to delegate to AI.
+
+**The result of using REA is not a copy of an entire app, but a newly built note alarm based on the clues gathered.**
+
+*AI-generated staged image, not an actual work screen.*
+
+## What was allowed, and what was prohibited?
+
+The video begins the request with two conditions: do not open notes that were actually in use, and build from scratch by observing behavior rather than copying the original code. Wanting to add a feature does not grant permission to intrude on personal information or the rights associated with another program.
+
+The analysis identifies clues such as the fact that closing a note window hides rather than deletes it, along with default colors and the note list. It does not assume that per-note timed alarms are already implemented simply because the program contains notification-related text. It is important to check the presence of such wording separately from the actions actually available in the menus.
+
+If you try this yourself, do not extend it into copying or distributing a commercial app as is. This example is a reimplementation for personal study, and it is safer to use newly created dummy content for testing instead of real work notes. The restriction against reading actual data must remain in force during verification, not just at the start.
+
+![AI-generated staged scene 2](/images/reedo-notes-20261016/224443575530/image-2.webp)
+
+*AI-generated staged image, not an actual work screen.*
+
+## Does lengthy analysis produce a finished product?
+
+In the main video, the approach changes when analysis of the large main program file takes too long. The AI is asked to finish the required functionality using clues already obtained. Rather than assuming that every internal structure must be understood before moving forward, this choice narrows the focus back to the information needed for the current goal.
+
+The video later shows the result of letting the analysis run to completion: more than 76,000 function fragments after 27 minutes. It also presents a warning that original names or formats may have been lost. This is what was observed in that particular exercise, not a performance guarantee that other apps can be analyzed in the same time or copied immediately.
+
+Analysis success and product completion therefore need to be judged separately. More important than the number of functions extracted is whether the necessary behaviors, such as writing, saving, closing, and reopening notes, work together. For AI as well, a specific definition of the features to implement and the scope to exclude is clearer than a broad instruction to copy everything.
+
+![AI-generated staged scene 3](/images/reedo-notes-20261016/224443575530/image-3.webp)
+
+*AI-generated staged image, not an actual work screen.*
+
+## What was actually checked about the alarm?
+
+In the video, a new note is written, an alarm is set, and the window is closed. At the specified time, the closed note reopens in the foreground, and the video also introduces actions to snooze it or dismiss it by pressing the confirmation button. It also shows the AI finding a bug that caused content to disappear when an alert was set immediately after writing, then adding a fix and tests.
+
+However, the result does not include every feature of the original app. Adding photos and syncing with other devices are missing, and the video explains that alarms work only while the newly built app is running. That is why hiding a window must not be treated as the same thing as exiting the program itself.
+
+The checks for a personal exercise should reflect these limits. Test separately whether a dummy note is saved, whether it remains in the list after being closed, and whether it reappears at the set time. If alerts are needed after sleep or shutdown, treat that as a separate requirement; the demonstration in this video cannot guarantee behavior in those situations.
+
+[Watch this video to see the actual process](https://www.youtube.com/watch?v=IFE3KAz_Jbs)
+
+The starting point for this example is not obtaining someone else’s app unchanged, but noticing one small inconvenience in a frequently used feature. First write down the required behaviors and verification criteria, while prohibiting access to actual data and copying of original code and staying within the scope of personal learning. To judge whether an AI-built result is useful, you need to understand its operating conditions and missing features as well.
+
+[Original Naver article](https://blog.naver.com/jongsunpark9308/224443575530)
+
+[Reedo on YouTube](https://www.youtube.com/@Reedodev)
+
+[Reedo on Threads](https://www.threads.com/@reedo.dev)

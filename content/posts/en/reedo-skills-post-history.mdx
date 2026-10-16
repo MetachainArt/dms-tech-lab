@@ -1,0 +1,64 @@
+---
+title: "Give AI Skills Recent Post Records"
+subtitle: "Creating AI Skills When Similar Scenes Keep Returning, Start with Your Post Records"
+excerpt: "A fictional-brand exercise compares content plans before and after recent post records are supplied to an AI skill, while noting the limits of what was verified."
+date: "2026-10-16"
+readTime: "6 min"
+coverImage: "/images/reedo-notes-20261016/224443641204/image-1.webp"
+series: "agentic-era"
+sourceBlog: "https://blog.naver.com/jongsunpark9308/224443641204"
+tags: ["AI automation","Reedo","Operational notes"]
+translationSourceHash: "ff73f16b80955016237a63374a5815e2fde0fc63de5aa677beb4bc4ce4b807b8"
+---
+
+This is a republication of Reedo’s Naver article. It is not a new experiment or a DMS client case study. The cover and in-article photographs are AI-generated staged scenes, not evidence of actual work.
+
+If you ask AI to plan content that does not overlap with recent posts, yet it suggests a scene much like yesterday’s, stronger wording in the rules may not be enough. This video turns a recurring task into a skill, then adds a file of recent post records to compare how plans for the same date change.
+
+Corner Coffee and its recent post records are fictional examples created for teaching. The video was published on October 12, 2026, while the Codex demonstration of creating the skill and running it twice was recorded on October 6. What the results show is a change in planning, not verified growth in followers or actual engagement.
+
+**A rule against repetition needs recent post records that the AI can actually read.**
+
+*AI-generated staged image, not an actual work screen.*
+
+## What should go into a skill?
+
+In the video, a skill is a manual for a recurring task with a defined sequence and format. The task of taking a date and mood and producing that day’s shoot plan and channel-specific posts in one file is grouped under the name “Daily Content Set.” This is distinct from creating an agent that independently decides what to do first.
+
+The request requires the AI to follow the channel rules in the brand file, skip channels with no posts scheduled, and rotate topics. It also sets boundaries against generating images without permission and requires saving under a specified name. The key requirement is to check recent post records and plans from the past seven days to avoid repeating scenes and topics.
+
+Creating a SKILL.md file does not mean the skill has been validated in practice. The video notes that, at first, only a format check had passed and no actual content had been produced yet. The skill is then called by name to generate an October 7 set with a calm, rainy-day mood, so its results and limitations can be examined.
+
+![AI-generated staged scene 2](/images/reedo-notes-20261016/224443641204/image-2.webp)
+
+*AI-generated staged image, not an actual work screen.*
+
+## Why did the result say “No data”?
+
+The first plan included Instagram and Threads content suited to the schedule, but ended with a note that duplicate checking was limited because the actual post records and earlier plans had “No data.” The issue was less about forgetting the rule than about having nothing in the folder to compare against.
+
+This exercise did not connect to any SNS accounts to read them. Even if a person has already published a post, the AI cannot compare it if it is absent from the folder it reads. So dates, channels, photos and scenes, topics, and opening lines are organized into a table in inputs/recent-posts.md, with a note at the beginning identifying the records as fictional.
+
+After adding the records, a rule is added requiring the AI to read this file whenever it checks for repetition over the past seven days, without modifying the file itself. Another condition asks it not to repeat the same sentence patterns at the beginnings and endings of posts. Specifying both the data location and the reading order makes it possible to check whether the new material is actually used in its decisions.
+
+![AI-generated staged scene 3](/images/reedo-notes-20261016/224443641204/image-3.webp)
+
+*AI-generated staged image, not an actual work screen.*
+
+## How different was the second result?
+
+When asked for the same October 7 set again, the AI says it avoided recurring mug and coffee-bean scenes and switched to seating-area views and an opening-hours notice. Instead of the first run’s “No data,” the response explains which scenes it avoided because they had appeared repeatedly in the records. This comparison can therefore be seen as an example of planning choices changing after records were added and the skill was instructed to read them.
+
+However, the result itself notes that comparing endings is limited because only the opening lines of past posts remain. To check for repetition across entire texts, the records need to include more of the post bodies. Making a short table and assuming that all repeated wording has been addressed would overlook what the records do not contain.
+
+The video also introduces records from a project featuring a fictional AI character named Seo-a, where similar outfits and kitchen scenes were planned after a “No history” result. This example likewise shows the need for comparison material, rather than guaranteeing results. Because the skill only reads the record file, a person must add new posts and check for actual overlap again before publishing.
+
+[Watch this video to see the actual skill runs before and after the records were added](https://www.youtube.com/watch?v=5eE76e_qkKM)
+
+To try this yourself, start by listing the dates, channels, scenes, and opening lines from the past week. Add a rule telling the skill to read that file and check for repetition, then compare the results of the same request against the records. The key to delegating recurring work is less about lengthy instructions than about supplying all the necessary records and understanding their limitations.
+
+[Original Naver article](https://blog.naver.com/jongsunpark9308/224443641204)
+
+[Reedo on YouTube](https://www.youtube.com/@Reedodev)
+
+[Reedo on Threads](https://www.threads.com/@reedo.dev)
