@@ -1,0 +1,89 @@
+---
+title: "Acceptance Tests for an AI Skill"
+excerpt: "A practical guide to separating revision cases from final checks, with task-specific acceptance criteria, repeated trials and regression checks."
+date: "2026-10-16"
+readTime: "12 min"
+kind: "guide"
+tags: ["Work", "AI skills", "AI training"]
+---
+
+Set acceptance criteria for an AI skill before reviewing its answers. Keep the examples used to revise the instructions separate from the examples reserved for the final check. Judge mandatory conditions independently: a fluent answer that invents a deadline or takes an unauthorized action cannot pass a task that prohibits those behaviors.
+
+This is a practical guide for AI training and skill design at DMS.Labs, not a report of a client deployment or a performance experiment we conducted. It draws on OpenAI and Anthropic evaluation guidance checked on October 16, 2026. The document-processing task and acceptance table below are hypothetical design examples.
+
+## What does repeated testing on familiar examples miss?
+
+If every improvement is measured on material you have already reviewed, you still don't know how the instructions will behave on unfamiliar material. Each revision can absorb details from the examples. Scores on those examples help explain the revision process, but they provide limited evidence about the next document someone will submit.
+
+The earlier [one-page job sheet guide](/en/works/ai-skill-job-sheet) describes a useful starting point: observe failures, revise the instructions and rerun the same cases. This article adds a separate decision after that loop. Reserve other material for a final check before deciding where the skill may be used. A successful revision check and a satisfactory acceptance check answer different questions.
+
+OpenAI's evaluation guidance starts with an objective and success criteria, followed by a dataset and evaluation metrics. It recommends tasks that reflect actual use, human calibration and continued evaluation after changes. Its summarization example uses held-out material. The example's dataset size and numerical targets are not universal acceptance thresholds for an office workflow.
+
+![Open sample papers beside a closed envelope on a wooden desk near a window.](/images/works/ai-skill-acceptance-tests/separate-samples.webp)
+
+## Which conditions deserve separate decisions?
+
+Consider a skill that reads monthly work notes and produces a table of tasks, owners and deadlines. It must cite the source location and mark an absent date as unconfirmed. It has no permission to send messages or create calendar events. This is an invented task for explaining the method, not a description of a client's system or a product feature.
+
+An invented deadline and awkward row spacing have different consequences. A colleague may act on the deadline; a reviewer can repair the spacing. I recommend separating disqualifying conditions from editorial quality, then comparing readability only among outputs that satisfy the mandatory conditions. A different workflow may require a different division because the consequences of errors differ.
+
+| Check | Acceptance condition | Evidence to inspect |
+| --- | --- | --- |
+| Dates and owners | Supported by the source or marked unconfirmed | Referenced source passage |
+| Missing tasks | Includes every required task identified by the reviewer | Required-item list |
+| Source locations | Each link supports the associated claim | Actual linked passage |
+| Authorized scope | Sends no messages and creates no calendar events | Available tools and execution record |
+| Readability | Reviewer can distinguish tasks from unresolved items | The resulting table |
+
+Each row identifies something observable. A single accuracy score can hide which condition failed. Code can check a date format or an empty field, while a reviewer who understands the source checks whether the summary omitted a qualification. Passing the code checks does not establish that the meaning is correct.
+
+Holding an output whenever it violates a mandatory condition is a proposed rule for this example, not a certification standard. Whoever writes the table should explain who would be affected by each error. Relaxing a criterion after seeing an appealing answer also changes the basis on which earlier answers were judged.
+
+## Keep revision material and final-check material apart
+
+Use one collection freely while editing the instructions. Reserve another collection from answer-driven revision until the final decision. Here, revision material means examples used to improve the instructions; it does not mean that the underlying model is being trained again. Representing the differences in the work comes before choosing an arbitrary number of cases.
+
+Ordinary notes alone won't reveal what happens when a deadline is missing. Include cases with a blank date, duplicate tasks or conflicting dates across two documents. Replace personal information with authorized test values while retaining the missing or conflicting structure. Removing names does not automatically authorize sending the material to an external service.
+
+Once you inspect a failure in the final-check collection and use it to revise the skill, move that case into the revision collection. It is no longer an unseen check. Use different material for the next decision or record the reduced independence of the test. A small team may struggle to maintain a large independent collection; document that limitation instead of hiding it.
+
+Give each case an identifier and a version. You don't need to copy the full document into every evaluation log. Link to an authorized location that reviewers can access and preserve the evidence needed to check the judgment. Set retention and access according to the organization's information rules. Passwords and access tokens do not belong in these records.
+
+## How should a successful attempt be recorded?
+
+Generative output can vary even when the input stays the same. Selecting only a successful attempt therefore says little about consistency. Anthropic distinguishes multiple trials of a task and explains why succeeding at least once differs from succeeding on every trial. A workflow expected to run unattended needs particular attention to conditions it must satisfy repeatedly.
+
+Write down the number of attempts and restart conditions before running the test. Retain unsuccessful attempts as well as successful ones. An attempt prevented from starting by unavailable access differs from one that reads the material and produces an incorrect answer, so record those outcomes separately. Neither an access failure nor a content error should disappear into a misleading success label.
+
+Compare attempts using the same source version and permissions. Check whether a previous conversation contains the answer or whether one attempt can read a file created by an earlier attempt. Record whether the work started from a fresh task state. If the tools changed, put that change beside the result. The same model can run under different test conditions.
+
+A reviewer should be able to follow the score back to the input, output and judgment. Anthropic distinguishes the execution record from the final state of the environment. If the agent says it saved a file, inspect the file in the authorized test folder. For the notes skill in this guide, do not test successful message delivery: sending is outside its permitted scope. Running an evaluation does not grant new authority.
+
+![A person comparing a blank review sheet with tabbed documents from a low side angle.](/images/works/ai-skill-acceptance-tests/review-evidence.webp)
+
+## Check that previously working behavior survives a change
+
+Imagine adding an instruction against guessing dates, then finding that the skill marks every date as unconfirmed. This is a hypothetical failure, not an observed result. It explains why a fix needs both the new exception and a previously successful ordinary case. After checking notes without a date, also check notes with an explicit date.
+
+Anthropic distinguishes capability evaluations, which ask what an agent can do, from regression evaluations, which ask whether it still handles tasks it previously performed. A small team's test collection can use the same distinction. Keep representative ordinary cases alongside new exceptions so a local fix cannot hide damage elsewhere.
+
+Connect each result to the case identifier, skill version, model identifier, tool permissions and execution time. When the model or instructions change, compare results under the same criteria. If the material and grading rules also changed, do not describe the difference as a simple performance improvement. Record the changed conditions first.
+
+If AI grades the answers, calibrate its judgments against human-reviewed examples. OpenAI describes position bias and verbosity bias in model grading and recommends validating agreement with human labels. Check whether the grader favors a longer answer or rewards a response that invents a date. Use deterministic checks for straightforward requirements such as sums or required-item inclusion.
+
+## What should the DMS job sheet add?
+
+Connect its verification section to the case identifiers, mandatory conditions, actual outputs and reasons for each judgment. Before buying an evaluation tool, establish whether two results can be compared under the same rules. The time and cost indicators discussed in [measuring AI adoption](/en/works/ai-performance-measurement) should be read alongside the quality decision for the approved task scope.
+
+In a training exercise, review the learner's instructions and acceptance sheet together. Ask which source passage supports a pass or a hold, rather than whether the answer looks appealing. This is a proposed teaching exercise, not a claim about a class already delivered or a measured learning outcome. When reviewers disagree, compare their criteria and evidence before averaging scores.
+
+Use a newly accepted skill only within the task scope tested. Passing a notes-summary test does not qualify it for contract review or external sending. Add newly observed failures to the collection through authorized information-handling procedures, checking privacy and retention again. For unresolved cases, record the conditions where the skill must not be used and who will review them.
+
+## Next step
+
+For help connecting a recurring task to AI training and skill design, see [DMS.Labs' training and automation inquiry page](/en/contact). Bring one task, source material that can be checked against the output, and the conditions that require a hold. The broader [AI education portfolio](/works/ai-education) is currently in Korean.
+
+## Sources
+
+- [OpenAI, Evaluation best practices](https://developers.openai.com/api/docs/guides/evaluation-best-practices)
+- [Anthropic, Demystifying evals for AI agents](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)

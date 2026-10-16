@@ -6,6 +6,12 @@ type WorkTranslation = Pick<ShowcaseWorkItem, "title" | "summary" | "tags"> & {
 
 // Match translations by the original destination so order, assets and links stay shared.
 const translations: Record<string, WorkTranslation> = {
+  "/works/ai-skill-acceptance-tests": {
+    title: "Acceptance Tests for an AI Skill",
+    summary: "Separate revision cases from final checks, define mandatory conditions and check that previously working behavior survives changes.",
+    tags: ["Work", "AI skills", "AI training"],
+    linkLabel: "Read the English guide",
+  },
   "/works/reedo-publication-ledger-gap": {
     title: "Why Publication and Records Are Separate",
     summary: "An actual DMS.Labs publication-and-ledger gap: the October 11 repair and inspection code show how to restore the connection without republishing.",
@@ -121,7 +127,7 @@ export const ENGLISH_SHOWCASE_WORKS = SHOWCASE_WORKS.map((work) => {
   return {
     ...work,
     ...translation,
-    link: work.link === "/works/reedo-publication-ledger-gap" || work.link === "/works/ai-automation-safe-retry" || work.link === "/works/ai-knowledge-base-world-tree" || work.link === "/works/ai-skill-job-sheet" || work.link === "/works/ai-training-task-boundary-map" || work.link === "/works/jev-seo-practical-guide" || work.link === "/works/claude-code-you-should-know" || work.link === "/works/delegating-work-to-ai-agents" || work.link === "/works/ai-performance-measurement" || work.link === "/works/bilingual-page-release-check" || work.link === "/works/automation-permission-ladder" ? `/en${work.link}` : work.link,
+    link: work.link === "/works/ai-skill-acceptance-tests" || work.link === "/works/reedo-publication-ledger-gap" || work.link === "/works/ai-automation-safe-retry" || work.link === "/works/ai-knowledge-base-world-tree" || work.link === "/works/ai-skill-job-sheet" || work.link === "/works/ai-training-task-boundary-map" || work.link === "/works/jev-seo-practical-guide" || work.link === "/works/claude-code-you-should-know" || work.link === "/works/delegating-work-to-ai-agents" || work.link === "/works/ai-performance-measurement" || work.link === "/works/bilingual-page-release-check" || work.link === "/works/automation-permission-ladder" ? `/en${work.link}` : work.link,
     // New untranslated work remains visible with an honest language label.
     linkLabel: translation?.linkLabel ?? "View the original in Korean",
     contentLanguage: translation ? "en" : "ko",

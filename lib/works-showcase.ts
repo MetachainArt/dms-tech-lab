@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "AI 스킬 합격 기준",
+    summary: "수정용 예시와 최종 시험 자료를 나누고, 근거 없는 날짜·누락·권한 위반을 따로 판정하는 AI 스킬 평가 실무 가이드입니다.",
+    tags: ["Work", "AI 스킬", "AI 교육"],
+    image: "/images/works/ai-skill-acceptance-tests/separate-samples.webp",
+    link: "/works/ai-skill-acceptance-tests",
+  },
+  {
     title: "공개와 기록을 나눈 이유",
     summary: "DMS.Labs의 실제 공개 글과 공통 장부가 어긋난 사례입니다. 10월 11일의 보완 기록과 검사 코드로 재발행 없이 연결을 복구한 범위를 설명합니다.",
     tags: ["Work", "AX 전환", "업무 자동화"],
