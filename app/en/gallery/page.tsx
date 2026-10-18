@@ -1,3 +1,4 @@
+import { subtractEssayEn } from "@/lib/ideas-essay-subtract";
 import { waitingAverageEssayEn } from "@/lib/ideas-essay-average";
 import { undoBoundaryEssayEn } from "@/lib/ideas-essay-undo";
 import Link from "next/link";
@@ -25,10 +26,11 @@ export default function EnglishIdeasPage() {
         eyebrow="Ideas / Reedo" lead="Images &" accent="words." variant="insights"
         title="Ideas"
         description="Notes and essays written alongside the work. Earlier pieces are still available in Korean, and new ones are being added in English."
-        note={<><span>6 English editions</span><span>A space where images and words meet</span></>}
+        note={<><span>7 English editions</span><span>A space where images and words meet</span></>}
       >
         <Link href="/gallery">Earlier pieces in Korean ↗</Link>
       </FiberPageHeader>
+      <div className={styles.essay}><EssayPiece essay={subtractEssayEn} locale="en" /></div>
       <div className={styles.essay}><EssayPiece essay={waitingAverageEssayEn} locale="en" /></div>
       <div className={styles.essay}><EssayPiece essay={undoBoundaryEssayEn} locale="en" /></div>
       <div className={styles.essay}><EssayPiece essay={defaultSettingEssayEn} locale="en" /></div>
