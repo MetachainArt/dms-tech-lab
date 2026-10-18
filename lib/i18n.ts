@@ -24,6 +24,7 @@ export function hasEnglishVersion(pathname: string): boolean {
     || path === "/education/optical-training/splice-protector-tray-compatibility"
     || path === "/education/optical-training/reflectance-orl-sign-and-scope"
     || path === "/education/optical-training/otdr-dual-wavelength-bend-screening"
+    || path === "/education/optical-training/otdr-dead-zone-pulse-width"
     || path === "/education/optical-training/01-fiber-types-link-design"
     || path === "/education/optical-training/02-fiber-market-infrastructure"
     || path === "/education/optical-training/01-rf-over-fiber-lecture"
