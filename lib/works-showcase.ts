@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "AI에 올릴 자료 고르기",
+    summary: "AI 교육과 업무 자동화에 넣을 자료를 고르는 실무 가이드입니다. 가상 실습본, 남은 식별 단서, 학습 활용과 보관 조건을 구분합니다.",
+    tags: ["Work", "AI 교육", "업무 자동화"],
+    image: "/images/works/choosing-data-for-ai/practice-copy.webp",
+    link: "/works/choosing-data-for-ai",
+  },
+  {
     title: "AI 스킬 합격 기준",
     summary: "수정용 예시와 최종 시험 자료를 나누고, 근거 없는 날짜·누락·권한 위반을 따로 판정하는 AI 스킬 평가 실무 가이드입니다.",
     tags: ["Work", "AI 스킬", "AI 교육"],
