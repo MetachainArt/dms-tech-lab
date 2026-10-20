@@ -1,0 +1,152 @@
+---
+title: "What ChatGPT Secret Codes Really Are"
+subtitle: "Why one word changes the answer, and how to build your own shortcut card"
+excerpt: "A short word can change ChatGPT's answer because it reads as an instruction, not because a hidden command was unlocked. This guide shows a five-field definition card, an unrun copy-ready setup, and the limits to check before trusting five popular trigger words."
+date: "2026-10-20"
+readTime: "10 min"
+coverImage: "/images/chatgpt-shortcut-words-definition-20261020/cover.webp"
+series: "future-arts"
+tags: ["ChatGPT", "Prompt Design", "AI Workflows"]
+translationSourceHash: "519b7b66e1e02d37cf1c7886f17949d4bdb371046358bf19c071c859ef569f02"
+---
+
+If adding a word like `TRIPLECHECK` or `/bodyguard` to a ChatGPT message seems to change the answer, no hidden command has been unlocked. The word is being read as an instruction. Define what it means and it becomes a shortcut that calls the same instruction again. Leave it undefined and the model guesses your intent from the word itself.
+
+This article uses a public Instagram post and OpenAI documentation checked on October 20, 2026. The shortcuts and prompts below are newly designed examples. They were not run in ChatGPT, so none of them is a test result. The creator offered a longer list in exchange for a comment; we did not request it and did not use it.
+
+## Are ChatGPT secret codes a hidden feature?
+
+We found no evidence that they are, and a safer explanation is that the model reads the word as an instruction. The starting point was a [public Instagram post by mavgpt](https://www.instagram.com/p/DetCMr3KqiD/). It presents five words said to change ChatGPT's answers: `/bodyguard` for checking a suspicious link or contract, `/flip` for asking what a photographed item might resell for, `SHOWME` for turning an answer into a chart, `/interview` for pasting a job posting and receiving interview questions, and `TRIPLECHECK` for re-verifying an answer in three ways.
+
+This guide does not reproduce those five. It explains why such words can work, how to build one that fits your own job, and where expectations tend to fail. It does not redistribute the creator's video, comment-gated material or longer list.
+
+OpenAI's [prompt engineering guide](https://platform.openai.com/docs/guides/prompt-engineering) does not describe a list of commands. It describes writing specific instructions, separating sections with Markdown or tags, giving input and output examples, and supplying the context a task needs. The same document says model output is non-deterministic, so even a well-defined word cannot promise an identical answer every time. That guide is developer documentation for the API rather than the ChatGPT interface, so it is used here only as a reference for principles.
+
+## When does a word actually work as an instruction?
+
+Three things have to line up. First, the word should already carry some meaning, as `interview` or `flip` do, so the model can guess its direction. Second, you should write down what it means, because guessing varies between people and conversations. Third, the definition must be present in the current conversation.
+
+A tag on a key does not say which door it opens. A word works the same way until you decide.
+
+![Three identical brass keys with handwritten paper tags beside one untagged key, a newly generated image](/images/chatgpt-shortcut-words-definition-20261020/same-label-different-key.webp)
+
+| Situation | What the word does | Expected stability |
+| --- | --- | --- |
+| `/bodyguard` typed without a definition | The model infers intent from the name | Likely to vary by conversation |
+| Defined in the same conversation, then used | Calls the procedure you wrote | Format tends to stay consistent |
+| Used in a new conversation without a definition | No earlier definition exists, so it reverts to guessing | Same as the first row |
+| Defined in Custom Instructions | The definition applies to every conversation | Relatively consistent, but a word that overlaps ordinary language can misfire |
+
+Where you store the definition matters. OpenAI's [Custom Instructions help page](https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions) says the setting is applied to all chats. A definition pasted into one conversation applies only there. Very long conversations can weaken the influence of earlier text, because the prompt guide describes a limit called the context window. If a shortcut starts to drift in a long chat, paste the definition again.
+
+## How do you build a shortcut card?
+
+Fill in five fields for each word: trigger, input, procedure, output shape and stop condition.
+
+The trigger should be short and distinct from everyday phrases. A word that appears often in normal sentences will fire in unwanted places once it is saved as a setting. The input is what you will paste after the word, such as a request, a meeting note or an article. Pick one kind.
+
+The procedure is the model's order of work, ideally no more than three steps. The output shape says how many lines or which table you want back; vagueness here is why formats change from run to run. The stop condition lists what the model must not do, for example filling in details that are absent from your material.
+
+![A hand writing wavy pencil lines on a blank index card beside a blurred laptop, a newly generated image](/images/chatgpt-shortcut-words-definition-20261020/definition-card.webp)
+
+The setup below is our own unrun design. It defines three shortcuts for common office tasks. Adjust the bracketed words to your situation.
+
+```text
+From now on, define these three shortcuts for this conversation.
+When a shortcut appears, handle it only as defined and do nothing the definition does not mention.
+
+[Shortcut: /gaps]
+Input: a request or instruction that I paste.
+Procedure: before any work starts, look for missing information. Check audience, date, length, format and reference material, in that order.
+Output: only the missing items and the questions I must answer, numbered. Do not write the finished deliverable.
+Stop: if nothing is missing, reply only "No gaps found".
+
+[Shortcut: /three-lines]
+Input: meeting notes that I paste.
+Procedure: separate what was decided, what is still open and what happens next.
+Output: one line for each of the three items, three lines in total.
+Stop: do not add anything that is not in the notes. If an item is absent, write "Not in the notes".
+
+[Shortcut: /claim-table]
+Input: an article or an answer that I paste.
+Procedure: pull out each statement written as fact and check whether the text itself supports it.
+Output: one table with three columns: claim, support inside the text, status. Status is one of: supported in text, not supported, needs outside check.
+Stop: never say you verified an outside fact from memory. If it cannot be verified, mark "needs outside check".
+
+When you understand, reply only "Definitions complete".
+```
+
+After you paste the definitions and receive "Definitions complete", type `/gaps` on the next line and paste your request. `/claim-table` does not verify evidence for you despite the name. It only marks whether a supporting sentence exists inside the text. Narrow roles like this also make the limits of trust clear.
+
+Only four variables need adjusting.
+
+| Variable | How to change it | What to check |
+| --- | --- | --- |
+| Trigger | Short, unlikely to appear in ordinary sentences | It does not fire during normal chat |
+| Input | One kind of pasted material | Two kinds are not mixed |
+| Procedure | Three steps or fewer | Longer procedures make the format less stable |
+| Output shape | State line counts or column names | The same layout returns each time |
+
+## Where do the five original words tend to fall short?
+
+Each word mixes work the model can do from what it has with work that needs a check outside the chat. The notes below are our own judgment, based on the public description and OpenAI's help page ["Does ChatGPT tell the truth?"](https://help.openai.com/en/articles/8313428). None of the words was run to confirm the points.
+
+`/bodyguard` is presented as flagging risks in a link or a contract. A model's explanation is an opinion that helps you think; it is neither a security scan nor a legal review. Whether it can open the contents of a link depends on which features you are using. For anything involving payment or a signature, confirm through an official contact.
+
+`/flip` is presented as estimating what a pictured item resells for now. A current price needs up-to-date information rather than a model's memory. OpenAI's help page says search can look up current information and answer with cited sources. If search is off, a price is a weak estimate. Checking what comparable items actually sold for comes first.
+
+`SHOWME` turns an answer into a chart. A good-looking chart does not guarantee that the numbers and relationships are right, so compare its figures with the original answer once. `/interview` works inside a job posting that you paste, so it depends less on outside facts. It still does not mean the questions match what a real interviewer would ask.
+
+`TRIPLECHECK` is the easiest to misread. Asked to check three times, the model can write that it did. The word alone does not show whether that sentence repeats one memory three times or compares different evidence. OpenAI's help page says ChatGPT can state incorrect information confidently and advises verifying important information with reliable sources. If you want verification, say which material to compare against.
+
+## What order should you follow?
+
+1. Pick one instruction you repeat often. Do not start with ten.
+2. Write it as a five-field card and choose the trigger.
+3. Paste the definition into a new conversation and confirm the "Definitions complete" reply.
+4. Use the same trigger on three different inputs and see whether the output shape holds.
+5. If the shape drifts, shorten the procedure or add one real example in the output field.
+6. If you use it daily, move it into Custom Instructions and recheck that the trigger does not collide with ordinary sentences.
+
+Keep passwords and customer information out of saved settings. The help page says information from custom instructions can also be used to improve model performance, and that an opt-out exists. A shortcut definition should describe a working method and nothing personal.
+
+Check the rules for the material you paste as well. Before putting meeting notes or customer documents into an outside service, confirm that your organization allows it. The examples in this article are imagined material, not real customer cases.
+
+## What should you change when a shortcut misbehaves?
+
+| Symptom | Likely cause | Where to fix it |
+| --- | --- | --- |
+| The usual answer appears even with the word | The definition is not in this conversation | Paste the definition again |
+| The format changes every time | The output field is vague | Add line counts, column names or one example |
+| It adds things the definition never mentioned | There is no stop condition | Add "do nothing the definition does not mention" |
+| It says it checked but shows no support | An outside fact was handled from memory | Paste the material to compare against |
+| It drifts midway through a long chat | The definition is now far back in the context | Summarize it and enter it again |
+
+The idea that one added example stabilizes the output shape comes from the few-shot approach described in OpenAI's guide. The same guide recommends showing a range of inputs, so do not expect a single example to hold for every input.
+
+## Frequently asked questions
+
+### Does ChatGPT have hidden commands?
+
+The OpenAI guidance we checked describes how to write specific instructions rather than a list of commands. A short word has an effect because it works as the instruction. We cannot rule out a feature we did not find, so we recommend defining a word yourself before relying on it.
+
+### Do I have to paste shortcuts again in every new conversation?
+
+A shortcut defined inside one conversation applies to that conversation. For a new one, paste it again or store it in Custom Instructions. Because Custom Instructions apply to all conversations, make sure the trigger does not overlap ordinary language.
+
+### Does adding TRIPLECHECK really verify an answer three times?
+
+The word alone does not tell you how verification happens. State which material and which standard to compare against, and open the cited sources yourself. Results also depend on whether tools such as search are available, so verify important decisions with reliable sources.
+
+## Sources and scope
+
+- Original public post: mavgpt's [Instagram post](https://www.instagram.com/p/DetCMr3KqiD/). Only the names and short descriptions of the five public words were used; the video and extra materials were not.
+- OpenAI [prompt engineering guide](https://platform.openai.com/docs/guides/prompt-engineering): specific instructions, separating sections, examples, non-determinism and the context window.
+- OpenAI Help Center pages on [Custom Instructions](https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions) and [whether ChatGPT tells the truth](https://help.openai.com/en/articles/8313428), checked on October 20, 2026.
+- The shortcuts and prompts above are newly designed examples, not prompts released by the original creator and not results from running ChatGPT.
+
+The same idea of assigning each input a role appears on the image side in our [sketch-position guide](/en/blog/sketch-position-material-prompt). Read with this text-side guide, it helps you decide which input should carry which job.
+
+## What to read next
+
+To bring shortcut building into repeated team work, DMS.Labs' [generative AI curriculum](/education/gen-ai), currently provided in Korean, covers writing requests and reviewing results together. Making one word do the same job every time is less about memorizing the word than about writing and checking its definition.
