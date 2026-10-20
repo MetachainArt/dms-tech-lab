@@ -61,13 +61,13 @@ Duplex applications read the other way. In Fluke's duplex example, position 1 is
 
 Each Method fixes a combination of trunk, adapter, transition and cord, and parts from different Methods must not be mixed. The FOTC summary lays out the five as follows. The duplex column covers channels using an MPO-to-LC transition, and the array column covers MPO-to-MPO channels.
 
-| Method | Trunk | Adapter | Duplex implementation | Array (MPO-to-MPO) implementation |
-| --- | --- | --- | --- | --- |
-| A | Type A | Type A, key up/down | Type A transition; A-B jumper at one end and A-A jumper at the other | Type A array cord at one end, Type B at the other |
-| B | Type B | Type B, key up/up | Type A transition; A-B jumpers at both ends | Type B array cords at both ends |
-| C | Type C | Type A, key up/down | Type A transition; A-B jumpers at both ends | Type B array cord at one end, Type C at the other |
-| U1 | Type B | Type A, key up/down | Type U1 transition; A-B jumpers at both ends | not described |
-| U2 | Type B | Type B, key up/up | Type U2 transition; A-B jumpers at both ends | not described |
+| Method | Trunk and adapter | Duplex implementation | Array (MPO-to-MPO) implementation |
+| --- | --- | --- | --- |
+| Method A | Type A trunk, Type A adapter (key up/down) | Type A transition; A-B jumper at one end and A-A jumper at the other | Type A array cord at one end, Type B at the other |
+| Method B | Type B trunk, Type B adapter (key up/up) | Type A transition; A-B jumpers at both ends | Type B array cords at both ends |
+| Method C | Type C trunk, Type A adapter (key up/down) | Type A transition; A-B jumpers at both ends | Type B array cord at one end, Type C at the other |
+| Method U1 | Type B trunk, Type A adapter (key up/down) | Type U1 transition; A-B jumpers at both ends | not described |
+| Method U2 | Type B trunk, Type B adapter (key up/up) | Type U2 transition; A-B jumpers at both ends | not described |
 
 Three features stand out. Method A uses different cords at the two ends. Fluke says this creates confusion in patching areas and forces stock of both cord types. Method B uses the same cord at both ends, which keeps selection simple, but the same document says one cassette typically has to be inverted, which makes port numbering confusing and calls for special labeling, and some manufacturers require two different cassettes. Finally, Methods U1 and U2 arrived with TIA-568.3-E, published in September 2022. They use a Type B trunk with A-B cords, and the TIA summary describes them only for duplex implementations.
 
