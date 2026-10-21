@@ -27,6 +27,7 @@ export function hasEnglishVersion(pathname: string): boolean {
     || path === "/education/optical-training/otdr-dead-zone-pulse-width"
     || path === "/education/optical-training/otdr-ghost-event-evidence"
     || path === "/education/optical-training/mpo-polarity-method-type-readout"
+    || path === "/education/optical-training/live-fiber-identifier-loss-and-detection-limits"
     || path === "/education/optical-training/01-fiber-types-link-design"
     || path === "/education/optical-training/02-fiber-market-infrastructure"
     || path === "/education/optical-training/01-rf-over-fiber-lecture"

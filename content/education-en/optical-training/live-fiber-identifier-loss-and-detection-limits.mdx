@@ -1,0 +1,171 @@
+---
+title: "Reading Live Fiber Identifier Results"
+date: "2026-10-21"
+desc: "A ten-minute lesson on reading a live fiber identifier's activity, direction and tone indications, its stated insertion loss and its sensitivity limits from manufacturer documents, so that no-signal is never treated as proof of a dark fiber."
+coverImage: "/images/education/optical-training/live-fiber-identifier-loss-and-detection-limits/cover.svg"
+readTime: "10 min"
+lang: "en"
+---
+
+A live fiber identifier is a handheld instrument that bends a fiber briefly, reads the light that escapes through the coating, and reports whether the fiber is active, which way the signal travels and whether a modulated tone is present. Read the result with two checks in mind. First, does the loss added to the link while the fiber is bent stay inside the stated figure? Second, may a no-signal indication simply mean the signal is below the instrument's sensitivity rather than absent? For that reason, a single no-signal reading never proves a fiber is dark; it goes together with the records and a check at the far end.
+
+Based on manufacturer documents reviewed on October 21, 2026.
+
+## Learning objectives
+
+- Separate what an identifier reports from what it cannot report.
+
+- Read whether a stated loss is a typical value or a guaranteed maximum.
+
+- Link a no-signal indication to the sensitivity limit and set a stop rule.
+
+## What does an identifier look at when it calls a fiber live?
+
+![What does an identifier look at when it calls a fiber live?](/images/education/optical-training/live-fiber-identifier-loss-and-detection-limits/concept-en.svg)
+
+An identifier bends the fiber gently, lets a detector read the light that leaks through the coating, and judges the fiber from the presence and character of that light. The Viavi FI-11 data sheet calls this non-destructive macro-bend detection and says it removes the need to open the fiber at a splice point to identify it. The detector recognizes continuous-wave light, live transmission and tones modulated at 270 Hz, 1 kHz and 2 kHz. When traffic is present, indicator lights show the direction of transmission. The EXFO LFD-250B spec sheet likewise lists activity, traffic direction, tones and the power in the fiber.
+
+Direction matters most when a label cannot be trusted. EXFO's LFD-300B product page describes the habit of pulling a patch cord at one end while a colleague watches for movement at the other, and says it causes delays and can interrupt service because of mislabeling and poor record keeping. An identifier replaces that guesswork with a check, on the spot, of which fiber carries a signal and which way it flows. This is the manufacturer's description, and this lesson did not reproduce it with an instrument.
+
+Tones are used to find a dark fiber. According to Viavi, single-mode fibers can be identified with the 270 Hz, 1 kHz and 2 kHz modulation of an OLS-35 or OLS-55 source, and 1550 nm is the recommended wavelength for tone identification. The sequence is then to apply a tone at the far end and pick out, at your end, the fiber that shows the same tone. Decide which tone goes on which fiber before the work starts and record it. That sequence is DMS's interpretation.
+
+- Live fiber: signal presence and direction
+
+- Dark fiber: identify by tone
+
+- Always compare direction and tone with the records
+
+## How much loss does the identifier add while it is clamped on?
+
+Stated loss differs by product, and typical values are mixed with guaranteed maximums, so the numbers must not be compared side by side. Three documents state the following.
+
+| Document | Stated loss | Nature of the figure | Conditions printed with it |
+| --- | --- | --- | --- |
+| Viavi FI-11 (2015) | Under 0.6 dB at 1310 nm | Typical | Corning 1528 fiber |
+| Viavi FI-60 (2019) | Under 0.2 dB at 1310 nm, under 2 dB at 1550 nm | Typical | No further conditions printed |
+| EXFO LFD-250B (printed 2011) | Maximum guaranteed 1 dB, then 0.5 dB at 1550 nm and 0.3 dB at 1310 nm | 1 dB is the guaranteed maximum; the other two cannot be classed from the table alone | Specified fiber types, power in the fiber above -25 dBm |
+
+The FI-11 and FI-60 figures are printed as typical values, so they cannot be read as ruling out a larger loss on an individual fiber. EXFO's 1 dB is a guaranteed maximum, but it comes with conditions: specified fiber types and power in the fiber greater than -25 dBm. Outside those conditions the guarantee does not apply as written. Without this distinction, a typical value and a guaranteed maximum end up on one line and the smallest number gets picked by mistake.
+
+The FI-60's 1550 nm figure is ten times its 1310 nm figure. It is printed that way, and this lesson could not confirm whether it is a misprint or a real characteristic. The earlier lesson [OTDR Dual-Wavelength Bend Screening](/en/education/optical-training/otdr-dual-wavelength-bend-screening) covers why longer wavelengths tend to lose more in a bend, so be more careful before clamping an identifier on a fiber that carries a 1550 nm service. Treating the stated loss as coming off the link margin while the identifier is clamped is DMS's interpretation.
+
+- Separate typical values from guaranteed maximums
+
+- When values differ by wavelength, read the service wavelength
+
+- Check the guarantee conditions, such as power in the fiber
+
+## Does a no-signal indication mean the fiber is dark?
+
+No. An identifier has a minimum detectable signal, and a weaker signal can appear as nothing. The documents give these values. The FI-11 lists a typical detector sensitivity (MDSP) of -40 dBm at 1310 nm, expressed as equivalent core power. The FI-60's identifier head lists detection sensitivity of -20 dBm at 1310 nm and -30 dBm at 1550 nm. The EXFO LFD-250B lists a power range of +25 to -35 dBm.
+
+![Detection sensitivity and power range as printed in the instrument documents](/images/education/optical-training/live-fiber-identifier-loss-and-detection-limits/sensitivity-en.svg)
+
+These numbers cannot be ranked against each other. The definition of sensitivity differs between documents, and this lesson could not confirm whether each one means equivalent core power or the strength of the leaked light. What is clear is that every instrument has a floor. The FI-60 document also carries a note that 2 kHz tone detection is not available below -45 dBm. On a link with low power in the fiber, an identifier can miss the signal, and the EXFO loss guarantee above holds only when power in the fiber exceeds -25 dBm.
+
+So read a no-signal result as no signal, or a signal below this instrument's sensitivity, and move on to the records and a check at the far end. In the documents reviewed, the identifier is not presented as a safety-clearance instrument, and no statement guaranteeing a dark fiber was found. Whether work may proceed is decided by the approved procedure and the responsible person.
+
+- No signal can mean below sensitivity
+
+- The definition of sensitivity differs by product
+
+- Do not use it as the basis for declaring a fiber dark
+
+## Which fibers and conditions can it work with?
+
+Each identifier supports different coating sizes, needs different slack and has a different operating temperature, so compare the instrument document before the work.
+
+| Document | Supported coatings | Slack and environment | Printed caution |
+| --- | --- | --- | --- |
+| Viavi FI-11 | Interchangeable heads for 3 mm jacketed, 900 µm coated and 250 µm ribbon fiber | At least 19 mm of slack for detection; operating -20 to +50 °C | Single-mode, 8 to 10 µm core |
+| Viavi FI-60 | 250 µm to 3 mm | Operating 0 to 50 °C | Ambient-light shield |
+| EXFO LFD-250B | 3 mm, 1.6 mm, 900 µm | Operating 0 to 50 °C | Not optimized for 250 µm |
+
+EXFO's document says that below 15 °C the jacket can harden enough to prevent adequate bending, and that warming the fiber by hand may be required. It also states that its specifications are typical values at 18 to 28 °C. A team working in outdoor closures in winter should first confirm that the identifier actually bent the fiber before reading its result. The same document notes that jacket color and mechanical properties can change the specifications.
+
+Slack ties into closure preparation. The 19 mm the FI-11 requires is a value for that product and is not generalized to other instruments. During cable preparation, check whether a straight run remains in the closure to be reopened where an identifier can be fitted. Slack and tray securing inside a closure are covered in the earlier lesson [Closure Cable Preparation and Tray Securing](/en/education/optical-training/closure-cable-preparation-tray-reentry).
+
+Viavi says the FI-11 was tested against the Bellcore reference TR-NWT-000764, which calls for attaching it to a bare 1 inch section of fiber 20 times without damage visible under a microscope. That is the manufacturer's statement, and the text of the reference itself was not reviewed. EXFO says that traditional fixed-angle bending can cause excessive loss, missed detection or fiber damage, and claims its own unit controls the bend with a motor. Take this only as a sign that loss behavior varies with the method, and do not rank the instruments.
+
+- Check the supported coating size first
+
+- Check the required slack and operating temperature
+
+- On cold days, confirm the fiber was actually bent
+
+## Where does the work stop in a hypothetical case?
+
+Stop and ask the responsible person when the record and the identifier disagree, or when the link margin is smaller than the stated loss. The situation and numbers below are assumed for teaching and are not a real site or product.
+
+Assume the records for an outdoor closure show fiber 7 as spare and fiber 3 as a 1550 nm service, before the closure is reopened. Fiber 3 has 1.5 dB of link margin left. If the identifier is like the FI-60, with a typical value printed as under 2 dB at 1550 nm, the margin is smaller than the stated loss and clamping it on fiber 3 could use up the margin. If it is like the EXFO, with a guaranteed maximum of 1 dB, the loss fits inside 1.5 dB, but the guarantee cannot be used unless you have confirmed that the power in the fiber is above -25 dBm. This calculation is DMS's interpretation and not a pass or fail criterion.
+
+| Assumed situation | How to read it | Next action |
+| --- | --- | --- |
+| Records say spare, but a signal is seen | Records and field disagree | Stop work, ask the responsible person |
+| Records say spare, and no signal | Not proof of dark; may be below sensitivity | Check records and the far end |
+| Records say live, but direction is reversed | Transmit and receive labels in doubt | Stop until the record is corrected |
+| Margin is smaller than the stated loss | Clamping on may exhaust the margin | Agree another check with the responsible person |
+
+This table is for reading practice. The approved procedure and the instrument manual take priority for actual stop and restart decisions. If the identifier shows a live signal on a fiber the records call spare, do not handle that fiber directly just because a signal is visible.
+
+- Stop when the record and the result differ
+
+- Subtract the stated loss from the margin first
+
+- If the guarantee conditions are unconfirmed, do not read it as a guarantee
+
+## What goes into the handover record?
+
+Put the instrument, the conditions, the result and the uncertain parts on one sheet so the next person can reach the same judgment. Include the instrument model and software version, the head used and the coating size, the wavelength setting, the field temperature, the result (activity, direction, tone, displayed power), whether it matched the records and who confirmed it. If the result was no signal, write below detection limit possible in the result field, not dark.
+
+State plainly what was not checked. The text of Bellcore TR-NWT-000764, tests with an actual instrument, the latest revision of each product and laser-safety rules were not reviewed here. The EXFO LFD-250B spec sheet is printed 2011 and says the web version takes precedence, so current specifications may differ. The EXFO LFD-300B product page carried no publication date and was checked on October 21, 2026. All four documents are manufacturer statements. Original figures and tables were not copied, and the diagrams were redrawn independently.
+
+- Model, version, head, wavelength, temperature
+
+- Whether the result matched the records
+
+- State the unchecked scope in the record
+
+## Checklist
+
+- Did you confirm the supported coating size and the required slack?
+
+- Did you write down whether the stated loss is typical or guaranteed, and under what conditions?
+
+- Did you subtract the stated loss from the link margin at the service wavelength?
+
+- Did you record no signal as possibly below sensitivity, not as dark?
+
+- Did you compare the direction and tone results with the records?
+
+## Review questions and answers
+
+### 1. If an identifier shows no signal, is the fiber dark?
+
+Answer: No. An identifier has a detection floor, and a weaker signal can appear as nothing. Whether a fiber is dark is decided by the records, a check at the far end and the approved procedure.
+
+### 2. Is the FI-60 document's 1550 nm loss of under 2 dB a guaranteed maximum?
+
+Answer: No. It is printed as a typical value. Do not read it as a guaranteed maximum; for a 1550 nm service link, compare it with the margin first to decide whether the instrument may be clamped on.
+
+### 3. To apply EXFO's guaranteed maximum of 1 dB to a hypothetical 1550 nm link with 1.5 dB of margin, what must be confirmed?
+
+Answer: That the fiber is one of the specified types and that the power in the fiber is above -25 dBm. Outside those conditions the guarantee does not apply. This calculation is a hypothetical for reading practice.
+
+## Sources and versions
+
+- [Viavi: FI-11 Fiber Identifier Data Sheet](https://www.viavisolutions.com/en-us/literature/fi-11-fiber-identifier-data-sheets-en.pdf) · 2015
+
+- [Viavi: FI-60 Live Fiber Identifier with Integrated Optical Power Meter Data Sheet](https://www.viavisolutions.com/en-us/literature/fi-60-live-fiber-identifier-integrated-optical-power-meter-data-sheets-en.pdf) · 2019
+
+- [EXFO: LFD-250B Live Fiber Detector Spec Sheet](https://www.exfo.com/contentassets/b530c827ae4a499b952aaaa15f896cc1/exfo_spec-sheet_lfd-250b_v2_en.pdf) · printed 2011, states the web version takes precedence
+
+- [EXFO: LFD-300B / TG-300B Live Fiber Identifier](https://www.exfo.com/en/products/field-network-testing/live-fiber-detection/lfd-300btg-300b-fiberfinder) · undated, checked 2026-10-21
+
+## Continue learning
+
+- [Optical training curriculum](/fttx-training)
+
+- [Closure Cable Preparation and Tray Securing](/en/education/optical-training/closure-cable-preparation-tray-reentry)
+
+- [OTDR Dual-Wavelength Bend Screening](/en/education/optical-training/otdr-dual-wavelength-bend-screening)
