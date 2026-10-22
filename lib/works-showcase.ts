@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "자동화할 첫 업무 고르기",
+    summary: "AI 자동화를 처음 붙일 업무를 고르는 실무 가이드입니다. 반복 빈도, 판정 기준, 확인 시간과 틀렸을 때의 비용을 한 장의 표로 비교합니다.",
+    tags: ["Work", "업무 자동화", "AX 전환"],
+    image: "/images/works/choosing-first-automation-task/candidate-cards.webp",
+    link: "/works/choosing-first-automation-task",
+  },
+  {
     title: "AI에 올릴 자료 고르기",
     summary: "AI 교육과 업무 자동화에 넣을 자료를 고르는 실무 가이드입니다. 가상 실습본, 남은 식별 단서, 학습 활용과 보관 조건을 구분합니다.",
     tags: ["Work", "AI 교육", "업무 자동화"],

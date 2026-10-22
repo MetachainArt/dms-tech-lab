@@ -1,0 +1,95 @@
+---
+title: "Choosing the First Task to Automate"
+excerpt: "A practical guide to picking the first task for AI automation. One table compares how often the work repeats, how clear the pass standard is, how long a check takes and what a wrong result would cost."
+date: "2026-10-22"
+readTime: "12 min"
+kind: "guide"
+tags: ["Work", "Workplace automation", "AX transformation"]
+---
+
+Pick the first task for AI automation from work that repeats often, has a clear standard for a good result, can be undone if the output is wrong, and can be checked by a person in a few minutes. The most visible task, or the one that eats the most hours, is rarely the right first candidate. A first automation is less a place to deliver results than a place for the team to learn how to read and judge AI output.
+
+This is a practical guide to choosing a task, not a report on a customer engagement or a measured result. It is based on public sources checked on October 22, 2026. The scoring table and the fictional example below are DMS.Labs design proposals, and they do not replace your organisation's security policy or contract review.
+
+## Why does starting with the biggest task stall?
+
+OpenAI's guide to finding AI use cases says complex use cases can look impressive yet often slow progress. It adds that helping employees find the use cases that fit their own work frequently leads to faster success. Anthropic's article on building agents recommends finding the simplest solution possible and adding complexity only when needed, which it says may mean not building an agentic system at all. That article carries a note that much of its tooling landscape has changed since December 2024, so we used it for design principles only and left its tool descriptions aside.
+
+DMS.Labs adds one opinion. The first task should be an exercise in judging output, more than an exercise in producing it. With a large task, it takes so long to separate right from wrong that a team wears out before it has learned to read AI results. With a small task, mistakes show up quickly. If you already have a written procedure and a named reviewer for the same work, this advice matters less, and a larger first candidate is fine.
+
+## How do you collect candidates?
+
+OpenAI's guide suggests asking team members to list three kinds of situations: work that is hard to start or gets stuck midway, manual work that others do not value much but that eats time (a kind of not-to-do list), and work that is delayed while waiting for another team. In its section on automation, the guide starts with repetitive, well-defined tasks and gives a finance briefing built on human review as a more complex example.
+
+DMS.Labs suggests looking for the first candidate in the second list. Work nobody should have to do tends to have a stable input and a stable output shape, so it is easier to say whether a result is right. Stuck work and work that waits on others often carries a lot of human judgment. This is our reading, not a sentence from the guide.
+
+Write one card per candidate with five fields: who does the work and when, what goes in, what the result looks like, who checks it, and how long one round takes today. If the last field is empty, set the card aside. Without today's time, you cannot say later whether anything changed. How to record time and review cost together is covered in [Measuring AI adoption: revenue, costs and review time](/en/works/ai-performance-measurement).
+
+![A window-side desk with task candidate cards sorted into a few separate stacks.](/images/works/choosing-first-automation-task/candidate-cards.webp)
+
+## What goes into the scoring table?
+
+Give each of four criteria a score from 0 to 2. The table is a starting point for comparing candidates on the same footing. It is not a validated assessment tool.
+
+| Criterion | Question | 0 points | 2 points |
+| --- | --- | --- | --- |
+| Frequency | How many times a month does this happen? | Once a quarter or less | Weekly or more |
+| Pass standard | Would two people call the same result correct? | It depends on the person | A few examples can explain it |
+| Check time | How long does it take to check one result? | The source must be re-read from the start | Compared with the source in minutes |
+| Baseline | Is today's time written down? | No record | Recent runs recorded |
+
+Two conditions sit outside the score and remove a candidate regardless of its total. First, work where a wrong result leaves the organisation and cannot be recalled is not a first task. A reply that goes straight to a customer is the usual example. Second, if you have not confirmed that the input may be sent to the service, hold the candidate back. How to choose inputs is in [Choosing Data to Share with AI](/en/works/choosing-data-for-ai).
+
+DMS.Labs proposes 6 or more out of 8 as a starting bar for a first candidate. That number has not been tested either, so adjust it after a few real uses.
+
+Each criterion guards against a different failure. Frequency makes sure a setup, once built, gets used. Automating something done once a year can cost more build time than it ever saves. A clear pass standard prevents review from varying by person: if reviewer A passes a result and reviewer B rejects it, you cannot tell whether the AI or the standard is at fault. Check time protects against the habit of trusting output and moving on. When a check takes too long, people end up skimming. The baseline leaves you something to compare against when you later talk about effect.
+
+## What happens when three fictional candidates are compared?
+
+Sorting inquiry emails comes out first, automatic replies wait, and the monthly report goes later. The example assumes a fictional office of about twelve people. It is not a record of any real customer or site. There are three candidates: sorting incoming inquiry emails by type, sorting and then sending the customer a reply automatically, and drafting the monthly report.
+
+| Candidate | Frequency | Standard | Check | Baseline | Total | Removing condition | Decision |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Sort inquiry emails | 2 | 2 | 2 | 1 | 7 | None | First candidate |
+| Sort, then auto-send a reply | 2 | 1 | 1 | 1 | 5 | A wrong reply leaves the organisation | Hold |
+| Monthly report draft | 1 | 1 | 0 | 2 | 4 | None | Later |
+
+Sorting is scored on the assumption that the category names are fixed and the result can be compared with the inbox right away, which is why check time gets 2. The baseline gets 1 because the team only roughly remembers recent handling times. Writing down real times for the first two weeks would raise it to 2.
+
+Auto-sending replies reaches only 5, but the bigger problem is the removing condition: a wrong reply that reaches a customer cannot be taken back. That does not mean dropping the idea. Run sorting for a few weeks, see what its mistakes look like, then move to a stage where the AI drafts and a person sends. The order for widening permissions step by step is in [Giving AI automation permission in three steps](/en/works/automation-permission-ladder).
+
+The monthly report is conspicuous, but it happens once a month, so frequency is low. Checking it means reopening source data from several systems, so it gets 0 for check time. A task that takes many hours is not automatically a good first candidate, and that is the point of this table.
+
+![A closed laptop beside a paper checklist with tick marks and a set of sorted cards being compared.](/images/works/choosing-first-automation-task/check-sheet.webp)
+
+## Should a low-scoring task ever come first?
+
+Sometimes, yes. This table measures the safety of a first attempt and how fast the team learns. It says almost nothing about how valuable the work is. For value, OpenAI's guide offers an impact and effort grid. Work with high impact for little effort is the quick win to focus on. Work one person can build for their own use sits in self-service. High-value, high-effort work is funded after quick wins build momentum, and high-effort, low-impact work waits. The same guide suggests reviewing the criteria every quarter, because a use case that is hard today may get easy as AI capabilities improve.
+
+The two tools ask different questions. The score here decides where to start, and the grid decides what to grow once you have started. If you pick inquiry sorting first but the monthly report is your high-value candidate, write the report down in the high-value cell of the grid.
+
+## Wouldn't it be better not to use AI?
+
+It might be. The US National Institute of Standards and Technology (NIST) AI RMF Playbook, in its mapping step, suggests defining and documenting an AI system's task, purpose, minimum functionality and benefits. It also asks you to check whether non-AI or non-technology alternatives would lead to more trustworthy outcomes, and it counts semi-autonomous or mostly manual methods among them.
+
+That document is risk-management material for people who develop and operate AI systems, so it does not map directly onto picking an internal automation candidate. Here it is only the reason for one more line on the candidate card: what would solve this without AI? For inquiry sorting, a form with a required category field or an inbox rule may be steadier. If so, the first decision is not to add AI.
+
+Other tasks do suit AI. Anthropic lists clear success criteria, feedback from results and meaningful human oversight as conditions where agents add the most value. The same article warns that agents that run many steps on their own cost more and can compound errors. Our proposal to make the first task a one-step job rests on that warning.
+
+## What do you keep for the first two weeks?
+
+Before starting, write down three things: how long the task takes today, who checks the result, and a stop condition. One line is enough for the stop condition, for example: if the same kind of error appears twice, stop and fix the input description.
+
+For every item, mark where a person made a correction. Divide corrected items by total items and you have a correction rate. This guide does not say what rate counts as a pass. It varies by task and no tested threshold exists. Watch instead whether the rate falls over the first two weeks and whether the same error keeps coming back.
+
+At the end of two weeks, choose one of expand, revise or stop. If the record is thin you may extend by a week, but do not let the decision drift. If you expand, the next stage of the permission ladder becomes the candidate, and the table is filled in again. Teams who want to practise this judgement in training can start with the task boundary map in [AI training should start with 'Should I hand this task over?'](/en/works/ai-training-task-boundary-map).
+
+## Where to go next
+
+DMS.Labs describes its workplace automation work on a [Korean-language page](/automation); there is no English page for it yet. For a conversation, bring two or three candidate cards and sample inputs that contain no real information. Anything that depends on your situation can be raised through the [contact page](/en/contact).
+
+## Sources
+
+- [OpenAI, Identifying and scaling AI use cases](https://openai.com/business/guides-and-resources/identifying-and-scaling-ai-use-cases)
+- [Anthropic, Building effective agents](https://www.anthropic.com/engineering/building-effective-agents)
+- [NIST, AI RMF Playbook: Map](https://airc.nist.gov/airmf-resources/playbook/map/)
