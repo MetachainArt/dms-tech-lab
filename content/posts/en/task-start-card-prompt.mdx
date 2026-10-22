@@ -1,0 +1,172 @@
+---
+title: "A Five-Minute Start Card for Stuck Tasks"
+subtitle: "Five things to decide before asking ChatGPT to break a task down"
+excerpt: "Asking ChatGPT to break a postponed task into small pieces often just gives you a longer list. A start card makes it pick one first action, a stopping line and a restart note instead. This guide gives a copy-ready prompt, its input variables and its limits."
+date: "2026-10-22"
+readTime: "10 min"
+coverImage: "/images/task-start-card-prompt-20261022/cover.webp"
+series: "future-arts"
+tags: ["ChatGPT", "Prompt Design", "AI Workflows"]
+translationSourceHash: "2b663b72a2077ebc978b771fdec76c90b0e8963f25cda406f4320de86d0b2e7c"
+---
+
+When you hand ChatGPT a task you cannot start and write only "break this into small steps," you usually get a longer to-do list, and starting does not get easier. What helps at the start is not a long list. It is one first action, a time limit for it, and a single line that lets you pick the work back up after an interruption. This guide calls a prompt that fixes those three things, plus a stopping line and a reward list, a "start card."
+
+It draws on the wording of a public Instagram post, the ADHD overview from the U.S. National Institute of Mental Health (NIMH), OpenAI's prompt engineering guide and OpenAI's help article on ChatGPT accuracy, all checked on October 22, 2026. The prompt and the input and output examples below are newly designed examples. They were not run in ChatGPT, and none of this is medical advice.
+
+## Why does "break it into small steps" often fail to get you started?
+
+Because the model does not know your current state. The starting point was a [public Instagram post by promppy_com](https://www.instagram.com/p/Dex4gwfiYZ1/). By its caption, it presents six prompts for using ChatGPT as a helper for starting work rather than as a question box. The direction is to change the structure of the work so it is easier to begin instead of demanding more willpower. The caption mentions splitting a complex project into small actions, planning around focus and rest time, and listing small rewards in advance.
+
+The post's headline promises a week of work done in four hours. We could not verify that result and do not repeat it. We also did not use the original text of the six prompts. This guide takes only the direction visible in the caption and builds its own design.
+
+Type "break this report into small steps" and the model returns a generic list. If that list runs to ten lines, the length itself becomes a new weight. Whether you have twenty minutes or two hours, and whether you are stuck because you do not know where to begin or because you want it to be perfect before you start, are things the model cannot know unless you say so.
+
+OpenAI's [prompt engineering guide](https://platform.openai.com/docs/guides/prompt-engineering) says to put material and context the model has not learned directly into the prompt. It also says that showing example inputs and outputs lets the model pick up the pattern. A start card applies those two ideas to getting a task going.
+
+## What fields does a start card have?
+
+Six input fields and five output fields.
+
+The inputs are the task, the deadline, the time you can spend, one line on why you are stuck, your current state and a reward list you wrote yourself. Keep the reason to one line. Once you start writing it at length, the writing becomes another way to postpone the task.
+
+The outputs are a first action, the steps after it, a stopping line, a restart note and a reward.
+
+- **First action:** One move that takes five minutes or less and leaves something visible behind. Not "organize the materials," but something with a clear end, such as "open a new document and type the report name on the title line."
+- **Steps after it:** At most three, each with a time cap. If the three together exceed the time you have, the later ones are trimmed.
+- **Stopping line:** The point at which today counts as enough. Without it, you can start and still never see an end.
+- **Restart note:** One line for picking the work back up after a call or a message. It holds the last thing you did and the one next move.
+- **Reward:** One item chosen from your own list. The model does not invent new rewards.
+
+A restart note works best on paper where you can see it, so this guide recommends sticking it somewhere visible. After an interruption it can be hard to recall what you were just doing, and a note on the edge of the laptop tells you the next move.
+
+![Two hands pressing a blank yellow sticky note onto the edge of a closed laptop beside a mug of tea, a newly generated image](/images/task-start-card-prompt-20261022/return-note.webp)
+
+There is a reason not to leave the reward field to the model. It cannot know which reward suits you, and if it produces a new one each time, you have less reason to honor it. Three wrapped candies or a five-minute walk works like a promise only when you wrote the list yourself. Whether such a list actually helps people start was not tested here, and it will vary from person to person.
+
+![A small ceramic dish with three wrapped hard candies, a blank folded card and an open notebook, a newly generated image](/images/task-start-card-prompt-20261022/reward-list.webp)
+
+## What does the copy-ready start card prompt look like?
+
+The prompt below is a newly designed example. Replace the bracketed parts with your own situation.
+
+```text
+Create a "start card" from the information below.
+Do not do the task for me. Only help me begin it now.
+
+[Input]
+Task: [one line naming the task]
+Deadline: [date and time]
+Time I can spend now: [number] minutes
+Why I am stuck: [one line]
+My current state: [tired / normal / energetic]
+My reward list: [reward 1, reward 2, reward 3]
+
+[Rules]
+1. Suggest exactly one first action. It must take five minutes or less and leave something visible behind (one line in a file, one note, and so on).
+2. After the first action, write at most three more steps and give each a time cap.
+3. If the total of all steps exceeds the time I can spend, shorten the later steps.
+4. Write a stopping line in one sentence: the point at which today is enough.
+5. Write a restart note in one sentence. Assume the first action is finished and include "last thing done" and "next single move."
+6. Choose the reward from my list only. Do not invent new rewards.
+7. Do not invent facts I did not give you. If information is missing, ask one question.
+8. Do not give medical diagnosis or treatment advice.
+
+[Output format]
+First action (time): one line
+Then: up to three lines, each with a time
+Stopping line: one line
+Restart note: one line
+Reward: one line
+```
+
+You change five things in the input block.
+
+| Variable | How to change it | What to check |
+| --- | --- | --- |
+| Task | A one-line name, without pasting the content | No confidential documents or personal data went in |
+| Time I can spend | A number in minutes | The steps add up to less than this number |
+| Why I am stuck | One line; if vague, say "I don't know where to start" | The first action directly addresses that reason |
+| Current state | One of three levels | If you chose tired, the first action got smaller |
+| Reward list | About three items you wrote | Each one can be done right now |
+
+## What do an input and an output look like?
+
+Here is a made-up input and the shape of result you would hope for. Both are design examples, not an answer from a real ChatGPT session, and an actual run will phrase things and split time differently.
+
+The input: the task is writing an outline for a quarterly report, the deadline is Friday at 5 p.m., the time available is 40 minutes, the reason for being stuck is "I don't know what to write first," the state is normal, and the reward list is a cup of tea, a five-minute walk by the window and one favorite song.
+
+The hoped-for output looks like this.
+
+```text
+First action (3 min): Open a new document and type "Quarterly report outline" on the title line.
+Then:
+1. (10 min) Write in one sentence the result the reader needs to know first.
+2. (10 min) List only the names of three sources that would back it up. Do not write their content.
+3. (10 min) Decide only the order of three section headings.
+Stopping line: Once you have one result sentence and an order for three headings, today is enough.
+Restart note: The last thing done was ordering the headings, and the next single move is writing one source name under the first heading.
+Reward: A five-minute walk by the window
+```
+
+The first action and three steps total 33 minutes, so they fit inside 40. What matters here is that not one line writes the report for you. Until you finish the first action, you do not need to read the lines after it.
+
+## What are the limits of a start card?
+
+A few need to be stated plainly.
+
+**It is not a medical tool.** NIMH's [ADHD overview](https://www.nimh.nih.gov/health/topics/attention-deficit-hyperactivity-disorder-adhd) describes ADHD as a neurodevelopmental disorder marked by inattention, hyperactivity and impulsivity, and says symptoms can make it hard to get things done in daily life. The standard treatments it lists are medication and psychosocial interventions such as cognitive behavioral therapy. A chatbot prompt is not on that list. The Instagram caption itself says AI does not treat ADHD or directly regulate dopamine. This guide does not address symptoms or diagnosis. It offers one way to structure the start of a task. If difficulties in daily life continue, consult a professional, for example through NIMH's [find help page](https://www.nimh.nih.gov/health/find-help).
+
+**Time estimates are the model's guess.** A first action the model calls three minutes may take you ten. OpenAI's help article on [ChatGPT accuracy](https://help.openai.com/en/articles/8313428-does-chatgpt-tell-the-truth) says ChatGPT can give wrong answers with confidence. For the first two or three uses, correct the time caps to match how long things actually took.
+
+**The same prompt does not always give the same answer.** OpenAI's prompt guide says model output is non-deterministic. A different first action than yesterday's is not a malfunction. If the first action is too big, ask once more: "Shrink it so it takes two minutes."
+
+**Pasting material is a separate question.** The prompt is designed to work with only a task name. If the work involves customer data or internal documents, check your organization's rules first.
+
+## What should you fix when the card misbehaves?
+
+| Symptom | Likely cause | What to change |
+| --- | --- | --- |
+| The first action is still too big | The reason for being stuck is vague | Rewrite the reason concretely and add "within two minutes" |
+| Four or more steps appear | Rule 2 reads as weak | Strengthen it to "at most three; more is not allowed" |
+| The total time exceeds yours | Available time was not a number | Enter minutes as a number |
+| The model invents a new reward | The reward list is empty | Fill the list or enter "no reward" |
+| It starts doing the task for you | The role limit in the opening is weak | Move "do not do the task for me" to the top of the rules |
+| The answer runs long | The output format is vague | Fix each field to "one line" and a line count |
+
+## In what order should you use it?
+
+1. Pick the task you have postponed longest and write only its name on one line.
+2. Write why you are stuck in one line. If you do not know, "I don't know where to start" is fine.
+3. Write three rewards yourself, only ones you can do right now.
+4. Run the prompt and read only the first action. Read the other lines after you finish it.
+5. If you are interrupted, go back to the restart note. It should be a sentence written before the interruption, not one made up afterward.
+6. At the end of the day, check how long the first action really took and use that in the next input.
+
+Keep the rules part once you have made it and change only the input fields. Defining a single word to call those rules is covered in [What ChatGPT Secret Codes Really Are](/en/blog/chatgpt-shortcut-words-definition). If the answers start to drift in a long conversation, pasting the rules in again is the safer move.
+
+## Frequently asked questions
+
+### Does ChatGPT ease ADHD symptoms?
+
+We found no basis in the sources checked for saying it does. The standard treatments NIMH lists are medication and psychosocial interventions, and chatbot prompts are not among them. The start card here is treated only as a way to structure the start of a task, not as symptom treatment. If you have questions about diagnosis or treatment, talk with a professional.
+
+### Can ChatGPT write my reward list?
+
+You can have it do so, but this guide recommends writing it yourself. The model cannot know which rewards suit you, and a list handed over fresh each time is harder to keep like a promise. Which rewards work was not checked here and probably varies by person.
+
+### Will a start card finish a week of work in four hours?
+
+We found no basis for that claim. The original post's time promise was not verified, and a start card promises only the step of deciding one first action. How long a task takes depends on its size and your state.
+
+## Sources and scope
+
+- Original public post: promppy_com's [Instagram post](https://www.instagram.com/p/Dex4gwfiYZ1/). Only the direction in the public caption was used. The original text of the six prompts and any attached material were not used.
+- U.S. National Institute of Mental Health, [ADHD overview](https://www.nimh.nih.gov/health/topics/attention-deficit-hyperactivity-disorder-adhd): definition, effects on daily life and standard treatments. The page is marked last reviewed in August 2026 and was checked on October 22, 2026.
+- OpenAI [prompt engineering guide](https://platform.openai.com/docs/guides/prompt-engineering): supplying context, examples and non-determinism. It is API developer documentation, so it was used only for principles. Checked on October 22, 2026.
+- OpenAI help article, [Does ChatGPT tell the truth?](https://help.openai.com/en/articles/8313428-does-chatgpt-tell-the-truth), checked on October 22, 2026.
+- The prompt and the input and output examples above are newly designed examples and were not run in ChatGPT.
+
+## What to read next
+
+If you want to move prompts from one-off tricks to a team's repeated way of working, DMS.Labs' [generative AI curriculum](/education/gen-ai), currently provided in Korean, covers writing requests and reviewing results together. The point of a start card is not that the model does more. It is that you first organize what you need to decide your first move.
