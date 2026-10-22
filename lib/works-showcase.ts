@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "AI가 우리 글을 인용했을까",
+    summary: "질문을 세 층으로 나눠 구글 AI 개요와 ChatGPT의 출처 인용을 같은 방식으로 기록한 DMS.Labs 운영기입니다. 확인된 칸과 확인하지 못한 칸을 구분합니다.",
+    tags: ["Work", "AX 전환", "성과 측정"],
+    image: "/images/works/ai-citation-question-layers/three-rows.webp",
+    link: "/works/ai-citation-question-layers",
+  },
+  {
     title: "자동화할 첫 업무 고르기",
     summary: "AI 자동화를 처음 붙일 업무를 고르는 실무 가이드입니다. 반복 빈도, 판정 기준, 확인 시간과 틀렸을 때의 비용을 한 장의 표로 비교합니다.",
     tags: ["Work", "업무 자동화", "AX 전환"],

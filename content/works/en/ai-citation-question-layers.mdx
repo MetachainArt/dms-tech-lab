@@ -1,0 +1,105 @@
+---
+title: "Did AI Answers Cite Our Site?"
+excerpt: "DMS.Labs sorts its questions into three layers and records, in a fixed way, whether Google AI Overviews and ChatGPT used its pages as sources. This note separates what the October 19 measurement confirmed from what it could not."
+date: "2026-10-22"
+readTime: "10 min"
+kind: "guide"
+tags: ["Work", "AX transformation", "Performance measurement"]
+---
+
+To learn whether AI answers use your pages as sources, sort your questions into layers first, then ask the same fixed questions the same way every week. DMS.Labs keeps seven such questions and measures them in Google AI Overviews, ChatGPT and Perplexity. In the October 19, 2026 measurement, three questions that can only be answered from DMS records returned a DMS address as a source in both Google AI Overviews and ChatGPT. For the other four questions, citation could not be confirmed.
+
+This account draws on operating records checked on October 22, 2026. It describes one person's operation, and the sample is seven questions measured once. It is not a customer implementation, and it does not show growth in inquiries or revenue.
+
+## How were the questions sorted?
+
+Layer 1 holds questions that can be answered only from records you own. Layer 2 holds the specific questions your readers actually ask. Layer 3 holds broad questions anyone might ask. The working assumption was that the pages an AI picks as sources may differ by layer, even on the same site.
+
+The split comes from a training video. In a case study from Sponge Club cohort 4, the presenter said that across 220 questions measured over six weeks, 77% of layer 1, 72% of layer 2 and 21% of layer 3 questions were cited in AI answers. Those figures are the presenter's claim, and I have not verified them. What carried over to DMS was only the sorting frame, not the numbers.
+
+The seven fixed DMS.Labs questions are below. Fixing the list once is what makes next week's result comparable. The Korean questions were asked in Korean; they are translated here.
+
+| Layer | Question | Where the answer lives |
+|---|---|---|
+| 1 | What does the DMS fiber field-training curriculum cover? (asked in Korean) | DMS training page |
+| 1 | How did the DMS.Labs automation experiment notes handle mailbox automation? (asked in Korean) | DMS work record |
+| 1 | How did Reedo at DMS Labs build an AI knowledge base with Obsidian? | DMS Work article |
+| 2 | Why will an ONU not register when the optical power level is fine? | Field practice |
+| 2 | How do you verify an OTDR event table instead of trusting it? | Field practice |
+| 2 | How do you check a dome fiber splice closure for leaks after assembly? | Field practice |
+| 3 | What is vibe coding? Is it coding by feel? (asked in Korean) | General knowledge |
+
+The rule for layer 1 is not to invent questions. A question counts as layer 1 only when confirmed material exists, such as a published DMS training page or work article. A question with no such material stays out of layer 1, because calling it layer 1 would make the measurement look better than it is.
+
+![Blank cards arranged in three rows of different lengths on a wooden desk beside a window](/images/works/ai-citation-question-layers/three-rows.webp)
+
+## What did the October 19 measurement confirm?
+
+The three layer 1 questions returned a DMS address as a source in both Google AI Overviews and ChatGPT. The four layer 2 and layer 3 questions could not be confirmed in either, and Perplexity was not asked this round.
+
+| Group | Google AI Overviews | ChatGPT | Perplexity |
+|---|---|---|---|
+| Layer 1 (3 questions) | All 3 graded A | All 3 graded A | Not measured |
+| Layer 2 (3 questions) | Not confirmed | Not confirmed | Not measured |
+| Layer 3 (1 question) | Not confirmed | Not confirmed | Not measured |
+
+In the records, A means the page appeared as a source or reference link. The same grading has B for a site name or sentence mentioned without a link, C for an answer that appeared without the page among its sources, and a hyphen for a case where no answer or source area appeared, so nothing could be measured.
+
+The A grades should not all be read with the same weight. In Google AI Overviews, the source cards for the training-curriculum question showed the DMS home page and FTTx Field Training. For the mailbox-automation question, both source cards were DMS addresses. The English Obsidian question was different. The company name in the first sentence of the answer linked to the DMS English home page, but no separate source card showed DMS. The record counts it as A because the target link did appear, and it notes the difference. A link inside the answer text and a source card may not be the same kind of citation.
+
+ChatGPT was asked in a temporary chat while logged in, with web search turned on. Personalization was on, so my account's memory may have influenced that result. Google AI Overviews was asked in a logged-out, isolated window. For that reason I do not merge the two services' A grades into one result obtained under identical conditions.
+
+For the English Obsidian question, ChatGPT cited the Korean knowledge-base article, not the English one. When both a Korean and an English page exist on the same topic, you cannot predict which one an AI will pick. If you assume the English address and record that, you will be wrong. This is why the cited address has to be written down exactly as it appeared.
+
+## Why were unconfirmed cells not recorded as C?
+
+A hyphen means "there is no basis yet to say the page was absent," so it must not be mixed with C. The layer 2 and layer 3 cells in this round fall into that group.
+
+In Google AI Overviews, the ONU question, the dome-closure leak question and the vibe-coding question showed an AI answer and only some sources, and I could not expand the full source list. The OTDR question had an AI answer but no source area at all. Sources shown in ordinary search results were not counted as AI citations. In ChatGPT, sources such as an ITU recommendation, EXFO and Corning material, an IEC standard and an IBM explainer appeared while the answer was still being generated. Because generation had not finished, that source table alone could not establish that DMS was absent from the final answer, so I corrected those provisional entries to hyphens.
+
+Some cells were first marked as provisional C and then changed this way. A source list shown mid-generation is not guaranteed to be the final list, and declaring "absent" without expanding a collapsed source list can make the measurement look worse than reality. Recording an A from a link that is visibly on screen is much safer, because the positive evidence can be seen. I kept that asymmetry between a confirmed A and an unconfirmed hyphen in the record.
+
+For the same reason I do not summarize this as "layer 1 won, layers 2 and 3 lost." In the October 11 pilot, one layer 2 question in Google AI Overviews, the ONU question, was a C: other sites appeared as sources instead of DMS. One cell is not a conclusion about the whole layer. On October 19 the layer 2 and 3 cells are empty, and what I can say today stops at three layer 1 questions confirmed in two services.
+
+![A hand moving above a paper grid with pencil marks in some cells and other cells left empty](/images/works/ai-citation-question-layers/grid-marks.webp)
+
+## Did the measurement expose gaps on our own site?
+
+Yes. In the October 11 pilot, ChatGPT cited the DMS training page for the curriculum question and also pointed out two problems. The lesson list showed 26 lessons while the training page showed 24, and the number of days, hours, practice ratio, group size, cost and completion method were not published.
+
+I handled the two differently. The mismatch was fixed the same day: the page now reads the course file list, shows all 26 lessons, and the result was checked on the public page. The gaps were not filled with invented numbers. Duration and cost depend on the audience, group size, equipment and site conditions, so the choice made was to leave them to inquiry, and the on-site training FAQ says they are provided after a consultation that fits those conditions. The [FTTx Field Training](/fttx-training) page and the Korean [on-site training guide](/education/optical-training) are the result.
+
+The aim is not to fill every blank an AI points out as if it were fact. The measurement is used to find omissions and mismatches, and setting the values stays with the person who knows the business terms. Whether that fix increased later citations is unknown. Until repeat measurements of the same questions accumulate, I will not claim cause and effect.
+
+## Are the questions from new articles measured too?
+
+Yes. Besides the fixed seven, each time a new article goes public, the question it actually answers is added to a question pool and measured in turn. On October 19, five new-article questions were asked in ChatGPT and recorded as three A and two B. Two of the three A grades named specific articles, such as the [AI knowledge base article](/en/works/ai-knowledge-base-world-tree) and the English permission-ladder article. The third was an AI-training-course question that returned a link to the home page. The record notes that this last case is a pointer link, not a body citation that answers the question.
+
+The two B grades are cases where the answer mentioned DMS by name but said it could not find an official document and linked only general outside material. A name appearing does not mean the article was used, so A and B stay separate.
+
+## What order works for measuring your own site?
+
+The steps below are a suggestion drawn from this operating record. They are not a procedure validated on a customer project.
+
+1. Look at the pages you have already published and write down the questions that can be answered only from that material. Leave out any question with no such material.
+2. Put the specific questions your readers would really ask in layer 2 and broad questions in layer 3, keeping layer 3 to about one.
+3. Fix the question list once. When you change it, raise the version number and do not mix old and new results.
+4. Ask each service under the same conditions every time, and record login state, personalization and whether web search was on.
+5. Write down the cited address and the cited sentence exactly as shown. Do not summarize from memory.
+6. If you could not check the source list to the end, or generation had not finished, record a hyphen, not a C.
+7. Compute rates over the cells that are not hyphens, and report the number of unconfirmed cells beside them.
+8. Do not draw a conclusion from one run. Repeat the same questions weekly, since answers can change from run to run.
+
+## If AI citations rise, can we say inquiries rose?
+
+No. A citation records that an AI answer showed your address. An inquiry records that someone actually got in touch, which is a different kind of evidence. Nothing in this measurement shows that inquiries or contracts increased. The inquiry count stays unconfirmed until the owner reports it, and a missing number in the ledger is not written down as zero.
+
+Search ranking and AI citation are also kept apart. A page ranked first in ordinary search may be missing from the AI answer, and the reverse can happen too. The measurement sheet therefore records ordinary search rank and AI source presence in separate cells.
+
+One more point carries over from the earlier operating note, [Why Publication and Records Are Separate](/en/works/reedo-publication-ledger-gap). There, a published result and its ledger entry were treated as separate evidence. Here, a published page, a search click, an AI citation and an inquiry are likewise separate evidence, and the rule of this series is not to write that one rose because another did. For a different angle on measuring automation results in numbers, see [Measuring AI Adoption](/en/works/ai-performance-measurement).
+
+## Where to go next
+
+[DMS.Labs AX transformation design](/works/ax) provides the existing service overview for work on checking standards and the points where people decide. That overview is currently presented in Korean. This operating account covers seven questions on a personal site and one measurement record; it does not promise implementation costs, time savings, or effects on inquiries or revenue.
+
+The two images were newly generated to illustrate the topic. They are not photographs of a customer site or screenshots of the operating system.
