@@ -1,0 +1,91 @@
+---
+title: "Five Checks Before Connecting an MCP Server"
+subtitle: "The order for checking the operator, tool list, outgoing data, permissions and approval"
+excerpt: "Before you connect an MCP server to an AI app, check who runs it, which tools it opens, what data leaves, how far permissions reach and whether approval and records remain. This guide orders those checks from the official MCP documents and OpenAI's guide."
+date: "2026-10-23"
+readTime: "10 min"
+coverImage: "/images/posts/mcp-connection-checks/server-list.webp"
+series: "agentic-era"
+chapter: "14"
+translationSourceHash: "c883754b2e2f1a63f2e5e136f50403fecb45163926b84573e3ab4b7fd9084aa3"
+tags: ["MCP", "AI Agents", "Workflow Automation", "Permission Management"]
+---
+
+Before you connect an MCP server to an AI app, check five things: who runs the server, which tools it opens, what data will travel to it, how far the permissions reach, and whether a person still approves anything that sends or deletes. The MCP specification itself recommends that tool calls leave room for a human to refuse them. This article sets out what the public documents say and, on top of that, the order of checks DMS.Labs suggests.
+
+It is based on public documents as of October 23, 2026. The sources are the introduction, the Tools specification and the security best practices pages on the official MCP site, plus OpenAI's guide to connecting MCP servers. It describes no particular site or customer, and I did not connect an MCP server and test it myself. The checklist near the end is a DMS.Labs proposal built from those documents. It is not a requirement of the specification.
+
+![A wooden desk by a window with an open laptop, a printed list, a pencil and a mug](/images/posts/mcp-connection-checks/server-list.webp)
+
+## What is MCP, and why check before connecting?
+
+MCP (Model Context Protocol) is an open standard for connecting AI applications to outside systems. The official introduction says apps such as Claude and ChatGPT can use it to reach data sources like local files and databases, tools like search engines and calculators, and workflows like specialized prompts, and it compares MCP to a USB-C port for AI applications. A standard makes connecting easier. It does not tell you whether the thing you connected to deserves trust.
+
+The Tools specification says this directly. MCP tools are designed to be controlled by the model, which discovers and calls them on its own from context, so for trust and safety there should always be a human in the loop with the ability to deny tool calls. In the specification this is a "SHOULD", a recommendation rather than a "MUST". How a given app shows its approval prompt will differ from app to app, and I did not check any particular app's screens.
+
+## Why look at who runs the server first?
+
+Because whatever the model sends to a server goes to that server's operator. OpenAI's guide stresses that you should use only servers you trust, and warns that a malicious server can exfiltrate sensitive data from anything that enters the model's context. It advises choosing servers run by the service providers themselves. Its example is Stripe: connect to mcp.stripe.com, which Stripe hosts, and avoid a third-party server that fronts Stripe. Because official servers are still few, a third party that proxies a service can be tempting. In that case the guide says to look carefully at how the proxy uses your data.
+
+A server that runs on your own computer adds one more check. According to the security best practices page, a local server is a program you download and run on your machine, and it runs with the same privileges as the client. If a configuration carries a malicious startup command, arbitrary commands can run. So the page requires a client that offers one-click local server setup to show the exact command it will run, untruncated, and to get explicit user approval. That requirement is aimed at people who build clients. What a user can do is read the startup command written in the configuration. If I read it and still cannot tell what it does, I will not connect.
+
+## How do you read the tool list?
+
+Read what each tool changes, not what it is called. Once connected, the server hands over a list of tools and the model picks which to call. If looking up an event and deleting an event sit on the same calendar server, both are tools the model can call.
+
+The specification says a client must treat tool annotations, the optional fields that describe how a tool behaves, as untrusted unless they come from a trusted server. A server that labels a tool read-only is not to be taken at its word unless you already trust that server.
+
+A server's tool list can also change over time, and the specification includes a notification for when it does (listChanged). OpenAI's guide likewise warns that an MCP server may change a tool's behavior without notice. Do not assume the list you checked first will stay the same.
+
+On cost, OpenAI's guide explains that a server with dozens of tools can raise cost and latency, and shows an allowed_tools setting that imports only the tools you need. That setting belongs to the OpenAI Responses API, so other apps may not offer the same option, but opening only the tools you need is an idea that applies in any app.
+
+## How far does my data travel to the server?
+
+Everything in the model's context is a candidate. The specification recommends that a client show the user the inputs going to a server before it calls a tool, to guard against malicious or accidental data exfiltration. OpenAI's guide says that by default it asks for approval before sharing data with a connector or a remote MCP server, and tells you to review the requested tool and its arguments before approving. One approval covers one tool call.
+
+My suggested rule is simple. For a server you are connecting for the first time, put only material that is fine to publish into the context. The context includes not just text you pasted but also results that earlier tools returned. For example, if you attach a new server to a conversation in which customer contact details came up, you have opened a path for those details to reach it. That is the case OpenAI's guide warns about. If you cannot tell what is safe to include, open a new conversation and start with only the material you need.
+
+## Where should permissions start?
+
+Start with read-only. The scope minimization section of the security best practices page recommends starting with a minimal scope that covers only low-risk discovery and read operations, then raising it step by step when a privileged operation is first attempted. Among common mistakes the same section lists publishing every scope a server supports and using broad scopes such as `*`, `all` or `full-access`. The reasons given are that a leaked token does more damage and is harder to revoke. The page speaks to people designing servers, but it also gives a standard to a user who is asked for permissions on a connection screen. If you can choose between a connection that asks only for read scope and one that asks for broad scope, use the first one first.
+
+## Can I turn off approval prompts if they get tiresome?
+
+My view is that some servers can have them off and others should not. OpenAI's guide says that once you trust a server you can skip approvals to reduce latency, and shows how to name the tools that skip them. Its first example is a public server for searching OpenAI documentation, which offers only read-only tools and needs no authentication, so the example skips approvals. The text around the example adds that you should use approvals when sharing sensitive data. The same guide tells you to always require approval for sensitive actions.
+
+The split I suggest is this. A tool that only reads public material can be considered for skipping approval. A tool that sends mail, deletes files, pays or posts publicly, anything hard to take back once it has gone out, keeps its approval. A fair objection is that a prompt appearing every time teaches people to click without reading. That may be true, but the material I checked has no measurement of how often it happens. So I would handle it by cutting the number of tools that need approval, not by removing approval. The specification also recommends that clients log tool usage, and the more a tool skips approval, the more its records deserve attention.
+
+## What do you check before connecting?
+
+Compare the five items in order.
+
+![A desk with a small wooden box and padlock, an open notebook and a closed laptop](/images/posts/mcp-connection-checks/approval-box.webp)
+
+| Order | What to check | Where to check | If there is no answer |
+| --- | --- | --- | --- |
+| 1 | Who operates the server | The provider's official guidance, the server address | Read the proxy's data-use policy, and if there is none, do not connect |
+| 2 | The tool list | The connection screen, the server's documentation | Keep tools that change or delete things closed |
+| 3 | Data that leaves | What is in the conversation, the inputs in the approval prompt | Start a new conversation with only material that is fine to publish |
+| 4 | Permission scope | The permission request on the connection screen | Prefer the option that asks only for read scope |
+| 5 | Approval and records | The app's approval settings, usage records | Keep approval for sending, deleting and paying tools, and do not open write tools if there is no way to see the records |
+
+Item 1 can be checked before you touch any settings. If you do not know whose server it is, filling in the other rows has nothing to stand on, so I would stop at item 1. Even after all five rows pass, the specification says the tool list can change and OpenAI's guide recommends logging the data sent to servers and reviewing it periodically. Do not check once on the day you connect and stop there. Reopen the list and the records now and then.
+
+## What would it look like for a five-person office adding a shared calendar?
+
+Suppose an office of five wants to attach an MCP server connected to a shared calendar to an AI app. This is a hypothetical, not a real customer or site. Applying the table above goes like this.
+
+First, look for a server offered directly by the company that runs the calendar service. If there is none, read the data-use policy of any proxy server. If the server's tool list splits into viewing events, creating events and deleting events, allow only viewing at the start. On the first day, begin in a new conversation that holds no confidential appointments, and check that the connection screen asks only for read scope. Leave approval switched on for creating and deleting. After about a week, compare the tool list to see whether it has changed, read the usage records, and only then decide whether to open the write tools. This is a proposed order and not the result of having done it.
+
+## What to read next
+
+For ways to attach AI automation to everyday work, see the [DMS.Labs automation page](/automation), which is provided in Korean. How to hand out permissions in stages is covered in [Giving AI automation permission in three steps](/en/works/automation-permission-ladder), and what to agree with an operator at each level of autonomy is in [Automation Is a Contract, Not a Permission: Operator Agreements by Autonomy Layer](/en/blog/agentic-era-operator-contract-for-autonomy-layers).
+
+## Sources consulted
+
+Checked on October 23, 2026. The Tools specification page pointed to subpages of the 2026-07-28 version when checked, and wording may change when the version changes. The two photographs in this article are AI-generated illustrations, not records from a real site.
+
+- Model Context Protocol, What is the Model Context Protocol (MCP)?: [web page](https://modelcontextprotocol.io/docs/getting-started/intro)
+- Model Context Protocol, Specification (latest), Tools: [web page](https://modelcontextprotocol.io/specification/latest/server/tools)
+- Model Context Protocol, Security Best Practices: [web page](https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices)
+- OpenAI, MCP and Connectors (API guide): [web page](https://platform.openai.com/docs/guides/tools-connectors-mcp)
