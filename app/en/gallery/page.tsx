@@ -1,3 +1,4 @@
+import { measureGoalEssayEn } from "@/lib/ideas-essay-measure";
 import { explainFirstEssayEn } from "@/lib/ideas-essay-explain";
 import { subtractEssayEn } from "@/lib/ideas-essay-subtract";
 import { waitingAverageEssayEn } from "@/lib/ideas-essay-average";
@@ -27,10 +28,11 @@ export default function EnglishIdeasPage() {
         eyebrow="Ideas / Reedo" lead="Images &" accent="words." variant="insights"
         title="Ideas"
         description="Notes and essays written alongside the work. Earlier pieces are still available in Korean, and new ones are being added in English."
-        note={<><span>8 English editions</span><span>A space where images and words meet</span></>}
+        note={<><span>9 English editions</span><span>A space where images and words meet</span></>}
       >
         <Link href="/gallery">Earlier pieces in Korean ↗</Link>
       </FiberPageHeader>
+      <div className={styles.essay}><EssayPiece essay={measureGoalEssayEn} locale="en" /></div>
       <div className={styles.essay}><EssayPiece essay={explainFirstEssayEn} locale="en" /></div>
       <div className={styles.essay}><EssayPiece essay={subtractEssayEn} locale="en" /></div>
       <div className={styles.essay}><EssayPiece essay={waitingAverageEssayEn} locale="en" /></div>
