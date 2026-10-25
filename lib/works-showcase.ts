@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "자동화를 만든 사람이 없는 날",
+    summary: "자동화를 만든 사람이 자리를 비워도 일이 멈추지 않도록, 담당자와 대리인, 멈출 수 있는 사람, 접근 정보의 보관 위치를 한 장에 적는 Work 실무 가이드입니다.",
+    tags: ["Work", "업무 자동화", "AX 전환"],
+    image: "/images/works/automation-owner-card/owner-cards.webp",
+    link: "/works/automation-owner-card",
+  },
+  {
     title: "AI가 우리 글을 인용했을까",
     summary: "질문을 세 층으로 나눠 구글 AI 개요와 ChatGPT의 출처 인용을 같은 방식으로 기록한 DMS.Labs 운영기입니다. 확인된 칸과 확인하지 못한 칸을 구분합니다.",
     tags: ["Work", "AX 전환", "성과 측정"],

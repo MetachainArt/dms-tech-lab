@@ -1,0 +1,114 @@
+---
+title: "When the Person Behind the Automation Is Away"
+excerpt: "A practical guide to writing one card per automation: who owns it, who covers for them, who can stop it, where the access details are kept and what people do by hand while it is off."
+date: "2026-10-25"
+readTime: "12 min"
+kind: "guide"
+tags: ["Work", "Workplace automation", "AX transformation"]
+---
+
+Make one card for each automation and write down five things: the owner, a backup, the person who can stop it, where the access details are kept, and what people do by hand while it is off. If any of those five is empty, the automation becomes something nobody can touch on the day its builder is on leave or has left. Don't write the card once and file it. Record the date you last read it, and check it every quarter.
+
+This is a practical guide to running workplace automation, not a report on a customer engagement or a measured result. It is based on public sources checked on October 25, 2026. The card and the fictional example below are DMS.Labs design proposals, and they do not replace your organisation's security policy or HR procedures.
+
+## How common is an automation that only one person understands?
+
+Software teams have a metric for this. The truck factor counts how many developers would have to be hit by a truck, or quit, before a project stalls. In a 2016 paper, Avelino and colleagues estimated it automatically for 133 popular GitHub projects and report that 65% had a truck factor of 2 or less. In more than half of the systems studied, the core knowledge sat with one or two people.
+
+You can't carry that number over to an office. The projects were open-source software, and the values were estimated from repository history. When the authors checked their estimates by surveying developers from 67 of the systems, 53% of the valid answers were positive or partly positive about the estimated truck factor. From the paper, this guide takes only two things. Knowledge concentrating in one person is common enough to expect, and the degree of it can be measured in advance.
+
+DMS.Labs adds an opinion. It is reasonable to suspect that office automations are often built and understood by one person too. A mail-sorting rule, a spreadsheet connection or a scheduled run is easy to wire up alone on a busy day. This is an assumption we use as a reason to write the card. It is not a survey result.
+
+## What goes on the card?
+
+The NIST AI RMF Playbook has outcome statements that sit close to this guide. GOVERN 1.6 asks for mechanisms to inventory AI systems. GOVERN 2.1 asks that roles, responsibilities and lines of communication be documented and clear to people and teams across the organisation. We use those two statements only as support for keeping a list of automations and a table of owners. The playbook is about risk management for organisations that develop and deploy AI systems, so it does not map directly onto office automation. We also read only the outcome statements, not the suggested actions under each item.
+
+The card has seven fields. Set the name and the date aside and five remain that matter.
+
+| Field | What to write | If it is empty |
+| --- | --- | --- |
+| Name and purpose | The automation's name and one sentence on what it does | An automation missing from the list is missed in every check |
+| Owner | The person contacted first when something looks wrong | A problem appears and nobody is responsible for it |
+| Backup | The person who decides when the owner is away | Nobody can decide on the owner's day off |
+| Who can stop it | The person with the authority to switch off a scheduled run or cut the connection | Wrong results keep going out and nobody can halt them |
+| Where access details are kept | The account name and the name of the entry in the password manager | Access stays tied to the owner's personal account |
+| What people do by hand | The steps used before the automation existed | On the day it stops, the team has to work out how the job is done |
+| Date last read | When the card was last read and corrected | You can't tell whether the card still matches reality |
+
+![A wooden desk by a window with a row of blank cards and a pencil beside them.](/images/works/automation-owner-card/owner-cards.webp)
+
+The owner and the backup are different people. The owner is whoever gets the call when something goes wrong, and the backup decides when the owner is not there. If there is no backup, write "none" instead of leaving the field blank. A blank later looks the same whether someone forgot or there truly is nobody.
+
+## How much access information goes on the card?
+
+Neither passwords nor keys. Write the account name and the name of the password-manager entry that holds the credential, and stop there.
+
+The OWASP Secrets Management Cheat Sheet points out that many organisations keep API keys and database credentials in plaintext, scattered through source code and configuration files. It says the need to centralise storing, provisioning, auditing and rotating secrets has grown. The same document says it should be immediately apparent what a secret is used for and where to find it. It also states the principle of least privilege, meaning that not everyone should be able to read every secret. The sheet is written for software teams, so we borrowed only the principle.
+
+DMS.Labs suggests carrying that principle onto the card like this. Write the name of the storage location and nothing more. Check beforehand that the backup can actually open the entry, but open only the entries that this one automation needs. If a connection was set up through the owner's personal account, note a plan to move it to a shared company account next to the field. An entry that is named on the card but can't be opened is of no use.
+
+## Why separate the person who can stop it?
+
+The person who fixes an automation and the person who stops it may differ, and DMS.Labs thinks it is sometimes safer when they do. NIST GOVERN 3.2 asks for policies and procedures that define and differentiate roles and responsibilities for human-AI configurations and for oversight of AI systems. GOVERN 1.7 asks for processes to decommission and phase out AI systems safely. On the strength of those two statements, DMS.Labs suggests writing the authority to stop as its own field.
+
+Stopping should be easier than fixing. A fix needs knowledge of the tool, but a stop should take a single action, such as switching off the scheduled run. Write that action on the card in one sentence, for example, "turn this item off on the tool's schedule screen."
+
+The criteria for starting again are covered in [When to Restart an AI Automation](/en/works/ai-automation-safe-retry). Some results may already have gone out before the stop, so external results need checking before a restart. Whether an automation is at the read, draft or execute step is laid out in [Giving AI automation permission in three steps](/en/works/automation-permission-ladder). The closer an automation is to the execute step, the sooner its "who can stop it" field should be filled.
+
+Too many people who can stop it is also a problem. Work can sit still with nobody knowing who switched it off. A companion rule helps: whoever stops it writes the date and the reason on the card in one line. That rule is also a DMS.Labs proposal.
+
+## What do the cards look like in a fictional office?
+
+The example below assumes a fictional office of about nine people. It is not a record of any real customer or site. There are three automations: sorting quote-request emails, a weekly schedule summary sheet and a month-end invoice draft.
+
+| Automation | Owner | Backup | Who can stop it | Access details | What people do by hand | Verdict |
+| --- | --- | --- | --- | --- | --- | --- |
+| Quote-request email sorting | Admin A | Sales B | Admin A, Sales B | "Email sorting" entry in the shared password manager | Sort by hand in the inbox; steps are written down | Card complete |
+| Weekly schedule summary sheet | Sales B | None | Sales B | B's personal account | Skim the schedule sheet and share it on Monday | Name a backup and move the account |
+| Month-end invoice draft | Accounting C | None | None | Location not recorded | Not recorded | Card incomplete; hold any step-up |
+
+For the first automation, B can decide and stop it even if A is away. In the second, every field rests on B alone. If B is away, the schedule summary either keeps running or sits stopped, and nobody else has any way to notice which. The first job is to name a backup and move the connection tied to a personal account onto a shared one.
+
+The third card is almost empty, so writing it is the first task. Ask Accounting C how it runs today and write down the answer. It will show how much of that automation lived only in C's head. An automation like this gets its card filled before anyone widens its execution rights.
+
+This reading is DMS.Labs' interpretation of a fictional example. We have never measured how long writing a card takes or what it achieves.
+
+![A hand passing a single card across a desk, with a closed laptop and a cup nearby.](/images/works/automation-owner-card/desk-handover.webp)
+
+## How do you write what people do by hand?
+
+If people did the job by hand before the automation was added, write those steps down as they were. You don't need a perfect manual at the start. Three things are enough: the old steps in short lines, how to find the items that went unprocessed while the automation was off, and who to tell about anything with a deadline.
+
+If you recorded how long the work takes today when you picked your first automation, that record is where this field starts. How to pick the task is in [Choosing the First Task to Automate](/en/works/choosing-first-automation-task). If a job sheet already exists that covers the input, the shape of the result and the ways it goes wrong, this field can simply name where that document is kept. How to write one is in [Before you ask AI to do the job, write the one-page job sheet](/en/works/ai-skill-job-sheet).
+
+Whether the steps work is something you learn by trying them. Assume the owner is away, hand the backup only the card and ask them to handle the job. Any missing field shows up right away. This test is a DMS.Labs proposal. We set no target for how many minutes it should take, because we have no tested value to base one on.
+
+## When do you read the card again?
+
+NIST GOVERN 1.5 asks that ongoing monitoring and periodic review of the risk management process be planned, that roles and responsibilities be clearly defined, and that the frequency of review be decided. The right interval varies by office, so DMS.Labs suggests a quarter as a starting point. Once a quarter, read the card and update the date.
+
+Some moments call for reading it sooner: when the owner changes, when the tools or accounts the automation uses change, and when it moves up a step from reading to drafting or from drafting to executing.
+
+## Frequently asked questions
+
+### How do you hand over automations when someone leaves?
+
+Filling in the seven fields is the starting point. Pick out the cards that name the departing person as owner or as the one who can stop it, promote the backup to owner and move the access details to a shared account. Before the person leaves, have the backup run the stop action using only the card. If your organisation has no cards yet, begin with a list of automations, because an automation missing from the list is missing from the handover.
+
+### Does an automation only I use need a card?
+
+Yes. Write "none" in the backup field and fill in the rest. Someone else may take it over later, and you may not remember how it works in a few months.
+
+### If we change the AI tool or model, does the card change too?
+
+The tool name, the access field and the date last read change. Whether the results match what they were before is checked with the same test material, not with the card. How to retest a job sheet is covered under "Test again when the model changes" in the job sheet article linked above.
+
+## What to read next
+
+[DMS.Labs workplace automation](/automation) (provided in Korean) describes how work is defined and how automation is designed. If you are preparing for a consultation, bringing two or three cards for running automations and sample input with the real details removed will make it easier to describe where things stand. For anything that depends on your conditions, see the [contact page](/en/contact).
+
+## References
+
+- [NIST, AI RMF Playbook: Govern](https://airc.nist.gov/airmf-resources/playbook/govern/)
+- [Avelino et al., A Novel Approach for Estimating Truck Factors (arXiv:1604.06766)](https://arxiv.org/abs/1604.06766)
+- [OWASP, Secrets Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html)
