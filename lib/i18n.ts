@@ -30,6 +30,7 @@ export function hasEnglishVersion(pathname: string): boolean {
     || path === "/education/optical-training/live-fiber-identifier-loss-and-detection-limits"
     || path === "/education/optical-training/splicer-estimated-loss-vs-otdr-readout"
     || path === "/education/optical-training/odf-patch-cord-routing-and-labeling"
+    || path === "/education/optical-training/cleave-angle-readout-and-cleaver-upkeep"
     || path === "/education/optical-training/01-fiber-types-link-design"
     || path === "/education/optical-training/02-fiber-market-infrastructure"
     || path === "/education/optical-training/01-rf-over-fiber-lecture"
