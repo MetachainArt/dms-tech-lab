@@ -1,0 +1,122 @@
+---
+title: "One Line for Every Automation Run"
+excerpt: "A practical guide to writing one line per automation run in a table outside the tool: when it ran, what started it, what it read, what it did outside, how it ended, who checked it and a run number. It lets you trace a wrong result weeks later."
+date: "2026-10-28"
+readTime: "12 min"
+kind: "guide"
+tags: ["Work", "Workplace automation", "AX transformation"]
+---
+
+Every time an automation runs, add one eight-column line to a table that lives outside the automation tool. Write down when it ran, which automation it was, what started it, what it read, what it did outside the tool, how it ended, who checked it and a number that points back to that run. When you need to find a wrong email or a wrong spreadsheet cell weeks later, that line tells you which run to open.
+
+This is a practical guide to running workplace automation, not a report on a customer engagement or a measured result. It reflects public sources as of October 28, 2026. The eight columns and the fictional print shop below are DMS.Labs design proposals. They do not replace your organisation's security policy or any retention duty set by law.
+
+## How do you find an email an automation sent by mistake?
+
+Find the run first, then the range of what that run did outside the tool, then the person who checked it before it went out. If one line answers all three, you know where to start looking.
+
+Without a record, you open the sent folder and the tool's run list side by side and try to match timestamps. If the customer tells you weeks after the fact, you can't be sure the run list still holds that date. Even when it does, the list is mostly about what happened inside the tool. If a person approved the draft somewhere else, that approval may not be in the list at all.
+
+This guide covers a one-line record that closes that gap. If you already named an owner for each automation using [When the Person Behind the Automation Is Away](/en/works/automation-owner-card), that owner is the person who reads these lines.
+
+## Isn't the tool's own run history enough?
+
+It is easy to assume so. Check two things: how long the history lasts, and whether it holds what you will need.
+
+Take n8n as an example. The environment variable reference for self-hosted n8n lists saving execution data on both success and error as the default. The same page shows pruning of past executions turned on by default. An execution becomes eligible for deletion after 336 hours, which is 14 days, and the number kept is capped at 10,000. This was read on October 28, 2026, and the values can be changed. We did not check n8n as a hosted service or the retention of any other automation tool.
+
+If you run with those defaults and a customer writes three weeks later, the details of that run may already be gone. A tool's history is useful when you dig into a run that went wrong. To answer "what went out that day, and how many" months later, DMS.Labs thinks you also need a light record that survives whenever the tool prunes. A record that lives only inside a tool can disappear when you switch tools or cancel a subscription.
+
+## What columns go on the line?
+
+NIST SP 800-53 control AU-03 says audit records should establish what type of event occurred, when, where, the source of the event, its outcome, and the identity of the individuals, subjects or objects involved. The OWASP Logging Cheat Sheet says each event should record "when, where, who and what", and describes an interaction identifier that links the events belonging to one interaction.
+
+Those documents cover information-system security and software development, so they do not map straight onto an office automation. This guide borrows only the skeleton of both lists. Turning it into eight columns is a DMS.Labs proposal.
+
+| Column | What to write | What you can't do if it is empty |
+| --- | --- | --- |
+| Time | Start and end, with the date, in one format | You can't narrow down which day's run it was |
+| Automation name | The name exactly as on its owner card | You can't open the card and reach the owner |
+| Started by | One of: schedule, a person ran it, another automation | You can't tell who ran it or whether it ran by itself |
+| Read | Where it read from and how many. Example: "quote inbox, 12" | You don't know the range it handled |
+| Did outside | Drafts created, emails sent, sheet name and row numbers edited | You can't correct what already went out |
+| Result | Done, partly done or stopped, plus a one-line reason | You don't know where to resume a stopped run |
+| Checked by | Who approved and when, or "none" if there is no approval step | You can't say who let it go out |
+| Run number | The tool's run ID, or a message ID that leads back to the original | You can't get from the line to the original |
+
+The most useful column is "Did outside". For an automation that only reads, write "none". If it made drafts, write how many. If it sent, write how many and a number that identifies the recipients. This column also shows which stage the run was at in the read, draft, execute ladder described in [Giving AI automation permission in three steps](/en/works/automation-permission-ladder).
+
+Give "partly done" its own place in the Result column. If a run handled 11 of 14 items and stopped, and you wrote only "failed", then restarting it later can miss the 11 that already went out. What to check before a restart is covered in [When to Restart an AI Automation](/en/works/ai-automation-safe-retry).
+
+![A wooden workbench by a window with a stack of order sheets and a ruled ledger, a pencil resting beside the ledger.](/images/works/automation-run-record/ledger-lines.webp)
+
+## What should you keep out of the record?
+
+Keep content out and write counts and numbers instead. The OWASP cheat sheet says access tokens, authentication passwords, database connection strings, encryption keys, sensitive personal data, payment data and commercially sensitive information should usually be removed, masked, hashed or encrypted rather than logged as they are. It also says not to log anything that is not legally sanctioned, and gives monitoring employees as an example of something that may be illegal.
+
+So the eight columns say "12 quote emails" and never the subject lines. When you need to point at specific items, use a number that leads back to the original, such as an order number or a document number. The number alone reveals nothing, and only people who can open the original see the content. A person's name appears only in the Checked by column. This table records what the automation did. It is not a way of watching what employees do. That split is a DMS.Labs design principle.
+
+OWASP also warns that logging too much and logging too little are both problems. We haven't tested whether eight columns strike that balance. If a column goes unread for the first month, drop it.
+
+## What does a line look like in a fictional print shop?
+
+Imagine a print shop of about ten people. It is fictional, not a record of a real customer or site. It has two automations. One reads order emails, adds rows to an order sheet and drafts delivery-date notices. The other sends drafts that a sales person has approved.
+
+| Time | Automation | Started by | Read | Did outside | Result | Checked by | Run no. |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 10/06 09:00 | Delivery notice drafts | Schedule | 14 order emails | 14 sheet rows added, 14 drafts made, 0 sent | Done | None | 0613 |
+| 10/06 09:20 | Delivery notice send | A person ran it | 14 drafts | 14 emails sent, orders 1042 to 1055 | Done | Sales B, 09:18 | 0614 |
+| 10/07 09:00 | Delivery notice drafts | Schedule | 3 order emails | 3 sheet rows added, 3 drafts made, 0 sent | Done | None | 0620 |
+
+Suppose a customer writes three weeks later to say the delivery date in a notice was a day late. You find their order number in the order sheet and match it to the table. It was in the second run on October 6, and Sales B checked it. That run sent notices to orders 1042 through 1055, 14 customers in all, so the other 13 are also worth checking.
+
+That is as far as the record goes. Why the date was wrong has to be worked out separately by opening the original through run number 0614. If the tool prunes its history after 14 days, the details may already be gone, and the cause may never be found. Even then, one line tells you which customers got the same notice.
+
+That reading is DMS.Labs' interpretation of a fictional example. We have not measured how long it takes to write a line or how much time it saves when you search.
+
+![Shelves with identical boxes in a row, each with a blank paper tag, and a clipboard on the workbench in front of them, in a print workshop.](/images/works/automation-run-record/tagged-shelf.webp)
+
+## How long do you keep it, and who reads it?
+
+This guide does not set a retention period, because it depends on your industry and your contracts. The OWASP cheat sheet says logs must not be destroyed before the required retention period ends and must not be kept beyond it, and notes that legal, regulatory and contractual obligations can affect that period. It also says read access should be restricted and reviewed from time to time.
+
+For an office, DMS.Labs proposes three things.
+
+- Keep one table for all automations, and make it filterable by automation name.
+- Never edit an old line. Add a new line below it with the reason.
+- Limit readers to the owner, the backup and the person who can stop the automation.
+
+OWASP also says to have a way to notice when logging has stopped. If an automation produces no lines at all for a week, either the automation has stopped or the record has broken. When you reread the owner cards each quarter, check this table for any automation whose lines have gone quiet. That check is also a DMS.Labs proposal.
+
+## How does this table connect to problems and incidents?
+
+A run record is not an incident record. A run record says what happened on every run. An incident record follows only the runs that went wrong. The OWASP cheat sheet also says that audit and process logs are usually collected for different purposes than security event logs, and often kept apart.
+
+MANAGE 4.3 in the NIST AI RMF Playbook says processes for tracking, responding to and recovering from incidents and errors should be followed and documented. Among its suggested actions is maintaining a database of reported errors, near-misses, incidents and negative impacts, with the date reported, the number of reports, an assessment of impact and severity, and the responses. This guide read only that item, not the whole playbook. DMS.Labs suggests putting only the run number in the incident record and writing the cause and the response there. When the two tables meet at the run number, you can move from either one to the other.
+
+## Frequently asked questions
+
+### Do I need a one-line record for an automation only I use?
+
+Yes. Put your own name in the Checked by column. Even something you built yourself can be hard to remember a few months later, and someone else may take it over. If eight columns feels heavy, start with four: time, automation name, did outside and result. Add the rest as you feel the need.
+
+### Should the record store the full text the AI wrote?
+
+No. The email is already in the sent folder, and the value is already in the sheet. The table only holds a number that leads there. How long to keep the drafts themselves depends on whether they contain personal or business data, so set that under your organisation's retention rules.
+
+### What happens to the record if I switch automation tools?
+
+The table lives outside the tool, so the columns and the old lines carry over. What changes is the shape of the run number the new tool assigns. Whether you can export the old tool's detailed history is something to check before you cancel it. That differs by tool, and we did not check it here.
+
+## What to read next
+
+[DMS.Labs workplace automation](/automation) covers how we define the work and design the automation. That page is provided in Korean. If you are preparing a consultation, open the last week of run history for one automation you operate and mark which of the eight columns you can already see. It makes the current state easier to describe. For conditions, see the [contact page](/en/contact).
+
+For how to describe a single task's inputs and outputs before handing it to AI, see [Before you ask AI to do the job, write the one-page job sheet](/en/works/ai-skill-job-sheet).
+
+## Sources
+
+- [OWASP, Logging Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html)
+- [NIST, SP 800-53 Rev. 5.1.1, AU-03 Content of Audit Records (CPRT)](https://csrc.nist.gov/projects/cprt/catalog#/cprt/framework/version/SP_800_53_5_1_1/home?element=AU-03)
+- [NIST, AI RMF Playbook: Manage](https://airc.nist.gov/airmf-resources/playbook/manage/)
+- [n8n Docs, Executions environment variables](https://docs.n8n.io/hosting/configuration/environment-variables/executions/)

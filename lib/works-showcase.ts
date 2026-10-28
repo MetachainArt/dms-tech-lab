@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "자동화가 한 일, 한 줄로 남기기",
+    summary: "자동화가 돌 때마다 시각, 시작한 쪽, 밖으로 한 일, 확인한 사람, 실행 번호를 도구 바깥의 표에 한 줄로 남겨 잘못 나간 결과를 몇 주 뒤에도 찾게 하는 Work 실무 가이드입니다.",
+    tags: ["Work", "업무 자동화", "AX 전환"],
+    image: "/images/works/automation-run-record/ledger-lines.webp",
+    link: "/works/automation-run-record",
+  },
+  {
     title: "자동화를 만든 사람이 없는 날",
     summary: "자동화를 만든 사람이 자리를 비워도 일이 멈추지 않도록, 담당자와 대리인, 멈출 수 있는 사람, 접근 정보의 보관 위치를 한 장에 적는 Work 실무 가이드입니다.",
     tags: ["Work", "업무 자동화", "AX 전환"],
