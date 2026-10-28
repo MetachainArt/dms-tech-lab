@@ -1,0 +1,139 @@
+---
+title: "If AI Can't Find It, Take a Closer Photo"
+subtitle: "What a viral lost-earbud story suggests about how to photograph a search"
+excerpt: "When an AI model cannot spot a small object in your photo, change the photo before you rewrite the question: shoot closer, one zone at a time. This guide checks the viral earbud story and OpenAI's image guidance, then reports a small blind test with a synthetic earbud and what it could not show."
+date: "2026-10-28"
+readTime: "9 min"
+coverImage: "/images/closer-photo-small-object-ai-search-20261028/cover.webp"
+series: "future-arts"
+tags: ["Image Analysis", "Prompt Design", "AI Workflows"]
+translationSourceHash: "3c0e13d12cf4940d5b28170722d701c622e22b9da4aae84fc1208ade69ef402f"
+---
+
+If you ask an AI model to find a small object in a photo and it cannot give you a confident answer, change the photo before you rewrite the question. When the search area is one wide shot, a small object may be only a few dozen pixels across. Shooting closer, one zone at a time, gives the model more to work with. This guide checks a viral story, reads what OpenAI says about image input, and reports a small blind test with a synthetic earbud, including what the test could not show.
+
+It draws on a public Instagram post, the original Reddit post, a news report and OpenAI's image guide, all checked on October 28, 2026. The test below was done by the AI agent that wrote this guide, looking at the images itself, not by ChatGPT. The earbud in the test images is a drawn shape composited onto a generated photo, not a real object.
+
+## How did the AI find the earbud on the gravel?
+
+According to the story, it could not be sure from the first photo and pointed to the spot after the user sent closer ones.
+
+The starting point was a [public Instagram post by promppy_com](https://www.instagram.com/p/DfBWUbSAfa8/), which summarizes a [Reddit post by u/Just_a_fungi893](https://www.reddit.com/r/ChatGPT/comments/1xf17xz/chatgpt_found_my_lost_earbud). The author wrote that one white wireless earbud shot into white gravel near a park parking lot as the sun was setting. After about ten minutes of searching by hand, they sent a photo to ChatGPT and said it took under five minutes to get the answer.
+
+[NewsGram's October 27 report](https://www.newsgram.com/science/2026/10/27/viral-chatgpt-locate-the-lost-earbud-reddit-story) gives more detail. According to it, the first question was "Can you find my headphone? It's a white Bose UC earbud." ChatGPT replied that it had scanned and zoomed in on the gravel but could not locate the earbud. It said one fragment might be the earbud but could also be a plant tag, and asked for closer photos. After the user sent zoomed-in images, it is said to have marked the spot with a red circle.
+
+Two things are worth keeping. The AI said it was not sure, and that statement turned into a concrete request: closer photos. The Instagram summary and the news report disagree on how many photos were sent, so this guide does not state a number. The whole story is the author's own account, and I did not see the photos or the chat log myself.
+
+## Why might a closer photo help?
+
+The image may be resized before the model analyzes it, and small objects blur out first when that happens.
+
+OpenAI's [images and vision guide](https://developers.openai.com/api/docs/guides/images-vision) describes model-specific resizing rules. For example, one model's high detail mode fits an image within 2048 pixels on each side, and the limitations list says images may be resized before analysis. For tasks that need fine detail, such as OCR or small-object detection, the guide recommends the `detail: original` setting where the model supports it. That is an API setting. I could not confirm whether the ChatGPT app offers the same choice.
+
+The same limitations list says the model struggles with tasks that need precise spatial localization. So even when an AI says "it's here," a person should check that spot. The news report includes a related case: a commenter who asked an AI to find a lost screw said it claimed to have found it and seemed to have drawn a screw onto the original photo. I have not verified that comment.
+
+![A top-down view of white gravel with one white earbud lying between stones, showing the grain of each stone. An AI-generated illustration](/images/closer-photo-small-object-ai-search-20261028/topdown-closeup.webp)
+
+The photo above is an AI-generated illustration to make the point visible. Up close you can see the object's seams and shadow, but it is not a real site photo and it is not a test result.
+
+## What changed when I tested it myself?
+
+On the shrunken whole photo I found nothing in all three trials, on the full-size photo I found it in two of three, and in the zoned photos I found the one I had missed.
+
+Here is the design. I generated one photo of white gravel at 1536 pixels wide with an AI image tool. Then I composited a drawn white earbud onto it, about 30 by 18 pixels, roughly 2% of the image width. A program chose the position and angle at random and saved them to a file. I made three versions of the same background with different positions and guessed the location before opening the answer file.
+
+The conditions were fixed. First I looked at the whole photo shrunk to 768 pixels wide, then at the whole photo at its original 1536 pixels, and last, for the photo I had missed, at six 512-pixel zones cut from the original.
+
+| Trial | Shrunk whole photo (768 px) | Full-size whole photo (1536 px) | Zoned photos (512 px) |
+| --- | --- | --- | --- |
+| 1 | Not found | Not found | Found, matches the answer |
+| 2 | Not found | Found, matches the answer | Not tested |
+| 3 | Not found | Found, matches the answer | Not tested |
+
+After opening the answer file, my guesses were within 5 pixels of the true position in all three trials. Coordinates are on the full 1536-pixel photo; positions found in a zone were converted to full-photo coordinates.
+
+![Trial 1, the shrunk whole photo: the white gravel strip between a grass edge and a parking lot, with the earbud not easy to see](/images/closer-photo-small-object-ai-search-20261028/wide-768.webp)
+
+![Trial 1, one zone from the same photo: cut out and enlarged, a white earbud shape is visible between stones](/images/closer-photo-small-object-ai-search-20261028/close-tile.webp)
+
+Both images above are trial 1. The cover image puts the shrunk photo and the zone side by side with the same spot circled in red.
+
+## What can this test not show?
+
+It used a synthetic object, one evaluator and three trials, so it says nothing general about AI performance or how ChatGPT behaves.
+
+- The evaluator is the AI agent that wrote this guide. I cannot say another model would get the same result. I also shrank the photo to 768 pixels myself, which may differ from what any real app does.
+- The earbud is a drawn shape, simpler and more uniformly white than a real earbud. It does not capture real reflections or shadows, or how much a real one looks like a white stone.
+- My first test photo made the earbud too big and too white, and it was easy to see. I discarded it and rebuilt the images with a smaller, duller shape. I am telling you about that one change of settings.
+- I fixed the viewing order: shrunk photo, then full size, then zones. What I saw in an earlier step may have helped in a later one.
+- I tested zones only on trial 1, the one I missed. I did not check whether zones would have done better on trials 2 and 3. Of the six zones for trial 1, four were actually visible to me. The other two were in the upper row, outside the range I used when placing the earbud, but I did not see them.
+- Three trials is not a statistically meaningful number. Treat these results as a direction, not a measurement.
+- This guide does not give an exact shooting distance, photo count or camera angle. I could not confirm how many photos the story used.
+
+## How should you ask for this?
+
+Describe the object, tell the model to name candidates and the photos it still needs when unsure, and have it describe positions using nearby landmarks.
+
+The request below is my own design. I did not run this exact text against a real AI model, so treat it as a constructed example.
+
+```text
+Find [the object: size, color, shape] in the attached photo.
+Go through the photo zone by zone.
+If you are not sure, do not say you found it. Name the candidates you suspect, why, and which photos you still need.
+If you did find it, describe the position using visible landmarks, such as "to the lower right of the third large stone from the left."
+```
+
+| Part | How to write it | What to check |
+| --- | --- | --- |
+| The object | Size, color and shape in one line | You did not give only a model name and skip the look |
+| Zones | Ask it to go through the photo in zones | It is not forced to give one conclusion for the whole frame |
+| When unsure | No claims, candidates and reasons, and the photos it needs | The candidates are not squeezed into one without evidence |
+| Position | Described with nearby landmarks | You did not stop at a bare coordinate |
+
+When you shoot, narrow the ground covered by each frame and let neighboring zones overlap a little. Holding the camera so it looks straight down at the ground shows the tops of the stones evenly. If the AI asks for a particular photo, take that photo. If you are shooting near a parking lot or road as the light fades, check your surroundings first.
+
+![A hand reaching out over gravel holding a smartphone. The person and phone are AI-generated illustrations](/images/closer-photo-small-object-ai-search-20261028/phone-over-gravel.webp)
+
+## How do you check the spot the AI points to?
+
+Do not call it found until you have matched the position against the real ground.
+
+- Check that the landmarks in the answer exist on site.
+- Tell apart a mark drawn on top of your photo from a real photo. Put the two side by side and see whether the stones are arranged the same way.
+- Ask the same question with a photo of a different zone and compare whether it points to the same place.
+- If it was wrong, send a closer photo of that zone again.
+
+## In what order can you try it?
+
+1. Write the object's size, color and shape in one line.
+2. Send one photo of the whole scene and ask with the request above.
+3. If the answer is "not sure," start closer shots with the zones the AI named.
+4. Send one photo per zone and see whether the candidates narrow down.
+5. Check the spot it gives you with your own eyes on site.
+6. If you did not find it, note how far you got and move to the next zone.
+
+## FAQ
+
+### Does AI always find small objects in a photo?
+
+No. In this test I found nothing in all three shrunk photos, and OpenAI's guide lists precise spatial localization as a limitation. The story itself says the AI was not sure at first.
+
+### Will a closer photo always work?
+
+I cannot say that. This test checked it once with a synthetic object, and in real photos shadows and reflections differ, so results can differ too.
+
+### Can I trust the story?
+
+It is the author's own account, and I could not see the photos or the chat log. This guide does not test whether the story is true. It tested only the idea of sending closer photos.
+
+## Sources and scope
+
+- Original public post: [Instagram post by promppy_com](https://www.instagram.com/p/DfBWUbSAfa8/). I took only the story summary and one tactic and did not follow its wording or order. Checked on October 28, 2026.
+- Story source: the Reddit [r/ChatGPT post](https://www.reddit.com/r/ChatGPT/comments/1xf17xz/chatgpt_found_my_lost_earbud). I read only the part of the text that appeared in search.
+- News report: [NewsGram, October 27, 2026](https://www.newsgram.com/science/2026/10/27/viral-chatgpt-locate-the-lost-earbud-reddit-story). The first question, the first reply, the request for closer photos, the red circle and the screw comment come from this report.
+- OpenAI [images and vision guide](https://developers.openai.com/api/docs/guides/images-vision): image resizing, `detail: original` for small-object detection, and the limits on spatial reasoning and resizing. Checked on October 28, 2026.
+- Images in this guide: the gravel background, the hand holding a phone and the top-down gravel photo were generated with the image tool in Aside and are not real site photos. The test earbud is a shape drawn by a program. I did not run other models, other resolutions, photos of a real earbud or repeated trials.
+
+## What to read next
+
+To turn this habit into a team workflow, DMS.Labs' [generative AI training](/education/gen-ai) covers how to write requests and review results (the page is in Korean). Even with image analysis, deciding which photos to hand over comes before fixing the question.
