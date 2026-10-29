@@ -1,0 +1,97 @@
+---
+title: "Before Trusting a Season Score"
+excerpt: "The DMS.Labs topic-prep tool turns Naver DataLab monthly values into a season score. This note uses real operating records to show three things Reedo checks before acting on a score of A."
+date: "2026-10-29"
+readTime: "9 min"
+kind: "guide"
+tags: ["Work", "AX transformation", "Work automation"]
+---
+
+A season score of A means search interest rose around this time last year. It does not mean the topic is ready to write today. Before turning a score into a decision, Reedo checks when the peak falls, what the number is measured against, and whether the value was produced under the same conditions as the last one. If the tool did not run at all, the cell stays empty instead of being filled with "none."
+
+This account is based on the tool file and operating records from October 19 to 27, checked on October 29, 2026. It describes one person's operation, not a customer project. It does not include any measurement showing that topics with higher scores were read more.
+
+## What does a season score calculate?
+
+It calculates how many times larger last year's values for this month and next month were than the average of the two months before them. The DMS.Labs topic-prep automation runs this with one tool file, season.js, so the same formula is applied every time.
+
+The tool reads monthly values from the Naver DataLab search-trend screen. It needs no search API key; it reads the public screen and its download file, and it pulls monthly values from 24 months before the current month up to the current month. The calculation works like this.
+
+| Item | Calculation | What it is for |
+|---|---|---|
+| Season lift | the larger of last year's value for this month and next month ÷ the average of the two months before that | Did interest rise at this time last year? |
+| Recent momentum | last month's value ÷ the value three months ago (floor of 0.5 in the denominator) | Is interest rising now? |
+| Peak month | the month with the largest value among the 12 months from this time last year | How many months remain until the peak? |
+
+When the denominator is close to zero, the ratio would explode, so the tool sets a floor of 0.5 for the denominator. The grade comes from the season lift alone.
+
+| Grade | Condition | The tool's own description |
+|---|---|---|
+| A | 1.5 or higher | Interest rose sharply from this time last year |
+| B | 1.1 to under 1.5 | Rose slightly |
+| C | under 1.1 | Did not rise, or fell |
+| Too little data | the keyword's largest monthly value is under 1 | Far smaller than the other keywords compared, so the number is unstable |
+| Unconfirmed | no value for this month last year | No data from last year |
+
+To get a feel for the arithmetic, take made-up numbers, not real keyword values. Suppose last year's value for this month was 60, next month 80, and the two months before that were 30 and 20. The larger value, 80, divided by the average of 25 gives 3.2, which is grade A. If the two earlier months averaged 0.2, the denominator would be the floor of 0.5, not 0.2. For keywords with very small values, the ratio is computed under that floor.
+
+![A wooden desk with a paper sheet of twelve empty calendar squares, one circled in pencil](/images/works/season-score-before-trusting/calendar-circle.webp)
+
+## Is a DataLab number a search count?
+
+No. A DataLab value is relative: the busiest point in the requested period is set to 100. The result screen of Naver DataLab Search Trends says the graph sums searches by day, week or month and sets the maximum search volume within the period to 100 to show relative change. The developer documentation likewise says absolute search counts are not provided. The sources are the [Naver DataLab mobile search-trend page](https://m.datalab.naver.com/trendSearch.naver) and the [Naver Developers DataLab overview](https://developers.naver.com/products/service-api/datalab). Both are in Korean.
+
+Two limits follow. A value of 80 cannot be read as 80 searches. And an 80 from one request and an 80 from another may not be the same size, because changing the period or the keyword group can change what 100 refers to.
+
+A single request can compare up to five topic groups, with up to 20 search terms in each. The tool returns an error asking you to split the request if you pass six. The October 22 work record also notes that the tool accepts only five candidates and fails on six. With six or more candidates the request has to be split, and each batch then has its own baseline.
+
+## If the grade is A, can I write about it now?
+
+Not yet. The grade says whether interest rose last year. It does not say whether this year's peak has already passed. The tool calculates the peak month and the number of months until it separately, and if you skip that value, you can pick a topic that is already ending.
+
+The October 19 early-morning topic-prep record has a case. The Japanese hot-spring area Jozankei scored A (1.76), but its peak was 0 months away, meaning the current month was the peak month. The topic selection had a condition of "peak one to three months ahead," so that candidate dropped out of that run. The tool labels the timing too: a peak one to three months ahead is marked as a good time to write now, zero months as the current peak month, and ten or more months remaining means the peak has just passed, which it marks as such.
+
+The Türkiye package-tour topic published on the evening of October 26 can be read the other way. That topic scored B (1.25), and the current month was its peak month. Otaru, Beppu and Japanese hot-spring topics that had scored higher earlier were dropped because they overlapped recent posts. The record does not say how the peak condition was judged in that run, so I will not say the rule was kept or broken. What it does show is that a candidate with grade A can drop out because of overlap, and a grade B can be chosen. The score is a first filter; overlap and peak timing have to be checked separately.
+
+The score and the peak answer different questions. The score asks whether this topic rises at this time every year. The peak asks where in that rise we are now.
+
+## What if the score for the same topic changes from day to day?
+
+Do not compare scores across dates. Read only the order within a single batch. The October 24 morning record lists grade A scores of 2.38 for Otaru, 1.54 for Japanese hot springs and 1.52 for Beppu. The October 26 early-morning record lists 1.98 for Japanese hot-spring travel, 1.92 for Otaru travel and 1.56 for Beppu travel, and it notes that the values differ from the earlier Otaru 2.38 and so should not be compared directly across dates.
+
+The cause was not confirmed. The search terms are written differently in the two records, such as "Otaru" and "Otaru travel," and on October 26 the candidates were scored in two batches of five. The records alone cannot show whether the terms and batches were the same, so I do not claim either as the cause. The order also changed. Otaru was highest on October 24 and Japanese hot springs on October 26. Only Beppu was lowest both times.
+
+So the working rule is this. A score is not written into the ledger as a single fact. It is written with the date checked, the exact search terms and the batch it was scored with. When a value must be compared with an earlier day, the candidates are scored again in the same batch. This follows the same thinking as recording the measurement conditions in [Did AI Answers Cite Our Site?](/en/works/ai-citation-question-layers).
+
+![Five small ceramic cups in a row on a wooden tray, with an identical sixth cup placed apart on the table](/images/works/season-score-before-trusting/five-cups.webp)
+
+## What do you do with a cell when a tool did not run?
+
+Leave it empty and write down that it was blocked. A missing value is not the same as "not applicable."
+
+In the October 27 early-morning prep record, the autocomplete tool file was missing from both of the places it was expected, so that cell was left empty and listed as blocked. On the same day the season tool loaded normally and scored five candidates in one call. One tool being blocked did not cause the result of the other to be thrown away. The same record includes a Threads search that returned no questions. A blank screen did not prove that no questions existed, so it was reported as blocked, not as "no questions."
+
+On October 26, the first call of the autocomplete tool failed when no browser tab was open. After a tab was opened, it worked. That failure was therefore recorded as related to the condition of having an open tab, not as a broken tool. The season tool also opens a new DataLab tab every time it is called, so after a call the original working tab has to be checked again, as the October 22 record notes.
+
+## In what order should this be carried into your own work?
+
+The steps below are a suggestion drawn from these operating records. They are not a procedure verified on a customer project.
+
+1. Write one line saying what the score means, with the formula next to it, for example "ratio against the two preceding months, at this time last year."
+2. Check from the source document whether the number is relative or absolute. If it is relative, do not mix numbers from different requests.
+3. Keep the timing next to the grade. A grade without the number of months to the peak is not used in a decision.
+4. Record the date checked, the exact search terms and the batch composition together with the value.
+5. Do not settle a topic on one tool's score. Overlap with recent posts and whether the claim can be checked against official material are checked by a person or another step.
+6. If a tool did not run, leave the cell empty and write the reason it was blocked. Normal results in the other cells stay in use.
+
+## Can you say topics with higher scores were read more?
+
+Not on this evidence. These records cover how a score was produced and read. Whether topics with higher scores were actually read more, or led to inquiries, is a separate question that needs its own measurement. A tool number such as search interest and a post's results after publication are kept as different evidence, and one being high is not written as the other being high.
+
+This is the same principle as keeping published results and the ledger apart in [Why Publication and Records Are Separate](/en/works/reedo-publication-ledger-gap). For a different angle on choosing which numbers to follow for automation results, see [Measuring AI Adoption](/en/works/ai-performance-measurement), and for choosing what data to give AI first, see [Choosing Data for AI](/en/works/choosing-data-for-ai).
+
+## Where to go next
+
+[DMS.Labs AX transformation design](/works/ax) provides the existing service overview for deciding, task by task, where a person takes over the number a tool produced. That overview is currently presented in Korean. This account covers one topic-prep tool and a few days of October operating records; it does not promise implementation costs, time savings, or effects on inquiries or revenue.
+
+The two images were newly generated to illustrate the topic. They are not photographs of a real operating screen or a customer site.

@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "시즌 점수를 믿기 전에",
+    summary: "네이버 데이터랩 월별 값으로 낸 시즌 점수가 무엇을 재는지, 점수 A를 보고 바로 쓰기 전에 확인할 정점 시기·상대값·빈칸 처리를 실제 운영 기록으로 설명한 DMS.Labs 운영기입니다.",
+    tags: ["Work", "AX 전환", "업무 자동화"],
+    image: "/images/works/season-score-before-trusting/calendar-circle.webp",
+    link: "/works/season-score-before-trusting",
+  },
+  {
     title: "자동화가 한 일, 한 줄로 남기기",
     summary: "자동화가 돌 때마다 시각, 시작한 쪽, 밖으로 한 일, 확인한 사람, 실행 번호를 도구 바깥의 표에 한 줄로 남겨 잘못 나간 결과를 몇 주 뒤에도 찾게 하는 Work 실무 가이드입니다.",
     tags: ["Work", "업무 자동화", "AX 전환"],
