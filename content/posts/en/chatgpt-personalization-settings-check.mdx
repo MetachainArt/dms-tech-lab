@@ -1,0 +1,132 @@
+---
+title: "Before You Switch On Every ChatGPT Setting"
+subtitle: "What memory, writing-style reference and seven extra toggles say they read, according to the settings screen"
+excerpt: "A popular tip says to turn on every ChatGPT personalization setting. This guide reads the settings screen and OpenAI's help pages to see what each item says it reads or sends, then offers questions to ask before switching anything on and a one-switch-at-a-time comparison."
+date: "2026-10-30"
+readTime: "9 min"
+coverImage: "/images/chatgpt-personalization-settings-check-20261030/cover.webp"
+series: "future-arts"
+tags: ["ChatGPT Settings", "Prompt Design", "AI Workflows"]
+translationSourceHash: "efa81bb6125268c29b4aa689f535e4b4c3860e1d2b9a7ff195d7b8452880746f"
+---
+
+Instead of switching on every ChatGPT setting, check what each one reads and turn them on one at a time. The labels on the settings screen already show that the items read different material, and one of them says outright that it does not use personalization. This guide builds a per-setting checklist from those labels and OpenAI's help pages, then adds a prompt for reviewing what ChatGPT remembers and a one-switch-at-a-time comparison.
+
+It draws on a public Instagram post, the Korean-language ChatGPT personalization settings screen, and two OpenAI help pages, all checked on October 30, 2026. The AI agent that wrote this guide opened the settings screen read-only and read the labels only. It changed no switch and did not open any saved memory. I did not test how answers change after switching a setting on or off.
+
+## Does turning on every ChatGPT setting give better answers?
+
+I found no evidence that it does, and the screen describes each setting as reading different material.
+
+The starting point was a [public Instagram post by ai.yeongseon](https://www.instagram.com/p/DfGvOMYNttg/). It tells readers to turn on memory, turn on the writing-style reference, and turn on all seven extra settings. The order in which it walks through the settings is useful. Two details are not carried over here. The post says nine out of ten people miss these settings and use half of ChatGPT's performance; I could not find support for that figure. It also says the writing setting strips out the AI feel, but the screen only says it lets ChatGPT write in your style.
+
+So this guide neither follows nor rebuts "turn everything on." It offers a way to decide. The core idea is to treat a setting as an access permission rather than a feature. When you let ChatGPT read memory or connected apps, it pulls in more material even if your question is short, so the convenience comes with a need to know what gets mixed in.
+
+![Seven toggle switches mounted on a pale wooden panel, some flipped up and some down, each with a blank paper tag. An AI-generated illustration](/images/chatgpt-personalization-settings-check-20261030/cover.webp)
+
+The photo above is an AI-generated illustration, not the real settings screen.
+
+## What does each setting say it reads or sends?
+
+On the Korean-language screen, memory, the writing-style reference and the seven extra settings each name different material.
+
+I summarized the labels on the personalization screen I opened on October 30, 2026. Wording can differ by plan, region, device and date, and OpenAI's help page also says a setting you cannot see may not be available to your account yet.
+
+| Setting | What the label says | Question to ask before switching on |
+| --- | --- | --- |
+| Enable memory | Personalizes your experience based on chats, files and connected apps. The same screen adds that ChatGPT may use memory to tailor the queries it sends to search providers such as Bing. | Do you discuss confidential work or family matters in this account? Do you share the device? |
+| Reference my writing style | Lets ChatGPT draw on chats, library files and connected apps to write in your style. | Do your connected apps contain writing you would not want it to imitate? |
+| Fast answers | May give quick, in-depth answers from general knowledge; the label says these answers are not personalized and do not use memory. | Have you checked whether this kind of answer appears when you ask something that needs your context? |
+| Suggested prompts | May search connected plugins to generate suggestions. | Is it fine for information from connected plugins to shape suggestions? |
+| Reference recordings | Uses all earlier transcripts and notes when answering. | Do any recordings include other people's conversations? |
+| Web search | Lets ChatGPT search the web automatically for answers. | Do you often need current information? |
+| ChatGPT voice | Turns on voice conversations. | Will you actually use voice? |
+| Space search | Lets ChatGPT search files inside Spaces automatically. | Is any file in that Space something you would not want mixed into an answer? |
+| Connector search | Lets ChatGPT search connected sources automatically. | Do the connected sources include personal mail or documents? |
+
+Fast answers stands out. The label itself says these answers do not use memory. If you turned memory on to get answers that fit your situation, those two settings may not point the same way. The screen does not say which questions get a fast answer, and I could not confirm it. The practical check is to ask a question that needs your own context with the setting on and see whether it shows up.
+
+## Which three questions should you ask before switching anything on?
+
+Ask what it reads, where you fix a mistake, and whether you need it for this task.
+
+The first is what it reads. As the table shows, each setting reads a different mix of chats, files, connected apps and recordings. The wider the range, the harder it is to trace what ended up in an answer. OpenAI's help page says sources may appear below a response that used personal context, and also says sources may not show every factor that shaped it.
+
+The second is how you fix it. According to the same help page, deleting a saved memory may not remove the information if the chat where you first shared it still exists, and deleting a chat does not automatically delete a separate saved memory. Turning memory off does not delete past chats. To remove something, check the memory summary or saved memories, the chat where it came up, saved files, and connected apps. Deletion and updates can take time, and the page says logs of deleted saved memories may be kept for up to 30 days for safety and debugging.
+
+The third is whether you need it. If you want the same rule in every conversation, custom instructions are more direct than memory. The help page says they apply immediately to all chats, including existing ones, and that Free and Go plans allow 1,500 characters while Plus, Pro, Enterprise, Business and Education allow 5,000. If you always want a certain tone or format, putting it there lets you see exactly which rule applies. I covered a related technique in [the post on ChatGPT shortcut words](/en/blog/chatgpt-shortcut-words-definition).
+
+![An open wooden card-index drawer with a blank card clipped upright, a pencil and an eraser beside it. An AI-generated illustration](/images/chatgpt-personalization-settings-check-20261030/card-drawer.webp)
+
+This photo is also an AI-generated illustration. It suggests reviewing cards one at a time, not a real memory screen.
+
+## If you already switched things on, how do you review what it remembers?
+
+You can ask ChatGPT what it remembers, so run the prompt below once and fix only the items that need it in settings.
+
+The help page says you can ask ChatGPT directly what it remembers. The prompt below is an example composed for this guide and I did not run it. Running it would surface personal memories from the account, so I did not run it or publish any result.
+
+```
+List what you currently remember about me, item by item.
+- Tag each item with one or more of [work], [personal], [sensitive], [may be outdated].
+- Say whether each item comes from a saved memory, was inferred from earlier chats, or is an uncertain guess.
+- At the end, pick up to three items I should correct or delete and give one line of reasoning for each.
+- Do not save or change anything in this conversation.
+```
+
+To use it, send the prompt in a new chat and read the [sensitive] and [may be outdated] items first. If something is wrong, say "this is wrong, do not use it again" in the same chat, or edit or delete it from the memory screen in settings. According to the help page, choosing "don't mention this again" only reduces future references and does not delete the original source, so full removal means cleaning up the sources listed earlier.
+
+There is a limit. I did not confirm that ChatGPT can reliably tell a saved memory from something it inferred in earlier chats, as the prompt asks. Even if the answer looks convincing, compare it with the memory screen once.
+
+## How do you compare the effect one switch at a time?
+
+Fix three questions, change one switch, ask again in a new chat, and compare on three criteria.
+
+This is also a procedure composed for this guide and not something I ran.
+
+1. Pick three questions you ask often, of different kinds: "draft a reply to a client," "organize my tasks for this week," "explain an unfamiliar term."
+2. With settings unchanged, ask each question in its own new chat and save the answers.
+3. Change exactly one switch. Changing two at once hides which one caused a difference.
+4. Ask the same three questions again in new chats and compare.
+5. Compare on three criteria: whether your information was used correctly, whether information you would rather not see got mixed in, and whether claims that need support came with a source.
+6. If a switch fails the criteria, turn it back and move to the next one.
+
+One caution: a difference may come from the ordinary variation in ChatGPT answers rather than the setting. Asking the same question twice under identical settings first shows how much answers wobble, which makes a real difference easier to read. Three questions cannot support a statistical conclusion, so treat the result as a way to judge fit for your own work.
+
+![Three identical blank question cards in a row with a small toggle switch between the first and second card. An AI-generated illustration](/images/chatgpt-personalization-settings-check-20261030/question-cards.webp)
+
+## What did this guide not confirm?
+
+It only read screen labels and help pages; I did not test how answers change after switching settings.
+
+- The labels come from one account's Korean-language screen on October 30, 2026. Item names and descriptions may differ by plan, region and app version.
+- Switch states differ by account, and this guide does not say which settings are on by default.
+- I did not check how much memory and personalization actually change answers, when Fast answers is used, or how much the writing-style reference changes the feel of a text.
+- The review prompt and the comparison procedure are composed examples and were not run.
+- The figures and wording of the original Instagram post were not verified and are not repeated here.
+
+## Frequently asked questions
+
+### Does memory save everything I say?
+
+No. OpenAI's help page says memory does not retain every detail of every conversation, and that ChatGPT decides which information is relevant to a response.
+
+### Does turning memory off delete my past chats?
+
+No. The help page says turning memory off does not delete past chats, and that turning it on later may create new remembered information from chats that remain in your history.
+
+### Should I never turn everything on?
+
+That is not the claim. The point is to know what each setting reads before turning it on. Some settings read personal material such as connected apps or recordings. Leaving unneeded ones off may not affect basic use, but I did not test that.
+
+## Sources and scope
+
+- Original public post: [Instagram post by ai.yeongseon](https://www.instagram.com/p/DfGvOMYNttg/). Only the topic of three settings to switch on was used; wording, order and figures were not copied. Checked October 30, 2026.
+- ChatGPT personalization settings screen: Korean-language display, opened read-only on October 30, 2026. No memory was opened and no setting was changed.
+- OpenAI help page [Memory in ChatGPT](https://help.openai.com/en/articles/8590148-memory-faq): the settings path, what memory retains, the limits of sources, deletion steps and retention. Checked October 30, 2026.
+- OpenAI help page [ChatGPT Custom Instructions](https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions): immediate application and character limits. Checked October 30, 2026.
+- Images in this guide: examples made with Aside's image generation tool, not real settings screens.
+
+## What to read next
+
+To turn settings and prompts into a team workflow, DMS.Labs' [generative AI training](/education/gen-ai) covers how to write requests and review results. For personalization settings too, checking what gets read comes before switching anything on.
