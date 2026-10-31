@@ -1,3 +1,4 @@
+import { draftFirstEssayEn } from "@/lib/ideas-essay-draft";
 import { approvalPromptsEssayEn } from "@/lib/ideas-essay-approval";
 import { measureGoalEssayEn } from "@/lib/ideas-essay-measure";
 import { explainFirstEssayEn } from "@/lib/ideas-essay-explain";
@@ -29,10 +30,11 @@ export default function EnglishIdeasPage() {
         eyebrow="Ideas / Reedo" lead="Images &" accent="words." variant="insights"
         title="Ideas"
         description="Notes and essays written alongside the work. Earlier pieces are still available in Korean, and new ones are being added in English."
-        note={<><span>10 English editions</span><span>A space where images and words meet</span></>}
+        note={<><span>11 English editions</span><span>A space where images and words meet</span></>}
       >
         <Link href="/gallery">Earlier pieces in Korean ↗</Link>
       </FiberPageHeader>
+      <div className={styles.essay}><EssayPiece essay={draftFirstEssayEn} locale="en" /></div>
       <div className={styles.essay}><EssayPiece essay={approvalPromptsEssayEn} locale="en" /></div>
         <div className={styles.essay}><EssayPiece essay={measureGoalEssayEn} locale="en" /></div>
       <div className={styles.essay}><EssayPiece essay={explainFirstEssayEn} locale="en" /></div>
