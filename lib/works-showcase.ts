@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "AI 자동화, 월 비용 상한 정하기",
+    summary: "AI 자동화에 월 비용 상한을 걸 때, 알려 주기만 하는 한도와 요청을 막는 한도를 나눠 정하고, 한도에 걸렸을 때 자동화가 멈추는 순서를 한 장의 카드에 적는 Work 실무 가이드입니다.",
+    tags: ["Work", "업무 자동화", "AX 전환"],
+    image: "/images/works/ai-automation-spend-cap/monthly-calendar-box.webp",
+    link: "/works/ai-automation-spend-cap",
+  },
+  {
     title: "시즌 점수를 믿기 전에",
     summary: "네이버 데이터랩 월별 값으로 낸 시즌 점수가 무엇을 재는지, 점수 A를 보고 바로 쓰기 전에 확인할 정점 시기·상대값·빈칸 처리를 실제 운영 기록으로 설명한 DMS.Labs 운영기입니다.",
     tags: ["Work", "AX 전환", "업무 자동화"],

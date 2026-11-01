@@ -1,0 +1,115 @@
+---
+title: "Setting a Monthly Spend Cap for AI Automations"
+excerpt: "A practical guide to capping what an AI automation can spend each month. It separates the limit that only warns from the limit that blocks requests, shows what the automation receives when a limit is hit, and ends with a one-card record."
+date: "2026-11-01"
+readTime: "11 min"
+kind: "guide"
+tags: ["Work", "Workplace automation", "AX transformation"]
+---
+
+An AI automation needs two monthly limits, set separately: an alert that only tells you the spend has passed a line, and a block that makes the provider refuse requests. An automation with only an alert keeps running while it is doing the wrong thing. An automation with only a block can stop and sit idle for days before anyone notices. This guide covers how the two differ, what the automation receives when a block is reached, and a sequence for choosing the amounts.
+
+This is a practical guide to running workplace automation, not a report on a customer engagement or a measured result. It reflects the public OpenAI and Anthropic documentation as of November 1, 2026. Limit amounts, error names and settings screens can change. The one-card record and the fictional travel-advice firm below are DMS.Labs design proposals. They do not replace your organisation's budget rules or contracts. This guide does not cover prices; check per-model prices on the official price list of the provider you use.
+
+## If you set only an alert, does a runaway automation stop?
+
+No. OpenAI's documentation says a spend alert sends a notification and API traffic continues. The control that stops requests is the hard spend limit: you set a monthly amount for the organization or a project, then turn on "Enforce a hard limit". Creating a project spend limit also creates an alert at 100% of that limit by default, and you add alerts at other thresholds yourself.
+
+An alert is useful because it buys a person time to look. If it lands in an inbox nobody reads over the weekend, it saves nothing. Write down who receives the alert and who covers for them on days off, the same way you would on an [automation owner card](/en/works/automation-owner-card).
+
+## What does the automation receive when a block is reached?
+
+It depends on the provider and on where the limit was set. This table collects what the two companies' documentation says.
+
+| Limit | What happens when it is reached | What the automation receives | Recovery described in the docs |
+| --- | --- | --- | --- |
+| OpenAI spend alert | A notification goes out; requests continue | No error | Not applicable |
+| OpenAI organization hard limit | Requests for the whole organization are refused | HTTP 429, code organization_spend_limit_exceeded | Raise or remove the limit; otherwise it resets with the next monthly cycle |
+| OpenAI project hard limit | Only requests billed to that project are refused | HTTP 429, code project_spend_limit_exceeded | Same as above |
+| Anthropic monthly cap for your usage tier | API usage pauses until 00:00 UTC on the first of the next month | HTTP 429, error type rate_limit_error, code enforced_spend_limit_reached, no retry-after header | Request a higher limit |
+| A limit you set yourself in Anthropic | Requests are refused | HTTP 400, error type invalid_request_error | Raise or remove the limit |
+| Rate limit (requests or tokens per minute) | Requests are refused briefly | HTTP 429; if a retry-after header is present, wait that many seconds | Resend after the stated time |
+
+Anthropic's documentation lists the monthly caps by tier as $500 for Start, $1,000 for Build and $200,000 for Scale, and says the Custom tier has no monthly cap. Those are the values on the page on November 1, 2026. It also notes that the Claude Code workspace is checked separately and can return a 429 that carries a retry-after header.
+
+The 429 row deserves a second look. The same status number can mean "wait a few seconds" or "nothing works until the first of next month or until a person acts". An automation that reads only the number cannot tell them apart. It has to read the error code too.
+
+## Is it safe to retry after a limit error?
+
+A request that hit a monthly limit will not go through if you send it again. Anthropic's documentation says the spend-cap 429 has no retry-after header and that retries, including the SDK's automatic ones, fail until access resumes. OpenAI's help article says the same kind of error is not cleared by retrying; the credits or the limit have to be fixed first.
+
+If your automation tool defaults to "on failure, try again in a moment", that default can become a problem here. We did not check the default retry settings of any specific tool, so open the one you use and look.
+
+DMS.Labs suggests splitting errors into two groups: those that clear by waiting (rate limits) and those a person has to clear (spend limits, credits). On the second kind, the automation leaves the remaining items alone and stops. It writes how far it got into the [run record](/en/works/automation-run-record) as "partly completed" and notifies the owner. When someone raises the limit and the run continues, check what already went out first, as described in the [restart guide](/en/works/ai-automation-safe-retry).
+
+## How do you choose the amount?
+
+Do not try to guess the exact figure. Agree first on a line: "this automation may spend this much in a month without it being a mistake". The sequence below is a DMS.Labs proposal.
+
+1. Look at real usage from a trial period. Both OpenAI and Anthropic have a usage page in their admin consoles. A response from Anthropic's Messages API carries the input and output tokens used in a usage field, so you can log them on every run and see what one run costs.
+2. Count how many model calls one run makes. Anthropic's documentation explains that the Messages API is stateless, so every call sends the full conversation history. DMS.Labs reads that to mean a multi-step automation sends more input with each step it adds. The documentation itself goes only as far as saying the API keeps no state.
+3. Decide the loss you can absorb. Treat that figure as the upper end of the block.
+4. Set the block below that figure. OpenAI's documentation says enforcement is not instantaneous and recorded spend can slightly exceed the limit. Put one or two alerts under the block, for example at half and at 80%. Those percentages are an illustration, not a standard.
+5. In the first week of each month, read usage and limit together and write one line on why you raised or lowered either.
+
+## Where should the limit sit so other automations don't stop with it?
+
+Give each automation its own place where costs are billed, and one automation hitting its limit leaves the rest running. In OpenAI, an organization limit applies to traffic across every project, and a project limit applies only to traffic billed to that project. In Anthropic you can set spend and rate limits per workspace, and the organization-wide limits always apply no matter how the workspace limits add up. The documentation also says you cannot set spend limits on the default workspace.
+
+For an office-sized setup, DMS.Labs proposes this: assign one project or workspace to each automation and give it the same name as on the owner card. If several automations share one key, you will struggle to tell which one caused the problem on the day a limit is hit. We have not measured how much this setup reduces the management burden.
+
+![A wooden desk by a window with a one-page monthly calendar, a pencil and a small brass lockbox on it.](/images/works/ai-automation-spend-cap/monthly-calendar-box.webp)
+
+## What does this look like in a fictional travel-advice firm?
+
+Picture a fictional travel-advice firm of about eight people. This is not a real customer or a record from a real site. It runs one automation: it reads enquiry emails, sorts them, and drafts a reply for a staff member. Assume 40 enquiries a day and three model calls to handle each one. On a normal day that is 120 calls.
+
+Now suppose a misconfiguration makes the automation retry every failed enquiry once a minute. Forty enquiries, 60 minutes, 24 hours: 57,600 calls a day, 480 times the normal load. With only an alert, the alert arrives and the calls continue until someone reads it. With a block in place, requests start being refused once the limit is reached. But if that automation shared a project with the firm's other automations, those stop too until the limit is lifted.
+
+So the firm gives the enquiry-sorting automation its own project, sets alerts at half and at 80%, and puts the block below the amount it can afford to lose. When the limit is reached, the automation leaves the remaining enquiries alone, stops and tells its owner. The arithmetic here is an assumption. It does not use real call prices, a real tool's retry settings, or the cost of any single call.
+
+## What goes on the cap card?
+
+Write one line per automation with the columns below. Keep it next to the owner card and the run record so the three connect. These columns are a DMS.Labs proposal.
+
+| Column | What to write | What goes wrong if it is empty |
+| --- | --- | --- |
+| Automation name | Exactly as on its owner card | On the day a limit is hit, you have to hunt for which automation it was |
+| Where costs are billed | The organization, project or workspace name. Never the key value | You don't know where the limit was set |
+| Alert points | At what share of the monthly limit it alerts | The block arrives without a single alert before it |
+| Block amount and whether it is on | The amount is whatever the organisation decides. Whether the hard limit is enabled | You believe you only have an alert and can't stop a runaway |
+| What the automation does when blocked | Stop on the remaining items, write it to the run record, notify | It keeps resending the same request |
+| Who gets the alert, and who covers | Names and how to reach them | Nobody knows on a holiday |
+| Who can raise the limit | Name, and what to check first | Someone lifts the limit in a hurry |
+
+Before raising a limit, check one thing in the run record: is the extra usage normal growth or a repeating call? If it is a repeating call, raising the limit only makes the problem bigger.
+
+![A grey electrical panel in a small office corridor with a row of breaker switches carrying blank paper tags.](/images/works/ai-automation-spend-cap/breaker-panel.webp)
+
+## Frequently asked questions
+
+### Do subscription app plans have the same cap?
+
+This guide is about API usage. We did not check the usage limits of the ChatGPT or Claude apps. They differ by plan and account, so read the help pages of the service you use.
+
+### Does traffic resume as soon as I raise the limit?
+
+OpenAI's documentation says traffic resumes after the raised or removed limit takes effect. Anthropic's says that raising or removing the limit restores access sooner. We did not check how long the change takes to apply. Before you resume, look at how far the stopped run got.
+
+### Won't a low limit stop work too often?
+
+It will. OpenAI's documentation itself warns that a hard limit can interrupt production traffic. Decide per automation, by asking whether a person could do the work by hand while it is stopped. The closer the output is to a customer, the sooner you should decide who takes over. That rule is a DMS.Labs proposal.
+
+## What to read next
+
+[DMS.Labs workplace automation](/automation) covers how we define the work and design the automation. That page is provided in Korean. If you are preparing a consultation, open last month's usage screen for one automation you run and write down how many calls a single run makes; it makes the current state easier to describe. For conditions, see the [contact page](/en/contact).
+
+For how to decide how much to hand an automation, see [Giving AI automation permission in three steps](/en/works/automation-permission-ladder).
+
+## Sources
+
+- [OpenAI, Spend limits](https://developers.openai.com/api/docs/guides/spend-limits)
+- [OpenAI Help Center, Troubleshooting API usage and spend limits](https://help.openai.com/en/articles/6614457-troubleshooting-api-usage-and-spend-limits)
+- [OpenAI Help Center, Managing projects in the API platform](https://help.openai.com/en/articles/9186755-managing-projects-in-the-api-platform)
+- [Anthropic, Rate limits](https://docs.anthropic.com/en/api/rate-limits)
+- [Anthropic, Working with the Messages API](https://docs.anthropic.com/en/docs/build-with-claude/working-with-messages)
