@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "AI 결과 검수자 정하기",
+    summary: "AI가 만든 결과물을 사람이 확인하게 할 때 이름만 정해서는 부족한 이유와, 검수자에게 건넬 기준·원본·시간·반려 권한을 한 장의 카드에 적는 Work 실무 가이드입니다.",
+    tags: ["Work", "업무 자동화", "AX 전환"],
+    image: "/images/works/ai-output-reviewer-card/paper-and-red-pencil.webp",
+    link: "/works/ai-output-reviewer-card",
+  },
+  {
     title: "AI 자동화, 월 비용 상한 정하기",
     summary: "AI 자동화에 월 비용 상한을 걸 때, 알려 주기만 하는 한도와 요청을 막는 한도를 나눠 정하고, 한도에 걸렸을 때 자동화가 멈추는 순서를 한 장의 카드에 적는 Work 실무 가이드입니다.",
     tags: ["Work", "업무 자동화", "AX 전환"],

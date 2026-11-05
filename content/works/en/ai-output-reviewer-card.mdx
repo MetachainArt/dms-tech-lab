@@ -1,0 +1,121 @@
+---
+title: "Naming a Reviewer for AI Output"
+excerpt: "A practical guide to having a person check what an AI produced. It explains why naming a reviewer is not enough, and puts the criteria, source files, time and authority to reject that the reviewer needs on a single card."
+date: "2026-11-05"
+readTime: "11 min"
+kind: "guide"
+tags: ["Work", "Workplace automation", "AX transformation"]
+---
+
+A name on a form does not make someone a working reviewer of AI output. The reviewer also needs to know what to check, which source to compare against, how many items a day to expect, and when to send something back. Research on automation bias says the pull toward trusting automated output does not disappear with training or instructions alone, so these things have to be built into the work itself. This guide goes through that research and proposes a one-page review card for a working office.
+
+This is a practical guide to running workplace automation, not a report on a customer engagement or a measured result. It rests on papers and the EU AI Act Article 14 commentary page, all read on November 5, 2026. Most of the research cited concerns government decision algorithms and automated systems; none of it tests the review of AI-written document drafts directly. The review card, the risk table and the fictional training company below are DMS.Labs design proposals and assumptions. They do not replace an organisation's internal control rules or legal advice.
+
+## Is naming one reviewer enough?
+
+No. Having a reviewer and having a review that actually happens are two separate things. A person who looks at the end of the line gives comfort, but if that person has no criteria, no source file and no time, the job turns into pressing "approve" on whatever appears on screen.
+
+In a 2022 paper, Ben Green examined 41 policies that require human oversight of government algorithms (the author's preprint says 40). He found that these policies rarely point to evidence that people can do the oversight. He also argues that a rule satisfied by any nominal human involvement can encourage rubber stamping, and the paper uses Article 22 of the GDPR as an example.
+
+## What does research say about human review?
+
+The table collects what the sources say. The right-hand column is DMS.Labs' reading.
+
+| Source | What it reports | DMS.Labs' reading |
+| --- | --- | --- |
+| Parasuraman and Manzey, 2010, Human Factors (abstract read) | Automation bias occurs in both naive and expert participants, cannot be prevented by training or instructions, and affects teams as well as individuals. It produces omission errors, where the person misses something because the automation gave no alert, and commission errors, where the person follows wrong advice | Telling a reviewer to be careful is weak on its own. The structure has to carry the load |
+| Green, 2022 (preprint full text read) | People find it hard to judge how accurate an algorithmic prediction is, so they sometimes discard good advice and sometimes follow bad advice | Do not assume a reviewer can tell right from wrong by instinct |
+| Studies summarised in the same paper | Explanations and transparency did not improve people's ability to oversee the system, and some studies found they raised trust in wrong recommendations | When an AI attaches its reasoning, do not trust the reasoning. Open the source file |
+| Fussey and Murray, 2020, as described by Green | London police judged live facial-recognition matches to be correct at three times the system's actual accuracy | An example of people rating output higher than it deserved even in a setting built for human checking |
+
+One thing is missing. We did not find a study that tests whether human review of AI-written document drafts shows bias of the same size. These results show a possibility. They are not figures measured in an office.
+
+## What does the EU AI Act ask of the reviewer?
+
+Article 14 covers human oversight of high-risk AI systems. Paragraph 4 says the people assigned to oversight should be able to understand the system's capacities and limitations and monitor it for anomalies, and should remain aware of the tendency to rely too much on its output (automation bias). They should be able to interpret the output correctly, to decide in a given situation not to use the system or to disregard, override or reverse its output, and to interrupt the system with a "stop" button or similar. Paragraph 5 says that for some systems under point 1(a) of Annex III, no action may be taken on the system's identification unless two natural persons with the necessary competence, training and authority have separately verified it. The commentary page shows the application date for Annex III high-risk systems as December 2, 2027.
+
+This guide does not decide which kinds of work count as high-risk, and it does not say the article applies directly to ordinary office drafting with AI. Still, the items the law asks of an overseer are useful when deciding the fields on a review card: understanding, awareness of bias, authority to override, a way to stop, and two people when the risk is high.
+
+The law asks the overseer to remain aware of bias, while the research above says instructions alone rarely prevent it. So the card turns awareness into fields instead of hoping for it. That link is DMS.Labs' interpretation.
+
+## Does every output need a reviewer?
+
+No. A person's attention is limited, and if every output gets a review, most of them are likely to become glances. We found no study testing that suspicion. The table below is a DMS.Labs proposal to put the time where the risk is greatest.
+
+| Kind of output | Examples | Proposed review |
+| --- | --- | --- |
+| Leaves the organisation | Customer replies, quotes, announcements | One reviewer checks before sending. Amounts, dates and promises are placed next to the source and compared |
+| Hard to undo | Payments, deletions, edits to customer records | Two people check, or the automation pauses before acting and waits for a person's approval |
+| Internal reference | Meeting summaries, draft notes | The person who reads it owns it at that moment. A few items are pulled as samples at regular intervals |
+
+![A wooden desk by a window with one printed page, a red pencil and an open document folder side by side.](/images/works/ai-output-reviewer-card/paper-and-red-pencil.webp)
+
+## What goes on the review card?
+
+Write one line for each output that needs review. Keep it beside the [owner card](/en/works/automation-owner-card) and the [run record](/en/works/automation-run-record) so the three connect. The fields are a DMS.Labs proposal.
+
+| Field | What to write | What goes wrong if it is empty |
+| --- | --- | --- |
+| Output name | The automation name from its owner card, plus the kind of output | Each person has a different idea of what is being reviewed |
+| Reviewer and cover | Two names. If possible, someone other than the person who asked the AI to do the work | On a day off, output goes out unchecked |
+| What to check | Three items or fewer: numbers, dates, promises, banned wording | Reviewers use different standards, and the same output passes on some days |
+| Source to compare | The price list, schedule or policy document to open | The reviewer reads the AI's sentences and feels they are right |
+| Items and time per day | How many items, and how many minutes each | A pile builds up and gets skimmed |
+| Authority to reject, and how | Who can reject, where the reason is recorded, and a sentence saying rejecting carries no penalty | The reviewer is uneasy but finds it hard to say so |
+| Review of the reject log | One person who reads the count and reasons together once a month | Nobody can tell whether the review is working |
+| Who set the card | The name of the person who decided the criteria and the volume | When something is missed, only the reviewer is left holding it |
+
+"Someone other than the requester" in the second field comes from a DMS.Labs assumption: output you asked for tends to read the way you expected. We found no source confirming that. If staffing makes separation impossible, the same person can do both, but the source-comparison field should be filled in more strictly.
+
+## What does it look like in a fictional training company?
+
+Picture a fictional training company of about six people. It is not a real customer or a record from a real site. An AI drafts replies to course enquiries, and a person checks each one before it is sent. Assume 40 drafts a week, and two reviewers who alternate days across the five weekdays. That is eight drafts a day.
+
+If each check can take three minutes, that is 24 minutes a day. First see whether that time really exists between other tasks. If it does not, the card cannot be filled in, so narrow the review to replies that go straight to customers, or reduce the daily count. If there is no time and no way to add people, DMS.Labs proposes reducing the volume under review.
+
+The criteria are three: the start date, the course fee shown, and the refund-policy wording. Before reading the AI's sentences, the reviewer opens the fee table and the schedule. They find the three items in the draft, compare them with the tables, and write the item name in the reject reason if they differ.
+
+Suppose a month later the reject log has no entries. The drafts may simply be good, or the review may have become a formality. The log alone cannot tell the two apart. That is why the next section has further checks.
+
+## How do you know the reviewer is really looking?
+
+Reading the reject log is the first step. Green says people's use of a system should keep being checked after it is adopted, and gives tracking the cases where people overrode an algorithm's decision as an example (his stated purpose was checking racial disparities). This guide moves that method to office scale: one person reads the count and the reasons once a month.
+
+An empty log does not by itself show that the review is poor. As a second check, DMS.Labs proposes mixing in a wrong draft now and then. For example, slip in one draft a week with the start date off by a day, and see whether the reviewer catches it. A catch is a sign the review is running. A miss means the time or criteria fields should be fixed first. It is not meant to blame the reviewer. We have not measured how well this works.
+
+The third check is time per item. If days keep ending far below the planned three minutes, that can be a sign of skimming. The point of timing is to see whether the volume on the card is right, not to watch people.
+
+## Who is responsible when the reviewer misses something?
+
+Not the reviewer alone. Green argues that policies leaning on human oversight shift responsibility to frontline operators. Errors, he says, usually come from system design and the decision to adopt, over which operators have little say. He holds that if a system was introduced without evidence that staff could oversee it, the blame should not be pushed onto them, and that the operator's own accountability should be weighed against whether the expectation was reasonable. That comes from his work on government algorithms.
+
+DMS.Labs sees the same pattern arising in offices, which is why the last field on the card names the person who set it. When a reviewer misses something, ask first whether the criteria, volume and time were at a level where review was possible. The card should also say in writing that rejecting carries no penalty. If speaking up is hard, an empty reject log has no readable cause.
+
+![A small office table with a few sheets and a stamp, and one sheet with a still-empty confirmation box beside the stamp.](/images/works/ai-output-reviewer-card/stamp-and-blank-box.webp)
+
+## Frequently asked questions
+
+### Should the reviewer be someone other than the person who asked the AI?
+
+We did not find a standard that requires it for ordinary work. The two-person check in Article 14(5) of the EU AI Act applies only to some systems under point 1(a) of Annex III. DMS.Labs suggests separating the roles where possible, for the reason given above, which is an assumption.
+
+### If the AI attaches its reasoning, is review easier?
+
+The studies Green summarises include a finding that explanations did not improve people's ability to oversee a system, and some that found they raised trust in wrong recommendations. Treat the reasoning as a pointer only, and check amounts and dates in the source file yourself.
+
+### If we have a reviewer, are we compliant?
+
+This guide is not legal advice, so we cannot say that. Green does argue that a rule satisfied by merely nominal human involvement can encourage rubber stamping. If a rule applies to your work, read the provision and take professional advice.
+
+## What to read next
+
+[DMS.Labs workplace automation](/automation) covers how we define the work and design the automation. That page is provided in Korean. If you are preparing a consultation, pick one task where AI output leaves your organisation and write one line on who checks it now and against which file; it makes the current state easier to describe. For conditions, see the [contact page](/en/contact).
+
+For a way to test your criteria against sample material, see [Acceptance Tests for an AI Skill](/en/works/ai-skill-acceptance-tests).
+
+## Sources
+
+- [Ben Green, The flaws of policies requiring human oversight of government algorithms, Computer Law & Security Review (2022)](https://doi.org/10.1016/j.clsr.2022.105681) (the published version was read as an abstract only; the author's preprint was read in full)
+- [Ben Green, preprint of the same paper (arXiv 2109.05067)](https://arxiv.org/abs/2109.05067)
+- [Parasuraman and Manzey, Complacency and bias in human use of automation: an attentional integration, Human Factors (2010)](https://doi.org/10.1177/0018720810376055) (abstract only)
+- [EU AI Act, Article 14: Human Oversight](https://artificialintelligenceact.eu/article/14/)
