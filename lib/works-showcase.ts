@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "게시 시각, 어림하지 않기",
+    summary: "정해진 시각에 글을 올리는 자동화가 목표보다 20분 41초 일찍 게시한 일을 계기로, 시스템 시계로 계산하는 시각 검사를 넣고 그 뒤 공개 시각을 대조해 온 기록을 정리한 Work 실무 가이드입니다.",
+    tags: ["Work", "업무 자동화", "AX 전환"],
+    image: "/images/works/scheduled-post-time-check/desk-clock-and-notepad.webp",
+    link: "/works/scheduled-post-time-check",
+  },
+  {
     title: "AI 결과 검수자 정하기",
     summary: "AI가 만든 결과물을 사람이 확인하게 할 때 이름만 정해서는 부족한 이유와, 검수자에게 건넬 기준·원본·시간·반려 권한을 한 장의 카드에 적는 Work 실무 가이드입니다.",
     tags: ["Work", "업무 자동화", "AX 전환"],

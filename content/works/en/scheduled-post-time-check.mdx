@@ -1,0 +1,113 @@
+---
+title: "Don't Guess the Posting Time"
+excerpt: "An automated Threads post went out 20 minutes and 41 seconds before its target. This note shows the clock check that followed, which calculates from the system clock, and the public timestamps recorded since."
+date: "2026-11-05"
+readTime: "10 min"
+kind: "guide"
+tags: ["Work", "Work automation", "AX transformation"]
+---
+
+To keep a scheduled automation from posting early, do not let the AI use the time it believes it is. Calculate from the system clock and check the result right before the post goes out. Reedo's scheduled posting job does that, and after every post it reads the public timestamp and compares it with the target. Even so, one post went out one second early, and that record is included below.
+
+Checked on November 5, 2026, this account is based on the work records and the instruction file. It describes a single Threads account that shares household information, not a customer project. It does not include any measurement showing that posting on time led to more views or inquiries.
+
+## What happened?
+
+On the evening of October 24, a post due at 20:00 went out at 19:39:19, which is 20 minutes and 41 seconds early.
+
+The job has two rules. Each post has a target time, and it must leave at least two and a half hours after the previous lead post on the same account. The previous lead post that day had gone out at 17:09:48, so the gap was 2 hours 29 minutes 31 seconds, 29 seconds short. Both rules were broken at once.
+
+The day's work record gave the cause this way: the agent misjudged the real time as being in the 20:00 hour, and its estimate of elapsed time during the task had drifted about 35 minutes from the actual clock. The problem was not a broken clock. The agent had counted time instead of reading it. The published post was neither deleted nor reposted; only the deviation was written into the ledger. The same evening a clock-check instruction file was created, with a creation time of 19:42:50.
+
+![A small desk clock beside an empty notepad and a pencil on a wooden desk by a window](/images/works/scheduled-post-time-check/desk-clock-and-notepad.webp)
+
+## What does the clock check calculate?
+
+It takes two times, works out the earliest moment a post may go out, and reports only whether now is before or after that moment. The inputs are the target time and the public time of the previous lead post. The output is PASS or WAIT.
+
+| Input or output | What it is |
+|---|---|
+| Target time | Fixed from the original schedule date and slot. A 01:30 run targets 02:00, a 10:30 run targets 11:00, and a 19:30 run targets 20:00. |
+| Previous lead post time | The date and time read from the public page, including seconds and a time zone. |
+| Earliest posting time | The later of the target time and the previous post's time plus two and a half hours. |
+| Result | PASS if now is at or after that moment. Otherwise WAIT, with the time remaining. |
+
+The current time comes only from the system clock, Date.now(). The function has an optional argument for passing in a test time, and the instruction file says never to use it in live runs, because a PASS produced in a test is not permission to post. If the previous post's time is malformed or lies in the future, the function stops with an error instead of returning PASS or WAIT. It will not continue calculating from a value it cannot trust.
+
+On WAIT, the post button is not pressed. The agent waits out the remaining time, rechecks the account and the latest lead post, and calculates again. It also recalculates if more than 30 seconds have passed since the calculation or if the latest post has changed. A PASS does not replace the separate checks of the account, duplicates, the image and the facts.
+
+The instruction file is candid about its own limit. The check is not a lock physically wired to the publishing tool. It is a step the person or agent publishing must run and respect. Nothing in code blocks the button. That is one reason the records below matter: they test, post by post, whether the step was actually followed.
+
+## Where does the previous post's time come from?
+
+It is read from the public page down to the second. "Three hours ago" on screen, a clock visible in a photo, and a model's sense of time are not accepted as evidence. If the time cannot be confirmed, the instruction file says not to post until it is. That is step 2 of the file.
+
+If the previous post is picked wrongly, the gap calculation goes wrong too. A record from November 4 notes that the profile list did not always show every recent post from the same account. The post at the top of the list is therefore not assumed to be the previous lead post. The time of the post that was actually confirmed is what gets passed in. It is the same thinking as writing the run time and result in a table outside the tool, as described in [One Line for Every Automation Run](/en/works/automation-run-record).
+
+## What were the public times after the check was added?
+
+These are the target and actual public times for some of the runs in the records. All dates are in 2026, and each time is the value read from the public timestamp.
+
+| Date | Target | Public time | Note |
+|---|---|---|---|
+| October 24 | 20:00 | 19:39:19 | The incident, before the check existed |
+| October 25 | 11:00 | 11:00:02 | |
+| October 25 | 20:00 | 20:00:05 | |
+| October 26 | 02:00 | 02:00:05 | |
+| October 26 | 11:00 | 11:00:02 | |
+| November 1 | 11:00 | 11:00:10 | 10 seconds late |
+| November 1 | 20:00 | 20:00:02 | |
+| November 3 | 02:00 | 02:00:01 | |
+| November 3 | 11:00 | 11:00:01 | |
+| November 3 | 20:00 | 20:00:01 | |
+| November 4 | 20:00 | 19:59:59 | 1 second early |
+| November 5 | 02:00 | 02:00:10 | |
+| November 5 | 11:00 | 11:00:05 | |
+
+After the incident, most recorded runs went out within one to ten seconds after the target. A gap of twenty minutes like the one on October 24 does not appear in this table. Several record entries describe the "first full application" of the check in different ways, so this note does not count applications or claim an effect from the count. Only the public time on each date is a value to rely on.
+
+Sometimes the gap rule, not the target, decides how long to wait. The 13:00 run on November 3 was already past its 13:00 target, but the previous post had gone out at 11:00:01. The run therefore waited until 13:30:01, when two and a half hours had passed, and posted at 13:30:10. That is the "take the later of the two" calculation being used on a real post.
+
+## What about the post that went out one second early?
+
+In the November 4 run for the 20:00 target, the check returned PASS and the button was pressed right afterwards, yet the public time was 19:59:59. On the working computer's clock it was just after 20:00:00, but the server recorded a time one second before the target.
+
+The record says the computer's clock seemed to run slightly ahead of the server's, and it did not settle the cause. This note therefore treats it as an observation, not a confirmed fact. The response was to wait until two seconds past the target on the computer's clock, even after PASS. In the 02:00 run on November 5, the agent waited until 02:00:01 on the computer's clock, received PASS at 02:00:06, pressed the button, and the public time was 02:00:10. That two-second rule worked in one run. It is not yet in the instruction file, last changed on October 24; it exists only in the run records.
+
+The same day's record holds one more trap. While waiting for the target, a repeating check ran for more than 60 seconds. The work tool reported a timeout, but the script inside the page did not stop. It kept running and carried out the click. A tool that reports failure may still have caused the post. That is why, after an error, the public page has to be checked before anything is retried, which connects to the point in [When to Restart an AI Automation](/en/works/ai-automation-safe-retry) about checking external results before running again.
+
+![Two small table clocks of different designs side by side on a window shelf, with their second hands in slightly different positions](/images/works/scheduled-post-time-check/two-clocks-second-hand.webp)
+
+## What do you do with the compose window while waiting?
+
+Finish the post ahead of the target and leave the compose window open until the check returns PASS. This information-post run starts 30 minutes before the target, so there is time to prepare.
+
+In the 02:00 run on November 3, the compose window was completed at 01:35 and stayed intact until 02:00. In the 13:00 run the same day, it was completed at 13:04 and left for about 25 minutes, and it also stayed intact. In the 11:00 run on October 25, the window was occupied for under 8 minutes.
+
+The waiting method had its own limit. A wait command set to 590 seconds or less was cut off at 590 seconds in at least one run, so waits are split into pieces of 500 seconds or less. Instead of one long wait, the agent waits in shorter pieces, rereads the time, and runs the dense checks only in the last stretch.
+
+## How would you move this into your own work?
+
+What follows is a suggestion drawn from these operating records, not a procedure verified on a customer project.
+
+1. Write one scheduled time per post. If a run is delayed or restarted, do not replace the date with today's.
+2. Confirm the real time of the previous output, including seconds and time zone. If the screen only says "three hours ago," the time has not been confirmed.
+3. Read the current time only from the system clock, never from the AI's estimate.
+4. Calculate the target and the minimum gap separately, and treat the result as PASS only when both are satisfied.
+5. Server time and your computer's time can differ, so press a few seconds after the target rather than right at it. Set the margin from your own environment's records.
+6. Assume an error from the tool may still have produced the post, and check the public page before trying again.
+7. After the post, read the public time and compare it with the target. If it differs, do not mark the run complete. Do not hide it by deleting or reposting; record the deviation.
+
+Who reads these records and changes the rules ties in with the owner assignment in [When the Person Behind the Automation Is Away](/en/works/automation-owner-card). How much authority to give this check can be sorted with the read, draft and act levels in [Giving AI automation permission in three steps](/en/works/automation-permission-ladder).
+
+## Does keeping to the time make posts perform better?
+
+Not on this evidence. The table above shows whether posts went out at their target time. Whether on-time posts were read more is a separate question that needs its own measurement. The public time and the views or inquiries are kept as different evidence, and one being right is not written as the other having improved.
+
+Keeping published results and the ledger apart in [Why Publication and Records Are Separate](/en/works/reedo-publication-ledger-gap) follows the same principle.
+
+## Where to go next
+
+To design an automation by splitting it into a scheduled time, the previous result and the points where a person confirms, the existing [DMS.Labs work automation](/automation) page gives an overview. That page is currently presented in Korean. This account covers the scheduled posts of one Threads account and the operating records from October 24 to November 5. It does not promise implementation costs, time savings, or effects on inquiries or revenue.
+
+The two images were newly generated to illustrate the topic. They are not photographs of a real operating screen or a customer site.
