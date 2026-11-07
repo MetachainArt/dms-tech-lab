@@ -43,6 +43,7 @@ export function hasEnglishVersion(pathname: string): boolean {
     || path === "/education/optical-training/otdr-dynamic-range-spec-conditions-range-readout"
     || path === "/education/optical-training/fiber-inspection-scope-spec-field-of-view-resolution-criteria-readout"
     || path === "/education/optical-training/otdr-distance-accuracy-sampling-resolution-index-spec-readout"
+    || path === "/education/optical-training/otdr-loss-linearity-detection-vs-pass-fail-threshold-readout"
     || path === "/education/optical-training/01-fiber-types-link-design"
     || path === "/education/optical-training/02-fiber-market-infrastructure"
     || path === "/education/optical-training/01-rf-over-fiber-lecture"
