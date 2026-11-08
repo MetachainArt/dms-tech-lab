@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "AI 교육 뒤, 일터가 할 일",
+    summary: "AI 교육을 마친 사람이 현장에서 쓰지 못할 때, 사람 탓을 하기 전에 일터에 허락·도구·시간·기준이 갖춰져 있는지 확인하는 방법을 연구 근거와 함께 정리하고, 교육 2주 뒤에 쓸 한 장짜리 점검 카드를 제안하는 AI 교육 실무 가이드입니다.",
+    tags: ["Work", "AI 교육", "업무 자동화"],
+    image: "/images/works/ai-training-workplace-checklist/closed-laptop-handout.webp",
+    link: "/works/ai-training-workplace-checklist",
+  },
+  {
     title: "게시 시각, 어림하지 않기",
     summary: "정해진 시각에 글을 올리는 자동화가 목표보다 20분 41초 일찍 게시한 일을 계기로, 시스템 시계로 계산하는 시각 검사를 넣고 그 뒤 공개 시각을 대조해 온 기록을 정리한 Work 실무 가이드입니다.",
     tags: ["Work", "업무 자동화", "AX 전환"],
