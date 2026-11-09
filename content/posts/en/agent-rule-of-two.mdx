@@ -1,0 +1,113 @@
+---
+translationSourceHash: "9a06f17ac35f7117ba44e4a679d5f797d36785cc68471a6a0a65b0a99cde2b91"
+title: "When Text the Agent Reads Becomes an Order"
+subtitle: "A proposed check that keeps unfamiliar text, sensitive data, and ways out from meeting in one session"
+excerpt: "An AI agent can follow instructions hidden in text it reads, because it cannot reliably tell them apart from the user's own. This article reads Meta's Agents Rule of Two, the UK NCSC, and other public sources on design limits, then proposes a three-box check for work automation."
+date: "2026-11-09"
+readTime: "13 min"
+coverImage: "/images/posts/agent-rule-of-two/unopened-mail-desk.webp"
+series: "agentic-era"
+chapter: "15"
+tags: ["Prompt injection", "AI agents", "Permission design", "Work automation"]
+---
+
+While an agent reads text written by a stranger, that text can work on the agent like an order. The model has no dependable way to separate instructions inside the text it is reading from instructions the user gave it. So the public sources I read agree that the defense lies in design more than in a smarter model: do not give one session all three of these at once, the ability to read unfamiliar text, the ability to touch sensitive data, and the ability to send things out or change things. This article lays out that evidence and adds a check, a DMS.Labs proposal, where you fill in three boxes for each task you hand over. It is not the result of attacking an agent myself.
+
+Everything here is based on public sources I checked on November 9, 2026. I read Meta's Agents Rule of Two post (October 31, 2025), a blog post from the UK National Cyber Security Centre (NCSC, December 8, 2025), OWASP's LLM01 entry, Simon Willison's June 2025 post, a design patterns paper (Beurer-Kellner et al., 2025), and the abstract of a 2023 paper on indirect prompt injection. The check and the imagined scene later on are DMS.Labs proposals drawn from those sources. None of the sources requires them.
+
+![A few envelopes, a brass letter opener, and a book on a wooden desk by a window](/images/posts/agent-rule-of-two/unopened-mail-desk.webp)
+
+## What is prompt injection, and why is it worse for agents?
+
+Prompt injection is an attack in which instructions hidden in text a model reads change what the model does, and it costs more the more tools the agent holds. OWASP separates two kinds. In direct injection, the user's own input changes the model's behavior. In indirect injection, the model takes in text from an outside source such as a website or a file, and instructions in that text change its behavior. Agents mostly face the indirect kind. OWASP adds that the text need not be visible to a person, as long as the model parses it, and it lists hidden instructions in an image as one case.
+
+A 2023 preprint, "Not what you've signed up for" (arXiv 2302.12173), raised the problem early. Its abstract argues that LLM-integrated applications blur the line between data and instructions, and shows how an attacker can plant instructions in data likely to be retrieved. The authors sort the effects into data theft, worm-like spread, and contamination of the information ecosystem, and say they demonstrated attacks on Bing's GPT-4-powered chat and on code-completion engines. That abstract also said effective defenses were lacking at the time. It is a 2023 assessment, and I am not saying it describes today.
+
+Once the system holds tools, the damage changes. The NCSC explains that if a system calls tools or APIs based on a model's output, an attacker who fools the model gets roughly the worst outcome of having direct access to those tools. Meta shows the same point with an imagined assistant, Email-Bot, that tidies an inbox. If one spam message tells the bot to gather the inbox contents and forward them to the attacker, and the bot has a send-mail tool, the attack works.
+
+## Can't a filter just catch it?
+
+Filtering alone is not enough, and that is the shared position of the sources I read. The NCSC post says prompt injection is often compared with SQL injection, and that the comparison is dangerous. Parameterized queries stop SQL injection at the root, because data can never be run as an instruction. Inside an LLM there is no such split, only prediction of the next token, so the NCSC rates the chance that prompt injection will ever be fixed the same way as low. It suggests thinking of these systems as "inherently confusable deputies" and aiming to reduce risk and impact rather than stop the attack. One line says that if a system cannot tolerate the remaining risk, it may not be a good use for an LLM.
+
+The NCSC also warns against blocking phrases such as "ignore previous instructions," since there are endless ways to reword an attack. Willison writes that he is deeply suspicious of guardrail products that claim to catch 95% of attacks, and that 95% is very much a failing grade in web security. OWASP says that, given how models work, it is unclear whether any foolproof prevention exists. It lists least privilege, human approval for high-risk actions, and clearly separating external content among the ways to cut the impact. Meta calls prompt injection a fundamental, unsolved weakness in all LLMs.
+
+None of the sources I read claims a complete fix. Most were written in 2025, though, and models and defenses may have improved since. The NCSC also published a post on adopting agentic AI in May 2026. I did not read it for this article.
+
+## Why is it dangerous when three things meet in one session?
+
+![A wooden filing cabinet with one drawer slightly open and a small brass padlock hanging from its handle](/images/posts/agent-rule-of-two/padlocked-file-drawer.webp)
+
+An attack needs all three to finish: text to read, something to steal or change, and a way out. Willison calls this the lethal trifecta: access to your private data, exposure to untrusted content, and the ability to communicate externally. He defines the last one broadly. If a tool can make an HTTP request, load an image, or show a link for the user to click, that can carry stolen information out. He also notes that a tool that reads your email is itself a channel for untrusted text, because an attacker can simply email your agent and tell it what to do.
+
+Meta's Agents Rule of Two turns this into a design rule. It says it was inspired by a similarly named Chromium policy and by Willison's post. The rule: until research lets us reliably detect and refuse prompt injection, an agent in one session should have no more than two of these three properties.
+
+- A: it can process untrustworthy inputs
+- B: it can access sensitive systems or private data
+- C: it can change state or communicate externally
+
+If a task truly needs all three without starting a new session with a fresh context window, Meta says the agent should not run on its own. At a minimum it needs supervision, through a person's approval or another reliable check. Applied to Email-Bot, the post gives three ways out.
+
+- Keep B and C: process mail only from trusted senders, such as close friends, so the attack text never enters the context.
+- Keep A and C: give the agent no sensitive data or systems, so injected text does no meaningful harm.
+- Keep A and B: send new mail only to trusted recipients, or only after a person has checked the draft.
+
+Meta also states the limits. The rule does not cover other risks such as hallucinations, excessive privileges, or plain agent mistakes. A design that follows it can still fail if a user confirms a warning without reading it, and the rule supplements basic principles like least privilege rather than replacing them.
+
+## How far can design alone go?
+
+Design can block as much as it narrows what the agent may do, and the cost is that the agent becomes less useful by the same amount. The design patterns paper (Beurer-Kellner et al., revision 3, June 2025) states its principle this way: once an agent has taken in untrusted input, it must be constrained so that the input cannot trigger consequential actions. The paper proposes several patterns. I introduce three that I read.
+
+- Action-Selector: the agent only picks from a list of predefined actions, and nothing from those actions feeds back into the agent. The paper's example is a customer service chatbot that chooses among fixed actions such as linking to the last order.
+- Plan-Then-Execute: the agent fixes its list of steps first, and external text returned by tools cannot change that list. The paper says this does not stop every injection. The plan is fixed, but the inputs to the tool calls can still be tampered with, so in its example of emailing today's schedule to a boss, text planted in the calendar could still change the body of the email.
+- Dual LLM: a privileged model that uses tools is kept apart from a quarantined model that reads untrusted text but cannot use tools.
+
+The NCSC post condenses this direction into one rule: when a model processes information from a party, its privileges drop to that party's level. For a model handling email, that means no access to tools you would not hand to a random outsider. The NCSC credits the approach to an exchange between Willison and Baibhav Bista.
+
+## How do I apply this to my own work automation?
+
+I propose filling in three boxes for each task you hand over. The table below is a DMS.Labs proposal built from the sources above, not a set of sentences any of them tested.
+
+| Box | Question | If yes, first step |
+| --- | --- | --- |
+| A. Unfamiliar text | While doing this task, does the agent read text written by outsiders (incoming mail, web pages, uploaded files, outside forums)? | Narrow the sources to those the task needs |
+| B. Sensitive data | In the same session, does it reach customer contacts, internal documents, or account permissions? | Open only the one file the task needs and cut access to the rest |
+| C. Ways out | Can it send mail, delete files, publish, or make requests to outside addresses (including links and image loads)? | Limit it to a preset list of addresses and have a person approve everything else |
+
+If two or fewer boxes are yes, pick one reinforcement for that pairing. If all three are yes, follow Meta and do not run the task unattended; put a person's approval in the path. The next table restates Meta's three configurations in everyday task terms.
+
+| Two boxes kept | Box closed | Example of closing it |
+| --- | --- | --- |
+| A and C | B | Limit the task to work like public-source research that touches no internal data |
+| B and C | A | Read only text from pre-registered partners or internal staff |
+| A and B | C | Stop at summaries or drafts and let a person do the sending |
+
+Here is an imagined scene. Picture a five-person company that takes quote requests. It is not a real case, only an illustration. The company lets an agent read its inquiry inbox, consult a customer contact sheet, and reply directly. All three boxes are yes: anyone can email an inquiry, so that is A; the contact sheet is B; and sending replies is C. Under the check, the company closes the sending box. The agent stops at saving a draft, and a person sends it. A sentence hidden in a stranger's email can no longer carry the contact list out, and in exchange someone spends a moment confirming each send.
+
+That choice has its own risk. Given Meta's point that a design fails when a user confirms a warning without reading it, I think the approval screen should show the full recipient address and the full message body. In the sources I read, I found no measurement of how well this reduces approval fatigue in real work. I did not test this scene either.
+
+## What does this check not stop?
+
+The biggest limit, in my view, is that filling in the three boxes correctly falls to a person. C is not only obvious actions like sending mail. As Willison describes, a request to an outside address or an image load can count as C, and in OWASP's example an image link inserted while summarizing a web page sends the conversation out. So when reading a tool list, look at whether the tool can send requests outward, not only at its name. The checks to run before connecting a tool are in [Five Checks Before Connecting an MCP Server](/en/blog/mcp-connection-checks).
+
+The second limit is the gap that Plan-Then-Execute showed. Even if the task itself is constrained, an attack on its inputs can still corrupt the output. This check narrows the paths to consequential actions. It does not tell you whether the result is right. How to name a reviewer for the output is in [Naming a Reviewer for AI Output](/en/works/ai-output-reviewer-card).
+
+Last, the NCSC recommends that a system log the model's inputs and outputs and its tool calls well enough to spot suspicious activity, because failed tool calls can be early stages of an attack. If you build the check but keep no records, you may not know when it was breached.
+
+## What can I try this week?
+
+Pick one automation or AI tool you use now and fill in the three boxes. If all three are yes, decide which box to close, and if you cannot close one, put a person's approval in that task first. To summarize what this article could not confirm: I did not test any attack myself. I do not know how much the check reduces harm in real work. Meta's example is imagined, and I mostly read sources from 2025. The table and the scene are DMS.Labs proposals and assumptions, not customer cases or field measurements.
+
+## What to read next
+
+DMS.Labs describes how it attaches AI to work automation on the [work automation page](/automation), which is provided in Korean. A way to split how much permission to give an automation into steps is in [Giving AI automation permission in three steps](/en/works/automation-permission-ladder). If you are considering adoption, please describe your situation on the [contact page](/en/contact).
+
+## Sources
+
+Checked on November 9, 2026. The two photos in this article are AI-generated illustrations, not records of real work.
+
+- Meta, "Agents Rule of Two: A Practical Approach to AI Agent Security," October 31, 2025: [original](https://ai.meta.com/blog/practical-ai-agent-security/) (read in full)
+- NCSC, David C, "Prompt injection is not SQL injection (it may be worse)," December 8, 2025: [original](https://www.ncsc.gov.uk/blog-post/prompt-injection-is-not-sql-injection) (read in full)
+- OWASP, "LLM01:2025 Prompt Injection": [original](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) (read in full)
+- Simon Willison, "The lethal trifecta for AI agents," June 16, 2025: [original](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (read in full, personal blog)
+- Luca Beurer-Kellner et al., "Design Patterns for Securing LLM Agents against Prompt Injections," arXiv 2506.08837 v3: [original](https://arxiv.org/abs/2506.08837) (read the pattern descriptions)
+- "Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection," arXiv 2302.12173 v2: [original](https://arxiv.org/abs/2302.12173) (abstract only)
