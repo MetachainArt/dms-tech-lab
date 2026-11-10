@@ -1,3 +1,4 @@
+import { foundHandedEssayEn } from "@/lib/ideas-essay-found";
 import { timeSavedEssayEn } from "@/lib/ideas-essay-time";
 import { withoutAiDayEssayEn } from "@/lib/ideas-essay-without-ai";
 import { draftFirstEssayEn } from "@/lib/ideas-essay-draft";
@@ -32,10 +33,11 @@ export default function EnglishIdeasPage() {
         eyebrow="Ideas / Reedo" lead="Images &" accent="words." variant="insights"
         title="Ideas"
         description="Notes and essays written alongside the work. Earlier pieces are still available in Korean, and new ones are being added in English."
-        note={<><span>13 English editions</span><span>A space where images and words meet</span></>}
+        note={<><span>14 English editions</span><span>A space where images and words meet</span></>}
       >
         <Link href="/gallery">Earlier pieces in Korean ↗</Link>
       </FiberPageHeader>
+      <div className={styles.essay}><EssayPiece essay={foundHandedEssayEn} locale="en" /></div>
       <div className={styles.essay}><EssayPiece essay={timeSavedEssayEn} locale="en" /></div>
       <div className={styles.essay}><EssayPiece essay={withoutAiDayEssayEn} locale="en" /></div>
       <div className={styles.essay}><EssayPiece essay={draftFirstEssayEn} locale="en" /></div>
