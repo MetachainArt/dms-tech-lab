@@ -6,6 +6,12 @@ type WorkTranslation = Pick<ShowcaseWorkItem, "title" | "summary" | "tags"> & {
 
 // Match translations by the original destination so order, assets and links stay shared.
 const translations: Record<string, WorkTranslation> = {
+  "/works/ai-meeting-notes-recording-check": {
+    title: "Before the AI Note-Taker Joins",
+    summary: "A practical automation guide for the minutes before an AI meeting-notes tool is switched on. It checks whether attendees were told, who receives the output and when files are deleted, based on Korean statutes, Supreme Court rulings and the Teams and Google Meet help pages, and proposes a five-box check.",
+    tags: ["Work", "Workplace automation", "AI tools"],
+    linkLabel: "Read the English guide",
+  },
   "/works/ai-training-workplace-checklist": {
     title: "What the Workplace Does After AI Training",
     summary: "A practical guide for people running AI training. When trained staff do not use AI at work, check whether the workplace has given them permission, tools, time and rules before blaming the people, and use a one-page check card two weeks after training.",
@@ -187,7 +193,7 @@ export const ENGLISH_SHOWCASE_WORKS = SHOWCASE_WORKS.map((work) => {
   return {
     ...work,
     ...translation,
-    link: work.link === "/works/ai-training-workplace-checklist" || work.link === "/works/scheduled-post-time-check" || work.link === "/works/ai-output-reviewer-card" || work.link === "/works/ai-automation-spend-cap" || work.link === "/works/season-score-before-trusting" || work.link === "/works/automation-run-record" || work.link === "/works/automation-owner-card" || work.link === "/works/ai-citation-question-layers" || work.link === "/works/choosing-first-automation-task" || work.link === "/works/choosing-data-for-ai" || work.link === "/works/ai-skill-acceptance-tests" || work.link === "/works/reedo-publication-ledger-gap" || work.link === "/works/ai-automation-safe-retry" || work.link === "/works/ai-knowledge-base-world-tree" || work.link === "/works/ai-skill-job-sheet" || work.link === "/works/ai-training-task-boundary-map" || work.link === "/works/jev-seo-practical-guide" || work.link === "/works/claude-code-you-should-know" || work.link === "/works/delegating-work-to-ai-agents" || work.link === "/works/ai-performance-measurement" || work.link === "/works/bilingual-page-release-check" || work.link === "/works/automation-permission-ladder" ? `/en${work.link}` : work.link,
+    link: work.link === "/works/ai-meeting-notes-recording-check" || work.link === "/works/ai-training-workplace-checklist" || work.link === "/works/scheduled-post-time-check" || work.link === "/works/ai-output-reviewer-card" || work.link === "/works/ai-automation-spend-cap" || work.link === "/works/season-score-before-trusting" || work.link === "/works/automation-run-record" || work.link === "/works/automation-owner-card" || work.link === "/works/ai-citation-question-layers" || work.link === "/works/choosing-first-automation-task" || work.link === "/works/choosing-data-for-ai" || work.link === "/works/ai-skill-acceptance-tests" || work.link === "/works/reedo-publication-ledger-gap" || work.link === "/works/ai-automation-safe-retry" || work.link === "/works/ai-knowledge-base-world-tree" || work.link === "/works/ai-skill-job-sheet" || work.link === "/works/ai-training-task-boundary-map" || work.link === "/works/jev-seo-practical-guide" || work.link === "/works/claude-code-you-should-know" || work.link === "/works/delegating-work-to-ai-agents" || work.link === "/works/ai-performance-measurement" || work.link === "/works/bilingual-page-release-check" || work.link === "/works/automation-permission-ladder" ? `/en${work.link}` : work.link,
     // New untranslated work remains visible with an honest language label.
     linkLabel: translation?.linkLabel ?? "View the original in Korean",
     contentLanguage: translation ? "en" : "ko",

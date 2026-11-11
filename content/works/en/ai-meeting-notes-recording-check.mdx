@@ -1,0 +1,117 @@
+---
+title: "Before the AI Note-Taker Joins"
+excerpt: "A practical automation guide for the minutes before you switch on an AI meeting-notes tool. It checks whether attendees were told, who receives the output and when the files are deleted, using Korean statutes, Supreme Court rulings and the Teams and Google Meet help pages, and proposes a five-box check."
+date: "2026-11-11"
+readTime: "11 min"
+kind: "guide"
+tags: ["Work", "Workplace automation", "AI tools"]
+---
+
+Three things need checking before you turn on an AI note-taker: whether attendees know the meeting is being recorded and transcribed, who receives the output, and when the files will be deleted. Korean law generally forbids recording a non-public conversation between other people, and in both Microsoft Teams and Google Meet the setting that asks attendees for explicit consent is off by default. This guide reads the statutes, the court rulings and the tools' help pages, then proposes a five-box check to use when a meeting starts.
+
+This is a practical guide to workplace automation. It is not legal advice, and it is not a report on a customer engagement or a measured result. It rests on statute texts, court rulings and product help pages, all read on November 11, 2026. Where interpretation could go either way, the text says so, and anyone adopting these tools should have a legal adviser confirm the details. The check, the announcement wording and the fictional estimating firm below are DMS.Labs design proposals and assumptions. They do not mean the approach worked in any organisation. The laws discussed are Korean; if your meetings cross borders, other rules may apply that this guide does not cover.
+
+## What does an AI note-taker create when you switch it on?
+
+What remains after the meeting is more than one summary. A recording file, a transcript of the spoken words and a summary document each exist as a file with its own storage location. Each file has its own answer to who can open it and how long it stays. The summary looks light, but the transcript behind it can hold every speaker's name next to their words.
+
+Korea's Personal Information Protection Act defines personal information as information about a living person that identifies them by name, resident registration number, image and the like, or that can easily be combined with other information to identify them (Article 2, item 1). "Processing" under the Act includes collecting, generating, recording, storing and holding (Article 2, item 2). The Act does not say whether a voice alone is personal information. Once a transcript attaches a speaker's name or company, though, it shows whose words they are, so this guide builds its check on the assumption that the transcript is treated as personal information. That is my interpretation, not a conclusion from a court or a regulator.
+
+![A quiet meeting room with a wooden table by a window, holding a closed laptop, a round conference speakerphone, an open paper notebook with a pen, and two empty chairs.](/images/works/ai-meeting-notes-recording-check/conference-table-speakerphone.webp)
+
+## What does the Protection of Communications Secrets Act forbid?
+
+Article 3(1) says that, except as the law provides, no one may record or listen to a conversation between other people that is not public. Article 16(1) punishes a violation with imprisonment of one to ten years and suspension of qualifications for up to five years, and applies the same penalty to anyone who discloses or leaks the contents of a conversation learned that way.
+
+The Supreme Court reads the provision as aimed at a third party who was never part of the conversation. In a ruling of August 31, 2022 (case 2020Do1007), it held that such a third party recording, or using an electronic device to listen to, statements between others that are not open to the public violates Article 3(1) unless special circumstances apply. A ruling of May 12, 2016 (2013Do15616) takes the same view.
+
+Does that make it safe for an attendee to switch on an AI tool? The rulings speak directly only to a third party who did not take part, so this sentence alone cannot settle the matter. In the sources I read, I found no ruling on whether an AI note-taking tool counts as a participant in the conversation. This guide also does not examine which branch of the Act a video meeting falls under. So it does not claim that an attendee who starts the tool is safe. It proposes a procedure that works while the question stays open: tell people, leave them a way to say no, and keep a record.
+
+The sources I read are collected in the table below. The right-hand column is DMS.Labs' interpretation.
+
+| Source | What I confirmed | DMS.Labs' interpretation |
+| --- | --- | --- |
+| Protection of Communications Secrets Act, Articles 3(1) and 16(1) (version in force from October 2, 2026) | Conversations between others that are not public may not be recorded or listened to except as the law provides, and a violation carries one to ten years' imprisonment plus up to five years' suspension of qualifications | Meetings usually look like conversations kept from the public, but whether a conversation is non-public is decided case by case. It is safer not to take this provision lightly |
+| Supreme Court ruling of Aug. 31, 2022, 2020Do1007 | Recording or listening to statements between others by a third party who was never part of the conversation violates the Act unless special circumstances apply | The ruling concerns a third party. I could not read from it how an attendee's AI tool would be judged |
+| Personal Information Protection Act, Article 15(1) and (2) (version in force from September 11, 2026) | Personal information may be collected and used only on one of seven grounds, consent being one. When asking for consent, the controller must state the purpose, the items collected, the retention and use period, and the right to refuse together with any disadvantage that follows | Consent is not the only ground. Which ground fits needs legal review, so this guide assumes consent as the default method |
+| Personal Information Protection Act, Article 21 | Personal information must be destroyed without delay once the retention period has passed or its purpose is achieved, unless another law requires it to be kept | Recordings and transcripts need a deletion date as well |
+
+## Do meeting tools tell attendees?
+
+Both tools show a notice, but a process that asks for consent exists only if an administrator turns it on.
+
+According to Microsoft's Teams documentation, not asking participants for consent is the default. With that setting off, every participant is included in recordings and transcripts. Things change when an administrator turns on the "require participant agreement" policy. In a meeting that is not set to auto-record, once someone starts recording or transcription, everyone else is muted with camera and content sharing off. The person who started it is treated as having consented. When another participant tries to unmute, turn on a camera or share content, Teams asks Yes or No, and a No leaves that person with a view-only experience. Each choice is included in the attendance report, and administrators can also see it in audit logs.
+
+Google Meet's "Take notes for me" works along similar lines. An administrator can require explicit consent for notes, recording and transcription, and that setting is off by default. When someone turns notes on, Meet tells all participants that notes are being taken and a pencil icon appears on every participant's screen. The help page separately advises the person who starts the feature to tell everyone themselves. An administrator can also show company policy text on the pre-join screen when notes, recording or transcription is active or scheduled.
+
+So the tools' default behaviour stops at notice. A consent step appears only when an administrator turns it on. Whether an attendee has any way to refuse depends on the company's admin settings and on what the person opening the meeting says.
+
+## Who receives the output?
+
+This comes from the Google Meet help page. The person who starts the notes chooses where the notes document goes: all invited guests including people outside the organisation, invited guests inside the organisation, or hosts and co-hosts only. The page defines "invited guests" as everyone on the calendar invitation, not only the people who attended. Guests added through a group address have to request individual access to the document. If shared material stays on screen for at least 10 seconds, the notes may include a screenshot of it. Depending on admin settings, notes switch on automatically for some meetings, and the option to keep notes on for future instances of the same meeting is pre-selected for the host.
+
+What needs checking, then, is the invitation list rather than the attendee list. Whether someone who never joined, or someone from another company, can receive the summary depends on who is on the invitation.
+
+![A wall of wooden pigeonhole mail cubbies in an office corridor, with envelopes and folded papers in only a few of the cubbies and the rest empty.](/images/works/ai-meeting-notes-recording-check/wooden-mail-cubbies.webp)
+
+## How long do the files stay?
+
+Article 21 of the Personal Information Protection Act requires personal information to be destroyed without delay once the retention period has passed or the purpose has been achieved, and requires that destruction be done so the data cannot be restored or replayed. The Google Meet help page says meeting notes documents follow the Meet retention policy that the organisation has configured. How long the tool keeps a file therefore depends on company settings.
+
+Accuracy belongs on the same list. Google's help page says a meeting summary may be incomplete or inaccurate, or may not be generated at all, and recommends using the feature for meetings of 15 minutes or longer. DMS.Labs therefore proposes that on the day someone reads and confirms the summary, the deletion date for the original recording and the transcript is written down, and a person is named to confirm the deletion. Who confirms the summary can be settled the way [Naming a Reviewer for AI Output](/en/works/ai-output-reviewer-card) describes.
+
+## What should be said when the meeting starts?
+
+Article 15(2) of the Personal Information Protection Act lists four things to tell people when asking for consent: the purpose of collection and use, the items to be collected, the retention and use period, and the right to refuse along with any disadvantage that refusal brings. Turned into an opening statement, those four items read as follows. The wording is a DMS.Labs proposal, not a text confirmed as legally sufficient.
+
+> This meeting is being recorded with an AI tool and turned into written minutes. The purpose is to record decisions and action items, and your voice and what you say will be stored. The files will be kept until [date] and then deleted. If you would rather not be recorded, please say so now. In that case I will turn the tool off and take notes by hand.
+
+A spoken announcement leaves no record. Pasting the same wording into the meeting chat or the invitation email is one way to keep one. Whether a spoken announcement counts as consent is something this guide did not confirm.
+
+The check below puts it into five boxes. The layout is a DMS.Labs proposal; no study or agency has tested these five boxes.
+
+| Box | Question | Basis | What to do if it is empty |
+| --- | --- | --- | --- |
+| How it starts | Who turns it on, with what setting? Do any meetings switch it on automatically? | Google help page: notes start automatically for some meetings depending on admin settings, and the recurring-meeting option is pre-selected | Ask the administrator for the list of meetings where it starts automatically and decide for each whether it is needed |
+| Notice and refusal | Can attendees see a notice before it starts, and is there a way to refuse? | Consent requirements are off by default in both tools; Article 15(2) of the Act | Use the opening statement and consider turning on the administrator's consent requirement |
+| Recipients | Does the output go to the whole invitation list? | Google help page: invited guests means everyone on the invitation, not only attendees | Limit sharing to hosts and co-hosts, then send the confirmed notes only to those who need them |
+| Keeping and deleting | Are deletion dates and a person to confirm them written down for the recording, transcript and summary? | Article 21 of the Act | Write the date and the confirming person on the day the summary is confirmed |
+| Summary check | Did a person compare the summary with the transcript before confirming it? | Google help page: a summary may be incomplete or inaccurate | Before confirming, one person matches the decisions and dates against the transcript |
+
+## What does the check show in practice?
+
+A fictional scene will show how it works. It is not a DMS.Labs customer case, and the head count is an assumption made for illustration.
+
+Assume a seven-person estimating firm holds a weekly video meeting with one client contact. The team lead has left AI notes switched on for the recurring meeting, and the notes are set to go to all invited guests. The calendar invitation includes the client contact and two of that contact's colleagues, one of whom has never joined the meeting. No deletion date is written anywhere.
+
+Filling in the five boxes leaves three empty. The "How it starts" box shows that the lead needs a list of which meetings switch on by themselves. The "Recipients" box shows that a colleague who never attended can still receive the summary. The "Keeping and deleting" box has no date. The fixes are to narrow sharing to hosts and co-hosts, to read the opening statement at the next meeting, and to write a deletion date on the day the summary is confirmed.
+
+## Frequently asked questions
+
+### Is one attendee's consent enough?
+
+The sources I read gave me no answer. The Communications Secrets Act ruling concerns a third party who took no part in the conversation. Under the Personal Information Protection Act, consent comes from the data subject, meaning the person identifiable from the processed information (Article 2, item 3, and Article 15(1), item 1). Whose words get recorded differs from attendee to attendee, so DMS.Labs proposes telling every attendee rather than relying on one person's consent.
+
+### Is a meeting among colleagues treated the same way?
+
+Article 15(1) of the Act has grounds other than consent, such as a legal obligation or performance of a contract. Whether a meeting between employees fits one of them depends on work rules and employment contracts, which this guide did not assess. Both tools show a notice to internal attendees too, so DMS.Labs suggests using the same opening statement in internal meetings.
+
+### What if an attendee says no?
+
+DMS.Labs proposes turning the tool off and having a person take notes by hand. With the consent requirement switched on in Teams, an attendee who answers No ends up with a view-only experience. That changes how the person can take part in the meeting, so the company should settle its policy before turning the setting on.
+
+## What to read next
+
+You can see how far AI tools can be handed parts of a workflow at [DMS.Labs workplace automation](/automation) (provided in Korean). If you are preparing for a consultation, pick one meeting where AI notes are on and bring the five boxes filled in; it makes it easier to describe where you stand. For terms and conditions, see the [contact page](/en/contact).
+
+Which material to hand to an AI is covered in [Choosing Data to Share with AI](/en/works/choosing-data-for-ai), and the draft-then-approve steps are in [Giving AI automation permission in three steps](/en/works/automation-permission-ladder).
+
+## References
+
+- [Protection of Communications Secrets Act, Article 3, ban on recording or listening to conversations (Korea Ministry of Government Legislation, version in force from October 2, 2026; Korean)](https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%ED%86%B5%EC%8B%A0%EB%B9%84%EB%B0%80%EB%B3%B4%ED%98%B8%EB%B2%95/%EC%A0%9C3%EC%A1%B0)
+- [Protection of Communications Secrets Act, Article 16, penalties (Korean)](https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%ED%86%B5%EC%8B%A0%EB%B9%84%EB%B0%80%EB%B3%B4%ED%98%B8%EB%B2%95/%EC%A0%9C16%EC%A1%B0)
+- [Supreme Court of Korea, August 31, 2022, 2020Do1007 (Korean)](https://www.law.go.kr/LSW/precInfoP.do?precSeq=230871)
+- [Supreme Court of Korea, May 12, 2016, 2013Do15616 (Korean)](https://www.law.go.kr/precInfoP.do?precSeq=182325)
+- [Personal Information Protection Act, Articles 2, 15 and 21 (version in force from September 11, 2026; Korean)](https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95)
+- [Manage participant agreement for recording and transcription, Microsoft Teams, Microsoft Learn](https://learn.microsoft.com/en-us/microsoftteams/participant-agreement-recording-transcription) (read in full)
+- ["Take notes for me" in Google Meet, Google Meet Help](https://support.google.com/meet/answer/14754931) (read in full)

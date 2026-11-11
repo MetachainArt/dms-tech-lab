@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "AI 회의록, 녹음 전 확인할 것",
+    summary: "AI 회의록 도구를 켜기 전에 참석자에게 알렸는지, 결과 문서를 누가 받는지, 파일을 언제 지우는지 확인하는 방법을 통신비밀보호법·개인정보 보호법 조문과 판결, 회의 도구 도움말에 근거해 정리하고 다섯 칸 확인표를 제안하는 업무 자동화 실무 가이드입니다.",
+    tags: ["Work", "업무 자동화", "AI 도구"],
+    image: "/images/works/ai-meeting-notes-recording-check/conference-table-speakerphone.webp",
+    link: "/works/ai-meeting-notes-recording-check",
+  },
+  {
     title: "AI 교육 뒤, 일터가 할 일",
     summary: "AI 교육을 마친 사람이 현장에서 쓰지 못할 때, 사람 탓을 하기 전에 일터에 허락·도구·시간·기준이 갖춰져 있는지 확인하는 방법을 연구 근거와 함께 정리하고, 교육 2주 뒤에 쓸 한 장짜리 점검 카드를 제안하는 AI 교육 실무 가이드입니다.",
     tags: ["Work", "AI 교육", "업무 자동화"],
