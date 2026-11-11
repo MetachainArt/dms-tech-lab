@@ -47,6 +47,7 @@ export function hasEnglishVersion(pathname: string): boolean {
     || path === "/education/optical-training/g657-bend-insensitive-fiber-datasheet-macrobend-limits-readout"
     || path === "/education/optical-training/splice-closure-datasheet-splice-capacity-tray-count-cable-port-readout"
     || path === "/education/optical-training/g652d-fiber-datasheet-attenuation-cutoff-pmd-link-design-value-readout"
+    || path === "/education/optical-training/rack-fiber-enclosure-datasheet-fiber-count-adapter-panel-splice-capacity-readout"
     || path === "/education/optical-training/01-fiber-types-link-design"
     || path === "/education/optical-training/02-fiber-market-infrastructure"
     || path === "/education/optical-training/01-rf-over-fiber-lecture"

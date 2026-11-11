@@ -1,0 +1,168 @@
+---
+title: "Reading Rack-Mount Fiber Enclosure Datasheets: Fiber Count, Adapter Panel Slots and Splice Capacity"
+date: "2026-11-11"
+desc: "A ten-minute lesson on reading the fiber count, adapter panel slot and splice capacity lines of rack-mount fiber enclosure (termination panel) datasheets. It compares eight Panduit, Corning, Leviton, FS and Hexatronic documents and shows that a fiber count is slots multiplied by fibers per panel, how to separate port, fiber and connector units, and how to record lines that disagree inside one datasheet."
+coverImage: "/images/education/optical-training/rack-fiber-enclosure-datasheet-fiber-count-adapter-panel-splice-capacity-readout/cover.svg"
+readTime: "10 min"
+lang: "en"
+---
+
+The fiber count on a rack-mount fiber enclosure datasheet is the number of adapter panel slots multiplied by the fibers on each panel, so the same 1U enclosure shows 48, 72, 96 or 144 depending on which panels the document assumes. In the documents reviewed, the 1U maximum was 48 for the Corning CCH-01U, 72 for the Panduit FRME1U and the Leviton 1RU, 96 for the Panduit FCE1U and FRE1UBL, and 144 for the FS FHD 1U, and these figures can only be compared after the loading condition is known. Splice capacity is a separate line and is read separately.
+
+As of November 11, 2026, based on the documents listed under Sources.
+
+## Learning objectives
+
+- Split a fiber count line into slot count, fibers per panel and loading condition, and multiply it yourself.
+
+- Separate columns that mix port, fiber and connector counts by unit, and read the splice capacity line apart from the patching number.
+
+- When two lines disagree inside one datasheet, record both values instead of choosing one.
+
+## What does one fiber count line multiply together?
+
+The fiber count on a datasheet is the value for a loaded enclosure, not for an empty one. The Panduit Opticom FCE specification sheet (December 2022) says the FCE1U holds up to 4 fiber adapter panels (FAPs) or cassettes, the FCE2U holds 8 and the FCE4U holds 12, and then gives a fiber count table by panel type. A 12 duplex LC adapter panel carries 24 fibers, so four of them in an FCE1U give 24 × 4 = 96 fibers, eight in an FCE2U give 192 and twelve in an FCE4U give 288. An 8 duplex LC panel carries 16 fibers and gives 64, 128 and 192, and a 3 duplex SC panel carries 6 fibers and gives 24, 48 and 72. Every row of that table agrees with the multiplication.
+
+One more point is worth reading in the same table. The FCE4U has 12 slots, so its 288 fibers work out to 72 per rack unit, lower than the 96 of the 1U. Slot count does not always grow in proportion to height, so do not assume that the 2U and 4U figures are whole multiples of the 1U figure; check the slot count that the table states.
+
+| Panel type (Panduit FCE sheet) | Fibers per panel (DMS calculation) | FCE1U (4 slots) | FCE2U (8 slots) | FCE4U (12 slots) |
+| --- | --- | --- | --- | --- |
+| 12 duplex LC adapter panel | 24 | 96 | 192 | 288 |
+| 8 duplex LC adapter panel | 16 | 64 | 128 | 192 |
+| 6 duplex LC or 6 duplex SC adapter panel | 12 | 48 | 96 | 144 |
+| 3 duplex SC adapter panel | 6 | 24 | 48 | 72 |
+
+![Order for reading a fiber count line](/images/education/optical-training/rack-fiber-enclosure-datasheet-fiber-count-adapter-panel-splice-capacity-readout/concept-en.svg)
+
+- Check the slot count and the fibers per panel separately, then multiply them to see whether the printed number agrees.
+
+- When the panel type changes (LC, SC, ST, MTP cassette), the fiber count of the same enclosure changes with it.
+
+- The 2U and 4U figures may not be whole multiples of the 1U figure.
+
+## Why do 1U fiber counts differ between documents?
+
+The main reason is that the number of slots in 1U differs. Even documents from one maker differ by product line. The FCE1U and the FRE1UBL (May 2024) have 4 slots in 1U, so 12 duplex LC panels give 96 fibers, while the FRME1U (December 2024) has 3 slots and gives 72 fibers with the same panels. The Leviton OPT-X 1000i (revised January 2023) gives 72 fibers from 3 SDX adapter plates in 1RU, and says a separately sold sliding tray gives 96 fibers from 8 HDX adapter plates. The FS FHD 1U fixed enclosure prints 4 ports and a maximum of 144 fibers, the Corning CCH-01U prints 2 panels or cassettes and a fiber count of 48, and the Hexatronic Corelink Plus 1RU 2-panel sliding enclosure prints a port capacity of 24 SC or 48 LC.
+
+| Document (maker, document date) | Slots in 1U | Number printed | Condition behind the number |
+| --- | --- | --- | --- |
+| Panduit FCE1U (Dec 2022) | 4 panels or cassettes | 96 | 12 duplex LC panels |
+| Panduit FRE1UBL (May 2024) | 4 panels | 96 | Sheet prints "up to 4 FAP, 96 fibers" |
+| Panduit FRME1U (Dec 2024) | 3 panels | 72 | 12 duplex LC panels |
+| Leviton OPT-X 1000i 1RU (Jan 2023) | 3 SDX adapter plates | 72 | Enclosure is sold empty |
+| Leviton 1RU with sliding tray | 8 HDX adapter plates | 96 | This tray does not accept splice trays |
+| FS FHD 1U fixed (no issue date) | 4 ports | 144 | Loading list includes 36-fiber MTP cassettes |
+| Corning CCH-01U (footer revision date 2026-11-11) | 2 panels or cassettes | 48 | Single-fiber splice cassette basis |
+| Hexatronic CLP-1RU-2P-S (no document date) | 2 panels | 24 SC or 48 LC | Table heading says fiber count |
+
+![Maximum fiber count printed per 1U](/images/education/optical-training/rack-fiber-enclosure-datasheet-fiber-count-adapter-panel-splice-capacity-readout/bars-en.svg)
+
+- Bar length is the number each document prints, and the loading conditions differ, so this is not a like-for-like comparison.
+
+- Even within one maker, the slot count in 1U depends on the product line.
+
+The Leviton document also splits its 3RU row in two. With adapter plates laid horizontally it gives 9 plates and 216 fibers, and with plates laid vertically 12 plates and 288 fibers; the 4RU gives 288 fibers with 12 vertical plates and 360 with 15 horizontal plates. The same enclosure changes its fiber count with the plate orientation, which is why an order should state the orientation and the plate type together.
+
+## How do I tell port, fiber and connector counts apart?
+
+Datasheets put different units under the same column name, so write the unit on one line before moving any number. The FS FHD 1U document prints Capacity 4 Ports and Fiber Count Max. 144 Fibers. The port there is a slot that takes an adapter panel or cassette. Dividing 144 by 4 gives 36 fibers per slot, and the 36-fiber cassette in the same document's loading list (three MTP-12 connectors fanned out to 12 duplex LC) is the item that fits this value. Four of the 24-fiber 12 duplex LC panels from the same document would give 96 fibers (DMS calculation), so 144 is the value with 36-fiber cassettes. The 8 ports with 288 fibers on the 2U and the 12 ports with 432 fibers on the 4U also work out to 36 fibers per slot.
+
+The Corning CCH-01U product specification prints a fiber count of 48, 24 ports and 2 panels or cassettes. It can be read as 24 duplex ports giving 48 fibers, with each cassette holding 24 fibers. The family document (LAN-3414) describes panels of 6, 12, 24 and 36 fibers, and MTP adapter panels of 36, 72, 96 and 144 fibers. One enclosure can therefore give several numbers depending on what goes into the slots, and the single fiber count line is the value of one representative configuration.
+
+The Hexatronic catalogue column headed Port Capacity (fiber count) prints values such as 24 SC / 48 LC. The heading says fibers, but the values read as port counts for SC and LC, and the catalogue does not say whether it counts simplex or duplex. For a column like this, DMS does not pick one number; it copies the printed wording and keeps the item as needing confirmation.
+
+## Is splice capacity the same number as the port count?
+
+The patching number and the splice number are separate lines, and whether they are equal depends on the document. The Panduit FCE and FRE documents say a fusion splice module can splice up to 96 fibers per rack unit with a one-to-one splice-to-patching ratio. The FRME document describes the same one-to-one arrangement as up to 72 splices per RU, and says its splice modules are for the FRME1U and FRME2U only. The FRME4 has a fixed bulkhead design, so that line does not apply to it.
+
+Leviton prints up to 3 adapter plates and up to 3 splice trays for the 1RU, and up to 12 splice trays for the 3RU and 4RU. It does not print how many fibers one tray holds, so splice capacity cannot be calculated from the tray count. Hexatronic gives splice capacity (max) as its own column. For the 1RU 2-panel enclosure the ports are 24 SC / 48 LC and the splices are 24 (48 HD), and for the 1RU 48-port enclosure the ports are 48 SC / 96 LC and the splices are 36 (72 HD) with an Alt tray note. Splicing all 48 SC ports would need 12 more positions than 36, but the catalogue does not explain what Alt tray means in the text read.
+
+The Corning CCH family document lists, in its compatible housings table, a maximum of 2 cassettes, 48 single fibers and 72 ribbon fibers for the CCH-01U. The same housing gives different numbers for single-fiber and ribbon splicing. The pass-through splice cassette CCH-CS-PST is described as holding 24 single-fiber splices or 6 mass fusion splices.
+
+| Document | Patching number (1U class) | Splice number | What to read |
+| --- | --- | --- | --- |
+| Panduit FCE, FRE | 96 | Up to 96 fibers per RU, one-to-one | Fusion splice module FOSMF |
+| Panduit FRME | 72 | Up to 72 splices per RU | Applies to FRME1U and FRME2U only |
+| Leviton 1RU | 72 | Up to 3 trays (fibers per tray not printed) | Cannot be converted to a capacity |
+| Hexatronic 1RU 48-port | 48 SC / 96 LC | 36 (72 HD), Alt tray | Fewer splice positions than ports |
+| Corning CCH-01U | 48 | 48 single, 72 ribbon | Depends on splice method |
+
+## How do I handle lines that disagree inside one datasheet?
+
+Checking with multiplication turns up lines that do not agree within the same document. DMS does not correct them. It records both values and keeps which one is right as an item for the maker to confirm.
+
+- The 8 duplex LC panel row of the Panduit FRME specification sheet (December 2024) reads 48, 98 and 192. A panel carries 16 fibers, so 6 slots give 96; the 48 for 1U and the 192 for 4U agree, but the 98 for 2U does not.
+
+- The 3 simplex SC adapter row of the same FRME table reads 18, 36 and 72. With 3 simplex adapters per panel, 3 slots give 9 fibers, while 18 corresponds to 6 fibers per panel times 3 slots. The document does not say whether the row name or the number is the correct one.
+
+- The dimension table of the same FRME document has the column headings Height, Width and Depth, but the FRME1U row reads 17.38, 1.74 and 14.2, and the drawing below shows 1.74 in (44 mm) as the height. The headings and values are out of step.
+
+- The FS FHD 1U document prints a width of 16.93 in (430 mm) in its specification table, while its drawing shows 19.0 in (482.6 mm). This may be a body width against a width with mounting ears, but the document does not explain it.
+
+- In the Hexatronic catalogue, the article number CLP-1RU-48-S appears both on the sliding 1RU 48-port row and on the fixed 1RU 48-port row.
+
+- In the Corning CCH family document, the part number CCH-CS06-A9-P00RE has a fiber count code of 06 (6 fibers) but the same line prints 24F. The CCH-01U product specification gives 47.11 mm height, 496.5 mm width and 433 mm depth, while the family document gives 4.4 × 48.3 × 43 cm, and the footer revision date on the product specification reads 2026-11-11, the same day it was read, so the actual revision date was not confirmed.
+
+## How many rack units does a 144-fiber splice job need?
+
+The case here is a hypothetical teaching calculation, not a test of a real site or product. Assume a 144-fiber trunk cable that is fully spliced to pigtails and patched one-to-one in a rack enclosure. Using only the numbers in each document, the answers split as follows. The Panduit FRME allows 72 splices per RU, so it needs 2U, and the FRME2U is rated at 144 fibers. The Panduit FCE and FRE allow 96 splices per RU, so 144 is 1.5U and rounds up to 2U. Corning needs the CCH-03U (6 cassettes, 144 single fibers) for single-fiber splicing, or the CCH-02U (4 cassettes, 144 ribbon fibers) for ribbon splicing. Hexatronic prints 144 SC ports and 144 splices (288 HD) for the 3RU 144-port enclosure. The Leviton 2RU prints 144 fibers and up to 6 splice trays, but without fibers per tray the datasheet alone cannot show whether 144 splices fit.
+
+The point of this calculation is that the same 144 fibers need anything from 2U to 3U depending on the document, and one maker's numbers should not be carried over as a general rule for another product. The calculation also ignores slack storage, cable entry method, pigtail length and splice protector type. Leviton states that each adapter can store up to 3 m of 900 µm tight-buffered fiber, while the other documents do not print such a figure.
+
+- Record fiber count, splice capacity and stored slack as three separate lines.
+
+- Keep calculated values out of the cells that hold printed values, and mark them as DMS calculations.
+
+The limits of this material are clear as well. The text of ANSI/TIA-568.3-D and TIA-606 was not read, and whether each document is the current revision and whether it matches the product now on sale were not confirmed. Where manufacturer documents disagree with themselves, the makers were not contacted and both values were written down as printed.
+
+## Checklist
+
+- Did you check the enclosure fiber count by multiplying slot count by fibers per panel, and note the rows that do not agree with the datasheet table?
+
+- Did you write the unit of any column that mixes port, fiber and connector counts on one line, together with the document number?
+
+- Did you read splice capacity as a line separate from the patching fiber count, and avoid converting documents that give a tray count but no fibers per tray?
+
+- Did you write conditions that change the number, such as horizontal or vertical plate orientation, a sliding tray or a high-density option, on the order sheet?
+
+- Where a datasheet disagrees with itself, did you record both values and avoid picking one arbitrarily?
+
+## Review questions
+
+### 1. A Panduit FRME2U is filled with 6 of the 8 duplex LC panels. How many fibers is that, and does it match the datasheet table?
+
+Answer and explanation: An 8 duplex LC panel carries 16 fibers, so 6 × 16 gives 96 fibers. The table prints 98 for the 2U in the same row, which does not agree, while the 48 for 1U and the 192 for 4U do. The document does not say which is correct, so both values are recorded as printed.
+
+### 2. Four 24-fiber 12 duplex LC panels go into an FS FHD 1U fixed enclosure. How many fibers is that, and how many fibers per slot would the datasheet maximum of 144 need?
+
+Answer and explanation: 24 × 4 gives 96 fibers. Dividing 144 by 4 slots gives 36 fibers per slot, and the loading list of the same document includes a 36-fiber cassette. The 144 is therefore the value with 36-fiber cassettes, which is a DMS interpretation.
+
+### 3. On the Hexatronic CLP-1RU-48-S 1RU 48-port row, how many positions are missing if all 48 SC ports are to be spliced against the printed splice capacity of 36?
+
+Answer and explanation: 48 − 36 leaves 12 positions. The same row carries an Alt tray note and the high-density option prints 72 splices, so the result can change with the configuration, and the catalogue text does not say what Alt tray means.
+
+## Sources
+
+- [Panduit: Opticom Rack Mount Fiber Cassette Enclosures specification sheet (RKSP201-WW-ENG, December 2022)](https://www.panduit.com/content/dam/panduit/en/products/media/3/13/313/0313/110590313.pdf) · page 1 specifications and page 2 fiber capacity tables
+
+- [Panduit: Opticom Rack Mount Fiber Enclosures specification sheet (FBSP119-WW-ENG, December 2024)](https://www.panduit.com/content/dam/panduit/en/products/media/6/96/096/9096/111579096.pdf) · page 1 dimensions and page 2 fiber capacity table
+
+- [Panduit: Opticom Fiber Rack Mount Enclosures specification sheet (RKSP210-WW-ENG, May 2024)](https://www.panduit.com/content/dam/panduit/en/products/media/3/63/963/4963/111434963.pdf) · pages 1 to 2
+
+- [Corning: Closet Connector Housings (CCH) family document LAN-3414-AEN](https://www.corning.com/catalog/coc/documents/product-family-specifications/LAN-3414-AEN.pdf) · page 4 housings, page 7 panels, pages 8 and 11 cassette tables, no date printed in the document
+
+- [Corning: CCH-01U product specification](https://ecatalog.corning.com/optical-communications/US/en/generate-product-specsheet/CCH-01U.pdf) · footer revision date 2026-11-11, pages 2 to 3
+
+- [FS: FHD 1U Fixed Rack Mount Fiber Enclosure datasheet](https://img-en.fs.com/file/datasheet/fhd-1u-rack-mount-fiber-enclosure-34684.pdf) · no issue date, copyright 2009 to 2022, page 2 specifications, page 4 capacity and page 7 drawing
+
+- [Leviton: OPT-X 1000i SDX Rack-Mount Enclosures 5RxUM-xxx specification (revised January 2023)](https://leviton.com/content/dam/leviton/network-solutions/product_documents/product_specification/Leviton_5RxUM-xxx_Opt-X_1000i_RM_Enclosure.pdf) · pages 1 to 3
+
+- [Hexatronic: Optical Fiber Termination Enclosures catalogue](https://opticalsolutions.com.au/wp-content/uploads/2025/05/Hexatronic-Oceania-Enclosure-Portfolio.pdf) · no date printed in the document, rack-mount tables on pages 4 to 6
+
+## Continue
+
+- [Optical training curriculum](/fttx-training)
+
+- [Reading Splice Closure Datasheets: Splice Capacity, Tray Count and Cable Port Diameter](/en/education/optical-training/splice-closure-datasheet-splice-capacity-tray-count-cable-port-readout)
+
+- [Routing and Labeling Patch Cords in an ODF](/en/education/optical-training/odf-patch-cord-routing-and-labeling)
