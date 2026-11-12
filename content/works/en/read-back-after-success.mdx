@@ -1,0 +1,99 @@
+---
+title: "Read It Back After Success"
+excerpt: "A record of treating an automation's \"success\" or silent output as a claim rather than a result, and reading what should have changed from the outside. It covers seven cases from November 11 and 12 where a response and the real result disagreed, plus two cases reproduced directly."
+date: "2026-11-12"
+readTime: "10 min"
+kind: "guide"
+tags: ["Work", "Workplace automation", "AX transformation"]
+---
+
+When an automation says "success", or says nothing at all, the job is not necessarily done. The response is what the tool said. The result lives outside it, in a file, on a public page or in a source table, so the thing that was supposed to change has to be read again from there. Reedo's automation records hold seven cases from November 11 and 12 in which a response and the real result disagreed.
+
+Checked on November 12, 2026, this account rests on the Aside work records for those two days and on direct reproduction. The records are reports written by the runs that did each job. Two things were re-checked directly while this piece was being written. The cases come from Reedo's own posting and record-keeping automation, not from a customer project, and the piece contains no measurement showing that reading results back reduced incidents.
+
+## What if a replace command reported success but the file stayed the same?
+
+In the early hours of November 12, a job that posts to Threads and X tried to put a new "latest state" block at the top of its own memory file as the run ended. It used a PowerShell string replace: find the title line of the November 11 block as an anchor, and swap it for the new block.
+
+The file did not contain that anchor. The command finished without an error, and the only thing printed was the file length. According to the work record, the file already held a November 12 block from the start of the run. Nothing needed replacing, and no harm is recorded. Still, the output alone could not separate "it changed" from "there was nothing to change".
+
+A string replace that cannot find its anchor does not raise an error. It returns the original string. While writing this piece I recreated the situation with a temporary file. I asked a 27-character file to replace an anchor that was not in it. The command ended quietly, the length was still 27, and the new block title was not in the file. A length number alone makes an unchanged file look normal.
+
+![A hand ticking the first box of a printed paper checklist with a pencil on a wooden desk, a closed laptop and a small plant beside it](/images/works/read-back-after-success/checklist-tick-on-paper.webp)
+
+## Is a tool that prints nothing a tool that succeeded?
+
+No. Silence is safer read as "not confirmed" than as success.
+
+In the early run on November 11 that posts to Threads and X, a short browser-control script (cdp.mjs) was called as `node cdp.mjs x paste`. Nothing was printed and nothing was pasted. The script reads its first argument as the command, so the extra `x` became the command. The work record says several calls were wasted on this.
+
+On November 12 I read a file of the same name, the copy dated November 8. If the first argument is not paste, upload or eval, no branch runs, the connection closes and the script exits with a normal exit code. If the target tab is missing it prints NO_TAB, and past 20 seconds it prints TIMEOUT. Every other failure speaks, and only an unknown command passes in silence.
+
+Called correctly, paste prints `pasted` and upload prints a line such as `inputs 1`. The record therefore summed it up as: an empty output is the sign of a wrong command. The script itself was not changed this time.
+
+There is a fix on the writing side too. If the last branch prints that the command is unknown and ends with a failure exit code, a call with the arguments in the wrong order shows itself where it was made. That is only a suggestion and not a change applied to this tool. Until it is applied, the caller can only remember what the tool prints on success and treat its absence as not-success.
+
+## Is it fine to run it again when it looks like it failed?
+
+It is not. Read the outside state first. The remaining five mismatches from the same two days went in different directions.
+
+| Situation | What the response showed | What actually happened | What was read before retrying |
+|---|---|---|---|
+| Typing into a YouTube live chat (Nov 11) | No error, chat list unchanged | The first entry never posted. After a fresh snapshot, filling the input by its new reference posted exactly one message | The chat list |
+| Eighth reply in a connected X thread (Nov 11) | Went to the compose view and returned to the original post, no error | No new reply either time. Repeating the same steps by hand posted it, and the link card appeared | The original post's page, to confirm the reply was missing |
+| Chrome screen capture (Nov 12) | A timeout response | Later, a 117,545-byte JPEG appeared at the target path | File existence and size, then the actual screen |
+| Naver publish button pressed twice (Nov 11) | The publish panel was still opening | The second press published at once to the default category | Opened the same post and edited its category and tags |
+| Copying numbers into a ledger note (Nov 12) | The total, 599, was right | Two detail values did not match the source table (10 and 589) | The rows of the source table |
+
+The first two failed silently, and the third produced a result after a response that said it failed. In the fourth, a second press made without waiting produced a result in a place nobody intended. In the fifth, a correct total hid wrong details. A response does not err in one consistent direction, so guessing from its direction does not work.
+
+In the second case the work record said a page alert was auto-accepted during the attempt and guessed it might be a leave-page prompt. That cause is not confirmed, and it stays a guess here. What is confirmed is that the original post's page was opened and the reply was seen to be missing before the retry, so no duplicate reply was created.
+
+The third record added that a file existing is not by itself accepted as a normal screen. In that run the file was opened and the actual screen was checked.
+
+In the Naver publishing case, the wrongly published post was not deleted and re-posted. The record says the same post was opened, its category was changed to travel information and world travel, and 20 tags were added. The rule it drew is to choose the category in the publish panel first and press the publish button exactly once. The ledger-note case ended with the rule to copy the values of the rows read on screen as they are and not to mix in values from other dates. A correct total does not guarantee correct detail values.
+
+![Two identical blank notebooks side by side on a wooden table, one open and one closed, with a pen lying between them](/images/works/read-back-after-success/two-notebooks-open-closed.webp)
+
+## What should be read back?
+
+Read the place where the work was supposed to happen, not the tool's response. The standard drawn from the records above looks like this.
+
+| Task | What the response alone tells you | Where to read back |
+|---|---|---|
+| Replacing a section of a file | The command ended | Whether the new marker line is in the file and the anchor line is gone |
+| Posting a post or reply outside | The button was pressed | Whether the public list shows exactly one copy of mine |
+| Making a picture or file | A timeout occurred | Whether the file exists at the target path, its size and how it actually looks |
+| Copying values by hand | The total matches | The source table's rows and each item's value |
+| Running a script | The output is empty | Whether the line printed on success actually appeared |
+
+Reading back costs one more call. Putting it at every step makes the automation slower and leaves more to read, so it is more realistic to start with work that leaves a trace outside: posting, editing a file, copying numbers into a ledger. Read-only work that gives the same result however many times it runs loses little if it is not read back. That split also came out of these records, and whether it fits another job has to be judged job by job.
+
+To carry this into your own work, the order below is a starting point. It is a suggestion drawn from these records, not a procedure verified on a customer project.
+
+1. Write down first what the tool should print on success and which values should change.
+2. Record an empty output as "unconfirmed", not as success.
+3. Make a file replacement stop when its anchor is missing. Comparing the text before and after, as below, would have caught this case.
+4. Read the outside state once before running again. If the result already exists, do not repeat. If not, repeat then.
+5. Press the same button once, and when it looks slow, keep reading the screen while you wait.
+
+```powershell
+$new = $old.Replace($anchor, $block)
+if ($new -eq $old) { throw "Anchor not found, so nothing changed" }
+```
+
+These two lines were tried on the temporary-file case. With a missing anchor they stop, and with a present anchor they pass. That does not mean they were added to the memory-file job in operation.
+
+The order of checks when restarting is covered in [When to Restart an AI Automation](/en/works/ai-automation-safe-retry), and keeping a line outside the tool for each run in [One Line for Every Automation Run](/en/works/automation-run-record). This piece adds one step between them: reading the response and the result separately.
+
+## What can't this record tell you?
+
+Seven cases picked from two days of records say nothing about how often this happens overall. Whether incidents fell after reading results back was not measured. For the live-chat case and the X reply case the causes were not established. Only the fact that the recorded method worked is confirmed.
+
+The tools and screens in these cases behave as they did on November 11 and 12, 2026. If a site or a tool changes, the same thing may not happen the same way.
+
+## Where to go next
+
+To design an automation by deciding at each step what counts as a result and where a person reads it again, the existing [DMS.Labs work automation](/automation) page gives an overview. That page is currently presented in Korean. This account covers two days of records from Reedo's own posting and record-keeping jobs, and it does not promise implementation costs, time savings, or effects on inquiries or revenue.
+
+The two images were newly generated to illustrate the topic. They are not photographs of a real working screen or a customer site.

@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "성공 출력 뒤에 다시 읽기",
+    summary: "자동화가 성공이나 빈 출력을 냈을 때 그 응답을 결과로 받아들이지 않고, 바뀌었어야 할 것을 파일과 공개 화면에서 다시 읽은 기록입니다. 이틀 사이 응답과 결과가 어긋난 일곱 건과 직접 재현한 두 건을 정리한 Work 실무 가이드입니다.",
+    tags: ["Work", "업무 자동화", "AX 전환"],
+    image: "/images/works/read-back-after-success/checklist-tick-on-paper.webp",
+    link: "/works/read-back-after-success",
+  },
+  {
     title: "AI 회의록, 녹음 전 확인할 것",
     summary: "AI 회의록 도구를 켜기 전에 참석자에게 알렸는지, 결과 문서를 누가 받는지, 파일을 언제 지우는지 확인하는 방법을 통신비밀보호법·개인정보 보호법 조문과 판결, 회의 도구 도움말에 근거해 정리하고 다섯 칸 확인표를 제안하는 업무 자동화 실무 가이드입니다.",
     tags: ["Work", "업무 자동화", "AI 도구"],
