@@ -1,0 +1,106 @@
+---
+title: "Should an AI Agent Hold Your Login?"
+subtitle: "What United's limit on unauthorized AI agents says, and three checks before you hand one a password"
+excerpt: "United Airlines announced it will block unauthorized AI agents from booking and buying on its platforms. I read its help page and contract of carriage, plus how JPMorgan and others have drawn the line, and propose three checks before an automation gets a login to an outside service."
+date: "2026-11-12"
+readTime: "11 min"
+coverImage: "/images/posts/united-ai-agent-ban/spare-key-hook.webp"
+series: "ai-tech-trends"
+chapter: "29"
+translationSourceHash: "201da0b88a3533262daf670c05bdc6bc362d1efbc75171143251c003eef295e8"
+tags: ["AI Agents", "Account Permissions", "Terms of Service", "Workflow Automation", "United Airlines"]
+---
+
+Giving an AI agent your username and password so it can book and buy for you may breach the service's terms if the service has not approved agents. On November 11, 2026, U.S. time, United Airlines said it will stop unauthorized third-party AI agents from searching, booking, buying and managing on its website and app. Its help page adds that a customer's own permission does not change that. Before you connect AI to an outside service, I suggest checking three things: what the terms say, how the login gets passed over, and which steps a person has to do.
+
+This reflects public sources as of November 12, 2026. I read United's press release "United Restricts Access for Third-Party AI Agents," its help page on unauthorized third-party AI agents, and the parts of its Contract of Carriage (marked as revised November 11, 2026) that mention AI agents. I also read CNBC's coverage of JPMorgan (October 13) and of United (November 11), Engadget's article (November 11), and TechCrunch's report on Uber's earnings (November 4). I did not review the whole contract, and I could not confirm how or how often it will be enforced. I did not read the terms of any Korean airline or shop. The announcement is one day old, so details may change. None of this is legal advice, and it describes no particular company or customer. The three-box checklist and the imagined scene later on are DMS.Labs proposals built from these sources. Neither United nor any other company requires them.
+
+![A brass key with a blank leather tag hanging from a wooden hook on the wall just inside a front door](/images/posts/united-ai-agent-ban/spare-key-hook.webp)
+
+## What exactly did United restrict?
+
+It restricted unauthorized third-party AI agents that search, book, buy or manage on United's website and app. By "AI agent" I mean an AI assistant that goes into a site and does a task for you. United's help page says that if an AI agent, bot, browser extension or browser feature searches, books, buys, manages or collects information on united.com or the United app for you, and United has not given permission, it counts as unauthorized.
+
+The limit is not only about direct visits. It also covers the route through travel agencies and booking aggregators. The help page says agencies and booking platforms cannot use third-party AI agents to search for, book or manage United travel for their customers, on either direct or indirect channels, and that an agency can use its own AI tools only with United's permission.
+
+Some things are left open. Using AI to research and plan a trip is fine, as long as the tool does not access united.com or the app. Assistive technology used by customers with disabilities is not affected. Asked whether United works with any third-party AI agents, the page answers "Not yet" and says it will update the page if that changes. Bookings an agent made before November 11, 2026 will not be canceled, though United recommends reviewing recent travel plans to make sure they were booked and ticketed correctly. Anyone who shared MileagePlus login details with an AI agent is told to change the password immediately.
+
+## Doesn't the customer's permission settle it?
+
+Not in United's view. The help page puts it this way: "Just because you've given access to AI assistants doesn't mean United will permit an AI assistant to transact with United."
+
+The Contract of Carriage points the same way. It defines an AI Agent as any software or service that takes autonomous or semi-autonomous action to discover, search for, book, purchase, ticket, service or manage United products, "whether or not Passenger or another individual supervises or approves its actions." The definition reaches AI assistants built into social media, messaging or search platforms, AI-enabled browsers, and any third-party assistant that reaches United through a connection a travel agency or other intermediary provides.
+
+I found two provisions that use this definition. The first is the list of improper reservations United may cancel without notice, which includes "reservations made, modified or serviced by AI Agents." The second is the list of prohibited practices, which includes "The use of AI Agents to make, modify or service a Ticket, and/or to purchase any service or product." For tickets booked against the rules, the contract lists remedies such as invalidating the ticket, canceling the rest of the itinerary, and a permanent ban or refusal to board. I found no case where these remedies were applied to an AI agent booking. I can confirm only that the contract gives United that right.
+
+## Why does United say it did this?
+
+United gives three reasons. Sharing login details with an AI tool can expose sensitive information. The tool's actions can lead to unintended purchases, account changes or use of MileagePlus miles. And automated actions could violate FAA and DOT rules. Its example is check-in, which requires a human to acknowledge that bags do not contain banned substances such as explosives. I did not check how those rules are actually written. That is United's explanation, passed along as stated.
+
+Engadget, citing the Wall Street Journal, reports that CEO Scott Kirby said at an event, "To be honest, I don't want to create another middleman." That hints at a business reason alongside security and regulation, but that reading is mine, not something United states.
+
+## Are other companies drawing the same line?
+
+Not in one direction. JPMorgan said on its October 13 earnings call that it will not let outside AI agents access customer accounts and act for them. CNBC quotes a spokeswoman: "Because it is not safe, we do not permit third parties to access accounts by obtaining customers' banking credentials and logging in on their behalf." The bank says it supports customer-authorized data sharing through open banking providers. CNBC explains that where a connector such as Plaid holds the customer's credentials, an agent can see some data, such as balances, read-only, but cannot send money or pay a bill. CEO Jamie Dimon said customers who use outside agents should understand there is a "liability transfer."
+
+According to CNBC's November 11 article, Amazon has blocked Meta's agent Muse while Walmart has partnered with it, and Expedia and Booking are working with OpenAI. Engadget reports that Southwest Airlines built a plugin for booking flights inside ChatGPT. Even within one industry, the line sits in different places.
+
+There is also a usage number. On Uber's third-quarter call, as TechCrunch reports it, the company handled about 320 million trips and orders in Halloween week, and AI agents accounted for 500 Uber Eats orders and four rides. DoorDash said it has received only a few hundred orders from agents. One way to read this is that companies are setting rules for login delegation while the volume is still tiny. That reading is my interpretation.
+
+## What changes for our own workflow automation?
+
+There are two seats. One is the team that uses an AI to log in to outside services and do work. The other is the team that runs a service customers may bring an AI agent to. I take the first seat here and come back to the second below.
+
+If you connect AI to outside services, I suggest filling in three boxes for each task you plan to hand over. The table is a DMS.Labs checklist built from the sources above. It is not a standard set by any company or institution.
+
+| Box | The question | What the sources in this article show | If the box is empty, I suggest |
+| --- | --- | --- | --- |
+| Terms | Does this service allow AI agents or automated programs to connect? | United's position is that a customer's permission does not oblige it to let a transaction through | Look for AI, automation and bot clauses in the terms and help pages and write down the date you checked. If you find nothing, do not delegate the login |
+| Login method | Are you handing over a personal username and password, or using a connection route the service opened? | JPMorgan does not permit outside agents to log in with a customer's credentials, but it supports open banking routes | Before passing a password, look for an official integration or a separate account with limited rights |
+| Human step | Is there a step a person has to do, such as payment, a change, consent or a confirmation? | United says check-in needs a human acknowledgment | Have the AI stop in front of that step and ask a person to confirm |
+
+These boxes connect to the checklist in [When Text the Agent Reads Becomes an Order](/en/blog/agent-rule-of-two). The "sensitive data" slot there becomes the login details here, and the "way out" slot becomes the booking and payment steps. Set against the read, draft, act ladder in [Giving AI automation permission in three steps](/en/works/automation-permission-ladder), the terms box has to be answered before a task reaches the act step. United itself allows AI to research and plan but blocks it from logging in and transacting. If you separate work that needs no login from work done after logging in, you can see where the terms box starts to matter.
+
+## What about a six-person business-travel office?
+
+Let me imagine one. This is a made-up situation, not a real customer or field case. A business-travel office has six staff. Client trips are frequent, and the staff spend a lot of time logging in to airline accounts to change itineraries and pick seats. They want to give an AI agent each person's username and password and have it handle itinerary changes and even check-in.
+
+Filling in the three boxes goes like this. The terms box is blocked at United, because the help page already says agencies cannot use third-party AI agents to book or manage United travel. For any other airline the box stays empty, since none was checked. The login box cannot be filled, because it means handing an employee's personal password to an AI. The human-step box catches check-in.
+
+The scope I would propose here is comparing public schedules and drafting an itinerary sheet. A staff member reserves, changes and checks in directly on the airline's screen. If an airline opens an agent connection later, the terms box gets filled in again. I have not tested how much time this would save. The scene only shows how the checklist is used.
+
+![A small canvas suitcase on a wooden hallway bench with a blank paper luggage tag on its handle and a pen beside it](/images/posts/united-ai-agent-ban/blank-luggage-tag.webp)
+
+## What should a service that customers bring AI agents to decide?
+
+United's documents also show what the service side decided. It defined agents broadly, including browser features and agency connections. It covered both direct access and indirect access through agencies, and it did not carve out an exception for cases where a human approves. It left room to change the page if an approved route appears, and it added a transition rule that earlier bookings will not be canceled. The press release says United will update its Digital Trust Center to explain what the restrictions mean for customers, how to protect accounts, and where to get help if an agent takes an unintended action.
+
+A company that offers customers bookings, orders or account features could put the same questions to its own service. Which automated access will you allow, and which will you block? Where in your terms and help pages will that be written? What happens to what an agent has already done? I drew these questions from United's choices, and they are not a model answer. Whether to block or to open can differ from one service to another, and this article does not judge which is right.
+
+## What if I already gave an AI my login details?
+
+I suggest changing the password and reviewing recent activity. United tells customers who shared MileagePlus login details with a third-party AI agent to change the password immediately, and to secure the account if they suspect unauthorized access or an unintended purchase. Applying the same steps to another service is my suggestion, carried over from United's advice.
+
+## Is it still fine to use AI just to plan a trip?
+
+Yes. United says it is fine to use AI to research and plan, provided the tool does not access united.com or the app. It also advises against giving AI sensitive details such as confirmation numbers, MileagePlus details and identity information. If an AI writes something for you, United says to review it and search for flights yourself on united.com or the app.
+
+## Do these rules apply to other airlines?
+
+No. What I read here are United's terms and guidance. Engadget reports that Southwest Airlines launched a plugin for booking flights inside ChatGPT, so the stance is not uniform even among airlines. I did not check the terms of Korean airlines or shops. Each service's terms need to be read separately.
+
+## What to read next
+
+How far to let AI go on outside services is a question DMS.Labs covers on its workflow automation page, which is provided in Korean only. The order of checks before connecting an outside tool to an AI is in [Five Checks Before Connecting an MCP Server](/en/blog/mcp-connection-checks). If you are weighing whether to let an AI hold logins to outside services, please send your situation through the [contact page](/en/contact).
+
+## Sources
+
+Checked on November 12, 2026. These are announcement-day materials and may change. The two photos in this article are AI-generated illustrations and are not records of any real site.
+
+- United Airlines newsroom, United Restricts Access for Third-Party AI Agents (page dated November 12, 2026): [web page](https://www.united.com/en/us/newsroom/announcements/cision-125496)
+- United Airlines Help Center, Unauthorized third-party AI agents or assistants: [web page](https://www.united.com/en/us/fly/help-center/digital-trust-center/artificial-intelligence/third-party-ai-agents.html)
+- United Airlines, Contract of Carriage (marked revised November 11, 2026): [web page](https://www.united.com/en/us/fly/contract-of-carriage.html)
+- CNBC, report on United Airlines restricting AI agents (November 11, 2026): [web page](https://www.cnbc.com/2026/11/11/united-airlines-ai-agents.html)
+- CNBC, report on JPMorgan not allowing outside AI agents into customer accounts (October 13, 2026): [web page](https://www.cnbc.com/2026/10/13/jpmorgan-ai-agents-account-access.html)
+- Engadget, United Is Restricting AI Agents From Booking Flights (November 11, 2026): [web page](https://www.engadget.com/2314121/united-is-restricting-ai-agents-from-booking-flights)
+- TechCrunch, report on Uber's third-quarter results and AI-agent orders (November 4, 2026): [web page](https://techcrunch.com/2026/11/04/almost-no-one-uses-ai-agents-to-book-their-uber-company-says/)
