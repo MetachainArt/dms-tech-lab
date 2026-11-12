@@ -9,7 +9,7 @@ export interface ShowcaseWorkItem {
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
     title: "성공 출력 뒤에 다시 읽기",
-    summary: "자동화가 성공이나 빈 출력을 냈을 때 그 응답을 결과로 받아들이지 않고, 바뀌었어야 할 것을 파일과 공개 화면에서 다시 읽은 기록입니다. 이틀 사이 응답과 결과가 어긋난 일곱 건과 직접 재현한 두 건을 정리한 Work 실무 가이드입니다.",
+    summary: "자동화가 성공이나 빈 출력을 냈을 때 그 응답을 결과로 받아들이지 않고, 바뀌었어야 할 것을 파일과 공개 화면에서 다시 읽은 기록입니다. 이틀 사이 응답과 결과가 어긋난 일곱 건을 정리하고 그중 두 건을 직접 다시 확인한 Work 실무 가이드입니다.",
     tags: ["Work", "업무 자동화", "AX 전환"],
     image: "/images/works/read-back-after-success/checklist-tick-on-paper.webp",
     link: "/works/read-back-after-success",

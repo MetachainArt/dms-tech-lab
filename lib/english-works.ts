@@ -8,7 +8,7 @@ type WorkTranslation = Pick<ShowcaseWorkItem, "title" | "summary" | "tags"> & {
 const translations: Record<string, WorkTranslation> = {
   "/works/read-back-after-success": {
     title: "Read It Back After Success",
-    summary: "A record of treating an automation's success or silent output as a claim rather than a result, and reading what should have changed from files and public pages. It covers seven cases from two days where a response and the real result disagreed, plus two reproduced directly.",
+    summary: "A record of treating an automation's success or silent output as a claim rather than a result, and reading what should have changed from files and public pages. It covers seven cases from two days where a response and the real result disagreed, two of which were checked directly.",
     tags: ["Work", "Workplace automation", "AX transformation"],
     linkLabel: "Read the English guide",
   },
