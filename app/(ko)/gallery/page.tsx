@@ -1,3 +1,4 @@
+import { notSureEssayKo } from "@/lib/ideas-essay-notsure";
 import { foundHandedEssayKo } from "@/lib/ideas-essay-found";
 import { timeSavedEssayKo } from "@/lib/ideas-essay-time";
 import { withoutAiDayEssayKo } from "@/lib/ideas-essay-without-ai";
@@ -120,8 +121,9 @@ export default function GalleryPage() {
         eyebrow="Ideas / Reedo" lead="Images &" accent="words." variant="insights"
         title="아이디어"
         description="작업하면서 남긴 사진과 글. 기록이기도 하고 생각이기도 하고, 때로는 그냥 좋아서 담아둔 것들."
-        note={<><span>{galleryPieces.length + 14} pieces · 2025 — 2026</span><span>A space where images and words meet</span></>}
+        note={<><span>{galleryPieces.length + 15} pieces · 2025 — 2026</span><span>A space where images and words meet</span></>}
       />
+      <div className={styles.essay}><EssayPiece essay={notSureEssayKo} locale="ko" /></div>
       <div className={styles.essay}><EssayPiece essay={foundHandedEssayKo} locale="ko" /></div>
       <div className={styles.essay}><EssayPiece essay={timeSavedEssayKo} locale="ko" /></div>
       <div className={styles.essay}><EssayPiece essay={withoutAiDayEssayKo} locale="ko" /></div>
