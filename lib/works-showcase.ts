@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "안 돌아간 날, 누가 압니까",
+    summary: "예약된 자동화가 아예 돌지 않은 날에는 실패 알림이 울릴 일이 없다는 점을 공식 문서 세 곳과 리도의 글 자동화 기록으로 확인하고, 정해진 시각에 성공 신호가 왔는지 따로 지켜보는 다섯 칸 점검 카드를 제안하는 업무 자동화 실무 가이드입니다.",
+    tags: ["Work", "업무 자동화", "AX 전환"],
+    image: "/images/works/automation-missed-run-check/calendar-one-empty-square.webp",
+    link: "/works/automation-missed-run-check",
+  },
+  {
     title: "성공 출력 뒤에 다시 읽기",
     summary: "자동화가 성공이나 빈 출력을 냈을 때 그 응답을 결과로 받아들이지 않고, 바뀌었어야 할 것을 파일과 공개 화면에서 다시 읽은 기록입니다. 이틀 사이 응답과 결과가 어긋난 일곱 건을 정리하고 그중 두 건을 직접 다시 확인한 Work 실무 가이드입니다.",
     tags: ["Work", "업무 자동화", "AX 전환"],

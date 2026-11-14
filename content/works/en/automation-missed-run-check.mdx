@@ -1,0 +1,103 @@
+---
+title: "Who Notices the Day It Didn't Run?"
+excerpt: "A failure alert tells you about an automation that ran and failed, but on a day it never started there is nothing to alert on. Drawing on three sets of official documentation and the records of two mornings when a posting automation of Reedo's did not publish, this practical guide proposes a five-box card for watching whether a success signal arrived on time."
+date: "2026-11-14"
+readTime: "10 min"
+kind: "guide"
+tags: ["Work", "Workplace automation", "AX transformation"]
+---
+
+A failure alert tells you about a job that ran and failed. On a day the schedule never started, there is nothing to fail, so nothing alerts. Alongside whatever reports errors, you need a second watcher that checks whether a success signal arrived at the expected time. The records of Reedo's own posting automation show two mornings when the post did not go out. For both, the record names an error as the cause, but it does not say who noticed or how.
+
+Checked on November 14, 2026, this account rests on the official documentation for n8n, GitHub Actions and Healthchecks.io, plus Reedo's work records and the public repository's commit history. The cases come from Reedo's own posting automation, not from a customer project, and the piece contains no measurement showing that the check card below reduces incidents.
+
+## If failure alerts are set up, will you also learn about the day it didn't run?
+
+I found nothing in the documentation that supports counting on it. The scope each tool describes shows why.
+
+The [n8n Error Trigger page](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.errortrigger/) covers the case where a linked workflow fails. It receives the failed workflow and its error details and runs a separate error workflow. A schedule that produces no execution at all is not described there. The page does say that an error in the trigger node, the first step, arrives in a different shape with no execution data, so some start-up errors are covered. The same page also says error workflows cannot be tested by running a workflow manually, and that the trigger only fires when an automatic run errors. In practice, you only learn whether the alert is wired up by making an automatic run fail.
+
+The schedule section of the [GitHub Actions documentation](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows) has a sentence about who gets told. Notifications for scheduled workflows go to the user who last modified the cron syntax in the workflow file. The page also describes a deactivated scheduled workflow: if someone with write permission commits a change to the cron schedule, the workflow is reactivated and that person becomes the actor on later runs. The alert follows the last editor of the schedule line and has nothing to do with who was assigned the job. Whether that person is the one who owns the automation is not something the documentation guarantees.
+
+[Healthchecks.io](https://healthchecks.io/docs/) approaches it from the other side. The job sends a signal (a ping) every time it finishes. The service stays quiet while pings arrive on time and raises an alert when one doesn't. Its [cron monitoring guide](https://healthchecks.io/docs/monitoring_cron_jobs/) lists the failures this can catch: the whole machine going down, cron (the Unix tool that runs jobs on a schedule) not running or misconfigured, a job that exits with a non-zero code, and a job that runs abnormally long. It also describes the limits of the classic cron MAILTO setting, which mails a job's output: you get nothing if the machine is powered off or loses its network, and a mail on every run that produces output can bury the errors among the routine ones.
+
+![A paper calendar pinned at the corners with a small pencil dot in each square and one square in the middle row left empty, a pencil hanging from a string on the wall beside it](/images/works/automation-missed-run-check/calendar-one-empty-square.webp)
+
+## How did the missed days show up in Reedo's own posting automation?
+
+DMS.Labs has an automation that starts at 9 a.m. every day and publishes one Korean and English piece, rotating through Work, Writing and Ideas. This piece was produced by it. The automation's memory record notes two missed days. On October 29 the model call ended with a rate-limit error (429) and nothing was published, and the day was not backfilled. On November 2 the run was cut short by a model key error, and the Writing piece whose turn it was went out on November 3 as a recovery.
+
+The public repository's commit history shows the same thing separately. Across the eight days from October 27 to November 3, six have a bilingual publishing commit in the 9 a.m. hour, and October 29 and November 2 do not. Other jobs still pushed their optical-communications lessons in the evening of those same two days, so a commit somewhere in the repository does not tell you whether this automation ran. You have to look at the morning commit that belongs to it.
+
+Some things the record does not say. It does not say who noticed those two days or by what route, or where any alert went. What is confirmed is that the post was missing and what cause was recorded, so this piece does not claim that an alert fired or that it didn't. One working rule Reedo does follow when running this automation: a schedule that shows as active does not mean there is a result for that day. The result is checked directly in the repository and on the public page.
+
+## What should you watch instead?
+
+Pick one success signal that is left outside the job, and check whether it appeared inside the expected window. The table below sorts what an error alert and a success-signal check each catch, based on the documentation above and this piece's own test.
+
+| What the failure looks like | Error alert | Success-signal check |
+|---|---|---|
+| It ran and ended with an error | Catches it | Catches it, since no signal arrived |
+| The schedule never started | Not covered in the documentation | Catches it, since no signal arrived |
+| The machine went off or lost its network | Missed if the sender stops with it | Catches it if the check runs elsewhere |
+| It ran to the end but the result is wrong | Misses it | Misses it |
+
+The last row is something neither watcher can do. Reading the result back from outside is covered in [Read It Back After Success](/en/works/read-back-after-success).
+
+To carry this into your own work, a good starting point is to write five boxes on one page. The card is a DMS.Labs proposal, not a form validated on customer projects.
+
+| Box | What to write |
+|---|---|
+| When it should run | The cycle and the allowed delay (for example, every day at 9 a.m., 10 a.m. at the latest) |
+| Success signal | One line left outside the job when it finishes (a new row in a table, a file, a public page) |
+| Who is told when it is missing | One name and two different alert routes |
+| Alert test date | The last date you removed the signal on purpose and an alert actually arrived |
+| How to switch off | Pause the check while you stop the job on purpose, and write the date to turn it back on |
+
+Suppose a five-person interior-design firm uses an automation that copies the morning's quote-request emails into a table each day. This is an assumption, not a real customer case. The firm's success signal is a row at the bottom of the table carrying that day's date. If the row is missing by 10 a.m., a text message and an email go to the person in charge by separate routes. The check stays even though an error alert already exists, because a day on which the automation never started gets past an error alert. How to name that person is covered in [When the Person Behind the Automation Is Away](/en/works/automation-owner-card).
+
+## Have you tested the alert route?
+
+You have to test it by removing the signal on purpose. As the n8n page shows, some tools cannot test an error alert from a manual run, and a route an alert travels is not confirmed until it is used.
+
+While writing this piece I built four cases in a temporary folder with PowerShell. An error handler wrote a success-signal file when a job succeeded and an alert file when it failed. Case A was a job that succeeded. B was a job that ended with an error. In C the schedule never called the job. In D the only thing present was a success-signal file left three hours earlier. I set the allowed delay to 90 minutes.
+
+| Case | Alert written by the error handler | Success-signal check result |
+|---|---|---|
+| A, succeeded | None | OK |
+| B, ended in error | 1 | NEVER |
+| C, never called | None | NEVER |
+| D, only a three-hour-old signal | None | LATE(180 min) |
+
+The error handler reacted to B alone. The success-signal check caught every case except A. NEVER means that no success-signal file exists yet, so this check by itself cannot tell B from C. The error alert tells you why, and the success-signal check catches the day nothing started, so the two fill in for each other.
+
+The function used for the check:
+
+```powershell
+function Test-Heartbeat($path, $maxAgeMin) {
+  if (-not (Test-Path $path)) { return 'NEVER' }
+  $age = ((Get-Date) - (Get-Item $path).LastWriteTime).TotalMinutes
+  if ($age -gt $maxAgeMin) { return "LATE($([int]$age)min)" }
+  return 'OK'
+}
+```
+
+The test checked the file logic in a temporary folder. It was not run under a real scheduler such as Task Scheduler, n8n or GitHub Actions. I also did not test what happens when the check runs on the same machine as the job and that machine goes off, which would stop both. That part rests on the Healthchecks.io documentation.
+
+## Does piling on alerts make it safer?
+
+No. The number of routes an alert can travel and the number of times it sounds are separate matters. The Healthchecks.io documentation recommends more than one notification route in case one channel fails. It also notes that a classic setup mailing every output can bury errors among routine messages. Use two or more routes, and sound them only when the signal fails to arrive. The documentation also describes a setting that resends an email every hour or every day while any monitored job is down, so a single missed alert does not stay buried.
+
+![A small round desk clock with no numerals on its face, an empty wooden letter tray and a closed linen-covered notebook on a wooden desk in clear morning light](/images/works/automation-missed-run-check/clock-and-empty-tray.webp)
+
+## What can't this record tell you?
+
+The two missed days come from eight days of records for a single automation, so they say nothing about how often this happens overall. I could not confirm whether an alert went out on either day. Whether a success-signal check reduces incidents was not measured. This piece combines what the documentation describes with a temporary-folder test to propose a check card, and it is not a procedure validated on a customer site.
+
+The documentation reflects November 14, 2026. If the pages change, the same descriptions may not hold, including the GitHub Actions description of who gets notified.
+
+## Where to go next
+
+To design an automation by deciding, task by task, what counts as the success signal and who receives the alert, the existing [DMS.Labs work automation](/automation) page gives an overview. That page is currently presented in Korean. If you want to talk it through, there is the [contact page](/en/contact). This account covers Reedo's own posting records and official documentation, and it does not promise implementation costs, time savings, or effects on inquiries or revenue. Keeping one line per run is covered in [One Line for Every Automation Run](/en/works/automation-run-record).
+
+The two images were newly generated to illustrate the topic. They are not photographs of a real working screen or a customer site.
