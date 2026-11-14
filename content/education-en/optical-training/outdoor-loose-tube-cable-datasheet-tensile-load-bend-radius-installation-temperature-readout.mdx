@@ -1,0 +1,191 @@
+---
+title: "Reading Outdoor Loose Tube Cable Datasheets: Tensile Load, Minimum Bend Radius and Installation Temperature"
+date: "2026-11-14"
+desc: "A ten-minute lesson on reading the tensile load, minimum bend radius and installation temperature lines of outdoor loose tube fibre optic cable datasheets. It compares nine documents from Corning, OCC, Molex, Belden, RDM, AFL, Link and Panduit and shows how to separate short-term installation values from long-term installed values, how to convert bend radius into multiples of the cable diameter, how to split installation and operating temperature, what to record when numbers or units disagree inside one document, and how far the test pass criteria can be read."
+coverImage: "/images/education/optical-training/outdoor-loose-tube-cable-datasheet-tensile-load-bend-radius-installation-temperature-readout/cover.svg"
+readTime: "10 min"
+lang: "en"
+---
+
+On an outdoor loose tube cable datasheet the tensile load is split into a short-term value during installation and a long-term value once installed, the minimum bend radius into a value under load and a value without load, and the temperature into installation, operating and storage lines. In the nine documents that were read, the maximum installation tension ranged from 1,800 N to 6,000 N, the long-term installed tension from 800 N to 2,000 N, and the lowest permitted installation temperature from minus 40 degrees C to 0 degrees C. Do not copy a single number. Record which line it comes from and what multiple of the cable diameter the bend radius is, together with the document number, so the value can be compared with the conditions on site.
+
+As of November 14, 2026, based on the documents listed under Sources.
+
+## Learning objectives
+
+- Read the tensile load as a short-term installation line and a long-term installed line, and decide which line to compare with the tension meter on site.
+
+- Convert the minimum bend radius into a multiple of the cable outside diameter, and compare the value under load and the value without load separately.
+
+- Read installation and operating temperature separately, and when numbers or units disagree inside a document, record both values with page number and edition.
+
+## How do the two tensile load lines differ?
+
+The tensile load is printed once for the short pull during installation and once for the load the cable may carry continuously after installation, and the two lines must not be merged into one number. Corning's generic specification for gel-free loose tube cables for outdoor use (PGS067, revision 7, November 2026) states in clause 3.30 a maximum pulling tension of 2,700 N (600 lbf) during installation, short term, and 890 N (200 lbf) long term installed. The OCC TL series specification (revised March 13, 2026) prints 2,700 N (600 lbs) for installation and 800 N (180 lbs) for operation, and the Panduit Opti-Core datasheet (February 2021) prints the same 2,700 N and 800 N. The AFL Uniflex armored loose tube cable (PP-1-00024 revision 4) prints 2,670 N (600 lbf) short term and 890 N (200 lbf) long term.
+
+The spread between documents is large. Belden's 48-fibre unarmored cable GBRO848 (revision 0.14) prints 6,000 N for installation and 2,000 N for operation, while the same maker's 40-fibre steel wire armored cable GSWH840 (revision 0.20) prints 2,700 N and 900 N. The RDM central loose tube cable (document dated November 10, 2025) prints 3,000 N short term and 1,000 N long term, and the Link self-supporting armored cable UFC97XXMA prints 1,800 N for installation and 1,000 N for operation. The Molex AFOLH datasheet (December 2025) prints the maximum installation tension by fibre count, 2.0 kN for 2 to 72 fibres, 2.5 kN for 84 to 96 and for 108 to 120 fibres, and 3.0 kN for 132 to 144 fibres, and prints no long-term installed value.
+
+Dividing the long-term value by the installation value gives about 0.33 for Corning, AFL, both Belden documents and RDM, about 0.30 for OCC and Panduit, and about 0.56 for Link. This ratio is a DMS calculation and not a design principle stated by any document. The test in Corning clause 5.7 names a rated installation load of 2,670 N (601 lbf) and a residual load of 30% of it, which comes to about 801 N and differs from the 890 N long-term value of clause 3.30. The documents do not explain how the two numbers relate, so they are not read as one condition.
+
+| Document | Short term during installation | Long term installed | Long term divided by installation (DMS calculation) |
+| --- | --- | --- | --- |
+| Corning PGS067 (revision 7) | 2,700 N | 890 N | 0.33 |
+| OCC TL series (March 13, 2026) | 2,700 N | 800 N | 0.30 |
+| Panduit Opti-Core (February 2021) | 2,700 N | 800 N | 0.30 |
+| AFL Uniflex armored (revision 4) | 2,670 N | 890 N | 0.33 |
+| Belden GBRO848 (revision 0.14) | 6,000 N | 2,000 N | 0.33 |
+| Belden GSWH840 (revision 0.20) | 2,700 N | 900 N | 0.33 |
+| RDM central loose tube (November 10, 2025) | 3,000 N | 1,000 N | 0.33 |
+| Link UFC97XXMA | 1,800 N | 1,000 N | 0.56 |
+| Molex AFOLH (December 2025) | 2,000 to 3,000 N (by fibre count) | not printed | not calculated |
+
+![Order for reading the tensile, bend radius and temperature lines](/images/education/optical-training/outdoor-loose-tube-cable-datasheet-tensile-load-bend-radius-installation-temperature-readout/concept-en.svg)
+
+- Compare the short-term line with the peak reading of the tension meter, and the long-term line with the load that stays on the cable
+
+- Cables of the same family differ by fibre count and armor, so copy the part number line as well
+
+- Where a document prints both N and lbf, check that the two units agree with each other
+
+## What multiple of the cable diameter is the minimum bend radius?
+
+The bend radius line is split into a value under load (during installation) and a value without load (once installed), and some documents print it in centimetres and others as a multiple. To compare them, convert everything into a multiple of the cable outside diameter. Corning clause 3.31 prints 15 times while under tension and 10 times once installed. Its revision history says the 15x and 10x requirement was added in revision 4 in 2010, and that this revision 7 changed only the reference standard for the jacket material in clause 3.25. OCC prints 15.3 cm for installation and 10.2 cm long term on the 12 to 48 fibre row with a diameter of 10.2 mm, which is 15.0 and 10.0 times the diameter.
+
+Most documents use 20 and 10 times. Molex prints 20 times at full load and 10 times at no load, but the text writes the unit as mm in "20mm x Cable OD", which is read as a unit typo for a multiple. That is a DMS reading. Link prints 20 times for installation and 10 times for operation, and Panduit's 6 to 48 fibre unarmored row prints 20 cm and 10 cm for a 10.1 mm diameter, which is 19.8 and 9.9 times. RDM prints 160 mm loaded and 80 mm unloaded, and with a diameter of 7.8 mm these are 20.5 and 10.3 times. Belden GBRO848 prints 220 mm for installation and 165 mm for operation on an 11.0 mm cable, which is 20.0 and 15.0 times, and GSWH840 prints the same 275 mm for both, which is 19.9 times on 13.8 mm.
+
+The AFL document disagrees with itself in one row. For a cable of 0.48 in (12.2 mm) it prints a short-term bend radius of 9.6 in (25.0 cm) and a long-term radius of 4.8 in (13.0 cm). 9.6 in is 24.4 cm and 4.8 in is 12.2 cm, so the inch values match 20 and 10 times while the centimetre values are 20.5 and 10.7 times. The document does not say which is authoritative, so both are recorded. RDM has a radius and diameter question as well. The cable bend test E11A row prints D = 80 mm and the permanent bend radius without load prints 80 mm. If D is a diameter, the test radius is 40 mm and smaller than the use limit, but the document does not explain this, so it remains unconfirmed.
+
+| Document | Under load (during installation) | Without load (installed) | How it was read |
+| --- | --- | --- | --- |
+| Corning PGS067 | 15 times | 10 times | printed as a multiple |
+| OCC TL series | 15.0 times (12 to 48 fibres) | 10.0 times | cm in the table divided by the diameter |
+| Molex AFOLH | 20 times | 10 times | the unit is printed as mm |
+| Belden GBRO848 | 20.0 times | 15.0 times | mm in the table divided by the diameter |
+| Belden GSWH840 | 19.9 times | 19.9 times | same value for installation and operation |
+| RDM central loose tube | 20.5 times | 10.3 times | mm divided by the diameter |
+| AFL Uniflex armored | 20.0 times (inch) or 20.5 times (cm) | 10.0 times (inch) or 10.7 times (cm) | the two units disagree |
+| Link UFC97XXMA | 20 times | 10 times | printed as a multiple |
+| Panduit Opti-Core | 19.8 times (6 to 48 fibres unarmored) | 9.9 times | cm in the table divided by the diameter |
+
+## How does installation temperature differ from operating temperature?
+
+The temperature lines are split into installation, operating and storage or transport ranges, and for many documents the installation range is the narrowest. OCC adds the words "actual temperature of cable" to its installation temperature line, so the value refers to the cable itself and not to the air. The other documents carry no such note, so the document alone does not say which temperature is meant. The installation range is minus 30 to plus 70 degrees C for Corning, OCC and AFL, minus 30 to plus 60 degrees C for Panduit, and minus 40 to plus 70 degrees C for Link. Both Belden documents and RDM print minus 5 to plus 50 degrees C, and Molex prints 0 to plus 50 degrees C.
+
+The operating range is minus 40 to plus 70 degrees C for Corning, OCC, AFL, Link, RDM and Panduit, minus 30 to plus 70 degrees C for Belden, and minus 10 to plus 70 degrees C for Molex. A gap of 30 degrees in the operating lower limit among similar cable types may reflect product design, but the datasheets do not give the reason. Corning clause 5.1 limits the single-mode attenuation change to 0.15 dB/km at 1550 nm in a temperature cycle between minus 40 and plus 70 degrees C, and clause 5.10 says the low and high temperature bend test holds the cable for four hours at minus 30 and plus 60 degrees C before four turns. So the installation range goes up to plus 70 degrees C while the bend test went only to plus 60 degrees C, which can be read from the document.
+
+| Document | Installation | Operating | Storage or transport |
+| --- | --- | --- | --- |
+| Corning PGS067 | -30 to +70 °C | -40 to +70 °C | -40 to +70 °C |
+| OCC TL series | -30 to +70 °C (actual cable temperature) | -40 to +70 °C | -40 to +75 °C |
+| AFL Uniflex armored | -30 to +70 °C | -40 to +70 °C | -40 to +75 °C |
+| Panduit Opti-Core | -30 to +60 °C | -40 to +70 °C | -40 to +75 °C |
+| Link UFC97XXMA | -40 to +70 °C | -40 to +70 °C | -40 to +75 °C |
+| Belden GBRO848 and GSWH840 | -5 to +50 °C | -30 to +70 °C | -30 to +70 °C |
+| RDM central loose tube | -5 to +50 °C | -40 to +70 °C | -40 to +70 °C |
+| Molex AFOLH | 0 to +50 °C | -10 to +70 °C | -20 to +70 °C |
+
+## What do you record when numbers disagree inside one document?
+
+Numbers and units sometimes disagree inside a single document, and the right record is to keep both values with the page number and not to choose one. Five places were found. First, Corning prints a maximum installation pulling tension of 2,700 N in clause 3.30 and a rated installation load of 2,670 N in the clause 5.7 test. Second, Belden GBRO848 prints the installation tension as 6,000 N (1,300 lbf), while 6,000 N converts to about 1,349 lbf. Third, AFL has the inch and centimetre mismatch seen above. Fourth, Molex prints the bend radius unit as mm and the installation temperature lower limit as minus 0 degrees C.
+
+Fifth, Link UFC97XXMA disagrees in two places. Its first page says the cable holds 6 to 312 cores, but the construction table covers 6 to 120 fibres and the order list runs to 144 fibres. The text also says dry water blocking replaces the sticky filling gel, while the filling compound row of the construction table lists a thixotropic jelly compound. The installation temperature lower limit of this document, minus 40 degrees C, is the lowest of this material, but values from a document with such inconsistencies should be checked against another document of the same product before they are copied. No maker was contacted about numbers that disagree, and both values were written as printed.
+
+| Document | One value | The other value | How to record |
+| --- | --- | --- | --- |
+| Corning clause 3.30 and clause 5.7 | installation 2,700 N | test rating 2,670 N | write both clause numbers and do not read them as one value |
+| Belden GBRO848 tension | 6,000 N | 1,300 lbf (converts to about 1,349 lbf) | unify the unit and write the N value first |
+| AFL bend radius | 9.6 in and 4.8 in | 25.0 cm and 13.0 cm | write both units |
+| Link fibre count range | first page 6 to 312 | construction table 6 to 120, order list 144 | write by page and confirm the part number |
+| Link filling | text says dry core replaces gel | construction table lists a jelly compound | copy both lines |
+
+![Short-term installation tension and long-term installed tension](/images/education/optical-training/outdoor-loose-tube-cable-datasheet-tensile-load-bend-radius-installation-temperature-readout/bars-en.svg)
+
+- Dark bars are the long-term installed tension and light bars are the short-term installation tension
+
+- Molex prints only the installation tension, so only the installation bar (2 to 72 fibres) is drawn
+
+- Cable construction and fibre count differ between documents, so this is not a like for like comparison
+
+## How far can the test pass criteria be read in a datasheet?
+
+To judge whether the load and bend numbers hold, the pass criterion of the test behind them is needed, and the documents print this to very different degrees. Corning clause 5.7 says that in the FOTP-33 test the axial fibre strain is at most 60% of the proof level after 60 minutes at the rated load and at most 20% after 10 minutes at the residual load, and that the attenuation change at residual load and after removing the load is at most 0.15 dB at 1550 nm for single-mode fibre. The compression test in clause 5.4, the repeated bending in 5.5, the impact test in 5.6 and the twist test in 5.8 carry the same 0.15 dB limit, and the low and high temperature bend carries 0.30 dB.
+
+Molex tests the tensile load at the maximum installation tension with a fibre strain of 0.6% or less and no change in attenuation. The bend test uses the minimum radius at no load with four turns and three cycles, and the bend under tension uses the full load radius for one 360 degree turn. The temperature cycle limit is 0.15 dB/km between the lowest and highest operating temperatures, and 0.10 dB/km after ageing. RDM prints an attenuation change of 0.05 dB or less for tensile, crush, impact, torsion and bend, and 0.25 dB for ageing. Only the long-term tensile row uses the symbol ΔIL while the others use Δα, and the document does not say whether these are the same criterion under two names.
+
+Putting the allowed changes of three documents side by side does not make them the same test. The mechanical tests print the change in dB while the temperature cycles of Corning and Molex print dB/km, and sample length and fibre type differ too. The pass criteria of the OCC, AFL, Link, Panduit and Belden documents are not printed in the body, which only names ICEA S-87-640 or IEC 60794 family standards. The standard texts were not read, so a statement of conformity is not read as a confirmed pass number. Where an accept or reject judgment is needed, ask for the test report from the maker separately.
+
+| Document | Tensile test condition | Pass criterion read | Note |
+| --- | --- | --- | --- |
+| Corning PGS067 | rated 2,670 N, residual load 30% | strain 60% and 20% of proof or less, attenuation change 0.15 dB or less | strain relative to the proof level |
+| Molex AFOLH | maximum installation tension | strain 0.6% or less, no change in attenuation | temperature cycle 0.15 dB/km or less |
+| RDM central loose tube | IEC 60794-1-21 E1 | attenuation change 0.05 dB or less | only the long-term row uses ΔIL |
+| OCC, AFL, Link, Panduit, Belden | standard name only | no number in the body | ICEA S-87-640 or IEC 60794 family |
+
+## What happens when site conditions are put into the datasheet values?
+
+The case used here is a hypothetical teaching calculation and not a test of a real site or product. Assume that in a duct pull the peak reading of the winch tension meter was 2,000 N and the load that stays on the cable after installation is 900 N. Against the installation line, Corning, OCC, Panduit, AFL, both Belden documents and RDM hold, Link at 1,800 N is exceeded, and the Molex 2 to 72 fibre row is equal to its maximum with no margin. The 900 N after installation exceeds Corning at 890 N, AFL at 890 N, OCC at 800 N and Panduit at 800 N, equals Belden GSWH840 at 900 N, and holds for GBRO848 at 2,000 N, RDM at 1,000 N and Link at 1,000 N.
+
+Now put in a bend radius. Assume an 11.0 mm cable is wound and fixed at a radius of 150 mm near the closure inlet, which is about 13.6 times the diameter. This applies the multiple of each document to 11.0 mm as a teaching calculation, and the real diameters differ by document. Where the installed line is 10 times the radius needed is 110 mm and the case holds, where it is 15 times 165 mm is needed and it fails, and at 20 times 220 mm is needed and it fails by more. The same site value gives pass or fail depending on the document, which is why the multiple is checked in every document. Fixing and slack at the closure are covered in the closure cable anchoring lesson, and the macrobend loss of bend-insensitive fibre in the G.657 datasheet lesson.
+
+For temperature, assume the cable itself is at minus 10 degrees C. Corning, OCC, AFL, Panduit and Link include minus 10 degrees C in the installation range, while Belden, RDM and Molex have a lower limit of minus 5 degrees C or higher and do not. If the schedule takes a cable from storage and pulls it at once in winter, measure the cable temperature and compare it with the installation line. The limits of this material are plain. The texts of ICEA S-87-640, IEC 60794-1-21, IEC 60794-3-10 and 3-11, and Telcordia GR-20 were not read, and whether each document is the current revision and matches the product on sale was not confirmed. The AFL edition dates from 2016, and the date formats of the Belden revision date 11-12-2026 and the Link document code 130326 are not explained in the documents.
+
+| Hypothetical condition | Corning | OCC | Panduit | AFL | Belden 848 | Belden 840 | RDM | Link | Molex |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Peak pull 2,000 N | holds | holds | holds | holds | holds | holds | holds | exceeded | equal to the limit (2 to 72 fibres) |
+| Sustained 900 N after installation | exceeded | exceeded | exceeded | exceeded | holds | equal to the limit | holds | holds | no line |
+| Radius 150 mm, diameter 11 mm, installed | holds (10 times) | holds (10 times) | holds (10 times) | holds (10 times) | fails (15 times) | fails (20 times) | holds (10 times) | holds (10 times) | holds (10 times) |
+| Cable at -10 °C for installation | allowed | allowed | allowed | allowed | outside range | outside range | outside range | allowed | outside range |
+
+## Checklist
+
+- Did you write the tensile load as a short-term installation line and a long-term installed line, and compare the tension meter reading and the load that stays on the cable with the matching lines?
+
+- Did you split the bend radius into under load and without load, convert it into a multiple of the outside diameter, and check that inch and centimetre values agree?
+
+- Did you write installation and operating temperature separately, and check whether the temperature in the document is the actual cable temperature?
+
+- Did you separate whether the pass criterion of the test is printed as a number or only as a standard name?
+
+- Did you record numbers and units that disagree inside a document with both values, page number and edition, without choosing one?
+
+## Review questions
+
+### 1. A datasheet prints a maximum installation tension of 2,700 N and a long-term installed tension of 800 N. If the cable keeps carrying 900 N after installation, how do you judge it?
+
+Answer and explanation: 900 N exceeds the long-term line of 800 N, so this value does not fit. It must not be compared with the installation line of 2,700 N. Look for a product with another structure or armor, or find in the design a way to reduce the load. If an accept or reject judgment is needed, check the test report of the maker.
+
+### 2. The installed minimum bend radius of an 11.0 mm cable is printed as 15 times in a datasheet. What radius in mm must be respected at least?
+
+Answer and explanation: 11.0 mm times 15 gives 165 mm or more. If another datasheet prints 10 times for a similar cable, the radius is 110 mm, so the multiple must be checked in each document and the multiple of the document in use is recorded.
+
+### 3. One datasheet prints a tension of 6,000 N (1,300 lbf), and 6,000 N converts to about 1,349 lbf. Which value do you use?
+
+Answer and explanation: Do not choose one. Record both values with the page number, use the N value in the calculation, and note that the units do not agree. The document does not say which is authoritative, and the maker was not contacted.
+
+## Sources
+
+- [Corning: generic specification for gel-free loose tube optical fibre cables for outdoor applications PGS067 (November 2026, revision 7)](https://www.corning.com/catalog/coc/documents/generic-specifications/PGS067.pdf) · clauses 3.30, 3.31, 3.32, 5.1, 5.4, 5.7, 5.10 and the revision history
+
+- [OCC: TL series loose tube outside plant fibre optic cable specification (revised March 13, 2026)](https://www.occfiber.com/wp-content/uploads/2021/02/OCC_TL-OSP-Specifications-26.pdf) · pages 1–2
+
+- [Molex: outdoor loose tube optical cable datasheet AFOLH (December 2025)](https://www.molexces.com/wp-content/uploads/AFOLH.pdf) · pages 1–2 technical data and main characteristics
+
+- [Belden: GBRO848 technical data sheet (revision 0.14, revision date printed 11-12-2026)](https://catalog.belden.com/techdata/EN/GBRO848_techdata.pdf) · pages 1–2
+
+- [Belden: GSWH840 technical data sheet (revision 0.20, revision date printed 11-12-2026)](https://catalog.belden.com/techdata/EN/GSWH840_techdata.pdf) · pages 1–2
+
+- [RDM: gel-free central loose tube cable datasheet (document dated November 10, 2025)](https://www.rdm.com/wp-content/uploads/2025/05/DSH.EN_CLT-dry_K-UTd1GF30k.B2ca_v.ib.1.1.pdf) · pages 1–2
+
+- [AFL: Uniflex armored loose tube cable (PP-1-00024 revision 4, August 17, 2016, distributor copy)](https://media.focenter.com/CMP1007/files/AFL12FiberLooseTubeUniflexArmored50MM-LE0125C1200S1-FiberOpticCenter.pdf) · page 1
+
+- [Link: F.O. ARSS multi-tube armored single jacket cable UFC97XXMA (document code V1.6_130326)](https://www.linkcable.com/uploads/product_document/document/423/UFC97XXMA_Technical_Specification_V1(2).6_130326.pdf) · pages 1–5
+
+- [Panduit: Opti-Core gel-free outside plant cable, armored and unarmored datasheet (February 2021)](https://www.panduit.com/content/dam/panduit/en/products/media/7/27/227/4227/110154227.pdf) · pages 1–2
+
+## Continue
+
+- [Optical training curriculum](/fttx-training)
+
+- [Anchoring Cables and Terminating Strength Members in Closures](/en/education/optical-training/closure-cable-anchoring-strength-member)
+
+- [Reading Bend-Insensitive Fiber Datasheets: Macrobend Limits, Mandrel Radius and Wavelength](/en/education/optical-training/g657-bend-insensitive-fiber-datasheet-macrobend-limits-readout)
