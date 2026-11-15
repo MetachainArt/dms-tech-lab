@@ -1,0 +1,199 @@
+---
+title: "Reading ADSS Fibre Optic Cable Datasheets: Span, Loading Case, Sag and Maximum Allowable Tension"
+date: "2026-11-15"
+desc: "A ten-minute lesson on reading the span, loading case, sag and maximum allowable tension lines of ADSS (all-dielectric self-supporting) fibre optic cable datasheets. It compares nine documents from Prysmian, TKF, Lexington Ames, Caledonian, Maintronics and UnitekFiber and shows how to check which wind speed and ice thickness a span figure comes from, how to separate initial sag from maximum loaded sag, how MAT, MRCL and RTS differ, how far the fibre strain limits and test pass criteria can be read, and what to record when numbers disagree between or inside documents."
+coverImage: "/images/education/optical-training/adss-cable-datasheet-span-loading-case-sag-allowable-tension-readout/cover.svg"
+readTime: "10 min"
+lang: "en"
+---
+
+The span figure on an ADSS cable datasheet is not a property of the cable alone. It is the result of a stated loading case, an initial sag and a fibre count. In the nine documents that were read, one and the same Prysmian ezSPAN part number carried a permitted span from 330 ft to 600 ft (about 101 m to 183 m) depending on the loading case, and the tension was printed under differently named lines such as MAT, MRCL and maximum working tension. When you copy a span, write down the wind speed and ice thickness, the sag percentage, the fibre count and part number, and the name of the tension line, so that the value can be compared with the conditions on site.
+
+As of November 15, 2026, based on the documents listed under Sources.
+
+## Learning objectives
+
+- Read a span figure as a pair with its loading case (wind speed, ice thickness, temperature), its sag percentage and its fibre count, and decide first which loading case the site falls into.
+
+- Separate MAT, MRCL, RTS and installation tension as different lines, and record that the names and units differ from document to document.
+
+- Separate fibre strain limits and test pass criteria that are printed as numbers from those that are only a test method name, and when numbers disagree inside a document, record both values together.
+
+## Which loading case does a span figure come from?
+
+A span figure only has meaning as a pair with its loading case, and the same cable has a different permitted span under a different case. In the Prysmian ezSPAN ADSS datasheet (document code TLS-DS-A-501-0924), the 12 to 72 fibre single-jacket part number F-ADES1025-12-HB has the same maximum rated cable load (MRCL) of 1,025 lbs, yet the permitted span is printed as 600 ft (about 183 m) under NESC Light loading, 500 ft (about 152 m) under Medium and 330 ft (about 101 m) under Heavy. The heavier the loading region, the shorter the distance the same cable carries.
+
+NESC Light, Medium and Heavy are loading case names defined by wind speed, ice thickness and temperature, and the NESC text itself was not read. Only two of the documents print the numbers. The TKF LTC ADSS 3.0 kN datasheet (article 78082) defines Light as 26.5 m/s wind, 0 mm ice and minus 1 degree C, Medium as 17.7 m/s, 6.5 mm and minus 10 degrees C, and Heavy as 17.7 m/s, 12.5 mm and minus 20 degrees C. The Lexington Ames LA-ADSS-048 MAX prints wind in km/h, 96 km/h for Light and 65 km/h for Medium and Heavy, with ice of 0 mm, 6.5 mm and 12.5 mm. The Prysmian ezSPAN and TC09376 documents print the NESC names without numbers, so these documents alone do not show that the same names carry the same numbers as in the TKF sheet.
+
+Some documents use cases other than NESC. The Caledonian ADSS catalogue uses two cases, 0 mm ice with 35 m/s wind and 12 mm ice with 30 m/s wind. The Maintronics 288 fibre specification uses 5 mm ice, 35 m/s wind and 26 degrees C, and the UnitekFiber 24 fibre sheet uses 30 m/s wind with 5 mm ice. A wind of 35 m/s is about 126 km/h by DMS conversion, which is faster than the 26.5 m/s of NESC Light. Because these cases come from different design bases, span figures should not be placed side by side and compared for size.
+
+The fibre count also changes the span. In the same TKF cable family, the 48 fibre build-up (4 tubes of 12) is printed at 175 m, 115 m and 70 m for Light, Medium and Heavy, and the 144 fibre build-up (12 tubes of 12) at 100 m, 75 m and 48 m. Lexington Ames prints 1,020 m, 920 m and 600 m for 12 to 72 fibres and 920 m, 860 m and 600 m for 288 fibres. When you take a span from a datasheet, write the loading case name together with the fibre count line.
+
+| Document | Loading case as printed | Span value | Remark |
+| --- | --- | --- | --- |
+| Prysmian ezSPAN, 12 to 72 fibres F-ADES1025-12-HB | NESC Light, Medium, Heavy (no numbers) | 600, 500, 330 ft (about 183, 152, 101 m) | MRCL 1,025 lbs, initial sag 1.5% |
+| TKF LTC ADSS 48 fibres (4x12) | NESC Light, Medium, Heavy (numbers printed) | 175, 115, 70 m | Initial sag 1.0% |
+| TKF LTC ADSS 144 fibres (12x12) | Same as above | 100, 75, 48 m | Initial sag 1.0% |
+| Lexington Ames LA-ADSS-048 MAX, 12 to 72 fibres | NESC Light, Medium, Heavy (numbers printed) | 1,020, 920, 600 m (3,346, 3,018, 1,969 ft) | Initial sag 2.5% |
+| Prysmian TC09376 | NESC Medium | 75 m | Sag 1.0%, stated as examples of computed values |
+| Caledonian catalogue | 0 mm ice with 35 m/s, 12 mm ice with 30 m/s | Seven rows from 100 to 1,000 m | A different cable design in each row |
+| Maintronics 288 fibres (hosted copy) | 5 mm ice, 35 m/s, 26 degrees C | 100 m | Only one case printed |
+| UnitekFiber 24 fibres | 30 m/s wind, 5 mm ice | 100 m | Only one case printed |
+
+![Order for reading span, loading case and tension lines](/images/education/optical-training/adss-cable-datasheet-span-loading-case-sag-allowable-tension-readout/concept-en.svg)
+
+- Copy the span together with the loading case name and numbers, the sag percentage, the fibre count and the part number
+
+- Do not borrow the numbers of one document for a document that prints only the NESC name
+
+- A table that lists a different cable in each row is not a span performance table for one cable
+
+## How do initial sag and maximum loaded sag differ?
+
+Sag is printed once as the initial value just after installation and once for the maximum loaded case, and copying only the initial sag underestimates the real lowest point of the span. Initial sag is 1.5% in the Prysmian ezSPAN and Long Span documents, 1.0% in TKF, 2.5% in Lexington Ames and 1.0% for NESC Medium in Prysmian TC09376. Only the first row of the ezSPAN 12 to 72 fibre Light table (328 ft) prints 1.58%. Caledonian writes in the description that typical spans use 1% to 1.5% installation sag, while its table prints a maximum sag from 2% to 6%. The Maintronics and UnitekFiber documents print no sag value.
+
+Two documents print values for the maximum loaded case. For Lexington Ames at 12 to 72 fibres, sag grows from the initial 2.5% to 5.3% for Light, 4.3% for Medium and 4.6% for Heavy, with tensions of 8,278 lbs, 5,454 lbs and 5,568 lbs. For TKF at 48 fibres, sag grows from 1.0% to 3.67% for Light, 4.25% for Medium and 4.61% for Heavy, with tensions of 2,995 N, 2,966 N and 2,950 N, within the MAT of 3,000 N. The tension to apply at installation also depends on the case. For TKF at 48 fibres it is 1,540 N at 175 m Light, 1,012 N at 115 m Medium and 616 N at 70 m Heavy, and for Lexington Ames at 12 to 72 fibres it is 2,207 lbs, 1,991 lbs and 1,298 lbs. Installation tension is not a fixed property of the cable but a value set by the span and sag case.
+
+Converting sag into a length shows its size. The datasheets do not define what the percentage refers to, so reading it as a ratio to the span is a DMS interpretation and not a design value. On that assumption, a 150 m span with 1.0% sag is 1.5 m, with 1.5% it is 2.25 m and with 2.5% it is 3.75 m, and a 1,020 m span with 2.5% initial sag is 25.5 m and with 5.3% at maximum load about 54 m. When checking clearance to a road, a power line or a building, record both the initial line and the maximum loaded line, and check whether the document explains the reference point of the sag.
+
+| Document | Initial sag | Maximum loaded sag (Light, Medium, Heavy) | Installation tension (Light, Medium, Heavy) |
+| --- | --- | --- | --- |
+| Prysmian ezSPAN, Long Span | 1.5% (one row 1.58%) | Not printed | ezSPAN has one maximum stringing tension line of 600 lbs, Long Span has an installation load per span |
+| TKF LTC ADSS 48 fibres | 1.0% | 3.67%, 4.25%, 4.61% | 1,540 N, 1,012 N, 616 N |
+| Lexington Ames 12 to 72 fibres | 2.5% | 5.3%, 4.3%, 4.6% | 2,207 lbs, 1,991 lbs, 1,298 lbs |
+| Prysmian TC09376 | 1.0% (NESC Medium) | Not printed | Not printed (one MIT/TL line of 1,090 N) |
+| Caledonian catalogue | 1% to 1.5% in the description | 2% to 6% as table maximum sag (not defined) | Not printed (maximum working tension only) |
+| Maintronics 288 fibres, UnitekFiber 24 fibres | Not printed | Not printed | Only Maintronics, installation tension 2.3 kN or less (20% of RTS or less) |
+
+## How do MAT, MRCL and RTS differ as tensions?
+
+The tension lines differ in name and unit from document to document, so do not assume that lines with similar names are values for the same condition. Prysmian TC09376 (issued December 12, 2024, version 3) prints the unit daN, where 1 daN is 10 N. Its maximum tension at installation or long term (MIT/TL) is 109 daN (1,090 N) for 48 and 72 fibres, 110 daN (1,100 N) for 96, 144 and 192 fibres and 142 daN (1,420 N) for 288 fibres. The maximum allowable tension (MAT) is 319 daN, 334 daN and 537 daN (3,190 N, 3,340 N and 5,370 N), and the rated tensile strength (RTS) is 12.9 kN and 21.6 kN. The document merges installation and long term into one MIT/TL line and describes RTS as the value without optical consideration at which non-reversible damage occurs.
+
+The Maintronics 288 fibre specification prints an RTS of 11.3 kN, a MAT of 4.5 kN (40% of RTS, fibre strain below 0.2%), an everyday stress (EDS) of 1.8 to 2.8 kN (16% to 25% of RTS), an installation tension of 2.3 kN or less (20% of RTS or less) and a strain margin strength of 6.8 kN (60% of RTS). The UnitekFiber 24 fibre sheet prints a MAT of at least 5 kN and an RTS of at least 12 kN. Dividing MAT by RTS gives about 0.25 for Prysmian TC09376, 0.40 for Maintronics and about 0.42 for UnitekFiber. This is a DMS calculation, and it shows that MAT is not a fixed fraction of RTS. Copy the MAT value of each document as printed.
+
+In the Lexington Ames table, MRCL and the maximum loaded tension appear to disagree. For 12 to 72 fibres the MRCL is 6,839 lbs (30,400 N), yet the maximum loaded tension in the NESC Light table is 8,278 lbs (about 36.8 kN), which is larger than the MRCL. For 96 fibres it is 7,311 lbs against 8,548 lbs, for 144 fibres 8,728 lbs against 9,466 lbs, for 192 to 216 fibres 9,043 lbs against 9,620 lbs and for 288 fibres 10,011 lbs against 10,447 lbs. The Medium and Heavy rows are all below the MRCL. The document defines neither MRCL nor RTS, so this document alone does not show whether exceeding the MRCL under Light loading is permitted.
+
+Check the tension limits of the cable and of its fittings separately. The ezSPAN document states that the limited tension dead-end is rated for a long-term 1,000 lbs and a short-term 2,500 lbs and for spans of 600 ft or less, and that the medium tension dead-end is rated for 2,000 lbs long term and 4,000 lbs short term. In the same document, when the 12 to 72 fibre Light span grows from 600 ft to 1,200 ft the MRCL rises from 1,025 lbs to 1,615 lbs, so a different span changes both the cable part number and the fitting class needed. The Caledonian maximum working tension also grows from 7,578 N in the 100 m row to 30,590 N in the 500 m row and then falls to 26,952 N in the 600 m row, because each row is a different cable design.
+
+| Document | Installation or long-term line | MAT or MRCL | RTS | MAT divided by RTS (DMS calculation) |
+| --- | --- | --- | --- | --- |
+| Prysmian TC09376, 48 and 72 fibres | MIT/TL 1,090 N | MAT 3,190 N | 12.9 kN | 0.25 |
+| Prysmian TC09376, 96, 144 and 192 fibres | MIT/TL 1,100 N | MAT 3,340 N | 12.9 kN | 0.26 |
+| Prysmian TC09376, 288 fibres | MIT/TL 1,420 N | MAT 5,370 N | 21.6 kN | 0.25 |
+| TKF LTC ADSS 48 fibres | Long term 2,000 N | MAT 3,000 N | Not printed | Not calculated |
+| Maintronics 288 fibres | Installation 2.3 kN or less, EDS 1.8 to 2.8 kN | MAT 4.5 kN | 11.3 kN | 0.40 |
+| UnitekFiber 24 fibres | Not printed | MAT at least 5 kN | At least 12 kN | 0.42 |
+| Lexington Ames 12 to 72 fibres | Installation 2,207 lbs (Light) | MRCL 6,839 lbs (30,400 N) | Not printed | Not calculated |
+| Prysmian ezSPAN 12 to 72 fibres | Maximum stringing tension 600 lbs | MRCL 1,025 to 1,615 lbs (by span) | Not printed | Not calculated |
+
+## How far can the fibre strain and test pass criteria be read?
+
+The fibre elongation limit next to the MAT differs between documents, and tensions with the same name do not allow the same strain. Prysmian TC09376 prints, for a 5 minute tensile test at MAT (IEC 60794-1-21-E1), a fibre strain of 0.2% or less and an attenuation change of 0.5 dB/km or less, reversible. Maintronics prints a fibre strain below 0.2% at MAT, and TKF prints a fibre elongation of 0.1% at the long-term load of 2,000 N and 0.3% at the MAT of 3,000 N. The UnitekFiber tensile test prints a fibre strain of 0.36% or less with a loss change of 0.1 dB or less at 1550 nm, but the test load is only called short term tension and has no number. The Prysmian Long Span document says a design can be chosen with zero fibre strain at the MRCL or with fibre strain limited to 0.20%.
+
+The TKF span table also contains a quantity that differs from the fibre elongation. Its cable strain column reads 0.49% at installation and 0.82% in operation for 48 fibres under Light, while the specification lines of the same document give a fibre elongation of 0.3% at MAT. Cable strain appears to be the elongation of the whole cable and fibre elongation the value of the fibre inside the tube, but the document does not explain the excess fibre length, so the two numbers are not compared on one line.
+
+The pass criteria of the mechanical tests are printed as numbers in some documents and not in others. Prysmian TC09376 prints an attenuation change of 0.05 dB or less for crush at 2,000 N/100 mm for 10 minutes, impact at 10 J with a radius of 300 mm for 3 impacts, repeated bending at 20 times the diameter for 50 cycles and torsion of plus or minus 180 degrees over 2 m at 100 N for 5 cycles. For temperature cycling it prints two lines in order, minus 15 to plus 60 degrees C with 0.05 dB/km and minus 30 to plus 70 degrees C with 0.01 dB/km, and the document does not explain how the ranges and limits pair up. TKF prints crush at 3,000 N/dm for 1 minute and 1,500 N/dm for 10 minutes and impact at 10 J with a 300 mm radius, and a pass attenuation only for temperature cycling, 0.05 dB. Because 1 dm is 100 mm, 3,000 N/dm is 3,000 N/100 mm.
+
+Lexington Ames and Caledonian print no pass numbers. Lexington Ames prints crush at 495 lbf (2,200 N) and impact at 2.2 lbf (9.8 N), but impact is an energy test, so a number in a force unit cannot be read as a test condition. Caledonian prints compression of 4,000 N, impact of 4.4 N·m and crush resistance of 220 N/cm and lists only the test method numbers such as IEC 60794-1-2-E1A. Maintronics prints, for crush at 2,000 N/100 mm, an attenuation of 0.1 dB or less and 0.05 dB or less after the test, but for impact only a method number and no energy. A standard or method number does not mean a pass number was confirmed, and the texts of IEEE 1222, IEC 60794-3-20 and 4-20, ICEA S-87-640 and Telcordia GR-20 were not read.
+
+| Document | Fibre strain in the tensile test | Crush test | Impact test | Pass criterion number |
+| --- | --- | --- | --- | --- |
+| Prysmian TC09376 | 0.2% or less (MAT, 5 min) | 2,000 N/100 mm, 10 min | 10 J, 3 impacts | Attenuation change printed |
+| TKF LTC ADSS 48 fibres | Long term 0.1%, MAT 0.3% | 3,000 N/dm (1 min), 1,500 N/dm (10 min) | 10 J, radius 300 mm | Only 0.05 dB for temperature cycling |
+| Maintronics 288 fibres | Below 0.2% at MAT | 2,000 N/100 mm | No energy printed | Only 0.1 dB for crush |
+| UnitekFiber 24 fibres | 0.36% or less (no load value) | 2,200 N/100 mm (short term), 1,100 N/100 mm (long term) | 5 J | 0.05 to 0.1 dB printed |
+| Lexington Ames 12 to 72 fibres | Not printed | 495 lbf (2,200 N) | Printed as 2.2 lbf (9.8 N) | No numbers |
+| Caledonian catalogue | Not printed | 4,000 N, 220 N/cm | 4.4 N·m | No numbers, method numbers only |
+
+![Span by loading case in ADSS documents](/images/education/optical-training/adss-cable-datasheet-span-loading-case-sag-allowable-tension-readout/bars-en.svg)
+
+- The bars are the spans printed for the three loading cases of the same document
+
+- Lexington Ames at 12 to 72 fibres, 1,020 m, 920 m and 600 m, is outside this scale and is not drawn
+
+- Cable construction and sag basis differ by document, so this is not a like for like comparison
+
+## What do you record when numbers disagree inside or between documents?
+
+Numbers and wording disagree even inside one document, and instead of choosing one side you write both values with the page number. The first page of the Prysmian ezSPAN datasheet gives the typical span as 1,200 ft (305 m) and the overview as 1,200 feet (365 meters). 1,200 ft is about 366 m and 305 m is about 1,000 ft, so the two phrases do not agree, and the 12 to 72 fibre Light table runs to 1,200 ft. The TKF description says the 3,000 N MAT cable is for spans of about 50 to 80 m, while the table of the same document prints 175 m, 115 m and 70 m for 48 fibres and 225 m, 140 m and 85 m for 12 fibres. The description fits only the Heavy rows.
+
+The installation conditions table of Prysmian TC09376 has a single line, NESC Medium, sag 1.0%, maximum span 75 m, and does not say which of the six fibre count columns it applies to. With the same NESC Medium and 1.0% sag, TKF prints 115 m for 48 fibres and 75 m for 144 fibres, so the document alone does not show which column the 75 m belongs to. The header date of the TKF document is the date of download (15-11-2026), while the search result excerpt showed 25-08-2026. The dates printed on the inner pages are 20-12-2024 for the fibre specification, 27-03-2025 for the span calculation and 13-05-2026 for the cable construction, so the edition is recorded by the inner dates. The search excerpt also showed a maximum installation tensile strength of 3,100 kN and a MAT fibre elongation of 0.31%, but the downloaded version had no installation line and gave 0.3%, and an excerpt is not a check of the original.
+
+Lexington Ames prints the part number format as LA-ADSS-038 while its title says 048, and the text calls the cable single jacket while the subtitle says double jacket. The feature line gives 2,900 ft as the Medium maximum span, which does not match the 2,882 to 3,018 ft of the table for some fibre counts. Between the two Caledonian documents the storage temperature lower limit differs, minus 45 degrees C (minus 58 degrees F) against minus 50 degrees C (minus 58 degrees F), and since minus 58 degrees F is minus 50 degrees C the first number is the odd one. The 800 m row prints 29,452 N as 6,625 lb, which converts to about 6,621 lbf. For numbers that disagree between documents, no maker was contacted, and both values were written as they stand.
+
+| Disagreement | One value | Other value | How to record |
+| --- | --- | --- | --- |
+| Prysmian ezSPAN typical span | 1,200 ft (305 m) | 1,200 feet (365 meters) | Write both phrases with page numbers |
+| TKF description against table | Spans of about 50 to 80 m | 175, 115, 70 m for 48 fibres | Record the table rows first and keep the description as a note |
+| Prysmian TC09376 maximum span | One line of 75 m | Six fibre count columns | Record as unconfirmed which column applies |
+| TKF header date | 15-11-2026 (download date) | Inner 20-12-2024, 27-03-2025, 13-05-2026 | Record the edition by the inner dates |
+| Lexington Ames part number and jacket | LA-ADSS-038 format, single jacket | Title 048, double jacket | Copy both lines |
+| Caledonian storage lower limit | Minus 45 degrees C (minus 58 degrees F) | Minus 50 degrees C (minus 58 degrees F) | Write the values of both documents |
+
+## What happens when site conditions are put against the datasheet values?
+
+The case used here is a hypothetical teaching calculation and not a test of a real site or product. Assume a 150 m span in a region that corresponds to NESC Medium, with a 48 fibre cable. The Medium permitted span of the ezSPAN 12 to 72 fibre part number F-ADES1025-12-HB is 500 ft (about 152.4 m), so 150 m is within it with a margin of about 2.4 m. TKF at 48 fibres prints 115 m, which is 35 m short, and Prysmian TC09376 prints 75 m, which is 75 m short. Lexington Ames at 12 to 72 fibres prints 920 m, so it is within, but it is a long-span design that comes with an initial sag of 2.5%, and for Caledonian, Maintronics and UnitekFiber the case is not NESC or only one 100 m case is printed, so no judgement can be made.
+
+Put the sag against the case as well. Assume the sag allowed by the clearance to a road at this span is 2.0 m. For 150 m, 1.0% is 1.5 m and within, 1.5% is 2.25 m and exceeds by 0.25 m, and 2.5% is 3.75 m and exceeds by 1.75 m. For a document that has a maximum loaded line, that value is larger, so this calculation covers the initial sag only. Reading the sag percentage as a ratio to the span is the DMS interpretation mentioned above. If the span differs from this case, the judgement for the same document changes. The tensile load and bend radius of outdoor cables and the anchoring at the closure are covered in separate lessons.
+
+The limits of this material are clear. The texts of IEEE 1222, IEC 60794-3-20 and 4-20, ICEA S-87-640, Telcordia GR-20 and NESC were not read, and how the standards define MAT and MRCL was not confirmed. Whether each document is the current revision and matches the product on sale today was not confirmed either. The Prysmian ezSPAN and Long Span documents have a document code but no issue date explained, Lexington Ames shows a copyright year of 2021, Maintronics a drawing date of March 30, 2022, and Caledonian and UnitekFiber have no date.
+
+| Hypothetical case (150 m, 48 fibres, NESC Medium) | ezSPAN 12 to 72 fibres | TKF 48 fibres | Prysmian TC09376 | Lexington Ames 12 to 72 fibres | Caledonian, Maintronics, UnitekFiber |
+| --- | --- | --- | --- | --- | --- |
+| Permitted span against 150 m | 152 m, within | 115 m, exceeded | 75 m, exceeded | 920 m, within | Different case, no judgement |
+| Initial sag printed in the document | 1.5% | 1.0% | 1.0% | 2.5% | No sag value |
+| Assumed allowed sag 2.0 m | 2.25 m, exceeded | 1.5 m, within | 1.5 m, within | 3.75 m, exceeded | No judgement |
+
+## Checklist
+
+- Did you write the span with the loading case name and numbers, the sag percentage, and the fibre count and part number, and not fill an NESC name that has no numbers with the numbers of another document?
+
+- Did you write the sag as an initial line and a maximum loaded line, and check whether the document defines the basis of the sag percentage?
+
+- Did you separate MAT, MRCL, RTS, installation tension and long-term tension as different lines, and write daN, N, lbs and kN in one unit?
+
+- Did you separate whether the fibre strain limits and the test pass criteria are printed as numbers or only as test method numbers?
+
+- For numbers that disagree inside a document and for header dates, did you record both values with the page number and the inner edition date?
+
+## Review questions
+
+### 1. A datasheet for one part number prints 600 ft for Light, 500 ft for Medium and 330 ft for Heavy. The span on site is 400 ft and the region is Medium. How do you judge it?
+
+Answer and explanation: 400 ft is within the 500 ft of the Medium line, so the cable fits the span under that case, with a margin of 100 ft. If the same 400 ft were in a Heavy region it would exceed 330 ft and would not fit. Check the loading region first, and check whether the datasheet prints the numbers for that region.
+
+### 2. A datasheet prints an RTS of 12 kN and a MAT of 5 kN. What is MAT divided by RTS, and what does a comparison with another datasheet show?
+
+Answer and explanation: 5 divided by 12 is about 0.42. The MAT of 3,190 N and the RTS of 12.9 kN in Prysmian TC09376 give about 0.25, so MAT is not a fixed fraction of RTS. Copy the MAT of each document as printed and do not estimate it from the ratio of another document.
+
+### 3. A 200 m span has an initial sag printed as 1.5%. How many metres is the sag, and what else do you check?
+
+Answer and explanation: 1.5% of 200 m is 3.0 m. Reading the percentage as a ratio to the span is a DMS interpretation, so check the definition in the document and look for a separate maximum loaded sag line and record it as well.
+
+## Sources
+
+- [Prysmian: ADSS optical fibre cable TC09376 (issued December 12, 2024, version 3)](https://ro.prysmian.com/sites/ro.prysmian.com/files/media/documents/TC09376-en%20v3.pdf) · pages 1 to 2
+
+- [Prysmian: ezSPAN ADSS datasheet (document code TLS-DS-A-501-0924)](https://na.prysmian.com/sites/na.prysmian.com/files/media/products/TLS-DS-A-501-0924_ezSPAN%20ADSS%20All-Dielectric%20Self-Supporting%20Loose%20Tube%20Cable.pdf) · pages 1 to 6
+
+- [Prysmian: Long Span ADSS datasheet (document code TLS-DS-A-502-0117)](https://na.prysmian.com/sites/na.prysmian.com/files/media/documents/TLS-DS-A-502-0117_Long%20Span%20ADSS%20All-Dielectric%20Self-Supporting%20Loose%20Tube%20Cable_LR.pdf) · pages 1 to 3
+
+- [TKF: LTC ADSS 78082 technical information (inner dates December 20, 2024, March 27, 2025 and May 13, 2026)](https://www.tkf-telecom.eu/download/product?category=7543&lang=en&product=78082) · pages 1 to 8
+
+- [Lexington Ames: LA-ADSS-048 MAX ADSS cable series (copyright 2021)](https://lexingtonames.com/wp-content/uploads/2026/08/LA-ADSS-048-DJNA-Cable-Series-M.pdf) · pages 1 to 2
+
+- [Caledonian: ADSS 12C ice 0 mm span 800 m datasheet](https://www.caledonian-cables.com/files/datasheet/Fiber%20Optic%20Cables/ALL%20DIELECTRIC%20SELF-SUPPORTING%20(ADSS)%20CABLE/ADSS-12C-ICE0-SPAN800-LUCY.pdf) · pages 1 to 2
+
+- [Caledonian: fibre optic cables catalogue pages 28 to 29, ADSS](http://caledoniancable.com/download/28-29.pdf) · pages 28 to 29
+
+- [Maintronics: ADSS 288F span 100 m technical specification (drawing date March 30, 2022, distributor hosted copy)](https://santanderimport.cl/wp-content/uploads/2023/11/Ficha-Tecnica-Fibra-ADSS-LSZH-288F-SM-Vano-100-FO0ADS119001.pdf) · pages 2 to 7
+
+- [UnitekFiber: 24 fibre ADSS double sheath span 100 m datasheet](https://www.unitekfiber.com/uploads/file/unitekfiber-date-sheet-of-all-dielectric-self-sopporting-adss-fiber-optic-cable-24f-double-sheath-non-metal-span-100mm-hdpe.pdf) · pages 1 to 3
+
+## Continue
+
+- [Optical training curriculum](/fttx-training)
+
+- [Reading Outdoor Loose Tube Cable Datasheets: Tensile Load, Minimum Bend Radius and Installation Temperature](/en/education/optical-training/outdoor-loose-tube-cable-datasheet-tensile-load-bend-radius-installation-temperature-readout)
+
+- [Anchoring Cables and Terminating Strength Members in Closures](/en/education/optical-training/closure-cable-anchoring-strength-member)
