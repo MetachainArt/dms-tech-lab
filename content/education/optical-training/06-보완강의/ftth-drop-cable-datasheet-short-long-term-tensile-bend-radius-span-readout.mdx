@@ -1,0 +1,230 @@
+---
+title: "FTTH 드롭 케이블 사양서의 단기·장기 인장하중·굽힘 반경·경간 판독"
+date: "2026-11-16"
+desc: "FTTH 드롭 케이블(평형·8자형 자가지지) 사양서에서 단기와 장기 인장하중, 굽힘 반경, 압축 하중, 설치·운용 온도, 자가지지 경간을 읽는 10분 교안입니다. Prysmian, CommScope, Furukawa, STL, Waveoptics, FS, Digisol 등 17건을 비교해 단기·장기 라벨 순서, 평평한 단면에서 굽힘 반경 배수의 기준 치수, 케이블과 커넥터 조립품의 한도 차이, 하중 조건별 경간 읽는 법과 문서끼리 어긋난 숫자를 기록하는 법을 정리했습니다."
+coverImage: "/images/education/optical-training/ftth-drop-cable-datasheet-short-long-term-tensile-bend-radius-span-readout/cover.svg"
+readTime: "10 min"
+lang: "ko"
+---
+
+FTTH 드롭 케이블 사양서의 인장하중과 굽힘 반경은 케이블 하나의 고유 성능이 아니라, 단기와 장기, 설치와 운용, 평평한 단면의 어느 치수에 곱했는지가 함께 적힌 조건부 숫자입니다. 이번에 읽은 17건에서 단기 인장하중은 80 N에서 1,350 N까지 약 17배 차이가 났고, 한 문서는 단기 값이 장기 값보다 작게 인쇄되어 있었습니다. 사양서 값을 옮길 때는 단기와 장기의 이름과 순서, 단위, 케이블 단면 치수, 케이블 단독인지 커넥터 조립품인지를 함께 적어야 현장 조건과 맞춰 볼 수 있습니다.
+
+2026년 11월 16일 확인한 자료 기준입니다.
+
+## 학습 목표
+
+- 단기와 장기 인장하중을 이름과 순서, 단위와 함께 한 쌍으로 옮기고, 한 줄에 슬래시로 적힌 두 값은 라벨 순서부터 확인합니다.
+
+- 굽힘 반경이 mm 값인지 지름의 배수인지 구분하고, 평평한 단면에서 배수가 긴 변인지 짧은 변인지 문서가 정의했는지 확인합니다.
+
+- 케이블 정격과 커넥터 조립품 정격, 경간 숫자와 하중 조건·처짐 기준을 따로 적고, 문서끼리 어긋난 숫자는 두 값을 함께 기록합니다.
+
+## 단기·장기 인장하중은 어떤 값이며 문서마다 어떻게 적혀 있습니까?
+
+단기(short-term)와 장기(long-term) 인장하중은 순간적으로 걸어도 되는 힘과 오래 걸려 있어도 되는 힘을 나눈 두 줄이며, 문서마다 이름과 순서가 다르고 정의는 거의 적혀 있지 않습니다. 이번 17건에서 단기 값은 Digisol 2심 평형 드롭의 80 N부터 Netsource가 옮긴 Corning SST-Drop 조립품의 1,350 N까지 약 17배 차이가 납니다(1,350 ÷ 80 = 16.9, DMS 계산). 폭 5 mm 안팎의 8자형 케이블끼리는 Waveoptics, Nexconec, Hermesys가 단기 600 N에 장기 300 N으로 같은 쌍을 적습니다. 반면 같은 평평한 모양이어도 Digisol은 단기 80 N, 장기 60 N, FS의 GJYXFCH 문서는 단기 200 N, 장기 100 N입니다. 케이블 모양이 같다고 인장하중이 같다고 가정하지 않습니다.
+
+이름도 제각각입니다. Prysmian의 Mini-Flat과 USD는 설치 하중(Installation Load) 1,336 N(300 lbf)과 운용 하중(Operational Load) 400 N(90 lbf)으로 적고, USD 문서는 운용 줄이 없습니다. CommScope 2015년판 평형 드롭은 단기 1,334 N(300 lbs), 장기 400 N(90 lbs)입니다. STL의 Easy-Strip은 600 N 한 줄이고, Furukawa는 최대 인장력(maximum pulling tension) 460 N 한 줄이며, AKBRIDGE는 MRDT 1.3–2.2 kN을 적되 MRDT의 정의는 없습니다. 단기와 장기로 나누지 않은 한 줄은 어느 쪽 한도인지 알 수 없으므로, 그 문서의 이름 그대로 옮기고 단기나 장기로 바꿔 쓰지 않습니다. 설치 하중과 단기 하중이 같은 뜻이라는 것도 문서가 풀이하지 않으면 DMS 해석입니다.
+
+슬래시로 두 값을 적은 줄은 라벨 순서를 먼저 읽어야 합니다. Digisol은 장기, 단기 순서로 60 N과 80 N, Waveoptics도 장기, 단기 순서로 300 N과 600 N을 적습니다. Fibline의 GJYXFCH 문서는 "Short/Long Term" 줄에 300과 600을 적어, 인쇄된 대로 읽으면 단기가 장기보다 작습니다. 같은 숫자 쌍을 Waveoptics는 장기 300 N, 단기 600 N으로 적었으므로 라벨 순서가 뒤집혔을 가능성이 있으나 이는 DMS 추정이며 확인하지 못했습니다. 이 경우 인쇄된 순서와 숫자를 그대로 옮기고 확인 필요로 표시합니다.
+
+케이블과 커넥터 조립품도 한도가 다릅니다. FS의 Fiber Drop cables 문서는 같은 1심 G.657.A2에서 양끝 경화 커넥터가 달린 5.0 mm 원형 케이블의 단기 인장하중을 1,200 N으로, 2.0 × 5.0 mm 평형 케이블에 SC/APC가 달린 조립품을 400 N으로 적습니다. Netsource 문서는 케이블 단기 1,350 N, 장기 400 N과 별도로 OptiTap 커넥터 당김 장력 100 lb(약 445 N, DMS 환산)를 적습니다. 커넥터가 달린 채로 당길 때는 케이블 줄과 커넥터 줄 중 낮은 쪽도 함께 확인합니다.
+
+| 문서 | 단면 치수 (인쇄 순서) | 단기 | 장기 또는 운용 | 비고 |
+| --- | --- | --- | --- | --- |
+| Digisol 2심 평형 | 3.0 × 2.0 mm | 80 N | 60 N | 라벨이 장기, 단기 순서 |
+| FS GJYXFCH | 2.0 × 5.0 mm | 200 N | 100 N | 최소값(Minimum)으로 표기 |
+| Waveoptics 8자형 (PDF) | 5 × 2 mm | 600 N | 300 N | 웹 페이지는 KFRP형 460 N, 230 N을 추가 |
+| Nexconec 8자형 | 5.0 × 2.0 mm | 600 N | 300 N | 단기와 장기 줄이 따로 있음 |
+| Hermesys LadonX | 2.0 × 5.2 mm | 600 N | 300 N | 최대(Max.) 표기 |
+| Fibline GJYXFCH | 2.0 × 5.0 mm | 300 N (인쇄된 순서) | 600 N (인쇄된 순서) | 단기가 장기보다 작게 인쇄됨 |
+| STL Easy-Strip | 2.0 × 5.2 mm | 600 N (구분 없음) | 표기 없음 | 시험 방법 IEC 60794-1-21-E1 |
+| Furukawa 드롭 | 2.0 × 5.0 mm (W × H) | 460 N (최대 인장력) | 표기 없음 | 단기와 장기 구분 없음 |
+| CommScope 평형 드롭 (2015) | 8.2 × 4.5 mm | 1,334 N | 400 N | 단위를 lbs와 N으로 병기 |
+| Prysmian Mini-Flat | 6.3 × 3.0 mm | 1,336 N (설치) | 400 N (운용) | USD는 설치 1,336 N만 표기 |
+| Netsource (Corning SST-Drop) | 8.1 × 4.5 mm | 1,350 N | 400 N | OptiTap 당김 100 lb |
+| AKBRIDGE 평형 | 7.6 × 3.0 – 9.5 × 3.6 mm | MRDT 1,300–2,200 N | 표기 없음 | 심 수 8, 12, 16, 24에 따라 다름 |
+
+![드롭 케이블 사양서를 읽는 순서](/images/education/optical-training/ftth-drop-cable-datasheet-short-long-term-tensile-bend-radius-span-readout/concept-ko.svg)
+
+- 단기와 장기는 이름과 순서, 단위를 함께 옮기고 한 줄 값은 단기나 장기로 바꿔 쓰지 않습니다
+
+- 같은 제품명이어도 문서마다 값이 다르면 쪽 번호와 함께 따로 적습니다
+
+- 커넥터가 달린 조립품은 케이블 줄과 커넥터 줄을 나눠 적습니다
+
+## 굽힘 반경은 평평한 케이블의 어느 치수에 곱한 값입니까?
+
+굽힘 반경은 mm 값으로 적은 문서와 지름의 배수로 적은 문서로 갈리며, 배수로 적은 문서 대부분은 평평한 단면의 어느 치수에 곱하는지 정의하지 않습니다. Waveoptics는 운용 10 × OD, 설치 20 × OD를 적고 케이블 치수는 5 × 2 mm인데, OD가 5 mm인지 2 mm인지 쓰지 않아 같은 20 × OD가 100 mm도 되고 40 mm도 됩니다(DMS 계산). Hermesys는 설치 20배, 운용 10배 지름이고 케이블이 2.0 × 5.2 mm여서 설치 반경이 104 mm 또는 40 mm입니다. AKBRIDGE의 평형 드롭은 15 × 지름이며 7.6 × 3.0 mm에서는 114 mm 또는 45 mm입니다. 곱셈식을 직접 적은 문서는 STL뿐이며 15 D에 (15 × 5.2) mm를 병기해 긴 변 5.2 mm를 기준으로 78 mm임을 보여 줍니다.
+
+mm 값으로 적은 문서는 비교가 쉽지만 이름이 다릅니다. Prysmian Mini-Flat은 동적(dynamic) 72 mm, 정적(static) 58 mm이고 단면이 6.3 × 3.0 mm이므로 긴 변의 11.4배와 9.2배입니다. Prysmian USD는 동적 150 mm, 정적 100 mm로 단면 8.3 × 4.7 mm의 18.1배와 12.0배입니다. CommScope 2015년판은 인장이 걸린 상태(loaded) 123 mm, 걸리지 않은 상태(unloaded) 81 mm를 적고, 폭 8.2 mm의 15.0배와 9.9배입니다. Netsource는 80 mm 한 줄이어서 폭 8.1 mm의 9.9배입니다. Digisol은 정적 15 mm, 동적 30 mm로 폭 3.0 mm의 5배와 10배입니다. 배수는 모두 DMS 환산이며 문서가 배수를 적은 것이 아닙니다.
+
+순서와 이름도 문서마다 뒤집힙니다. Digisol은 "정적/동적" 순서로, FS는 "동적/정적" 순서로 적습니다. FS의 GJYXFCH 문서는 같은 20D와 10D를 단기, 장기 이름으로 적고, Waveoptics와 Hermesys는 설치와 운용으로 적습니다. 동적이나 설치를 케이블을 당기며 굽히는 동안으로, 정적이나 운용을 설치를 마친 뒤로 읽는 것은 문서가 풀이하지 않으면 DMS 해석입니다. Furukawa는 지지선(suspension member)이 붙은 8자형 상태의 굽힘 반경을 240 mm로 따로 적고, 지지선을 뗀 뒤에는 금속 강도 부재형이 동적 30 mm에 정적 15 mm, 비금속형이 동적 50 mm에 정적 15 mm이며 4심 리본형은 둘 다 50 mm라고 적습니다. 지지선을 붙인 채 굽히는지 뗀 뒤에 굽히는지에 따라 적용되는 줄이 다릅니다.
+
+| 문서 | 표기 방식 | 큰 값 (동적·설치) | 작은 값 (정적·운용) | 단면 치수 (폭 × 높이) | 기준 치수 풀이 |
+| --- | --- | --- | --- | --- | --- |
+| Prysmian Mini-Flat | mm | 72 mm | 58 mm | 6.3 × 3.0 mm | 필요 없음 (mm 직접) |
+| Prysmian USD | mm | 150 mm | 100 mm | 8.3 × 4.7 mm | 필요 없음 (mm 직접) |
+| CommScope 2015 | mm (cm 표기) | 123 mm (인장 걸림) | 81 mm (인장 없음) | 8.2 × 4.5 mm | 필요 없음 (mm 직접) |
+| Netsource | mm | 80 mm 한 값 | 구분 없음 | 8.1 × 4.5 mm | 필요 없음 (mm 직접) |
+| Digisol | mm | 30 mm (동적) | 15 mm (정적) | 3.0 × 2.0 mm | 필요 없음 (mm 직접) |
+| STL Easy-Strip | 지름 배수 | 15 D = 78 mm 한 값 | 구분 없음 | 5.2 × 2.0 mm | 곱셈식에 5.2 mm 병기 |
+| Waveoptics | 지름 배수 | 20 × OD (설치) | 10 × OD (운용) | 5 × 2 mm | OD 정의 없음 |
+| Hermesys | 지름 배수 | 20배 (설치) | 10배 (운용) | 5.2 × 2.0 mm | 지름 정의 없음 |
+| FS GJYXFCH | 지름 배수 | 20D (단기) | 10D (장기) | 5.0 × 2.0 mm | D 정의 없음 |
+| AKBRIDGE 평형 | 지름 배수 | 15배 한 값 | 구분 없음 | 7.6 × 3.0 – 9.5 × 3.6 mm | 지름 정의 없음 |
+
+## 압축 하중과 설치·운용 온도는 어디까지 적혀 있습니까?
+
+압축(crush) 하중은 대부분 N/100 mm로 적히며 단기와 장기로 나뉘지만 한 문서는 단위가 다른 자릿수로 읽혀 그대로 옮길 수 없습니다. Waveoptics는 단기 2,200 N/100 mm, 장기 1,000 N/100 mm이고 Nexconec는 2,000과 1,000, Digisol과 Hermesys는 1,000과 500, FS의 GJYXFCH는 1,000과 300입니다. STL은 500 N/100 mm 한 줄이고 CommScope 2015년판은 압축 요구를 10 N/mm(57 lbf/in)로 적어 1,000 N/100 mm와 같은 크기입니다. AKBRIDGE는 평형 드롭의 압축을 1.4 kN/cm로 적는데, 문자 그대로 읽으면 100 mm당 14,000 N으로 다른 문서의 1,000–2,200 N보다 6배 이상 큽니다(DMS 환산). 10 cm당 kN을 뜻한다면 1,400 N/100 mm가 되어 다른 문서와 같은 자릿수지만 이는 DMS 추정이며 문서가 단위를 풀이하지 않아 확인하지 못했습니다.
+
+온도는 설치와 운용, 보관 줄이 따로 있는 문서도 있고 일부만 있는 문서도 있습니다. 설치 온도의 하한은 Waveoptics의 영하 40도부터 Hermesys와 STL의 영하 10도까지 30도 범위로 갈립니다. 상한은 AKBRIDGE의 영상 50도, Prysmian과 Digisol과 Hermesys와 STL의 영상 60도, Waveoptics와 CommScope와 Netsource의 영상 70도로 나뉩니다. Nexconec, Fibline, Furukawa, FS의 두 문서에는 설치 온도 줄이 없고, FS GJYXFCH는 보관 온도(영하 40도에서 영상 60도)만 적습니다. 설치 온도 줄이 없는 문서에서 운용 온도를 설치 온도로 읽지 않습니다. Waveoptics는 설치 전에 케이블이 설치 온도 범위에 들도록 적절한 온도 환경에 보관하라고 적습니다.
+
+Digisol은 설치, 운용, 보관 세 줄이 모두 영하 30도에서 영상 60도로 같고, STL은 운용과 보관을 영하 30도에서 영상 70도 한 줄로 묶습니다. AKBRIDGE의 평형 드롭은 운용 영하 60도에서 영상 70도이지만 설치는 영하 30도에서 영상 50도입니다. 운용 범위가 넓다는 사실이 설치 범위가 넓다는 뜻은 아니므로, 한파 때 설치 작업은 설치 줄로 판단합니다.
+
+| 문서 | 압축 (단기 / 장기, N/100 mm) | 설치 온도 (섭씨) | 운용 온도 (섭씨) | 보관 온도 (섭씨) | 비고 |
+| --- | --- | --- | --- | --- | --- |
+| Waveoptics | 2,200 / 1,000 | −40 – +70 | −20 – +70 | −40 – +70 | 설치 전 온도 적응 보관 권고 |
+| Nexconec | 2,000 / 1,000 | 줄 없음 | −20 – +70 | −20 – +70 | 설치 줄 없음 |
+| Digisol | 1,000 / 500 | −30 – +60 | −30 – +60 | −30 – +60 | 세 줄이 같음 |
+| Hermesys | 1,000 / 500 | −10 – +60 | −40 – +70 | −40 – +70 | 설치 범위가 가장 좁은 쪽 |
+| Fibline GJYXFCH | 2,200 / 1,000 | 줄 없음 | −20 – +70 | 줄 없음 | 운용만 표기 |
+| FS GJYXFCH | 1,000 / 300 | 줄 없음 | 줄 없음 | −40 – +60 | 보관만 표기 |
+| FS Fiber Drop (조립품) | 1,200 / 500 (단기만) | 줄 없음 | −20 – +70 | −10 – +50 | 압축 장기 줄 없음 |
+| STL Easy-Strip | 500 (구분 없음) | −10 – +60 | −30 – +70 | −30 – +70 | 운용·보관 한 줄 |
+| CommScope 2015 | 1,000 (압축 10 N/mm) | −30 – +70 | −40 – +70 | −40 – +75 | 압축 요구는 시험표에 있음 |
+| Prysmian Mini-Flat | 표기 없음 | −30 – +60 | −40 – +70 | −40 – +75 | 압축 저항은 문구뿐 |
+| Netsource | 표기 없음 | −30 – +70 | −40 – +70 | −40 – +70 | 조립품 문서 |
+| AKBRIDGE 평형 | 1.4 kN/cm (단위 확인 못함) | −30 – +50 | −60 – +70 | −60 – +70 | 단위 풀이 없음 |
+
+## 자가지지 경간은 어떤 하중 조건과 처짐에서 나온 값입니까?
+
+경간은 일부 문서에만 적히며, 적은 문서도 하중 조건 이름과 처짐 기준이 함께 있어야 읽을 수 있습니다. Prysmian USD 문서는 전유전체(all-dielectric) 경간 등급을 NESC Light 94 m(310 ft), Medium 73 m(240 ft), Heavy 43 m(140 ft)로 적고 처짐 %는 적지 않습니다. Prysmian Mini-Flat은 설치 처짐 1%에서 Heavy 150 ft(45 m), Medium 255 ft(78 m), Light 330 ft(100 m)이고, 1.5%에서 160, 270, 370 ft, 3%에서 185, 320, 450 ft입니다. 처짐을 1%에서 3%로 3배 허용하면 Heavy 경간은 약 23%, Light 경간은 약 36% 늘어납니다(DMS 계산). Prysmian 제품 페이지는 "NESC 조건에서 최대 경간 160 ft"라고 적는데, 이는 이 표의 Heavy 1.5% 줄과 같은 값이며 제품 페이지 문구만으로는 어느 하중과 처짐 조건인지 알 수 없습니다.
+
+CommScope Mini Flat 문서(2026년 1월판)는 설치 처짐 1%에서 Heavy 112 ft, Medium 200 ft, Light 426 ft이고, 3%에서 134, 243, 541 ft입니다. 표에는 환경 하중 때의 처짐 %도 있어 1% 줄에서 3.5%, 2.5%, 0.3%이며 기준점은 풀이가 없습니다. 같은 1% 처짐에서 Prysmian Mini-Flat의 Heavy 150 ft는 CommScope의 112 ft보다 길고, Light는 CommScope의 426 ft가 Prysmian의 330 ft보다 깁니다. 두 문서 모두 NESC 하중 이름을 쓰지만 서로 다른 케이블이므로 같은 이름의 경간을 한 순위로 비교하지 않습니다.
+
+경간이 아예 없는 문서가 더 많습니다. Waveoptics, Nexconec, Hermesys, STL, Furukawa, Digisol, Fibline, FS, CommScope 2015년판, Netsource의 문서에는 경간 숫자가 없고, Waveoptics의 웹 페이지가 "더 먼 거리의 옥외용"이라고만 적습니다. AKBRIDGE는 평형 드롭이 공중 경간 100 m 이하라고 한 줄 적되 하중 조건과 처짐은 없고, 경간과 처짐 계산은 설계가 필요하다고 따로 적습니다. 경간 줄이 없다는 것을 무제한이나 짧아도 된다는 뜻으로 읽지 않고, 설계 근거가 문서에 없다는 사실만 기록합니다.
+
+| 문서 | 처짐 기준 | Heavy | Medium | Light |
+| --- | --- | --- | --- | --- |
+| Prysmian USD | 표기 없음 | 140 ft (43 m) | 240 ft (73 m) | 310 ft (94 m) |
+| Prysmian Mini-Flat | 1% | 150 ft (45 m) | 255 ft (78 m) | 330 ft (100 m) |
+| Prysmian Mini-Flat | 1.5% | 160 ft (49 m) | 270 ft (82 m) | 370 ft (112 m) |
+| Prysmian Mini-Flat | 3% | 185 ft (56 m) | 320 ft (97 m) | 450 ft (137 m) |
+| CommScope Mini Flat | 1% | 112 ft (34 m) | 200 ft (61 m) | 426 ft (130 m) |
+| CommScope Mini Flat | 3% | 134 ft (41 m) | 243 ft (74 m) | 541 ft (165 m) |
+| AKBRIDGE 평형 | 조건 표기 없음 | 표기 없음 | 표기 없음 | 100 m 이하 한 줄 |
+
+![단기 인장하중의 문서별 차이](/images/education/optical-training/ftth-drop-cable-datasheet-short-long-term-tensile-bend-radius-span-readout/bars-ko.svg)
+
+- 막대는 문서가 단기 또는 설치 인장하중으로 적은 값입니다
+
+- 단면과 구조가 다른 케이블의 값이어서 같은 조건의 성능 순위가 아닙니다
+
+- Fibline 값은 인쇄된 순서 그대로이며 라벨 확인이 필요합니다
+
+## 같은 문서 안과 문서끼리 어긋난 숫자는 어떻게 기록합니까?
+
+한 문서 안이나 같은 제품명 사이에서도 값이 어긋나는 곳이 있으며, 한쪽을 고르지 않고 쪽 번호와 함께 두 값을 적습니다. 같은 제품명 GJYXFCH를 FS는 단기 200 N, 장기 100 N, 압축 단기 1,000 N/100 mm, 장기 300 N/100 mm로 적고, Fibline은 인장 300과 600, 압축 2,200과 1,000으로 적습니다. 설명 문구는 거의 같습니다. FS 문서는 본문에서 단일모드 G.657이라고 쓰면서 광학 표에는 G.652와 50/125, 62.5/125 다중모드 열을 함께 적고, Fibline 문서는 설명에서 FRP 강도 부재와 강선을 모두 말하는데 사양 줄의 강도 부재는 강선(0.45 mm)뿐입니다. 두 문서 중 어느 쪽이 현행 제품에 맞는지 문서만으로는 알 수 없습니다.
+
+STL 문서에는 2심 제품 코드 FA0002S201NTL10100이 ARP형과 FRP형 표에 모두 나오고, 강선형 표의 FA0001S201NTL10200이 1심과 2심에 모두 나옵니다. 압축 줄은 단위 머리글이 N/mm인데 값은 500 N/100 mm이며, PMD는 0.02 ps/√km로 적혀 있어 다른 문서의 0.2 ps/√km와 한 자릿수 차이가 납니다. Waveoptics는 PDF의 지지선 지름을 1.20 mm(0.047 in)로 적는데 웹 페이지는 0.47 in으로 적고, 웹 페이지에만 KFRP형 460 N과 230 N이 있으며 최소 굽힘 반경 줄의 이름이 최대(Maximum)로 적혀 있습니다. Prysmian의 설치 하중은 1,336 N(300 lbf)이지만 300 lbf는 약 1,334 N이며, CommScope는 같은 300 lbs를 1,334 N으로 적습니다. 이런 작은 차이는 변환 반올림일 수 있으나 문서가 설명하지 않습니다.
+
+날짜와 판본도 확인합니다. Waveoptics의 EI-086-01-EN은 마지막 검토 2023년 2월 28일, AKBRIDGE의 AKB-DS-DRP-001은 2.0판 2026년 7월, CommScope 평형 드롭은 2015년 6월 문서 코드이고 Mini Flat은 2026년 1월 문서 코드입니다. Nexconec 파일은 저작권 연도가 2027로 인쇄되어 있어(검색 발췌에는 2026) 판본 판단에 쓰지 않습니다. Furukawa, Digisol, Hermesys, FS, STL의 문서에는 발행일이 인쇄되어 있지 않고, Prysmian 문서 코드 끝의 1125와 0226은 발행월로 보이나 풀이가 없습니다. STL은 인장 시험을 IEC 60794-1-21-E1로, Hermesys는 IEC 60794-1-2-E1로 적는데 어느 번호 체계가 현행인지 표준 본문을 읽지 못해 확인하지 못했습니다. 문서끼리 어긋난 숫자는 제조사에 문의하지 않았고 두 값을 그대로 적었습니다.
+
+| 어긋난 곳 | 한쪽 값 | 다른 쪽 값 | 기록하는 법 |
+| --- | --- | --- | --- |
+| 같은 제품명 GJYXFCH의 인장 | FS 단기 200 N, 장기 100 N | Fibline 300, 600 (단기, 장기 순서로 인쇄) | 문서별로 따로 적고 라벨 확인 필요 표시 |
+| FS GJYXFCH 광학 표 | 본문 단일모드 G.657 | 표에 G.652와 다중모드 열 | 본문과 표를 모두 옮김 |
+| STL 압축 줄 | 머리글 N/mm | 값 500 N/100 mm | 값과 단위를 그대로 적음 |
+| Waveoptics 지지선 지름 | PDF 1.20 mm (0.047 in) | 웹 0.47 in | PDF와 웹을 구분해 적음 |
+| Prysmian 설치 하중 | 1,336 N | 300 lbf (약 1,334 N) | 두 값을 병기하고 환산 차이는 DMS 계산 |
+| Prysmian 제품 페이지 경간 | 최대 160 ft | 표에 150, 160, 185 ft (Heavy) | 표의 조건 줄을 우선 옮김 |
+| AKBRIDGE 압축 단위 | 1.4 kN/cm | 다른 문서 1,000–2,200 N/100 mm | 단위 확인 필요로 표시 |
+
+## 현장 조건을 사양서 값에 대입하면 어떻게 됩니까?
+
+여기서 쓰는 사례는 가상의 교육용 계산이며 실제 현장이나 제품을 시험한 것이 아닙니다. 인입 작업에서 당기는 힘이 500 N이고 설치 뒤 상시 걸리는 힘이 350 N이며, 건물 모서리에 최종 고정할 때 굽힘 반경이 60 mm이고, 경간이 80 m(약 262 ft)인 NESC Medium 지역이라고 가정합니다. 당기는 힘 500 N은 단기 줄에, 상시 350 N은 장기 또는 운용 줄에, 최종 반경 60 mm는 정적 또는 운용 줄에 대입합니다. 이 대입은 단기와 장기, 동적과 정적을 각각 그렇게 읽는다는 DMS 해석을 따릅니다.
+
+500 N은 Digisol의 단기 80 N을 420 N 초과하고, Waveoptics의 600 N 안에 들며 여유가 100 N, Prysmian Mini-Flat의 1,336 N 안에 듭니다. Netsource는 케이블 1,350 N 안이지만 OptiTap 커넥터 줄 100 lb(약 445 N)를 약 55 N 넘습니다. 상시 350 N은 Digisol의 장기 60 N과 Waveoptics의 장기 300 N을 넘고, Prysmian의 운용 400 N과 Netsource의 장기 400 N 안에 듭니다. 반경 60 mm는 Digisol의 정적 15 mm 안, Prysmian Mini-Flat의 정적 58 mm 안(여유 2 mm), Netsource의 80 mm 한 값에는 20 mm 모자랍니다. Waveoptics는 운용 10 × OD가 50 mm 또는 20 mm여서 OD 해석과 관계없이 안에 듭니다.
+
+경간 80 m는 Prysmian Mini-Flat의 Medium 1% 줄 255 ft(78 m)에 약 2.3 m 모자라지만 1.5% 줄 270 ft(82 m)에는 약 2.3 m 여유가 있습니다. Prysmian USD의 Medium 73 m에는 7 m 모자랍니다. CommScope Mini Flat은 1% 줄 200 ft(61 m)에 약 19 m, 3% 줄 243 ft(74 m)에 약 6 m 모자랍니다. Digisol, Waveoptics, Netsource의 문서는 경간 줄이 없어 판정할 수 없습니다. 처짐을 1%에서 1.5%로 늘려도 되는지는 도로나 건물과의 이격 검토로 따로 확인합니다.
+
+이번 자료의 한계도 분명합니다. IEC 60794-1-21의 시험 방법과 IEC 60794-3-10, ANSI/ICEA S-110-717, Telcordia GR-20, NESC 본문은 읽지 못했고, 단기와 장기, 동적과 정적의 표준상 정의는 확인하지 못했습니다. 각 문서가 현행 개정인지, 현재 판매 제품과 맞는지도 확인하지 못했습니다. Prysmian의 토너블 평형 드롭, Corning SST-Drop 원문, Fibline의 두 번째 사본은 검색 결과로만 확인했고 열어 읽지 않았습니다.
+
+| 가상 조건 | Digisol 2심 | Waveoptics 8자형 | Prysmian Mini-Flat | Netsource (Corning SST-Drop) | CommScope Mini Flat |
+| --- | --- | --- | --- | --- | --- |
+| 당기는 힘 500 N | 단기 80 N, 초과 | 단기 600 N, 이내 | 설치 1,336 N, 이내 | 케이블 1,350 N 이내, 커넥터 약 445 N 초과 | 인장 줄 없음 |
+| 상시 장력 350 N | 장기 60 N, 초과 | 장기 300 N, 초과 | 운용 400 N, 이내 | 장기 400 N, 이내 | 인장 줄 없음 |
+| 정적 굽힘 반경 60 mm | 정적 15 mm, 이내 | 운용 10 × OD, 50 mm 또는 20 mm, 이내 | 정적 58 mm, 이내 | 80 mm 한 값, 초과 | 굽힘 줄 없음 |
+| 경간 80 m, Medium | 경간 줄 없음 | 경간 줄 없음 | 1% 78 m 부족, 1.5% 82 m 이내 | 경간 줄 없음 | 1% 61 m 부족, 3% 74 m 부족 |
+
+## 업무 점검표
+
+- 단기와 장기 인장하중을 이름과 순서, 단위와 함께 한 쌍으로 적었고, 단기가 장기보다 작게 인쇄된 줄은 라벨 확인 필요로 표시했습니까?
+
+- 굽힘 반경이 mm인지 지름 배수인지 구분하고, 배수라면 평평한 단면의 어느 치수인지 문서가 적었는지 확인해 가능한 값을 모두 적었습니까?
+
+- 케이블 줄과 커넥터 조립품 줄, 설치 온도 줄과 운용 온도 줄이 따로 있는지 확인하고 없는 줄은 없다고 적었습니까?
+
+- 경간 숫자를 하중 조건 이름과 처짐 %와 함께 옮겼고, 경간 줄이 없는 문서는 판정 불가로 적었습니까?
+
+- 같은 제품명 사이와 문서 안에서 어긋난 숫자, 문서 코드와 날짜를 쪽 번호와 함께 두 값으로 기록했습니까?
+
+## 확인 문제와 정답
+
+### 1. 사양서의 "Tensile Strength Short/Long Term (N) 300/600" 줄에서 단기가 장기보다 작습니다. 어떻게 기록합니까?
+
+정답·해설: 인쇄된 순서와 숫자(단기 300 N, 장기 600 N)를 그대로 적고 라벨 순서 확인 필요로 표시합니다. 같은 쌍을 Waveoptics는 장기 300 N, 단기 600 N으로 적었으므로 순서가 뒤집혔을 가능성은 있으나 DMS 추정이어서 값을 바꾸지 않습니다.
+
+### 2. 케이블 단면이 5.0 × 2.0 mm이고 사양서가 운용 굽힘 반경을 10 × OD로만 적으며 OD를 정의하지 않습니다. 가능한 반경과 현장 반경 40 mm의 판정은 어떻게 됩니까?
+
+정답·해설: OD를 5.0 mm로 읽으면 50 mm, 2.0 mm로 읽으면 20 mm입니다. 현장 40 mm는 50 mm 해석에서는 10 mm 모자라고 20 mm 해석에서는 이내이므로 판정을 보류하고 두 값을 함께 적습니다.
+
+### 3. 설치 처짐 1%, NESC Medium 경간이 255 ft로 적힌 케이블을 경간 80 m(약 262 ft)에 쓰려면 어떻게 판단합니까?
+
+정답·해설: 255 ft는 약 77.7 m이므로 80 m에는 약 2.3 m 모자랍니다. 같은 문서의 1.5% 줄 270 ft(약 82 m)는 이내이지만, 처짐을 늘려도 이격이 맞는지 따로 확인해야 합니다.
+
+## 출처와 판본
+
+- [Prysmian: ResiLink Mini-Flat Drop 데이터시트 (문서 코드 TLS-DS-A-609-1125)](https://na.prysmian.com/sites/na.prysmian.com/files/media/products/TLS-DS-A-609-1125_ResiLink%20Mini-Flat%20Drop%20Dielectric%20%26%20Toneable.pdf) · 1–2쪽
+
+- [Prysmian: ResiLink Mini-Flat Drop 제품 웹 페이지](https://na.prysmian.com/product-center/digital-solutions/resilink-mini-flat-drop-dielectric-cable) · 제품 설명
+
+- [Prysmian: ResiLink USD 데이터시트 (문서 코드 TLS-DS-A-604-0226)](https://na.prysmian.com/sites/na.prysmian.com/files/media/products/TLS-DS-A-604-ResiLink-Universal-Service-Drop-Cable.pdf) · 1–2쪽
+
+- [CommScope: Mini Flat Drop Cable 데이터시트 (PA-120580.1-EN, 2026년 1월)](https://webresources.commscope.com/download/assets/Data+Sheet%3A+Mini+Flat+Drop+Cable/416dd88ed13011f0b04caa5110c43f1b) · 1–2쪽
+
+- [CommScope: Flat Drop Fiber Optic Cable (CO-109386-EN, 2015년 6월, 유통사 게시본)](https://www.tvcinc.com/shared-downloads/CommScopeFlat%20drop%20Fiber.pdf) · 1–2쪽
+
+- [Furukawa: Drop Cable 규격 쪽 (21쪽, 발행일 없음)](https://www.furukawaelectric.com/optcom/english/pdf/cable_drop.pdf) · 21쪽
+
+- [STL: Easy-Strip Fig 8 평형 드롭 제품 규격 (발행일 없음)](https://stl.tech/wp-content/uploads/2024/11/Easy-Strip-Fig8-Outdoor-Indoor-Flat-Drop-cable-ARP_FRP_SW-.pdf) · 1–4쪽
+
+- [Waveoptics: FTTH Figure 8 Drop Cable 기술 자료 (EI-086-01-EN, 2023년 2월 28일 검토)](https://www.waveoptics.net/Indoor-Outdoor-Cables/Indoor-Outdoor-Cables-Data-Sheets/Figure-8-Drop-Cables/FTTH-Figure-8-Drop-Cable-1.pdf) · 1–4쪽
+
+- [Waveoptics: Figure 8 Drop Cables 제품 웹 페이지](https://www.waveoptics.net/Indoor-Outdoor-Cables/Figure-8-Drop-Cables) · 제품 설명
+
+- [Nexconec: FTTH Aerial Fig8 Drop Cable 데이터시트 (저작권 연도 2027 인쇄)](https://nexconec.com/datasheet/ftth-aerial-fig8-drop-cable-indoor-outdoor.pdf) · 1–2쪽
+
+- [Hermesys: LadonX FTTH Self-Support Drop Cable (V1, 발행일 없음)](https://www.hermesys.it/wp-content/uploads/2018/05/LadonX_FTTH-Self-Support-Drop-Cable_V1.pdf) · 1–3쪽
+
+- [Digisol: FTTH Flat Drop Cable 데이터시트 (발행일 없음)](https://www.digisol.com/wp-content/uploads/2024/03/Digisol-FTTH-Drop-Cable-Datasheet.pdf) · 1쪽
+
+- [Fibline: GJYXFCH 자가지지 FTTH 드롭 케이블 (카탈로그 159–161쪽)](https://www.fibline.com.tr/wp-content/plugins/fibline-patchcord/assets/catalog-documents/e353dda1046a158355b0e32195301881ec49b6407ba334b7dd3a96ad636cde8b.pdf) · 159–161쪽
+
+- [FS: 자가지지 평형 드롭 케이블 GJYXFCH (발행일 없음)](https://img-en.fs.com/file/datasheet/self-supporting-flat-drop-cable-gjyxfch.pdf) · 1–3쪽
+
+- [FS: Fiber Drop cables 데이터시트 (조립품, 발행일 없음)](https://resource.fs.com/mall/resource/fiber-drop-cables-datasheet.pdf) · 1–3쪽
+
+- [AKBRIDGE: Drop (FTTH) Fiber Optic Cables 데이터시트 (AKB-DS-DRP-001, 2.0판, 2026년 7월)](http://akbridge.com/datasheets/drop-datasheet) · 전체 웹 문서
+
+- [Netsource: Flat Drop Cable Assemblies (Rev. 00, 2026년 10월 20일)](https://www.netsource-inc.com/wp-content/uploads/2026/10/Flat-Drop-Cable-Assemblies-Rev-00.pdf) · 1–3쪽
+
+## 다음에 볼 교안
+
+- [광통신 교육 목차](/education/optical-training)
+
+- [옥외 루즈튜브 광케이블 사양서의 인장하중·최소 굽힘 반경·설치 온도 판독](/education/optical-training/outdoor-loose-tube-cable-datasheet-tensile-load-bend-radius-installation-temperature-readout)
+
+- [ADSS 광케이블 사양서의 경간·하중 조건·처짐·최대 허용 장력 판독](/education/optical-training/adss-cable-datasheet-span-loading-case-sag-allowable-tension-readout)
+
+- [접속함체 케이블 고정과 인장선 체결 교안](/education/optical-training/closure-cable-anchoring-strength-member)

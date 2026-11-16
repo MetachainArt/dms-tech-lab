@@ -52,6 +52,7 @@ export function hasEnglishVersion(pathname: string): boolean {
     || path === "/education/optical-training/mpo-connector-datasheet-insertion-loss-basis-pinning-return-loss-mating-cycles-readout"
     || path === "/education/optical-training/outdoor-loose-tube-cable-datasheet-tensile-load-bend-radius-installation-temperature-readout"
     || path === "/education/optical-training/adss-cable-datasheet-span-loading-case-sag-allowable-tension-readout"
+    || path === "/education/optical-training/ftth-drop-cable-datasheet-short-long-term-tensile-bend-radius-span-readout"
     || path === "/education/optical-training/01-fiber-types-link-design"
     || path === "/education/optical-training/02-fiber-market-infrastructure"
     || path === "/education/optical-training/01-rf-over-fiber-lecture"

@@ -1,0 +1,230 @@
+---
+title: "Reading FTTH Drop Cable Datasheets: Short-Term and Long-Term Tensile Load, Bend Radius and Span"
+date: "2026-11-16"
+desc: "A 10-minute lesson on reading FTTH drop cable (flat and figure-8 self-supporting) datasheets: short-term and long-term tensile load, bend radius, crush load, installation and operating temperature, and self-supporting span. It compares 17 documents from Prysmian, CommScope, Furukawa, STL, Waveoptics, FS, Digisol and others, and shows how to handle label order, the reference dimension of a bend radius multiple on a flat cross-section, cable versus connectorised-assembly limits, loading-case spans and figures that disagree between documents."
+coverImage: "/images/education/optical-training/ftth-drop-cable-datasheet-short-long-term-tensile-bend-radius-span-readout/cover.svg"
+readTime: "10 min"
+lang: "en"
+---
+
+The tensile load and bend radius on an FTTH drop cable datasheet are conditional figures, not a fixed property of the cable: each depends on short term versus long term, installation versus operation, and which dimension of a flat cross-section a multiple was applied to. Across the 17 documents read here, the short-term tensile load ranged from 80 N to 1,350 N, a spread of about 17 times, and one document printed a short-term value smaller than its long-term value. When copying a datasheet value, record the names and order of the short-term and long-term rows, the unit, the cross-section dimensions, and whether the figure belongs to the bare cable or to a connectorised assembly, so that it can be checked against site conditions.
+
+Based on the documents checked on 16 November 2026.
+
+## Learning objectives
+
+- Copy short-term and long-term tensile loads as a pair with their names, order and unit, and check the label order first whenever two values share one slash-separated line.
+
+- Tell a bend radius given in millimetres from one given as a multiple of diameter, and check whether the document defines whether the multiple applies to the long or the short side of a flat cross-section.
+
+- Record cable ratings and connectorised-assembly ratings separately, record span figures together with their loading case and sag basis, and write down both values wherever documents disagree.
+
+## What are short-term and long-term tensile loads, and how do documents label them?
+
+Short-term and long-term tensile loads split the force a cable may see briefly from the force it may carry for a long time, but the names and the order differ from one document to the next and definitions are rarely given. In these 17 documents the short-term value runs from 80 N for the Digisol two-fibre flat drop to 1,350 N for the Corning SST-Drop assembly described by Netsource, a ratio of about 17 (1,350 ÷ 80 = 16.9, a DMS calculation). Among figure-8 cables about 5 mm wide, Waveoptics, Nexconec and Hermesys all give the same pair, 600 N short term and 300 N long term. Flat cables of a similar shape differ: Digisol gives 80 N short term and 60 N long term, and the FS GJYXFCH sheet gives 200 N and 100 N. A similar shape is no reason to assume a similar tensile rating.
+
+The names also vary. Prysmian's Mini-Flat and USD sheets give an Installation Load of 1,336 N (300 lbf) and an Operational Load of 400 N (90 lbf), and the USD sheet has no operational line. The 2015 CommScope flat drop sheet gives 1,334 N (300 lbs) short term and 400 N (90 lbs) long term. STL's Easy-Strip has one line of 600 N, Furukawa gives one line called maximum pulling tension of 460 N, and AKBRIDGE gives an MRDT of 1.3–2.2 kN without defining MRDT. A single line that is not split into short and long term cannot be assigned to either, so copy it under the document's own name and do not relabel it. Reading an installation load as the same thing as a short-term load is also a DMS interpretation unless the document says so.
+
+A slash-separated row needs its label order read first. Digisol prints long term then short term, 60 N and 80 N, and Waveoptics also prints long term then short term, 300 N and 600 N. The Fibline GJYXFCH sheet prints 300 and 600 on a "Short/Long Term" row, so read as printed the short-term value is smaller than the long-term value. Waveoptics gives the same pair of numbers as 300 N long term and 600 N short term, so the label order may have been reversed, but that is a DMS inference and could not be confirmed. In that case copy the printed order and numbers and mark the row as needing confirmation.
+
+Cables and connectorised assemblies have different limits. The FS Fiber Drop cables sheet gives, for the same one-fibre G.657.A2 fibre, a short-term tensile load of 1,200 N for the 5.0 mm round cable with hardened connectors at both ends and 400 N for the 2.0 × 5.0 mm flat cable assemblies with SC/APC. The Netsource sheet gives 1,350 N short term and 400 N long term for the cable, and separately an OptiTap connector pulling tension of 100 lb (about 445 N, a DMS conversion). When pulling with a connector attached, check the lower of the cable line and the connector line as well.
+
+| Document | Cross-section (as printed) | Short term | Long term or operational | Note |
+| --- | --- | --- | --- | --- |
+| Digisol two-fibre flat | 3.0 × 2.0 mm | 80 N | 60 N | Labels run long term, short term |
+| FS GJYXFCH | 2.0 × 5.0 mm | 200 N | 100 N | Printed as minimum values |
+| Waveoptics figure-8 (PDF) | 5 × 2 mm | 600 N | 300 N | Web page adds a KFRP type at 460 N and 230 N |
+| Nexconec figure-8 | 5.0 × 2.0 mm | 600 N | 300 N | Separate short and long rows |
+| Hermesys LadonX | 2.0 × 5.2 mm | 600 N | 300 N | Printed as maximum |
+| Fibline GJYXFCH | 2.0 × 5.0 mm | 300 N (as printed) | 600 N (as printed) | Short term printed smaller than long term |
+| STL Easy-Strip | 2.0 × 5.2 mm | 600 N (not split) | Not given | Test method IEC 60794-1-21-E1 |
+| Furukawa drop | 2.0 × 5.0 mm (W × H) | 460 N (maximum pulling tension) | Not given | No short and long split |
+| CommScope flat drop (2015) | 8.2 × 4.5 mm | 1,334 N | 400 N | Units given in both lbs and N |
+| Prysmian Mini-Flat | 6.3 × 3.0 mm | 1,336 N (installation) | 400 N (operational) | USD gives installation 1,336 N only |
+| Netsource (Corning SST-Drop) | 8.1 × 4.5 mm | 1,350 N | 400 N | OptiTap pulling 100 lb |
+| AKBRIDGE flat | 7.6 × 3.0 – 9.5 × 3.6 mm | MRDT 1,300–2,200 N | Not given | Varies with 8, 12, 16 and 24 fibres |
+
+![Order for reading a drop cable datasheet](/images/education/optical-training/ftth-drop-cable-datasheet-short-long-term-tensile-bend-radius-span-readout/concept-en.svg)
+
+- Copy short and long term with their names, order and unit, and do not relabel a single line as either
+
+- When the same product name gives different values in different documents, record each with its page number
+
+- For connectorised assemblies, record the cable line and the connector line separately
+
+## A bend radius multiple applies to which dimension of a flat cable?
+
+Bend radius appears either in millimetres or as a multiple of diameter, and most documents that use a multiple do not define which dimension of the flat cross-section it multiplies. Waveoptics gives 10 × OD in operation and 20 × OD in installation for a 5 × 2 mm cable without saying whether OD is 5 mm or 2 mm, so the same 20 × OD is either 100 mm or 40 mm (a DMS calculation). Hermesys gives 20 times diameter for installation and 10 times for operation on a 2.0 × 5.2 mm cable, which is 104 mm or 40 mm for installation. AKBRIDGE gives 15 × diameter for its flat drop, which is 114 mm or 45 mm on the 7.6 × 3.0 mm size. Only STL writes the multiplication out: 15 D with (15 × 5.2) mm, which shows the long side of 5.2 mm and gives 78 mm.
+
+Documents that give millimetres are easier to compare, but their names differ. Prysmian Mini-Flat gives 72 mm dynamic and 58 mm static on a 6.3 × 3.0 mm cable, which is 11.4 and 9.2 times the long side. Prysmian USD gives 150 mm dynamic and 100 mm static on 8.3 × 4.7 mm, or 18.1 and 12.0 times the long side. The 2015 CommScope sheet gives 123 mm loaded and 81 mm unloaded, which is 15.0 and 9.9 times the 8.2 mm width. Netsource gives one line of 80 mm, 9.9 times the 8.1 mm width. Digisol gives 15 mm static and 30 mm dynamic, 5 and 10 times the 3.0 mm width. All multiples here are DMS conversions and are not printed in the documents.
+
+The order and the names are also inconsistent. Digisol prints static then dynamic, while FS prints dynamic then static. The FS GJYXFCH sheet labels its 20D and 10D as short term and long term, while Waveoptics and Hermesys label theirs installation and operation. Reading dynamic or installation as the period while the cable is pulled and bent, and static or operation as after installation, is a DMS interpretation unless the document explains it. Furukawa gives a separate 240 mm bend radius with the suspension member attached to the figure-8 cable, and after the suspension member is removed gives dynamic 30 mm and static 15 mm for the metallic strength-member type, dynamic 50 mm and static 15 mm for the non-metallic type, and 50 mm for both in the four-fibre ribbon type. Which line applies depends on whether the cable is bent with the suspension member attached or after it has been separated.
+
+| Document | Format | Larger value (dynamic, installation) | Smaller value (static, operation) | Cross-section (width × height) | Reference dimension explained |
+| --- | --- | --- | --- | --- | --- |
+| Prysmian Mini-Flat | mm | 72 mm | 58 mm | 6.3 × 3.0 mm | Not needed (mm given) |
+| Prysmian USD | mm | 150 mm | 100 mm | 8.3 × 4.7 mm | Not needed (mm given) |
+| CommScope 2015 | mm (given in cm) | 123 mm (loaded) | 81 mm (unloaded) | 8.2 × 4.5 mm | Not needed (mm given) |
+| Netsource | mm | 80 mm single value | Not split | 8.1 × 4.5 mm | Not needed (mm given) |
+| Digisol | mm | 30 mm (dynamic) | 15 mm (static) | 3.0 × 2.0 mm | Not needed (mm given) |
+| STL Easy-Strip | Diameter multiple | 15 D = 78 mm single value | Not split | 5.2 × 2.0 mm | 5.2 mm shown in the formula |
+| Waveoptics | Diameter multiple | 20 × OD (installation) | 10 × OD (operation) | 5 × 2 mm | OD not defined |
+| Hermesys | Diameter multiple | 20 times (installation) | 10 times (operation) | 5.2 × 2.0 mm | Diameter not defined |
+| FS GJYXFCH | Diameter multiple | 20D (short term) | 10D (long term) | 5.0 × 2.0 mm | D not defined |
+| AKBRIDGE flat | Diameter multiple | 15 times single value | Not split | 7.6 × 3.0 – 9.5 × 3.6 mm | Diameter not defined |
+
+## How far do crush load and installation and operating temperature go on a datasheet?
+
+Crush load is mostly given in N/100 mm and split into short and long term, but one document gives a unit that reads an order of magnitude different and cannot be copied as it stands. Waveoptics gives 2,200 N/100 mm short term and 1,000 N/100 mm long term, Nexconec 2,000 and 1,000, Digisol and Hermesys 1,000 and 500, and the FS GJYXFCH sheet 1,000 and 300. STL gives one line of 500 N/100 mm, and the 2015 CommScope sheet gives a compression requirement of 10 N/mm (57 lbf/in), the same size as 1,000 N/100 mm. AKBRIDGE gives 1.4 kN/cm for its flat drop. Read literally that is 14,000 N per 100 mm, more than six times the 1,000–2,200 N of the other documents (a DMS conversion). If the unit meant kN per 10 cm it would be 1,400 N/100 mm, the same order as the others, but that is a DMS guess and the document does not explain the unit.
+
+Temperature has separate installation, operation and storage rows in some documents and only some of them in others. The lower limit for installation runs from minus 40 °C at Waveoptics to minus 10 °C at Hermesys and STL, a 30 degree spread. The upper limit is plus 50 °C at AKBRIDGE, plus 60 °C at Prysmian, Digisol, Hermesys and STL, and plus 70 °C at Waveoptics, CommScope and Netsource. Nexconec, Fibline, Furukawa and both FS documents have no installation row, and the FS GJYXFCH sheet gives only storage (minus 40 °C to plus 60 °C). Do not read an operating range as an installation range where the installation row is missing. Waveoptics adds that the cable should be stored in a suitable temperature environment before installation so that the cable reaches the installation temperature range.
+
+Digisol gives the same minus 30 °C to plus 60 °C for installation, operation and storage, and STL combines operation and storage into one line of minus 30 °C to plus 70 °C. The AKBRIDGE flat drop operates from minus 60 °C to plus 70 °C but installs only from minus 30 °C to plus 50 °C. A wide operating range does not mean a wide installation range, so judge cold-weather work by the installation row.
+
+| Document | Crush (short / long, N/100 mm) | Installation (°C) | Operation (°C) | Storage (°C) | Note |
+| --- | --- | --- | --- | --- | --- |
+| Waveoptics | 2,200 / 1,000 | −40 to +70 | −20 to +70 | −40 to +70 | Advises conditioning before installation |
+| Nexconec | 2,000 / 1,000 | No row | −20 to +70 | −20 to +70 | No installation row |
+| Digisol | 1,000 / 500 | −30 to +60 | −30 to +60 | −30 to +60 | All three rows equal |
+| Hermesys | 1,000 / 500 | −10 to +60 | −40 to +70 | −40 to +70 | Narrowest installation range |
+| Fibline GJYXFCH | 2,200 / 1,000 | No row | −20 to +70 | No row | Operation only |
+| FS GJYXFCH | 1,000 / 300 | No row | No row | −40 to +60 | Storage only |
+| FS Fiber Drop (assemblies) | 1,200 / 500 (short term only) | No row | −20 to +70 | −10 to +50 | No long-term crush row |
+| STL Easy-Strip | 500 (not split) | −10 to +60 | −30 to +70 | −30 to +70 | Operation and storage on one line |
+| CommScope 2015 | 1,000 (compression 10 N/mm) | −30 to +70 | −40 to +70 | −40 to +75 | Requirement is in the test table |
+| Prysmian Mini-Flat | Not given | −30 to +60 | −40 to +70 | −40 to +75 | Crush resistance in wording only |
+| Netsource | Not given | −30 to +70 | −40 to +70 | −40 to +70 | Assembly document |
+| AKBRIDGE flat | 1.4 kN/cm (unit not confirmed) | −30 to +50 | −60 to +70 | −60 to +70 | Unit not explained |
+
+## Which loading case and sag produce a self-supporting span figure?
+
+Span figures appear in only some documents, and even then a figure can be read only with its loading-case name and sag basis. The Prysmian USD sheet gives all-dielectric span ratings of 94 m (310 ft) for NESC Light, 73 m (240 ft) for Medium and 43 m (140 ft) for Heavy, with no sag percentage. Prysmian Mini-Flat gives, at 1% installation sag, 150 ft (45 m) for Heavy, 255 ft (78 m) for Medium and 330 ft (100 m) for Light; at 1.5% it gives 160, 270 and 370 ft, and at 3% it gives 185, 320 and 450 ft. Allowing three times the sag, from 1% to 3%, lengthens the Heavy span by about 23% and the Light span by about 36% (a DMS calculation). The Prysmian product page says the cable allows a maximum span of 160 ft in NESC loading conditions, which equals the Heavy 1.5% row of the table, and the page wording alone does not say which loading case it means.
+
+The CommScope Mini Flat sheet (January 2026) gives, at 1% installation sag, 112 ft for Heavy, 200 ft for Medium and 426 ft for Light, and at 3% it gives 134, 243 and 541 ft. The table also has the sag under environmental loading, 3.5%, 2.5% and 0.3% on the 1% row, with no explanation of its reference point. At the same 1% sag, the Prysmian Mini-Flat Heavy value of 150 ft is longer than CommScope's 112 ft, while CommScope's Light value of 426 ft is longer than Prysmian's 330 ft. Both sheets use the NESC loading names but describe different cables, so do not rank the spans under one name as a single order.
+
+More documents have no span at all. The Waveoptics, Nexconec, Hermesys, STL, Furukawa, Digisol, Fibline, FS, 2015 CommScope and Netsource documents give no span figure, and the Waveoptics web page says only that the cable is suited to longer outdoor distances. AKBRIDGE gives one line saying the flat drop has an aerial span of 100 m or less, with no loading case or sag, and separately says span and sag calculations must be engineered. Do not read a missing span line as unlimited or as short being acceptable; record only that the document has no design basis for it.
+
+| Document | Sag basis | Heavy | Medium | Light |
+| --- | --- | --- | --- | --- |
+| Prysmian USD | Not given | 140 ft (43 m) | 240 ft (73 m) | 310 ft (94 m) |
+| Prysmian Mini-Flat | 1% | 150 ft (45 m) | 255 ft (78 m) | 330 ft (100 m) |
+| Prysmian Mini-Flat | 1.5% | 160 ft (49 m) | 270 ft (82 m) | 370 ft (112 m) |
+| Prysmian Mini-Flat | 3% | 185 ft (56 m) | 320 ft (97 m) | 450 ft (137 m) |
+| CommScope Mini Flat | 1% | 112 ft (34 m) | 200 ft (61 m) | 426 ft (130 m) |
+| CommScope Mini Flat | 3% | 134 ft (41 m) | 243 ft (74 m) | 541 ft (165 m) |
+| AKBRIDGE flat | No condition given | Not given | Not given | 100 m or less, one line |
+
+![Short-term tensile load by document](/images/education/optical-training/ftth-drop-cable-datasheet-short-long-term-tensile-bend-radius-span-readout/bars-en.svg)
+
+- Each bar is the value the document gives as short-term or installation tensile load
+
+- The cables differ in cross-section and construction, so this is not a ranking under one condition
+
+- The Fibline value is as printed and its label needs confirmation
+
+## How do you record figures that disagree within a document or between documents?
+
+Figures can disagree inside one document or between documents that carry the same product name, and the approach is not to pick one but to write both values with page numbers. The same product name GJYXFCH is given by FS as 200 N short term, 100 N long term, crush 1,000 N/100 mm short term and 300 N/100 mm long term, and by Fibline as tensile 300 and 600 and crush 2,200 and 1,000. The descriptive text is almost identical. The FS document says single-mode G.657 in the text but its optical table has G.652 and 50/125 and 62.5/125 multimode columns, and the Fibline document mentions both an FRP strength member and a steel wire in its description while the strength member in its specification row is only a steel wire (0.45 mm). The documents alone do not show which one matches the current product.
+
+The STL document shows the two-fibre product code FA0002S201NTL10100 in both the ARP and the FRP tables, and the steel-wire code FA0001S201NTL10200 for both one and two fibres. Its crush row has an N/mm header but a value of 500 N/100 mm, and its PMD of 0.02 ps/√km is a factor of ten from the 0.2 ps/√km of other documents. Waveoptics gives the messenger diameter in its PDF as 1.20 mm (0.047 in) but 0.47 in on the web page, the KFRP type at 460 N and 230 N appears only on the web page, and the web page names the minimum bend radius row as Maximum. Prysmian's installation load is 1,336 N (300 lbf), but 300 lbf is about 1,334 N, and CommScope gives the same 300 lbs as 1,334 N. Such small differences may be rounding in conversion, but neither document explains it.
+
+Check dates and editions as well. The Waveoptics EI-086-01-EN was last reviewed on 28 February 2023, the AKBRIDGE AKB-DS-DRP-001 is issue 2.0 of July 2026, the CommScope flat drop sheet carries a document code of June 2015 and the Mini Flat sheet one of January 2026. The Nexconec file prints a copyright year of 2027 (the search excerpt showed 2026), so it is not used to judge the edition. The Furukawa, Digisol, Hermesys, FS and STL documents print no issue date, and the 1125 and 0226 at the end of the Prysmian codes look like issue months but are not explained. STL gives the tensile test as IEC 60794-1-21-E1 and Hermesys as IEC 60794-1-2-E1, and which numbering is current could not be confirmed because the standard text was not read. The manufacturers were not contacted about the figures that disagree, and both values were written down as they are.
+
+| Where it disagrees | One value | Other value | How to record it |
+| --- | --- | --- | --- |
+| Tensile of the same product name GJYXFCH | FS short term 200 N, long term 100 N | Fibline 300, 600 (printed short, long) | Record per document and mark the label as needing confirmation |
+| FS GJYXFCH optical table | Text says single-mode G.657 | Table has G.652 and multimode columns | Copy both the text and the table |
+| STL crush row | Header N/mm | Value 500 N/100 mm | Copy the value and unit as printed |
+| Waveoptics messenger diameter | PDF 1.20 mm (0.047 in) | Web 0.47 in | Record PDF and web separately |
+| Prysmian installation load | 1,336 N | 300 lbf (about 1,334 N) | Write both and note the conversion as a DMS calculation |
+| Prysmian product page span | Maximum 160 ft | Table 150, 160, 185 ft (Heavy) | Copy the table row with its condition first |
+| AKBRIDGE crush unit | 1.4 kN/cm | Other documents 1,000–2,200 N/100 mm | Mark the unit as needing confirmation |
+
+## What happens when site conditions are put against datasheet values?
+
+The case used here is a hypothetical teaching calculation, and no real site or product was tested. Assume that the pulling force during entry is 500 N and the sustained tension after installation is 350 N, that the final fixing at a building corner uses a bend radius of 60 mm, and that the span is 80 m (about 262 ft) in an NESC Medium area. The 500 N goes against the short-term row, the sustained 350 N against the long-term or operational row, and the 60 mm final radius against the static or operation row. This reading of short and long term and of dynamic and static follows the DMS interpretation described above.
+
+The 500 N exceeds the Digisol short-term 80 N by 420 N, sits within the Waveoptics 600 N with 100 N to spare, and sits within the Prysmian Mini-Flat 1,336 N. The Netsource cable line of 1,350 N holds, but the OptiTap connector line of 100 lb (about 445 N) is exceeded by about 55 N. The sustained 350 N exceeds the Digisol long-term 60 N and the Waveoptics long-term 300 N, and sits within the Prysmian operational 400 N and the Netsource long-term 400 N. The 60 mm radius sits within the Digisol static 15 mm and the Prysmian Mini-Flat static 58 mm with 2 mm to spare, and falls 20 mm short of the single Netsource value of 80 mm. For Waveoptics, the operation value of 10 × OD is 50 mm or 20 mm, so it sits within either reading of OD.
+
+The 80 m span falls about 2.3 m short of the Prysmian Mini-Flat Medium 1% row of 255 ft (78 m) but has about 2.3 m to spare against the 1.5% row of 270 ft (82 m). It falls 7 m short of the Prysmian USD Medium 73 m. For CommScope Mini Flat it falls about 19 m short of the 1% row of 200 ft (61 m) and about 6 m short of the 3% row of 243 ft (74 m). The Digisol, Waveoptics and Netsource documents have no span row, so no judgement can be made. Whether the sag may be raised from 1% to 1.5% is checked separately against the clearance to roads or buildings.
+
+The limits of this material are clear. The IEC 60794-1-21 test methods, IEC 60794-3-10, ANSI/ICEA S-110-717, Telcordia GR-20 and NESC were not read, and the standard definitions of short and long term and of dynamic and static were not confirmed. Whether each document is the current revision, or matches the product on sale today, was also not confirmed. The Prysmian toneable flat drop, the Corning SST-Drop original and the second Fibline copy were seen only in search results and were not opened.
+
+| Hypothetical condition | Digisol two-fibre | Waveoptics figure-8 | Prysmian Mini-Flat | Netsource (Corning SST-Drop) | CommScope Mini Flat |
+| --- | --- | --- | --- | --- | --- |
+| Pulling force 500 N | Short term 80 N, exceeded | Short term 600 N, within | Installation 1,336 N, within | Cable 1,350 N within, connector about 445 N exceeded | No tensile row |
+| Sustained tension 350 N | Long term 60 N, exceeded | Long term 300 N, exceeded | Operational 400 N, within | Long term 400 N, within | No tensile row |
+| Static bend radius 60 mm | Static 15 mm, within | Operation 10 × OD, 50 mm or 20 mm, within | Static 58 mm, within | Single 80 mm, exceeded | No bend row |
+| Span 80 m, Medium | No span row | No span row | 1% 78 m short, 1.5% 82 m within | No span row | 1% 61 m short, 3% 74 m short |
+
+## Checklist
+
+- Were short-term and long-term tensile loads written as a pair with their names, order and unit, and was any line with short term smaller than long term marked as needing label confirmation?
+
+- Was the bend radius identified as millimetres or a diameter multiple, and where it is a multiple, was it checked whether the document states the dimension and were all possible values written down?
+
+- Was it checked whether there are separate rows for the cable and for the connectorised assembly, and for installation and operating temperature, and were missing rows recorded as missing?
+
+- Was each span figure copied with its loading-case name and sag percentage, and were documents with no span row recorded as not assessable?
+
+- Were figures that disagree between documents with the same product name or inside one document, and the document codes and dates, recorded as two values with page numbers?
+
+## Review questions
+
+### 1. A datasheet row reads "Tensile Strength Short/Long Term (N) 300/600" and the short-term value is smaller than the long-term value. How do you record it?
+
+Answer and explanation: Record the printed order and numbers (short term 300 N, long term 600 N) and mark the label order as needing confirmation. Waveoptics prints the same pair as 300 N long term and 600 N short term, so the order may have been reversed, but that is a DMS inference and the values are not changed.
+
+### 2. The cross-section is 5.0 × 2.0 mm and the datasheet gives the operating bend radius only as 10 × OD without defining OD. What are the possible radii, and how is a site radius of 40 mm judged?
+
+Answer and explanation: With OD read as 5.0 mm the radius is 50 mm and with OD read as 2.0 mm it is 20 mm. A site radius of 40 mm is 10 mm short under the 50 mm reading and within the 20 mm reading, so the judgement is held back and both values are written down.
+
+### 3. A cable is listed with an NESC Medium span of 255 ft at 1% installation sag. How do you judge it for an 80 m (about 262 ft) span?
+
+Answer and explanation: 255 ft is about 77.7 m, so it falls about 2.3 m short of 80 m. The 1.5% row of 270 ft (about 82 m) in the same document is within, but whether the larger sag still meets the clearance has to be checked separately.
+
+## Sources
+
+- [Prysmian: ResiLink Mini-Flat Drop datasheet (document code TLS-DS-A-609-1125)](https://na.prysmian.com/sites/na.prysmian.com/files/media/products/TLS-DS-A-609-1125_ResiLink%20Mini-Flat%20Drop%20Dielectric%20%26%20Toneable.pdf) · pp. 1–2
+
+- [Prysmian: ResiLink Mini-Flat Drop product web page](https://na.prysmian.com/product-center/digital-solutions/resilink-mini-flat-drop-dielectric-cable) · product description
+
+- [Prysmian: ResiLink USD datasheet (document code TLS-DS-A-604-0226)](https://na.prysmian.com/sites/na.prysmian.com/files/media/products/TLS-DS-A-604-ResiLink-Universal-Service-Drop-Cable.pdf) · pp. 1–2
+
+- [CommScope: Mini Flat Drop Cable data sheet (PA-120580.1-EN, January 2026)](https://webresources.commscope.com/download/assets/Data+Sheet%3A+Mini+Flat+Drop+Cable/416dd88ed13011f0b04caa5110c43f1b) · pp. 1–2
+
+- [CommScope: Flat Drop Fiber Optic Cable (CO-109386-EN, June 2015, distributor copy)](https://www.tvcinc.com/shared-downloads/CommScopeFlat%20drop%20Fiber.pdf) · pp. 1–2
+
+- [Furukawa: Drop Cable specification page (page 21, no issue date)](https://www.furukawaelectric.com/optcom/english/pdf/cable_drop.pdf) · p. 21
+
+- [STL: Easy-Strip Fig 8 flat drop product specification (no issue date)](https://stl.tech/wp-content/uploads/2024/11/Easy-Strip-Fig8-Outdoor-Indoor-Flat-Drop-cable-ARP_FRP_SW-.pdf) · pp. 1–4
+
+- [Waveoptics: FTTH Figure 8 Drop Cable technical data sheet (EI-086-01-EN, reviewed 28 February 2023)](https://www.waveoptics.net/Indoor-Outdoor-Cables/Indoor-Outdoor-Cables-Data-Sheets/Figure-8-Drop-Cables/FTTH-Figure-8-Drop-Cable-1.pdf) · pp. 1–4
+
+- [Waveoptics: Figure 8 Drop Cables product web page](https://www.waveoptics.net/Indoor-Outdoor-Cables/Figure-8-Drop-Cables) · product description
+
+- [Nexconec: FTTH Aerial Fig8 Drop Cable datasheet (copyright year 2027 printed)](https://nexconec.com/datasheet/ftth-aerial-fig8-drop-cable-indoor-outdoor.pdf) · pp. 1–2
+
+- [Hermesys: LadonX FTTH Self-Support Drop Cable (V1, no issue date)](https://www.hermesys.it/wp-content/uploads/2018/05/LadonX_FTTH-Self-Support-Drop-Cable_V1.pdf) · pp. 1–3
+
+- [Digisol: FTTH Flat Drop Cable datasheet (no issue date)](https://www.digisol.com/wp-content/uploads/2024/03/Digisol-FTTH-Drop-Cable-Datasheet.pdf) · p. 1
+
+- [Fibline: GJYXFCH self-supporting FTTH drop cable (catalogue pp. 159–161)](https://www.fibline.com.tr/wp-content/plugins/fibline-patchcord/assets/catalog-documents/e353dda1046a158355b0e32195301881ec49b6407ba334b7dd3a96ad636cde8b.pdf) · pp. 159–161
+
+- [FS: Self-supporting Flat Drop Cable GJYXFCH (no issue date)](https://img-en.fs.com/file/datasheet/self-supporting-flat-drop-cable-gjyxfch.pdf) · pp. 1–3
+
+- [FS: Fiber Drop cables datasheet (assemblies, no issue date)](https://resource.fs.com/mall/resource/fiber-drop-cables-datasheet.pdf) · pp. 1–3
+
+- [AKBRIDGE: Drop (FTTH) Fiber Optic Cables datasheet (AKB-DS-DRP-001, issue 2.0, July 2026)](http://akbridge.com/datasheets/drop-datasheet) · whole web document
+
+- [Netsource: Flat Drop Cable Assemblies (Rev. 00, 20 October 2026)](https://www.netsource-inc.com/wp-content/uploads/2026/10/Flat-Drop-Cable-Assemblies-Rev-00.pdf) · pp. 1–3
+
+## Continue
+
+- [Optical training curriculum](/fttx-training)
+
+- [Reading Outdoor Loose Tube Cable Datasheets: Tensile Load, Minimum Bend Radius and Installation Temperature](/en/education/optical-training/outdoor-loose-tube-cable-datasheet-tensile-load-bend-radius-installation-temperature-readout)
+
+- [Reading ADSS Fibre Optic Cable Datasheets: Span, Loading Case, Sag and Maximum Allowable Tension](/en/education/optical-training/adss-cable-datasheet-span-loading-case-sag-allowable-tension-readout)
+
+- [Anchoring Cables and Terminating Strength Members in Closures](/en/education/optical-training/closure-cable-anchoring-strength-member)
