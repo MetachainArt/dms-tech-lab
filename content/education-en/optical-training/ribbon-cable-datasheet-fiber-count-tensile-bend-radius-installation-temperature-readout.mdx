@@ -1,0 +1,198 @@
+---
+title: "Reading Ribbon Cable Datasheets: Tensile Load, Bend Radius and Installation Temperature by Fiber Count"
+date: "2026-11-17"
+desc: "A 10-minute lesson on reading high-density ribbon cable datasheets (rollable, Spider Web and flat ribbon): short-term and long-term tensile load by fiber-count band, bend radius during and after installation, and installation temperature. It compares eight documents from Fujikura, AFL, Lightera, Panduit and Sumitomo Electric and shows how far a merged tensile cell reaches, how to convert a diameter multiple to millimetres, how the same 576-fiber count differs between documents, and how to record figures that disagree within a document."
+coverImage: "/images/education/optical-training/ribbon-cable-datasheet-fiber-count-tensile-bend-radius-installation-temperature-readout/cover.svg"
+readTime: "10 min"
+lang: "en"
+---
+
+The tensile load and bend radius on a ribbon cable datasheet are conditional figures entered per fiber-count band, and the first check is how far one merged cell reaches along the table. Across the eight documents read here, the short-term tensile load for the same 576-fiber count came out as 1,300 N, 1,330 N, 2,670 N and 2,700 N, and the bend radius was printed anywhere from 8 times to 20 times the cable diameter. When copying a value, record the fiber-count band, the names of the short-term and long-term rows and of the installation and post-installation rows, the unit and the basis of any diameter multiple, and the range an installation-temperature row applies to, so that the figure can be checked against site conditions.
+
+Based on the documents checked on 17 November 2026.
+
+## Learning objectives
+
+- Check which fiber-count band a merged tensile cell covers, and copy short-term and long-term loads as a pair with their names and unit.
+
+- Tell a bend radius given in millimetres from one given as a multiple of diameter, and multiply the multiple by the cable diameter so that all values are compared in one unit.
+
+- Check whether the installation-temperature row changes with fiber count or construction, and write down both values wherever a document disagrees with itself.
+
+## How is tensile load split by fiber count on a ribbon cable datasheet?
+
+Tensile load on a ribbon cable datasheet is entered per fiber-count band, and one value may be merged across every count or may change part-way along the table. Fujikura's outdoor WTC (Wrapping Tube Cable) document gives one pair, 2,700 N short term and 810 N long term, as a merged cell across all counts from 144 to 13,824 fibers. The same company's indoor and indoor/outdoor WTC document gives 1,300 N and 399 N from 144 to 576 fibers and 2,700 N and 810 N from 864 to 6,912 fibers. The table was rendered as an image and the merged ranges were checked directly. The AFL RIO indoor/outdoor document splits at the same boundary between 576C and 864C: 299 lbs (1,330 N) and 90 lbs (399 N) from 144C to 576C, and 607 lbs (2,700 N) and 182 lbs (810 N) from 864C to 3,456C. In the same band Fujikura prints 1,300 N and AFL prints 1,330 N, so the makers differ, and a reader who does not check the fiber count can read the 2,700 N of the upper band onto a cable in the lower band.
+
+Names and structures differ as well. The Lightera AccuTube+ document separates a Rated Installation Load of 1,000 lb (4,448 N) from a Maximum Long-term Load of 333 lb (1,481 N), and prints 4,450 N in the tensile field of its ordering code. Lightera's AccuFlex and Panduit's Opti-Core 144 give one line, Maximum Tensile Rating 300 lb (1,335 N), so it is not possible to tell whether it is a short-term or a long-term limit. The Sumitomo Electric catalogue gives the FREEFORM RIBBON slot cable one tensile strength of 2,670 N from 432 to 6,912 fibers, while its SZ slotted-core ribbon cable rises with fiber count, from 900 N at 24 fibers to 3,120 N at 300 fibers in the 4-fiber ribbon type and from 2,440 N upward to 5,700 N in the 8-fiber ribbon type. A value printed on one line is copied under that document's own name and is not relabelled as short term or long term.
+
+The long-term value is about 0.3 times the short-term value throughout: 810 ÷ 2,700 is 0.30, 399 ÷ 1,300 is 0.31, 399 ÷ 1,330 is 0.30, and Lightera's 1,481 ÷ 4,448 is 0.33 (DMS calculation). Under the short-term value Fujikura adds a note to follow the procedure Fujikura recommends when pulling the cable, which makes clear that 2,700 N is a rating and not a permission to pull at that force.
+
+| Document | Fiber-count band | Short term or installation | Long term or static | Note |
+| --- | --- | --- | --- | --- |
+| Fujikura outdoor WTC | 144–13,824 fibers | 2,700 N | 810 N | One merged pair, reference GR-20 |
+| Fujikura indoor and indoor/outdoor WTC | 144–576 fibers | 1,300 N | 399 N | Reference ICEA S-104-696 |
+| Fujikura indoor and indoor/outdoor WTC | 864–6,912 fibers | 2,700 N | 810 N | Second band of the same table |
+| AFL RIO indoor/outdoor WTC | 144C–576C | 299 lbs (1,330 N) | 90 lbs (399 N) | Same value on each row |
+| AFL RIO indoor/outdoor WTC | 864C–3,456C | 607 lbs (2,700 N) | 182 lbs (810 N) | Same value on each row |
+| AFL OSP WTC | 864–6,912 fibers | 607 lbs (2,700 N) | 182 lbs (810 N) | Headers read short term, dynamic, installation and long term, storage, static |
+| Lightera AccuTube+ | 864 and 1,728 fibers | Rated Installation Load 1,000 lb (4,448 N) | Maximum Long-term Load 333 lb (1,481 N) | Ordering code gives 4,450 N |
+| Lightera AccuFlex | 12–144 and 288 fibers | Maximum Tensile Rating 300 lb (1,335 N) | Not stated | One line |
+| Panduit Opti-Core 144 | 144 fibers | Maximum Tensile Rating 300 lbs (1,335 N) | Not stated | One line |
+| Sumitomo FREEFORM slot | 432–6,912 fibers | Tensile strength 2,670 N | Not stated | One value, no split |
+| Sumitomo SZ slotted-core ribbon | 4-fiber ribbon type 24–300 fibers, 8-fiber ribbon type 288–800 fibers | Maximum load 900–3,120 N (4-fiber type), 2,440–5,700 N (8-fiber type) | Not stated | Rises with fiber count |
+
+![Order for reading a ribbon cable datasheet](/images/education/optical-training/ribbon-cable-datasheet-fiber-count-tensile-bend-radius-installation-temperature-readout/concept-en.svg)
+
+- For tensile load, check the fiber-count band first and read the reach of a merged cell directly on the table
+
+- Copy short term and long term with their names and unit, and do not relabel a one-line value as either
+
+- If makers differ within the same band, record the values document by document
+
+## Is bend radius given as a diameter multiple or in millimetres, and for which condition?
+
+Bend radius is given in millimetres in some documents, as a multiple of diameter in others, and as both in a few, and a multiple becomes millimetres only after it is multiplied by the cable diameter. The documents that give a multiple (Lightera and Panduit) apply it to the cable outer diameter (OD) or diameter, and all of these cables are round, so there was no question here about which side of a flat cross-section a multiple refers to. AFL's OSP document gives 300 mm short term, dynamic and installation and 225 mm long term, storage and static at 864 fibers, which are 20.0 and 15.0 times the 15.0 mm diameter. At 6,912 fibers the diameter is 29.8 mm and the values are 596 mm and 447 mm, again 20 and 15 times. The RIO document gives 250 mm and 188 mm on the 12.5 mm 144C cable and 520 mm and 390 mm on the 26.0 mm 3,456C cable, the same multiples (DMS calculation).
+
+Fujikura uses different names. Its outdoor document gives two rows, Cyclic flexing and Cable bend. Cyclic flexing is about 10 times the diameter in every column, and Cable bend is about 15 times from 288 fibers upward. At 144 fibers the Cable bend value is 110 mm, equal to the Cyclic flexing value and 10.0 times the diameter, so that column differs from the others (DMS calculation). The indoor and indoor/outdoor document gives the same value on both rows in every column, 10.0 times the diameter. The document does not say whether the two names mean during or after installation, so reading Cable bend as the installation case or as the static case is a DMS interpretation and is not settled here.
+
+Lightera's AccuTube+ prints the same 15 times for loaded, unloaded and storage-coil conditions. The 864-fiber all-dielectric cable has a 21.6 mm diameter, which gives 324 mm (DMS calculation). Lightera's AccuFlex prints 20 times when loaded (192 mm for 12 to 144 fibers) and 8 times when unloaded (77 mm), and Panduit prints 20 times for installation and load and 8 times for long term and no load on a 12.1 mm 144-fiber cable, which gives 242 mm and about 97 mm (DMS calculation). Sumitomo's SZ slotted-core cable gives 10 times the diameter after installation and 20 times during installation in every column, while its FREEFORM RIBBON slot cable, on the 200 µm row, gives 20 to 24.7 times during installation and 12.5 to 19.4 times after installation, changing from column to column (DMS calculation). Because the multiple is not constant even within one table, do not work it out once and apply it everywhere. Read the value in the column of the cable you use.
+
+| Document | During installation or loaded | After installation or unloaded | Reference column (diameter) | Format and note |
+| --- | --- | --- | --- | --- |
+| Fujikura outdoor WTC | Cable bend 263 mm (15.0×) | Cyclic flexing 175 mm (10.0×) | 864 fibers (17.5 mm) | mm; at 144 fibers both rows read 110 mm |
+| Fujikura indoor and indoor/outdoor WTC | Cable bend 170 mm (10.0×) | Cyclic flexing 170 mm (10.0×) | 864 fibers (17.0 mm) | mm; both rows equal in every column |
+| AFL RIO indoor/outdoor WTC | 330 mm (20.0×) | 248 mm (15.0×) | 864C (16.5 mm) | in and mm; short term, installation and long term, storage, static |
+| AFL OSP WTC | 300 mm (20.0×) | 225 mm (15.0×) | 864 fibers (15.0 mm) | in and mm |
+| Lightera AccuTube+ | With load 15 OD | No load 15 × OD | 864-fiber all-dielectric (21.6 mm) | Multiple; 324 mm is a DMS calculation |
+| Lightera AccuFlex | With load 20 × OD, 192 mm | No load 8 × OD, 77 mm | 12–144 fibers (9.6 mm) | Multiple and mm together |
+| Panduit Opti-Core 144 | Installation and load 20× | Long term and no load 8× | 144 fibers (12.1 mm) | Multiple only; 242 mm and about 97 mm are DMS calculations |
+| Sumitomo SZ slotted core | During installation 170 mm (20×) | After installation 85 mm (10×) | 4-fiber ribbon type, 24 fibers (8.5 mm) | mm; same multiple in every column |
+| Sumitomo FREEFORM slot (200 µm) | During installation 380 mm (20.0×) | After installation 300 mm (15.8×) | 864 fibers (19 mm) | mm; multiple changes by column |
+
+## How far do installation temperature and optical attenuation go on a datasheet?
+
+The lower limit of the installation temperature runs from minus 40 degrees on Panduit to 0 degrees on Lightera AccuFlex, a 40-degree spread, and the upper limit is plus 60 degrees in most documents, with plus 70 degrees only for AccuFlex. Within one Fujikura outdoor document the lower limit even depends on the fiber count. From 144 to 6,912 fibers it is minus 30 to plus 60 degrees, but the 13,824-fiber cable is given separately at minus 20 to plus 60 degrees. The largest cable therefore has the narrowest installation range, and the temperature row, like the tensile row, needs its fiber-count condition checked. The two AFL documents, Fujikura's indoor and indoor/outdoor document and Lightera AccuTube+ all give minus 30 to plus 60 degrees. The page of the Sumitomo catalogue that was read has no temperature row.
+
+What the installation row stands for also differs. Fujikura places installation, operation and transportation or storage rows under the heading Temperature cycling. AFL places operation, storage and installation under Temperature Specifications. Neither document explains whether the installation row is a test range or the range in which site work is allowed, so reading it as a working range is a DMS interpretation. A wide operating range does not mean a wide installation range, so in cold weather judge the work by the installation row.
+
+For optical attenuation, Fujikura and AFL give the maximum cabled attenuation as 0.40 dB/km at 1310 nm, 0.40 at 1383 nm and 0.30 at 1550 nm. Fujikura attaches a note to the 1383 nm value saying it is the value after hydrogen aging. Lightera AccuTube+ gives the same values as the maximum cable attenuation on the reel and labels the middle wavelength 1385 nm. AccuFlex and Panduit give only 0.4 dB/km at 1310 nm and 0.3 dB/km at 1550 nm. The numbers look alike but the measurement state and the wavelength label differ, so a comparison table should carry the condition with each value.
+
+| Document | Installation (°C) | Operation (°C) | Storage or transport (°C) | Maximum cabled attenuation (dB/km) |
+| --- | --- | --- | --- | --- |
+| Fujikura outdoor WTC (144–6,912 fibers) | −30 to +60 | −40 to +70 | −40 to +70 | 0.40 / 0.40 (1383) / 0.30 |
+| Fujikura outdoor WTC (13,824 fibers) | −20 to +60 | −40 to +70 | −40 to +70 | Same |
+| Fujikura indoor and indoor/outdoor WTC | −30 to +60 | −40 to +70 | −40 to +70 | 0.40 / 0.40 / 0.30 |
+| AFL OSP and RIO WTC | −30 to +60 | −40 to +70 | −40 to +70 | 0.40 / 0.40 / 0.30 |
+| Lightera AccuTube+ | −30 to +60 | −40 to +70 | −40 to +75 | On reel 0.4 / 0.4 (1385) / 0.3 |
+| Lightera AccuFlex | 0 to +70 (the °F figure prints as −32) | −20 to +70 | −40 to +70 | 0.4 (1310) / 0.3 (1550) |
+| Panduit Opti-Core 144 | −40 to +60 | −20 to +70 | −40 to +70 | 0.4 (1310) / 0.3 (1550) |
+| Sumitomo catalogue page read | No row | No row | No row | No row |
+
+## How much does the same 576-fiber count differ between documents?
+
+Pick one fiber count and put it on one line, and the same 576-fiber ribbon cable shows a tensile load from 1,300 N to 2,700 N and a bend radius from 10 to 20 times the diameter. Fujikura's outdoor 576-fiber cable is 2,700 N short term and 810 N long term, with a 15.0 mm diameter, a Cable bend of 225 mm and a Cyclic flexing of 150 mm. Fujikura's indoor and indoor/outdoor 576-fiber cable is 1,300 N and 399 N with a 15.5 mm diameter and 155 mm on both rows. AFL's RIO 576C is 1,330 N and 399 N, with a 15.0 mm diameter, 300 mm (20 times) and 225 mm (15 times). Sumitomo's FREEFORM 200 µm 576-fiber cable has a tensile strength of 2,670 N, a 15.5 mm diameter, 310 mm during installation and 300 mm after installation. AFL's OSP document and Lightera AccuTube+ have no 576-fiber row, so they cannot join this comparison.
+
+Fujikura and AFL use the same named construction (WTC with Spider Web Ribbon), but their bend values differ. Fujikura's indoor and indoor/outdoor document gives both bend rows as 10 times the diameter, while AFL's RIO document for the same use gives 20 and 15 times. Both name the same ANSI/ICEA S-104-696 as the reference standard and still differ, so read the figure as the maker's published value and not as one fixed by the standard. Do not borrow another maker's value because the construction looks the same.
+
+![Short-term and long-term tensile load by document](/images/education/optical-training/ribbon-cable-datasheet-fiber-count-tensile-bend-radius-installation-temperature-readout/bars-en.svg)
+
+- Bars show the tensile load each document gives for short term or installation and for long term or static
+
+- Constructions and fiber-count bands differ, so this is not a ranking of performance under one condition
+
+- A document with a single line is drawn as one bar
+
+| One line at 576 fibers | Short term | Long term | Bend radius (installation / after) | Cable diameter | Installation temperature |
+| --- | --- | --- | --- | --- | --- |
+| Fujikura outdoor WTC | 2,700 N | 810 N | 225 mm (15.0×) / 150 mm (10.0×) | 15.0 mm | −30 to +60 °C |
+| Fujikura indoor and indoor/outdoor WTC | 1,300 N | 399 N | 155 mm (10.0×) / 155 mm (10.0×) | 15.5 mm | −30 to +60 °C |
+| AFL RIO indoor/outdoor WTC | 1,330 N | 399 N | 300 mm (20.0×) / 225 mm (15.0×) | 15.0 mm | −30 to +60 °C |
+| Sumitomo FREEFORM 200 µm | 2,670 N (one value) | Not stated | 310 mm (20.0×) / 300 mm (19.4×) | 15.5 mm | No row |
+| AFL OSP WTC, Lightera AccuTube+ | No 576-fiber row | No 576-fiber row | Cannot be judged | Not applicable | Not applicable |
+
+## How do you record figures that disagree within a document?
+
+Some documents contain units that do not match or rows that contradict each other. Do not choose which is right. Write both values with the page number. The installation-temperature row of Lightera AccuFlex reads minus 32 to plus 158 degrees Fahrenheit and 0 to plus 70 degrees Celsius. Zero degrees Celsius is 32 degrees Fahrenheit, so the sign of the lower limit disagrees, and the document alone cannot show which is right. The weight row of Fujikura's indoor and indoor/outdoor document prints 290 kg/km (219 lbs/1000ft) at 864 fibers and 325 kg/km (717 lbs/1000ft) at 1152 fibers. The other columns of the same row agree with the kg/km value multiplied by 0.672, but these two cells convert to 195 and 218 lbs/1000ft (DMS calculation). The row has no direct bearing on tensile load or bend radius, but it is a signal to check the other rows of the same table in the same way.
+
+In the Lightera AccuTube+ document the metallic 1,728-fiber construction lists a buffer tube diameter of 0.30 in while the ordering information describes a 7.0 mm tube (0.28 in), and the all-dielectric construction lists 0.28 in. The rated installation load is 1,000 lb (4,448 N) in the body and 4,450 N in the ordering code, which looks like rounding but the document does not say so. The bend radius is printed as the same 15 OD for loaded, unloaded and storage-coil conditions, so the document alone does not show why three conditions were given. In Fujikura's outdoor document the 144-fiber Cable bend is the same 110 mm as Cyclic flexing while the other columns are about 15 times. Whether this value is intended or an entry error was not confirmed.
+
+Dates and revisions are recorded but not interpreted. Lightera AccuTube+ is ET07082 v4 (9 April 2026), AccuFlex is ET07219 v3 (14 October 2026), Fujikura is B-26SW0023 (2407-2603) and B-26SW0027 (2026), AFL is PP-1-00194 revision 2 (11.4.2022) and PP-1-00202 revision 0 (4.3.2023), and Panduit is FBSP181 (September 2020). AFL's dotted dates do not say whether the order is month-day or day-month, and the digits at the end of Fujikura's document code are not explained. No maker was contacted about the figures that disagree, and both values were written as printed.
+
+| Where it disagrees | One value | Other value | How to record it |
+| --- | --- | --- | --- |
+| AccuFlex installation lower limit | Minus 32 °F | 0 °C (0 °C is 32 °F) | Write both and hold the judgement |
+| Fujikura indoor weight row (864, 1152 fibers) | 219, 717 lbs/1000ft | About 195, 218 lbs/1000ft converted (DMS calculation) | Write the printed and converted values together |
+| AccuTube+ metallic 1,728-fiber buffer tube | 0.30 in | 7.0 mm (0.28 in) | Write both |
+| AccuTube+ installation load | 1,000 lb (4,448 N) | Ordering code 4,450 N | Use the body value and note the code value |
+| Short-term tensile in the same band (144–576) | Fujikura 1,300 N | AFL 1,330 N | Record document by document |
+| Fujikura outdoor 144-fiber Cable bend | 110 mm (10.0×) | Other columns about 15× | Use the column value and mark it for confirmation |
+| Middle-wavelength label | Fujikura and AFL 1383 nm | Lightera 1385 nm | Write it as the document labels it |
+
+## What happens when site conditions are put against datasheet values?
+
+The cases used here are hypothetical teaching calculations and are not tests of a real site or product. The first case is pulling a 576-fiber cable into a duct with a pulling force of 1,500 N and a steady tension of 500 N after installation. The 1,500 N is set against the short-term row and the steady 500 N against the long-term row, which follows the DMS interpretation of short term and long term. Fujikura's outdoor document is within 2,700 N and within 810 N. Fujikura's indoor and indoor/outdoor document is 200 N over 1,300 N and 101 N over 399 N. AFL RIO is 170 N over 1,330 N and 101 N over 399 N. Sumitomo FREEFORM is within 2,670 N but has no long-term row, so the long-term judgement cannot be made. The same 576 fibers and the same force come out within or over depending on the document.
+
+The second case is an 864-fiber cable installed at minus 25 degrees with a 300 mm bend radius while it is being pulled. Fujikura's outdoor 864-fiber cable is within the Cable bend of 263 mm and within the installation lower limit of minus 30 degrees. Fujikura's indoor and indoor/outdoor document is within 170 mm. AFL OSP equals the 300 mm for installation and sits at the limit, and AFL RIO is 30 mm short of 330 mm. Lightera AccuTube+ is 24 mm short of 324 mm, 15 times the 21.6 mm diameter. Sumitomo FREEFORM 864 fibers is 80 mm short of 380 mm during installation, equal to 300 mm after installation, and has no temperature row. The same 300 mm radius is within in one document and short in another, so put the site value against the column and the condition name of the cable you will use.
+
+The limits of this material are plain. The IEC 60794 test methods, ANSI/ICEA S-87-640 and S-104-696 and the text of Telcordia GR-20 were not read, and the standard definitions of short term and long term and of Cyclic flexing and Cable bend were not confirmed. Whether each document is the current revision, or matches the product on sale today, was not confirmed. Corning PGS178 revision 2 (a search excerpt that appears to give a bend radius of 15 times the diameter and an installation range of minus 20 to plus 70 degrees) returned 403 on direct download and was not opened and read, so it is not counted as evidence for this lesson.
+
+| Hypothetical condition | Fujikura outdoor | Fujikura indoor and indoor/outdoor | AFL RIO | Lightera AccuTube+ | Sumitomo FREEFORM |
+| --- | --- | --- | --- | --- | --- |
+| 576 fibers, pull of 1,500 N | Short term 2,700 N, within | Short term 1,300 N, 200 N over | Short term 1,330 N, 170 N over | No 576-fiber row | 2,670 N, within |
+| 576 fibers, steady 500 N | Long term 810 N, within | Long term 399 N, 101 N over | Long term 399 N, 101 N over | No 576-fiber row | No long-term row |
+| 864 fibers, bend 300 mm | 263 mm, within | 170 mm, within | 330 mm, 30 mm short | 324 mm, 24 mm short | During installation 380 mm, 80 mm short |
+| Installation at −25 °C | Lower limit −30, within | Lower limit −30, within | Lower limit −30, within | Lower limit −30, within | No temperature row |
+
+## Checklist
+
+- Did you read directly on the table which fiber-count band a merged tensile cell covers, and copy short term and long term as a pair with their names and unit?
+
+- Did you tell millimetres from a diameter multiple, and where it was a multiple, multiply by the cable diameter in that column and compare in one unit?
+
+- Did you check whether the installation-temperature row changes with fiber count or construction, and write that a row is absent where it is?
+
+- Did you put one line of the same fiber count from each document side by side, without borrowing another maker's value because the construction looked the same?
+
+- Did you record figures that disagree inside a document, together with the document code and date, as two values with page numbers?
+
+## Review questions
+
+### 1. In a Fujikura indoor and indoor/outdoor datasheet, 1,300 N is merged across 144 to 576 fibers and 2,700 N across 864 fibers and above. How do you judge a plan to pull a 576-fiber cable at 1,500 N?
+
+Answer and explanation: The 576-fiber cable is in the 1,300 N band, so 1,500 N is 200 N over. Do not read the 2,700 N, and since AFL prints 1,330 N for the same band, record the value document by document. Also check the note that says to follow the maker's recommended pulling procedure.
+
+### 2. A datasheet prints the bend radius as 15 OD with load and 15 × OD with no load, and the cable diameter is 21.6 mm. What is the minimum radius, and how do you judge a site radius of 300 mm?
+
+Answer and explanation: 15 × 21.6 mm is 324 mm, so the site radius of 300 mm is 24 mm short. The loaded and unloaded values are printed the same, so the document alone does not show why the two conditions were separated. Copy both rows as printed and set the site radius at 324 mm or more.
+
+### 3. An installation-temperature row is printed as "minus 32 to 158 degrees Fahrenheit (0 to 70 degrees Celsius)" and the site is at minus 10 degrees Celsius. How do you record it?
+
+Answer and explanation: Zero degrees Celsius is 32 degrees Fahrenheit, so the sign of the lower limit disagrees. Under the Celsius row minus 10 degrees is outside the limit, and under the Fahrenheit row it is inside. Write both values and hold the judgement, and until it is confirmed judge the work by the stricter Celsius row.
+
+## Sources
+
+- [Lightera: AccuTube+ Rollable Ribbon in Loose Tube Cable technical specification (ET07082 v4, 9 April 2026)](https://www.acalbfi.com/file/15354/ET07082-v4-AccuTube-Rollable-Ribbon-RR-in-Loose-Tube-Cable.pdf) · pages 1–3
+
+- [Lightera: AccuFlex Rollable Ribbon Cable technical specification (ET07219 v3, 14 October 2026)](https://datasheet.lightera.com/versao_et_pdf?id=a0ATT000002m1oQ2AQ&lang=en-us) · page 2
+
+- [Fujikura: Outdoor WTC 144–13824F datasheet (B-26SW0023 2407-2603)](https://www.optic-product.fujikura.com/wp-content/uploads/2026/03/%E3%82%AB%E3%82%BF%E3%83%AD%E3%82%B0_%E8%8B%B1%E8%AA%9E_%E5%85%89%E3%83%95%E3%82%A1%E3%82%A4%E3%83%90%E3%82%B1%E3%83%BC%E3%83%96%E3%83%AB_Outdoor-WTC%E2%84%A2-144-%E2%80%93-13824F.pdf) · pages 1–2
+
+- [Fujikura: Indoor, Indoor/Outdoor WTC 144–6912F datasheet (B-26SW0027, 2026)](https://www.optic-product.fujikura.com/wp-content/uploads/2026/03/%E3%82%AB%E3%82%BF%E3%83%AD%E3%82%B0_%E8%8B%B1%E8%AA%9E_%E5%85%89%E3%83%95%E3%82%A1%E3%82%A4%E3%83%90%E3%82%B1%E3%83%BC%E3%83%96%E3%83%AB_Indoor-WTC%E2%84%A2-144-%E2%80%93-6912F_REV1.pdf) · pages 1–2
+
+- [AFL: OSP Wrapping Tube Cable with SWR 200 µm Fiber/200 µm Pitch (PP-1-00194 revision 2, 11.4.2022)](https://www.aflhyperscale.com/wp-content/uploads/2023/05/OSP_WTC_SWR_200um_Fiber_200um_Pitch.pdf) · page 2
+
+- [AFL: Flame-Retardant RIO Indoor/Outdoor WTC with SWR 200 µm Fiber/200 µm Pitch (PP-1-00202 revision 0, 4.3.2023)](https://www.aflhyperscale.com/wp-content/uploads/2023/05/FR_RIO_Indoor-Outdoor_WTC-SWR_200um_fiber_-_200um_pitch.pdf) · page 2
+
+- [Panduit: Opti-Core 144-Fiber Indoor Ribbon Cable data sheet (FBSP181, September 2020, distributor copy)](https://cdn.adiglobaldistribution.us/pim/Original/10502/P9-DBF14418M_Product-Data-Sheet.pdf) · page 2
+
+- [Sumitomo Electric: Fiber optic products Digital Catalog 2025, optical cable section (catalogue page 10)](http://sumitomoelectric.com/sites/default/files/2026-01/download_documents/Fiber%20optic%20products%20DigitalCatalog%202025_OpticalCable.pdf) · catalogue page 10
+
+## Continue
+
+- [Optical training curriculum](/fttx-training)
+
+- [Reading outdoor loose tube cable datasheets: tensile load, minimum bend radius and installation temperature](/en/education/optical-training/outdoor-loose-tube-cable-datasheet-tensile-load-bend-radius-installation-temperature-readout)
+
+- [Reading ADSS cable datasheets: span, loading case, sag and allowable tension](/en/education/optical-training/adss-cable-datasheet-span-loading-case-sag-allowable-tension-readout)
+
+- [Reading FTTH drop cable datasheets: short-term and long-term tensile load, bend radius and span](/en/education/optical-training/ftth-drop-cable-datasheet-short-long-term-tensile-bend-radius-span-readout)
