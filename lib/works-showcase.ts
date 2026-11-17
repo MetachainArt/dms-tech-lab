@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "API 키, 어떻게 바꿉니까",
+    summary: "자동화가 쓰는 API 키를 바꿀 때 새 키를 먼저 연결하고 호출이 성공하는 것을 확인한 뒤 옛 키를 폐기하는 순서를 공식 문서 세 곳과 모의 서버 시험으로 확인하고, 키가 비어 있거나 새어 나간 경우의 대응과 다섯 칸 열쇠 카드를 제안하는 업무 자동화 실무 가이드입니다.",
+    tags: ["Work", "업무 자동화", "AX 전환"],
+    image: "/images/works/automation-api-key-swap/two-brass-keys-on-desk.webp",
+    link: "/works/automation-api-key-swap",
+  },
+  {
     title: "안 돌아간 날, 누가 압니까",
     summary: "예약된 자동화가 아예 돌지 않은 날에는 실패 알림이 울릴 일이 없다는 점을 공식 문서 세 곳과 리도의 글 자동화 기록으로 확인하고, 정해진 시각에 성공 신호가 왔는지 따로 지켜보는 다섯 칸 점검 카드를 제안하는 업무 자동화 실무 가이드입니다.",
     tags: ["Work", "업무 자동화", "AX 전환"],

@@ -1,0 +1,106 @@
+---
+title: "How Do You Swap an API Key?"
+excerpt: "Swap the API key an automation uses by creating the new key first, connecting it, confirming one call succeeds with it, and only then revoking the old one. Using three sets of official documentation and a mock-server test on one machine, this practical guide shows what happens when the order is reversed or the key is empty, and proposes a five-box key card."
+date: "2026-11-17"
+readTime: "10 min"
+kind: "guide"
+tags: ["Work", "Workplace automation", "AX transformation"]
+---
+
+To swap the API key an automation uses, create the new key first, connect it to the automation, confirm that one call succeeds with it, and only then revoke the old key. If you reverse that order, the automation fails from the moment the old key is blocked until the new key is connected. Reverse it deliberately only when you suspect the key has leaked, and revoke the old key first.
+
+This account rests on official material checked on November 17, 2026 (OpenAI's help article, the OWASP Secrets Management Cheat Sheet, GitHub Docs) and a mock-server test run on one computer. It is not a customer case, and the piece contains no measurement showing that the card below reduces incidents.
+
+## Why does an automation stop on the day you swap a key?
+
+Because swapping a key means matching up two separate places. One is the key list at the service. The other is wherever the automation stores the key it reads on every run, such as an environment variable or a credential field in a tool. The two move independently, and with the wrong order every call made while they disagree is rejected.
+
+[OpenAI's help article on API key safety](https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety) spells out the sequence. Before a key expires, create a replacement, update your applications to use it, and revoke the old key only after you have verified that the replacement works. The same article recommends giving project keys an expiration date, after which requests made with that key are rejected, and says administrators can set a maximum key lifetime for an organization or a project.
+
+Reedo's own posting automation has one day that looks like a key problem. The November 2 run broke off partway with a model key error, and the post that was due that day went out on November 3 as a recovery. The record keeps only the name of the error. It does not say whether a key was being swapped, had expired, or was misconfigured, so this piece does not guess at the cause.
+
+![Two brass keys with blank cardstock tags lie side by side on a wooden desk, with an empty brass key ring, a closed linen notebook and ivy leaves from the window nearby](/images/works/automation-api-key-swap/two-brass-keys-on-desk.webp)
+
+## In what order should you swap it?
+
+In four steps: issue the new key, switch the connection, confirm a call with the new key, and revoke the old key. Because the old key stays alive until the end, the automation always has at least one key it can use.
+
+| Step | What you do | Key the automation uses at this point |
+|---|---|---|
+| 1 | Issue a new key at the service | Old key (still valid) |
+| 2 | Change the automation's storage place to the new key | New key |
+| 3 | Check that one call succeeds with the new key | New key |
+| 4 | Revoke the old key at the service | New key |
+
+To see what the order changes, I ran a test on my own computer. I started a mock server in Node. It returns 200 if the key in the request header is on a list of valid keys and 401 if not. It is not the real OpenAI API or any other service's API; it encodes the rules the documentation describes. At each step I sent one call standing in for the automation.
+
+| Order | Call results by step | Failed calls |
+|---|---|---|
+| A New key first (the documented order) | 200, 200, 200, 200 | 0 |
+| B Old key revoked first | 200, 401, 401, 200 | 2 |
+
+In A, calling with the old key after revoking it returned 401, which means that in the mock server revocation took effect immediately. In B, two calls were rejected between revoking the old key and changing the automation's key. Because the test turns rules into code, the outcome was set in advance and nothing new was discovered. It only makes visible where the rejected window falls under each order. I did not test how long a real service takes to apply a revocation, or what happens to a long job already under way when its key is revoked.
+
+## Will an automation still run with an empty key?
+
+It can. The call goes out, and the failure shows up only when the service rejects it.
+
+The [GitHub Actions documentation](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions) says that referencing a secret that has not been set returns an empty string instead of an error. A misspelled variable name ends up empty in much the same way. The same page says a secret cannot be referenced directly in an `if:` condition, and that you should copy it into a job-level environment variable and test that variable instead. It also warns that passing a secret as a command-line argument may expose it to other users through the process list, and points to environment variables or standard input.
+
+The mock-server test showed the same thing. Reading the key from a variable name that does not exist gave an empty string, and the call carrying that empty key went out anyway and received a 401. All the automation gets back is a single 401, so the reason does not read as "the key is empty." A check that stops before the call when the key is empty puts the reason on the first line.
+
+```js
+function requireKey(name) {
+  const v = process.env[name];
+  if (!v) throw new Error(`Key variable ${name} is empty. Stopping before the call.`);
+  return v;
+}
+```
+
+The error message names the variable and never the key's value. Because it stops before the call goes out, a day with an empty key can be told apart in the log from a day when the key was rejected. This check only looks at whether the key is empty, not whether it is valid. An expired key passes it and is rejected by the service. The [OWASP Secrets Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html) likewise says the party using a secret should verify that it is still active before trusting it. Validity shows up in the result of the first call, and a failure needs a route to someone who will see it. How to confirm that an alert actually arrives is covered in [Who Notices the Day It Didn't Run?](/en/works/automation-missed-run-check).
+
+## Is the order the same when a key may have leaked?
+
+No. When a leak is suspected, revoking the old key comes first, because there is no reason to delay it even if the automation pauses for a while.
+
+The incident-response section of the OWASP cheat sheet lists four steps: revoke, rotate, delete, log. Revoke an exposed key immediately, create and apply a new secret, remove the revoked secret from wherever it was exposed (code or logs), and keep a record of who had access and when they used it. It also cautions that rewriting Git history to remove a secret from code can break other links that point to those commits. Another section of the same document explains that restarting an application does not by itself invalidate stolen credentials, which stay usable until the backing service expires or revokes them. A restart is therefore not a response.
+
+OpenAI's help article likewise says that if you believe a key has leaked, you should rotate it immediately from the key list and check the usage page to see whether the activity matches your work. It explains that a monthly spend limit with hard enforcement helps cap unexpected charges from a leaked key, and it also notes that hard enforcement can block legitimate requests. Setting a limit is covered in [Setting a Monthly Spend Cap for AI Automations](/en/works/ai-automation-spend-cap).
+
+| Situation | First move | Why |
+|---|---|---|
+| The planned swap date arrives | Create the new key and connect it first | At least one usable key remains at every point |
+| A leak is suspected | Revoke the old key first | A leaked, open key is a bigger risk than a paused automation |
+| Someone who shared a key leaves | If each person had their own key, revoke only that person's | If one shared key was used, everyone needs a new one |
+
+The explanation in the last row is my reading of the documentation. OpenAI's article tells teams not to share a key and to give each member their own. I could not confirm that per-person keys are supported the same way at every service.
+
+![A small wall-mounted wooden cabinet of drawers with brass pulls, in five rows, with one drawer in the middle pulled halfway out and empty](/images/works/automation-api-key-swap/small-drawers-one-open.webp)
+
+## What goes on a key card?
+
+Never the key's value. Write who uses the key, where, and when and in what order it gets swapped. The OWASP cheat sheet says the place that manages secrets should store at least when a secret was created, swapped and deleted, who did it, what it is used for, whom to contact about it, and, if it is rotated by hand, when it needs rotating. The card below shortens those items to one page a small office can fill in. It is a DMS.Labs proposal, not a form validated in a customer project.
+
+| Box | What to write |
+|---|---|
+| Name and where it is used | The key's name (never its value) and the automation that uses it |
+| Owner and contact | One owner, how to reach them, and who covers when they are away |
+| Expiry and swap date | The expiry date if the service lets you set one; otherwise a swap date you choose |
+| Swap order | Issue new key, switch connection, confirm a call with the new key, revoke the old key, and how you check each step |
+| If a leak is suspected | Revoke the old key, issue a new one, check usage, and whom to tell |
+
+Suppose an academy with six staff uses one AI service key for one automation that drafts replies to enrollment inquiries. This is a hypothetical, not a real customer case. If the director and two instructors had been sharing that single key, the first thing filling in the card would expose is that the key should be split per user. The earlier cost-cap article also covered the point that giving each automation its own project or key makes it possible to tell which one caused a limit to be hit. The owner box can be used together with the card in [When the Person Behind the Automation Is Away](/en/works/automation-owner-card). You could, for example, write the swap date on the calendar 90 days out. The 90 days is an example and not a recommended period with any evidence behind it.
+
+## What did this piece not check?
+
+Several things. The order test ran only on a mock server. I did not test how quickly a real service applies a revocation, or how a request sent just before revocation is handled. Of the documents I read, I covered the OpenAI help article and the GitHub Docs page in full and the needed sections of the OWASP cheat sheet. I did not read how other services and tools, such as Anthropic or n8n, handle keys. I also did not confirm whether key expiry settings, the administrator's maximum lifetime, and per-person keys differ by account type.
+
+The OpenAI article also describes a way to receive short-lived access tokens instead of a long-lived key (workload identity federation) and a setting that accepts requests only from allowed IP addresses. I only read about those and have not tried them. I do not know the cause of the November 2 model key error. And there is no measurement showing that the key card reduces incidents.
+
+The documentation reflects November 17, 2026 and may change.
+
+## Where to go next
+
+To organize, task by task, which key each automation uses, who owns it and how it gets swapped, the existing [DMS.Labs work automation](/automation) page gives an overview. That page is currently provided in Korean only. If you want to talk it through, there is the [contact page](/en/contact). This account covers official documentation and a mock-server test, and it does not promise implementation costs, time savings, or effects on inquiries or revenue.
+
+The two images were newly generated to illustrate the topic. They are not photographs of a real working screen or a customer site.
