@@ -54,6 +54,7 @@ export function hasEnglishVersion(pathname: string): boolean {
     || path === "/education/optical-training/adss-cable-datasheet-span-loading-case-sag-allowable-tension-readout"
     || path === "/education/optical-training/ftth-drop-cable-datasheet-short-long-term-tensile-bend-radius-span-readout"
     || path === "/education/optical-training/ribbon-cable-datasheet-fiber-count-tensile-bend-radius-installation-temperature-readout"
+    || path === "/education/optical-training/ftth-access-terminal-datasheet-port-count-splitter-capacity-cable-entry-ip-rating-readout"
     || path === "/education/optical-training/01-fiber-types-link-design"
     || path === "/education/optical-training/02-fiber-market-infrastructure"
     || path === "/education/optical-training/01-rf-over-fiber-lecture"
