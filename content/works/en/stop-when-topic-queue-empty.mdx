@@ -1,0 +1,101 @@
+---
+title: "Stop When the Topic Queue Runs Dry"
+excerpt: "When the topic queue behind a posting automation runs out, Reedo's Threads automation stops instead of filling the slot with other material. This practical guide follows that design through the real records, points out that a warning sent at three topics left was only a day and a half of supply, and proposes a five-box card for designing what happens after the stop."
+date: "2026-11-19"
+readTime: "10 min"
+kind: "guide"
+tags: ["Work", "Workplace automation", "AX transformation"]
+---
+
+When an automation runs out of things to write about, stopping is better than filling the slot with something plausible. Reedo's Threads posting automation did exactly that. After its 8 a.m. run on November 14, 2026 used the last topic, run after run ended with no post rather than use material the instructions do not allow. What stands out in the record is less the stop than the warning that came before it. A warning went out when three topics were left, and three topics were about a day and a half of supply.
+
+Checked on November 19, 2026, this account rests on three things. The first is the topic-queue file and the posting instructions, both read directly while writing this piece. The second is the Aside work records for November 12 to 19, which are reports each run wrote about itself. The third is an article from the AWS Builders' Library. The queue file is the only thing re-checked for this piece. The case comes from Reedo's own posting automation, not from a customer project, and nothing was measured about how the stop affected views or inquiries on the account.
+
+## Is it wrong to fill the gap with other material when topics run out?
+
+In this automation the instructions forbid it, and the runs followed the instructions.
+
+The Threads automation runs at 8 a.m., 3 p.m. and 9 p.m. every day. The 9 p.m. slot is reserved for GitHub project introductions and has nothing to do with the queue. The 8 a.m. and 3 p.m. runs each take one topic from it. The queue is a JSON file, and every topic carries one of three states: ready, claimed (in use) or published. The instructions set the order. Pick a ready topic for the current slot. If there is none, pick a ready topic from another slot whose character fits. If there is still none, post nothing and report [blocked-material]. The same line says not to fill the gap with news, popular-science facts, quotations, other people's success stories or GitHub trending lists.
+
+The instructions do not say why. I will not guess at the reason. What is confirmed is that the list existed and the runs followed it. The 8 a.m. run on November 14 followed the order too. With no topic left for its own slot, it took Q19, a topic written down for the 9 p.m. slot (a record of raising a render's sample count from 512 to 1024 and measuring the time and pixel difference), wrote it for the morning slot and posted it. At that moment the ready count became zero.
+
+![On a wooden desk by a window in early afternoon, a small card box holds only three blank cream-colored cards standing at the back while the rest of the box is empty](/images/works/stop-when-topic-queue-empty/card-box-three-left.webp)
+
+Swapping in other material resembles what systems engineers call fallback: reaching the same result by a different route when the usual one is blocked. [The AWS Builders' Library article](https://aws.amazon.com/builders-library/avoiding-fallback-in-distributed-systems/) (published December 5, 2019) explains why Amazon almost never uses fallback. Fallback is hard to test, it can fail itself, and because it is a path nobody walks in normal times, a defect can stay hidden for a long time. That article is about failures in distributed services, so it does not carry over to a topic queue. One point is shared. A substitute path nobody has walked gets walked for the first time during an emergency. Dropping news into an empty slot is also a path this automation has never walked.
+
+## What happened while it was stopped?
+
+Here is the stretch from the warning on November 12 to the direct check on the 19th, condensed into a table.
+
+| Date and slot | What was confirmed | Basis |
+|---|---|---|
+| Nov 12, 3 p.m. | Q65 posted, three ready topics left (Q19, Q44, Q61), report notes that topics need refilling | Work record |
+| Nov 13, 8 a.m. | Q61 posted, two ready left | Work record |
+| Nov 13, 3 p.m. | Q44 posted | Work record |
+| Nov 14, 8 a.m. | Q19 posted, zero ready | Work record |
+| Nov 14, 3 p.m. | All 66 queue entries published, file modification time still 8:05 a.m., no post | Work record |
+| Nov 15, 8 a.m. to Nov 19, 8 a.m. | Seven runs ended with no post (15th at 8, 16th at 8 and 3, 17th at 8 and 3, 18th at 8, 19th at 8) | Work record |
+| Nov 19, 2 p.m. | All 66 entries published, zero ready, last modified Nov 14 at 8:05:44 a.m. | Read directly while writing this piece |
+
+That makes eight runs without a post according to the Threads-side records. The 3 p.m. runs on the 15th and the 18th appear only in the English-translation job's records as "no source post", so they are left out of the table. The 9 p.m. GitHub introduction has a post recorded on the 15th, which reads as continuing regardless of the queue. The instructions say missed slots are not made up, so if the queue is refilled, the missing runs would not be posted in a batch. Posting resumes from the slot at that moment.
+
+One more detail. The posting-time field in the queue file holds a value for only 18 of the 66 entries. The file alone could not reconstruct the order of the last posts, so the order in the table comes from the work records.
+
+## What does an automation downstream do when the upstream stops?
+
+It makes nothing without a source and stops with it. Reedo has a separate automation that translates these Threads posts into English and posts them on X.
+
+According to the record of its 8 a.m. run on November 15, it could not find an 8 a.m. post on the Threads profile, and its hand-off file for the source text was also missing, so it ended without posting on X. The upstream job had reported that the topics were exhausted. The record says that because this was another agent's message, it was read as a lead and not accepted as authority. On November 16 at 8 a.m. it refreshed the profile eight times and saw for itself that no 8 a.m. post had appeared. It did not stop because it believed the upstream's word. It stopped because it checked with its own eyes. Not writing a stand-in English post when there was nothing to translate follows the same principle.
+
+## Was a warning at three remaining topics enough?
+
+By count it was a warning. By time it was a day and a half.
+
+The instructions say that when three or fewer ready topics remain, the final report should carry a line that topics need refilling, and the record of the 3 p.m. run on November 12 holds the same message. The 8 a.m. and 3 p.m. runs use one topic each per day, so those three topics were three runs' worth. From the four-part Threads post at 3 p.m. on November 12 to the moment ready reached zero at 8 a.m. on the 14th was about 41 hours. After the warning the queue file did not change, and the file read directly at 2 p.m. on November 19 was the same.
+
+The owner note inside the queue file says the new PC manages status and the old PC only adds new topic ids. The side that uses topics and the side that refills them are different computers. This record cannot tell whether the warning reached the refilling side or whether it arrived and the refill was late. This piece says neither.
+
+![An hourglass on a sunlit wooden desk with almost all the sand already in the lower bulb and only a thin stream still falling, a closed green cloth-bound notebook beside it](/images/works/stop-when-topic-queue-empty/hourglass-last-sand.webp)
+
+I worked out how the warning threshold changes if it is set in days of supply instead of a count. The table below assumes two topics used per day and one day of margin. These are assumptions, not Reedo's actual refill times.
+
+| Time to refill | Topics used meanwhile | One day of margin | Remaining count that should trigger the warning |
+|---|---|---|---|
+| Half a day | 1 | 2 | 3 |
+| One day | 2 | 2 | 4 |
+| Two days | 4 | 2 | 6 |
+| Three days | 6 | 2 | 8 |
+
+The current threshold of three is right only if a refill takes half a day or less. If the refill happens on the old PC and the record gives no time for it, there is no way to tell whether three is enough.
+
+## Is it fine for the same stop report to go up again and again?
+
+Not if it changes nobody's next action. From the 3 p.m. run on November 14 to the 8 a.m. run on the 19th, the Threads-side reports said nearly the same thing eight times. The only new information was one line: the queue file's modification time had not moved. That line was useful. The 3 p.m. run on the 14th saw the time still at 8:05 and knew nothing had been refilled since. But each run had to count the queue afresh, and the record for the 17th notes that a PowerShell counting command returned an empty result in that session and the count was redone in node.
+
+The first stop report should be detailed and later ones short. A line saying nothing changed in the queue, the last modification time, and the one decision a person must make (naming who refills) is enough. When the stop runs long, the point at which the report goes to someone else should be set in advance. These two points are DMS.Labs suggestions and do not mean Reedo already runs this way.
+
+## How do you use a five-box card for an empty queue?
+
+For each automation, a good starting point is to write the five boxes below on one sheet. The right-hand column shows what this case confirmed and what it did not.
+
+| Box | What to write | In Reedo's case |
+|---|---|---|
+| What may and may not fill the gap | Whether substitute material is allowed, and if so what | Present. News, popular-science facts, quotations, other people's success stories and GitHub trending lists are not used |
+| Warning threshold | Days of supply, not a count | Only a threshold of three remaining topics. No conversion to days was found |
+| Who refills, and how | One named person, and a way to confirm the warning arrived | The file states that a separate side refills. No record that the warning arrived was found |
+| Rule for the downstream job | Make nothing without a source, and check directly | The English-translation job behaved that way |
+| Restart condition | Resume from the slot at that moment once refilled, and do not make up missed slots | The instructions state that missed slots are not made up |
+
+This card is a DMS.Labs suggestion, not a form validated on a customer project. Here is a hypothetical use. Suppose a six-person neighborhood tutoring center runs an automation that posts class news three times a week. This is not a real customer case. If gathering the material takes a week, the warning should fire when six items remain: the three used in the meantime plus three for a week of margin. The recipient should be the one staff member who gathers the material, not the center's director. How to name that person is covered in [When the Person Behind the Automation Is Away](/en/works/automation-owner-card).
+
+## What can't this record tell you?
+
+It is about a week of records for one automation and one queue. The record does not say why the topics ran out or why no refill happened, and this piece does not guess. Nothing was measured about whether filling with other material would have given the account better results, or whether stopping cost anything. What was checked directly is the state of the queue file and the wording of the instructions. The rest of the table is what each run's work record reports. The state after 3 p.m. on November 19 was not checked.
+
+The AWS article reflects the version read on November 19, 2026. It is about service outages, so it is used here as a frame for comparison and not as evidence about running a topic queue.
+
+## Where to go next
+
+To design, task by task, the warning threshold, who refills and the rule for stopping, the existing [DMS.Labs work automation](/automation) page gives an overview. That page is currently presented in Korean. If you want to talk it through, there is the [contact page](/en/contact). This account covers Reedo's own posting records and public documentation, and it does not promise implementation costs, time savings, or effects on inquiries or revenue. Watching for a signal that never came is covered in [Who Notices the Day It Didn't Run?](/en/works/automation-missed-run-check), and reading results back from outside is covered in [Read It Back After Success](/en/works/read-back-after-success).
+
+The two images were newly generated to illustrate the topic. They are not photographs of a real working screen or a customer site.

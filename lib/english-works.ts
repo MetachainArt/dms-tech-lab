@@ -6,6 +6,12 @@ type WorkTranslation = Pick<ShowcaseWorkItem, "title" | "summary" | "tags"> & {
 
 // Match translations by the original destination so order, assets and links stay shared.
 const translations: Record<string, WorkTranslation> = {
+  "/works/stop-when-topic-queue-empty": {
+    title: "Stop When the Topic Queue Runs Dry",
+    summary: "A practical guide following how Reedo's Threads posting automation stopped instead of filling the slot when its topic queue ran out, through the real records, showing that a warning sent at three topics left was only a day and a half of supply, with a five-box card for designing what happens after the stop.",
+    tags: ["Work", "Workplace automation", "AX transformation"],
+    linkLabel: "Read the English guide",
+  },
   "/works/automation-api-key-swap": {
     title: "How Do You Swap an API Key?",
     summary: "A practical guide to swapping the API key an automation uses by connecting the new key first, confirming a call succeeds and only then revoking the old one, based on three sets of official documentation and a mock-server test, with responses for an empty or leaked key and a five-box key card.",
@@ -211,7 +217,7 @@ export const ENGLISH_SHOWCASE_WORKS = SHOWCASE_WORKS.map((work) => {
   return {
     ...work,
     ...translation,
-    link: work.link === "/works/automation-api-key-swap" || work.link === "/works/automation-missed-run-check" || work.link === "/works/read-back-after-success" || work.link === "/works/ai-meeting-notes-recording-check" || work.link === "/works/ai-training-workplace-checklist" || work.link === "/works/scheduled-post-time-check" || work.link === "/works/ai-output-reviewer-card" || work.link === "/works/ai-automation-spend-cap" || work.link === "/works/season-score-before-trusting" || work.link === "/works/automation-run-record" || work.link === "/works/automation-owner-card" || work.link === "/works/ai-citation-question-layers" || work.link === "/works/choosing-first-automation-task" || work.link === "/works/choosing-data-for-ai" || work.link === "/works/ai-skill-acceptance-tests" || work.link === "/works/reedo-publication-ledger-gap" || work.link === "/works/ai-automation-safe-retry" || work.link === "/works/ai-knowledge-base-world-tree" || work.link === "/works/ai-skill-job-sheet" || work.link === "/works/ai-training-task-boundary-map" || work.link === "/works/jev-seo-practical-guide" || work.link === "/works/claude-code-you-should-know" || work.link === "/works/delegating-work-to-ai-agents" || work.link === "/works/ai-performance-measurement" || work.link === "/works/bilingual-page-release-check" || work.link === "/works/automation-permission-ladder" ? `/en${work.link}` : work.link,
+    link: work.link === "/works/stop-when-topic-queue-empty" || work.link === "/works/automation-api-key-swap" || work.link === "/works/automation-missed-run-check" || work.link === "/works/read-back-after-success" || work.link === "/works/ai-meeting-notes-recording-check" || work.link === "/works/ai-training-workplace-checklist" || work.link === "/works/scheduled-post-time-check" || work.link === "/works/ai-output-reviewer-card" || work.link === "/works/ai-automation-spend-cap" || work.link === "/works/season-score-before-trusting" || work.link === "/works/automation-run-record" || work.link === "/works/automation-owner-card" || work.link === "/works/ai-citation-question-layers" || work.link === "/works/choosing-first-automation-task" || work.link === "/works/choosing-data-for-ai" || work.link === "/works/ai-skill-acceptance-tests" || work.link === "/works/reedo-publication-ledger-gap" || work.link === "/works/ai-automation-safe-retry" || work.link === "/works/ai-knowledge-base-world-tree" || work.link === "/works/ai-skill-job-sheet" || work.link === "/works/ai-training-task-boundary-map" || work.link === "/works/jev-seo-practical-guide" || work.link === "/works/claude-code-you-should-know" || work.link === "/works/delegating-work-to-ai-agents" || work.link === "/works/ai-performance-measurement" || work.link === "/works/bilingual-page-release-check" || work.link === "/works/automation-permission-ladder" ? `/en${work.link}` : work.link,
     // New untranslated work remains visible with an honest language label.
     linkLabel: translation?.linkLabel ?? "View the original in Korean",
     contentLanguage: translation ? "en" : "ko",

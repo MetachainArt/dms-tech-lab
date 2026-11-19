@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "글감이 떨어지면 멈춥니다",
+    summary: "글 자동화의 글감 큐가 비었을 때 다른 소재로 채우지 않고 멈추게 해 둔 설계가 실제로 어떻게 움직였는지 리도의 Threads 게시 기록으로 따라가고, 남은 글감 3개일 때의 경고가 하루 반치였다는 점과 멈춘 뒤를 설계하는 다섯 칸 카드를 정리한 업무 자동화 실무 가이드입니다.",
+    tags: ["Work", "업무 자동화", "AX 전환"],
+    image: "/images/works/stop-when-topic-queue-empty/card-box-three-left.webp",
+    link: "/works/stop-when-topic-queue-empty",
+  },
+  {
     title: "API 키, 어떻게 바꿉니까",
     summary: "자동화가 쓰는 API 키를 바꿀 때 새 키를 먼저 연결하고 호출이 성공하는 것을 확인한 뒤 옛 키를 폐기하는 순서를 공식 문서 세 곳과 모의 서버 시험으로 확인하고, 키가 비어 있거나 새어 나간 경우의 대응과 다섯 칸 열쇠 카드를 제안하는 업무 자동화 실무 가이드입니다.",
     tags: ["Work", "업무 자동화", "AX 전환"],
