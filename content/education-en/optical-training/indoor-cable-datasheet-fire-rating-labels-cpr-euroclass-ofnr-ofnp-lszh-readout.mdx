@@ -1,0 +1,212 @@
+---
+title: "Reading Fire Rating Labels on Indoor Optical Cable Datasheets: CPR Euroclass, OFNR, OFNP and LSZH"
+date: "2026-11-19"
+desc: "A 10-minute lesson on reading the reaction-to-fire rating on indoor and indoor/outdoor optical cable datasheets. It compares thirteen documents from Panduit, Corning, CommScope, AFL, Prysmian, HUBER+SUHNER, SpliceGroup and others to show how US-style listings (OFNR, OFNP), EU CPR Euroclass codes (B2ca, Cca, Dca, Eca with s, d and a suffixes), IEC test numbers and material names such as LSZH are mixed from document to document, how the class changes with fiber count, and which conditions to write down when copying a value."
+coverImage: "/images/education/optical-training/indoor-cable-datasheet-fire-rating-labels-cpr-euroclass-ofnr-ofnp-lszh-readout/cover.svg"
+readTime: "10 min"
+lang: "en"
+---
+
+The fire rating on an indoor optical cable datasheet is not one label. A US-style listing (OFNR, OFNP), an EU CPR Euroclass code such as Dca-s1a,d0,a1, IEC test numbers and a material name such as LSZH are printed separately, and even within one product family the rating row changes with fiber count or construction. In the thirteen manufacturer documents read here, CommScope prints its gel-filled all-dielectric indoor/outdoor family as Dca for the 2 to 12 fiber rows and Eca for the 24 to 144 fiber rows, and Panduit prints its indoor cable as Dca-s2-d2-a1 for 4 to 24 fibers and Eca for 2 fibers and for 48 to 96 fibers. When copying a value, write down which system the label belongs to, whether it comes from the row for that fiber count rather than from the family name, and whether the s, d and a suffixes are all printed, so that it can be checked against a requirement.
+
+Based on the documents checked on 19 November 2026.
+
+## Learning objectives
+
+- Separate each fire label into US-style listing, EU CPR class, IEC test number or material name, and copy each on its own.
+
+- Split a CPR code into its main class and the s, d and a suffixes, and compare it with a requirement item by item.
+
+- Record the row for each fiber count and construction, and any disagreeing label in one document, together with the document code.
+
+## In what system is the fire rating printed on a datasheet?
+
+Fire rating labels fall into four layers: US-style listing, EU CPR class, IEC test number and material name, and a datasheet often prints only some of them. The US-style listing is printed as OFNG (general purpose), OFNR (riser) or OFNP (plenum), and the HUBER+SUHNER catalogue ties them to UL 1685 (OFNG), UL 1666 (OFNR) and UL 910 (OFNP). The Prysmian North American ordering guides add codes such as FT4 and FT6 but do not explain them. The EU CPR (Construction Products Regulation) class is a main class such as B2ca, Cca, Dca or Eca followed by suffixes such as s1a, d0 and a1, and the AFL brochure describes the regulation as EU No. 305/2011 with the harmonized standard EN 50575. IEC numbers are test names such as IEC 60332-1-2 (flame propagation on a single cable), IEC 61034-2 (smoke density) and IEC 60754-1 and 60754-2 (halogen and corrosive gases), and LSZH (low smoke zero halogen) names the jacket material.
+
+It is rare for one document to print all four layers. The Corning datasheet for a 6-fiber indoor cable prints Dca, s1a, d1, a1, LSZH/FRNC and the IEC 60332-1-2, 60332-3-24, 61034 and 60754-1 and 60754-2 numbers on separate rows, so it has all four. The Nexconec FTTH drop cable document, in contrast, lets the buyer choose L for LSZH or E for PE in the jacket code and says only that PE is not flame retardant, with no rating row. The YOFC page for indoor cables of up to 24 fibers names flame-retardant materials and a PVC or LSZH sheath but no rating or test number row was found. When a document says flame retardant but does not connect the word to a test or class, do not copy it as a rating. Write that the row is missing.
+
+| Document | Printed label | System | Note |
+| --- | --- | --- | --- |
+| Corning 6-fiber indoor cable 006Z8Z-32125E2G | Dca, s1a, d1, a1 · LSZH/FRNC · IEC 60332-1-2, 60332-3-24, 61034, 60754-1 and 2 | CPR · material · IEC tests | four layers on separate rows |
+| Panduit Opti-Core indoor (FBSP219) | Eca (2 fibers, 48 to 96 fibers) · Dca-s2-d2-a1 (4 to 24 fibers) | CPR | class is the last two digits of the part number (40, 37) |
+| Panduit Opti-Core indoor/outdoor (FBDS42) | Cca-s1a-d1-a1 | CPR | last two digits of the part number are 24 |
+| CommScope FTTH EMEA brochure | Dca,s1a,d0,a1 up to Eca | CPR | name key letters C and Z separate listing |
+| AFL CPR brochure | B2ca-s1a,d0,a1, Cca-s1a,d0,a1 | CPR | class table and footnotes included |
+| Prysmian North America indoor guide (TLS-0005-1025) | OFNR/FT4, OFNP/FT6, OFNR-LS/FT4, OFNR/FT4/CPR | US-style listing | CPR appears as letters only, no class |
+| Prysmian North America indoor/outdoor guide (TLS-0004-1025) | OFNR/FT4, OFNP/FT6, OFNG-LS/FT4, OFNR, OFN | US-style listing | no explanation of -LS |
+| HUBER+SUHNER catalogue 2024 | B2ca s1a d0 a1, Dca s1a d0 a1 · options -UN, -UR, -UP | CPR · US-style listing | two separate ordering options |
+| SpliceGroup indoor cable (SGS_DS_10259) | three OFNP columns, three B2ca-s1a,d0,a1 columns | US-style listing · CPR | reaction row printed once for the sheet |
+| PPC Miniflex Eca sheet | Eca, EN 50575:2014+A1:2016 | CPR | no material or smoke row |
+| Prysmian and Draka UC Home catalogue | B2ca-s1a-d1-a1, Dca s2 d2 a1 | CPR | jacket is FireRes LSHF-FR |
+| Nexconec FTTH drop indoor/outdoor | jacket code L (LSZH), E (PE, not flame retardant) | material name | no rating row |
+| YOFC indoor cable, up to 24 fibers | flame-retardant materials, PVC or LSZH | material name | no rating or test row |
+
+## Can an OFNR or OFNP listing be read as a CPR class?
+
+None of the thirteen documents read here gives a table that converts OFNR or OFNP into a CPR class, and where both systems appear on one product they are printed as results of different tests and approvals. The CommScope brochure handles this with product families. In its name key, C is indoor/outdoor zero halogen with CPR-only flame rating, Z is the same indoor/outdoor zero halogen with a dual listing, L is indoor zero halogen with CPR only, and N is indoor with a dual listing. Page 22 says that C cables have an LSZH jacket and a CPR rating and can be used in the European market, while Z cables have an LSZH jacket but are qualified only for riser use (UL 1666) and can be used only in markets where CPR is not required. The same kind of LSZH jacket can therefore be sold under labels that decide which market it may be used in.
+
+The HUBER+SUHNER catalogue lets the buyer choose the UL listing (-UN, -UR, -UP) as the third option of the cable code and the CPR main class (#B to #F) as the fifth option. Because the two options are separate, the structure reads as allowing both labels on one code, but the document does not say so directly (DMS interpretation). The SpliceGroup datasheet divides one table into three OFNP columns and three CPR columns (B2ca-s1a,d0,a1), and then prints the non-conductive plenum entry and the CPR class once each in a single reaction row below. Whether both labels apply to each column cannot be told even from the rendered page.
+
+Names also fail to reveal the listing. In the Prysmian indoor guide, the LSZH16 and LSZH20 products named LSZH are OFNR/FT4, while ezDISTRIBUTION 600 (Riser LSZH) is OFNR-LS/FT4. In the indoor/outdoor guide, DDLSZHB is OFNG-LS/FT4, RRZIOCDK (LSZH, dry) is OFNR and RZLTK (LSZH) is OFN. Neither guide explains -LS or FT4, so the name LSZH alone does not show whether a low-smoke listing is attached. The AFL brochure says that CPR itself does not set which class is required, that the building owner must specify the class given by national regulation, and that some countries have no national regulation. Its country map is dated 2018, so the class required today cannot be judged from this document.
+
+| Document | Printed label | How to read it |
+| --- | --- | --- |
+| CommScope FTTH EMEA pages 22 and 5 | C and L are CPR only, Z and N are dual listed | separate by name key letter, and Z is described as for markets without CPR |
+| HUBER+SUHNER page 25 | third option -UN, -UR, -UP, fifth option #B to #F | two separate slots |
+| Prysmian North America indoor | LSZH16 OFNR/FT4, 600 OFNR-LS/FT4, MFCL OFNR/FT4/CPR | same LSZH name with different listing labels, CPR as letters without a class |
+| Prysmian North America indoor/outdoor | DDLSZHB OFNG-LS/FT4, RRZIOCDK OFNR, RZLTK OFN | no explanation of -LS or FT4 |
+| SpliceGroup | column headings OFNP (3), CPR (3), one reaction block | no CPR row per column |
+| AFL CPR brochure | required class is set by the building owner and national regulation | the required class cannot be judged from the document |
+
+## What do the s, d and a suffixes of a CPR class mean, and which tests produce them?
+
+A CPR code splits into a main class and s, d and a suffixes. In the AFL class table, B2ca, Cca and Dca carry smoke (s), flaming droplet (d) and acid gas (a) suffixes, and Eca and Aca carry none. The AFL footnotes read as follows. s1a is 80% transmittance and s1b is 60%, s1 and s2 are lower and higher smoke production, and s3 has no classification or requirement. d0 means no droplets within 1,200 seconds, d1 means none lasting more than 10 seconds within 1,200 seconds, and d2 has no classification. a1 is conductivity below 2.5 µS/mm and pH above 4.3, a2 is conductivity below 10 µS/mm and pH above 4.3, and a3 has no classification. The table lists s1a, s1b, s1, s2, s3 in that order, so the earlier values read as stricter, but the document does not state a ranking (DMS interpretation).
+
+The tests are summarized on page 35 of the HUBER+SUHNER catalogue. For main classes B1ca to Dca, heat release and flame spread are assessed with EN 50399 and EN 60332-1-2, smoke with EN 50399 and EN 61034-2, flaming droplets with EN 50399 and acidity with EN 60754-2. Aca is heat of combustion (EN ISO 1716), Eca is flame spread (EN 60332-1-2) only, and Fca is a cable that does not meet Eca. Page 34 says the EN 50399 test fixes cable bundles on a 3.5 m ladder, applies a flame to the lower end for 20 minutes, and measures smoke production, flaming droplets, heat release rate, total heat release, fire growth rate and flame spread. The AFL brochure says the test laboratories must be EU notified bodies (NANDO) and that the approval system depends on the main class. In its table, System 1+ (factory audit and regular tests) covers Aca to Cca, System 3 (product test by a notified body) covers Dca and Eca, and System 4 (test by the manufacturer) covers Fca (confirmed from the rendered page).
+
+AFL also explains that a supplied cable carries a CE label showing the Declaration of Performance (DoP) number, product name, manufacturer, test laboratory number and the reaction-to-fire class. Whether the class row of a datasheet matches this label could not be checked from these documents. Checking it needs the label on the product or the declaration of performance.
+
+| Item | Value | Meaning (AFL footnotes) | Test (HUBER+SUHNER page 35) |
+| --- | --- | --- | --- |
+| Main class | B2ca, Cca, Dca | split by heat release rate and flame spread | EN 50399, EN 60332-1-2 |
+| Main class Eca | Eca | no large flame spread under a small flame attack | EN 60332-1-2 only |
+| s smoke | s1a, s1b, s1, s2, s3 | s1a 80% and s1b 60% transmittance, s1 and s2 lower and higher, s3 no classification | EN 50399, EN 61034-2 |
+| d flaming droplets | d0, d1, d2 | d0 none within 1,200 s, d1 none lasting over 10 s, d2 no classification | EN 50399 |
+| a acid gas | a1, a2, a3 | a1 below 2.5 µS/mm and pH above 4.3, a2 below 10 µS/mm and pH above 4.3, a3 no classification | EN 60754-2 |
+
+## Does the same cable name carry a different class by fiber count or construction?
+
+In every group of documents read here there were cases where the row changes with fiber count and construction inside a family of one name, so the class must be copied from the row for that fiber count and not from the family name. CommScope prints its gel-filled all-dielectric indoor/outdoor family (C-LN) as Dca,s1a,d0,a1 for 2, 4, 6 and 12 fibers and Eca for 24 to 144 fibers. The high tensile strength (HTS) construction of the same family is Dca,s2,d0,a1 for 2 to 36 fibers and Dca,s3,d0,a1 for 48, 72 and 96 fibers, so only the smoke suffix changes. The steel tape armored construction (C-LA) is B2ca,s1a,d0,a1 for 6 and 12 fibers and Cca,s2,d2,a1 for 24 to 144 fibers, and the GRP armored construction is Dca,s2,d2,a1 for 24 to 96 fibers.
+
+The AFL MicroCore 2.0 12-fiber subunit family is Cca,s1a,d0,a1 for 24 and 36 fibers and B2ca,s1a,d0,a1 for 48 to 216 fibers, so the higher fiber counts carry the higher main class. AFL's Ruggedized MicroCore (250 µm bare fiber) is B2ca,s1a,d0,a1 for 12, 16 and 24 fibers and B2ca,s1a,d1,a1 for 32, 36, 48 and 72 fibers, which keeps the main class and changes only the droplet suffix from d0 to d1. The Panduit indoor cable is Eca for the 2-fiber duplex zipcord, Dca-s2-d2-a1 for 4 to 24 fibers and Eca for 48 to 96 fibers (subunit construction). In the HUBER+SUHNER table on page 36, the 2.1 mm duplex round V(ZN)H cable is printed on two rows, Dca s1a d0 a1 and B2ca s1a d0 a1, both pointing to catalogue page 62, and the class reads as a value chosen by the fifth ordering option and not by the cable name (DMS interpretation). The CommScope 3.0 mm drop cable is Dca,s1a,d0,a1 and the 3.4 mm drop cable is Dca,s1a,d1,a2.
+
+![CPR class by fiber count and family](/images/education/optical-training/indoor-cable-datasheet-fire-rating-labels-cpr-euroclass-ofnr-ofnp-lszh-readout/bars-en.svg)
+
+- Each bar is a fiber count range and main class as printed
+
+- Inside a family, the main class or the suffixes change from range to range
+
+- This is not a ranking between different families
+
+| Document and family | Fiber count range | Printed class |
+| --- | --- | --- |
+| CommScope C-LN gel-filled all-dielectric | 2 to 12 fibers / 24 to 144 fibers | Dca,s1a,d0,a1 / Eca |
+| CommScope C-LN high tensile (HTS) | 2 to 36 fibers / 48 to 96 fibers | Dca,s2,d0,a1 / Dca,s3,d0,a1 |
+| CommScope C-LA steel tape armored | 6 to 12 fibers / 24 to 144 fibers | B2ca,s1a,d0,a1 / Cca,s2,d2,a1 |
+| AFL MicroCore 2.0 12-fiber subunit | 24 to 36 fibers / 48 to 216 fibers | Cca,s1a,d0,a1 / B2ca,s1a,d0,a1 |
+| AFL Ruggedized MicroCore | 12 to 24 fibers / 32 to 72 fibers | B2ca,s1a,d0,a1 / B2ca,s1a,d1,a1 |
+| Panduit Opti-Core indoor | 2 fibers / 4 to 24 fibers / 48 to 96 fibers | Eca / Dca-s2-d2-a1 / Eca |
+| CommScope drop 3.0 mm and 3.4 mm | 1 fiber / 1 fiber | Dca,s1a,d0,a1 / Dca,s1a,d1,a2 |
+| HUBER+SUHNER duplex round 2.1 mm | one code, two rows | Dca s1a d0 a1 / B2ca s1a d0 a1 |
+
+## How are test numbers and dates printed from document to document?
+
+An IEC test number with the same name can have a different category from document to document, so the last digit has to be copied, while dates and standard editions are only recorded as printed. The IEC 60332-3 table on page 33 of the HUBER+SUHNER catalogue lists category -22 (A) at 7.0 L/m of combustible material for 40 minutes, -23 (B) at 3.5 L/m for 40 minutes, -24 (C) at 1.5 L/m for 20 minutes and -25 (D) at 0.5 L/m for 20 minutes. The two Panduit datasheets and the Corning 6-fiber datasheet print IEC 60332-3-24, while the HUBER+SUHNER B2ca 1.9 mm cable prints IEC 60332-3-25. By that table the two numbers are different tests, 1.5 L/m and 0.5 L/m, so copying only that the bundle test was passed drops the condition. The body text on the same page 33 gives only 20 minutes for the bundle flame time, which does not match the 40 minutes in the table, and these documents do not show which is right.
+
+Only PPC (EN 50575:2014+A1:2016) and AFL (EN 50575:2014/A1:2016) print an edition of the standard, while Corning, Panduit and HUBER+SUHNER print EN 50575 without one. Document dates also disagree. The Corning 6-fiber datasheet prints a revision date of 2026-11-19 on every page, while the modification time in the download address is 2025-12-08, so it is not possible to tell which value is the revision date of the content. The CommScope FTTH brochure prints May 2025 on the cover, (01/26) in the document code and 2026 in the copyright line. The Nexconec document prints 2027 in its copyright line. The two Panduit datasheets are July and October 2022, the AFL brochure is November 2019, the two Prysmian ordering guides end in code 1025, and PPC is rev4_08262022. The Prysmian and Draka UC Home catalogue and the YOFC page print no date. When labels disagree, do not choose one side and write both values with the document code.
+
+| Where it disagrees | One value | Other value | How to record |
+| --- | --- | --- | --- |
+| HUBER+SUHNER bundle test time | page 33 body text 20 minutes | table on the same page 40 minutes for categories A and B | write both values |
+| AFL listing letters | brochure sentence ONFR-LS/FT4 | same family OFNR-LS/FT4 | keep as printed and mark a possible typo |
+| AFL IEC numbers | MicroCore 2.0 page IEC 60332, 60745, 61034 | Ruggedized page IEC 60332, 60754, 61034 | write both values |
+| CommScope class key | name key B Bca | table B2ca | write both spellings |
+| CommScope HTS 144 fibers | Dca,S2,do,a1 | other rows of the same table Dca,s2,d0,a1 | keep as printed and mark a possible typo |
+| HUBER+SUHNER duplex round 2.1 mm | Dca s1a d0 a1 | B2ca s1a d0 a1 | check the ordering option |
+| Corning 006Z8Z revision date | 2026-11-19 at page foot | modification time in address 2025-12-08 | write both values |
+| SpliceGroup bend radius rows | row name Maximum Bend Radius | a bend radius is normally a minimum | keep the row name and mark the meaning for checking |
+
+## What happens when site conditions are put against the label?
+
+The cases here are hypothetical teaching calculations and not tests of a real site or product. Case one is a 24-fiber indoor cable in a European building, with a requirement of Dca-s1a,d1,a1 or better. Here better is read as a main class that is the same or in a higher column and s, d and a suffixes that are each the same or stricter (a DMS interpretation based on the order in the AFL table). The Panduit indoor 24-fiber cable is Dca-s2-d2-a1, so s2 and d2 are weaker than required and it does not match, while the indoor/outdoor 24-fiber cable is Cca-s1a-d1-a1 and matches. The CommScope C-024-LN gel-filled cable is Eca and does not match, the HTS version at 24 fibers is Dca,s2,d0,a1 and fails on s2, and the steel armored version is Cca,s2,d2,a1, which has a higher main class but fails on the suffixes. The AFL MicroCore 2.0 12-fiber subunit cable at 24 fibers (Cca,s1a,d0,a1) and the Ruggedized MicroCore at 24 fibers (B2ca,s1a,d0,a1) match. The SpliceGroup 4.0 mm 24-fiber column is B2ca-s1a,d0,a1 and matches, but the 3.0 mm 24-fiber column is OFNP and it cannot be told whether the CPR row applies to it, so it cannot be judged. The Corning datasheet has one 6-fiber row, so there is no 24-fiber row.
+
+Case two is a US-style specification that requires OFNP. The 800 and C1182 in the Prysmian North American guides and the OFNP columns of the SpliceGroup datasheet are printed as OFNP and match. Documents that print only CPR, such as the Corning 6-fiber datasheet, the two Panduit datasheets and the CommScope C family, have no OFNP row, so they are not copied as matching. Case three is a purchase order that says only an LSZH cable. LSZH is a jacket material name and does not separate a CommScope C cable from a Z cable, and according to page 22 the Z cable is a riser cable for markets that do not require CPR. The order should give the CPR class including its suffixes, or state the listing separately.
+
+The limits of this material are clear. The texts of EN 50575, EN 13501-6, EN 50399, the IEC 60332-1-2 and 60332-3 series, IEC 61034, IEC 60754, UL 1666, UL 1685, UL 910, NFPA 262 and NEC Article 770 were not read. The Corning application notes AEN071 and AEN097 and the generic specification PGS061 could not be downloaded and were not read, and the address of the Panduit B2ca indoor/outdoor datasheet did not open. Country requirements were not checked beyond the AFL map of 2018, and whether each document is the current edition or matches a product on sale now was not checked. Every value is published by the manufacturer and is not independent testing.
+
+![Order for reading a fire rating label](/images/education/optical-training/indoor-cable-datasheet-fire-rating-labels-cpr-euroclass-ofnr-ofnp-lszh-readout/concept-en.svg)
+
+- First sort the label into listing, CPR class, IEC test number or material name
+
+- Split a CPR code into main class and s, d, a, and copy it from the row for that fiber count
+
+- Where a row is missing, write that it is missing, and write disagreeing labels as two values
+
+| Hypothetical condition: 24 fibers, Dca-s1a,d1,a1 or better | Printed class | Result |
+| --- | --- | --- |
+| Panduit indoor 24 fibers | Dca-s2-d2-a1 | does not match (s2, d2) |
+| Panduit indoor/outdoor 24 fibers | Cca-s1a-d1-a1 | matches |
+| CommScope C-024-LN gel-filled | Eca | does not match |
+| CommScope C-024-LN HTS | Dca,s2,d0,a1 | does not match (s2) |
+| CommScope C-024-LA steel armored | Cca,s2,d2,a1 | does not match (s2, d2) |
+| AFL MicroCore 2.0 12-fiber subunit, 24 fibers | Cca,s1a,d0,a1 | matches |
+| AFL Ruggedized MicroCore 24 fibers | B2ca,s1a,d0,a1 | matches |
+| SpliceGroup 4.0 mm 24-fiber column | B2ca-s1a,d0,a1 | matches |
+| SpliceGroup 3.0 mm 24-fiber column | heading OFNP, no link to the CPR row | cannot be judged |
+| Corning 006Z8Z | only one 6-fiber row | no 24-fiber row |
+
+## Checklist
+
+- Did you write, row by row, whether the label is a US-style listing, a CPR class, an IEC test number or a material name?
+
+- Did you split the CPR code into main class and s, d, a, and write that a class such as Eca has no suffixes?
+
+- Did you check that the class comes from the row for that fiber count and construction or from the end of the ordering code, and not from the cable name?
+
+- Did you write the category of the test number (for example IEC 60332-3-24 and -25), the standard edition and the document date together?
+
+- Did you record labels that disagree inside one document as two values with the document code?
+
+## Review questions
+
+### 1. A requirement says Dca-s1a,d1,a1 or better for a 24-fiber cable. The Panduit indoor cable datasheet groups 4 to 24 fibers under Dca. How do you judge it?
+
+Answer and explanation: The main class is the same, but the Dca of this datasheet is the ordering code ending 37, that is Dca-s2-d2-a1, so s2 and d2 read as weaker than the required s1a and d1 and it is not copied as matching. Do not pass it on the main class alone, and record that the ranking of the suffixes follows the order of the AFL table as a DMS interpretation.
+
+### 2. In the CommScope brochure the 12-fiber C-012-LN row is Dca,s1a,d0,a1. If the same gel-filled family is ordered with 48 fibers, is the class the same?
+
+Answer and explanation: No. The 24 to 144 fiber rows of the same family are printed as Eca. Copy the class of the row for that fiber count and not of the family name, and if the row for the needed fiber count is not in the document, write that it cannot be judged.
+
+### 3. The 3.0 mm 24-fiber column of the SpliceGroup datasheet has the cable rating OFNP, and the reaction row below prints B2ca-s1a,d0,a1 once. May the 3.0 mm column be recorded as B2ca?
+
+Answer and explanation: No. The column headings split into three OFNP columns and three CPR columns, and the CPR class row appears only once for the whole sheet, so the document does not link it to the 3.0 mm column. Record the 3.0 mm column as OFNP and the CPR class as an unlinked column.
+
+## Sources
+
+- [Corning: MIC Tight Buffer Indoor Cable 6F E9/125 product specification 006Z8Z-32125E2G (revision date 2026-11-19 at page foot)](https://ecatalog.corning.com/optical-communications/EMEA/en_GB/generate-product-specsheet/006Z8Z-32125E2G.pdf?modifiedTS=2025-12-08-02%3A21%3A36) · pages 1–4
+
+- [Panduit: Opti-Core Fibre Optic Indoor Cable, 2 to 96-Fibres, EuroClass Eca and Dca for EMEA (FBSP219-WW-ENG, 7/2022)](https://www.panduit.com/content/dam/panduit/en/products/media/3/03/003/4003/110534003.pdf) · pages 1–3
+
+- [Panduit: Opti-Core Fibre Optic Indoor-Outdoor Cable with Tight Buffered Fibres, Cca for EMEA (FBDS42-WW-ENG, 10/2022)](https://www.panduit.com/content/dam/panduit/en/products/media/1/11/611/1611/110571611.pdf) · pages 1–3
+
+- [CommScope: High Performance Fiber Optic Cables for the FTTH Access Network, EMEA (CO-114994.4-EN, 01/26, cover May 2025)](https://webresources.commscope.com/download/assets/Brochure:+Fiber+Optic+Cables+for+the+FTTH+Access+Network+Europe,+Middle+East,+Africa+regions/c2c9a55e3bd811f0a4acea1fa90d937b) · pages 2, 5, 8–11, 22–23
+
+- [AFL: Construction Products Regulation (CPR) Certified Cables (BRO-13093, 1 November 2019)](https://afl-delivery.stylelabs.cloud/api/public/content/d1b558b80dbe49d19bc1d56b424445ed?v=ec891e59) · pages 2–5, 8–9, with the table on page 8 checked as a rendered image
+
+- [HUBER+SUHNER: Fiber optic cables catalogue 2024](https://www.hubersuhner.com/Asset/eyJpZGVudGlmaWVyIjo0NzczMCwidHlwZSI6ImFzc2V0In0%3D/3SiwGuSkbxTh4jh3/Fiber-optic-cables.pdf) · pages 25, 33–36, 57
+
+- [Prysmian: Ordering Guide Indoor (TLS-0005-1025)](https://na.prysmian.com/sites/na.prysmian.com/files/2025-10/Prysmian%20Fiber%20Indoor%20Ordering%20Guide.pdf) · pages 1–3
+
+- [Prysmian: Ordering Guide Indoor/Outdoor (TLS-0004-1025)](https://na.prysmian.com/sites/na.prysmian.com/files/2025-10/Prysmian%20Fiber%20Indoor-Outdoor%20Ordering%20Guide.pdf) · pages 1–2
+
+- [Prysmian and Draka: UC Home Catalogue (no printed date)](https://de.prysmian.com/sites/de.prysmian.com/files/media/documents/UC%20Home%20Catalogue_EN.pdf) · PDF page 9 (printed pages 16–17)
+
+- [SpliceGroup: Indoor Fibre Cable datasheet SGS_DS_10259 v1.00](https://www.splicegroup.com/wp-content/uploads/2026/02/SGS_DS_10259_IndoorCable.pdf) · pages 1–2, with the table on page 2 checked as a rendered image
+
+- [PPC: Miniflex Euroclass Eca Cable spec sheet (rev4_08262022)](https://www.ppc-online.com/hubfs/2057289/Downloadable_docs/Spec_sheets/Fiber/Miniflex_Cable/Euroclass%20Eca%20Cable%20Spec%20Sheet.pdf) · pages 1–2
+
+- [Nexconec: FTTH Drop Cable Indoor/Outdoor datasheet (copyright line 2027)](https://nexconec.com/datasheet/ftth-drop-cable-indoor-outdoor.pdf) · pages 1–2
+
+- [YOFC: Indoor Optical Fibre Cables, up to 24 fibers, product page (no printed date)](https://en.yofc.com/view/2991.html)
+
+## Continue
+
+- [Optical training curriculum](/fttx-training)
+
+- [Reading FTTH Access Terminal Datasheets: Port Count, Splitter Capacity, Cable Entry and Ingress Protection](/en/education/optical-training/ftth-access-terminal-datasheet-port-count-splitter-capacity-cable-entry-ip-rating-readout)
+
+- [Reading Ribbon Cable Datasheets: Tensile Load, Bend Radius and Installation Temperature by Fiber Count](/en/education/optical-training/ribbon-cable-datasheet-fiber-count-tensile-bend-radius-installation-temperature-readout)
+
+- [Reading FTTH Drop Cable Datasheets: Short-Term and Long-Term Tensile Load, Bend Radius and Span](/en/education/optical-training/ftth-drop-cable-datasheet-short-long-term-tensile-bend-radius-span-readout)
+
+- [Reading Outdoor Loose Tube Cable Datasheets: Tensile Load, Minimum Bend Radius and Installation Temperature](/en/education/optical-training/outdoor-loose-tube-cable-datasheet-tensile-load-bend-radius-installation-temperature-readout)

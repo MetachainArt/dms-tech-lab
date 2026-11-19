@@ -1,0 +1,212 @@
+---
+title: "실내 광케이블 사양서의 화재 반응 등급 표기 판독: CPR 유로클래스·OFNR·OFNP·LSZH"
+date: "2026-11-19"
+desc: "실내·실내외 광케이블 사양서에서 화재 반응 등급을 읽는 10분 교안입니다. 미국식 목록 표기(OFNR, OFNP), 유럽 CPR 유로클래스(B2ca, Cca, Dca, Eca와 s·d·a 꼬리표), IEC 시험 번호, LSZH 같은 재료 이름이 문서마다 어떻게 섞여 적히는지 Panduit, Corning, CommScope, AFL, Prysmian, HUBER+SUHNER, SpliceGroup 등 13건으로 비교하고, 섬유 수에 따라 달라지는 등급과 값을 옮길 때 함께 기록할 조건을 정리했습니다."
+coverImage: "/images/education/optical-training/indoor-cable-datasheet-fire-rating-labels-cpr-euroclass-ofnr-ofnp-lszh-readout/cover.svg"
+readTime: "10 min"
+lang: "ko"
+---
+
+실내 광케이블 사양서의 화재 등급은 한 가지 표기가 아니라 미국식 목록(OFNR, OFNP), 유럽 CPR 유로클래스(Dca-s1a,d0,a1 같은 코드), IEC 시험 번호, LSZH 같은 재료 이름이 따로 적히며, 같은 제품 계열에서도 섬유 수나 구조에 따라 등급 줄이 바뀝니다. 이번에 읽은 제조사 문서 13건에서 CommScope의 젤 충진 비금속 실내외 케이블 계열은 2심부터 12심 줄이 Dca, 24–144심 줄이 Eca로 적혔고, Panduit의 실내 케이블은 4–24심이 Dca-s2-d2-a1, 2심과 48–96심이 Eca로 적혀 있었습니다. 값을 옮길 때는 어떤 체계의 표기인지, 케이블 이름이 아니라 섬유 수별 줄의 등급인지, s·d·a 꼬리표가 모두 적혀 있는지를 함께 기록해야 요구 사양과 맞춰 볼 수 있습니다.
+
+2026년 11월 19일 확인한 자료 기준입니다.
+
+## 학습 목표
+
+- 화재 등급 표기가 미국식 목록, 유럽 CPR 등급, IEC 시험 번호, 재료 이름 가운데 무엇인지 줄마다 구분해 따로 옮깁니다.
+
+- CPR 코드를 주등급과 s·d·a 꼬리표로 나누어 읽고, 요구 사양과 항목별로 비교합니다.
+
+- 섬유 수와 구조별 줄, 문서 안에서 어긋난 표기를 문서 코드와 함께 기록합니다.
+
+## 사양서의 화재 등급 표기는 어떤 체계로 적혀 있습니까?
+
+화재 등급 표기는 미국식 목록, 유럽 CPR 등급, IEC 시험 번호, 재료 이름의 네 층으로 나뉘며, 사양서는 이 가운데 일부만 적는 경우가 많습니다. 미국식 목록은 OFNG(범용), OFNR(라이저, riser), OFNP(플레넘, plenum) 같은 글자로 적히고, HUBER+SUHNER 카탈로그는 이를 UL 1685(OFNG), UL 1666(OFNR), UL 910(OFNP)에 맞춰 적습니다. Prysmian의 북미 주문 안내서는 여기에 FT4, FT6 같은 코드를 덧붙이지만 두 코드의 풀이는 적지 않았습니다. 유럽 CPR(Construction Products Regulation, 건축 제품 규정)은 B2ca, Cca, Dca, Eca 같은 주등급에 s1a, d0, a1 같은 꼬리표를 붙인 코드이며, AFL의 소개서는 이 규정을 EU 규정 305/2011과 조화 규격 EN 50575로 설명합니다. IEC 번호는 IEC 60332-1-2(단일 케이블 불꽃 전파), IEC 61034-2(연기 농도), IEC 60754-1과 60754-2(할로겐과 부식성 가스) 같은 시험 이름이고, LSZH(low smoke zero halogen, 저연 무할로겐)는 자켓 재료를 가리키는 말입니다.
+
+한 문서가 네 층을 모두 적는 경우는 드뭅니다. Corning의 6심 실내 케이블 사양서는 Dca, s1a, d1, a1 과 LSZH/FRNC, IEC 60332-1-2, 60332-3-24, 61034, 60754-1·60754-2를 각각 다른 줄에 적어 네 층이 모두 있습니다. 반대로 Nexconec의 FTTH 드롭 케이블 문서는 자켓 재료 코드에서 L을 LSZH, E를 PE로 고르게 하고 PE는 난연이 아니라고만 적을 뿐 등급 줄이 없습니다. YOFC의 24심 이하 실내 케이블 페이지는 난연 소재와 PVC 또는 LSZH 자켓을 적지만 등급이나 시험 번호 줄은 찾지 못했습니다. 문구에 난연이라는 말이 있어도 어떤 시험이나 등급의 결과인지 문서가 이어 주지 않으면 등급으로 옮기지 않고 줄 없음으로 적습니다.
+
+| 문서 | 적힌 표기 | 체계 | 비고 |
+| --- | --- | --- | --- |
+| Corning 6심 실내 케이블 006Z8Z-32125E2G | Dca, s1a, d1, a1 · LSZH/FRNC · IEC 60332-1-2, 60332-3-24, 61034, 60754-1·2 | CPR · 재료 · IEC 시험 | 네 층이 각각 다른 줄 |
+| Panduit Opti-Core 실내 (FBSP219) | Eca (2심, 48–96심) · Dca-s2-d2-a1 (4–24심) | CPR | 등급은 부품 번호 끝 두 자리(40, 37) |
+| Panduit Opti-Core 실내외 (FBDS42) | Cca-s1a-d1-a1 | CPR | 부품 번호 끝 두 자리 24 |
+| CommScope FTTH EMEA 안내서 | Dca,s1a,d0,a1부터 Eca까지 | CPR | 이름 키 C와 Z로 목록 유무 구분 |
+| AFL CPR 소개서 | B2ca-s1a,d0,a1, Cca-s1a,d0,a1 | CPR | 등급 표와 각주 수록 |
+| Prysmian 북미 실내 안내서 (TLS-0005-1025) | OFNR/FT4, OFNP/FT6, OFNR-LS/FT4, OFNR/FT4/CPR | 미국식 목록 | CPR은 글자만 있고 등급 없음 |
+| Prysmian 북미 실내외 안내서 (TLS-0004-1025) | OFNR/FT4, OFNP/FT6, OFNG-LS/FT4, OFNR, OFN | 미국식 목록 | -LS 풀이 없음 |
+| HUBER+SUHNER 카탈로그 2024 | B2ca s1a d0 a1, Dca s1a d0 a1 · 옵션 -UN, -UR, -UP | CPR · 미국식 목록 | 두 체계가 별도 주문 옵션 |
+| SpliceGroup 실내 케이블 (SGS_DS_10259) | OFNP 3열, B2ca-s1a,d0,a1 3열 | 미국식 목록 · CPR | 반응 줄은 시트에 한 번 |
+| PPC Miniflex Eca 시트 | Eca, EN 50575:2014+A1:2016 | CPR | 재료·연기 줄 없음 |
+| Prysmian·Draka UC Home 카탈로그 | B2ca-s1a-d1-a1, Dca s2 d2 a1 | CPR | 자켓은 FireRes LSHF-FR |
+| Nexconec FTTH 드롭 실내외 | 자켓 코드 L(LSZH), E(PE, 난연 아님) | 재료 이름 | 등급 줄 없음 |
+| YOFC 24심 이하 실내 케이블 | 난연 소재, PVC 또는 LSZH | 재료 이름 | 등급·시험 줄 없음 |
+
+## OFNR·OFNP 목록은 CPR 등급으로 바꿔 읽을 수 있습니까?
+
+이번에 읽은 문서 13건 어디에도 OFNR이나 OFNP를 CPR 등급으로 바꿔 주는 표가 없으며, 두 체계가 한 제품에 함께 적히더라도 서로 다른 시험과 인증의 결과로 적혀 있습니다. CommScope의 안내서는 이를 제품 계열로 나눕니다. 이름 키에서 C는 실내외 무할로겐 CPR 전용 난연, Z는 같은 실내외 무할로겐에 목록을 함께 받은 이중 목록, L은 실내 무할로겐 CPR 전용, N은 실내 이중 목록입니다. 문서 22쪽은 C 케이블이 LSZH 자켓에 CPR 등급을 받아 유럽 시장에서 쓸 수 있고, Z 케이블은 LSZH 자켓이지만 라이저(UL 1666)용으로만 인증되어 CPR이 필요 없는 시장에서만 쓸 수 있다고 적습니다. 같은 LSZH 자켓이라도 어느 표기를 달고 있는지에 따라 쓸 수 있는 시장이 갈리는 것입니다.
+
+HUBER+SUHNER 카탈로그는 케이블 코드의 세 번째 옵션으로 UL 목록(-UN, -UR, -UP)을, 다섯 번째 옵션으로 CPR 주등급(#B부터 #F)을 따로 고르게 합니다. 두 옵션이 따로 있으므로 한 코드에 목록과 CPR 등급을 모두 붙일 수 있는 구조로 읽히지만 문서는 이를 직접 설명하지 않았습니다(DMS 해석). SpliceGroup의 사양서는 한 표에서 3개 열을 OFNP, 나머지 3개 열을 CPR 등급(B2ca-s1a,d0,a1)으로 나누고, 아래 반응 줄에는 비전도 플레넘과 CPR 등급을 한 번씩만 적습니다. 열마다 두 표기가 모두 걸리는지는 그림으로 확인해도 알 수 없습니다.
+
+이름만으로 목록 표기를 알 수 없는 사례도 있습니다. Prysmian의 실내 안내서에서 LSZH라는 이름이 붙은 LSZH16, LSZH20 계열은 OFNR/FT4이고 ezDISTRIBUTION 600(Riser LSZH)은 OFNR-LS/FT4입니다. 실내외 안내서에서는 DDLSZHB가 OFNG-LS/FT4, RRZIOCDK(LSZH 건식)가 OFNR, RZLTK(LSZH)가 OFN으로 적혀 있습니다. 두 문서 모두 -LS와 FT4의 뜻을 풀이하지 않아 LSZH라는 이름만으로 저연 목록이 붙었는지 알 수 없습니다. AFL의 소개서는 CPR이 어떤 등급을 요구하는지 정하지 않으며 건물 주인이 국가 규정에 따른 등급을 지정하고, 국가 규정이 없는 나라도 있다고 적습니다. 이 소개서의 국가 지도는 2018년 상태이므로 현재의 요구 등급은 이 문서로 판정할 수 없습니다.
+
+| 문서 | 적힌 표기 | 읽는 법 |
+| --- | --- | --- |
+| CommScope FTTH EMEA 22쪽, 5쪽 | C와 L은 CPR 전용, Z와 N은 이중 목록 | 이름 키 글자로 구분하고, Z는 CPR 불요 시장용이라고 적음 |
+| HUBER+SUHNER 25쪽 | 3번째 옵션 -UN, -UR, -UP, 5번째 옵션 #B부터 #F | 두 옵션이 별도 칸 |
+| Prysmian 북미 실내 | LSZH16 OFNR/FT4, 600 OFNR-LS/FT4, MFCL OFNR/FT4/CPR | 같은 LSZH 이름에 목록 표기가 다름, CPR은 등급 없이 글자만 |
+| Prysmian 북미 실내외 | DDLSZHB OFNG-LS/FT4, RRZIOCDK OFNR, RZLTK OFN | -LS, FT4 풀이 없음 |
+| SpliceGroup | 열 제목 OFNP 3개, CPR 3개, 반응 줄 한 블록 | 열별 CPR 줄 없음 |
+| AFL CPR 소개서 | 요구 등급은 건물 주인과 국가 규정이 정함 | 문서로 요구 등급 판정 불가 |
+
+## CPR 등급의 s, d, a 꼬리표는 무엇을 뜻하며 어떤 시험에서 나옵니까?
+
+CPR 코드는 주등급과 s, d, a 꼬리표로 나뉘며, AFL의 등급 표에서는 B2ca, Cca, Dca에 연기(s), 불꽃 방울(d), 산성 가스(a) 꼬리표가 붙고 Eca와 Aca에는 꼬리표가 없습니다. AFL 각주는 꼬리표를 이렇게 적습니다. s1a는 투과율 80%, s1b는 60%이고 s1과 s2는 연기 발생이 낮은 쪽과 높은 쪽이며 s3은 분류나 요구가 없습니다. d0은 1,200초 안에 불꽃 방울이 없고, d1은 1,200초 안에 10초를 넘겨 지속되는 방울이 없으며, d2는 분류가 없습니다. a1은 전도도 2.5 µS/mm 미만에 pH 4.3 초과, a2는 전도도 10 µS/mm 미만에 pH 4.3 초과이고 a3은 분류가 없습니다. 표에 s1a, s1b, s1, s2, s3 순으로 적혀 있어 앞쪽이 더 엄격한 값으로 읽히지만, 순위는 문서가 직접 쓰지 않았습니다(DMS 해석).
+
+시험은 HUBER+SUHNER 카탈로그 35쪽에 정리되어 있습니다. 주등급 B1ca부터 Dca는 열 방출과 불꽃 전파를 EN 50399와 EN 60332-1-2로 보고, 연기는 EN 50399와 EN 61034-2, 불꽃 방울은 EN 50399, 산성도는 EN 60754-2로 봅니다. Aca는 연소열(EN ISO 1716)이고 Eca는 불꽃 전파(EN 60332-1-2)만 보며, Fca는 Eca를 충족하지 못한 케이블입니다. 같은 카탈로그 34쪽은 EN 50399 시험이 3.5 m 사다리에 케이블 묶음을 고정하고 하단에 20분 동안 불꽃을 가해 연기 발생, 불꽃 방울, 열 방출률, 총 열 방출량, 화재 성장률, 불꽃 전파를 잰다고 적습니다. AFL 소개서는 시험소를 EU 지정 기관(NANDO)으로 정하고, 인증 체계가 주등급에 따라 다르다고 적습니다. 표에서 System 1+(공장 심사와 정기 시험)는 Aca부터 Cca까지, System 3(NANDO의 제품 시험)은 Dca와 Eca, System 4(제조사 시험)는 Fca입니다(그림으로 확인).
+
+공급되는 케이블에는 CE 라벨이 있고, 라벨에는 성능 선언서(DoP) 번호, 제품 이름, 제조사, 시험소 번호, 화재 반응 등급이 적힌다고 AFL은 설명합니다. 사양서의 등급 줄이 이 라벨과 같은 값인지는 이번 문서에서 확인하지 못했습니다. 실제 확인에는 현품 라벨이나 성능 선언서가 필요합니다.
+
+| 항목 | 값 | 뜻 (AFL 각주) | 시험 (HUBER+SUHNER 35쪽) |
+| --- | --- | --- | --- |
+| 주등급 | B2ca, Cca, Dca | 열 방출률과 불꽃 전파 정도로 나뉨 | EN 50399, EN 60332-1-2 |
+| 주등급 Eca | Eca | 작은 불꽃에서 큰 불꽃 전파가 없는 정도 | EN 60332-1-2만 |
+| s 연기 | s1a, s1b, s1, s2, s3 | s1a 80%, s1b 60% 투과율, s1과 s2는 낮음과 높음, s3은 분류 없음 | EN 50399, EN 61034-2 |
+| d 불꽃 방울 | d0, d1, d2 | d0은 1,200초 안에 없음, d1은 10초 넘게 지속되는 방울 없음, d2는 분류 없음 | EN 50399 |
+| a 산성 가스 | a1, a2, a3 | a1은 2.5 µS/mm 미만과 pH 4.3 초과, a2는 10 µS/mm 미만과 pH 4.3 초과, a3은 분류 없음 | EN 60754-2 |
+
+## 같은 케이블 이름이 섬유 수나 구조에 따라 다른 등급을 가집니까?
+
+같은 계열의 이름이라도 섬유 수와 구조에 따라 등급 줄이 바뀌는 사례가 이번 문서마다 있었으므로, 등급은 계열 이름이 아니라 섬유 수별 줄에서 옮겨야 합니다. CommScope의 실내외 젤 충진 비금속 계열(C-LN)은 2, 4, 6, 12심이 Dca,s1a,d0,a1이고 24부터 144심은 Eca입니다. 같은 계열의 고인장(HTS) 구조는 2–36심이 Dca,s2,d0,a1이고 48, 72, 96심이 Dca,s3,d0,a1로 연기 꼬리표만 바뀝니다. 강철 테이프 외장(C-LA)은 6심과 12심이 B2ca,s1a,d0,a1이고 24–144심이 Cca,s2,d2,a1이며, GRP 외장은 24–96심이 Dca,s2,d2,a1입니다.
+
+AFL의 MicroCore 2.0 12심 단위 계열은 24심과 36심이 Cca,s1a,d0,a1이고 48–216심이 B2ca,s1a,d0,a1로, 심 수가 많은 쪽의 주등급이 더 위 칸입니다. 같은 회사의 Ruggedized MicroCore(250 µm 단심)는 12, 16, 24심이 B2ca,s1a,d0,a1이고 32, 36, 48, 72심이 B2ca,s1a,d1,a1로 주등급은 같고 불꽃 방울 꼬리표만 d0에서 d1로 바뀝니다. Panduit의 실내 케이블은 2심 듀플렉스 지프코드가 Eca, 4–24심이 Dca-s2-d2-a1, 48–96심(서브유닛)이 Eca입니다. HUBER+SUHNER의 2.1 mm 이중 원형 케이블 V(ZN)H는 36쪽 표에 Dca s1a d0 a1과 B2ca s1a d0 a1 두 줄로 적혀 있고 둘 다 카탈로그 62쪽을 가리키며, 등급은 케이블 이름이 아니라 다섯 번째 주문 옵션으로 고르는 값으로 읽힙니다(DMS 해석). CommScope의 3.0 mm 드롭 케이블은 Dca,s1a,d0,a1이고 3.4 mm 드롭 케이블은 Dca,s1a,d1,a2입니다.
+
+![계열별 섬유 수에 따른 CPR 등급 변화](/images/education/optical-training/indoor-cable-datasheet-fire-rating-labels-cpr-euroclass-ofnr-ofnp-lszh-readout/bars-ko.svg)
+
+- 막대는 문서가 적은 섬유 수 구간과 주등급입니다
+
+- 같은 계열 안에서 구간마다 주등급이나 꼬리표가 바뀝니다
+
+- 서로 다른 계열 사이의 순위가 아닙니다
+
+| 문서·계열 | 섬유 수 구간 | 적힌 등급 |
+| --- | --- | --- |
+| CommScope C-LN 젤 충진 비금속 | 2–12심 / 24–144심 | Dca,s1a,d0,a1 / Eca |
+| CommScope C-LN 고인장(HTS) | 2–36심 / 48–96심 | Dca,s2,d0,a1 / Dca,s3,d0,a1 |
+| CommScope C-LA 강철 테이프 외장 | 6–12심 / 24–144심 | B2ca,s1a,d0,a1 / Cca,s2,d2,a1 |
+| AFL MicroCore 2.0 12심 단위 | 24–36심 / 48–216심 | Cca,s1a,d0,a1 / B2ca,s1a,d0,a1 |
+| AFL Ruggedized MicroCore | 12–24심 / 32–72심 | B2ca,s1a,d0,a1 / B2ca,s1a,d1,a1 |
+| Panduit Opti-Core 실내 | 2심 / 4–24심 / 48–96심 | Eca / Dca-s2-d2-a1 / Eca |
+| CommScope 드롭 3.0 mm, 3.4 mm | 1심 / 1심 | Dca,s1a,d0,a1 / Dca,s1a,d1,a2 |
+| HUBER+SUHNER 이중 원형 2.1 mm | 같은 코드 두 줄 | Dca s1a d0 a1 / B2ca s1a d0 a1 |
+
+## 시험 번호와 날짜는 문서마다 어떻게 적혀 있습니까?
+
+IEC 시험 번호는 같은 시험 이름이라도 범주가 문서마다 달라서 숫자 끝자리까지 옮겨야 하며, 날짜와 규격 판본은 적힌 대로 기록만 합니다. HUBER+SUHNER 카탈로그 33쪽의 IEC 60332-3 표는 범주 -22(A)가 가연물 7.0 L/m에 40분, -23(B)가 3.5 L/m에 40분, -24(C)가 1.5 L/m에 20분, -25(D)가 0.5 L/m에 20분입니다. Panduit의 두 사양서와 Corning의 6심 사양서는 IEC 60332-3-24를 적고, HUBER+SUHNER의 B2ca 1.9 mm 케이블은 IEC 60332-3-25를 적습니다. 이 표대로면 두 번호는 가연물 부피가 1.5 L/m와 0.5 L/m로 다른 시험이어서, 번호 끝자리를 빼고 묶음 시험을 통과했다고만 옮기면 조건이 사라집니다. 같은 33쪽의 본문 설명은 묶음 시험의 불꽃 시간을 20분이라고만 적어 표의 40분과 맞지 않으며, 어느 쪽이 맞는지는 이 문서만으로 알 수 없습니다.
+
+규격 판본을 적은 문서는 PPC(EN 50575:2014+A1:2016)와 AFL(EN 50575:2014/A1:2016)뿐이고 Corning, Panduit, HUBER+SUHNER는 판본 없이 EN 50575만 적습니다. 문서 날짜도 서로 어긋납니다. Corning의 6심 사양서는 모든 쪽에 개정일 2026-11-19를 적었는데, 내려받은 주소의 수정 시각 값은 2025-12-08이어서 두 값 가운데 어느 쪽이 내용의 개정일인지 알 수 없습니다. CommScope의 FTTH 안내서는 표지에 2025년 5월, 문서 번호에 (01/26), 저작권 줄에 2026을 적습니다. Nexconec 문서는 저작권 줄이 2027년입니다. Panduit 두 사양서는 2022년 7월과 10월, AFL 소개서는 2019년 11월, Prysmian 두 주문 안내서는 코드 끝 1025, PPC는 rev4_08262022입니다. Prysmian·Draka의 UC Home 카탈로그와 YOFC 페이지는 문서 안에 날짜가 없습니다. 어긋난 표기는 한쪽을 고르지 않고 문서 코드와 함께 두 값으로 적습니다.
+
+| 어긋난 곳 | 한쪽 값 | 다른 쪽 값 | 기록하는 법 |
+| --- | --- | --- | --- |
+| HUBER+SUHNER 묶음 시험 시간 | 33쪽 본문 20분 | 같은 쪽 표 A·B 범주 40분 | 두 값을 병기 |
+| AFL 목록 글자 | 소개서 문장 ONFR-LS/FT4 | 같은 계열 OFNR-LS/FT4 | 문서 표기 그대로, 오타 확인 필요 |
+| AFL IEC 번호 | MicroCore 2.0 쪽 IEC 60332, 60745, 61034 | Ruggedized 쪽 IEC 60332, 60754, 61034 | 두 값을 병기 |
+| CommScope 등급 키 | 이름 키 B Bca | 표 B2ca | 두 표기 병기 |
+| CommScope HTS 144심 | Dca,S2,do,a1 | 같은 표 다른 줄 Dca,s2,d0,a1 | 그대로 적고 오타 확인 필요 |
+| HUBER+SUHNER 2.1 mm 이중 원형 | Dca s1a d0 a1 | B2ca s1a d0 a1 | 주문 옵션 확인 필요 |
+| Corning 006Z8Z 개정일 | 쪽 아래 2026-11-19 | 주소 수정 시각 2025-12-08 | 두 값을 병기 |
+| SpliceGroup 굽힘 반경 줄 | 줄 이름 Maximum Bend Radius | 일반적으로 굽힘 반경은 최소값 | 줄 이름 그대로 적고 뜻 확인 필요 |
+
+## 현장 조건을 등급 표기에 대입하면 어떻게 됩니까?
+
+여기서 쓰는 사례는 가상의 교육용 계산이며 실제 현장이나 제품을 시험한 것이 아닙니다. 사례 하나는 유럽 건물 안에 24심 실내 케이블을 넣는 조건으로, 요구 사양이 Dca-s1a,d1,a1 이상입니다. 여기서 이상은 주등급이 같거나 위 칸이고 s, d, a 꼬리표도 각각 같거나 엄격하다는 뜻으로 읽습니다(AFL 표의 순서에 따른 DMS 해석). Panduit 실내 케이블 24심은 Dca-s2-d2-a1이어서 s2와 d2가 요구보다 약해 일치하지 않고, 실내외 24심은 Cca-s1a-d1-a1이라 일치합니다. CommScope의 C-024-LN 젤 충진 비금속은 Eca라 일치하지 않고, 같은 24심의 HTS는 Dca,s2,d0,a1이라 s2 때문에 일치하지 않으며, 강철 외장은 Cca,s2,d2,a1이라 주등급은 위 칸이어도 꼬리표 때문에 일치하지 않습니다. AFL의 MicroCore 2.0 12심 단위 24심(Cca,s1a,d0,a1)과 Ruggedized MicroCore 24심(B2ca,s1a,d0,a1)은 일치합니다. SpliceGroup의 4.0 mm 24심 열은 B2ca-s1a,d0,a1로 일치하지만 3.0 mm 24심 열은 OFNP이고 CPR 줄이 열에 걸리는지 알 수 없어 판정하지 못합니다. Corning 6심 사양서는 6심 한 줄만 있어 24심 줄이 없습니다.
+
+사례 둘은 미국식 사양서가 OFNP를 요구하는 조건입니다. Prysmian 북미 안내서의 800과 C1182, SpliceGroup의 OFNP 열은 OFNP로 적혀 있어 일치합니다. Corning 6심, Panduit 두 사양서, CommScope의 C 계열처럼 CPR만 적은 문서에는 OFNP 줄이 없으므로 일치로 적지 않습니다. 사례 셋은 발주서에 LSZH 케이블이라고만 적힌 조건입니다. LSZH는 자켓 재료 이름이어서 CommScope의 C 케이블과 Z 케이블을 가르지 못하고, Z 케이블은 문서 22쪽에 따르면 CPR이 필요 없는 시장에서만 쓰는 라이저용입니다. 발주서에는 CPR 등급을 꼬리표까지 쓰거나 목록 표기를 따로 적어야 합니다.
+
+이번 자료의 한계도 분명합니다. EN 50575, EN 13501-6, EN 50399, IEC 60332-1-2와 60332-3 계열, IEC 61034, IEC 60754, UL 1666, UL 1685, UL 910, NFPA 262, NEC 770조 본문은 읽지 못했습니다. Corning의 응용 노트 AEN071과 AEN097, 일반 사양서 PGS061은 직접 내려받기가 막혀 읽지 못했고, Panduit의 B2ca 실내외 사양서는 주소가 열리지 않았습니다. 나라별 요구 등급은 AFL의 2018년 지도 외에는 확인하지 못했고, 각 문서가 현행 판본인지, 지금 판매되는 제품과 맞는지도 확인하지 못했습니다. 모든 값은 제조사가 공표한 값이며 독립 시험이 아닙니다.
+
+![화재 등급 표기를 읽는 순서](/images/education/optical-training/indoor-cable-datasheet-fire-rating-labels-cpr-euroclass-ofnr-ofnp-lszh-readout/concept-ko.svg)
+
+- 표기의 체계를 목록, CPR 등급, IEC 시험 번호, 재료 이름으로 먼저 가릅니다
+
+- CPR 코드는 주등급과 s, d, a로 나누고 섬유 수별 줄에서 옮깁니다
+
+- 줄이 없으면 없다고 적고, 어긋난 표기는 두 값으로 기록합니다
+
+| 가상 조건 24심, Dca-s1a,d1,a1 이상 | 적힌 등급 | 판정 |
+| --- | --- | --- |
+| Panduit 실내 24심 | Dca-s2-d2-a1 | 일치하지 않음 (s2, d2) |
+| Panduit 실내외 24심 | Cca-s1a-d1-a1 | 일치 |
+| CommScope C-024-LN 젤 충진 | Eca | 일치하지 않음 |
+| CommScope C-024-LN HTS | Dca,s2,d0,a1 | 일치하지 않음 (s2) |
+| CommScope C-024-LA 강철 외장 | Cca,s2,d2,a1 | 일치하지 않음 (s2, d2) |
+| AFL MicroCore 2.0 12심 단위 24심 | Cca,s1a,d0,a1 | 일치 |
+| AFL Ruggedized MicroCore 24심 | B2ca,s1a,d0,a1 | 일치 |
+| SpliceGroup 4.0 mm 24심 열 | B2ca-s1a,d0,a1 | 일치 |
+| SpliceGroup 3.0 mm 24심 열 | 열 제목 OFNP, CPR 줄 연결 없음 | 판정 불가 |
+| Corning 006Z8Z | 6심 한 줄만 있음 | 24심 줄 없음 |
+
+## 업무 점검표
+
+- 표기가 미국식 목록, CPR 등급, IEC 시험 번호, 재료 이름 가운데 무엇인지 줄마다 구분해 적었습니까?
+
+- CPR 코드를 주등급과 s, d, a로 나누어 적고, Eca처럼 꼬리표가 없는 등급은 없다고 적었습니까?
+
+- 등급이 케이블 이름이 아니라 섬유 수와 구조별 줄 또는 주문 코드 끝자리에서 온 값인지 확인했습니까?
+
+- 시험 번호의 범주(예: IEC 60332-3-24와 -25)와 규격 판본, 문서 날짜를 함께 적었습니까?
+
+- 문서 안에서 어긋난 표기를 문서 코드와 함께 두 값으로 기록했습니까?
+
+## 확인 문제와 정답
+
+### 1. 요구 사양이 24심 케이블에 Dca-s1a,d1,a1 이상입니다. Panduit 실내 케이블 사양서는 4–24심을 Dca로 묶어 적고 있습니다. 어떻게 판단합니까?
+
+정답·해설: 주등급은 같아도 이 사양서의 Dca는 주문 코드 끝 두 자리 37, 곧 Dca-s2-d2-a1이어서 s2와 d2가 요구의 s1a와 d1보다 약한 칸으로 읽히므로 일치로 적지 않습니다. 주등급만 보고 통과시키면 안 되며, 꼬리표 순위는 AFL 표의 순서에 따른 DMS 해석이라고 함께 기록합니다.
+
+### 2. CommScope 안내서에서 12심 C-012-LN 줄이 Dca,s1a,d0,a1입니다. 같은 젤 충진 계열을 48심으로 주문해도 같은 등급입니까?
+
+정답·해설: 아닙니다. 같은 계열의 24–144심 줄이 Eca로 적혀 있습니다. 계열 이름이 아니라 섬유 수별 줄의 등급을 옮기고, 필요한 섬유 수 줄이 문서에 없으면 판정 불가로 적습니다.
+
+### 3. SpliceGroup 사양서의 3.0 mm 24심 열은 케이블 등급이 OFNP이고, 아래 반응 줄에 B2ca-s1a,d0,a1이 한 번 적혀 있습니다. 3.0 mm 열을 B2ca로 적어도 됩니까?
+
+정답·해설: 적지 않습니다. 열 제목은 OFNP 3개와 CPR 3개로 나뉘고 CPR 등급 줄은 시트 전체에 한 번만 있어 3.0 mm 열에 걸리는지 문서가 연결하지 않았습니다. 3.0 mm 열은 OFNP로 적고 CPR 등급은 열 연결 불명으로 기록합니다.
+
+## 출처와 판본
+
+- [Corning: MIC Tight Buffer Indoor Cable 6F E9/125 제품 사양 006Z8Z-32125E2G (쪽 아래 개정일 2026-11-19)](https://ecatalog.corning.com/optical-communications/EMEA/en_GB/generate-product-specsheet/006Z8Z-32125E2G.pdf?modifiedTS=2025-12-08-02%3A21%3A36) · 1–4쪽
+
+- [Panduit: Opti-Core 실내 케이블 2–96심 유로클래스 Eca·Dca 사양서 (FBSP219-WW-ENG, 7/2022)](https://www.panduit.com/content/dam/panduit/en/products/media/3/03/003/4003/110534003.pdf) · 1–3쪽
+
+- [Panduit: Opti-Core 실내외 케이블 Cca 데이터시트 (FBDS42-WW-ENG, 10/2022)](https://www.panduit.com/content/dam/panduit/en/products/media/1/11/611/1611/110571611.pdf) · 1–3쪽
+
+- [CommScope: High Performance Fiber Optic Cables for the FTTH Access Network, EMEA (CO-114994.4-EN, 01/26, 표지 2025년 5월)](https://webresources.commscope.com/download/assets/Brochure:+Fiber+Optic+Cables+for+the+FTTH+Access+Network+Europe,+Middle+East,+Africa+regions/c2c9a55e3bd811f0a4acea1fa90d937b) · 2, 5, 8–11, 22–23쪽
+
+- [AFL: Construction Products Regulation (CPR) Certified Cables (BRO-13093, 2019년 11월 1일)](https://afl-delivery.stylelabs.cloud/api/public/content/d1b558b80dbe49d19bc1d56b424445ed?v=ec891e59) · 2–5, 8–9쪽, 8쪽 표는 그림으로 확인
+
+- [HUBER+SUHNER: Fiber optic cables 카탈로그 2024](https://www.hubersuhner.com/Asset/eyJpZGVudGlmaWVyIjo0NzczMCwidHlwZSI6ImFzc2V0In0%3D/3SiwGuSkbxTh4jh3/Fiber-optic-cables.pdf) · 25, 33–36, 57쪽
+
+- [Prysmian: Ordering Guide Indoor (TLS-0005-1025)](https://na.prysmian.com/sites/na.prysmian.com/files/2025-10/Prysmian%20Fiber%20Indoor%20Ordering%20Guide.pdf) · 1–3쪽
+
+- [Prysmian: Ordering Guide Indoor/Outdoor (TLS-0004-1025)](https://na.prysmian.com/sites/na.prysmian.com/files/2025-10/Prysmian%20Fiber%20Indoor-Outdoor%20Ordering%20Guide.pdf) · 1–2쪽
+
+- [Prysmian·Draka: UC Home Catalogue (날짜 미인쇄)](https://de.prysmian.com/sites/de.prysmian.com/files/media/documents/UC%20Home%20Catalogue_EN.pdf) · PDF 9쪽(인쇄 쪽 16–17)
+
+- [SpliceGroup: Indoor Fibre Cable 데이터시트 SGS_DS_10259 v1.00](https://www.splicegroup.com/wp-content/uploads/2026/02/SGS_DS_10259_IndoorCable.pdf) · 1–2쪽, 2쪽 표는 그림으로 확인
+
+- [PPC: Miniflex Euroclass Eca Cable 스펙 시트 (rev4_08262022)](https://www.ppc-online.com/hubfs/2057289/Downloadable_docs/Spec_sheets/Fiber/Miniflex_Cable/Euroclass%20Eca%20Cable%20Spec%20Sheet.pdf) · 1–2쪽
+
+- [Nexconec: FTTH Drop Cable Indoor/Outdoor 데이터시트 (저작권 줄 2027)](https://nexconec.com/datasheet/ftth-drop-cable-indoor-outdoor.pdf) · 1–2쪽
+
+- [YOFC: Indoor Optical Fibre Cables 24심 이하 제품 페이지 (날짜 미인쇄)](https://en.yofc.com/view/2991.html)
+
+## 다음에 볼 교안
+
+- [광통신 교육 목차](/education/optical-training)
+
+- [FTTH 분배·접속 단자함 사양서의 포트 수·스플리터 수용·케이블 입출구·보호 등급 판독](/education/optical-training/ftth-access-terminal-datasheet-port-count-splitter-capacity-cable-entry-ip-rating-readout)
+
+- [리본 케이블 사양서의 섬유 수별 인장하중·굽힘 반경·설치 온도 판독](/education/optical-training/ribbon-cable-datasheet-fiber-count-tensile-bend-radius-installation-temperature-readout)
+
+- [FTTH 드롭 케이블 사양서의 단기·장기 인장하중·굽힘 반경·경간 판독](/education/optical-training/ftth-drop-cable-datasheet-short-long-term-tensile-bend-radius-span-readout)
+
+- [옥외 루즈튜브 광케이블 사양서의 인장하중·최소 굽힘 반경·설치 온도 판독](/education/optical-training/outdoor-loose-tube-cable-datasheet-tensile-load-bend-radius-installation-temperature-readout)
