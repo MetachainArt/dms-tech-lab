@@ -1,0 +1,197 @@
+---
+title: "현장 조립형 광커넥터 사양서의 삽입손실 기준·적용 케이블·재조립 횟수·인장 판독"
+date: "2026-11-21"
+desc: "현장 조립형(사전 연마 스텁) 광커넥터 사양서에서 삽입손실 줄의 기준, 적용 케이블 칸, 재조립 횟수, 인장 값을 읽는 10분 교안입니다. AFL, CommScope, Fibertronics, OMC, Teleste, Fujikura, PPC, Panduit, SCP 문서 9건과 FOA 해설을 비교해 평균·전형·최대 표기, 같은 회사 문서 안에서 3회와 5회로 갈린 재조립 횟수, 케이블 이름이 서로 다르게 적힌 목록, 박피·절단 길이와 확인 수단을 옮길 때 함께 기록할 조건을 정리했습니다."
+coverImage: "/images/education/optical-training/field-installable-connector-datasheet-loss-basis-cable-range-reterminations-pull-strength-readout/cover.svg"
+readTime: "10 min"
+lang: "ko"
+---
+
+현장 조립형 광커넥터 사양서는 삽입손실 줄에 평균, 전형, 최대 가운데 서로 다른 값을 적고, 그 값에 커넥터 안의 접속점 손실이 들어 있는지는 대부분 적지 않습니다. 이번에 읽은 제조사 문서 9건 가운데 평균 또는 전형과 최대를 모두 적은 곳은 AFL, CommScope, Fibertronics, OMC, SCP 5건뿐이고, PPC와 Teleste는 전형값만, Panduit은 평균만, Fujikura는 한도값만 적었습니다. 재조립 횟수도 같은 AFL의 규격서는 세 번, 설치 안내서는 다섯 번으로 적었습니다. 값을 옮길 때는 줄 이름(평균·전형·최대), 측정 기준 문구의 유무, 재조립을 뜻하는 말, 문서 코드를 함께 기록해야 링크 손실 예산과 작업 절차에 같은 값을 쓸 수 있습니다.
+
+2026년 11월 21일 확인한 자료 기준입니다.
+
+## 학습 목표
+
+- 삽입손실 줄이 평균, 전형, 최대, 한도 중 무엇인지와 측정 기준 문구가 있는지를 줄마다 구분해 옮깁니다.
+
+- 적용 케이블 칸을 문서에 적힌 이름 그대로 옮기고, 이름이 다른 케이블을 같은 것으로 묶지 않습니다.
+
+- 재조립 횟수와 인장 값은 말과 단위를 함께 적고, 같은 회사 문서 안의 어긋남을 두 값으로 기록합니다.
+
+## 현장 조립형 커넥터 사양서의 삽입손실 줄은 무엇을 기준으로 적혀 있습니까?
+
+삽입손실 줄은 같은 낱말 아래 평균, 전형, 최대, 한도 중 서로 다른 것을 적으며, 기준 커넥터와 접속해 쟀다고 밝힌 문서는 9건 가운데 Fujikura 하나였습니다. AFL의 규격서(PP-2-00052 개정 22)와 CommScope의 Qwik II는 싱글모드 UPC에 평균 또는 전형 0.2 dB, 최대 0.5 dB를 적고 APC에는 0.3 dB와 0.6 dB를 적습니다. Fibertronics, OMC, SCP의 ECO 시리즈는 UPC와 APC를 나누지 않고 한 쌍의 값을 적습니다. PPC와 Teleste는 전형값 0.3 dB 이하만 적고 최대 줄이 없으며, Fujikura는 싱글모드 SPC 0.5 dB 이하, APC 0.6 dB 이하처럼 한도 하나만 적습니다. 전형값만 있는 문서의 숫자는 최악값이 아니어서 링크 손실 예산의 최대 칸에 넣을 수 없습니다(DMS 해석).
+
+값에 무엇이 들어 있는지도 갈립니다. Fujikura는 각주 2에 기준 커넥터와 접속해 잰 값이라고 적었고, 나머지 문서는 기준 줄을 적지 않았습니다. 교육 단체인 FOA의 해설은 기계식 접속 방식의 사전 연마 커넥터에는 커넥터 손실과 내부 접속 손실이 함께 들어가고, 내부 접속이 0.3–0.5 dB를 더해 최선이 0.5–0.7 dB라고 설명합니다. 이는 일반 설명이고 제품 사양이 아니므로 제조사의 전형값 0.2–0.3 dB와 어느 쪽이 맞는지는 이번 자료로 가릴 수 없고, 두 값을 출처와 함께 적어 둡니다. Panduit의 SC OptiCam 문서는 본문에 짝 접속당 평균 0.3 dB, 선택 표의 평균 삽입손실 칸에 0.03 dB를 적어 한 문서 안에서 자릿수가 어긋납니다.
+
+Fibertronics의 FieldConx 문서는 1쪽의 커넥터 줄에 평균 0.3 dB 이하와 최대 0.5 dB 이하, 3쪽의 기계식 접속 부품 줄에 평균 0.2 dB 이하와 최대 0.5 dB 이하를 적습니다. 반사감쇠량도 1쪽은 싱글모드 UPC 50 dB 이상으로 적고 3쪽은 평균 45 dB 이하, 최소 40 dB 이하로 부등호 방향이 반대입니다. 두 줄이 어떤 대상의 값인지 문서가 설명하지 않으므로 줄이 놓인 쪽과 함께 그대로 적습니다. Teleste는 반사감쇠량을 UPC -45 dB 이하, APC -50 dB 이하처럼 음수 부호로 적고, AFL은 평균 -50 dB, 최대 -45 dB로 적습니다. 부호와 부등호 방향이 문서마다 달라 값을 옮기기 전에 크기로 읽는지 부호로 읽는지 먼저 확인합니다.
+
+| 문서 | 삽입손실 줄 (싱글모드) | 줄 이름 | 측정 기준 문구 |
+| --- | --- | --- | --- |
+| AFL FASTConnect 규격서 (PP-2-00052 개정 22, 2024년 9월 19일) | UPC 0.2 / 0.5 dB, APC 0.3 / 0.6 dB | 평균 / 최대 | 없음 |
+| CommScope Qwik II (CO-113709.6-EN) | UPC 0.2 / 0.5 dB, APC 0.3 / 0.6 dB | 전형 / 최대 | 없음 |
+| Fibertronics FieldConx | 커넥터 0.3 / 0.5 dB, 접속 부품 줄 0.2 / 0.5 dB | 평균 / 최대 | 없음 |
+| OMC Field Fast (22개 변형 쪽) | 0.3 / 0.5 dB | 전형 / 최대 | 없음 |
+| SCP ECO 시리즈 | 0.3 / 0.5 dB | 전형 / 최대 | 없음 |
+| Fujikura FAST | SPC 0.5 dB 이하, APC 0.6 dB 이하 | 한도만 | 기준 커넥터와 접속(각주 2) |
+| PPC 현장 단자 커넥터 | 0.3 dB 이하 | 전형만 | 없음 |
+| Teleste FICS | 0.30 dB 이하, 시험 후 0.50 dB 이하 | 전형 / 시험 후 한도 | 없음 |
+| Panduit SC OptiCam | 0.3 dB(본문), 0.03 dB(표) | 평균 | 짝 접속당(본문) |
+
+![문서별 삽입손실 줄의 평균·전형값과 최대값](/images/education/optical-training/field-installable-connector-datasheet-loss-basis-cable-range-reterminations-pull-strength-readout/bars-ko.svg)
+
+- 막대는 문서가 적은 싱글모드 값입니다. 옅은 막대는 평균 또는 전형, 짙은 막대는 최대 또는 한도입니다
+
+- 줄이 없는 칸은 없다고 적었습니다. 0 dB가 아닙니다
+
+- 문서 사이의 순위가 아닙니다. 측정 조건이 문서마다 다릅니다
+
+## 기계식, 융착 접속형, 접착 연마형은 사양서에서 어떻게 갈립니까?
+
+같은 현장 조립형 안에서도 접속 방식에 따라 최대 삽입손실과 필요한 도구가 달라서, CommScope의 안내서는 세 방식을 별도 계열과 별도 사양 칸으로 나눕니다. 기계식인 Qwik II는 사전 연마한 스텁에 섬유를 맞대는 방식으로, 싱글모드 UPC 최대 0.5 dB, APC 최대 0.6 dB이고 최대 세 번 재조립할 수 있다고 적습니다. 융착 접속형인 Qwik-Fuse는 전형 0.15 dB, 최대 0.3 dB이며 이미 쓰는 융착접속기에 페룰 홀더를 쓰거나 설치 전용 접속기를 씁니다. 접착 연마형(anaerobic, 혐기성 접착)은 최대 0.3 dB를 적고 접착제와 연마 도구 키트를 따로 둡니다. 반사감쇠량도 Qwik II는 APC 50 dB 이상, UPC 45 dB 이상이고 Qwik-Fuse와 접착 연마형은 APC 65 dB 이상, UPC 55 dB 이상입니다.
+
+이번 제조사 문서 가운데 CommScope 외 여덟 건은 모두 공장에서 연마한 스텁에 섬유를 맞대는 한 종류만 다룹니다. 그래서 현장 조립형 커넥터라는 이름만 보고 0.5 dB라는 값을 외우면 융착 접속형 줄과 섞이게 됩니다. FOA의 해설은 융착 접속형의 성능이 기계식보다 훨씬 낫다고 설명하지만, 이 문장도 제품별 수치가 아닌 일반 설명입니다(작성자 설명). 문서를 읽을 때는 첫 줄에서 방식을 확인하고 그 방식의 줄에서 값을 옮깁니다.
+
+| CommScope 계열 | 접속 방식 | 싱글모드 삽입손실 | 싱글모드 반사감쇠량 | 재조립 | 문서가 적은 도구 |
+| --- | --- | --- | --- | --- | --- |
+| Qwik II | 기계식, 전원 불필요 | UPC 전형 0.2 / 최대 0.5, APC 0.3 / 0.6 dB | APC 50 dB 이상, UPC 45 dB 이상 | 최대 3회 | 정밀 절단기, 프리미엄 키트에 VFI |
+| Qwik-Fuse | 융착 접속 | 전형 0.15 / 최대 0.3 dB | APC 65 dB 이상, UPC 55 dB 이상 | 줄 없음 | 융착접속기 또는 설치 전용 접속기, 섬유 홀더 |
+| 접착 연마형 | 접착과 연마 | 최대 0.3 dB | APC 65 dB 이상, UPC 55 dB 이상 | 줄 없음 | 접착제와 연마 키트 |
+
+## 적용 케이블 칸은 어떤 이름과 단위로 적혀 있습니까?
+
+적용 케이블은 마이크로미터와 밀리미터, 원형과 평형이 섞여 적히고 같은 형태를 문서마다 다른 이름으로 부르므로, 이름이 같아 보여도 같은 케이블이라고 묶으면 안 됩니다. Fibertronics는 부품 번호 끝 글자에 따라 목록이 갈려서 U 모델은 900 µm와 2.0 mm, 3.0 mm에 드롭 2.0\*1.6 mm와 2.0\*3.0 mm를 더하고, R 모델은 5.0 mm와 3.0 mm에 같은 두 드롭을 더하며, C 모델은 드롭 두 종류만 적습니다. OMC는 22개 변형 쪽마다 0.9, 2.0, 3.0 mm 심플렉스나 2x3 FTTH 드롭, 1.6x2.0 드롭을 다르게 적습니다. Fujikura는 0.25 mm 섬유(240–265 µm)와 0.9 mm 섬유(850–950 µm), 2 mm와 3 mm 코드에 더해 평형 옥외 케이블(3.1 x 2 mm)과 실내 케이블(2 x 1.6 mm)을 적습니다. 평형 옥외 케이블의 치수 이름이 Fibertronics의 2.0\*3.0 mm 드롭과 같은지는 어느 문서도 연결하지 않았습니다.
+
+CommScope의 Qwik II는 250 µm, 900 µm, 3.0 mm, 2.0 mm를 적지만 자재 목록에서 UNV 표기가 붙은 모델만 네 종류를 받고 나머지는 0.25와 0.9 mm만 적습니다. AFL은 250 µm와 900 µm 섬유에 4.8 mm(SC만) 코드를 적고 2 mm와 3 mm는 별도 부츠 키트로 안내합니다. Panduit은 900 µm 완충 섬유나 900 µm 보강을 한 250 µm 섬유, 1.6–2.0 mm와 3.0 mm 외피 케이블(옵션 부츠)을 적습니다. PPC는 특징 줄에 모든 종류의 섬유와 케이블 지름이라고 적고, 사양 줄에는 900 µm, 2.0 mm, 3.0 mm와 2 x 3 mm 평형 케이블만 적으며 주문표는 0.250, 0.9, 2.0, 3.0 mm, 평형과 만능형 U를 고르게 합니다. 주문표가 섬유 종류도 함께 고르게 하는 점은 따로 봐야 합니다. PPC는 G.652D, G.657A1(굽힘 10 mm), G.657A2(7.5 mm), G.657B3(5 mm), G.655를 코드로 나누고, Fibertronics는 접속 부품 줄에 G.657A1, A2, B3를 적습니다. 문서는 스텁 섬유와 케이블 섬유의 종류가 다를 때 손실이 어떻게 되는지 적지 않았습니다.
+
+| 문서 | 케이블 칸에 적힌 말 | 칸 안의 구분 |
+| --- | --- | --- |
+| Fibertronics FieldConx | 900 µm, 2.0 mm, 3.0 mm, 5.0 mm, 드롭 2.0\*1.6, 드롭 2.0\*3.0 | 부품 번호 끝 -U, -R, -C |
+| OMC Field Fast | 0.9/2.0/3.0 mm 심플렉스, 2x3, 1.6x2.0 FTTH 드롭 | 변형 쪽 22개 |
+| Fujikura FAST | 0.25, 0.9 mm 섬유, 2, 3 mm 코드, 평형 옥외 3.1 x 2 mm, 실내 2 x 1.6 mm | LC는 실내만(각주 5) |
+| CommScope Qwik II | 250 µm, 900 µm, 3.0 mm, 2.0 mm | UNV 모델만 네 종류 |
+| AFL FASTConnect | 250, 900 µm 섬유, 4.8 mm(SC만), 2·3 mm는 부츠 키트 | 부품 번호별 |
+| Panduit SC OptiCam | 900 µm, 250 µm에 900 µm 보강, 1.6–2.0 mm, 3.0 mm | 부츠는 옵션 |
+| PPC | 특징 줄 모든 종류, 사양 줄 900 µm·2.0·3.0 mm·평형 2 x 3 mm | 주문 코드 7번 자리 |
+| SCP ECO | 250 µm, 900 µm, 2.0 mm, 3.0 mm | 부품마다 한 종류 |
+
+## 재조립 가능 횟수와 인장 값은 문서마다 같은 뜻입니까?
+
+재조립 횟수는 재삽입, 재조립, 반복 조립, 재사용 같은 서로 다른 말로 적히고 같은 회사의 규격서와 설치 안내서가 다른 숫자를 적은 사례도 있어, 숫자만 옮기면 조건이 사라집니다. AFL의 규격서는 섬유를 최대 세 번 재삽입할 수 있다고 적고, 2026년 1월 5일자 설치 안내서(INS-01056)는 쐐기 클립을 다시 끼워 최대 다섯 번까지 재조립할 수 있다고 적습니다. 안내서는 섬유가 커넥터 몸체 안에서 부러지면 재조립할 수 없다는 조건도 적었습니다. CommScope는 Qwik II를 최대 세 번, Panduit은 성능 저하 없이 최대 두 번 재조립할 수 있다고 적습니다. SCP는 권장 최대 재조립 횟수를 5회로, Fibertronics는 반복 조립 10회 이상으로, Teleste는 재사용 횟수 10으로 적습니다. PPC는 여러 번 재사용할 수 있다고만 적고 횟수가 없으며 OMC와 Fujikura는 횟수 줄이 없습니다.
+
+인장 값도 대상과 단위가 다릅니다. Fibertronics는 30 N 이상(0.9 mm 원형 케이블은 5 N 이상)이라고 적고 접속 부품 줄에는 250 µm 섬유 2 N을 30초, 900 µm 섬유 4 N을 30초로 시간을 붙였습니다. OMC는 30 N 이상이고 두 변형 쪽(15쪽과 24쪽)만 50 N 이상입니다. Teleste는 인장 5 N, 피복 조임 10 N을 적고 라인 인장 시험 20 N 뒤 삽입손실 0.50 dB 이하라는 별도 줄을 둡니다. SCP는 2.0·3.0 mm 케이블에 평균 6.5 lb, 250·900 µm 섬유에 평균 2.0 lb의 지속 장력을 적으며, 1 lb를 약 4.448 N으로 환산하면 각각 약 28.9 N과 약 8.9 N입니다(DMS 환산). Panduit은 케이블 고정 시험의 하중을 lb와 kg으로 적습니다. 문서에 인장이라는 말만 있고 시험 시간, 손실 변화 한도, 평균인지 최소인지가 없으면 그 공백을 그대로 기록합니다.
+
+| 문서 | 재조립 줄에 적힌 말 | 횟수 | 인장·고정 줄 |
+| --- | --- | --- | --- |
+| Panduit SC OptiCam | up to two re-terminations | 2 | 케이블 고정 시험 하중 11.24 lb (5.09 kg) 표기 |
+| CommScope Qwik II | re-terminated up to three times | 3 | 줄 없음 |
+| AFL 규격서 (개정 22) | reinserted up to three times | 3 | 줄 없음 |
+| AFL 설치 안내서 (INS-01056) | re-terminated up to 5 times | 5, 섬유가 몸체 안에서 부러지면 불가 | 줄 없음 |
+| SCP ECO | recommended maximum re-termination | 5 | 6.5 lb(약 28.9 N)와 2.0 lb(약 8.9 N), 평균 |
+| Fibertronics FieldConx | Repeat Assembly | 10 이상 | 30 N 이상, 0.9 mm 원형 5 N 이상, 접속 부품 2 N·4 N을 30초 |
+| Teleste FICS | Reusable Times | 10 | 5 N, 피복 조임 10 N, 20 N 뒤 0.50 dB 이하 |
+| OMC Field Fast | 줄 없음 | 없음 | 30 N 이상, 두 변형 50 N 이상 |
+| PPC | Re-usable | 횟수 없음 | 줄 없음 |
+| Fujikura FAST | 줄 없음 | 없음 | 줄 없음 |
+
+## 박피·절단 길이와 조립 확인은 어디에서 옮깁니까?
+
+박피와 절단 길이는 모델마다 다르므로 사양서가 아니라 해당 모델의 설치 안내서에서 옮겨야 하고, 조립 확인 수단은 접촉 여부를 보여 줄 뿐 삽입손실 값을 대신하지 않습니다. AFL의 안내서는 250 µm 섬유는 코팅 35 mm, 900 µm 섬유는 900 µm와 250 µm 코팅 35 mm를 벗기라고 하고, 절단 길이는 모두 권장 10.5 mm, 최소 10 mm로 적습니다. SCP의 안내서는 케이블 외피 10 mm, 완충 10 mm를 벗기고 표시에서 10 mm 지점에서 절단하며 외피를 추가로 20 mm 벗기는 순서를 적습니다. Teleste는 절단 지그를 절단기 멈춤쇠에 맞추라고 적고 그림에 22.5 mm와 7–8 mm를 적었지만 그림 설명은 참고용이라고 밝히고 있어 길이의 대상은 확정하지 않습니다. 두 문서의 길이가 서로 다른 값이라는 점만으로도 한 모델의 숫자를 다른 모델에 옮기면 안 됩니다.
+
+확인 수단도 다릅니다. AFL의 규격서는 투명한 쐐기와 시각 결함 식별기(VFI)로 물리적 접촉의 합격·불합격 신호를 얻는다고 적고, 안내서의 ST 절차는 접촉이 이뤄지면 쐐기 창의 붉은 빛이 흐려진다고 적으며 ST 하우징을 씌운 뒤에는 쐐기를 다시 풀 수 없으므로 씌우기 전에 확인하라고 안내합니다. CommScope는 프리미엄 키트에 VFI와 고정밀 절단기를 넣고, Panduit은 OptiCam 2 도구가 조립 시점에 삽입손실 계산값을 보여 준다고 적으며, SCP는 큰 확인 창을 적습니다. FOA는 좋은 절단기와 VFL, 교육과 연습이 조립 수율을 정한다고 설명합니다(작성자 설명). 이 수단들은 모두 제조사나 교육 단체의 설명이며 독립 시험이 아닙니다. 접속 후 손실은 별도의 OLTS나 OTDR 측정으로 확인해야 합니다.
+
+| 문서 | 박피·절단 | 문서가 적은 확인 수단 |
+| --- | --- | --- |
+| AFL 설치 안내서 | 코팅 35 mm 박피, 절단 길이 권장 10.5 mm(최소 10 mm) | VFI로 쐐기 창의 붉은 빛 확인(안내서에서는 ST 절차), 하우징을 씌우기 전에 확인 |
+| SCP ECO | 외피 10 mm, 완충 10 mm 박피, 10 mm 지점 절단, 외피 추가 20 mm | 확인 창, 호박색 단추 |
+| Teleste FICS | 지그를 절단기 멈춤쇠에 맞춤, 그림 22.5 mm와 7–8 mm | 줄 없음 |
+| CommScope Qwik II | 줄 없음 | 프리미엄 키트의 VFI와 고정밀 절단기 |
+| Panduit SC OptiCam | 줄 없음 | OptiCam 2 도구의 삽입손실 계산값, 투명한 내부 하우징 |
+| FOA 해설 | 일반 설명 | 좋은 절단기, VFL, 교육과 연습 |
+
+## 현장 조건을 사양서에 대입하면 어떻게 됩니까?
+
+여기서 쓰는 사례는 가상의 교육용 계산이며 실제 현장이나 제품을 시험한 것이 아닙니다. 사례 하나는 2.0 x 3.0 mm 평형 드롭 케이블에 SC/APC를 현장 조립하는 조건입니다. 평형 2.0\*3.0 mm 이름이 케이블 칸에 있고 APC를 적은 문서는 Fibertronics와 OMC이고, PPC는 평형 2 x 3 mm 케이블과 APC 주문 코드를 모두 적어 일치합니다. Teleste는 그림에 2 * 3.0 mm 드롭을 적어 일치로 볼 수 있으나 사양 표에는 케이블 칸이 없습니다. Fujikura는 평형 옥외 케이블 3.1 x 2 mm라고 적어 이름이 달라 판정하지 못합니다. CommScope, Panduit, AFL, SCP는 평형 케이블을 적지 않았으므로 호환되지 않는다고 쓰지 않고 줄 없음으로 적습니다.
+
+사례 둘은 링크 손실 예산에 커넥터 하나당 APC 최대값을 넣는 조건입니다. AFL, CommScope Qwik II, Fujikura가 APC 0.6 dB를 적고, Fibertronics, OMC, SCP는 UPC와 APC를 나누지 않은 0.5 dB를 적습니다. PPC와 Teleste는 최대 줄이 없어 예산의 최악값 칸을 채우지 못합니다. 사례 셋은 계획 안에 세 번의 재조립이 필요한 조건입니다. Panduit은 두 번이라 일치하지 않고, CommScope와 AFL은 세 번이라 일치하며, AFL은 안내서가 다섯 번을 적어 규격서와 어긋나므로 두 값을 함께 적습니다. SCP 5, Fibertronics와 Teleste 10은 일치하고 PPC, OMC, Fujikura는 횟수 줄이 없어 판정하지 못합니다.
+
+이번 자료의 한계도 분명합니다. IEC 61754-20, IEC 61753-1, TIA-604 계열(FOCIS), TIA-568.3-D, Telcordia GR-326와 GR-1081의 본문은 읽지 못했습니다. AFL, CommScope 등의 문서가 현행 개정인지, 지금 판매되는 모델과 맞는지도 확인하지 못했습니다. Fibertronics, SCP, PPC 문서의 일부 표는 텍스트 추출로 읽었고 열이 어느 모델에 걸리는지 그림으로 모두 확인하지는 못했습니다. 모든 값은 제조사가 공표한 값이며 독립 시험이 아닙니다.
+
+![현장 조립형 커넥터 사양서를 읽는 순서](/images/education/optical-training/field-installable-connector-datasheet-loss-basis-cable-range-reterminations-pull-strength-readout/concept-ko.svg)
+
+- 방식을 먼저 가르고 그 방식의 줄에서 삽입손실을 옮깁니다
+
+- 케이블 칸과 재조립 횟수는 적힌 이름과 말 그대로 옮깁니다
+
+- 박피·절단 길이는 모델의 설치 안내서에서 옮기고, 줄이 없으면 없다고 적습니다
+
+| 가상 조건 | 줄 있음 | 줄 이름 또는 어긋남 | 판정 불가 또는 줄 없음 |
+| --- | --- | --- | --- |
+| 평형 2.0 x 3.0 mm 드롭, SC/APC | Fibertronics, OMC, PPC | Teleste는 그림에만 있음 | Fujikura 이름 다름, 나머지는 줄 없음 |
+| APC 최대 삽입손실 | AFL 0.6, CommScope 0.6, Fujikura 0.6 | Fibertronics, OMC, SCP는 0.5 한 쌍 | PPC, Teleste 최대 줄 없음 |
+| 3회 이상 재조립 | CommScope 3, AFL 3, SCP 5, Fibertronics 10, Teleste 10 | AFL 안내서는 5 | Panduit 2는 불일치, PPC, OMC, Fujikura 줄 없음 |
+
+## 업무 점검표
+
+- 삽입손실 줄이 평균, 전형, 최대, 한도 중 무엇인지와 측정 기준 문구가 있는지 적었습니까?
+
+- 접속 방식(기계식, 융착 접속형, 접착 연마형)을 먼저 확인하고 그 방식의 줄에서 값을 옮겼습니까?
+
+- 적용 케이블을 문서에 적힌 이름과 단위 그대로 옮기고, 이름이 다른 평형 케이블을 같은 것으로 묶지 않았습니까?
+
+- 재조립 횟수를 말(재삽입, 재조립, 반복 조립)과 문서 코드와 함께 적고, 인장 값은 단위와 시험 시간을 함께 적었습니까?
+
+- 박피·절단 길이를 해당 모델의 설치 안내서에서 옮기고, 접속 후 손실은 별도 측정으로 확인하도록 적었습니까?
+
+## 확인 문제와 정답
+
+### 1. 사양서에 SC/APC 삽입손실이 전형 0.3 dB 이하 한 줄만 있고 최대 줄이 없습니다. 링크 손실 예산의 최악값에 넣어도 됩니까?
+
+정답·해설: 넣지 않습니다. 전형값은 최악값이 아니므로 최대 칸은 줄 없음으로 적고, 최대가 필요하면 같은 모델의 다른 문서나 시험 성적서에서 확인합니다. 예산에 임시로 쓰는 값이 있다면 출처와 함께 가정이라고 표시합니다(DMS 해석).
+
+### 2. AFL 규격서는 최대 세 번 재삽입, 설치 안내서는 최대 다섯 번 재조립이라고 적습니다. 작업 기준에는 어느 값을 씁니까?
+
+정답·해설: 한쪽을 고르지 않고 두 값을 문서 코드와 날짜와 함께 적습니다. 두 문서의 개정 차이로 갈렸는지는 문서만으로 알 수 없으므로, 계획에는 낮은 쪽 값을 쓰고 이유를 기록한 뒤 해당 모델의 현행 설치 안내서를 확인합니다. 섬유가 커넥터 몸체 안에서 부러지면 재조립할 수 없다는 조건도 함께 옮깁니다.
+
+### 3. Panduit SC OptiCam 문서의 본문은 짝 접속당 평균 0.3 dB, 선택 표는 평균 삽입손실 0.03 dB입니다. 어떻게 옮깁니까?
+
+정답·해설: 두 값을 쪽 위치와 함께 모두 적고, 어느 쪽이 맞는지는 이 문서만으로 알 수 없다고 기록합니다. 하나를 고르거나 평균해서 쓰지 않으며, 예산에 들어가는 값이라면 제조사의 현행 사양서나 시험 성적서로 확인합니다.
+
+## 출처와 판본
+
+- [AFL: FASTConnect Field-Installable Connectors 규격서 (PP-2-00052 개정 22, 2024년 9월 19일)](https://edge.sitecorecloud.io/americafuji9ddc-aflglobaldebc30-prod7ddb-7b7b/media/project/afl-global/product-specification-sheet/fiberopticconnectivity/fast-connectors.pdf) · 1–2쪽
+
+- [AFL: FASTConnect Connector Termination and Assembly Instructions (INS-01056, 2026년 1월 5일)](https://afl-delivery.stylelabs.cloud/api/public/content/FASTConnect-SC-LC-ST-instructions?v=d8f27f39) · 1–3쪽
+
+- [AFL: FASTConnect Mechanical Connectors 제품 페이지](https://www.aflglobal.com/en/products/fiber-optic-connectivity/field-installable-connectors/fastconnect-mechanical-connectors)
+
+- [CommScope: Field Installable Fiber Optic Connector Guide (CO-113709.6-EN, 11/24)](https://www.commscope.com/globalassets/digizuite/2530-field-installable-connector-solutions-guide-co-113709-en.pdf) · 2–10쪽
+
+- [Fibertronics: FieldConx Series Datasheets (날짜 미인쇄)](https://www.fibertronics.com/SSP%20Applications/NetSuite%20Inc.%20-%20SCS/SuiteCommerce%20Standard/Site-Assets/FieldConx%20Series%20Datasheets.pdf) · 1–4쪽
+
+- [OMC: Field Fast Installation Fiber Optic Connector 데이터시트 (2018, En version 1.0)](https://www.omcftth.com/wp-content/uploads/2023/10/Field-Fast-Installation-Fiber-Optic-Connector.pdf) · 1–24쪽
+
+- [Teleste: Fibre FICS Connector 데이터시트 (TEN-FICS_211124)](https://www.teleste.com/wp-content/uploads/2022/01/Teleste_Datasheet_Enlighten_FICS_Connector_211124.pdf) · 1–4쪽
+
+- [Fujikura: FAST Connector Series (JSAA-13-24-0021A 2406-2603)](https://www.bbnint.co.uk/documents/data_sheets/Fujikura/FAST_connectors.pdf) · 1–3쪽
+
+- [PPC: Field Termination Connector Spec Sheet (rev3_10122022)](https://www.ppc-online.com/hubfs/DOWNLOADABLE%20DOCUMENTS/Product_Spec_Sheets/field-termination-connector_spec-sheet.pdf) · 1–2쪽
+
+- [Panduit: SC OptiCam Pre-Polished Fiber Optic Connectors (FBSP17-WW-ENG, 7/2024)](https://www.panduit.com/content/dam/panduit/en/products/media/2/72/772/7772/111527772.pdf) · 1–2쪽
+
+- [SCP: ECO Series Field-Assembly SC Type Fiber Optic Connectors 기술 사양 (날짜 미인쇄)](https://scpcat5e.com/storage/EF-CON-MM-SM_SC_TechSpecs.pdf) · 1–2쪽
+
+- [FOA: Splice-On Connectors With Mechanical Splices And Fusion Splices (2025)](https://www.thefoa.org/tech/ref/termination/prepolish.html)
+
+## 다음에 볼 교안
+
+- [광통신 교육 목차](/education/optical-training)
+
+- [광 커넥터 사양서의 삽입손실·반사감쇠량·착탈 횟수 판독](/education/optical-training/optical-connector-datasheet-insertion-loss-return-loss-mating-cycles-readout)
+
+- [클리브 각도 판독과 클리버 관리](/education/optical-training/cleave-angle-readout-and-cleaver-upkeep)
+
+- [FTTH 드롭 케이블 사양서의 단기·장기 인장하중·굽힘 반경·경간 판독](/education/optical-training/ftth-drop-cable-datasheet-short-long-term-tensile-bend-radius-span-readout)
+
+- [FTTH 분배·접속 단자함 사양서의 포트 수·스플리터 수용·케이블 입출구·보호 등급 판독](/education/optical-training/ftth-access-terminal-datasheet-port-count-splitter-capacity-cable-entry-ip-rating-readout)
