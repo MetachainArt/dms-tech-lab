@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "시험 실행으로 알 수 없는 것",
+    summary: "자동화를 켜기 전에 돌려 보는 시험 실행(dry run)이 무엇을 보여 주고 무엇을 빠뜨리는지 Ansible, 쿠버네티스, AWS CLI 공식 문서 세 곳과 모의 자동화 시험으로 확인하고, 보고서에 나오지 않는 단계와 시험 실행 중에도 실제로 실행되는 단계를 짚어 다섯 칸짜리 시험 실행 카드를 제안하는 업무 자동화 실무 가이드입니다.",
+    tags: ["Work", "업무 자동화", "AX 전환"],
+    image: "/images/works/automation-dry-run-limits/pencil-checklist-and-stamp.webp",
+    link: "/works/automation-dry-run-limits",
+  },
+  {
     title: "글감이 떨어지면 멈춥니다",
     summary: "글 자동화의 글감 큐가 비었을 때 다른 소재로 채우지 않고 멈추게 해 둔 설계가 실제로 어떻게 움직였는지 리도의 Threads 게시 기록으로 따라가고, 남은 글감 3개일 때의 경고가 하루 반치였다는 점과 멈춘 뒤를 설계하는 다섯 칸 카드를 정리한 업무 자동화 실무 가이드입니다.",
     tags: ["Work", "업무 자동화", "AX 전환"],

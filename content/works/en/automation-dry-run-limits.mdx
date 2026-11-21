@@ -1,0 +1,106 @@
+---
+title: "What a Dry Run Can't Tell You"
+excerpt: "A dry run is the trial you run before switching an automation on. Using official documentation from Ansible, Kubernetes and the AWS CLI plus a mock automation test on one machine, this practical guide shows what a dry run reports, what it leaves out, and proposes a five-box dry-run card."
+date: "2026-11-21"
+readTime: "10 min"
+kind: "guide"
+tags: ["Work", "Workplace automation", "AX transformation"]
+---
+
+A dry run shows what an automation intends to do without touching anything outside it. How much it shows depends on the tool. Some only check permissions, some pass through every stage up to the point of saving, and some report a list of the changes they would make. A step that depends on an earlier result, or a step that does not support dry runs, may be missing from the report, so a clean dry run is not enough on its own to decide that an automation is safe to switch on.
+
+This account rests on official material checked on November 21, 2026 (the Ansible documentation, the Kubernetes documentation, the AWS CLI documentation) and a mock automation test run on one computer. It is not a customer case, and it contains no measurement showing that the card below reduces incidents.
+
+## If the dry run is clean, can you switch it on?
+
+Not on that evidence alone. A dry run imitates a real run, and the imitation does not reach everything.
+
+The [Ansible documentation](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_checkmode.html) describes check mode like this. Ansible runs without making any changes on remote systems. Modules that support check mode report the changes they would have made. Modules that do not support it report nothing and do nothing. The same page calls check mode just a simulation and adds that tasks with conditionals based on the results of earlier tasks (registered variables) produce no output.
+
+So read a dry-run report as a preview limited to what the tool can tell you. It does not guarantee that anything missing from it will also stay out of the real run.
+
+![A paper checklist with pencil tick marks in only some of its boxes lies on a small office desk next to a pair of glasses, a wooden-handled stamp and a potted plant by the window](/images/works/automation-dry-run-limits/pencil-checklist-and-stamp.webp)
+
+## Does every tool show the same range?
+
+No. The three documents I read split into three kinds.
+
+| Tool | What its dry run does | Limit the documentation states |
+|---|---|---|
+| AWS CLI (`--dry-run` on the EC2 launch command) | Checks whether you have the required permissions without actually making the request. If you do, the response is a `DryRunOperation` error; if not, `UnauthorizedOperation` | The thing the documentation says it checks is permission |
+| Kubernetes (`dryRun=All`) | Runs the request through every stage (admission, validation, merge conflicts) up to the point of storage. It guarantees nothing is persisted and there are no other side effects | Values generated before storage, such as name, UID and timestamps, may differ from the real run, and the page says not to rely on them |
+| Ansible (`--check`) | Modules that support check mode report the changes they would have made | Modules without support report nothing, and conditional tasks based on earlier results produce no output |
+
+The dry-run section of the [Kubernetes API documentation](https://kubernetes.io/docs/reference/using-api/api-concepts/) says the response is as close as possible to a real one, and then warns separately that generated values can differ. The [AWS CLI documentation](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html) has one more detail worth noticing: the answer "you have permission" arrives in the shape of an error response. An automation that counts every error as a failure could read that answer as a failure. This is my reading of the documentation's wording, and I did not test it against the real tool.
+
+## Can a step go missing from the dry-run report?
+
+Yes. I turned the two cases Ansible describes into code and compared a dry-run report with a real run on my own computer. I built a five-step mock automation in Node. It is not a real service; it is an imagined flow that sends waiting-list notices by email.
+
+1. Read the waiting list
+2. Write the notice text
+3. Send the email (supports dry run and reports only how many it would send)
+4. Add one line to the send log (a conditional step that runs only if step 3 returns a message number)
+5. Update an external sheet (does not support dry run)
+
+Here are the results of one dry run and one real run.
+
+| Step | Dry-run report | Real run |
+|---|---|---|
+| 1 Read list | 3 people read | 3 people read |
+| 2 Write text | 1 text | 1 text |
+| 3 Send email | Would send 3 emails | Sent 3, message number msg-1007 |
+| 4 Send log | No report | Logged msg-1007 |
+| 5 Sheet update | No report | Failed: 403, the sheet is read-only |
+
+After the dry run, zero emails had actually gone out; after the real run, three had. The report covered 3 of the 5 steps. Step 4 did not run because no message number is created in a dry run, so its condition was not met, and step 5 said nothing because it does not support dry runs. Someone reading only the report would not know the sheet update exists, or that it can fail. The message number appearing only in the real run has the same shape as the difference in generated values that the Kubernetes documentation warns about.
+
+The test encodes the documented rules, so its result was fixed in advance and nothing new was discovered. I ran it to see where the gaps in a report fall. How real tools report such steps differs by tool, and I did not test any of them.
+
+![Translucent tracing paper laid over a floor plan on a wooden table, with room outlines traced in pencil and a pencil and an eraser lying beside it](/images/works/automation-dry-run-limits/tracing-paper-over-floor-plan.webp)
+
+## Does anything really happen during a dry run?
+
+Yes. Two things stood out.
+
+The first is a step set up on purpose to run anyway. The Ansible documentation says that giving a task `check_mode: false` makes it change the system even when the playbook is run with `--check`, and its example task is named "This task will always make changes to the system." Setting `check_mode: true` does the opposite and makes a task run without changing anything even in a normal run. Turning on the dry-run switch does not quiet every step, so before you switch an automation on, find out whether the tool has fixed settings like these.
+
+The second is reading. In the mock automation, step 1 really read the list even in the dry run. Reading changes nothing outside, but it does pull in a list that holds personal data. The documentation has a similar caution: Ansible's `--diff` option can reveal sensitive information, so it can be turned off for a task with `diff: false`. A dry-run report also becomes data once you store it or share it.
+
+Kubernetes is careful in the other direction. If the real version of a request would trigger an admission controller that has side effects, it fails the request rather than risk the side effect. So a failed dry run does not need to mean your settings are wrong. The tool may have blocked it on purpose to avoid a risk.
+
+## How should you read a dry run when an AI step is involved?
+
+None of the three documents mentions AI steps. This section is my own assumption drawn from them, and I did not test it.
+
+- A report that says it will write a notice does not tell you whether the notice is right. What gets reported is that a step is due to run, not the quality of its output.
+- Whether a dry run actually calls the model or skips the call may differ by tool. If a call costs money, a dry run may cost money too, so leave that as a box to check in the tool's documentation.
+- Separately from the dry run, a person should read one or two sample outputs of the AI step. How to decide who reads them is in [Naming a Reviewer for AI Output](/en/works/ai-output-reviewer-card).
+
+## What goes on a dry-run card?
+
+What the tool shows and what it leaves out, and who reads what before and after you switch on, all on one page. The five boxes below shrink what I read above to a size a small office can fill in. It is a DMS.Labs proposal, not a form validated in a customer project.
+
+| Box | What to write |
+|---|---|
+| How to dry-run | The name of the tool's dry-run feature and how to turn it on, plus the range of checking its documentation states (permissions only, every stage, or a list of changes) |
+| Steps that get reported | Steps that appear in the report and steps that do not. Split the missing ones into steps without dry-run support and steps that depend on an earlier result |
+| Steps that really run | Steps that read or execute even in a dry run, steps with fixed settings, and steps that pull in personal data |
+| Who reads before switch-on | One person who reads the report and says it is fine to switch on, and who reads sample output from the AI step |
+| What to read again afterwards | How to re-read what actually changed outside once the first real run is over |
+
+Suppose an academy with six staff automates waiting-list notice emails. This is hypothetical, not a real customer case. In filling in the card, the academy would notice before switching on that the external sheet update never appears in the dry-run report. It could then check, separately from the dry run, that the sheet is not read-only.
+
+The last box of the card connects to other guides. How to re-read what changed outside after switch-on is in [Read It Back After Success](/en/works/read-back-after-success). Whether it is safe to restart after a real run stops partway is covered in [When to Restart an AI Automation](/en/works/ai-automation-safe-retry). How to open up permissions step by step is in [Giving AI automation permission in three steps](/en/works/automation-permission-ladder), and a dry run can be one of the checks you pass before raising a step.
+
+## What did this piece not check?
+
+Several things. The three tools I read manage servers and cloud services. I could not confirm that the dry runs in workplace automation tools such as n8n, Make or Zapier work the same way. I read the Ansible check-mode page, the dry-run section of the Kubernetes API concepts page, and the `--dry-run` option description in the AWS CLI documentation. I did not read how other services handle dry runs. The AWS evidence is one sentence of option description.
+
+The mock automation turns two documented cases into code and is not a test of how a real tool behaves. The section on AI steps is an assumption. There is also no measurement showing that the card reduces incidents. The documentation reflects November 21, 2026 and may change.
+
+## Where to go next
+
+To sort out, task by task, what to check before each automation goes live, the existing [DMS.Labs work automation](/automation) page gives an overview. That page is currently provided in Korean only. If you want to talk it through, there is the [contact page](/en/contact). This account covers official documentation and a mock automation test, and it does not promise implementation costs, time savings, or effects on inquiries or revenue.
+
+The two images were newly generated to illustrate the topic. They are not photographs of a real working screen or a customer site.
