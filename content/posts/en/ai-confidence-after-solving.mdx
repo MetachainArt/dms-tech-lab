@@ -1,0 +1,109 @@
+---
+translationSourceHash: "15e94b8416afe09bfe30ae52f2b1b048e7b0cf96b01b6befc88cbb216c623489"
+title: "Confidence After Solving With AI"
+subtitle: "A proposal: write down your expected score, then redo one item without the AI"
+excerpt: "Participants who solved 20 logic problems with ChatGPT scored higher, yet they guessed their own score about 3.5 items too high. This article reads two experiments from Aalto University and proposes a way to check your confidence after working with an AI."
+date: "2026-11-22"
+readTime: "11 min"
+coverImage: "/images/posts/ai-confidence-after-solving/notebook-pencil-and-paper-slips.webp"
+series: "homo-technicus"
+chapter: "14"
+tags: ["AI overconfidence", "Metacognition", "AI education", "Critical thinking"]
+---
+
+People who solved logic problems with an AI's help scored higher, but they guessed their own score well above what they actually got. In Experiment 1 of a study from Aalto University in Finland, 246 participants using ChatGPT-4o answered an average of 12.98 of 20 problems correctly. Right after finishing, they said they had answered 16.50. In Experiment 2, though, people who solved the problems without AI also guessed too high by a similar amount, so reading this as "AI creates overconfidence" would go beyond what the study shows. The check proposed in this article is a DMS.Labs proposal drawn from the study. We have not tested whether it corrects anyone's estimates.
+
+Chapter 13, [When the AI Takes Your Side](/en/blog/ai-takes-your-side), looked at research showing that an AI's agreement can harden your confidence. This chapter asks how far your confidence drifts from the actual result after you work through a task with an AI. Reading the two chapters together is my own interpretation.
+
+Based on public sources checked on November 22, 2026. "AI makes you smarter but none the wiser: The disconnect between performance and metacognition," by Daniela Fernandes and colleagues, appeared in Computers in Human Behavior, volume 175 (February 2026), article 108779. According to Aalto University's press release, it went online on October 27, 2025. I could not open the journal text because access was blocked. I read the journal abstract and highlights and the Aalto press release. For methods and detailed numbers I read the full preprint the authors posted on January 5, 2025 (arXiv 2409.16708 v2, 27 pages). The preprint and the final version may differ, so every figure below comes from the preprint. The study is about solving test questions, not about using AI at work.
+
+![A wooden desk by a window with an open blank notebook, a pencil resting on it, and a row of blank paper slips beside it](/images/posts/ai-confidence-after-solving/notebook-pencil-and-paper-slips.webp)
+
+## How much too high did people guess their score after solving with an AI?
+
+In all three groups, people guessed 3.5 to 3.9 items too high. Participants solved 20 logical reasoning problems from the Law School Admission Test (LSAT) and then wrote down how many they thought they had answered correctly. I calculated the gaps below from the averages in the paper's tables.
+
+| Experiment | Group | People | Actual average | Self-estimated average | Gap |
+| --- | --- | --- | --- | --- | --- |
+| 1 | ChatGPT | 246 | 12.98 | 16.50 | 3.52 |
+| 2 | ChatGPT | 245 | 13.31 | 17.13 | 3.82 |
+| 2 | No AI | 207 | 9.71 | 13.62 | 3.91 |
+
+The abstract describes the Experiment 1 gap as "about four points." This article uses 3.52, the figure calculated from the table averages.
+
+Scores themselves were higher with the AI. In Experiment 2, which recruited a no-AI group at the same time, the averages were 13.31 and 9.71. Experiment 1 had no concurrent comparison group, so it was compared with data from an earlier study that used the same problems (3,543 people, average 9.45). The participants averaged slightly below ChatGPT-4o working alone (13.65 over 100 runs), and 136 of the 246 people in Experiment 1 (55.28%) beat the AI alone.
+
+Experiment 2 offered a bonus for guessing the number correct accurately. The AI group still guessed 3.82 items too high on average. That experiment is not a like-for-like comparison with Experiment 1, which had no bonus, so I cannot say what the bonus did.
+
+## If people guessed too high without AI too, what changed?
+
+What changed was the shape of the misjudgment, not the average. The Dunning-Kruger effect is the tendency of lower performers to rate themselves higher, and higher performers to rate themselves lower, than they should. The team used a statistical model to check whether that shape was still there. It appeared in the no-AI groups and did not appear in the group using ChatGPT.
+
+In Experiment 1's AI group, the 110 lower scorers averaged 10.82 but guessed 15.34. The 22 top scorers averaged 16 and guessed 17.68. The gap is about 4.5 items for the lower group and about 1.7 for the top group. The team still noted that such a gap can arise from a general tendency to guess high, so the model separates that tendency from a skill-dependent spread. If the spread is present, its value is above 1, and near 1 means it is absent. In Experiment 1 the AI group scored 1.01 and the earlier no-AI data scored 1.78. In Experiment 2 the AI group scored 1.13 and the no-AI group 1.53.
+
+The authors list two readings in their limitations. The AI may have removed the Dunning-Kruger pattern. Or participants may have ended up with similar scores while remaining unaware of their own. The study shows that the pattern did not return even when Experiment 2 attached a bonus to accuracy, and it stops there.
+
+## Did people who know AI well judge more accurately?
+
+No, their guesses were slightly further off. The team measured AI literacy with a 31-item questionnaire (SNAIL). Higher technical-understanding scores went with higher guesses of the number correct in both experiments (correlations of 0.21 and 0.20). All three subscales, including critical appraisal and practical application, correlated positively with average confidence (between 0.13 and 0.25 in Experiment 1).
+
+These correlations are small, and the authors say they should be read with caution. AI literacy was self-reported, so it may not match real ability. The authors speculate that familiarity with AI may strengthen the "I'm better than average" belief. The study did not test that.
+
+## How did participants actually use the AI?
+
+Most pasted in the problem and accepted what came back. The experiment required at least one question to ChatGPT per problem. In Experiment 1 the participants wrote 11,944 prompts, and after filtering out verbatim copies of the problems, 3,074 remained. Aalto's press release says most participants asked only once per problem.
+
+The researchers read the closing free-text answers and sorted usage into four types.
+
+- High trust: 145 people (58.94%). They pasted the problem and accepted the answer without critical checking. This group's actual average was 13.01 and its self-estimate was 16.84.
+- Verification tool: 53 people (21.54%). They used the AI only to check answers they had worked out themselves.
+- Collaborative partner: 31 people (12.60%). They said "we solved it" and treated the AI like a teammate.
+- Unclear or did not use it: 17 people (6.91%).
+
+The authors report that these types showed no clear difference in scores or estimation accuracy. Per-problem confidence (0 to 100) also separated right from wrong answers only slightly: 82.49 on correct problems and 77.00 on incorrect ones, a 5.5-point gap. The metric for how well confidence separates right from wrong (AUC) averaged 0.62, where 0.5 means no separation. Of the 246 people, 36 could not separate right from wrong with their confidence at all.
+
+## Can this result be carried over to AI use at work?
+
+Not as it stands. The study left several things unmeasured.
+
+First, the task was 20 multiple-choice questions with one right answer. Price quotes, customer notices, and analysis reports are not judged right or wrong that cleanly. Second, the model was one version of ChatGPT-4o (gpt-4o-2024-05-13) as of the study. Third, participants were online workers in the United States who spent an average of 42 minutes on a single task. Fourth, what was measured was a guessed number correct and per-problem confidence, not self-confidence in general. Fifth, the study did not look at whether repeated use makes estimates better or worse. I have not rerun this on a newer model.
+
+A similar scene still exists at work: glancing once over an AI-written customer notice or summary and passing it on as "fine." Seeing that scene as similar to the study is my own judgment.
+
+## How can you check your confidence after solving?
+
+The simplest check is to write down how many you think were right before you verify, and then set the real count next to it. Chapter 12, [My Judgment Before the AI Answer](/en/blog/homo-technicus-judgment-before-ai), was the practice of writing your judgment before you see an answer. This chapter's practice is writing down your confidence after you have the answer. The table below is a DMS.Labs proposal, not a method the study tested.
+
+| If | Then | Study finding it connects to |
+| --- | --- | --- |
+| The AI's output looks fine | Before you finish reviewing, write "how many of these ten are problem-free" as a number, then write the verified result next to it | Right after finishing, participants guessed about 3.5 items too high on average |
+| You are about to ask the AI once and take the answer | Write one line of your own reasoning, then ask once more: "Find where this answer could be wrong" | Most asked once and accepted the answer. Researcher Fernandes suggested in the press release that an AI could ask users to explain their reasoning |
+| You are closing out a week of work | Redo one item from scratch without the AI and compare it with the AI's answer | The authors discussed that overconfidence may impair users' ability to evaluate performance without AI |
+| You feel you know AI well | Do not skip the same check | Higher technical-understanding scores went with larger misjudgments (a small correlation) |
+
+Writing the number leaves you the size of the miss rather than a verdict on whether you were right. A single miss can be chance, so it only starts to mean something after a few weeks of entries. This article has not confirmed that the method corrects estimates.
+
+## What does it look like in a hypothetical scene?
+
+![A small brass balance scale standing on a folded cloth with a pencil beside it on a wooden shelf by a window](/images/posts/ai-confidence-after-solving/brass-balance-by-window.webp)
+
+Suppose a three-person translation office has one person review ten AI-drafted customer notices before they go out. This is an illustrative scene, not a real case. Before opening the first notice, the reviewer writes "nine are problem-free." After checking, seven were fine, so the estimate was off by two.
+
+One number settles very little. It might lead the reviewer to use the table's second row once more on the next ten. Who checks, and against what standard, is covered separately in [Naming a Reviewer for AI Output](/en/works/ai-output-reviewer-card).
+
+## What can you try this week?
+
+Before closing out work you did with an AI, write down "how many I think are right" three times this week. When the check is done, record the difference in one line. If all three differences are zero, your estimate may have been accurate or your check may have been shallow, so the reading stays open.
+
+Here is what this article could not confirm. I could not read the journal's final text, and I did not compare its numbers with the preprint. The study did not measure estimates in workplace tasks. The effect of this check was not tested, and I did not look for follow-up research after this study. The table and the hypothetical scene are both DMS.Labs proposals and assumptions, not customer cases or field measurements.
+
+## What to read next
+
+Training in checking AI results as part of your work is on the DMS.Labs generative AI education page ([education/gen-ai](/education/gen-ai)), which is provided in Korean. How to decide which results to accept and by what standard is also covered in [Acceptance Tests for an AI Skill](/en/works/ai-skill-acceptance-tests). If you are considering AI training for your team, describe your situation on the [contact page](/en/contact).
+
+## Sources
+
+Checked on November 22, 2026. The two photos in this article are AI-generated illustrations, not records of real work.
+
+- Daniela Fernandes, Steeven Villa, Salla Nicholls, Otso Haavisto, Daniel Buschek, Albrecht Schmidt, Thomas Kosch, Chenxinran Shen, Robin Welsch, "AI makes you smarter but none the wiser: The disconnect between performance and metacognition," Computers in Human Behavior 175, 108779, 2026: [publisher DOI](https://doi.org/10.1016/j.chb.2025.108779) (abstract and highlights checked); preprint I read: [arXiv 2409.16708 v2](https://arxiv.org/abs/2409.16708v2)
+- Aalto University, "AI use makes us overestimate our cognitive performance," October 2025: [press release](https://www.aalto.fi/en/news/ai-use-makes-us-overestimate-our-cognitive-performance)
