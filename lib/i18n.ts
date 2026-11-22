@@ -57,6 +57,7 @@ export function hasEnglishVersion(pathname: string): boolean {
     || path === "/education/optical-training/ftth-access-terminal-datasheet-port-count-splitter-capacity-cable-entry-ip-rating-readout"
     || path === "/education/optical-training/indoor-cable-datasheet-fire-rating-labels-cpr-euroclass-ofnr-ofnp-lszh-readout"
     || path === "/education/optical-training/field-installable-connector-datasheet-loss-basis-cable-range-reterminations-pull-strength-readout"
+    || path === "/education/optical-training/air-blown-micro-cable-microduct-datasheet-fill-ratio-definition-duct-id-pressure-tension-bend-readout"
     || path === "/education/optical-training/01-fiber-types-link-design"
     || path === "/education/optical-training/02-fiber-market-infrastructure"
     || path === "/education/optical-training/01-rf-over-fiber-lecture"
