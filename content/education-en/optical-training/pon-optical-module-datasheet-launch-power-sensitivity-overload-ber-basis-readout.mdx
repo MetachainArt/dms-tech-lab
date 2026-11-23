@@ -1,0 +1,208 @@
+---
+title: "Reading PON Optical Module Datasheets: Launch Power, Receiver Sensitivity, Overload and the Measurement Basis (BER, Extinction Ratio, FEC)"
+date: "2026-11-23"
+desc: "A 10-minute lesson on reading launch power, receiver sensitivity, overload and the BER, extinction ratio and FEC conditions in GPON and XGS-PON module datasheets for OLTs and ONUs. It compares ITU-T G.984.2, G.9807.1 Amendment 1 and 13 manufacturer datasheets, shows where the same class name carries different measurement bases, and works a hypothetical loss calculation."
+coverImage: "/images/education/optical-training/pon-optical-module-datasheet-launch-power-sensitivity-overload-ber-basis-readout/cover.svg"
+readTime: "10 min"
+lang: "en"
+---
+
+The sensitivity and overload lines in a PON optical module datasheet mix numbers of different bases if they are copied by class name alone (B+, C+, N1, N2). First write down whether the line is an OLT receive line (upstream) or an ONU receive line (downstream), then copy the BER (bit error ratio), extinction ratio and FEC (forward error correction) conditions printed on the same line, and only then compare. In G.984.2 Appendix V, the C+ values of −32 dBm and −12 dBm belong to the OLT receiver, while the ONU receiver lines are −30 dBm and −8 dBm. In the documents read here, the sensitivity of the same C+ OLT is −31 dBm at Cisco, −30 dBm at Trixon (BER 10⁻¹⁰, measured with two modules connected back to back), and two lines, −30 dBm and −32 dBm, at Airlive depending on the BER.
+
+Based on documents checked on November 23, 2026.
+
+## Learning objectives
+
+- Copy sensitivity and overload lines separately for the OLT receiver and the ONU receiver, and write whether the class name is B+ or C+ from G.984.2 or N1, N2, E1 or E2 from G.9807.1.
+
+- Copy the BER, extinction ratio, PRBS pattern and FEC condition printed beside the sensitivity line, and do not rank numbers of different conditions in one table.
+
+- Calculate the receive range for both the minimum and the maximum loss, so that the overload side is checked as well as the sensitivity side.
+
+## Where in the standards are the reference values for GPON B+ and C+ and XGS-PON N1 and N2?
+
+The GPON B+ values are in ITU-T G.984.2 (August 2019), Annex A, Tables A.1 and A.2. The OLT launches +1.5 to +5 dBm mean power, the OLT receiver has −28 dBm sensitivity and −8 dBm overload, the ONU launches +0.5 to +5 dBm, the ONU receiver has −27 dBm and −8 dBm, and the optical path loss runs from 13 dB to 28 dB. Annex A says the ONU sensitivity can be reached with an APD detector without FEC or with a PIN detector using FEC. The C+ values are not in the body of the Recommendation but in Appendix V, Table V.1. Appendix V states that it is not an integral part of the Recommendation but industry best practice, and its notes say the sensitivity lines assume a pre-FEC BER of 10⁻⁴ and the use of RS(255,239) FEC.
+
+The body text specifies all parameters against a design objective of a BER no worse than 10⁻¹⁰ under the extreme optical path attenuation and dispersion conditions. The B+ table has no separate BER line, and the C+ table has a 10⁻⁴ line. Part of the sensitivity difference between the two classes is therefore a class difference and part is a difference in measurement basis (DMS interpretation).
+
+| Item | B+ (Annex A) | C+ (Appendix V, informative) |
+| --- | --- | --- |
+| OLT mean launched power, min / max | +1.5 / +5 dBm | +3 / +7 dBm |
+| OLT receiver sensitivity / overload | −28 / −8 dBm | −32 / −12 dBm (pre-FEC BER 10⁻⁴, FEC assumed) |
+| ONU mean launched power, min / max | +0.5 / +5 dBm | +0.5 / +5 dBm |
+| ONU receiver sensitivity / overload | −27 / −8 dBm | −30 / −8 dBm (pre-FEC BER 10⁻⁴, FEC assumed) |
+| Optical path loss, min / max | 13 / 28 dB | 17 / 32 dB (maximum fibre length 60 km) |
+| Optical path penalty, downstream / upstream | 0.5 / 0.5 dB | 1 / 0.5 dB |
+
+XGS-PON uses different class names. Table B.6.1 of G.9807.1 (2023) Amendment 1 (May 2025) gives loss ranges of 14–29 dB for N1, 16–31 dB for N2, 18–33 dB for E1 and 20–35 dB for E2, and the same table also gives B+ at 13–28 dB and C+ at 17–32 dB for the optional wavelength set that reuses the GPON wavelengths. When a class called B+ or C+ appears in an XGS-PON module datasheet, the name alone does not show whether it is a GPON value, a value of the optional wavelength set, or a vendor's own label. If the downstream is 1575–1580 nm and the upstream is 1260–1280 nm, it is the basic wavelength set, so check the wavelength line first.
+
+| Item (basic wavelength set) | N1 | N2 | E1 | E2 |
+| --- | --- | --- | --- | --- |
+| Optical path loss, min / max | 14 / 29 dB | 16 / 31 dB | 18 / 33 dB | 20 / 35 dB |
+| OLT mean launched power, min / max | +2 / +5 dBm | +4 / +7 dBm | +6 / +9 dBm | +8 / +11 dBm |
+| ONU receiver sensitivity / overload | −28.0 / −9.0 dBm | −28.0 / −9.0 dBm | −28.0 / −9.0 dBm | −28.0 / −9.0 dBm |
+| ONU mean launched power, min / max | +4 / +9 dBm | +4 / +9 dBm | +4 / +9 dBm | +4 / +9 dBm |
+| OLT receiver sensitivity / overload | −26 / −5 dBm | −28 / −7 dBm | −30 / −9 dBm | −32 / −11 dBm |
+
+The BER reference level of the XGS-PON tables is 10⁻³, and the upstream sensitivity assumes a received signal with a 6 dB extinction ratio. Do not compare these values on the same scale as the 10⁻¹⁰ or 10⁻⁴ lines of GPON.
+
+## Why does the sensitivity of the same GPON C+ OLT module differ between documents?
+
+The first table below copies the receiver lines from GPON OLT module datasheets. The B+ lines are nearly identical at −28 dBm and −8 dBm, but the C+ lines split into −30 dBm at Trixon, −31 dBm at Cisco, and −32 dBm at the older Airlive file and at Superxon. The conditions printed on the sensitivity lines explain part of the difference. Trixon states in a note that the value was measured at a BER below 10⁻¹⁰ with the modules connected back to back. Superxon splits the basis inside one table, with BER 10⁻¹⁰ or better for B+ and BER 10⁻⁴ or better for C+, E1 and D. The two Airlive files attach the same −32 dBm to BER 10⁻¹⁰ in one and BER 10⁻⁴ in the other. In the Cisco table that was extracted, no BER line was found.
+
+Even on B+ lines, FS prints −28 dBm with an extinction ratio of 8.2 dB and BER 10⁻⁴ in a note, while C-Light prints −28 dBm with an extinction ratio of 10 dB and BER below 10⁻¹⁰. The numbers are equal but the bases differ, so they cannot be read as the same value. When comparing sensitivity, line up only the lines whose BER and extinction ratio are the same.
+
+| Document | Class | Mean launched power | Extinction ratio | Sensitivity / overload | Condition on the sensitivity line | Receive wavelength |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cisco GPON SFP (2020 notice) | B+ | +1.5 / +5 dBm | 10 dB min | −28 / −8 dBm | no BER line | 1260–1360 nm |
+| Cisco GPON SFP (2020 notice) | C+ | +3 / +7 dBm | 8.2 dB min | −31 / −12 dBm | no BER line | 1290–1330 nm |
+| Trixon 2019 edition (file a24fc940) | B+ | +1.5 / +5 dBm | 8.2 dB | −28 / −8 dBm | BER below 10⁻¹⁰, back to back | 1290–1330 nm |
+| Trixon 2023 edition (file 60e466d7) | B+ | +1.5 / +5 dBm | 8.2 dB | −28 / −8 dBm | BER below 10⁻¹⁰, back to back | 1260–1360 nm |
+| Trixon, both editions | C+ | +3 / +7 dBm | 8.2 dB | −30 / −12 dBm | BER below 10⁻¹⁰, back to back | 1290–1330 nm (2019), 1260–1360 nm (2023) |
+| FS GSFP-43-20BL-I | B+ | +1.5 / +5 dBm | 8.2 dB | −28 / −8 dBm | extinction ratio 8.2 dB, BER 10⁻⁴ | 1260–1360 nm |
+| C-Light GPON OLT B+ (V20141213) | B+ | +1.5 / +5 dBm | 8.2 dB | −28 / −8 dBm | extinction ratio 10 dB, BER below 10⁻¹⁰ | 1290–1330 nm |
+| Superxon combo SFP+ (DS00001553V1.1) | B+ | omitted from this table | 10 dB min | −28 / −8 dBm | BER 10⁻¹⁰ or better | 1290–1330 nm |
+| Superxon combo SFP+ (DS00001553V1.1) | C+ | omitted from this table | 10 dB min | −32 / −12 dBm | BER 10⁻⁴ or better | 1290–1330 nm |
+| Airlive combo (file name 11072024) | C+ | +4 / +7 dBm | 8.2 dB | −32.0 / −12 dBm | extinction ratio 10 dB min, BER 10⁻¹⁰ or better | 1290–1330 nm |
+| Airlive combo (file name 11122024) | C+ | +3 / +7 dBm | 8.2 dB | −30 or −32 / −12 dBm | −30 at BER 10⁻¹⁰, −32 at BER 10⁻⁴ | 1290–1330 nm |
+
+![Bars placing the OLT and ONU receive windows of the standard next to manufacturer datasheets](/images/education/optical-training/pon-optical-module-datasheet-launch-power-sensitivity-overload-ber-basis-readout/bars-en.svg)
+
+- Dark bars are the receive windows of G.984.2 (from sensitivity to overload), and light bars are the receive windows of manufacturer datasheets
+
+- The text to the right of each bar is the BER basis printed on the sensitivity line. Bars with different bases are not a ranking
+
+- The shaded band is the ONU receive range that a C+ OLT delivers through a 14 dB path in the hypothetical calculation of this lesson
+
+Two editions from the same manufacturer also differ. The B+ receive wavelength at Trixon is 1290–1330 nm in the 2019 edition and 1260–1360 nm in the 2023 edition. The two Airlive files (the file name dates read as July 11 and December 11, 2024, so the earlier one is called the older edition here) differ in the minimum launch power, +4 dBm against +3 dBm, in the GPON sensitivity line, one line against two, and in the XGS-PON sensitivity, −28.0 dBm against −29.0 dBm. The documents do not say which is current, and under the rule against contacting manufacturers no inquiry was made.
+
+## How do XGS-PON OLT datasheets map to the N1 and N2 values of the standard?
+
+The 6COM N1/N2/E1 module datasheet (Rev 3.1) prints launch power of +2/+5, +4/+7 and +6/+9 dBm, sensitivity of −26, −28 and −30 dBm and saturation of −5, −7 and −9 dBm under a BER 10⁻³ condition, which matches the numbers of Tables B.9.3 and B.9.4 of G.9807.1. The Airlive N2 line has −28.0 dBm sensitivity and −7 dBm minimum overload in the older file, equal to the standard N2, and −29.0 dBm and −8 dBm in the newer file, which also states an extinction ratio of 8.2 dB.
+
+The XGS-PON table of Superxon labels the classes B+, C+, E1 and D, with sensitivity of −25, −29, −30 and −32 dBm and overload of −4, −8, −9 and −11 dBm. The E1 and last lines match the standard values for E1 and E2 (sensitivity −30 and −32, overload −9 and −11), but the first two lines differ by 1 dB from N1 and N2 (−26/−5 and −28/−7), and the document does not say which standard class each label corresponds to. In the GPON table of the same document, E1 means −33 dBm sensitivity and −13 dBm overload, so the same label E1 points to different numbers depending on the system. The reason for the mismatch cannot be known from the document, so compare the numbers line by line with the standard instead of trusting the label.
+
+| Document | Label | Mean launched power | Sensitivity / overload | Condition | Maximum input line |
+| --- | --- | --- | --- | --- | --- |
+| G.9807.1 Amd 1, Tables B.9.3 and B.9.4 | N1 | +2 / +5 dBm | −26 / −5 dBm | BER 10⁻³, extinction ratio 6 dB | no line |
+| G.9807.1 Amd 1, Tables B.9.3 and B.9.4 | N2 | +4 / +7 dBm | −28 / −7 dBm | BER 10⁻³, extinction ratio 6 dB | no line |
+| 6COM Rev 3.1 | N1, N2, E1 | +2/+5, +4/+7, +6/+9 dBm | −26/−5, −28/−7, −30/−9 dBm | BER 10⁻³ | −3 dBm |
+| Superxon DS00001553V1.1 | B+, C+, E1, D | omitted from this table | −25/−4, −29/−8, −30/−9, −32/−11 dBm | extinction ratio 6 dB min, BER 10⁻³ or better | 0 dBm |
+| Airlive combo N2 (file name 11072024) | N2 | +4 / +7 dBm | −28.0 / −7 dBm | extinction ratio 6 dB min, BER 10⁻³ or better | 0 dBm |
+| Airlive combo N2 (file name 11122024) | N2 | +4 / +7 dBm | −29.0 / −8 dBm | extinction ratio 8.2 dB, BER below 10⁻³ | no line |
+
+XG-PON receiver lines (−27.5, −29.5 dBm and so on) are in the same documents, but the body of G.987.2 was not read, so they were not compared with the standard.
+
+## How are the receive lines and the maximum input lines of ONU modules read?
+
+On the ONU side, datasheets often print a wider window than the standard. The C-Light GPON ONU B+ datasheet prints +0.5 to +5 dBm launch power (typical 2.5 dBm), −28 dBm sensitivity and −3 dBm overload under an extinction ratio of 8.2 dB and BER below 10⁻¹⁰. The ONU B+ line of G.984.2 is −27 dBm and −8 dBm, so the datasheet promises 1 dB more on sensitivity and 5 dB more on overload. The XGS-PON ONUs of C-Light and Wavesplitter print −28.5 dBm sensitivity and −8 dBm overload, against −28.0 dBm and −9.0 dBm for the ONU lines of the standard. The standard value is a minimum requirement and a datasheet may print a better one, but the datasheet alone does not show whether that value is confirmed by test reports or is a design target.
+
+The limit lines above the overload line also differ between documents. The C-Light XGS-PON ONU prints a maximum input of +5 dBm, while the Wavesplitter ONU of the same system prints a receiver damage threshold of −7 dBm (average power) in the absolute maximum ratings table, and the document is marked Preliminary. The gap between overload and damage threshold is 1 dB in one document and 13 dB in the other. On the OLT side, Superxon prints a maximum input of 0 dBm, 6COM prints −3 dBm, and the C-Light GPON OLT B+ prints a receiver damage threshold of +5 dBm. These lines are not the level where errors begin but the level to avoid destroying the receiver, so they are not copied into the same cell as the overload line.
+
+| Document | System | Launch min / max | Sensitivity / overload | Condition | Maximum input or damage threshold |
+| --- | --- | --- | --- | --- | --- |
+| G.984.2 Annex A (B+ ONU) | GPON | +0.5 / +5 dBm | −27 / −8 dBm | design objective BER 10⁻¹⁰ in the body | no line in the tables read |
+| C-Light CLGPONU-LA-B+ | GPON ONU | +0.5 / +5 dBm (typical 2.5) | −28 / −3 dBm | extinction ratio 8.2 dB, BER below 10⁻¹⁰ | no line |
+| G.9807.1 Amd 1, Tables B.9.3 and B.9.4 | XGS-PON ONU | +4 / +9 dBm | −28.0 / −9.0 dBm | BER 10⁻³ | no line in the tables read |
+| C-Light CLXGSP-ONU | XGS-PON ONU | +4 / +9 dBm | −28.5 / −8 dBm | BER 10⁻³ | +5 dBm |
+| Wavesplitter WST-SFP+GPSU2-x | XGS-PON ONU | +4 / +9 dBm | −28.5 / −8 dBm | BER 10⁻³, extinction ratio 6 dB | damage threshold −7 dBm |
+
+## How are the sensitivity and overload lines put into a field loss calculation?
+
+The case used here is a hypothetical teaching calculation, and no real site or product was tested. Assume that the optical path loss including splitters and splices is 14 dB, and put the standard values in as they are. The launch of +1.5 to +5 dBm from a B+ OLT becomes −12.5 to −9 dBm at the ONU, which is inside the ONU receive window of −27 to −8 dBm with 1 dB left before overload. The launch of +3 to +7 dBm from a C+ OLT becomes −11 to −7 dBm, and the upper −7 dBm exceeds the ONU overload of −8 dBm. Note 3 of Table V.1 says an ONU overload of −10 dBm is sufficient in this application, and subtracting the minimum loss of 17 dB from the maximum launch of +7 dBm gives −10 dBm, which agrees with that note (DMS calculation). With a 17 dB path, the same C+ OLT arrives at −14 to −10 dBm, inside the window.
+
+The upstream is calculated the same way. The +0.5 to +5 dBm of an ONU becomes −13.5 to −9 dBm at the OLT after 14 dB; this does not pass the B+ OLT overload of −8 dBm, but the upper −9 dBm does pass the C+ OLT overload of −12 dBm. This agrees with 17 dB as the minimum loss, which is the maximum ONU launch of +5 dBm minus the C+ OLT overload of −12 dBm. On such a short path the overload can become a problem before the sensitivity does, so the answer is an attenuator or a different class, and in either case both the minimum and the maximum loss are calculated.
+
+| Hypothetical condition (path loss) | Downstream ONU receive | ONU receive window | Upstream OLT receive | OLT receive window | Judgement |
+| --- | --- | --- | --- | --- | --- |
+| B+ pair, 14 dB | −12.5 / −9 dBm | −27 / −8 dBm | −13.5 / −9 dBm | −28 / −8 dBm | inside both windows, 1 dB before overload |
+| C+ OLT with a B+ ONU assumed, 14 dB | −11 / −7 dBm | −27 / −8 dBm | −13.5 / −9 dBm | −32 / −12 dBm | upper end exceeds overload in both directions |
+| C+ pair, 17 dB | −14 / −10 dBm | −30 / −8 dBm | −16.5 / −12 dBm | −32 / −12 dBm | inside both windows, upstream at the overload edge |
+
+The OLT receive figures in this calculation are plain subtractions with no optical path penalty. A real design uses the penalty, a margin and the values of the individual module datasheet. When the calculation is checked against DDM (digital diagnostic monitoring) values, the accuracy has to be considered. Superxon prints an accuracy of ±3 dB for the receive power monitor, FS prints ±2 dB for transmit power, and Wavesplitter prints ±3 dB over a receive power range of −28 to −8 dBm. An overload margin of about 1 dB is not judged from a DDM reading but measured with an optical power meter (DMS interpretation).
+
+## In what order are the signal detect and loss of signal lines read?
+
+SD (signal detect) and LOS (loss of signal) lines look alike, but the direction the numbers point in is reversed between documents. The 2023 edition of Trixon prints SD De-Assert −32 dBm and SD Assert −45 dBm, so Assert is the lower value, and the 2019 edition prints the same numbers under LOS names. Airlive prints SD Assert −33 dBm and SD De-assert −43 dBm, so Assert is the higher value. Superxon prints SD Assert as the sensitivity minus 0.5 dB, FS and Wavesplitter print LOS Assert at −45 dBm, and the C-Light GPON ONU prints LOS Assert −39 dBm and De-Assert −35 dBm. Do not judge by the line name; write the higher and the lower of the two numbers, and confirm which one means that a signal is present from the definition or the timing diagram of the document. The material of this lesson did not allow checking the definition of every document.
+
+![Order for reading PON optical module datasheets](/images/education/optical-training/pon-optical-module-datasheet-launch-power-sensitivity-overload-ber-basis-readout/concept-en.svg)
+
+- Write the direction (OLT receive or ONU receive) and the standard that the class name belongs to first
+
+- Overlay numbers only when the BER, extinction ratio and FEC conditions beside the sensitivity line are the same
+
+- Calculate the receive window for both the minimum and the maximum loss, and do not use DDM for the judgement
+
+The material has limits. For G.9807.1 only the Annex B tables printed in Amendment 1 were read, not the whole base document. G.987.2 (XG-PON), G.984.5, the explanation of the FEC gain in G.984.3, and the IEEE EPON classes were not read. The OTEN GPON OLT stick datasheet could not be downloaded and is not counted as evidence. All values are values published by the standards body or the manufacturers and are not values tested here, and whether each datasheet is the current revision and matches the model on sale today was not confirmed.
+
+## Checklist
+
+- Did you write whether the sensitivity and overload line is the OLT receiver (upstream) or the ONU receiver (downstream), together with the wavelength range on the same line?
+
+- Did you confirm whether the class name is B+ or C+ of G.984.2 or N1, N2, E1 or E2 of G.9807.1, and how the datasheet says its labels correspond to the standard classes?
+
+- Did you copy the BER, extinction ratio, PRBS pattern and FEC condition next to the sensitivity and overload lines as printed?
+
+- Did you calculate the receive range of the ONU and the OLT for both the minimum and the maximum loss, and check the margin on the overload side?
+
+- Did you keep the overload line, the damage threshold line, the higher and lower values of the SD or LOS names, and the DDM accuracy separate?
+
+## Review questions
+
+### 1. A datasheet prints GPON C+ sensitivity of −32 dBm and overload of −12 dBm. May these values be used for an ONU receiver design?
+
+Answer and explanation: No. In G.984.2 Appendix V, −32 dBm and −12 dBm are the OLT receiver (upstream) lines, and the ONU receiver lines are −30 dBm and −8 dBm. First confirm whether the datasheet line is for an OLT or an ONU, and copy the BER and FEC conditions of the sensitivity line with it.
+
+### 2. A section with a calculated path loss of 14 dB is to connect a C+ OLT (maximum launch +7 dBm) to a B+ ONU (overload −8 dBm). What problem can occur?
+
+Answer and explanation: The ONU receive level can reach −7 dBm and exceed the overload of −8 dBm. The standard sets the minimum loss of C+ at 17 dB, so consider an optical attenuator or a change of class. Checking only the sensitivity margin and not the overload margin is a common mistake (DMS interpretation).
+
+### 3. Two datasheets print the sensitivity of the same C+ OLT as −30 dBm (BER 10⁻¹⁰) and −32 dBm (BER 10⁻⁴). Which one goes into the design budget?
+
+Answer and explanation: Do not compare the numbers themselves; line up lines of the same basis. A design that uses FEC may use the BER 10⁻⁴ line after documenting that FEC is enabled, and otherwise the BER 10⁻¹⁰ line of −30 dBm is used. Using −30 dBm is the conservative choice, and in either case the condition of the line used is written in the design document (DMS interpretation).
+
+## Sources
+
+- [ITU-T G.984.2 (August 2019): GPON physical media dependent layer](https://www.itu.int/rec/T-REC-G.984.2) · Annex A Tables A.1 and A.2, Appendix V Tables V.1 to V.4, PDF pages 12, 33–34 and 44–46
+
+- [ITU-T G.9807.1 (2023) Amendment 1 (May 2025): XGS-PON](https://www.itu.int/rec/T-REC-G.9807.1) · Annex B Tables B.6.1 and B.9.3 to B.9.5, PDF pages 83–90
+
+- [Cisco: GPON SFP Data Sheet (2020 copyright notice)](https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/transceiver-modules/datasheet-c78-736392.html) · Tables 1 and 2
+
+- [Trixon: GPON OLT SFP datasheet, 2019 edition (file a24fc940)](https://www.trixontech.com/en/uploads/a24fc940.pdf) · pages 5–6
+
+- [Trixon: GPON OLT SFP datasheet, 2023 edition (file 60e466d7)](https://www.trixontech.com/en/uploads/60e466d7.pdf) · pages 5–6
+
+- [FS: GSFP-43-20BL-I GPON OLT SFP](https://resource.fs.com/mall/resource/gsfp-43-20bl-i-datasheet.pdf) · pages 3–4
+
+- [Superxon: SFP+ XGS-PON MPM OLT (DS00001553V1.1)](https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/6099/SOGX6299-PS_I_Gx.pdf) · pages 5–6
+
+- [Superxon: SFP-DD XGS-PON MPM OLT (DS00001553V1.1)](https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/6099/SOGX6299-IS_I_Gx.pdf) · receiver lines
+
+- [6COM: XGS-PON N1/N2/E1 OLT SFP+ (Rev 3.1)](https://www.6comgiga.com/wp-content/uploads/2023/04/6C-XGSPON-N2-OLT-SFP.pdf) · pages 3–4
+
+- [Airlive: XG(S)PON/GPON Combo OLT SFP+ N2/C+ (file name 11072024)](https://www.airlive.com/data/download/file/Airlive%20XG_XGS_GPON%20Combo%20OLT%20SFP+_N2_C+_SpecSheet_11072024.pdf) · pages 2–3
+
+- [Airlive: XG(S)PON/GPON Combo OLT SFP+ N2/C+ (file name 11122024)](https://www.airlive.com/data/download/file/Airlive%20XG_XGS_GPON%20Combo%20OLT%20SFP+_N2_C+_SpecSheet_11122024.pdf) · pages 2–3
+
+- [C-Light: GPON OLT B+ optical module (V20141213)](https://www.c-light.com/uploads/190702/GPONOLTB.pdf) · pages 1–2
+
+- [C-Light: CLGPONU-LA-B+ GPON ONU optical module](https://www.c-light.com/uploads/file/Optical-Transceiver/GPON/CLGPONU-LA-B%2B.pdf) · page 1
+
+- [C-Light: CLXGSP-ONU XGS-PON ONU optical module](https://www.c-light.com/uploads/file/Optical-Transceiver/XGSPON/CLXGSP-ONU.pdf) · page 1
+
+- [Wavesplitter: WST-SFP+GPSU2-x XGS-PON ONU (preliminary document V1.0)](https://wavesplitter.com/wp-content/uploads/2024/03/WST-SFPGPSU2-x.pdf) · pages 2–4
+
+- [Hack GPON: GPON G.984 Series (secondary source, used to cross-check the standard)](https://hack-gpon.org/g_984_series)
+
+- [FiberLink: GPON Class B+ vs C+ (secondary source, app promotion blog)](https://fiberlink.app/blog-gpon-class-b-plus-c-plus.html)
+
+## Continue
+
+- [Optical training curriculum](/fttx-training)
+
+- [Reading Optical Power Meter Specifications: Uncertainty and Wavelength](/en/education/optical-training/optical-power-meter-spec-uncertainty-wavelength-readout)
+
+- [Reading PLC Splitter Datasheets: Loss and Uniformity](/en/education/optical-training/plc-splitter-datasheet-loss-uniformity-readout)
+
+- [Reading OLTS Light Source Specifications: Output Stability and Launch Conditions](/en/education/optical-training/olts-light-source-spec-output-stability-launch-readout)

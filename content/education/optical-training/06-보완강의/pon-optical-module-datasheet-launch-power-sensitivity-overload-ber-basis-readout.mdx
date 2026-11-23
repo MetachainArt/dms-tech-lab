@@ -1,0 +1,208 @@
+---
+title: "PON 광모듈 사양서의 송신 출력·수신 감도·과부하와 측정 기준(BER·소광비·FEC) 판독"
+date: "2026-11-23"
+desc: "OLT·ONU용 GPON·XGS-PON 광모듈 사양서에서 송신 출력, 수신 감도, 과부하, 측정 BER·소광비·FEC 조건을 읽는 10분 교안입니다. ITU-T G.984.2와 G.9807.1 개정 1, 제조사 사양서 13건을 비교해 같은 클래스 이름 아래 감도 줄이 서로 다른 기준으로 적힌 사례와 가상 손실 계산을 정리합니다."
+coverImage: "/images/education/optical-training/pon-optical-module-datasheet-launch-power-sensitivity-overload-ber-basis-readout/cover.svg"
+readTime: "10 min"
+lang: "ko"
+---
+
+PON 광모듈 사양서의 감도와 과부하 줄은 클래스 이름(B+, C+, N1, N2)만 보고 옮기면 서로 다른 기준의 숫자가 섞입니다. 먼저 그 줄이 OLT 수신(상향)인지 ONU 수신(하향)인지 적고, 같은 줄에 붙은 BER(비트 오류율), 소광비, FEC(오류 정정) 조건을 함께 옮긴 뒤에 비교합니다. G.984.2 부록 V에서 C+의 −32 dBm과 −12 dBm은 OLT 수신 줄이고, ONU 수신 줄은 −30 dBm과 −8 dBm입니다. 이번에 읽은 문서에서 같은 C+ OLT의 감도를 Cisco는 −31 dBm, Trixon은 −30 dBm(BER 10⁻¹⁰, 광모듈을 마주 연결해 잰 조건), Airlive는 BER에 따라 −30 dBm과 −32 dBm 두 줄로 적었습니다.
+
+2026년 11월 23일 확인한 자료 기준입니다.
+
+## 학습 목표
+
+- 감도와 과부하 줄을 OLT 수신과 ONU 수신으로 나누어 옮기고, 클래스 이름이 G.984.2의 B+·C+인지 G.9807.1의 N1·N2·E1·E2인지 적습니다.
+
+- 감도 줄 옆의 BER, 소광비, PRBS 패턴, FEC 조건을 함께 옮기고, 조건이 다른 숫자를 한 표에서 순위로 비교하지 않습니다.
+
+- 최소 손실과 최대 손실 양쪽으로 수신 범위를 계산해 감도뿐 아니라 과부하 쪽 여유도 확인합니다.
+
+## GPON B+·C+와 XGS-PON N1·N2의 기준값은 표준의 어느 표에 있습니까?
+
+GPON의 B+ 값은 ITU-T G.984.2(2019년 8월판) 부속서 A의 표 A.1과 표 A.2에 있습니다. OLT 송신 평균 출력은 +1.5 dBm 이상 +5 dBm 이하, OLT 수신 감도와 과부하는 −28 dBm과 −8 dBm, ONU 송신은 +0.5 dBm 이상 +5 dBm 이하, ONU 수신은 −27 dBm과 −8 dBm이며 광선로 손실은 13 dB 이상 28 dB 이하입니다. 부속서 A는 ONU 감도를 FEC 없는 APD 수광기 또는 FEC를 쓰는 PIN 수광기로 달성할 수 있다고 적습니다. C+ 값은 표준 본체가 아니라 부록 V의 표 V.1에 있습니다. 부록 V는 스스로 표준의 필수 부분이 아닌 업계 모범 사례라고 밝히고, 감도 줄이 오류 정정 전 BER 10⁻⁴와 RS(255,239) FEC 사용을 전제로 한다고 주석에 적습니다.
+
+본문은 모든 파라미터를 극단적인 광경로 감쇠와 분산 조건에서 BER이 10⁻¹⁰보다 나쁘지 않은 설계 목표에 대해 규정했다고 적습니다. B+ 표에는 BER 줄이 따로 없고 C+ 표에는 10⁻⁴ 줄이 있습니다. 두 클래스의 감도 차이 가운데 일부는 클래스 차이이고 일부는 측정 기준 차이입니다(DMS 해석).
+
+| 항목 | B+ (부속서 A) | C+ (부록 V, 비규범) |
+| --- | --- | --- |
+| OLT 송신 평균 출력 최소 / 최대 | +1.5 / +5 dBm | +3 / +7 dBm |
+| OLT 수신 감도 / 과부하 | −28 / −8 dBm | −32 / −12 dBm (오류 정정 전 BER 10⁻⁴, FEC 전제) |
+| ONU 송신 평균 출력 최소 / 최대 | +0.5 / +5 dBm | +0.5 / +5 dBm |
+| ONU 수신 감도 / 과부하 | −27 / −8 dBm | −30 / −8 dBm (오류 정정 전 BER 10⁻⁴, FEC 전제) |
+| 광선로 손실 최소 / 최대 | 13 / 28 dB | 17 / 32 dB (최대 섬유 길이 60 km) |
+| 광 경로 페널티 하향 / 상향 | 0.5 / 0.5 dB | 1 / 0.5 dB |
+
+XGS-PON은 클래스 이름이 달라집니다. G.9807.1(2023) 개정 1(2025년 5월)의 표 B.6.1은 손실 범위를 N1 14–29 dB, N2 16–31 dB, E1 18–33 dB, E2 20–35 dB로 적고, GPON 파장을 재사용하는 선택 파장 세트의 B+ 13–28 dB와 C+ 17–32 dB도 같은 표에 적습니다. 그래서 XGS-PON 광모듈 사양서에서 B+나 C+라는 이름이 나오면 GPON 값인지, 선택 파장 세트의 값인지, 제조사가 자체 라벨로 쓴 것인지 이름만으로 알 수 없습니다. 하향 1575–1580 nm와 상향 1260–1280 nm이면 기본 파장 세트이므로 파장 줄을 먼저 확인합니다.
+
+| 항목 (기본 파장 세트) | N1 | N2 | E1 | E2 |
+| --- | --- | --- | --- | --- |
+| 광선로 손실 최소 / 최대 | 14 / 29 dB | 16 / 31 dB | 18 / 33 dB | 20 / 35 dB |
+| OLT 송신 평균 출력 최소 / 최대 | +2 / +5 dBm | +4 / +7 dBm | +6 / +9 dBm | +8 / +11 dBm |
+| ONU 수신 감도 / 과부하 | −28.0 / −9.0 dBm | −28.0 / −9.0 dBm | −28.0 / −9.0 dBm | −28.0 / −9.0 dBm |
+| ONU 송신 평균 출력 최소 / 최대 | +4 / +9 dBm | +4 / +9 dBm | +4 / +9 dBm | +4 / +9 dBm |
+| OLT 수신 감도 / 과부하 | −26 / −5 dBm | −28 / −7 dBm | −30 / −9 dBm | −32 / −11 dBm |
+
+XGS-PON 표의 기준 BER은 10⁻³이고, 상향 감도는 소광비 6 dB 신호를 기준으로 합니다. GPON의 10⁻¹⁰나 10⁻⁴ 줄과 같은 눈금에서 비교하면 안 됩니다.
+
+## 같은 GPON C+ OLT 광모듈의 감도가 문서마다 다른 이유는 무엇입니까?
+
+아래 첫 표는 GPON OLT 광모듈 사양서에서 수신부 줄을 옮긴 것입니다. B+ 줄은 −28 dBm과 −8 dBm으로 거의 같지만, C+ 줄은 Trixon −30 dBm, Cisco −31 dBm, Airlive 구판과 Superxon −32 dBm으로 나뉩니다. 감도 줄에 붙은 조건을 보면 이유가 일부 드러납니다. Trixon은 BER 10⁻¹⁰ 이하에서 두 광모듈을 직접 연결해 잰 값이라고 주석에 적습니다. Superxon은 B+는 BER 10⁻¹⁰, C+·E1·D는 BER 10⁻⁴ 이하라고 한 표 안에서 기준을 나눠 적습니다. Airlive의 두 판은 같은 −32 dBm에 한쪽은 BER 10⁻¹⁰, 다른 쪽은 BER 10⁻⁴를 붙였습니다. Cisco는 추출한 표에서 BER 줄을 찾지 못했습니다.
+
+같은 B+ 줄에서도 FS는 감도 −28 dBm에 소광비 8.2 dB, BER 10⁻⁴를 주석으로 적었고, C-Light는 −28 dBm에 소광비 10 dB, BER 10⁻¹⁰를 적었습니다. 숫자는 같지만 기준이 달라서 같은 값이라고 읽을 수 없습니다. 그래서 감도를 비교할 때는 BER과 소광비가 같은 줄끼리만 겹쳐 놓습니다.
+
+| 문서 | 클래스 | 송신 평균 출력 | 소광비 | 수신 감도 / 과부하 | 감도 줄의 조건 | 수신 파장 |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cisco GPON SFP (2020 표기) | B+ | +1.5 / +5 dBm | 10 dB 이상 | −28 / −8 dBm | BER 줄 없음 | 1260–1360 nm |
+| Cisco GPON SFP (2020 표기) | C+ | +3 / +7 dBm | 8.2 dB 이상 | −31 / −12 dBm | BER 줄 없음 | 1290–1330 nm |
+| Trixon 2019년 판 (파일 a24fc940) | B+ | +1.5 / +5 dBm | 8.2 dB | −28 / −8 dBm | BER 10⁻¹⁰ 이하, 직접 연결 | 1290–1330 nm |
+| Trixon 2023년 판 (파일 60e466d7) | B+ | +1.5 / +5 dBm | 8.2 dB | −28 / −8 dBm | BER 10⁻¹⁰ 이하, 직접 연결 | 1260–1360 nm |
+| Trixon 두 판 | C+ | +3 / +7 dBm | 8.2 dB | −30 / −12 dBm | BER 10⁻¹⁰ 이하, 직접 연결 | 2019년 판 1290–1330, 2023년 판 1260–1360 nm |
+| FS GSFP-43-20BL-I | B+ | +1.5 / +5 dBm | 8.2 dB | −28 / −8 dBm | 소광비 8.2 dB, BER 10⁻⁴ | 1260–1360 nm |
+| C-Light GPON OLT B+ (V20141213) | B+ | +1.5 / +5 dBm | 8.2 dB | −28 / −8 dBm | 소광비 10 dB, BER 10⁻¹⁰ 미만 | 1290–1330 nm |
+| Superxon 콤보 SFP+ (DS00001553V1.1) | B+ | 표에서 생략 | 10 dB 이상 | −28 / −8 dBm | BER 10⁻¹⁰ 이하 | 1290–1330 nm |
+| Superxon 콤보 SFP+ (DS00001553V1.1) | C+ | 표에서 생략 | 10 dB 이상 | −32 / −12 dBm | BER 10⁻⁴ 이하 | 1290–1330 nm |
+| Airlive 콤보 (파일명 11072024) | C+ | +4 / +7 dBm | 8.2 dB | −32.0 / −12 dBm | 소광비 10 dB 이상, BER 10⁻¹⁰ 이하 | 1290–1330 nm |
+| Airlive 콤보 (파일명 11122024) | C+ | +3 / +7 dBm | 8.2 dB | −30 또는 −32 / −12 dBm | −30은 BER 10⁻¹⁰, −32는 BER 10⁻⁴ | 1290–1330 nm |
+
+![OLT와 ONU 수신 창을 표준과 제조사 사양서로 나란히 놓은 막대](/images/education/optical-training/pon-optical-module-datasheet-launch-power-sensitivity-overload-ber-basis-readout/bars-ko.svg)
+
+- 짙은 막대는 G.984.2의 수신 창(감도에서 과부하까지)이고, 옅은 막대는 제조사 사양서의 수신 창입니다
+
+- 막대 오른쪽 글자는 감도 줄에 적힌 BER 조건입니다. 조건이 다른 막대는 순위가 아닙니다
+
+- 음영 띠는 이 교안의 가상 계산에서 C+ OLT가 손실 14 dB 선로를 거쳐 ONU에 전하는 수신 범위입니다
+
+같은 제조사의 두 판도 서로 다릅니다. Trixon의 B+ 수신 파장은 2019년 판에서 1290–1330 nm, 2023년 판에서 1260–1360 nm입니다. Airlive의 두 판(파일명 날짜가 2024년 7월 11일과 12월 11일로 읽혀 앞선 쪽을 구판이라 부릅니다)은 송신 최소 출력이 +4 dBm에서 +3 dBm으로, GPON 감도 줄이 한 줄에서 두 줄로, XGS-PON 감도가 −28.0 dBm에서 −29.0 dBm으로 달라졌습니다. 어느 쪽이 현행인지는 문서에 적혀 있지 않아 알 수 없었고, 제조사 문의 금지 규칙에 따라 문의하지 않았습니다.
+
+## XGS-PON OLT 광모듈 사양서는 표준의 N1·N2 값과 어떻게 대응합니까?
+
+6COM의 N1/N2/E1 광모듈 사양서(Rev 3.1)는 송신 +2/+5, +4/+7, +6/+9 dBm과 감도 −26, −28, −30 dBm, 포화 −5, −7, −9 dBm을 적고 BER 10⁻³ 조건을 붙여서 G.9807.1 표 B.9.3과 B.9.4의 숫자와 같습니다. Airlive의 N2 줄은 구판에서 감도 −28.0 dBm과 최소 과부하 −7 dBm으로 표준 N2와 같고, 신판에서는 −29.0 dBm과 −8 dBm이며 소광비 조건이 8.2 dB로 적혀 있습니다.
+
+Superxon의 XGS-PON 표는 클래스를 B+, C+, E1, D로 적고 감도 −25, −29, −30, −32 dBm과 과부하 −4, −8, −9, −11 dBm을 적었습니다. 표준의 N1, N2, E1, E2 값(감도 −26, −28, −30, −32, 과부하 −5, −7, −9, −11)과 E1과 마지막 줄은 맞지만, 첫 두 줄은 1 dB씩 다르고 문서는 라벨이 표준 클래스 어디에 대응하는지 적지 않았습니다. 같은 문서의 GPON 표에서는 E1이 감도 −33 dBm, 과부하 −13 dBm이라서 E1이라는 같은 글자가 방식에 따라 다른 숫자를 가리킵니다. 두 값이 어긋난 이유는 문서만으로 알 수 없으므로 라벨 대신 숫자를 줄 단위로 표준과 대조합니다.
+
+| 문서 | 라벨 | 송신 평균 출력 | 수신 감도 / 과부하 | 조건 | 최대 입력 줄 |
+| --- | --- | --- | --- | --- | --- |
+| G.9807.1 개정 1 표 B.9.3·B.9.4 | N1 | +2 / +5 dBm | −26 / −5 dBm | BER 10⁻³, 소광비 6 dB | 해당 줄 없음 |
+| G.9807.1 개정 1 표 B.9.3·B.9.4 | N2 | +4 / +7 dBm | −28 / −7 dBm | BER 10⁻³, 소광비 6 dB | 해당 줄 없음 |
+| 6COM Rev 3.1 | N1 · N2 · E1 | +2/+5 · +4/+7 · +6/+9 dBm | −26/−5 · −28/−7 · −30/−9 dBm | BER 10⁻³ | −3 dBm |
+| Superxon DS00001553V1.1 | B+ · C+ · E1 · D | 표에서 생략 | −25/−4 · −29/−8 · −30/−9 · −32/−11 dBm | 소광비 6 dB 이상, BER 10⁻³ 이하 | 0 dBm |
+| Airlive 콤보 N2 (파일명 11072024) | N2 | +4 / +7 dBm | −28.0 / −7 dBm | 소광비 6 dB 이상, BER 10⁻³ 이하 | 0 dBm |
+| Airlive 콤보 N2 (파일명 11122024) | N2 | +4 / +7 dBm | −29.0 / −8 dBm | 소광비 8.2 dB, BER 10⁻³ 미만 | 줄 없음 |
+
+XG-PON 수신 줄(−27.5, −29.5 dBm 등)도 같은 문서에 있지만 G.987.2 본문을 읽지 못해 표준과 대조하지 않았습니다.
+
+## ONU 광모듈의 수신 줄과 최대 입력 줄은 어떻게 읽습니까?
+
+ONU 쪽은 표준보다 사양서가 더 넓은 창을 적는 경우가 많습니다. C-Light의 GPON ONU B+ 사양서는 송신 +0.5 dBm 이상 +5 dBm 이하(전형 2.5 dBm), 수신 감도 −28 dBm, 과부하 −3 dBm을 소광비 8.2 dB, BER 10⁻¹⁰ 미만 조건으로 적습니다. G.984.2의 ONU B+ 줄은 −27 dBm과 −8 dBm이므로 사양서가 감도는 1 dB, 과부하는 5 dB 더 넓게 약속하는 셈입니다. C-Light의 XGS-PON ONU와 Wavesplitter의 XGS-PON ONU는 감도 −28.5 dBm, 과부하 −8 dBm이고, 표준의 ONU 줄은 −28.0 dBm과 −9.0 dBm입니다. 표준 값은 최소 요구이고 사양서가 더 좋은 값을 적는 것은 가능하지만, 그 값이 시험 성적서로 확인된 것인지 설계 목표인지는 사양서만으로 알 수 없습니다.
+
+과부하 줄 위에 있는 한계 줄도 문서마다 다릅니다. C-Light의 XGS-PON ONU는 최대 입력 +5 dBm을 적고, Wavesplitter의 같은 방식 ONU는 절대 최대 정격 표에 수신부 파손 한계 −7 dBm(평균 출력)을 적었으며 문서 머리에 예비(Preliminary) 표시가 있습니다. 과부하와 파손 한계의 간격이 한 문서에서는 1 dB, 다른 문서에서는 13 dB입니다. OLT 쪽에서도 Superxon은 최대 입력 0 dBm, 6COM은 −3 dBm, C-Light의 GPON OLT B+는 수신기 파손 한계 +5 dBm을 적었습니다. 이 줄은 오류가 나기 시작하는 값이 아니라 고장을 피하는 값이므로 과부하 줄과 같은 칸에 옮기지 않습니다.
+
+| 문서 | 방식 | 송신 최소 / 최대 | 수신 감도 / 과부하 | 조건 | 최대 입력 또는 파손 한계 |
+| --- | --- | --- | --- | --- | --- |
+| G.984.2 부속서 A (B+ ONU) | GPON | +0.5 / +5 dBm | −27 / −8 dBm | 본문 설계 목표 BER 10⁻¹⁰ | 읽은 표에 줄 없음 |
+| C-Light CLGPONU-LA-B+ | GPON ONU | +0.5 / +5 dBm (전형 2.5) | −28 / −3 dBm | 소광비 8.2 dB, BER 10⁻¹⁰ 미만 | 줄 없음 |
+| G.9807.1 개정 1 표 B.9.3·B.9.4 | XGS-PON ONU | +4 / +9 dBm | −28.0 / −9.0 dBm | BER 10⁻³ | 읽은 표에 줄 없음 |
+| C-Light CLXGSP-ONU | XGS-PON ONU | +4 / +9 dBm | −28.5 / −8 dBm | BER 10⁻³ | +5 dBm |
+| Wavesplitter WST-SFP+GPSU2-x | XGS-PON ONU | +4 / +9 dBm | −28.5 / −8 dBm | BER 10⁻³, 소광비 6 dB | 파손 한계 −7 dBm |
+
+## 감도와 과부하 줄을 현장 손실 계산에 어떻게 대입합니까?
+
+여기서 쓰는 사례는 가상의 교육용 계산이며 실제 현장이나 제품을 시험한 것이 아닙니다. 스플리터와 접속을 포함한 광선로 손실이 14 dB라고 가정하고, 표준 값을 그대로 대입합니다. B+ OLT의 송신 +1.5에서 +5 dBm은 ONU에서 −12.5에서 −9 dBm이 되어 ONU 수신 창(−27에서 −8 dBm) 안에 있고 과부하까지 1 dB가 남습니다. C+ OLT의 송신 +3에서 +7 dBm은 −11에서 −7 dBm이 되어 위쪽 −7 dBm이 ONU 과부하 −8 dBm을 넘습니다. 표 V.1 주석 3은 이 용도에서 ONU 과부하 −10 dBm이면 충분하다고 적는데, 최대 출력 +7 dBm에서 최소 손실 17 dB를 빼면 −10 dBm이 되어 이 주석과 맞습니다(DMS 계산). 같은 C+ OLT라도 17 dB 선로이면 −14에서 −10 dBm으로 창 안에 들어옵니다.
+
+상향도 같은 방식으로 계산합니다. ONU의 +0.5에서 +5 dBm이 14 dB 선로를 지나면 OLT에서 −13.5에서 −9 dBm이고, B+ OLT 과부하 −8 dBm은 넘지 않지만 C+ OLT 과부하 −12 dBm은 위쪽 −9 dBm이 넘습니다. 상향 쪽은 ONU의 최대 +5 dBm에서 C+ OLT 과부하 −12 dBm을 뺀 17 dB가 최소 손실이라는 계산과 맞습니다. 이렇게 짧은 선로에서는 감도보다 과부하가 먼저 문제가 될 수 있으므로 감쇠기나 클래스 선택으로 해결하며, 어느 쪽이든 최소 손실과 최대 손실을 모두 계산합니다.
+
+| 가상 조건 (선로 손실) | 하향 ONU 수신 | ONU 수신 창 | 상향 OLT 수신 | OLT 수신 창 | 판단 |
+| --- | --- | --- | --- | --- | --- |
+| B+ 쌍, 14 dB | −12.5 / −9 dBm | −27 / −8 dBm | −13.5 / −9 dBm | −28 / −8 dBm | 양쪽 창 안, 과부하까지 1 dB |
+| C+ OLT와 B+ ONU 가정, 14 dB | −11 / −7 dBm | −27 / −8 dBm | −13.5 / −9 dBm | −32 / −12 dBm | 하향 위쪽과 상향 위쪽 모두 과부하 초과 |
+| C+ 쌍, 17 dB | −14 / −10 dBm | −30 / −8 dBm | −16.5 / −12 dBm | −32 / −12 dBm | 양쪽 창 안, 상향은 과부하 경계 |
+
+계산에서 OLT 수신 줄은 광 경로 페널티를 넣지 않은 단순 뺄셈입니다. 실제 설계는 페널티와 여유, 광모듈 개별 사양서의 값을 함께 씁니다. DDM(디지털 진단 모니터링) 값으로 이 계산을 확인할 때는 정확도를 봐야 합니다. Superxon은 수신 전력 모니터 정확도를 ±3 dB, FS는 송신 전력을 ±2 dB, Wavesplitter는 수신 전력 범위 −28에서 −8 dBm에 ±3 dB로 적었습니다. 1 dB 안팎의 과부하 여유는 DDM 값으로 판정하지 않고 광파워미터로 측정합니다(DMS 해석).
+
+## 신호 검출과 신호 손실 줄은 어떤 순서로 읽습니까?
+
+SD(신호 검출)와 LOS(신호 손실) 줄은 이름이 비슷해도 숫자가 가리키는 방향이 문서마다 뒤집힙니다. Trixon의 2023년 판은 SD De-Assert −32 dBm, SD Assert −45 dBm으로 적어 Assert가 낮은 값이고, 2019년 판은 같은 숫자를 LOS 이름으로 적습니다. Airlive는 SD Assert −33 dBm, SD De-assert −43 dBm으로 Assert가 높은 값입니다. Superxon은 SD Assert를 감도에서 0.5 dB 낮춘 값으로 적고, FS와 Wavesplitter는 LOS Assert를 −45 dBm으로, C-Light의 GPON ONU는 LOS Assert −39 dBm과 De-Assert −35 dBm으로 적었습니다. 그래서 줄 이름을 믿고 판정하지 않고 두 숫자 가운데 높은 값과 낮은 값을 적고, 어느 쪽이 신호가 있다는 판정인지 문서의 정의 또는 타이밍 도표로 확인합니다. 이번 자료만으로는 각 문서의 정의를 모두 확인하지 못했습니다.
+
+![PON 광모듈 사양서를 읽는 순서](/images/education/optical-training/pon-optical-module-datasheet-launch-power-sensitivity-overload-ber-basis-readout/concept-ko.svg)
+
+- 감도와 과부하는 방향(OLT 수신 또는 ONU 수신)과 클래스 이름의 표준 쪽을 먼저 적습니다
+
+- 감도 줄 옆의 BER, 소광비, FEC 조건이 같을 때만 숫자를 겹쳐 비교합니다
+
+- 최소 손실과 최대 손실로 수신 창을 모두 계산하고, DDM은 판정에 쓰지 않습니다
+
+이번 자료의 한계도 있습니다. G.9807.1은 개정 1에 실린 부속서 B의 표만 읽었고 기본 문서 전체는 읽지 못했습니다. G.987.2(XG-PON), G.984.5, G.984.3의 FEC 이득 설명, IEEE EPON 클래스는 읽지 못했습니다. OTEN의 GPON OLT 스틱 사양서는 내려받기가 막혀 근거로 세지 않았습니다. 모든 값은 표준 기관이나 제조사가 공표한 값이며 이번에 시험한 값이 아니고, 각 사양서가 현행 개정인지와 지금 판매되는 모델과 맞는지는 확인하지 못했습니다.
+
+## 업무 점검표
+
+- 감도와 과부하 줄이 OLT 수신(상향)인지 ONU 수신(하향)인지, 같은 줄의 파장 범위와 함께 적었습니까?
+
+- 클래스 이름이 G.984.2의 B+·C+인지 G.9807.1의 N1·N2·E1·E2인지, 사양서가 표준 클래스와 어떻게 대응한다고 적었는지 확인했습니까?
+
+- 감도와 과부하 줄 옆의 BER, 소광비, PRBS 패턴, FEC 사용 조건을 그대로 옮겼습니까?
+
+- 최소 손실과 최대 손실 양쪽으로 ONU와 OLT의 수신 범위를 계산해 과부하 쪽 여유까지 확인했습니까?
+
+- 과부하 줄과 파손 한계 줄, SD·LOS 이름의 높고 낮은 값, DDM 정확도를 각각 구분해 적었습니까?
+
+## 확인 문제와 정답
+
+### 1. 사양서의 GPON C+ 감도가 −32 dBm, 과부하가 −12 dBm이라고 적혀 있습니다. 이 값으로 ONU 수신 설계를 해도 됩니까?
+
+정답·해설: 안 됩니다. G.984.2 부록 V에서 −32 dBm과 −12 dBm은 OLT 수신(상향) 줄이고, ONU 수신 줄은 −30 dBm과 −8 dBm입니다. 사양서의 줄이 OLT용인지 ONU용인지 먼저 확인하고, 감도 줄의 BER과 FEC 조건도 함께 옮깁니다.
+
+### 2. 광선로 손실이 14 dB로 계산되는 구간에 C+ OLT(송신 최대 +7 dBm)와 B+ ONU(과부하 −8 dBm)를 연결하려 합니다. 어떤 문제가 생길 수 있습니까?
+
+정답·해설: ONU 수신이 최대 −7 dBm이 되어 과부하 −8 dBm을 넘을 수 있습니다. 표준은 C+의 최소 손실을 17 dB로 두므로 광감쇠기를 넣거나 클래스를 바꾸는 방안을 검토합니다. 감도 여유만 보고 과부하 여유를 확인하지 않는 것이 흔한 실수입니다(DMS 해석).
+
+### 3. 두 사양서가 같은 C+ OLT 감도를 한쪽은 −30 dBm(BER 10⁻¹⁰), 다른 쪽은 −32 dBm(BER 10⁻⁴)으로 적었습니다. 설계 예산에는 어느 값을 씁니까?
+
+정답·해설: 숫자 자체를 비교하지 않고 기준이 같은 줄끼리 맞춥니다. FEC를 쓰는 설계라면 FEC 활성화를 문서화한 뒤 BER 10⁻⁴ 줄을 쓸 수 있고, 그렇지 않으면 BER 10⁻¹⁰ 줄인 −30 dBm을 씁니다. 보수적으로 −30 dBm을 쓰는 것이 안전하며, 어느 쪽이든 쓴 줄의 조건을 설계서에 적습니다(DMS 해석).
+
+## 출처와 판본
+
+- [ITU-T G.984.2 (2019년 8월): GPON 물리 매체 의존 계층](https://www.itu.int/rec/T-REC-G.984.2) · 부속서 A 표 A.1·A.2, 부록 V 표 V.1–V.4, PDF 12·33–34·44–46쪽
+
+- [ITU-T G.9807.1 (2023) 개정 1 (2025년 5월): XGS-PON](https://www.itu.int/rec/T-REC-G.9807.1) · 부속서 B 표 B.6.1, B.9.3–B.9.5, PDF 83–90쪽
+
+- [Cisco: GPON SFP Data Sheet (2020 저작권 표기)](https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/transceiver-modules/datasheet-c78-736392.html) · 표 1·2
+
+- [Trixon: GPON OLT SFP 사양서 2019년 판 (파일 a24fc940)](https://www.trixontech.com/en/uploads/a24fc940.pdf) · 5–6쪽
+
+- [Trixon: GPON OLT SFP 사양서 2023년 판 (파일 60e466d7)](https://www.trixontech.com/en/uploads/60e466d7.pdf) · 5–6쪽
+
+- [FS: GSFP-43-20BL-I GPON OLT SFP](https://resource.fs.com/mall/resource/gsfp-43-20bl-i-datasheet.pdf) · 3–4쪽
+
+- [Superxon: SFP+ XGS-PON MPM OLT (DS00001553V1.1)](https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/6099/SOGX6299-PS_I_Gx.pdf) · 5–6쪽
+
+- [Superxon: SFP-DD XGS-PON MPM OLT (DS00001553V1.1)](https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/6099/SOGX6299-IS_I_Gx.pdf) · 수신 줄
+
+- [6COM: XGS-PON N1/N2/E1 OLT SFP+ (Rev 3.1)](https://www.6comgiga.com/wp-content/uploads/2023/04/6C-XGSPON-N2-OLT-SFP.pdf) · 3–4쪽
+
+- [Airlive: XG(S)PON/GPON Combo OLT SFP+ N2/C+ (파일명 11072024)](https://www.airlive.com/data/download/file/Airlive%20XG_XGS_GPON%20Combo%20OLT%20SFP+_N2_C+_SpecSheet_11072024.pdf) · 2–3쪽
+
+- [Airlive: XG(S)PON/GPON Combo OLT SFP+ N2/C+ (파일명 11122024)](https://www.airlive.com/data/download/file/Airlive%20XG_XGS_GPON%20Combo%20OLT%20SFP+_N2_C+_SpecSheet_11122024.pdf) · 2–3쪽
+
+- [C-Light: GPON OLT B+ 광모듈 (V20141213)](https://www.c-light.com/uploads/190702/GPONOLTB.pdf) · 1–2쪽
+
+- [C-Light: CLGPONU-LA-B+ GPON ONU 광모듈](https://www.c-light.com/uploads/file/Optical-Transceiver/GPON/CLGPONU-LA-B%2B.pdf) · 1쪽
+
+- [C-Light: CLXGSP-ONU XGS-PON ONU 광모듈](https://www.c-light.com/uploads/file/Optical-Transceiver/XGSPON/CLXGSP-ONU.pdf) · 1쪽
+
+- [Wavesplitter: WST-SFP+GPSU2-x XGS-PON ONU (예비 문서 V1.0)](https://wavesplitter.com/wp-content/uploads/2024/03/WST-SFPGPSU2-x.pdf) · 2–4쪽
+
+- [Hack GPON: GPON G.984 Series (2차 자료, 표준 인용 대조용)](https://hack-gpon.org/g_984_series)
+
+- [FiberLink: GPON Class B+ vs C+ (2차 자료, 앱 소개 블로그)](https://fiberlink.app/blog-gpon-class-b-plus-c-plus.html)
+
+## 다음에 볼 교안
+
+- [광통신 교육 목차](/education/optical-training)
+
+- [광파워미터 사양서의 측정 불확도·파장 판독](/education/optical-training/optical-power-meter-spec-uncertainty-wavelength-readout)
+
+- [PLC 스플리터 데이터시트의 손실·균일도 판독](/education/optical-training/plc-splitter-datasheet-loss-uniformity-readout)
+
+- [OLTS 광원 사양서의 출력 안정도·발광 조건 판독](/education/optical-training/olts-light-source-spec-output-stability-launch-readout)
