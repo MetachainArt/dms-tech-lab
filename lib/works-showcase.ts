@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "자동화를 멈추는 스위치",
+    summary: "자동화를 끄는 스위치가 실제로 무엇을 멈추는지 쿠버네티스와 GitHub Actions 공식 문서 세 곳과 모의 시험으로 확인하고, 이미 돌고 있는 일과 취소 뒤에도 도는 정리 단계, 꺼 둔 동안 놓친 예약이 다시 켠 뒤 어떻게 되는지를 짚어 다섯 칸짜리 멈춤 카드를 제안하는 업무 자동화 실무 가이드입니다.",
+    tags: ["Work", "업무 자동화", "AX 전환"],
+    image: "/images/works/automation-off-switch/wall-switch-by-the-window.webp",
+    link: "/works/automation-off-switch",
+  },
+  {
     title: "시험 실행으로 알 수 없는 것",
     summary: "자동화를 켜기 전에 돌려 보는 시험 실행(dry run)이 무엇을 보여 주고 무엇을 빠뜨리는지 Ansible, 쿠버네티스, AWS CLI 공식 문서 세 곳과 모의 자동화 시험으로 확인하고, 보고서에 나오지 않는 단계와 시험 실행 중에도 실제로 실행되는 단계를 짚어 다섯 칸짜리 시험 실행 카드를 제안하는 업무 자동화 실무 가이드입니다.",
     tags: ["Work", "업무 자동화", "AX 전환"],

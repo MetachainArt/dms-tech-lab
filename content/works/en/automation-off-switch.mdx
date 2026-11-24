@@ -1,0 +1,97 @@
+---
+title: "What an Off Switch Stops"
+excerpt: "A practical guide to what the switch that turns an automation off really stops, based on three official pages from Kubernetes and GitHub Actions and a mock test, covering runs already in progress, steps that keep running after a cancel, and the schedules missed while it was off, with a five-box stop card."
+date: "2026-11-24"
+readTime: "10 min"
+kind: "guide"
+tags: ["Work", "Workplace automation", "AX transformation"]
+---
+
+The switch that turns an automation off usually blocks only new runs from starting. What happens to work already running, to cleanup steps that keep going after a cancel signal, and to schedules missed while the switch was off follows rules that differ from tool to tool. So pressing the switch is not proof that nothing more is going out. Open the thing that was supposed to stop and check.
+
+This account rests on official material checked on November 24, 2026 (the Kubernetes CronJob documentation and two GitHub Actions documentation pages) and a mock test run on one computer. It is not a customer case, and it contains no measurement showing that the card below reduces incidents.
+
+## If you turn the switch off, does the work already running stop?
+
+No. Turning off and stopping are different actions.
+
+The [Kubernetes CronJob documentation](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) describes the `suspend` setting that pauses scheduled runs. While it is set to true, all later executions are suspended, and it does not affect Jobs the CronJob has already started. The suspended executions stay on the schedule, but the controller does not start them.
+
+The [GitHub Actions documentation](https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-workflow-runs/disabling-and-enabling-a-workflow) has the same structure. Disabling a workflow stops it from being triggered, but it does not cancel its existing runs. While the workflow is disabled you cannot re-run those runs either, so you have to enable it first. The first example the page gives of a time to disable a workflow is a workflow error that produces too many or wrong requests and hurts external services.
+
+Read together, the two pages describe an off switch that works more like locking the front door. Whatever is already moving inside carries on. If a wrong email is going out, pressing the switch does not end that run, and mail can keep going until the run is over.
+
+![A switch on a wall power strip above a wooden desk by a window is turned off, with a mug, a notebook with a pencil and a potted plant below it](/images/works/automation-off-switch/wall-switch-by-the-window.webp)
+
+## If you cancel a running job, does it stop at once?
+
+With GitHub Actions, not necessarily. The [cancellation reference](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-cancellation) lists the order.
+
+1. The server re-evaluates the `if` conditions of all running jobs. If a condition is true, that job is not canceled. The page's example is `if: always()`, and a job with no condition behaves like `success()`, which only runs if the previous step succeeded.
+2. For jobs that need canceling, the server sends a cancellation message.
+3. For jobs that keep running, the server re-evaluates the `if` conditions of the unfinished steps, and a step whose condition is true keeps running. A `cancelled()` check can also be used.
+4. For a step that needs canceling, the runner sends `SIGINT/Ctrl-C` to its entry process. If the process has not exited within 7500 ms, it sends `SIGTERM/Ctrl-Break` and waits another 2500 ms, then kills the process tree if the process is still alive.
+5. After the 5 minute cancellation timeout, the server forcibly terminates any job or step still running that was marked for cancellation.
+
+Steps 1 and 3 are the ones to look at. A cleanup step with an `always()` condition runs even after a cancel. If a "finished" notice email sits in an `always()` step, that notice can go out after you have stopped the work. That is my reading of the documentation's wording, and I did not test it on GitHub.
+
+Time matters too. If a process does not answer the signal, the values in the documentation add up to 10 seconds before a forced kill, and it can take up to 5 minutes. There is a gap between saying it was stopped and confirming that it stopped.
+
+## How many more emails go out when you press the switch?
+
+I checked with a mock test. I built two imagined automations in Node that differ only in when they look at the switch. They are not real services. Each sends one email to each of five recipients, taking 0.3 seconds per email, and the switch (a stop file) appears 0.7 seconds after the start.
+
+| Version | When it checks the switch | Emails sent | Where it stopped |
+|---|---|---|---|
+| A | Once, when the run starts | 5 | All five recipients got one |
+| B | Before every email | 3 | Stopped before the fourth recipient |
+
+Both versions started because no stop file existed at the start. A checked only at the start, so it sent to everyone even after the press. B checked every time and stopped before the fourth, but the third email was already going out at the 0.7 second mark, so three went out. However often you check, an email already in flight cannot be taken back.
+
+This test turns the documented rule, that the switch does not affect work already started, into code, so its result was decided in advance. It did not discover anything new. I built it to see how the numbers change depending on where the switch is checked. I did not test where a real tool performs that check.
+
+## What happens when you turn it back on?
+
+Depending on the tool, missed schedules can all run at once or only one can. The Kubernetes page warns about this separately. Executions suspended during their scheduled time count as missed. When `suspend` changes from `true` to `false` on a CronJob with no starting deadline, a Job for the most recent missed schedule starts immediately, and Jobs for earlier missed schedules are not started.
+
+Suppose an automation runs on the hour, and the 10:00, 11:00, 12:00 and 13:00 schedules passed while it was off. If you turn it back on at 13:30, the rule in the documentation starts the 13:00 run once, at once. Four runs do not fire together, but the person turning it on needs to know in advance that one run starts the moment it is on. If the input data changed while it was off, that one run uses the changed data. Putting the rule into the same test script, the documented behavior is one run immediately, while a catch-up-everything approach (an assumption) would be four.
+
+The GitHub Actions page does not address this. What it states is that you cannot re-run existing runs while the workflow is disabled and that you can once it is enabled. I also could not confirm from the sentences I read how Kubernetes behaves when a starting deadline is set. Before switching on, look up in the tool's manual how it treats missed schedules and write the answer down.
+
+![A hand-drawn timetable with a few squares crossed out in pencil lies on a wooden desk next to a key tag and a round wall clock](/images/works/automation-off-switch/crossed-out-timetable-and-clock.webp)
+
+## How is stopping different when an AI step is involved?
+
+None of the three pages mentions AI steps. This section is an assumption drawn from the documentation and was not tested.
+
+- If the flow has AI draft text that a person then uses, stopping leaves text that was drafted but not yet used. If you do not decide beforehand whether to use or discard it after restarting, old drafts can mix with new ones.
+- If model calls cost money, calls can continue for as long as it takes to stop the work. The guide on [Setting a Monthly Spend Cap for AI Automations](/en/works/ai-automation-spend-cap) covers limits on calls.
+- If you do not record how far processing got at the moment of the stop, restarting repeats the same work. The restart criteria are in [When to Restart an AI Automation](/en/works/ai-automation-safe-retry).
+
+## What goes on a stop card?
+
+One page records who presses the switch and how, what gets blocked and what keeps running, how to confirm that it stopped, and what happens when you turn it back on. The five boxes below shrink what the documentation says to a size a small office can fill in. They are a DMS.Labs proposal, not a format validated on customer projects.
+
+| Box | What to write |
+|---|---|
+| Who presses and how | The name and location of the switch, and at least two people who can press it (in case one is away) |
+| What gets blocked | What will not start once the switch is pressed (schedules, webhooks, queued requests) and what will not be blocked |
+| Work in progress | What runs to the end, how to stop it separately, and which cleanup steps still run after a stop and what they do |
+| Check after stopping | What to open within a few minutes of pressing to confirm it stopped (the run list, the time of the last item sent) |
+| When switching back on | What happens to missed schedules, what to read before switching on, and who switches it on |
+
+Suppose a flower shop with four staff sends order confirmation texts automatically. This is hypothetical, not a real customer case. In filling in the card, separating "what gets blocked" from "work in progress", the shop would first notice that texts already started go out to the end even after the switch is pressed. It could then write one line next to the switch: after pressing, open the send list and check that the time of the last text has stopped moving. In the box for switching back on, it could note that the latest of the missed schedules may go out at once, so the wording is read first.
+
+The last two boxes connect to other guides. How to re-read what actually changed outside after a stop is in [Read It Back After Success](/en/works/read-back-after-success). What to record for each run is covered in [One Line for Every Automation Run](/en/works/automation-run-record). How to open up permissions step by step when you switch back on is in [Giving AI automation permission in three steps](/en/works/automation-permission-ladder), and the stop card can be one of the checks you pass when you lower a step.
+
+## What did this piece not check?
+
+Several things. The documentation I read is the Kubernetes CronJob page and two GitHub Actions pages, and all of them cover developer tools. I could not confirm that turning off and canceling in workplace automation tools such as n8n, Make or Zapier work the same way. For n8n I saw similar descriptions in user community posts, but they are not official documentation, so I did not use them as evidence.
+
+On the Kubernetes side I did not confirm the behavior when a starting deadline is set. I also did not test whether an `always()` step in the GitHub cancellation process really runs after a cancel. The mock test turns documented rules into code and is not a test of how a real tool behaves. The section on AI steps is an assumption. There is also no measurement showing that the card reduces incidents. The documentation reflects November 24, 2026 and may change.
+
+## Where to go next
+
+To sort out, task by task, what to check before each automation goes live, the existing [DMS.Labs work automation](/automation) page gives an overview. That page is currently provided in Korean only. If you want to talk it through, there is the [contact page](/en/contact). This account covers official documentation and a mock test, and it does not promise implementation costs, time savings, or effects on inquiries or revenue.
+
+The two images were newly generated to illustrate the topic. They are not photographs of a real working screen or a customer site.
