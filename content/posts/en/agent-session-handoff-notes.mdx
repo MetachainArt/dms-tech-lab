@@ -1,0 +1,113 @@
+---
+translationSourceHash: "1ba0a7d1448bb407df02230a3bd2efc8359620e7760907f38f2954fd5ae7dd66"
+title: "What to Leave for the Next Agent Session"
+subtitle: "A proposed five-box handoff card that records what is done and what is half done in a file"
+excerpt: "When an agent works on a task that spans days, each new session starts without knowing what the last one did. This article reads two Anthropic posts and a Chroma technical report on progress records, feature lists, and start-up routines, then proposes a five-box handoff card for work automation."
+date: "2026-11-25"
+readTime: "12 min"
+coverImage: "/images/posts/agent-session-handoff-notes/handoff-notebook-on-desk.webp"
+series: "agentic-era"
+chapter: "16"
+tags: ["AI agents", "Context engineering", "Handoff", "Work automation"]
+---
+
+When you give an agent a task that spans several days, each new session starts without knowing what happened in the last one. That is why the long-running agent work Anthropic published keeps the state of the job in files outside the conversation: a progress log, a list of what is done and what remains, and a change history. This article reads that evidence and adds a handoff card, a DMS.Labs proposal, with five boxes to fill in for each task you hand over. I have not tested the card, and the cases I read come from software development.
+
+Everything here is based on public sources I checked on November 25, 2026. I read two Anthropic engineering posts (November 26, 2025 and September 29, 2025) and a technical report, "Context Rot," from Chroma, a company that works on search technology (July 2025). The card and the imagined scene later on are DMS.Labs proposals drawn from those sources. None of the sources requires them.
+
+![An open notebook with a pencil and a small brass key on a wooden desk by a window, with a ceramic vase and a small green tin behind them](/images/posts/agent-session-handoff-notes/handoff-notebook-on-desk.webp)
+
+## How does a new agent session know what the last one did?
+
+It cannot, on its own. It can only read what was left outside the conversation. Anthropic describes the difficulty of long-running agents this way: an agent works in separate sessions, and each new session begins with no memory of what came before. The post pictures a project staffed by engineers working in shifts, where each new engineer arrives knowing nothing about the previous shift. Context windows, the amount of text a model can look at once, are limited, and complex projects do not fit in one window, so something has to bridge the sessions.
+
+One caveat. That description is about an environment built on the Claude Agent SDK. Depending on the product you use, there may be a feature that loads an instructions file at the start, or a memory feature, so I will not claim that every agent forgets in the same way. Even where such a feature exists, someone has to write what gets loaded.
+
+## Can't we just summarize the earlier conversation and continue?
+
+Anthropic's experience was that a summary was not enough. Summarizing a conversation and continuing in a new window, called compaction, looks as if it should let an agent work for a very long time. Yet the post says that Opus 4.5 running in a loop on the Claude Agent SDK across several context windows fell short of a production-quality web app when it was given only a large instruction such as "build a clone of claude.ai." It adds that compaction does not always pass clear instructions to the next agent.
+
+The other post describes why compaction is hard. The skill lies in choosing what to keep and what to drop, and cutting too hard can lose subtle context whose importance only shows up later. Claude Code, it says, keeps architectural decisions, unresolved bugs, and implementation details, discards repeated tool output, and carries over the five most recently accessed files.
+
+Long context also has a problem of its own. Chroma's report tested 18 models while holding task difficulty constant and changing only the input length. In every experiment, performance fell as input grew, and the pattern of decline was uneven. The authors say they cannot explain the cause, and they expect real work, which is more complex, to show a larger decline. That expectation is theirs; the report did not test it. The report is a company's technical report, not a journal paper, and that matters when weighing it. Anthropic's post calls the same effect context rot and says it appears in all models, with some degrading more gently than others.
+
+So I read these sources as pointing toward writing down the important state instead of leaving it in the conversation. I covered how an agent's memory should be retrieved in [Memory Is Harder to Retrieve Than Store: Designing Agent Memory Layers](/en/blog/agentic-era-memory-retrieval-architecture). This article is about what to leave at the moment a session changes.
+
+## Where does a long task go wrong?
+
+Anthropic observed three failures. The first is trying to do too much at once. When the agent tried to build the whole app in one pass and ran out of context partway through, the next session began with a half-built feature and no notes. The next agent had to guess what had happened and spent a lot of time getting the basic app working again.
+
+The second showed up later in the project. After some features existed, a later agent looked around, saw that progress had been made, and declared the job done.
+
+The third is marking a feature complete without proper testing. The agent checked with unit tests or curl requests and still missed that the feature did not work from start to finish. Once it was told to test as a human user would, using browser automation, results improved. But the tool could not see the browser's own alert dialogs, and the post notes that features relying on them tended to be buggier.
+
+Moved into office work, the same shapes look like this. A document cleanup stops with a file half edited. The agent reports that everything is done because several result files appear in a folder. It marks an item complete without opening it. That translation is mine. The sources I read do not say how often this happens in work automation.
+
+## What did Anthropic have the agent leave between sessions?
+
+![Two brass keys hanging from a wooden hook rail on a green wall with one hook empty, and a shelf below holding a folded sheet of paper and a small bowl](/images/posts/agent-session-handoff-notes/key-hooks-by-door.webp)
+
+A progress file, a feature list file, and a change history. The first session is handled by a dedicated initializer agent. It creates a script that starts the development server (init.sh), a claude-progress.txt file that logs what has been done, and a first git commit showing the files that were added. Later sessions work on one feature at a time, leave the code in a state clean enough to merge, and write a descriptive commit and a progress summary. The post says this let the agent use git to revert bad changes.
+
+The feature list expands the user's first instruction into requirements. In the claude.ai clone example it had over 200 items, each with steps to check it, and every item began as failing (passes: false). Later agents were told to change only the passes value, with strongly worded instructions never to remove or edit items. The team chose JSON for the format because the model was less likely to change or overwrite a JSON file inappropriately than a Markdown one. The post gives no figure for how much better this works. It describes the approach as coming from internal experiments.
+
+The other post calls the same idea structured note-taking. The agent regularly writes notes to storage outside the context window and reads them back later. A to-do list or a NOTES.md file are examples. It cites Claude playing Pokémon: after its context is reset, the agent reads its own notes and continues training or exploring for hours. The post also says which method suits which job. Compaction suits tasks with a lot of back and forth, notes suit iterative work with clear milestones, and multiple agents suit complex research and analysis where parallel exploration pays off. In the multi-agent setup, a sub-agent explores at length and returns a summary that is often 1,000 to 2,000 tokens.
+
+## What does a new session do at the start?
+
+It reads, checks, and picks one thing. The start-up order in the post goes like this. Confirm the working directory. Read the git log and the progress file to see what was done recently. Read the feature list and choose the highest-priority item that is not yet done. Then start the development server and run one basic end-to-end test before beginning new work, because the agent needs to know first whether the last session left things broken. Building a new feature on a broken state would make the problem worse, the post explains.
+
+Anthropic also summarizes each failure and its remedy in a table. Below is that table in my own words.
+
+| Failure | What the first session leaves | What later sessions do |
+| --- | --- | --- |
+| Declares the whole job done too early | A feature list file | Reads the list at the start of a session and picks a single feature |
+| Leaves bugs or undocumented progress | A git repository and a progress notes file | Reads the notes and commit log at the start and runs a basic test; ends with a commit and a progress update |
+| Marks features done prematurely | A feature list file | Verifies each feature itself and marks it passing only after careful testing |
+| Spends time working out how to run the app | An init.sh script | Reads init.sh at the start |
+
+## How do I carry this over to my own work automation?
+
+I propose a card with the five boxes below for each task you hand over, updated whenever a session changes. The card is a DMS.Labs proposal made from the sources above. It is not a document any source tested.
+
+| Box | What to write | Why the box exists |
+| --- | --- | --- |
+| 1. Done criteria | List, one by one, what must be true for the task to count as finished. Start with every item marked "not yet" | Cuts down on saying the job is done after finishing only part. Taken from Anthropic's feature list |
+| 2. Finished work | For each item, write what you opened and checked. Without a check, do not mark it finished | Targets marking work complete without testing |
+| 3. Half-done work | Write how far you got and what you touched (file, sheet, item number) | Targets half-finished work left with no record |
+| 4. Way back | Write where the original or a copy from before the change is kept | Taken from the case where git reverted bad changes |
+| 5. First next step | Name the first file the new session should open and one item to recheck first | Taken from the start-up order: read, check, pick one |
+
+In the instructions that start each session, put the order like this. Read the card, recheck the most recent item marked finished, work on one unfinished item only, and update the card when you stop. For boxes 1 and 2, I think a table or JSON with clear items and statuses works better than running prose. The only support for that is Anthropic's experience that JSON was overwritten less often, and I did not read any test comparing it with other formats.
+
+Here is an imagined scene. Suppose an interior design firm with four staff has an agent tidy 60 end-of-month supplier settlement documents over three days. This is not a real case; I made it up to illustrate. On the first day the agent finishes 17 documents, and the session ends while it is fixing the 18th. With no card, the next session guesses its progress from how many tidied files sit in the folder. It might move on to the 19th without knowing the 18th was only half corrected.
+
+With a card, the boxes read like this. Finished work lists documents 1 to 17, each with a note that the totals of the tidied version were matched against the original. Half-done work says that on document 18 only the amount column was corrected and the date column was left alone. Way back gives the location of a copy of the original folder. The first next step is to recheck the totals for document 17 and then continue from the date column of document 18. The effect the card aims for is less for the receiving session to guess. I have not tested how much it reduces failures in real work.
+
+## What does this approach not solve?
+
+First, the card can be wrong. If a new session trusts a "finished" mark from the previous session as it stands, the error passes on to the next one. I read Anthropic's choice to have each session run a basic test at the start as serving the same purpose, and that is why box 2 asks for the way each item was checked. Whether the check itself was right needs separate attention. Who should look and how is in [Naming a Reviewer for AI Output](/en/works/ai-output-reviewer-card), and a way to read results back after a success message is in [Read It Back After Success](/en/works/read-back-after-success).
+
+Second, some screens cannot be checked. Gaps like the browser alerts Anthropic admits to remain even with a card. Keeping a record of what an automation actually did helps cover them, as in [One Line for Every Automation Run](/en/works/automation-run-record).
+
+Third, cost. The sources do not say how much time or how many tokens writing and reading a card takes. For a task that finishes within a day, a card may be too much. I think it belongs on tasks that span days or change sessions several times.
+
+Fourth, scope. The case I read is web app development. Anthropic writes that the lessons are likely to apply to work such as scientific research or financial modeling, but that is an expectation, and I found no test of it in what I read. The post also leaves open whether a single general-purpose agent or several specialized agents does better. How an agent hands a stuck task to a person is in [Agentic Era CH7. Hand Off Without Stopping: Human Handoff and Escalation Design](/en/blog/agentic-era-ch7-human-handoff-and-escalation-design).
+
+## What can I try this week?
+
+Pick one task that takes more than a day or will change sessions several times, and make a five-box card for it. The easiest place to start is box 1, splitting the done criteria into items. In the start-of-session instructions, write: read the card, recheck one recently finished item, and work on one remaining item only.
+
+To summarize what this article could not confirm: I did not apply the card to real work. All the sources came out in 2025, one with an October 2026 revision mark, and models and tools may have changed since. The Anthropic post describes its results without figures. The Chroma report stretches short tasks to long inputs, so it does not equal real work. The interior design scene and the tables are DMS.Labs proposals and assumptions, not customer cases or field measurements.
+
+## What to read next
+
+DMS.Labs describes how it attaches AI to work automation on the [work automation page](/automation), which is provided in Korean. If you are considering adoption, please describe your situation on the [contact page](/en/contact).
+
+## Sources
+
+Checked on November 25, 2026. The two photos in this article are AI-generated illustrations, not records of real work.
+
+- Anthropic, "Effective harnesses for long-running agents," November 26, 2025: [original](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents) (read in full)
+- Anthropic, "Effective context engineering for AI agents," September 29, 2025 (page shows a revision on October 18, 2026): [original](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) (read in full)
+- Kelly Hong, Anton Troynikov, Jeff Huber, "Context Rot: How Increasing Input Tokens Impacts LLM Performance," Chroma technical report, July 2025: [original](https://research.trychroma.com/context-rot) (read the main text and limitations; not a journal paper)
