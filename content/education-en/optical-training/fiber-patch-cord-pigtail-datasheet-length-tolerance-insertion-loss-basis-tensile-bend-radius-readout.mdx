@@ -1,0 +1,172 @@
+---
+title: "Reading Fiber Patch Cord and Pigtail Datasheets: Length Tolerance, Insertion Loss Basis, Tensile Load and Bend Radius"
+date: "2026-11-25"
+desc: "A 10-minute lesson on reading the length tolerance, the basis of the insertion loss limit, tensile load, bend radius, return loss and end-face lines of fiber patch cord and pigtail datasheets. It compares 17 manufacturer and distributor documents and 3 FOA pages to show how far the real length of a 3 m cord and the tensile limit of a 2.0 mm cable differ between documents, and adds up the connection loss of a cross-connect channel under each basis."
+coverImage: "/images/education/optical-training/fiber-patch-cord-pigtail-datasheet-length-tolerance-insertion-loss-basis-tensile-bend-radius-readout/cover.svg"
+readTime: "10 min"
+lang: "en"
+---
+
+Fiber patch cord and pigtail datasheets state the length tolerance, the basis of the insertion loss limit, the tensile limit and the bend radius in different ways, so the same 3 m cord can come out at 3.000–3.076 m, 3.000–3.150 m or 2.950–3.050 m depending on whose sheet you read. Before choosing a cord, copy more than the numbers. Note whether the tolerance is plus-only or two-sided, whether the loss limit is an average, a maximum or a 97% value, whether the tensile and bend lines are for installation or long-term service, and whether they apply to the 0.9 mm pigtail at all. In the sheets read for this lesson, the installation tensile limit of a 2.0 mm simplex cable ran from 50 N to 440 N, and the bend radius of the same kind of cord was printed anywhere from 7.5 mm to 50 mm.
+
+Based on the documents checked on 25 November 2026.
+
+## Learning objectives
+
+- Write down whether the length tolerance is plus-only or two-sided and how it changes by length band, and calculate the real length range from the ordered length.
+
+- Write down whether an insertion loss limit applies to one connector or to the whole cord, and whether it is an average, a maximum or a 97% value, then add up the connection loss of a cross-connect channel under each basis.
+
+- Check whether tensile and bend limits are for installation or long-term service and whether each cable diameter (0.9, 2.0, 3.0 mm) has its own line, and read the sign and range of the return loss and end-face lines.
+
+## How do patch cord datasheets state the length tolerance?
+
+Length tolerance is stated in five ways, and the way decides whether a cord can come out shorter than ordered. Documents that allow plus only (Leviton, FS, NADDOD), and the Comtec lines under 20 m, never deliver a cord shorter than the ordered length. Fibline prints ±50 mm, so a 3 m cord can come out at 2.950 m. Some documents also say where the length is measured and where the band boundaries fall, so copy the boundary and the measuring point together with the number.
+
+| Document | Length tolerance line | What to check when reading |
+| --- | --- | --- |
+| Leviton Premium Plus (revised September 2025) | Under 10 m +7.6 cm/−0, over 10 m +2.0%/−0 | Length is measured from ferrule tip to ferrule tip with the protective caps removed. A cord of exactly 10 m falls in neither line |
+| FS standard patch cables (December 2021 file and May 2025 file) | Up to 0.5 m +5 cm, up to 5 m +10 cm, up to 10 m +15 cm, up to 30 m +20 cm, up to 100 m +1%, over 100 m +1.5% (all −0) | The 2021 file has a separate multifiber column of +8, +12, +15 and +20 cm. The Ascent document of January 2022 prints the same table |
+| NADDOD standard patch cables (August 2025) | Up to 10 m +0.1 m/−0, over 10 m +1%/−0 | The band cells are merged in the table, so the page was checked as an image. The drawing shows total length from connector A to connector B |
+| Comtec patch cords (April 2020) and Teleconexion patch cords (October 2022) | Up to 0.5 m +100 mm, up to 5 m +150 mm, up to 20 m +200 mm, 20 m and over ±1% | The 20 m boundary appears in two rows, so a cord of exactly 20 m could follow either +200 mm or ±1% |
+| Fibline (May 2023) | ±50 mm | The same width for every length, and two-sided |
+| R&M, CommScope, Panduit, Molex, Rosenberger, LINK | Not stated | Only an ordered length appears and there is no tolerance line, so record it as unconfirmed |
+
+For a 3 m cord, the range is 3.000–3.076 m for Leviton, 3.000–3.100 m for FS and NADDOD, 3.000–3.150 m for Comtec and 2.950–3.050 m for Fibline. For a 25 m cord it is 25.00–25.50 m for Leviton, 25.00–25.25 m for NADDOD, 25.00–25.20 m for FS, 24.75–25.25 m for Comtec and 24.95–25.05 m for Fibline. Even among the plus-only documents, the allowed spread at 25 m runs from 20 cm to 50 cm, a factor of 2.5. Take a hypothetical case in which the route between two racks is 2.95 m and a 3 m cord is to be hung with no slack (a hypothetical calculation, DMS interpretation). A cord from a plus-only document is always at least 3.000 m, at least 5 cm longer than the route, while a cord under the Fibline line can be 2.950 m, which leaves zero slack. Read the length tolerance line first for whether the cord can come out short, and when the length matters, write the sign of the tolerance and the measuring point into the purchase order.
+
+## What basis does an insertion loss limit use?
+
+An insertion loss limit of 0.25 dB means different things under different bases. Datasheets mix maximum values, averages, 97% values and values against a reference cord, and most do not say whether the limit is for one connector or for the whole cord. The FOA explains how to test a patch cord with the single-ended method, which mates each connector of the cord against a reference cord one at a time. With that method the reading is the loss of one connector, and a reading taken across both ends at once is the sum of two connector losses. For that reason it is natural to read these limits as per-connector values, but only some of the documents say so.
+
+| Document | Single-mode insertion loss line | What to check when reading |
+| --- | --- | --- |
+| Leviton (September 2025) | 0.12 dB typical, 0.25 dB maximum | Says every cord is tested 100% for insertion loss but gives neither the method nor the reference cord |
+| Rosenberger (May 2020, preliminary) | 0.20 dB typical, 0.40 dB maximum (UPC and APC) | Insertion loss is tested to IEC 61300-3-4 and return loss to IEC 61300-3-6, and the reference cord connector has its own line of 0.08 dB typical and 0.10 dB maximum |
+| CommScope (June 2025) | Grade C: 97% at 0.50 dB or less, average 0.25 dB or less, against reference 0.45 dB or less. Grade B: 97% 0.25, average 0.12, against reference 0.25 dB or less | Grades follow IEC 61755-1, and values are for 1310, 1550 and 1625 nm |
+| FS patch cables (May 2025) | Standard 0.30 dB or less, Grade B 0.12 dB or less, ultra-low loss 0.08 dB or less | Does not say maximum or average. The pigtail datasheet says 0.3 dB or less |
+| NADDOD (August 2025) | Standard 0.5 dB or less, low loss 0.25 dB or less | The mechanical text matches the FS 2021 file, yet the standard insertion loss is 0.5 dB against FS at 0.3 dB |
+| Panduit (December 2023) | LC 0.25 dB maximum, SC 0.50 dB maximum (standard) | For the same single-mode cord, the limit doubles with the connector type |
+| Molex (December 2025) | Most types 0.30 dB, MT-RJ 0.50 dB maximum, low-loss grade 0.15 dB | Printed as maximum allowable values, and E-2000 is 0.30 dB |
+| R&M (July 2024), LINK (2026), Comtec (2020) | 0.25 dB or less, 0.15 typical and 0.30 maximum, 0.3 dB or less | R&M says the values follow IEC 61753-1 |
+
+Assume a cross-connect channel with four mated pairs, that is, two patch cords with a connector at each end (a hypothetical calculation, DMS interpretation). Reading each limit as a per-connector maximum, the Leviton 0.25 dB gives a total of 1.00 dB, the FS standard 0.30 dB gives 1.20 dB, the Rosenberger maximum of 0.40 dB gives 1.60 dB, and Panduit SC or the NADDOD standard at 0.50 dB gives 2.00 dB. For CommScope Grade C, adding the 97% value of 0.50 dB four times gives 2.00 dB, while adding the average of 0.25 dB gives 1.00 dB. Grade B gives 0.48 dB on the 0.12 dB average and 1.00 dB on the 0.25 dB 97% value. If a document with a maximum-only line and one with an average line are dropped into the same cell, the connection loss budget can be off by almost a factor of two.
+
+So write the basis (average, 97%, maximum, against reference) and the test wavelength beside the limit in the purchase specification. After delivery, do not trust the label value alone. Measure both connectors of every cord with the FOA-2 single-ended method. The FOA guidance describes a cord labeled 0.2 dB that tested at 1 dB and a label that looked as if it had been copied rather than printed from a test. For reference, the FOA testing page advises choosing reference cords with low loss, typically under 0.3 dB, and replacing them once they pass 0.5 dB (FOA material).
+
+## How far do tensile limits and bend radius differ for the same 2.0 mm cable?
+
+Tensile and bend limits differ widely even for the same 2.0 mm simplex cord. The installation or short-term tensile limit is 50 N for Leviton, 100 N for FS, 200 N for R&M and LINK, 220 N for Fibline and 440 N for Rosenberger, so the highest value is 8.8 times the lowest. The long-term limits also split, with Leviton at 30 N, FS at 60 N, R&M at 100 N and Rosenberger at 132 N. For bend radius, installation values are 50 mm for Leviton, R&M and Rosenberger, 30 mm for LINK, 30 mm for Molex (a 2.0 × 4.1 mm duplex cordage), 20 mm for FS (calculated as 10D) and 7.5 mm for Fibline. Long-term values are 30 mm for Leviton, 30 mm for Rosenberger, 25 mm for R&M, 20 mm for Molex and 10 mm for FS (calculated as 5D).
+
+![Bars comparing installation tensile limit and bend radius of 2.0 mm simplex patch cords by document](/images/education/optical-training/fiber-patch-cord-pigtail-datasheet-length-tolerance-insertion-loss-basis-tensile-bend-radius-readout/bars-en.svg)
+
+- Light bars are installation or short-term values and dark bars are long-term or operating values
+
+- Tensile limits run from 50 N to 440 N and bend radius from 7.5 mm to 50 mm
+
+- The FS bend radius multiplies 10 times (dynamic) and 5 times (static) the cable diameter by 2.0 mm and maps them to installation and long-term, which is a DMS interpretation, and the Fibline bar is the value on its cable specification line
+
+The units also differ. The FS family (FS, NADDOD, Ascent) states bend radius as a multiple of the cable diameter (10D and 5D, dynamic and static) and keeps a separate line for the fiber itself (G.657.A1 10 mm, G.657.A2 7.5 mm). Leviton, R&M, Rosenberger, Molex and LINK give the cable bend radius in mm, and Panduit gives it by diameter: 9 mm for 0.9 mm, 16 mm for 1.6 mm and 29 mm for 3 mm. The 7.5 mm of Fibline sits on its cable specification line and looks like a fiber value copied as a cable value, but the document does not explain it, so leave it as unconfirmed (DMS interpretation). For tensile, the FS family separates long-term and short-term, R&M and Rosenberger separate installation and operation, LINK gives one pulling force line and Fibline gives one maximum tensile line. Unless the name of the tensile line (long-term, short-term, installation, operation, maximum) is copied with the value, the values cannot be compared.
+
+Editions of one maker's documents also differ. The tensile limit of the FS standard patch cable in 1.6 mm duplex is 90/150 N in the 2021 file and 60/120 N in the 2025 file (the NADDOD 2025 file keeps the 2021 value). Whether a newer edition exists can only be told from the document date and the file name.
+
+## Does a 0.9 mm pigtail use the same limits as a patch cord?
+
+A 0.9 mm pigtail does not use the same limits as a patch cord. The FS patch cable datasheet gives the 0.9 mm simplex a long-term and short-term tensile limit of 3 N and 6 N, against 60 N and 100 N for the 2.0 mm simplex in the same document, a gap of nearly 17 times. R&M splits its connector retention test into 100 N for 120 seconds on the cable and 5 N for 60 seconds on the pigtail, and also gives different loads for repeated bending (5 N against 0.2 N) and static side load (1 N against 0.2 N). Applying patch cord limits to a 0.9 mm pigtail therefore badly overstates the safety margin against pulling during splicing work.
+
+Pigtail documents do not always agree either. The June 2025 edition of the FS pigtail datasheet gives the cable bend radius for single-mode as 10/5D (dynamic/static), which works out to 9 mm and 4.5 mm for a 0.9 mm cable, while the October 2021 edition gives a single-mode minimum bend radius of 30 mm. The LINK pigtail specification (revised October 2018) puts cable diameters of 3.0, 2.0 and 0.9 mm in one table with a single pulling force of 200 N and a single bend radius of 30 mm, so it cannot be told whether the values apply to the 0.9 mm. Panduit gives a 9 mm bend radius for the 900 µm buffer on its own line. For stripping before fusion, FS advises stripping only 1–2 cm at a time, and CommScope states that a semi-tight buffer can be stripped over 2 m in steps of at least 30 cm and a loose buffer over 2 m in one operation. So for a pigtail, first check that the line carries the 0.9 mm or the 2.0 mm diameter.
+
+## How are the return loss and end-face lines read?
+
+Return loss can only be read when the sign and the polish type (UPC or APC) are copied together. For UPC, R&M and Panduit give 55 dB or more, Leviton, FS, LINK and Comtec give 50 dB or more, and CommScope gives more than 50 dB. Rosenberger states a typical UPC value of −55 dB and a minimum of −45 dB, so it allows a limit 5 dB lower than the others, and the value is negative. Molex also prints back reflection as −50 dB. For APC, FS, Leviton, LINK and Comtec give 60 dB or more, Rosenberger gives −60 dB minimum (−65 dB typical) and Molex gives −60 dB (65 dB for the low-loss grade). The Comtec document (APC 60 dB or more) and the Teleconexion document, which share nearly the same structure (APC 55 dB or more), differ by 5 dB, and both say the values were measured at 1310 and 1550 nm. A larger return loss is better and a document that writes it as negative means the same thing, so unify the sign when comparing.
+
+End-face geometry limits also differ by document. Comtec and Teleconexion give a UPC radius of curvature (ROC) of 10–25 mm, an APC ROC of 5–12 mm, fiber undercut or protrusion of 100 nm or less, apex offset of 50 µm or less and a polish angle of 8° ±0.3°. NADDOD gives a UPC ROC of 5.0–30.0 mm, an APC ROC of 5.0–12.0 mm, fiber height of −100 to 100 nm, apex offset of 0–70 µm, an APC angle of 7.7–8.3° and a key error of ±0.3°, and says the values are controlled by statistical process control with a yield above 95%. The UPC ROC is therefore 10–25 mm against 5–30 mm, and the apex offset 50 µm against 70 µm. Leviton says it controls end-face geometry to IEC 61755-3-1 (UPC) and 61755-3-2 (APC) but prints no numbers, the FS pigtail sheet lists IEC 61300-3-35 and no geometry values, and Rosenberger says a three-dimensional geometry test report is provided on request. If end-face geometry matters, write into the purchase specification that a document with numbers or a test report is required.
+
+Do not mix APC and UPC. The FOA warns that mating PC and APC connectors can damage them and advises telling them apart by connector body and boot color (blue for single-mode, green for APC). Check the polish type column on the datasheet together with the color of the cord label.
+
+![Order for reading a patch cord and pigtail datasheet](/images/education/optical-training/fiber-patch-cord-pigtail-datasheet-length-tolerance-insertion-loss-basis-tensile-bend-radius-readout/concept-en.svg)
+
+- Write the sign and band of the length tolerance first, and copy the insertion loss basis (average, 97%, maximum) and the wavelength beside the limit
+
+- Copy tensile and bend lines with their line name (installation, long-term, short-term) and the cable diameter, and read a pigtail separately from a patch cord
+
+- After delivery, check the loss of both connectors and the end face of each cord with the single-ended method
+
+This material has limits. The texts of IEC 61753-1, IEC 61755-1, IEC 61300-3-4 and -3-6 and TIA-568.3-E were not read, and how each datasheet tested to these standards is copied only as far as the document states it. All values are published by the manufacturers and distributors, not tested here. Whether each datasheet is the current revision was not confirmed. Some documents of FS, NADDOD, Ascent and Fibline share one table template and were not counted as independent evidence. The FS (both 2025 files), NADDOD, Fibline, Comtec and Teleconexion documents carry no printed date, so the file path or the search index publication date is shown in parentheses, and the two FS 2021 files carry a 2009–2022 copyright line, so the 2021 dates come from the search index.
+
+## Checklist
+
+- Did you write whether the length tolerance is plus-only or two-sided, the point where length is measured (ferrule tip or connector end) and the band boundaries, and calculate the real length range from the ordered length?
+
+- Did you write whether the insertion loss limit is an average, a 97% value or a maximum, the test wavelength, and whether it is for one connector or the whole cord, and use that basis in the connection loss budget?
+
+- Did you copy the line name of the tensile and bend limits (installation, long-term, short-term) with the cable diameter, and avoid reading patch cord values for a 0.9 mm pigtail?
+
+- Did you unify the sign of the return loss and the polish type (UPC, APC), and check whether the document has end-face numbers or a test report?
+
+- Did you test both connectors of each delivered cord with the single-ended method instead of trusting the label, and record the edition and date of the datasheet?
+
+## Review questions
+
+### 1. A datasheet says up to 10 m +0.1 m/−0 and over 10 m +1%/−0. What is the real length range of a 25 m cord?
+
+Answer and explanation: 25 m falls in the over-10 m line, so +1%, which is +0.25 m, is allowed and the range is 25.00–25.25 m. The minus side is 0, so no cord shorter than 25 m is delivered. Reading the same length under the Comtec line gives ±1%, a range of 24.75–25.25 m, so check the sign first on a route with no slack.
+
+### 2. A Grade C cord has an insertion loss of 97% at 0.50 dB or less and an average of 0.25 dB or less. What are the connection loss totals for a channel with four mated pairs on the average basis and on the 97% basis?
+
+Answer and explanation: On the average basis it is 0.25 dB × 4 = 1.00 dB, and adding every 97% value gives 0.50 dB × 4 = 2.00 dB. The two figures are different statistical bases, so do not mix them in one cell, and record in the connection loss budget which basis was used. The idea that all four connections would reach the 97% value at once is not something the document states, so this is a hypothetical calculation (DMS interpretation).
+
+### 3. The FS datasheet gives the 0.9 mm simplex 3 N and 6 N long-term and short-term, and the 2.0 mm simplex 60 N and 100 N. Do you apply the 100 N of the 2.0 mm cord to an installation job that pulls a 0.9 mm pigtail?
+
+Answer and explanation: No. The short-term limit of the 0.9 mm pigtail is 6 N, more than 16 times lower than the 100 N of the 2.0 mm cord. Use the line for the matching diameter where the document has separate lines per diameter, and where only one line is printed for mixed diameters (the 200 N in the LINK pigtail document), record it as unconfirmed, because the document does not show that it applies to 0.9 mm.
+
+## Sources
+
+- [FS: Fiber Pigtails Datasheet (June 2025 edition)](https://resource.fs.com/mall/resource/fiber-pigtails-datasheet.pdf) · pages 2–4, performance characteristics
+
+- [FS: Simplex Fiber Optic Pigtails Datasheet (October 2021 edition)](https://img-en.fs.com/file/datasheet/simplex-fiber-optic-pigtails-datasheet.pdf) · page 2, specifications
+
+- [FS: Fiber Patch Cables Datasheet (May 2025 edition)](https://resource.fs.com/mall/resource/fiber-patch-cables-datasheet.pdf) · tensile, insertion loss and length tolerance
+
+- [FS: Standard Fiber Patch Cables Datasheet (December 2021 edition)](https://img-en.fs.com/file/datasheet/standard-fiber-patch-cable-datasheet-1.pdf) · tensile and length tolerance
+
+- [NADDOD: Standard Fiber Patch Cables Datasheet (August 2025)](https://resource.naddod.com/files/2025-08-11/standard-fiber-patch-cables-datasheet-011925.pdf) · pages 3–5
+
+- [Ascent: Fiber Patchcord Datasheet (V1d, January 2022)](https://ascentcomtec.com/Uploads/files/20231117/ACT_Fiber_Patchcord_Datasheet_V1d_Jan_2022.pdf) · tensile and length tolerance
+
+- [Fibline: Fiber Patch Cables Datasheet (May 2023)](https://www.fibline.com.tr/wp-content/uploads/simple-file-list/Patch-Cord-Datasheet.pdf) · cable specifications
+
+- [Leviton: Premium Plus Fiber Patch Cords (revised September 2025)](https://leviton.com/content/dam/leviton/network-solutions/product_documents/product_specification/Leviton-Spec-Premium-Plus-Fiber-Patch-Cords.pdf) · pages 1–2
+
+- [CommScope: Singlemode and multimode cable assemblies (CO-120022.1-EN, June 2025)](https://webresources.commscope.com/download/assets/Data+Sheet%3A+Singlemode+and+multimode+cable+assemblies/f2bbed203bd411f09f00ea1fa90d937b) · pages 1–3
+
+- [R&M: Fiber-optic patch-cords singlemode simplex (v1.0, July 2024)](https://res.cloudinary.com/rdm/epim/MASTER_PPI-DS_PATCHCORD-LC-SX-LCPC-LCPC-OSX_CACT_V1.PDF) · pages 1–2
+
+- [Panduit: Opti-Core Fiber Optic Patch Cords and Pigtails (December 2023)](https://www.panduit.com/content/dam/panduit/en/products/media/9/09/409/2409/111272409.pdf) · page 1
+
+- [Molex: Optical Fiber Patch Cords and Pigtails (December 2025)](https://www.molexces.com/wp-content/uploads/91.XX_.XXX_.XXXXX-X.pdf) · pages 1–2
+
+- [Rosenberger North America: Fiber Optic Cable Patch Cords (TCH-DS-PC-0014, preliminary, May 2020)](https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/2808/Fiber_Optic_Cable_Patch_Cords.pdf) · pages 2–3
+
+- [LINK: UFPX22DXX patch cord technical specification (V1.3)](https://www.linkcable.com/uploads/product_document/document/433/UFPX22DXX-XX_Technical_Specification_V1.3_030826.pdf) · page 4
+
+- [LINK: UFP960S31 pigtail specification (revised October 2018)](https://personetshop.com/wp-content/uploads/2024/03/LINK-UFP960S31-1.5-SC-UPC-Pigtail-SMOS2-Simplex1.50-m-1.pdf) · pages 4–5
+
+- [Comtec: Patch Cords Technical Specs](https://comtec-sol.com/downloads/Patchcords.pdf) · pages 2–4
+
+- [Teleconexion: Fiber Optic Patch Cord Technical Specification (October 2022)](https://www.teleconexionsa.com/sites/default/files/2022-10/LATIGUILLOS.pdf) · pages 3–5
+
+- [FOA: Patchcords](https://www.foa.org/tech/ref/termination/patchcords.html) · testing and choosing patch cords
+
+- [FOA: Testing Cables (OFSTP-14)](https://foa.org/tech/ref/testing/test/OFSTP-14.html) · single-ended and double-ended tests
+
+- [FOA: FOA-2 Testing Loss of Fiber Optic Cables, Single-Ended (January 2025)](http://foa.org/tech/ref/1pstandards/FOA-2.pdf) · test procedure
+
+## Continue
+
+- [Optical training curriculum](/fttx-training)
+
+- [ODF patch cord routing and port labeling](/en/education/optical-training/odf-patch-cord-routing-and-labeling)
+
+- [Optical connector datasheet readout: insertion loss, return loss and mating cycles](/en/education/optical-training/optical-connector-datasheet-insertion-loss-return-loss-mating-cycles-readout)
+
+- [Fixed optical attenuator datasheet readout: tolerance basis, wavelength window and return loss](/en/education/optical-training/fixed-optical-attenuator-datasheet-tolerance-basis-wavelength-window-return-loss-readout)

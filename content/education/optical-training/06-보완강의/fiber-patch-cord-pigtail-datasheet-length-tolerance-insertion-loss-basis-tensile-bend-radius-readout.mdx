@@ -1,0 +1,172 @@
+---
+title: "광 점퍼 코드·피그테일 사양서의 길이 허용 오차·삽입손실 기준·인장·굽힘 반경 판독"
+date: "2026-11-25"
+desc: "광 점퍼 코드와 피그테일 사양서에서 길이 허용 오차, 삽입손실 한도의 측정 기준, 인장 한도, 굽힘 반경, 반사 감쇠량과 단면 형상 줄을 읽는 10분 교안입니다. 제조사·유통사 사양서 17건과 FOA 자료 3건을 비교해 같은 3 m 코드의 실제 길이와 같은 2.0 mm 케이블의 인장 한도가 얼마나 갈리는지 보이고, 교차 연결 선로의 접속손실을 기준별로 더해 봅니다."
+coverImage: "/images/education/optical-training/fiber-patch-cord-pigtail-datasheet-length-tolerance-insertion-loss-basis-tensile-bend-radius-readout/cover.svg"
+readTime: "10 min"
+lang: "ko"
+---
+
+광 점퍼 코드(패치 코드)와 피그테일 사양서는 길이 허용 오차, 삽입손실 한도의 측정 기준, 인장 한도, 굽힘 반경을 문서마다 다른 방식으로 적고 있어서, 같은 3 m 코드를 주문해도 실제 길이가 3.000–3.076 m, 3.000–3.150 m, 2.950–3.050 m로 갈립니다. 그래서 코드를 고를 때는 한도 숫자만 옮기지 않고, 허용 오차가 한쪽(플러스만)인지 양쪽인지, 삽입손실 한도가 평균인지 최대인지 97% 값인지, 인장과 굽힘 한도가 설치 중 값인지 장기 값인지, 0.9 mm 피그테일에도 적용되는지를 줄 단위로 확인합니다. 이번에 읽은 사양서에서 2.0 mm 단심 케이블의 설치 중 인장 한도는 50 N에서 440 N까지 나뉘었고, 같은 코드의 굽힘 반경은 7.5 mm에서 50 mm까지 적혀 있었습니다.
+
+2026년 11월 25일 확인한 자료 기준입니다.
+
+## 학습 목표
+
+- 길이 허용 오차 줄이 플러스만인지 양쪽인지, 길이 구간마다 어떻게 달라지는지 적고, 주문 길이에서 실제 길이 범위를 계산합니다.
+
+- 삽입손실 한도가 커넥터 하나의 값인지 코드 전체의 값인지, 평균·최대·97% 가운데 무엇인지 적고, 교차 연결 선로의 접속손실 합계를 기준별로 계산합니다.
+
+- 인장 한도와 굽힘 반경이 설치 중 값인지 장기 값인지, 케이블 외경(0.9, 2.0, 3.0 mm)마다 적혀 있는지 확인하고, 반사 감쇠량과 단면 형상 줄의 부호와 범위를 읽습니다.
+
+## 점퍼 코드 사양서의 길이 허용 오차는 어떤 방식으로 적혀 있습니까?
+
+길이 허용 오차는 다섯 가지 방식으로 적혀 있고, 어느 방식을 쓰는지에 따라 코드가 주문보다 짧아질 수 있는지가 달라집니다. 플러스만 허용하는 문서(Leviton, FS, NADDOD)와 Comtec의 20 m 미만 줄은 주문 길이보다 짧은 코드가 나오지 않습니다. 반면 Fibline은 ±50 mm로 양쪽을 적어서 3 m 코드가 2.950 m까지 짧아질 수 있습니다. 또 일부 문서는 길이를 재는 위치와 길이 구간의 경계도 적고 있어서, 같은 줄을 읽더라도 구간 경계와 측정 위치를 같이 옮겨야 합니다.
+
+| 문서 | 길이 허용 오차 줄 | 읽을 때 확인할 점 |
+| --- | --- | --- |
+| Leviton Premium Plus (2025년 9월 개정) | 10 m 미만 +7.6 cm/−0, 10 m 초과 +2.0%/−0 | 길이는 보호 캡을 뺀 페룰 끝에서 페룰 끝까지 잰 값입니다. 정확히 10 m인 코드는 두 줄 어디에도 들어가지 않습니다 |
+| FS 일반 패치 케이블 (2021년 12월 파일과 2025년 5월 파일) | 0.5 m 이하 +5 cm, 5 m 이하 +10 cm, 10 m 이하 +15 cm, 30 m 이하 +20 cm, 100 m 이하 +1%, 100 m 초과 +1.5% (모두 −0) | 2021년 파일에는 다심 케이블 열이 따로 있어 +8, +12, +15, +20 cm입니다. Ascent 2022년 1월 문서의 표가 같은 값입니다 |
+| NADDOD 일반 패치 케이블 (2025년 8월) | 10 m 이하 +0.1 m/−0, 10 m 초과 +1%/−0 | 표에서 구간 칸이 합쳐져 있어 그림으로 확인했습니다. 도면은 커넥터 A에서 B까지를 전체 길이로 그립니다 |
+| Comtec 패치 코드 (2020년 4월)와 Teleconexion 패치 코드 (2022년 10월) | 0.5 m 이하 +100 mm, 5 m 이하 +150 mm, 20 m 이하 +200 mm, 20 m 이상 ±1% | 20 m 줄이 두 곳에 걸려 있어 정확히 20 m 코드는 +200 mm와 ±1% 중 어느 쪽인지 알 수 없습니다 |
+| Fibline (2023년 5월) | ±50 mm | 길이에 상관없이 같은 폭이고 양쪽입니다 |
+| R&M, CommScope, Panduit, Molex, Rosenberger, LINK | 적혀 있지 않음 | 주문 길이 표기만 있고 허용 오차 줄이 없어 미확인으로 기록합니다 |
+
+3 m 코드로 계산하면 Leviton은 3.000–3.076 m, FS와 NADDOD는 3.000–3.100 m, Comtec은 3.000–3.150 m, Fibline은 2.950–3.050 m입니다. 25 m 코드에서는 Leviton이 25.00–25.50 m, NADDOD가 25.00–25.25 m, FS가 25.00–25.20 m, Comtec이 24.75–25.25 m, Fibline이 24.95–25.05 m입니다. 한쪽이 플러스만 허용하는 문서끼리도 25 m에서 허용 폭이 20 cm에서 50 cm까지 2.5배 벌어집니다. 랙 사이 경로가 2.95 m인데 여장 없이 3 m 코드를 걸려는 경우를 가정하면(가상 계산, DMS 해석), 플러스만 허용하는 문서의 코드는 어떤 경우에도 3.000 m 이상이라 경로보다 5 cm 이상 길지만 Fibline 줄을 가진 코드는 2.950 m가 나와 여장이 0이 됩니다. 길이 허용 오차 줄은 코드가 짧아질 수 있는지부터 보고, 정밀한 길이가 필요하면 허용 오차의 부호와 길이를 재는 위치를 주문서에 적습니다.
+
+## 삽입손실 한도는 무엇을 기준으로 잰 값입니까?
+
+삽입손실 한도는 같은 0.25 dB라도 기준이 다르면 다른 값입니다. 사양서마다 최대값, 평균, 97% 값, 기준 코드에 대한 값을 섞어 쓰고, 한도가 커넥터 하나의 값인지 코드 전체의 값인지는 대부분 적지 않습니다. FOA는 점퍼 코드를 단일 종단 시험으로 재라고 설명하는데, 이 방법은 코드 양쪽 커넥터를 한 번에 하나씩 기준 코드와 맞대어 측정합니다. 이 방법으로 재면 측정값은 커넥터 하나의 값이 되고, 양쪽을 한 번에 잰 값은 두 커넥터 손실의 합이 됩니다. 그래서 이 문서들의 한도는 커넥터 하나의 값으로 읽는 것이 자연스럽지만, 문서가 그렇게 적은 곳은 일부입니다.
+
+| 문서 | 단일 모드 삽입손실 줄 | 읽을 때 확인할 점 |
+| --- | --- | --- |
+| Leviton (2025년 9월) | 일반 0.12 dB 전형, 0.25 dB 최대 | 모든 코드를 삽입손실로 100% 시험한다고 적지만 측정 방법과 기준 코드는 적지 않습니다 |
+| Rosenberger (2020년 5월, 예비 판) | 전형 0.20 dB, 최대 0.40 dB (UPC·APC) | 삽입손실은 IEC 61300-3-4, 반사 감쇠량은 IEC 61300-3-6으로 시험하고, 시험용 기준 코드 커넥터는 전형 0.08 dB, 최대 0.10 dB로 따로 적습니다 |
+| CommScope (2025년 6월) | 등급 C: 97% 0.50 dB 이하, 평균 0.25 dB 이하, 기준 코드 대비 0.45 dB 이하. 등급 B: 97% 0.25, 평균 0.12, 기준 코드 대비 0.25 dB 이하 | IEC 61755-1의 등급이며 값은 1310, 1550, 1625 nm에서 잰 것이라고 적습니다 |
+| FS 패치 케이블 (2025년 5월) | 표준 0.30 dB 이하, 등급 B 0.12 dB 이하, 초저손실 0.08 dB 이하 | 최대인지 평균인지 적지 않습니다. 피그테일 사양서는 0.3 dB 이하입니다 |
+| NADDOD (2025년 8월) | 표준 0.5 dB 이하, 저손실 0.25 dB 이하 | 기계 특성 문장이 FS 2021년 파일과 같은데 표준 삽입손실이 0.5 dB로 FS의 0.3 dB와 다릅니다 |
+| Panduit (2023년 12월) | LC 0.25 dB 최대, SC 0.50 dB 최대 (표준) | 같은 단일 모드 코드에서 커넥터 형식에 따라 한도가 두 배입니다 |
+| Molex (2025년 12월) | 대부분의 형식 0.30 dB, MT-RJ 0.50 dB 최대, 저손실 등급 0.15 dB | 최대 허용값이라고 적고 E-2000은 0.30 dB입니다 |
+| R&M (2024년 7월), LINK (2026년), Comtec (2020년) | 0.25 dB 이하, 전형 0.15·최대 0.30 dB, 0.3 dB 이하 | R&M은 IEC 61753-1에 따른 값이라고 적습니다 |
+
+같은 코드 종류를 가정하고 교차 연결 선로에 접속이 4곳(점퍼 코드 두 가닥 양쪽)이라고 계산해 봅니다(가상 계산, DMS 해석). 한도를 커넥터 하나의 최대값으로 읽으면 Leviton의 0.25 dB는 합계 1.00 dB, FS 표준 0.30 dB는 1.20 dB, Rosenberger의 최대 0.40 dB는 1.60 dB, Panduit SC와 NADDOD 표준 0.50 dB는 2.00 dB입니다. CommScope 등급 C는 97% 값 0.50 dB를 모두 더하면 2.00 dB이지만 평균 0.25 dB로 더하면 1.00 dB이고, 등급 B는 평균 0.12 dB로 0.48 dB, 97% 값 0.25 dB로 1.00 dB입니다. 최대값 줄만 있는 문서와 평균 줄이 있는 문서를 같은 칸에 놓으면 접속손실 예산이 2배 가까이 어긋납니다.
+
+그래서 구매 사양에는 기준 값과 함께 측정 기준(평균, 97%, 최대, 기준 코드 대비)과 측정 파장을 적고, 받은 뒤에는 라벨 값을 그대로 믿지 않고 FOA-2의 단일 종단 방법으로 코드마다 양쪽 커넥터를 잽니다. FOA 안내에도 라벨에 0.2 dB라고 적힌 코드가 실제로는 1 dB가 나온 사례와, 시험하지 않은 것으로 보이는 라벨이 나옵니다. 참고로 FOA의 시험 자료는 시험용 기준 코드를 0.3 dB 아래의 저손실로 고르고 0.5 dB를 넘으면 교체하라고 안내합니다(FOA 자료 기준).
+
+## 인장 한도와 굽힘 반경은 같은 2.0 mm 케이블에서 얼마나 갈립니까?
+
+같은 2.0 mm 단심 코드라도 문서마다 인장과 굽힘 한도가 크게 다릅니다. 설치 중이나 단기 인장 한도는 Leviton이 50 N, FS가 100 N, R&M과 LINK가 200 N, Fibline이 220 N, Rosenberger가 440 N이라서 가장 높은 값이 가장 낮은 값의 8.8배입니다. 장기 인장 한도도 Leviton 30 N, FS 60 N, R&M 100 N, Rosenberger 132 N으로 갈립니다. 굽힘 반경은 설치 중 값이 Leviton·R&M·Rosenberger 50 mm, LINK 30 mm, Molex 30 mm(2.0 × 4.1 mm 이중 코드), FS 20 mm(10D로 계산), Fibline 7.5 mm이고, 장기 값은 Leviton 30 mm, Rosenberger 30 mm, R&M 25 mm, Molex 20 mm, FS 10 mm(5D로 계산)입니다.
+
+![2.0 mm 단심 점퍼 코드의 설치 중 인장 한도와 굽힘 반경을 문서별로 놓은 막대](/images/education/optical-training/fiber-patch-cord-pigtail-datasheet-length-tolerance-insertion-loss-basis-tensile-bend-radius-readout/bars-ko.svg)
+
+- 밝은 막대는 설치 중 또는 단기 값이고 짙은 막대는 장기 또는 운용 값입니다
+
+- 인장 한도는 50 N에서 440 N까지, 굽힘 반경은 7.5 mm에서 50 mm까지 갈립니다
+
+- FS의 굽힘 반경은 케이블 외경의 10배(동적)와 5배(정적)를 2.0 mm에 곱해 설치 중과 장기에 대응시켰고(DMS 해석), Fibline 줄은 케이블 항목에 적힌 값입니다
+
+문서마다 적는 단위도 다릅니다. FS 계열(FS, NADDOD, Ascent)은 굽힘 반경을 외경 배수(10D와 5D, 동적과 정적)로 적고, 광섬유 코어의 굽힘 반경(G.657.A1 10 mm, G.657.A2 7.5 mm)을 별도 줄로 둡니다. 반면 Leviton, R&M, Rosenberger, Molex, LINK는 케이블의 굽힘 반경을 mm로 적고, Panduit은 외경별로 0.9 mm 9 mm, 1.6 mm 16 mm, 3 mm 29 mm로 적습니다. Fibline의 7.5 mm는 케이블 사양 줄에 있어서 광섬유 값을 케이블 값처럼 옮긴 것으로 보이지만 문서에 설명이 없으므로 미확인으로 둡니다(DMS 해석). 인장은 FS 계열이 장기와 단기를 구분해 적고, R&M과 Rosenberger는 설치 중과 운용 중을, LINK는 당김 힘 한 줄을, Fibline은 최대 인장 한 줄을 적습니다. 그래서 인장 줄의 이름(장기, 단기, 설치, 운용, 최대)을 같이 옮기지 않으면 값을 서로 비교할 수 없습니다.
+
+또 같은 회사의 문서도 판에 따라 다릅니다. FS 일반 패치 케이블의 1.6 mm 이중 코드 인장은 2021년 파일에서 90/150 N이고 2025년 파일에서는 60/120 N입니다(NADDOD 2025년 파일은 2021년 값 그대로입니다). 새 판이 나왔는지는 문서 날짜와 파일 이름으로만 알 수 있습니다.
+
+## 0.9 mm 피그테일은 점퍼 코드와 같은 한도를 씁니까?
+
+0.9 mm 피그테일은 점퍼 코드와 같은 한도를 쓰지 않습니다. FS 패치 케이블 사양서는 0.9 mm 단심의 인장 한도를 장기와 단기 3 N과 6 N으로 적고, 같은 문서의 2.0 mm 단심은 60 N과 100 N입니다. 설치 중 한도가 17배 가까이 차이 납니다. R&M은 커넥터 유지 시험을 케이블 쪽 100 N(120초)과 피그테일 쪽 5 N(60초)으로 나누어 적고, 반복 굽힘 시험의 하중도 5 N 대 0.2 N, 정적 측면 하중도 1 N 대 0.2 N으로 다르게 적습니다. 그래서 0.9 mm 피그테일에 점퍼 코드 한도를 대입하면 융착 작업 중 당기는 힘에 대한 안전 여유를 크게 잘못 읽습니다.
+
+피그테일 문서에서도 줄이 맞지 않는 곳이 있습니다. FS 피그테일 사양서의 2025년 6월판은 케이블 굽힘 반경을 단일 모드 10/5D(동적/정적)로 적어 0.9 mm에서는 9 mm와 4.5 mm로 계산되지만, 2021년 10월판은 단일 모드 최소 굽힘 반경을 30 mm로 적습니다. LINK 피그테일 사양서(2018년 10월 개정)는 케이블 외경 3.0, 2.0, 0.9 mm를 한 표에 놓고 당김 힘 200 N과 굽힘 반경 30 mm를 한 줄씩만 적어서, 이 값이 0.9 mm에도 적용되는지 알 수 없습니다. Panduit은 900 µm 버퍼의 굽힘 반경 9 mm를 따로 적습니다. 융착을 위해 껍질을 벗길 때는 FS가 한 번에 1–2 cm씩 벗기라고 안내하고, CommScope는 반고정(semi-tight) 버퍼는 2 m를 최소 30 cm 단위로, 느슨한(loose) 버퍼는 2 m를 한 번에 벗길 수 있다고 적습니다. 따라서 피그테일은 외경(0.9 mm 또는 2.0 mm)이 같은 줄에 있는지부터 확인합니다.
+
+## 반사 감쇠량과 단면 형상 줄은 어떻게 읽습니까?
+
+반사 감쇠량은 부호와 연마 방식(UPC, APC)을 같이 옮겨야 읽을 수 있습니다. UPC는 R&M과 Panduit이 55 dB 이상, Leviton·FS·LINK·Comtec이 50 dB 이상, CommScope이 50 dB 초과입니다. Rosenberger는 UPC의 전형값을 −55 dB, 최솟값을 −45 dB로 적어서 다른 문서보다 5 dB 낮은 한도를 허용하고, 값이 음수입니다. Molex도 후방 반사를 −50 dB로 적습니다. APC는 FS·Leviton·LINK·Comtec이 60 dB 이상, Rosenberger가 최소 −60 dB(전형 −65 dB), Molex가 −60 dB(저손실 등급 65 dB)입니다. 같은 구조로 보이는 Comtec 문서(APC 60 dB 이상)와 Teleconexion 문서(APC 55 dB 이상)는 값이 5 dB 다르고, 두 문서 모두 삽입손실과 반사 감쇠량을 1310·1550 nm에서 잰 값이라고 적습니다. 반사 감쇠량은 클수록 좋고 음수로 적은 문서는 같은 뜻이므로, 비교할 때 부호를 통일합니다.
+
+단면 형상은 문서마다 허용 범위가 다릅니다. Comtec과 Teleconexion은 UPC 곡률 반경(ROC) 10–25 mm, APC 5–12 mm, 광섬유 함몰·돌출 100 nm 이하, 정점 오프셋(apex offset) 50 µm 이하, 연마 각도 8°±0.3°로 적습니다. NADDOD는 UPC ROC 5.0–30.0 mm, APC 5.0–12.0 mm, 광섬유 높이 −100–100 nm, 정점 오프셋 0–70 µm, APC 각도 7.7–8.3°, 키 오차 ±0.3°이고, 이 값은 통계적 공정 관리로 관리되며 수율이 95%를 넘는다고 적습니다. 그래서 UPC 곡률 반경은 10–25 mm 대 5–30 mm, 정점 오프셋은 50 µm 대 70 µm로 허용 범위가 다릅니다. Leviton은 단면 형상을 IEC 61755-3-1(UPC)과 61755-3-2(APC)로 관리한다고 적지만 수치는 적지 않고, FS 피그테일은 IEC 61300-3-35 시험을 적을 뿐 단면 형상 값이 없으며, Rosenberger는 3차원 형상 시험 성적서를 요청 시 제공한다고 적습니다. 따라서 단면 형상이 필요하면 수치가 있는 문서를 고르거나 성적서를 요청해야 한다는 조건을 구매 사양에 적습니다.
+
+APC와 UPC는 섞어 쓰지 않습니다. FOA는 PC와 APC 커넥터를 섞으면 손상될 수 있다고 안내하고, 커넥터 몸체와 부츠 색(청색 단일 모드, 녹색 APC)으로 구분하라고 적습니다. 사양서의 연마 방식 칸과 코드 라벨의 색을 같이 확인합니다.
+
+![점퍼 코드·피그테일 사양서를 읽는 순서](/images/education/optical-training/fiber-patch-cord-pigtail-datasheet-length-tolerance-insertion-loss-basis-tensile-bend-radius-readout/concept-ko.svg)
+
+- 길이 허용 오차의 부호와 구간을 먼저 적고, 삽입손실은 기준(평균, 97%, 최대)과 파장을 같이 옮깁니다
+
+- 인장과 굽힘은 줄 이름(설치, 장기, 단기)과 케이블 외경을 같이 옮기고, 피그테일은 점퍼 코드와 따로 읽습니다
+
+- 받은 뒤에는 코드마다 단일 종단 방법으로 양쪽 커넥터 손실과 단면을 확인합니다
+
+이번 자료의 한계도 있습니다. IEC 61753-1, IEC 61755-1, IEC 61300-3-4와 -3-6, TIA-568.3-E의 본문은 읽지 못했고, 사양서가 이 표준의 어느 방식으로 시험했는지는 문서에 적힌 범위만 옮겼습니다. 모든 값은 제조사나 유통사가 공표한 값이며 이번에 시험한 값이 아닙니다. 사양서가 현행 개정인지도 확인하지 못했습니다. FS, NADDOD, Ascent, Fibline의 일부 문서는 같은 틀의 표를 공유해서 서로 독립된 근거로 세지 않았습니다. FS(2025년 두 파일), NADDOD, Fibline, Comtec, Teleconexion 문서에는 날짜가 인쇄돼 있지 않아 파일 경로나 검색 색인의 게시일을 괄호에 썼고, FS 2021년 두 파일은 저작권 표기가 2009–2022년이라 2021년 날짜는 색인 기준입니다.
+
+## 업무 점검표
+
+- 길이 허용 오차 줄이 플러스만인지 양쪽인지, 길이를 재는 위치(페룰 끝, 커넥터 끝)와 구간 경계를 적고, 주문 길이에서 실제 길이 범위를 계산했습니까?
+
+- 삽입손실 한도가 평균, 97%, 최대 가운데 무엇인지와 측정 파장, 커넥터 하나의 값인지 코드 전체의 값인지 적고, 접속손실 예산에 기준을 맞춰 넣었습니까?
+
+- 인장과 굽힘 한도의 줄 이름(설치, 장기, 단기)과 케이블 외경을 같이 옮기고, 0.9 mm 피그테일은 점퍼 코드 값으로 읽지 않았습니까?
+
+- 반사 감쇠량의 부호와 연마 방식(UPC, APC)을 통일해 옮기고, 단면 형상 수치나 성적서가 문서에 있는지 확인했습니까?
+
+- 받은 코드를 라벨 값만 믿지 않고 단일 종단 방법으로 양쪽 커넥터를 시험했으며, 사양서의 판 번호와 날짜를 같이 기록했습니까?
+
+## 확인 문제와 정답
+
+### 1. 사양서에 10 m 이하 +0.1 m/−0, 10 m 초과 +1%/−0이라고 적혀 있습니다. 25 m 코드의 실제 길이 범위는 얼마로 계산합니까?
+
+정답·해설: 25 m는 10 m 초과 줄에 들어가므로 +1%인 +0.25 m가 허용되어 25.00–25.25 m입니다. 마이너스 쪽이 0이라 25 m보다 짧은 코드는 나오지 않습니다. 같은 길이를 Comtec 줄로 읽으면 ±1%라서 24.75–25.25 m가 되므로, 길이에 여유가 없는 경로에서는 부호를 먼저 확인합니다.
+
+### 2. 등급 C 코드의 삽입손실이 97% 0.50 dB 이하, 평균 0.25 dB 이하입니다. 접속이 4곳인 선로에서 평균 기준과 97% 값 기준으로 접속손실 합계는 얼마입니까?
+
+정답·해설: 평균 기준은 0.25 dB × 4 = 1.00 dB이고, 97% 값을 모두 더하면 0.50 dB × 4 = 2.00 dB입니다. 두 값은 서로 다른 통계 기준이므로 한 칸에 섞지 않고, 접속손실 예산에는 어느 기준을 썼는지 적습니다. 모든 접속이 동시에 97% 값이 되는 것은 아니라는 점은 문서에서 확인한 것이 아니므로 가상 계산(DMS 해석)입니다.
+
+### 3. FS 사양서에서 0.9 mm 단심은 장기·단기 인장 3 N과 6 N이고 2.0 mm 단심은 60 N과 100 N입니다. 0.9 mm 피그테일을 당기는 설치 작업에 2.0 mm 코드의 100 N을 적용합니까?
+
+정답·해설: 적용하지 않습니다. 0.9 mm 피그테일의 단기 한도는 6 N이라 2.0 mm 코드의 100 N보다 16배 이상 낮습니다. 외경마다 줄이 따로 있는 문서에서는 해당 외경의 줄을 쓰고, 외경이 섞여 한 줄만 적힌 문서(LINK 피그테일 문서의 200 N)는 0.9 mm에 적용되는지 문서에서 확인되지 않으므로 미확인으로 기록합니다.
+
+## 출처와 판본
+
+- [FS: Fiber Pigtails Datasheet (2025년 6월판)](https://resource.fs.com/mall/resource/fiber-pigtails-datasheet.pdf) · 2–4쪽 성능 특성
+
+- [FS: Simplex Fiber Optic Pigtails Datasheet (2021년 10월판)](https://img-en.fs.com/file/datasheet/simplex-fiber-optic-pigtails-datasheet.pdf) · 2쪽 사양
+
+- [FS: Fiber Patch Cables Datasheet (2025년 5월판)](https://resource.fs.com/mall/resource/fiber-patch-cables-datasheet.pdf) · 인장·삽입손실·길이 허용 오차
+
+- [FS: Standard Fiber Patch Cables Datasheet (2021년 12월판)](https://img-en.fs.com/file/datasheet/standard-fiber-patch-cable-datasheet-1.pdf) · 인장·길이 허용 오차
+
+- [NADDOD: Standard Fiber Patch Cables Datasheet (2025년 8월)](https://resource.naddod.com/files/2025-08-11/standard-fiber-patch-cables-datasheet-011925.pdf) · 3–5쪽
+
+- [Ascent: Fiber Patchcord Datasheet (V1d, 2022년 1월)](https://ascentcomtec.com/Uploads/files/20231117/ACT_Fiber_Patchcord_Datasheet_V1d_Jan_2022.pdf) · 인장·길이 허용 오차
+
+- [Fibline: Fiber Patch Cables Datasheet (2023년 5월)](https://www.fibline.com.tr/wp-content/uploads/simple-file-list/Patch-Cord-Datasheet.pdf) · 케이블 사양
+
+- [Leviton: Premium Plus Fiber Patch Cords (2025년 9월 개정)](https://leviton.com/content/dam/leviton/network-solutions/product_documents/product_specification/Leviton-Spec-Premium-Plus-Fiber-Patch-Cords.pdf) · 1–2쪽
+
+- [CommScope: Singlemode and multimode cable assemblies (CO-120022.1-EN, 2025년 6월)](https://webresources.commscope.com/download/assets/Data+Sheet%3A+Singlemode+and+multimode+cable+assemblies/f2bbed203bd411f09f00ea1fa90d937b) · 1–3쪽
+
+- [R&M: Fiber-optic patch-cords singlemode simplex (v1.0, 2024년 7월)](https://res.cloudinary.com/rdm/epim/MASTER_PPI-DS_PATCHCORD-LC-SX-LCPC-LCPC-OSX_CACT_V1.PDF) · 1–2쪽
+
+- [Panduit: Opti-Core Fiber Optic Patch Cords and Pigtails (2023년 12월)](https://www.panduit.com/content/dam/panduit/en/products/media/9/09/409/2409/111272409.pdf) · 1쪽
+
+- [Molex: Optical Fiber Patch Cords and Pigtails (2025년 12월)](https://www.molexces.com/wp-content/uploads/91.XX_.XXX_.XXXXX-X.pdf) · 1–2쪽
+
+- [Rosenberger North America: Fiber Optic Cable Patch Cords (TCH-DS-PC-0014, 2020년 5월 예비 판)](https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/2808/Fiber_Optic_Cable_Patch_Cords.pdf) · 2–3쪽
+
+- [LINK: UFPX22DXX 패치 코드 기술 사양 (V1.3)](https://www.linkcable.com/uploads/product_document/document/433/UFPX22DXX-XX_Technical_Specification_V1.3_030826.pdf) · 4쪽
+
+- [LINK: UFP960S31 피그테일 사양 (2018년 10월 개정)](https://personetshop.com/wp-content/uploads/2024/03/LINK-UFP960S31-1.5-SC-UPC-Pigtail-SMOS2-Simplex1.50-m-1.pdf) · 4–5쪽
+
+- [Comtec: Patch Cords Technical Specs](https://comtec-sol.com/downloads/Patchcords.pdf) · 2–4쪽
+
+- [Teleconexion: Fiber Optic Patch Cord Technical Specification (2022년 10월)](https://www.teleconexionsa.com/sites/default/files/2022-10/LATIGUILLOS.pdf) · 3–5쪽
+
+- [FOA: Patchcords](https://www.foa.org/tech/ref/termination/patchcords.html) · 점퍼 코드 시험과 선택 기준
+
+- [FOA: Testing Cables (OFSTP-14)](https://foa.org/tech/ref/testing/test/OFSTP-14.html) · 단일 종단과 이중 종단 시험
+
+- [FOA: FOA-2 Testing Loss of Fiber Optic Cables, Single-Ended (2025년 1월)](http://foa.org/tech/ref/1pstandards/FOA-2.pdf) · 시험 절차
+
+## 다음에 볼 교안
+
+- [광통신 교육 목차](/education/optical-training)
+
+- [ODF 패치코드 정리와 포트 라벨](/education/optical-training/odf-patch-cord-routing-and-labeling)
+
+- [광 커넥터 사양서의 삽입손실·반사감쇠량·착탈 횟수 판독](/education/optical-training/optical-connector-datasheet-insertion-loss-return-loss-mating-cycles-readout)
+
+- [고정 광 감쇠기 사양서의 감쇠 허용 오차·포함 범위·파장 창·반사 감쇠량 판독](/education/optical-training/fixed-optical-attenuator-datasheet-tolerance-basis-wavelength-window-return-loss-readout)
