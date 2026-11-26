@@ -1,0 +1,157 @@
+---
+title: "Reading OTDR Launch Cable Box Datasheets: Length Selection, Connector Loss and Reflectance Basis"
+date: "2026-11-26"
+desc: "A 10-minute lesson on reading the fiber length, connector insertion loss, return loss and repeatability lines of OTDR launch cable box (pulse suppressor box) datasheets. It compares 12 manufacturer and distributor datasheets and 2 FOA pages, works out the length needed for each OTDR pulse width, and shows how far the fiber loss and connector loss limits of a 1 km box differ between documents."
+coverImage: "/images/education/optical-training/otdr-launch-cable-box-datasheet-length-selection-connector-loss-reflectance-basis-readout/cover.svg"
+readTime: "10 min"
+lang: "en"
+---
+
+The first line to read on an OTDR launch cable box (pulse suppressor box) datasheet is the fiber length, because the cable must be longer than the distance the test pulse occupies in the fiber before the first connector can be measured. EXFO states that the dead zone is about the length of the optical pulse plus a few meters, so the launch cable should be longer than that, and gives the example that a 1 µs pulse is about 100 m long, which makes a 150 m or 300 m product appropriate. In the sheets read for this lesson, the fiber loss limit of 1 km ran from 0.35 dB to 1 dB, the connector insertion loss limit from 0.1 dB to 0.5 dB, and the UPC return loss was printed as 50 dB or better in some sheets and 55 dB or better in others. So work out the length from the pulse width first, then copy the remaining lines only after checking whether each is a maximum or a typical value and what sign the reflection figure uses.
+
+Based on the documents checked on 26 November 2026.
+
+## Learning objectives
+
+- Explain what the launch and receive cables do in an OTDR test, and calculate the fiber length needed for the pulse width in use.
+
+- Tell whether a fiber loss line and a connector insertion loss line are maximum values, typical values or repeatability figures, and calculate the fiber loss by length.
+
+- Read return loss and reflectance with one sign convention, and check that the fiber type and connectors match the link under test.
+
+## How do you choose the length of a launch cable box?
+
+Choose the length from the distance that the OTDR pulse width occupies in the fiber, and pick a product longer than that distance. An OTDR works out the loss of an event as the difference between the backscatter levels before and after it, but before the first connector the dead zone leaves no backscatter segment to use as a reference. So a length of fiber is placed between the OTDR port and the first connector of the link under test, and a receive cable is added at the far end in the same way to measure the last connector. EXFO writes that a launch cable should always be used at both ends of the link for this reason. VIAVI states the same practice on the basis of ITU-T G.650.3 and IEC references and advises a receive cable of similar length. FOA-4 says to use a launch cable long enough for the OTDR to recover from the overload of the test pulse, and that the receive cable is optional and needed only when the far-end connector loss is to be included in the total.
+
+The distance a pulse occupies follows from the speed of light and the refractive index. With a group index of 1.468 (a DMS assumption, and it varies a little by fiber), 1 µs is about 102 m. The table below applies EXFO's rule, that the launch cable must be longer than the pulse dead zone, to that figure and picks a length from those the manufacturers offer. It is a hypothetical calculation (DMS interpretation).
+
+| OTDR pulse width | Distance the pulse occupies | Suitable product length | Fiber loss of one pair (1550 nm, EXFO typical 0.25 dB/km) |
+| --- | --- | --- | --- |
+| 100 ns | about 10 m | 15 m (only a few meters to spare, so check it against the document's few meters) | about 0.01 dB |
+| 1 µs | about 102 m | 150 m (the same as EXFO's example) | 0.075 dB |
+| 3 µs | about 306 m | 500 m (300 m is shorter than 306 m and does not fit) | 0.25 dB |
+| 10 µs | about 1,021 m | 2,200 m or 2,000 m (1,000 m is too short) | 1.10 dB (for 2,200 m) |
+| 20 µs | about 2,042 m | 2,200 m (2,000 m is too short) | 1.10 dB |
+
+The lengths on offer also differ by maker. EXFO lists 15, 150, 300, 500, 1,000 and 2,200 m (the December 2024 edition names two models, PSB and SPSB). VIAVI lists 20, 25, 100, 150, 500, 1,000, 2,000 and 2,200 m and says the MPO versions exist only at 20 m and 25 m. Go4Fiber lists 100–2,000 m, ADoptix 100–5,000 m, FS 150 m–50 km for singlemode and 150 m–2 km for multimode, FiberOptic Supply and WeUnion 100–2,000 m, and the FLC series 20 m, 350 m and 1,000 m. A team that tests with 3 µs and can only buy a 300 m box from its list will find the first connector inside the dead zone. In the other direction, a longer cable adds fiber loss and cuts into the dynamic range available for the test, so do not choose far more length than you need.
+
+![Bars showing the launch cable length needed for each OTDR pulse width](/images/education/optical-training/otdr-launch-cable-box-datasheet-length-selection-connector-loss-reflectance-basis-readout/bars-en.svg)
+
+- Each bar is the distance the pulse occupies, and the dashed lines are the product lengths EXFO offers
+
+- The roughly 306 m of a 3 µs pulse is longer than a 300 m product and shorter than a 500 m product
+
+- This is a DMS calculation using a refractive index of 1.468 and EXFO's dead zone rule, not a tested value
+
+## How do datasheets state fiber loss and connector insertion loss?
+
+Fiber loss is printed both per unit length and as a whole 1,000 m figure, and connector loss is printed as a maximum, a typical value or a repeatability figure, so the lines cannot be placed in one column and compared. The table below copies the lines as the documents print them.
+
+| Document | Fiber loss line | Connector insertion loss line | What to check when reading |
+| --- | --- | --- | --- |
+| EXFO PSB/SPSB (December 2024 edition) and FTB-LTC/PSB/SPSB (May 2018 edition) | Singlemode 0.37 dB/km (1310 nm), 0.25 dB/km (1550 nm), typical | Under 0.5 dB | A footnote says the value was measured with a bidirectional OTDR. The figures are the same in both editions |
+| Go4Fiber GLB (2017 edition) | 0.35 dB/km (1310 nm), 0.2 dB/km (1550 nm), typical | Typical 0.25 dB, maximum 0.5 dB | States typical and maximum together |
+| ADoptix ALB (2017 edition) | The same line as Go4Fiber | Typical 0.3 dB, maximum 0.5 dB | The document layout matches Go4Fiber and only the typical value differs |
+| FLC series (June 2023) | Maximum 0.35 dB/km (1310 nm), maximum 0.22 dB/km (1550 nm) | Singlemode 0.1 dB or less | Both fiber and connector lines are maximums, and the connector limit is the lowest |
+| Series 3 (Fostec 2018, Opfibra 2021) | The line is named insertion loss: typical under 0.3 dB/km, maximum under 0.5 dB/km | A separate line gives mating reliability under 0.2 dB | The unit dB/km reads as fiber loss, but the document does not say whether connectors are included |
+| FS (August 2023), FiberOptic Supply (June 2024) | Under 0.5 dB at 1310 nm for 1,000 m | Repeatability 0.2 dB or less (1,000 times), exchangeability 0.2 dB or less | There is no separate connector insertion loss line |
+| WeUnion (July 2024) | Under 1 dB at 1310 nm for 1,000 m | Repeatability 0.2 dB or less (1,000 times), exchangeability 0.2 dB or less | The lines match those of FS and FiberOptic Supply, yet the fiber figure is double |
+| Fiber-Mart (indexed October 2025) | Under 1 dB at 1310 nm for 1,000 m | The standard configuration is said to include insertion and return loss reports for every connector | A feature item in the same document says under 0.5 dBm/km, so the two lines disagree and the unit looks wrong |
+
+Compared on the maximum-value lines, the fiber loss of 1 km runs from 0.35 dB at FLC to 1 dB at WeUnion and Fiber-Mart, about 2.9 times. The connector insertion loss runs from 0.1 dB at FLC to 0.5 dB at EXFO, Go4Fiber and ADoptix, five times. The loss of the first and last connectors that an OTDR reads is the value of one mated pair, a box-side connector against a link-side connector, so the condition of the box-side connector goes straight into the reading. A box with a large connector limit may therefore put the same amount of uncertainty into the measured value (DMS interpretation, the documents give no such explanation). These limits are published by the makers and were not tested here, so check the connectors of the box you use by end-face inspection and a reference test.
+
+Used as a pair at 1310 nm, two 2,200 m boxes add about 1.63 dB of fiber loss alone at the EXFO typical value, and 1.10 dB at 1550 nm. A longer box means a longer fiber section that weakens the OTDR signal, so when you test a long link, choose only as much length as you need.
+
+## How are the return loss and repeatability lines read?
+
+Read the reflection line with its sign and the direction of its inequality, because even for the same UPC connector the documents split between 50 dB and 55 dB. EXFO, VIAVI and Series 3 print UPC as a reflectance below −50 dB and APC as below −60 dB. FS, FiberOptic Supply and WeUnion print the same meaning as a return loss of 50 dB or more for UPC and 60 dB or more for APC, and FiberOptic Supply and WeUnion also print 35 dB or more for PC. The FLC series, on the other hand, prints 55 dB or more for UPC and 65 dB or more for APC, 5 dB higher.
+
+Go4Fiber and ADoptix print UPC as 55 dB or less and APC as 65 dB or less, and read literally the limit points the wrong way. Return loss is a figure where bigger is better, so the intent looks like 55 dB or more and 65 dB or more, but the documents do not explain it, so record it as unconfirmed (DMS interpretation). Copy the reflection line together with whether the value is a negative reflectance or a positive return loss, which way the inequality points, and whether it is UPC or APC.
+
+The repeatability line has no fixed meaning either. The FS-family documents print repeatability of 0.2 dB or less (1,000 times) and exchangeability of 0.2 dB or less, and Series 3 prints mating reliability under 0.2 dB. These lines describe how much the loss changes when a connector is mated and unmated many times, which differs from the insertion loss limit at first connection. EXFO also writes that the launch cable extends the life of the OTDR connector by reducing the number of matings on it. Because the connector on the box wears instead, keep end-face inspection and cleaning records for the box as well.
+
+## Must the fiber type and connectors match the link under test?
+
+The fiber type and connectors must match the link under test. VIAVI writes that the fiber in the launch and receive cables must match the fiber under test in type, core size and even mode field diameter (MFD), and FOA-4 likewise calls for the same fiber type and size with connectors compatible with those on the cable plant. The fibers the datasheets list are singlemode G.652D (9/125 µm) and two multimode types at EXFO, and G.652D, G.657A and OM1 through OM4 and OM5 at FiberOptic Supply and WeUnion. Fiber-Mart gives G.657A2 in an ordering example. So if a G.657 bend-insensitive link is tested with a G.652D box, a junction with different mode field diameters appears, and these datasheets alone cannot tell you the loss at that junction.
+
+The two ends of a box do not have to carry the same connector. Go4Fiber and ADoptix let you choose the connector of lead A and lead B separately, and Fiber-Mart gives combinations such as an SC/APC input and an FC/UPC output as an ordering example. EXFO lists nine singlemode connector types, including FC/APC, SC/APC, LC/UPC and E2000. So confirm the connector on the OTDR port side and on the link side separately, and check that the polish of the box matches the OTDR port. The lead length also differs by document: 1 m (Fiber-Mart ring type), 1.5 m (Series 3, FLC, EXFO FTB-LTC), 2 m (EXFO PSB and SPSB, Go4Fiber, ADoptix, FS, WeUnion) and 2 m or 3 m (FiberOptic Supply). When you test a short link, the leads and the box add to the length in front of the test section, so include them in your calculation.
+
+The FOA guide explains that a strong reflection at the first connection can produce ghosts at multiples of the launch cable length. When you decide the length to use, check once whether the positions where splices or connections are expected inside the link coincide with those multiples.
+
+![Order for reading a launch cable box datasheet](/images/education/optical-training/otdr-launch-cable-box-datasheet-length-selection-connector-loss-reflectance-basis-readout/concept-en.svg)
+
+- Work out the distance the pulse width occupies first, and pick a product length longer than that
+
+- Write whether loss lines are maximum, typical or repeatability, and unify the sign and inequality of the reflection lines
+
+- Check the fiber type, the input and output connectors and the lead length against the link under test
+
+This material has its limits. The text of ITU-T G.650.3, IEC 61746-1 and Telcordia GR-326-CORE was not read, and the method by which a datasheet tested to those standards is copied only as far as the document states it. Every value is a figure published by a manufacturer or distributor, not a value tested here. Whether each datasheet is the current revision was not confirmed either. Go4Fiber and ADoptix, Opfibra and Fostec, and FS, FiberOptic Supply and WeUnion are documents on the same template, so they were not counted as independent evidence, and there are seven independent document templates. The end-face lines of Series 3 print the radius of curvature as 7–25 nm and the fiber height as −50 to 50 mm, with the units apparently reversed (DMS interpretation), so those lines were not copied. The dates of the Go4Fiber 2017 edition, the ADoptix 2017 edition, FS, FiberOptic Supply, WeUnion, Fiber-Mart, Fostec and Opfibra documents come from the printed date, the file path or the search index date.
+
+## Checklist
+
+- Did you calculate the distance occupied by the OTDR pulse width in use (pulse width × speed of light ÷ 2 ÷ refractive index), and choose a launch cable longer than that?
+
+- Did you copy whether the fiber loss and connector insertion loss lines are maximum, typical or repeatability values, and add up only values on the same basis?
+
+- Did you check whether the reflection line is a negative reflectance or a positive return loss and which way the inequality points, and copy UPC and APC separately?
+
+- Do the fiber type and mode field diameter of the box match the link under test, and do the input and output connectors and the lead length suit the OTDR port and the link?
+
+- Did you keep end-face inspection and cleaning records for the box connectors, and record the edition and date of the datasheet?
+
+## Review questions
+
+### 1. You plan an OTDR test with a 3 µs pulse. Using EXFO's rule and a group index of 1.468, do you choose the 300 m box or the 500 m box?
+
+Answer and explanation: The 500 m box. A 3 µs pulse occupies about 306 m (3 × 10⁻⁶ s × 299,792,458 m/s ÷ 2 ÷ 1.468), and the 300 m box is shorter than that, so the first connector would stay inside the dead zone. The index differs a little by fiber, so confirm the exact value in the distance setting of the OTDR, and when the figure is close to the boundary pick the next longer product.
+
+### 2. One document prints UPC as a reflectance below −50 dB and another prints UPC as a return loss of 50 dB or more. Are the two the same limit?
+
+Answer and explanation: They are the same limit. One writes the same magnitude as a negative reflectance and the other as a positive return loss. A UPC return loss of 55 dB or more (FLC), by contrast, is 5 dB stricter than those two, so it does not go in the same column. When comparing, unify the sign and the inequality.
+
+### 3. You use two 2,200 m boxes as a launch and receive pair at 1550 nm. With the EXFO typical value of 0.25 dB/km, what is the total fiber loss?
+
+Answer and explanation: 2 × 2.2 km × 0.25 dB/km = 1.10 dB. At 1310 nm, applying 0.37 dB/km gives about 1.63 dB. This is the fiber loss alone at the typical value and does not include the connector loss, so add the connector limit separately when building the budget. It is a hypothetical calculation (DMS interpretation).
+
+## Sources and editions
+
+- [EXFO: PSB/SPSB spec sheet (December 2024 edition)](https://www.exfo.com/contentassets/eb75ea560a584e9db674a6d93a3867c9/spec-sheet_psb-spsb_v8_en.pdf) · pages 2–3, choice of length and specifications
+
+- [EXFO: FTB-LTC/PSB/SPSB spec sheet (May 2018 edition)](https://bel-cebeo.mo.cloudinary.net/PRODUCT/DOCUMENT/PictureServer/default.aspx?947FB0959B848C849988A89AA47C8390857A89778B708C6B8475877C8A695EA4B4AB&ts=1782546795191) · pages 2–3
+
+- [VIAVI: OTDR launch and receive fibers/cables (April 2025)](https://www.viavisolutions.com/en-us/literature/otdr-launch-and-receive-cables-data-sheets-en.pdf) · pages 1–2
+
+- [Go4Fiber: OTDR Launch Box GLB (2017 edition)](https://spec.go4fiber.com/testing_equipment/GLB-XX-XXXX-XX-XX_2017v1.pdf) · page 1
+
+- [ADoptix: OTDR Launch Box ALB (2017 edition)](https://spec.go4fiber.com/testing_equipment/ALB_OTDR_Launch_Fiber_Box_2017v1.pdf) · page 3
+
+- [FLC series singlemode launch boxes (June 2023, hosted on cablewholesale.com)](http://files.cablewholesale.com/pdfspecs/90j1-00024_06-2023.pdf) · page 1
+
+- [Opfibra: OTDR Dead Zone Eliminator Series 3 (May 2021)](https://opfibra.com/wp-content/uploads/2021/05/OTDR-Dead-Zone-Eliminator-Ingles.pdf) · page 3
+
+- [Fostec: OTDR Dead Zone Eliminator Series 3 (indexed September 2018)](https://fostec.kr/user/media/getFile.do?fileId=MEDIAFILE_0000001205) · page 2
+
+- [FS: Fiber Optic OTDR Launch Cable Box Datasheet (August 2023 file)](https://resource.fs.com/mall/doc/20230821101121y1ij1p.pdf) · page 2
+
+- [FiberOptic Supply: OTDR Launch Cable (indexed June 2024)](https://fiberopticsupply.com/content/spec_sheet/OTDR%20Launch%20soft%20box.pdf) · pages 1–2
+
+- [WeUnion: OTDR Launch Box (July 2024 file)](https://www.weunionfiber.com/wp-content/uploads/2024/07/OTDR-Launch-Box.pdf) · pages 1–2
+
+- [Fiber-Mart: OTDR Launch Cable Box Datasheet (indexed October 2025)](https://www.fiber-mart.com/datasheet/OTDR%20Launch%20Cable%20Box%20Datasheet.pdf) · pages 1–4
+
+- [FOA: OTDR Testing of Fiber Optic Cable Plants (FOA-4a, January 2025)](https://foa.org/tech/ref/1pstandards/FOA-4.pdf) · test procedure and notes
+
+- [FOA: OTDR reference guide](https://foa.org/tech/ref/testing/OTDR/OTDR.html) · launch cables and ghosts
+
+## Continue with
+
+- [Optical training curriculum](/fttx-training)
+
+- [OTDR dead zone and pulse width](/en/education/optical-training/otdr-dead-zone-pulse-width)
+
+- [OTDR far-end connector evidence](/en/education/optical-training/otdr-far-end-connector-evidence)
+
+- [OTDR ghost event evidence](/en/education/optical-training/otdr-ghost-event-evidence)
+
+- [Reading optical connector datasheets: insertion loss, return loss and mating cycles](/en/education/optical-training/optical-connector-datasheet-insertion-loss-return-loss-mating-cycles-readout)

@@ -1,0 +1,157 @@
+---
+title: "OTDR 런치 케이블 박스 사양서의 길이 선택·연결부 손실·반사 기준 판독"
+date: "2026-11-26"
+desc: "OTDR 런치 케이블 박스(펄스 억제 박스) 사양서에서 광섬유 길이, 연결부 삽입손실, 반사 감쇠량, 반복성 줄을 읽는 10분 교안입니다. 제조사·유통사 사양서 12건과 FOA 자료 2건을 비교해 OTDR 펄스 폭별로 필요한 길이를 계산하고, 같은 1 km 박스의 광섬유 감쇠와 연결부 손실 한도가 문서마다 얼마나 갈리는지 보입니다."
+coverImage: "/images/education/optical-training/otdr-launch-cable-box-datasheet-length-selection-connector-loss-reflectance-basis-readout/cover.svg"
+readTime: "10 min"
+lang: "ko"
+---
+
+OTDR 런치 케이블 박스(펄스 억제 박스) 사양서에서 가장 먼저 볼 줄은 광섬유 길이이고, 그 길이가 시험에 쓰는 OTDR 펄스 폭이 만드는 거리보다 길어야 첫 커넥터의 손실을 잴 수 있습니다. 제조사 EXFO는 불감대(dead zone)가 광펄스 길이에 몇 m를 더한 정도이므로 런치 케이블이 그보다 길어야 한다고 안내하고, 1 µs 펄스는 약 100 m이니 150 m 또는 300 m 제품이 맞는다고 예를 듭니다. 이번에 읽은 사양서에서 광섬유 1 km의 감쇠 한도는 0.35 dB에서 1 dB까지, 연결부 삽입손실 한도는 0.1 dB에서 0.5 dB까지 적혀 있었고, UPC 반사 감쇠량은 50 dB 이상과 55 dB 이상으로 갈렸습니다. 그래서 박스를 고를 때는 길이를 펄스 폭에서 먼저 계산하고, 나머지 줄은 최대값인지 일반값인지, 반사 값의 부호가 무엇인지 확인한 뒤에 옮깁니다.
+
+2026년 11월 26일 확인한 자료 기준입니다.
+
+## 학습 목표
+
+- 런치 케이블과 수신 케이블이 OTDR 시험에서 하는 일을 설명하고, 쓰는 펄스 폭에서 필요한 광섬유 길이를 계산합니다.
+
+- 광섬유 감쇠 줄과 연결부 삽입손실 줄이 최대값, 일반값, 반복성 가운데 무엇인지 구분하고, 길이별 광섬유 감쇠를 계산합니다.
+
+- 반사 감쇠량과 반사율의 부호를 통일해 읽고, 광섬유 종류와 연결 단자가 시험 대상과 맞는지 확인합니다.
+
+## 런치 케이블 박스의 길이는 무엇을 기준으로 고릅니까?
+
+길이는 쓰는 OTDR 펄스 폭이 광섬유에서 차지하는 거리를 기준으로 고르고, 그 거리보다 긴 제품을 선택합니다. OTDR은 한 이벤트의 손실을 그 앞과 뒤의 후방 산란 수준 차이로 계산하는데, 첫 커넥터 앞에는 불감대 때문에 기준이 될 후방 산란 구간이 없습니다. 그래서 OTDR 포트와 시험할 선로의 첫 커넥터 사이에 일정 길이의 광섬유를 끼우고, 반대쪽 끝에도 같은 원리로 수신 케이블을 붙여 마지막 커넥터를 잽니다. EXFO는 이 때문에 선로 양쪽 끝에 런치 케이블을 항상 써야 한다고 적습니다. VIAVI는 ITU-T G.650.3 권고와 IEC 자료를 근거로 같은 방식을 적고, 수신 케이블도 비슷한 길이를 쓰라고 안내합니다. FOA-4는 OTDR이 펄스 과부하에서 회복할 만큼 긴 런치 케이블을 쓰라고 적고, 수신 케이블은 선택 사항이며 끝 커넥터 손실을 총손실에 넣을 때만 필요하다고 적습니다.
+
+펄스 폭이 광섬유에서 차지하는 거리는 광속과 굴절률로 계산합니다. 군 굴절률 1.468을 가정하면(DMS 가정, 광섬유마다 조금 다릅니다) 1 µs는 약 102 m입니다. 아래 표는 EXFO의 규칙(런치 케이블은 펄스의 불감대보다 길어야 합니다)을 이 값에 적용하고, 제조사가 내놓는 길이 가운데 맞는 것을 고른 가상 계산입니다(DMS 해석).
+
+| OTDR 펄스 폭 | 펄스가 차지하는 거리 | 맞는 제품 길이 | 한 쌍의 광섬유 감쇠 (1550 nm, EXFO 일반값 0.25 dB/km) |
+| --- | --- | --- | --- |
+| 100 ns | 약 10 m | 15 m (여유가 몇 m뿐이라 문서의 몇 m 기준과 대조해야 합니다) | 약 0.01 dB |
+| 1 µs | 약 102 m | 150 m (EXFO의 예시와 같습니다) | 0.075 dB |
+| 3 µs | 약 306 m | 500 m (300 m는 306 m보다 짧아서 맞지 않습니다) | 0.25 dB |
+| 10 µs | 약 1,021 m | 2,200 m 또는 2,000 m (1,000 m는 짧습니다) | 1.10 dB (2,200 m 기준) |
+| 20 µs | 약 2,042 m | 2,200 m (2,000 m는 짧습니다) | 1.10 dB |
+
+제조사별로 내놓는 길이도 다릅니다. EXFO는 15, 150, 300, 500, 1,000, 2,200 m를 적고(2024년 12월판은 PSB와 SPSB 두 모델), VIAVI는 20, 25, 100, 150, 500, 1,000, 2,000, 2,200 m를 적되 MPO 커넥터 제품은 20 m와 25 m만 있다고 밝힙니다. Go4Fiber는 100–2,000 m, ADoptix는 100–5,000 m, FS는 단일 모드 150 m–50 km와 다중 모드 150 m–2 km, FiberOptic Supply와 WeUnion은 100–2,000 m, FLC 시리즈는 20 m, 350 m, 1,000 m를 적습니다. 그래서 3 µs를 쓰는 팀이 300 m 박스만 살 수 있는 목록에서 고르면 첫 커넥터가 불감대 안에 들어갑니다. 반대로 길이가 길수록 광섬유 감쇠가 늘어 시험 가능한 동적 범위를 깎으므로, 필요한 길이보다 크게 고르는 것도 좋지 않습니다.
+
+![OTDR 펄스 폭별로 필요한 런치 케이블 길이를 놓은 막대](/images/education/optical-training/otdr-launch-cable-box-datasheet-length-selection-connector-loss-reflectance-basis-readout/bars-ko.svg)
+
+- 막대는 펄스가 차지하는 거리이고 점선은 EXFO가 내놓는 제품 길이입니다
+
+- 3 µs의 약 306 m는 300 m 제품보다 길고 500 m 제품보다 짧습니다
+
+- 굴절률 1.468 가정과 EXFO의 불감대 규칙을 적용한 DMS 계산이며 시험한 값이 아닙니다
+
+## 광섬유 감쇠와 연결부 삽입손실은 사양서에 어떻게 적혀 있습니까?
+
+광섬유 감쇠는 단위 길이당 값과 1,000 m 전체 값이 섞여 적혀 있고, 연결부 손실은 최대값과 일반값과 반복성이 섞여 적혀 있어서 같은 칸에 놓고 비교할 수 없습니다. 아래 표는 문서에 적힌 줄을 그대로 옮긴 것입니다.
+
+| 문서 | 광섬유 감쇠 줄 | 연결부 삽입손실 줄 | 읽을 때 확인할 점 |
+| --- | --- | --- | --- |
+| EXFO PSB/SPSB (2024년 12월판)과 FTB-LTC/PSB/SPSB (2018년 5월판) | 단일 모드 0.37 dB/km (1310 nm), 0.25 dB/km (1550 nm), 일반값 | 0.5 dB 미만 | 각주에 양방향 OTDR로 잰 값이라고 적습니다. 두 판의 수치는 같습니다 |
+| Go4Fiber GLB (2017년판) | 0.35 dB/km (1310 nm), 0.2 dB/km (1550 nm), 일반값 | 일반 0.25 dB, 최대 0.5 dB | 일반값과 최대값을 같이 적습니다 |
+| ADoptix ALB (2017년판) | Go4Fiber와 같은 줄 | 일반 0.3 dB, 최대 0.5 dB | 문서 틀이 Go4Fiber와 같고 일반값만 다릅니다 |
+| FLC 시리즈 (2023년 6월) | 최대 0.35 dB/km (1310 nm), 최대 0.22 dB/km (1550 nm) | 단일 모드 0.1 dB 이하 | 광섬유와 연결부 모두 최대값 줄이고 연결부 한도가 가장 낮습니다 |
+| Series 3 (Fostec 2018년, Opfibra 2021년) | 줄 이름이 삽입손실이고 일반 0.3 dB/km 미만, 최대 0.5 dB/km 미만 | 별도 줄은 착탈 신뢰도 0.2 dB 미만 | 단위가 dB/km라 광섬유 감쇠로 읽히지만 연결부를 포함하는지는 적지 않습니다 |
+| FS (2023년 8월), FiberOptic Supply (2024년 6월) | 1,000 m에서 1310 nm 기준 0.5 dB 미만 | 반복성 0.2 dB 이하(1,000회), 교환성 0.2 dB 이하 | 연결부 삽입손실 줄이 따로 없습니다 |
+| WeUnion (2024년 7월) | 1,000 m에서 1310 nm 기준 1 dB 미만 | 반복성 0.2 dB 이하(1,000회), 교환성 0.2 dB 이하 | FS, FiberOptic Supply와 줄 구성이 같은데 광섬유 값이 두 배입니다 |
+| Fiber-Mart (2025년 10월 색인) | 1,000 m에서 1310 nm 기준 1 dB 미만 | 표준 구성에 커넥터별 삽입손실·반사 성적서가 포함된다고 적습니다 | 같은 문서의 특징 항목에는 0.5 dBm/km 아래라고도 적혀 있어 두 줄이 맞지 않고 단위 표기도 잘못돼 보입니다 |
+
+광섬유 1 km의 감쇠를 최대값 줄로 비교하면 FLC의 0.35 dB에서 WeUnion과 Fiber-Mart의 1 dB까지 약 2.9배 벌어집니다. 연결부 삽입손실은 FLC의 0.1 dB에서 EXFO, Go4Fiber, ADoptix의 0.5 dB까지 5배 벌어집니다. OTDR이 읽는 첫 커넥터와 끝 커넥터의 손실은 박스 쪽 커넥터와 선로 쪽 커넥터가 맞물린 한 쌍의 값이라서, 박스 쪽 커넥터의 상태가 읽은 값에 그대로 들어갑니다. 그래서 연결부 한도가 큰 박스일수록 같은 크기의 불확실성이 측정값에 섞일 수 있습니다(DMS 해석, 문서에 이 설명은 없습니다). 이 한도는 제조사 공표값이며 시험한 값이 아니므로, 쓰는 박스의 연결부는 단면 검사와 기준 시험으로 확인합니다.
+
+2,200 m 박스를 1310 nm에서 한 쌍으로 쓰면 EXFO 일반값으로 광섬유 감쇠만 약 1.63 dB이고 1550 nm에서는 1.10 dB입니다. 박스가 길수록 광섬유 구간이 OTDR 신호를 깎는다는 뜻이므로, 먼 구간을 시험하는 경우에는 길이를 필요한 만큼만 고릅니다.
+
+## 반사 감쇠량과 반복성 줄은 어떻게 읽습니까?
+
+반사 줄은 부호와 부등호 방향을 같이 옮겨야 읽을 수 있고, 같은 UPC 연결부라도 문서에 따라 50 dB과 55 dB로 갈립니다. EXFO, VIAVI, Series 3는 UPC를 −50 dB 미만, APC를 −60 dB 미만의 반사율로 적습니다. FS, FiberOptic Supply, WeUnion은 같은 뜻을 반사 감쇠량 UPC 50 dB 이상, APC 60 dB 이상으로 적고, FiberOptic Supply와 WeUnion은 PC 35 dB 이상도 적습니다. 한편 FLC는 UPC 55 dB 이상, APC 65 dB 이상으로 5 dB 더 높게 적습니다.
+
+Go4Fiber와 ADoptix는 UPC 55 dB 이하, APC 65 dB 이하라고 적어서 부등호 방향을 그대로 읽으면 한도가 거꾸로 읽힙니다. 반사 감쇠량은 클수록 좋은 값이므로 의도는 55 dB 이상과 65 dB 이상으로 보이지만 문서에 설명이 없으므로 미확인으로 기록합니다(DMS 해석). 그래서 반사 줄은 값이 음수인 반사율인지 양수인 반사 감쇠량인지, 부등호가 어느 쪽인지, UPC와 APC 가운데 무엇인지를 같이 옮깁니다.
+
+반복성 줄도 의미가 정해져 있지 않습니다. FS 계열 문서는 반복성 0.2 dB 이하(1,000회)와 교환성 0.2 dB 이하를 적고, Series 3는 착탈 신뢰도 0.2 dB 미만을 적습니다. 이 값은 연결부를 여러 번 끼웠다 뺐을 때 손실이 얼마나 변하는지를 말하는 줄이어서 처음 연결했을 때의 삽입손실 한도와 다릅니다. 그리고 EXFO는 런치 케이블이 OTDR 커넥터의 착탈 횟수를 줄여 커넥터 수명을 늘린다고 적습니다. 박스 쪽 커넥터가 대신 마모되므로, 단면 검사와 청소 기록을 박스에도 남깁니다.
+
+## 광섬유 종류와 연결 단자는 시험 대상과 맞아야 합니까?
+
+광섬유 종류와 연결 단자는 시험 대상과 맞아야 합니다. VIAVI는 런치와 수신 케이블의 광섬유가 시험 대상과 종류, 코어 크기, 모드 필드 지름(MFD)까지 맞아야 한다고 적고, FOA-4도 같은 광섬유 종류와 크기이며 선로의 연결 단자와 호환되는 케이블을 쓰라고 적습니다. 사양서가 적는 광섬유는 EXFO가 단일 모드 G.652D(9/125 µm)와 다중 모드 두 종류, FiberOptic Supply와 WeUnion이 G.652D와 G.657A 및 OM1에서 OM4·OM5까지입니다. Fiber-Mart는 주문 예시에 G.657A2를 적습니다. 그래서 G.657 굽힘 둔감 광섬유 선로를 G.652D 박스로 시험한다면 모드 필드 지름이 다른 접점이 생기고, 그 접점의 손실은 이 사양서만으로 알 수 없습니다.
+
+연결 단자는 박스 양쪽이 같을 필요가 없습니다. Go4Fiber와 ADoptix는 리드 A와 리드 B의 커넥터를 따로 고르게 하고, Fiber-Mart는 입력 SC/APC와 출력 FC/UPC 같은 조합을 주문 예시로 적습니다. EXFO는 FC/APC, SC/APC, LC/UPC, E2000 등 단일 모드용 아홉 가지를 적습니다. 따라서 OTDR 포트 쪽 단자와 선로 쪽 단자를 각각 확인하고, 박스의 연마 방식이 OTDR 포트와 같은지 봅니다. 리드 길이도 문서마다 1 m(Fiber-Mart 링형), 1.5 m(Series 3, FLC, EXFO FTB-LTC), 2 m(EXFO PSB·SPSB, Go4Fiber, ADoptix, FS, WeUnion), 2 m 또는 3 m(FiberOptic Supply)로 다릅니다. 짧은 선로를 시험할 때는 리드와 박스 전체 길이가 시험 구간 앞에 더해지므로 길이를 계산에 포함합니다.
+
+FOA 안내는 첫 연결부의 반사가 크면 런치 케이블 길이의 배수 위치에 고스트가 생길 수 있다고 설명합니다. 사용 길이를 정할 때 선로 안에 접속이 예정된 위치와 이 배수 위치가 겹치지 않는지도 한 번 봅니다.
+
+![런치 케이블 박스 사양서를 읽는 순서](/images/education/optical-training/otdr-launch-cable-box-datasheet-length-selection-connector-loss-reflectance-basis-readout/concept-ko.svg)
+
+- 펄스 폭이 차지하는 거리를 먼저 계산하고 그보다 긴 제품 길이를 고릅니다
+
+- 감쇠와 연결부 손실은 최대값, 일반값, 반복성 가운데 무엇인지 적고, 반사 줄은 부호와 부등호를 통일합니다
+
+- 광섬유 종류, 입력과 출력 커넥터, 리드 길이를 시험 대상에 맞춰 확인합니다
+
+이번 자료의 한계도 있습니다. ITU-T G.650.3, IEC 61746-1, Telcordia GR-326-CORE의 본문은 읽지 못했고, 사양서가 이 표준의 어느 방식으로 시험했는지는 문서에 적힌 범위만 옮겼습니다. 모든 값은 제조사나 유통사가 공표한 값이며 이번에 시험한 값이 아닙니다. 사양서가 현행 개정인지도 확인하지 못했습니다. Go4Fiber와 ADoptix, Opfibra와 Fostec, FS와 FiberOptic Supply와 WeUnion은 같은 틀의 문서라서 서로 독립된 근거로 세지 않았고, 독립된 문서 틀은 일곱 가지입니다. Series 3의 단면 형상 줄은 곡률 반경 7–25 nm, 광섬유 높이 −50–50 mm로 단위가 거꾸로 적혀 있어서(DMS 해석) 이 줄은 옮기지 않았습니다. Go4Fiber 2017년판, ADoptix 2017년판, FS, FiberOptic Supply, WeUnion, Fiber-Mart, Fostec, Opfibra 문서의 날짜는 문서 안 표기나 파일 경로, 검색 색인의 날짜입니다.
+
+## 업무 점검표
+
+- 쓰는 OTDR의 펄스 폭이 차지하는 거리(펄스 폭 × 광속 ÷ 2 ÷ 굴절률)를 계산하고, 그보다 긴 런치 케이블 길이를 골랐습니까?
+
+- 광섬유 감쇠와 연결부 삽입손실 줄이 최대값, 일반값, 반복성 가운데 무엇인지 옮기고, 합계를 계산할 때 같은 기준끼리만 더했습니까?
+
+- 반사 줄이 음수 반사율인지 양수 반사 감쇠량인지, 부등호 방향이 맞는지 확인하고 UPC와 APC를 구분해 옮겼습니까?
+
+- 박스의 광섬유 종류와 모드 필드 지름이 시험 대상과 맞고, 입력과 출력 커넥터와 리드 길이가 OTDR 포트와 선로에 맞는지 확인했습니까?
+
+- 박스 커넥터의 단면 검사와 청소 기록을 남기고, 사양서의 판 번호와 날짜를 같이 기록했습니까?
+
+## 확인 문제와 정답
+
+### 1. 3 µs 펄스로 OTDR 시험을 하려고 합니다. EXFO의 규칙과 군 굴절률 1.468 가정으로 300 m 박스와 500 m 박스 가운데 어느 것을 고릅니까?
+
+정답·해설: 500 m 박스입니다. 3 µs 펄스는 약 306 m를 차지하는데(3 × 10⁻⁶ s × 299,792,458 m/s ÷ 2 ÷ 1.468) 300 m 박스는 그보다 짧아서 첫 커넥터가 불감대 안에 남습니다. 굴절률은 광섬유마다 조금 다르므로 정확한 값은 OTDR의 거리 설정에서 확인하고, 경계에 가까우면 한 단계 긴 제품을 고릅니다.
+
+### 2. 한 문서는 UPC를 −50 dB 미만으로, 다른 문서는 UPC 반사 감쇠량을 50 dB 이상으로 적었습니다. 두 값은 같은 한도입니까?
+
+정답·해설: 같은 한도입니다. 반사율은 음수로, 반사 감쇠량은 양수로 같은 크기를 적는 방식입니다. 반면 UPC 반사 감쇠량 55 dB 이상(FLC)은 위 두 값보다 5 dB 더 엄격한 한도이므로 같은 칸에 놓지 않습니다. 비교할 때는 부호와 부등호를 통일합니다.
+
+### 3. 2,200 m 박스 두 개를 1550 nm에서 런치와 수신 케이블 한 쌍으로 씁니다. EXFO 일반값 0.25 dB/km로 광섬유 감쇠의 합은 얼마입니까?
+
+정답·해설: 2 × 2.2 km × 0.25 dB/km = 1.10 dB입니다. 1310 nm에서는 0.37 dB/km를 적용해 약 1.63 dB입니다. 이 값은 일반값으로 계산한 광섬유 감쇠만이고 연결부 손실은 포함하지 않으므로, 연결부 한도를 별도로 더해 예산을 세웁니다. 가상 계산(DMS 해석)입니다.
+
+## 출처와 판본
+
+- [EXFO: PSB/SPSB 사양서 (2024년 12월판)](https://www.exfo.com/contentassets/eb75ea560a584e9db674a6d93a3867c9/spec-sheet_psb-spsb_v8_en.pdf) · 2–3쪽 길이 선택과 사양
+
+- [EXFO: FTB-LTC/PSB/SPSB 사양서 (2018년 5월판)](https://bel-cebeo.mo.cloudinary.net/PRODUCT/DOCUMENT/PictureServer/default.aspx?947FB0959B848C849988A89AA47C8390857A89778B708C6B8475877C8A695EA4B4AB&ts=1782546795191) · 2–3쪽
+
+- [VIAVI: OTDR launch and receive fibers/cables (2025년 4월)](https://www.viavisolutions.com/en-us/literature/otdr-launch-and-receive-cables-data-sheets-en.pdf) · 1–2쪽
+
+- [Go4Fiber: OTDR Launch Box GLB (2017년판)](https://spec.go4fiber.com/testing_equipment/GLB-XX-XXXX-XX-XX_2017v1.pdf) · 1쪽
+
+- [ADoptix: OTDR Launch Box ALB (2017년판)](https://spec.go4fiber.com/testing_equipment/ALB_OTDR_Launch_Fiber_Box_2017v1.pdf) · 3쪽
+
+- [FLC 시리즈 단일 모드 런치 박스 (2023년 6월, cablewholesale.com 호스팅)](http://files.cablewholesale.com/pdfspecs/90j1-00024_06-2023.pdf) · 1쪽
+
+- [Opfibra: OTDR Dead Zone Eliminator Series 3 (2021년 5월)](https://opfibra.com/wp-content/uploads/2021/05/OTDR-Dead-Zone-Eliminator-Ingles.pdf) · 3쪽
+
+- [Fostec: OTDR Dead Zone Eliminator Series 3 (2018년 9월 색인)](https://fostec.kr/user/media/getFile.do?fileId=MEDIAFILE_0000001205) · 2쪽
+
+- [FS: Fiber Optic OTDR Launch Cable Box Datasheet (2023년 8월 파일)](https://resource.fs.com/mall/doc/20230821101121y1ij1p.pdf) · 2쪽
+
+- [FiberOptic Supply: OTDR Launch Cable (2024년 6월 색인)](https://fiberopticsupply.com/content/spec_sheet/OTDR%20Launch%20soft%20box.pdf) · 1–2쪽
+
+- [WeUnion: OTDR Launch Box (2024년 7월 파일)](https://www.weunionfiber.com/wp-content/uploads/2024/07/OTDR-Launch-Box.pdf) · 1–2쪽
+
+- [Fiber-Mart: OTDR Launch Cable Box Datasheet (2025년 10월 색인)](https://www.fiber-mart.com/datasheet/OTDR%20Launch%20Cable%20Box%20Datasheet.pdf) · 1–4쪽
+
+- [FOA: OTDR Testing of Fiber Optic Cable Plants (FOA-4a, 2025년 1월)](https://foa.org/tech/ref/1pstandards/FOA-4.pdf) · 시험 절차와 유의 사항
+
+- [FOA: OTDR 참고 안내](https://foa.org/tech/ref/testing/OTDR/OTDR.html) · 런치 케이블과 고스트
+
+## 다음에 볼 교안
+
+- [광통신 교육 목차](/education/optical-training)
+
+- [OTDR 불감대와 펄스 폭](/education/optical-training/otdr-dead-zone-pulse-width)
+
+- [OTDR 끝단 커넥터 증거](/education/optical-training/otdr-far-end-connector-evidence)
+
+- [OTDR 고스트 이벤트 증거](/education/optical-training/otdr-ghost-event-evidence)
+
+- [광 커넥터 사양서의 삽입손실·반사감쇠량·착탈 횟수 판독](/education/optical-training/optical-connector-datasheet-insertion-loss-return-loss-mating-cycles-readout)
