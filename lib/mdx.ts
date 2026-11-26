@@ -85,10 +85,14 @@ async function getPostsBySeriesInternal(seriesId: string, locale: Locale): Promi
   return allPosts
     .filter((post) => post.frontMatter.series === seriesId)
     .sort((a, b) => {
+      // Newest first; chapter number only breaks ties on the same date.
+      const byDate = normalizeDateStr(String(b.frontMatter.date)).localeCompare(normalizeDateStr(String(a.frontMatter.date)));
+      if (byDate !== 0) return byDate;
       if (a.frontMatter.chapter && b.frontMatter.chapter) {
-        return a.frontMatter.chapter.localeCompare(b.frontMatter.chapter);
+        const byChapter = String(b.frontMatter.chapter).localeCompare(String(a.frontMatter.chapter), undefined, { numeric: true });
+        if (byChapter !== 0) return byChapter;
       }
-      return a.frontMatter.date > b.frontMatter.date ? -1 : 1;
+      return a.slug.localeCompare(b.slug);
     });
 }
 

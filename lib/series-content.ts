@@ -16,12 +16,16 @@ function normalizeDateStr(dateStr: string): string {
   return dateStr.replace(/\D/g, '').slice(0, 8).padEnd(8, '0');
 }
 
+// Newest first in every series. Chapter numbers only break ties on the same date,
+// so a list never mixes "oldest chapter first" and "newest date first" blocks.
 function compareSeriesItems(left: SeriesContentItem, right: SeriesContentItem) {
+  const byDate = normalizeDateStr(right.date).localeCompare(normalizeDateStr(left.date));
+  if (byDate !== 0) return byDate;
   if (left.chapter && right.chapter) {
-    return left.chapter.localeCompare(right.chapter, undefined, { numeric: true });
+    const byChapter = right.chapter.localeCompare(left.chapter, undefined, { numeric: true });
+    if (byChapter !== 0) return byChapter;
   }
-
-  return normalizeDateStr(left.date) > normalizeDateStr(right.date) ? -1 : 1;
+  return left.slug.localeCompare(right.slug);
 }
 
 export async function getSeriesContentItems(seriesId: string): Promise<SeriesContentItem[]> {
