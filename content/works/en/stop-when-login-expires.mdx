@@ -1,0 +1,108 @@
+---
+title: "Stop When the Login Expires"
+excerpt: "When a shopping or affiliate service's login expired, Reedo's posting automation stopped instead of guessing a password or trying a QR code. This practical guide follows that design through the real records, shows that the way a login came back differed from one service to the next, explains why last week's status report cannot stand in for today's, and proposes a five-box login card."
+date: "2026-11-26"
+readTime: "10 min"
+kind: "guide"
+tags: ["Work", "Workplace automation", "AX transformation"]
+---
+
+When the login to a service an automation depends on expires, the better move is to stop that service's work, not to guess a password or try a QR login on its behalf. Reedo's affiliate-post automation did exactly that. From November 13 to 21, 2026, the Coupang Partners login was out, and no Naver post went up for nine days in a row. In the early hours of November 25, the Musinsa curator login was out, and that day's three topics were not posted. What lasts longer from this record than the stops themselves is two things: the way a login came back differed from service to service, and a status report carried over from an earlier hour can be wrong today.
+
+Checked on November 26, 2026, this account rests on three things. The first is the memory files for the Coupang run and for the five-service affiliate run, both read directly while writing this piece. The second is the Aside work records for November 20 to 25, which are reports each run wrote about itself. The third is the session-management documents from the US National Institute of Standards and Technology (NIST) and from OWASP. The case comes from Reedo's own posting automation, not from a customer project, and nothing was measured about how much traffic or revenue the stopped days cost.
+
+## Why does an automation stop when its login expires?
+
+In this automation a login is treated as a step only a person can perform, so when it expired the run waited.
+
+The Coupang run's records describe a home screen showing only a login button, and a login form whose ID field filled in nothing when clicked. Those runs report that they did not guess a password, did not attempt a QR or passkey login, and did not contact anyone outside. Without a login they could not create an affiliate link, so they did not post. The Musinsa run's file has the same line. A child task saw a login screen asking for a Kakao password or a QR scan, and the parent run confirmed that the curator address redirected to the login address. Neither typed anything, and the run closed as blocked. The first line of the report read "Musinsa login needed."
+
+The records do not give the reason for the rule, and I will not guess at it. What public documents do confirm is that an expiring login is not strange. [NIST SP 800-63B-4](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63B-4.pdf) (July 2025) requires periodic reauthentication of authenticated sessions and says a session must be terminated when either the overall timeout or the inactivity timeout runs out. Its recommended reauthentication intervals range from 30 days to 12 hours, depending on the assurance level. The [OWASP Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html) gives an example too: for an application an office worker uses all day, an absolute timeout between 4 and 8 hours is appropriate.
+
+Both documents are design guidance for government systems and general web applications, so they say nothing about the actual expiry times at a shopping or affiliate site. They support one point only. Expiry is a device the site installs on purpose, so an automation that leans on a login should treat expiry as an event that will happen, not as a malfunction.
+
+![A closed wooden door with a frosted glass panel in a quiet office corridor, a small blank paper note taped to the glass, and a round side table in front with a cup of tea](/images/works/stop-when-login-expires/closed-door-with-blank-note.webp)
+
+## How long did it stay stopped, and how did it come back?
+
+Here are three services from November 7 to 26, condensed into a table.
+
+| Service | When it stopped | What the screen showed | How it came back | Basis |
+|---|---|---|---|---|
+| Coupang Partners (Naver posts) | Nov 7 to 9, then Nov 13 to 21, nine days in a row. A full day of an access-denied page on Nov 18 | Home showed only a login button, saved login details did not fill in | The Nov 22, 4 a.m. run opened already logged in; the cause was not established | Memory file, read directly |
+| Musinsa curator | The three topics of the Nov 25, 5 a.m. run. Also blocked once between Nov 8 and 12 | A request for a Kakao password or a QR scan | The user logged in personally, and the three topics were made up the same day | The Nov 25 block and Nov 26 normal state read directly; the rest from work records |
+| WAUG | Reported logged out on Nov 13, 19, 21 and 24 | A login screen | Returned through a linked Naver account already offered on screen; the run reported no sign-up or verification | Work records |
+
+Coupang's nine days mean nine days of Naver posts that should have gone up, one a day, and did not. The work records also say the Coupang run for the metacint site was blocked from its late-evening slot on November 12. Nothing was measured about the views or affiliate results of the posts that were not published.
+
+## Does one blocked service stop the others?
+
+No. The November 25, 5 a.m. run is the example.
+
+That run keeps a separate slot for each service. The three Musinsa topics all closed as blocked, but six posts for Ohouse, AdPick and LinkPrice went up as usual on Naver and metacint. The memory file I read directly says so. After the Musinsa slot closed as blocked, the other services' slots went on, and the closing state alone showed which slot was stuck. The only thing missing from the run because of a login was the three Musinsa topics.
+
+## Does the person who revives the login differ by service?
+
+It did, and the difference lines up with the stops.
+
+In the runs of November 24 to 26, LinkPrice was entered with a login saved in the vault and filled in automatically, and Ohouse came back through its linked Naver sign-in once the login lapsed. Neither of them stopped. By contrast, the two services that stopped for days are both recorded as having no vault entry. For Coupang that was noted in a check on November 14, and for Musinsa in the November 25 run. Musinsa asked for a Kakao password or a QR scan, and for Coupang no autofill appeared.
+
+| Way back in | Is a person needed? | Reedo case |
+|---|---|---|
+| Saved login filled in from the vault | No | LinkPrice |
+| Signing back in through a linked account | No, if the link is still alive | Ohouse, WAUG (Naver account) |
+| A person logs in directly | Yes | Musinsa (Kakao password or QR), Coupang (Nov 13 to 21) |
+
+This split does not explain everything, though. In the November 22, 4 a.m. run, Coupang was logged in although the user had not logged in separately, and no record says a vault entry appeared. The cause of the recovery is not established in the records. So the table shows an overlap, not a cause.
+
+![A sunlit cream wall with a wooden key rack holding six hooks, four brass keys on plain leather tags, and two hooks left empty](/images/works/stop-when-login-expires/key-rack-by-window.webp)
+
+## May the missed posts be made up in a batch later?
+
+Not automatically. They were made up only when the user said so directly.
+
+The Coupang run's memory file contains a line saying missed posts are not made up automatically. The record for November 22 also shows just one post on the return, so there is no sign of nine days' worth going up at once. Musinsa was different. On the afternoon of November 25, after logging in, the user told the agent directly to post, and the three topics were made up that same day. The instructions for the morning run say a closed item is not reopened, but this time the user's direct instruction took priority. A new session secured the publishing lock and ran three child tasks one after another. Three posts each went up on Naver and metacint, and the worker reported opening the public addresses and checking titles and links. The record notes that the mobile view and search exposure were not checked.
+
+## May yesterday's report be passed along as today's state?
+
+No. A login state is a value that changes every time you read it.
+
+This comes from the work records of the night of November 25. The morning run's note, "Musinsa login needed," was passed along as the current state even after the login had been restored that afternoon. Opening the curator page directly showed a logged-in state with a logout button. The morning note was not wrong. It described that hour, and the mistake was passing it on without the hour.
+
+The Coupang records contain a one-minute check: if "daily performance" appears on the home page, the login is alive. For Musinsa you can look at whether the curator activity address redirects to the login address. Criteria like these are what make it possible to read the present state by opening the page now. By the same logic, "Musinsa login normal" in the November 26 morning run's record is a value for that hour, and I did not check the state at the time of writing.
+
+## Do we know why the logins expire?
+
+We do not, and there are only hypotheses.
+
+The work record from the afternoon of November 25 says Instagram and Facebook also began logging out repeatedly around the same time, and the cause was not settled. It lists three hypotheses. The new PC and the old PC may be logging in separately with the same account and tripping a security measure. Automated access may have looked suspicious and been blocked. The browser may have cleared the cookies. An attempt to look up cookie expiry dates failed because the Aside browser tool has no function for reading cookies. None of the three has been verified.
+
+One more thing is confirmed. On November 22, after the user logged in to Coupang in a separate Chrome window, opening Coupang Partners in a new Aside browser tab showed a logged-in state. An earlier answer that the two logins were separate was wrong and was corrected that day. The two browsers appear to share the login session, but the records do not say how long it lasts.
+
+## How do you use a five-box login card?
+
+A good start is to write the five boxes below on one card for each automation that leans on a login. The right-hand column shows what was and was not confirmed in this case.
+
+| Box | What to write | In Reedo's case |
+|---|---|---|
+| Check | One visible sign on screen and how to check it | Coupang: "daily performance" on home. Musinsa: whether the curator address redirects |
+| Who revives it | Autofill, linked sign-in, or a person | It differed by service; see the table above |
+| Stop rule | What is never typed, and not posting without the link | Present. The runs report no password guessing, no QR or passkey, no outside contact |
+| Make-up rule | Whether missed days are filled automatically, or only when someone says so | No automatic make-up. Only Musinsa, at the user's direct instruction, was made up the same day |
+| Notice | The blocked service's name, one line about the screen, one thing a person must do | The first line of the report names the blocked service. No record of a separate note for what a person should do |
+
+This card is a DMS.Labs suggestion, not a form validated on a customer project. Here is a hypothetical use. Suppose a five-person interior shop runs an automation that downloads a material price sheet from a supplier portal every Monday morning and drops it into quotation documents. This is not a real customer case.
+
+The check is whether the price-sheet menu shows on the portal's first screen. The person who revives the login is the owner who holds the portal account, and if a text-message code is required, only a person can do it. The stop rule is that if the price sheet cannot be downloaded, the automation stops and does not build quotes from last week's prices, because the cost of a quote with wrong prices is larger than the cost of waiting for a login. The make-up rule is that documents for a missed week are not built automatically, only when the owner asks. The notice is one line to the owner: "Portal login needed, possible any time Monday morning." The wording and criteria here are an assumed example. How to name the person responsible is covered in [When the Person Behind the Automation Is Away](/en/works/automation-owner-card).
+
+## What can't this record tell you?
+
+It covers a few services over a little more than a month. The cause of the expiries, why Coupang came back on November 22, and the interval at which WAUG kept logging out are not settled by the records, and this piece does not guess. Nothing was measured about what the stopped days cost, or whether bypassing the login would have left the accounts unharmed. What was checked directly are the memory files of the Coupang run and the five-service affiliate run. WAUG, Instagram, the Musinsa make-up and the events of the night of November 25 come from reports left by each run or task. The login state after the morning of November 26 was not checked.
+
+The NIST and OWASP documents reflect the versions read on November 26, 2026. They are used only as support for the point that expiry is a designed device, not as evidence of the actual expiry policy of any shopping or affiliate site.
+
+## Where to go next
+
+To design, task by task, the check, the person who revives the login and the rule for stopping, the existing [DMS.Labs work automation](/automation) page gives an overview. That page is currently presented in Korean. If you want to talk it through, there is the [contact page](/en/contact). This account covers Reedo's own posting records and public documentation, and it does not promise implementation costs, time savings, or effects on inquiries or revenue. Watching for a signal that never came is covered in [Who Notices the Day It Didn't Run?](/en/works/automation-missed-run-check). The same principle applied to an empty topic queue is in [Stop When the Topic Queue Runs Dry](/en/works/stop-when-topic-queue-empty), and reading results back from outside is covered in [Read It Back After Success](/en/works/read-back-after-success).
+
+The two images were newly generated to illustrate the topic. They are not photographs of a real working screen or a customer site.

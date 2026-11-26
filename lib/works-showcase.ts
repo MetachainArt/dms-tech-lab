@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "로그인이 풀리면 멈춥니다",
+    summary: "자동화가 쓰던 쇼핑·제휴 서비스의 로그인이 풀렸을 때 비밀번호를 추측하거나 QR을 시도하지 않고 멈추게 해 둔 설계가 리도의 실제 게시 기록에서 어떻게 움직였는지 따라가고, 서비스마다 로그인을 되살리는 주체가 달랐다는 점과 지난 보고를 오늘의 상태로 옮기면 틀리는 이유, 다섯 칸짜리 로그인 카드를 정리한 업무 자동화 실무 가이드입니다.",
+    tags: ["Work", "업무 자동화", "AX 전환"],
+    image: "/images/works/stop-when-login-expires/closed-door-with-blank-note.webp",
+    link: "/works/stop-when-login-expires",
+  },
+  {
     title: "자동화를 멈추는 스위치",
     summary: "자동화를 끄는 스위치가 실제로 무엇을 멈추는지 쿠버네티스와 GitHub Actions 공식 문서 세 곳과 모의 시험으로 확인하고, 이미 돌고 있는 일과 취소 뒤에도 도는 정리 단계, 꺼 둔 동안 놓친 예약이 다시 켠 뒤 어떻게 되는지를 짚어 다섯 칸짜리 멈춤 카드를 제안하는 업무 자동화 실무 가이드입니다.",
     tags: ["Work", "업무 자동화", "AX 전환"],
