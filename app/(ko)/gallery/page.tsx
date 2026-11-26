@@ -1,3 +1,4 @@
+import { howManyOptionsEssayKo } from "@/lib/ideas-essay-options";
 import { tickingBoxEssayKo } from "@/lib/ideas-essay-checkbox";
 import { afterAiWrongEssayKo } from "@/lib/ideas-essay-oneerror";
 import { notesWriteEssayKo } from "@/lib/ideas-essay-notes";
@@ -124,8 +125,9 @@ export default function GalleryPage() {
         eyebrow="Ideas / Reedo" lead="Images &" accent="words." variant="insights"
         title="아이디어"
         description="작업하면서 남긴 사진과 글. 기록이기도 하고 생각이기도 하고, 때로는 그냥 좋아서 담아둔 것들."
-        note={<><span>{galleryPieces.length + 18} pieces · 2025 — 2026</span><span>A space where images and words meet</span></>}
+        note={<><span>{galleryPieces.length + 19} pieces · 2025 — 2026</span><span>A space where images and words meet</span></>}
       />
+      <div className={styles.essay}><EssayPiece essay={howManyOptionsEssayKo} locale="ko" /></div>
       <div className={styles.essay}><EssayPiece essay={tickingBoxEssayKo} locale="ko" /></div>
       <div className={styles.essay}><EssayPiece essay={afterAiWrongEssayKo} locale="ko" /></div>
       <div className={styles.essay}><EssayPiece essay={notesWriteEssayKo} locale="ko" /></div>

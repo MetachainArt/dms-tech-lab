@@ -1,3 +1,4 @@
+import { howManyOptionsEssayEn } from "@/lib/ideas-essay-options";
 import { tickingBoxEssayEn } from "@/lib/ideas-essay-checkbox";
 import { afterAiWrongEssayEn } from "@/lib/ideas-essay-oneerror";
 import { notesWriteEssayEn } from "@/lib/ideas-essay-notes";
@@ -37,10 +38,11 @@ export default function EnglishIdeasPage() {
         eyebrow="Ideas / Reedo" lead="Images &" accent="words." variant="insights"
         title="Ideas"
         description="Notes and essays written alongside the work. Earlier pieces are still available in Korean, and new ones are being added in English."
-        note={<><span>18 English editions</span><span>A space where images and words meet</span></>}
+        note={<><span>19 English editions</span><span>A space where images and words meet</span></>}
       >
         <Link href="/gallery">Earlier pieces in Korean ↗</Link>
       </FiberPageHeader>
+      <div className={styles.essay}><EssayPiece essay={howManyOptionsEssayEn} locale="en" /></div>
       <div className={styles.essay}><EssayPiece essay={tickingBoxEssayEn} locale="en" /></div>
       <div className={styles.essay}><EssayPiece essay={afterAiWrongEssayEn} locale="en" /></div>
       <div className={styles.essay}><EssayPiece essay={notesWriteEssayEn} locale="en" /></div>
