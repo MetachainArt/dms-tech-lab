@@ -1,0 +1,191 @@
+---
+title: "Reading PON Coexistence Element (CEx) Datasheets: Passbands, Per-Port Insertion Loss Basis, Isolation and Directivity"
+date: "2026-11-27"
+desc: "A 10-minute lesson on reading the passband, per-port insertion loss, isolation, directivity and return loss lines of PON coexistence element (CEx, the WDM1r filter of the standards) datasheets. It compares 13 manufacturer and distributor documents with an ITU-T G.9805 appendix, explains why the insertion loss of the same GPON port runs from 0.8 dB to 1.9 dB, and calculates when 30 dB of isolation is enough."
+coverImage: "/images/education/optical-training/pon-coexistence-element-datasheet-passband-per-port-insertion-loss-basis-isolation-directivity-readout/cover.svg"
+readTime: "10 min"
+lang: "en"
+---
+
+A PON coexistence element (CEx, the WDM1r filter in the standards) combines and separates the GPON, XGS-PON, RF video and OTDR wavelengths on one fiber, and the first line to read on its datasheet is whether the per-port insertion loss includes the connectors. The example tables of ITU-T G.9805 give the loss without connectors, but the manufacturer documents read here split into included, excluded and not stated, and the GPON port loss was printed anywhere from 0.8 dB to 1.9 dB. Isolation is usually printed as 30 dB, yet the same standard says a single value for each device is not appropriate and tells the user to calculate it from the conditions of the network in use. So copy the port names and configuration number, the basis of the insertion loss and the conditions of the isolation first, then recalculate with the loss margin and the differential loss of the network in use before ordering.
+
+Based on the documents checked on November 27, 2026.
+
+## Learning objectives
+
+- Tell the ports of a coexistence element apart (COM, GPON, XGS-PON, video, OTDR, upgrade) and check whether each per-port insertion loss line includes the connectors.
+
+- Check the passband edges (XGS-PON downstream 1580 nm against 1581 nm, the OTDR band and others) against the wavelengths in use, and put the insertion loss into a loss budget.
+
+- Read what conditions an isolation line assumes, calculate the isolation a network needs from its differential loss, and unify the units of directivity, return loss and optical power.
+
+## How is the per-port insertion loss written on a coexistence element datasheet?
+
+The per-port insertion loss is printed as a maximum from the common (COM) port to each service port, and whether it includes the connectors differs by document, so the figures cannot go in one column for comparison. Appendix I of ITU-T G.9805 Amendment 2 (November 2025) labels every loss line in Tables I.1 to I.8 as loss without connectors and says the appendix is an example and not an integral part of the Recommendation. The AMT and Maxcom documents state that all parameters are referenced without connectors and give a typical connector loss of 0.25 dB per pair. Gezhi also excludes connector loss, and Gigalight gives the value without connectors and says to add 0.3 dB per adapter for the LGX box and the rack mount. Technetix, in contrast, says all of its specifications are for devices with connectors, and the Corning guide heads its table with the loss with SC or LC APC connectors (only the table excerpt in a search result could be read). The CommScope, Teleste, LightOptics and UISP documents contain no sentence that says whether connectors are included.
+
+| Document | GPON port | XGS-PON port | Video (RF) port | Connectors included? |
+| --- | --- | --- | --- | --- |
+| ITU-T G.9805 Amd. 2 Appendix I (example tables) | below 0.8 (Table I.1) to 1.0 or less (Table I.4) | 1.1 or less (Table I.5) to 1.5 or less (Table I.4) | 0.8 or less (Table I.7) to 1.7 or less (Table I.4) | excluded |
+| Gezhi CEx V2.2 | 0.8 or less | 1.1 or less | 1.4, 1.7, 2.0 or 2.3 by configuration | excluded |
+| Gigalight xPON coexistence WDM | below 1.0 | below 1.2 (XG-PON1) | below 1.5 | excluded, add 0.3 dB per adapter for LGX and rack types |
+| AMT and Maxcom, 4 documents | 1.0/1.5 or 1.0/1.9 | 1.0/1.5, 1.0/1.2 or 1.0/1.9 | 1.0/1.5 or 1.0/1.9 | excluded, typical 0.25 dB per connector pair |
+| Technetix LBWD | 1.3 or less (one value for all ports) | not applicable (GPON and RFoG device) | 1.3 or less (1550 port) | included |
+| Corning CEx A and B (search excerpt) | 1.0 | 1.2 | 1.5 | included (LC and SC APC) |
+| CommScope CEx 2 and 3 | 0.8 or less | 1.2 or less (CEx 2) | 1.2 or less (CEx 3) | not stated |
+| CommScope CEx 6 | 1.4 or less | 1.8 or less | not applicable | not stated |
+| AFL CEx 2 and 3 | 0.8 in the w/ Conn. column, 1.3 in the w/o Conn. column | 1.2 and 1.7 (CEx 2) | 1.2 and 1.7 (CEx 3) | both columns printed, column order looks wrong |
+| Teleste TEN-WG | 1.10 or less | 1.40 or less | 1.70 or less (CATV) | not stated |
+| LightOptics CEx | 1.1 or less | 0.8 or less | 1.4 or less | not stated |
+| UISP UACC-UF-WDM-XGS | 1 or less | 1 or less | not applicable | not stated |
+
+The values are copied as printed and the unit is dB. The GPON port alone runs from 0.8 dB to 1.9 dB (the second AMT value and some AFL variants), a spread of more than 2 times. AFL prints the GPON line of CEx 2 as 0.8 dB in the w/ Conn. column and 1.3 dB in the w/o Conn. column, which makes the value without connectors the larger one. The column names look swapped, but the document does not say so, so copy it as printed and leave it unconfirmed (DMS interpretation). The value after the slash in the AMT and Maxcom documents is not labeled as typical or maximum, and even within the same family it is 1.5, 1.9 or 1.2 depending on the sheet. LightOptics prints its XGS-PON port (0.8 dB) lower than its GPON port (1.1 dB), so assuming the XGS-PON side always costs more, as in most other documents, is wrong.
+
+Values also change with the configuration number inside one product family. CommScope prints the GPON port at 0.8 dB or less for CEx 1 to 5, at 1.4 dB or less for CEx 6 where 25G and 50G ports are added, and the shared GPON and XGS-PON port of CEx 7 at 1.8 dB or less. Gezhi prints the loss of the same video band as 1.4 dB for CEx05, 1.7 dB for CEx06, 2.0 dB for CEx07 and 2.3 dB for CEx08. More service ports may mean more filters in the signal path, but the documents give no reason (DMS interpretation). So copy the insertion loss line as one bundle of port name, configuration number and connector basis.
+
+## How do you put the insertion loss into a loss budget?
+
+Do not add the datasheet value as it stands: check whether the connectors are included, then add the loss of the two mated pairs on the COM side and the service port side separately. The calculation below is hypothetical. If the measured 1490 nm downstream loss before the coexistence element is 26.3 dB and the design limit is 28.0 dB, the margin is 1.7 dB. The element has two mated pairs, one on the COM side and one on the GPON side. For values without connectors, add 0.25 dB per pair from the AMT document (0.5 dB for two pairs), and for Gigalight add 0.3 dB per adapter from its own document (0.6 dB).
+
+| Document (GPON port) | Value and basis in the document | Margin left using the value only | Margin left with connectors added |
+| --- | --- | --- | --- |
+| Gezhi | 0.8 dB, without connectors | 0.9 dB | 0.4 dB (1.3 dB used) |
+| Gigalight | below 1.0 dB, without connectors | 0.7 dB | 0.1 dB (1.6 dB used) |
+| Technetix | 1.3 dB or less, with connectors | 0.4 dB | 0.4 dB (unchanged) |
+| Teleste | 1.10 dB, basis not stated | 0.6 dB | 0.1 dB (1.6 dB used if excluded) |
+| CommScope CEx 6 | 1.4 dB, basis not stated | 0.3 dB | minus 0.2 dB (1.9 dB used if excluded) |
+
+With the values alone every one of the five elements leaves some margin, but once the connectors are added Gigalight leaves only 0.1 dB, and if the CommScope CEx 6 value, whose basis is not stated, excludes connectors it overruns the margin by 0.2 dB. For a line whose basis is unknown, calculate both cases and record the range, and if the range does not fit inside the margin, confirm it with the manufacturer's test report or with a measurement that includes the real connections. The bars below plot the usage in this table.
+
+![Bars comparing the GPON port insertion loss of each document and the value with connectors added against the loss margin](/images/education/optical-training/pon-coexistence-element-datasheet-passband-per-port-insertion-loss-basis-isolation-directivity-readout/bars-en.svg)
+
+- Light bars are the value printed in the document, dark bars include the connectors, and the dashed line is the 1.7 dB margin
+
+- The 1.4 dB of CommScope CEx 6 has no stated basis and would be 1.9 dB if connectors are excluded
+
+- Two mated pairs at 0.25 dB per pair are a DMS assumption and not a tested value
+
+## How far do the passbands extend in each document?
+
+The passband edges differ by document, so check edge by edge whether the wavelength in use sits inside. The standard wavelength table in the CommScope guide gives the XGS-PON downstream band as 1575–1581 nm, and the example tables of ITU-T G.9805 also use 1575–1581 nm. The four AMT and Maxcom documents and UISP print 1575–1580 nm, and Gezhi prints 1575–1580 nm in its specification table while its spectrum caption on the last page says 1575–1581 nm. The document does not give the effect of that 1 nm, so record that the guarantee for a 1581 nm signal is not confirmed by the 1580 nm documents alone (DMS interpretation).
+
+| Band | Range printed in the documents |
+| --- | --- |
+| GPON upstream and downstream | Mostly 1290–1330 nm and 1480–1500 nm. CommScope CEx 1–5 print one range, 1290–1500 nm, and CEx 6 onward print two ranges |
+| Upper edge of XGS-PON downstream | 1580 nm: AMT and Maxcom, UISP, Gezhi specification table. 1581 nm: Gigalight, CommScope, AFL, Teleste, LightOptics, Montclair, G.9805 |
+| Video (RF) | 1525–1560 nm (AMT), 1525–1565 nm (AFL), 1540–1565 nm (Gezhi), 1540–1560 nm (Technetix 1550 port), 1550–1560 nm (Gigalight, Teleste, LightOptics, CommScope, G.9805) |
+| 1610 nm return and PtP | 1596–1650 nm (AMT), 1600–1620 nm (Technetix), 1610–1625 nm (LightOptics, Gezhi, Montclair) |
+| OTDR monitoring | 1640–1660 nm (AFL, Gezhi, G.9805 Table I.6 example), 1625–1675 nm (G.9805 Table I.3, Montclair) |
+
+The video band is printed with different widths from 1525 nm to 1565 nm, so when the wavelength of the video transmitter in use is near a band edge, read the edge of the document directly. The OTDR band of AFL and Gezhi is also 1640–1660 nm, so an OTDR that monitors at 1625 nm sits outside the OTDR passband of these documents. The documents give no loss at 1625 nm, so it remains unconfirmed (DMS interpretation). Table I.3 of G.9805 prints the same OTDR band as 1625–1675 nm and cites ITU-T L.313. So decide the wavelength of the OTDR in use first, and then choose a configuration number whose OTDR port includes that wavelength.
+
+## What conditions does an isolation line assume?
+
+The isolation line is printed with a different value for each port, and most documents do not say what usage conditions the value assumes. Appendix II of G.9805 says the required isolation depends on the real use case, so a single value for each WDM1r, CEx or CEM device is not appropriate, and it gives an equation using the allowed crosstalk ratio, the ONU launch power difference, the differential loss of the network and the isolation on the receive side. The example tables of Appendix I also put isolation as determined by the application, and for the video port they give not applicable because RF video is downstream only. For this reason the 15 dB or more for video in the AMT document is not the same kind of value as the 30 dB or more for GPON and XGS-PON (DMS interpretation).
+
+| Document | Isolation line (as printed, dB) |
+| --- | --- |
+| AMT and Maxcom | COM to GPON and XGS-PON above 30, video (and return) above 15 |
+| Technetix | adjacent channel 30 or more, non-adjacent channel 45 or more |
+| Gigalight | above 30, no per-channel split |
+| Gezhi | 30 or more, NGA and NG-PON2 16 or 25 or more by configuration |
+| AFL | GPON, XGS-PON and video 30, OTDR 15, upgrade and NGA 12 |
+| CommScope | CEx 1–5 GPON 30, other ports 30 or 15, CEx 6 35 |
+| Teleste, LightOptics | 30 or more on every port |
+| UISP | GPON and XGS-PON 25 or more |
+| G.9805 Appendix I | determined by application, application case 1 gives GPON and XGS-PON 35 and OTDR 10 |
+
+Calculate the required isolation with the equation of Appendix II. The required isolation is the allowed crosstalk ratio minus the ONU launch power difference, plus the differential loss, minus the isolation on the receive side and the bandwidth compensation. Example 2 in the standard takes a penalty of 0.1 dB to the GPON signal, which gives an allowed crosstalk ratio of about 17 dB (read from Figure II.3). It sets the ONU launch power difference of a class B+ and N1 ODN to 0.5 dBm minus 7 dBm, which is minus 6.5 dB, the differential loss to 10 dB, the receive-side isolation to 0 dB and the bandwidth compensation to 10 log(2.5/1.25), which is 3 dB, and arrives at 17 + 6.5 + 10 − 0 − 3 = 30.5 dB. Example 1 uses a penalty of 0.5 dB, an allowed crosstalk ratio of about 10 dB, a differential loss of 5 dB and a receive-side isolation of 2 dB, and gets 16.5 dB. In other words a device printed as 30 dB or more falls 0.5 dB short under the conditions of Example 2.
+
+If only the differential loss is changed in Example 2, the required isolation is 20.5 dB plus the differential loss (a DMS calculation, with all other assumptions as in standard Example 2). At a differential loss of 5 dB it is 25.5 dB, so the 25 dB device of UISP is 0.5 dB short, at 10 dB it is 30.5 dB and at 15 dB it is 35.5 dB. Under these assumptions a 30 dB device is enough up to a differential loss of 9.5 dB, and a 35 dB device (CommScope CEx 6) up to 14.5 dB. So do not use the number in the document as a pass line as it stands. Put in the maximum differential loss of the ODN in use and compare it with the required value.
+
+## How are directivity, return loss, PDL and power handling read?
+
+Directivity is nearly the same at 50 dB, but return loss, PDL, PMD and power handling differ in value and unit. Technetix, Gigalight, Gezhi, AMT, AFL, CommScope, Teleste, LightOptics and G.9805 all print directivity as 50 dB or more, and UISP has no such line. Return loss is 45 dB or more in Technetix, Gigalight, AFL, Teleste, LightOptics and the Corning excerpt, and 50 dB or more in AMT, Gezhi, UISP, CommScope (only CEx 7 is 45 dB) and the G.9805 examples. The LightOptics document lists four connector types, SC/APC, SC/UPC, LC/APC and LC/UPC, under one return loss figure, and the UISP product uses SC/UPC connectors. So do not assume APC, and check the polish of the product.
+
+| Line | Values printed in the documents |
+| --- | --- |
+| PDL | 0.1 dB (Technetix, UISP), 0.15 dB (LightOptics), 0.2 dB (Gezhi, Gigalight, Teleste, CommScope CEx 6 onward), 0.25 dB (AFL), 0.3 dB (CommScope CEx 1–5). The AMT line mixes in a PMD unit, so its limit and inequality cannot be read |
+| PMD | 0.1 ps (Technetix, Gigalight), 0.2 ps (AMT, Teleste), 0.25 ps (AFL), 0.5 ps/km0.5 (CommScope, a fiber unit) |
+| Maximum optical power | +23 dBm (AMT, CommScope, G.9805), 300 mW (Gigalight, Gezhi, AFL, LightOptics, Teleste), 500 mW (Technetix) |
+
+The PMD line is printed in ps in some documents and in ps/km0.5 in another, and a fiber unit must not be read as a device value. Once the units are unified, +23 dBm is about 200 mW (199.5 mW), 300 mW is about 24.8 dBm and 500 mW is 27.0 dBm, so the three values are different limits. Teleste puts Min in the name of this line, so the document alone does not tell whether it is a maximum rating or a guaranteed minimum (DMS interpretation). The G.9805 example tables leave the maximum power of the OTDR port for further study, so before connecting equipment with a high OTDR pulse power, confirm the limit of the OTDR port separately in the manufacturer's document.
+
+![Order for reading a coexistence element datasheet](/images/education/optical-training/pon-coexistence-element-datasheet-passband-per-port-insertion-loss-basis-isolation-directivity-readout/concept-en.svg)
+
+- Copy the configuration number and port names first, and check down to the edge value that the service wavelengths sit inside the passband of each port
+
+- Copy the insertion loss with its connector basis and add only same-basis values to the loss budget, and calculate the isolation the network needs from its differential loss before comparing
+
+- Unify the units and inequalities of directivity, return loss, PDL, PMD and power handling
+
+This material has limits. The text of ITU-T G.984.5, G.9807.1, Telcordia GR-1209-CORE and GR-1221-CORE was not read, and where a document says it follows one of these standards the sentence is copied as it is. The tables in the G.9805 appendix are examples and not requirements. The full Corning guide could not be opened because of an access restriction, so only the table excerpt in a search result was checked, and it is not counted in the number of compared documents. The Montclair guide has only wavelength designations and no loss or isolation values, so it was used for the band comparison only. The Technetix document describes a GPON and RFoG device, so it has no XGS-PON line. The four AMT and Maxcom documents share one frame from the same manufacturing family and were not counted as independent evidence. The year in an upload path is not a document date, so the exact edition dates of the AMT and Maxcom documents could not be confirmed. All values are those published by the manufacturers or distributors and not values tested here.
+
+## Checklist
+
+- Did you copy the configuration number and port names (COM, GPON, XGS-PON, video, OTDR, upgrade) of the coexistence element in use, and check that the passband edge of each port covers the wavelengths in use?
+
+- Did you check whether the insertion loss line includes the connectors, and when it does not say, calculate both cases and compare them with the margin of the loss budget?
+
+- Did you copy the port and conditions of the isolation line, calculate the required isolation from the maximum differential loss of the ODN in use with the equation of Appendix II, and compare?
+
+- Did you unify the units and inequalities of return loss, directivity, PDL, PMD and maximum optical power, and check the connector polish (APC or UPC)?
+
+- Is the OTDR monitoring wavelength inside the passband of the OTDR port, did you confirm the power limit of the OTDR port in the manufacturer's document, and did you record the edition and date of the datasheet?
+
+## Review questions
+
+### 1. Document A prints a GPON port insertion loss of 0.9 dB (without connectors) and Document B prints 1.3 dB (with connectors). With two mated pairs at 0.25 dB per pair, which element uses less loss?
+
+Answer and explanation: The element of Document B. Document A is 0.9 dB plus 0.5 dB for two pairs, which makes 1.4 dB, and Document B already includes the connectors at 1.3 dB, so it uses 0.1 dB less. Picking the smaller number would be wrong here, so compare only after matching the basis. It is a hypothetical calculation (DMS interpretation).
+
+### 2. Keep the other assumptions of standard Example 2 and let the maximum differential loss of the ODN be 12 dB. What isolation is required, and are a 30 dB device and a 35 dB device enough?
+
+Answer and explanation: The required isolation is 20.5 + 12 = 32.5 dB. The 30 dB device is 2.5 dB short and the 35 dB device has 2.5 dB to spare. If the assumptions change (a penalty other than 0.1 dB, a receive-side isolation other than 0 dB and so on) the value changes, so recalculate with the values of the network in use. It is a hypothetical calculation (DMS calculation).
+
+### 3. One document prints the maximum optical power as +23 dBm and another as 300 mW. Which limit is larger?
+
+Answer and explanation: The 300 mW one. +23 dBm is 10 to the power 2.3 mW, about 199.5 mW, and 300 mW is about 24.8 dBm from 10 log(300). The units must be unified before the two can be compared, and the limit of the OTDR port is also left for further study in the G.9805 example tables, so confirm it separately.
+
+## Sources and editions
+
+- [ITU-T G.9805 (2022) Amendment 2 (November 2025): coexistence element examples and isolation calculation](https://www.itu.int/rec/dologin_pub.asp?id=T-REC-G.9805-202511-I!Amd2!PDF-E&lang=f&type=items) · Appendix I (document pages 13–21) Tables I.1–I.8 and application case 1, Appendix II (pages 30–33) equation II-2 and Examples 1 and 2
+
+- [AMT: MX-G-X-PON-RFO data sheet v2 (upload path September 2026)](https://amt.com/wp-content/uploads/2026/09/MX-G-X-PON-RFO-Data-Sheet-v2.pdf) · page 1
+
+- [AMT: MX-G-X-PON-RFO data sheet 1a (upload path April 2026)](https://amt.com/wp-content/uploads/2026/04/MX-G-X-PON-RFO-Data-Sheet-1a.pdf) · page 1
+
+- [AMT: MX-GX-RFOG data sheet (upload path April 2026)](https://amt.com/wp-content/uploads/2026/04/MX-GX-RFOG-Data-Sheet.pdf) · page 1
+
+- [Maxcom: MX-G-X-PON-RFOG data sheet 2 (upload path January 2022)](https://www.maxcomcorp.com/wp-content/uploads/2022/01/MX-G-X-PON-RFOG-Data-Sheet-2.pdf) · page 1
+
+- [Technetix: GPON/RFoG WDM filter modules LBWD (December 2023, V1)](https://emea.technetix.com/wp-content/uploads/sites/2/2024/05/LBWD-02-F-3149-5561-PS-20-10-444_LBWD-03-F-3149-5561-LG-444_V1_DS_EN.pdf) · page 2 specification table and note
+
+- [Gigalight: xPON Coexistence WDM data sheet](https://www.gigalight.com/datasheets/combo-pon-wdm.pdf) · page 2 specification table and notes
+
+- [Gezhi Photonics: CEx module V2.2](https://www.gezhiphotonics.com/PIC/cex-module-687P.pdf) · pages 1–4
+
+- [CommScope: PON Coexistence Specification Guide (CO-115592.6-EN, January 2025)](https://webresources.commscope.com/download/assets/Specification+Guide%3A+Coexistence+%28CEx%29+Singlemode+Devices/b57d7bfa3bd811f0b092ea1fa90d937b) · page 3 standard bands, pages 4–5 CEx 1–8b performance
+
+- [AFL: Coexistence (WDM) Element LGX Modules (PP-2-00386 Revision 0, printed date 6.2.2023)](https://edge.sitecorecloud.io/americafuji9ddc-aflglobaldebc30-prod7ddb-7b7b/media/project/afl-global/product-specification-sheet/connectivity/wdm-coexistence-lgx-modules.pdf) · pages 2–4 specification tables
+
+- [Teleste: TEN-WG WDM Solution (January 2026)](https://www.teleste.com/wp-content/uploads/2026/01/Teleste_Datasheet_TEN-WG-GPON-XGS-PON-CATV-CHASSI_19INCH_260113.pdf) · page 2 optical performance
+
+- [LightOptics: GPON/XGS-PON/RFoG CEx WDM filter module product page](https://www.lightoptics.co.uk/products/gpon-xgs-pon-1577nm-cex-wdm-filter-modules) · specification table
+
+- [UISP Fiber: Coexistence WDM Filter tech specs](http://techspecs.ui.com/uisp/accessory-tech/uacc-uf-wdm-xgs?subcategory=all-accessory-tech) · hardware table
+
+- [Montclair Fiber Optics: Coexistence Product Guide (2025 edition)](https://www.montclairfiber.com/wp-content/uploads/2019/07/Coexistence-2025-Product-Guide-Montclair.pdf) · page 2 wavelength designations
+
+- [Corning: Coexistence Elements Solutions Guide (CRR-1836-AEN)](https://www.corning.com/catalog/coc/documents/selection-guides/CRR-1836-AEN.pdf) · page 6 table, search-result excerpt only
+
+## Continue with
+
+- [Optical training curriculum](/fttx-training)
+
+- [GPON, XGS-PON and the Wavelength Plan](/education/optical-training/01-gpon-xgspon-wavelength-plan)
+
+- [Coexistence on Existing Plant](/education/optical-training/02-coexistence-on-existing-plant)
+
+- [Reading PLC splitter datasheets: insertion loss and uniformity](/en/education/optical-training/plc-splitter-datasheet-loss-uniformity-readout)
+
+- [Reading PON optical module datasheets: launch power, sensitivity, overload and measurement basis](/en/education/optical-training/pon-optical-module-datasheet-launch-power-sensitivity-overload-ber-basis-readout)

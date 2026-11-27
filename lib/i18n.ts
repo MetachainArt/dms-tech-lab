@@ -62,6 +62,7 @@ export function hasEnglishVersion(pathname: string): boolean {
     || path === "/education/optical-training/fixed-optical-attenuator-datasheet-tolerance-basis-wavelength-window-return-loss-readout"
     || path === "/education/optical-training/fiber-patch-cord-pigtail-datasheet-length-tolerance-insertion-loss-basis-tensile-bend-radius-readout"
     || path === "/education/optical-training/otdr-launch-cable-box-datasheet-length-selection-connector-loss-reflectance-basis-readout"
+    || path === "/education/optical-training/pon-coexistence-element-datasheet-passband-per-port-insertion-loss-basis-isolation-directivity-readout"
     || path === "/education/optical-training/01-fiber-types-link-design"
     || path === "/education/optical-training/02-fiber-market-infrastructure"
     || path === "/education/optical-training/01-rf-over-fiber-lecture"
