@@ -1,0 +1,113 @@
+---
+title: "Right Format, Wrong Answer"
+excerpt: "A practical guide to what structured outputs, the feature that makes an AI answer fit fixed JSON fields, does and does not guarantee, based on the official OpenAI and Anthropic documentation, with nine hand-made mock answers to a quote-request email showing which kinds of mistakes a format check catches and which a business-rule check catches, and a five-box field check card."
+date: "2026-11-27"
+readTime: "10 min"
+kind: "guide"
+tags: ["Work", "Workplace automation", "AX transformation"]
+---
+
+An AI answer that fits your JSON fields exactly and an AI answer whose values are correct are two different things. The structured outputs documentation from both OpenAI and Anthropic promises the first and tells the application to check the second. I ran nine hand-made mock answers to a quote-request email through both kinds of checks. Eight passed the format check, four also passed the business rules, and three matched the email.
+
+Checked on November 27, 2026, this account is based on the official documentation: the [OpenAI structured outputs guide](https://developers.openai.com/api/docs/guides/structured-outputs) and the [Anthropic structured outputs guide](https://docs.anthropic.com/en/docs/build-with-claude/structured-outputs), plus a mock test I built myself. It is not a customer case, and I did not send real requests to a model.
+
+## What do structured outputs guarantee?
+
+They guarantee that the answer fits the JSON format you defined. They do not guarantee that the values inside are right.
+
+OpenAI's guide says structured outputs constrain a completed, non-refusal answer to the JSON Schema you supply, so required fields and enum values (a fixed list of allowed choices) follow the schema. It also compares the feature with the older JSON mode. Both produce valid JSON, but only structured outputs ensure the schema is followed, and OpenAI recommends structured outputs over JSON mode whenever possible.
+
+Anthropic describes the same direction. Its feature uses constrained decoding, which keeps the model from choosing tokens that would break the schema, and the page lists three results: no JSON parsing errors, guaranteed field types and required fields, and no retries needed for schema violations.
+
+For an automation that pulls names and amounts out of email and drops them into a table, that is a real gain. Broken line breaks and text in a number column become much less likely. But the range both documents promise stops at format.
+
+![A wooden parts organizer with twelve compartments on a desk by a window, eleven holding one brass screw each and one holding a grey screw of the same shape](/images/works/right-format-wrong-answer/brass-screws-in-parts-tray.webp)
+
+## What do the documents say is not guaranteed?
+
+Both documents list cases where the format fails and cases where the format holds but the values are still wrong.
+
+| Situation | What the documentation says |
+|---|---|
+| Refusal | OpenAI signals a refusal through a `refusal` field. Anthropic says `stop_reason` is `refusal`, the status code is 200, the generated tokens are billed, and the output might not match the schema. |
+| Cut-off answer | Anthropic says that hitting `max_tokens` leaves the output incomplete and possibly off-schema. OpenAI says the response status can be incomplete, with a reason of `max_output_tokens` or `content_filter`. |
+| Input unrelated to the schema | OpenAI says the model always tries to follow the schema, which can produce hallucinations when the input has nothing to do with it. It suggests telling the model in the prompt to return empty values or a specific sentence in that case. |
+| Mistakes in values | OpenAI says structured outputs can still contain mistakes, and suggests adjusting the instructions, adding examples, or splitting the task into simpler parts. |
+| Business rules the schema cannot express | OpenAI says the application must validate any business rules the schema does not express. |
+| Enum capitalization | Anthropic says capitalization of enum values is not guaranteed and advises comparing them case-insensitively. |
+| Constraints such as number ranges | Anthropic's SDK removes unsupported constraints such as `minimum` and `maxLength` from the schema and adds them to the field description. A helper that validates responses then checks those constraints again in your own code. |
+
+One more line deserves a note. In OpenAI's guide every field must be required and the model returns a value for each one. A field that may be empty is imitated with a union type that allows `null`. Put that next to the hallucination warning above and it follows that information missing from an email can be filled with a plausible value instead of left blank. The documentation does not say this outright. It is my reading of two separate statements.
+
+## How often does a right-format answer turn out wrong?
+
+I do not know the rate with a real model. In nine hand-made mock answers, five of the eight that passed the format check were wrong.
+
+I imagined a small parts supplier pulling seven fields (company, item, quantity, unit price, total, due date, urgent flag) from nine quote-request emails. The request date is November 2, 2026. The format check confirms that every field is present and has the right type. The business-rule check confirms that the total equals quantity times unit price, that the due date falls after the request date, that the company name appears in the email, and that the email is not an advertisement.
+
+| No. | State of the AI answer | Format check | Business-rule check | Compared with the email |
+|---|---|---|---|---|
+| 1 | Correct | Pass | Pass | Matches |
+| 2 | 40 units at 1,200 won each, total given as 46,000 won (correct: 48,000) | Pass | Total does not match | Wrong |
+| 3 | Due date year is 2025 | Pass | Due date before request date | Wrong |
+| 4 | Company field holds a name from a different email | Pass | Name not in the email | Wrong |
+| 5 | An advertisement, but all seven fields filled in | Pass | Advertising wording detected | Wrong |
+| 6 | Answer cut off in the middle of the date | Parse failed | Not applicable | Not applicable |
+| 7 | Correct | Pass | Pass | Matches |
+| 8 | Correct | Pass | Pass | Matches |
+| 9 | Unit price read as 1,020 won, total 102,000 won calculated to match (the email says 1,200 won) | Pass | Pass | Wrong |
+
+Of nine answers, eight could be parsed, eight passed the format check, four passed the business rules, and three matched the email. Number 9 stands out. The unit price was misread, but the total was calculated from that wrong price, so the fields do not contradict each other. A rule that compares one field with another cannot catch that. It shows up only when the answer sits next to the original email.
+
+I wrote the nine answers by hand and chose how each one is wrong. The checking code is my own rules turned into code, so the results were settled before I ran it. The test shows which check catches which kind of mistake. It says nothing about how often mistakes happen.
+
+## Which rules belong after the format check?
+
+Four kinds of rules fit there: response state, agreement between fields, agreement with the source, and handling of inputs that do not apply. Together they show which mock mistakes get caught at which step and which one slips through.
+
+| Rule | What it checks | Mock example | Limit |
+|---|---|---|---|
+| Read the response state first | Whether the answer is complete, refused or cut off, before parsing | No. 6 | If a cut-off answer is retried with a higher token limit, the same email must not be processed twice |
+| Fields agree with each other | Total equals quantity times unit price; date is in range | No. 2, No. 3 | If a wrong value is carried into other fields consistently, the check passes (No. 9) |
+| Fields agree with the source | The company name and the unit-price digits actually appear in the email | No. 4 | A different notation, such as a number written out in words, can trigger a false alarm |
+| Handling of inputs that do not apply | Return empty values or a fixed sentence for out-of-scope input, and confirm that in code as well | No. 5 | Someone has to decide in advance what counts as out of scope |
+
+Adding a rule that the unit-price digits must appear in the email would probably catch the 1,020 won in No. 9. I did not add that rule in this test, and I did not check how well it would work against the many ways real emails write numbers.
+
+Retrying a cut-off answer without doing the same job twice is covered in [When to Restart an AI Automation](/en/works/ai-automation-safe-retry).
+
+![Two sheets of cream paper printed with only grid lines lie side by side on a wooden desk by a window, a wooden ruler between them, a pencil on the left sheet and a brass-rimmed magnifying glass on the right](/images/works/right-format-wrong-answer/paper-sheets-ruler-and-magnifier.webp)
+
+## Who looks at the mistakes the rules let through?
+
+A person needs to put some of the passing results next to the original. This is DMS.Labs' suggestion, not a standard derived from testing.
+
+Rules catch only the mistakes someone thought of in advance. A mistake like No. 9, which nobody wrote a rule for, goes through. So the safer pattern is to compare everything against the source at first and, once the rules keep passing, to sample some of what passes. How many to sample depends on what a wrong result costs, so this guide does not set a number.
+
+Who does the looking has to be decided beforehand. The eight-box card for naming a reviewer is in [Naming a Reviewer for AI Output](/en/works/ai-output-reviewer-card), and reading a result that was marked successful back from the outside is in [Read It Back After Success](/en/works/read-back-after-success). What counts as a pass is covered in [Acceptance Tests for an AI Skill](/en/works/ai-skill-acceptance-tests).
+
+## How do I use a five-box field check card?
+
+Write five boxes on one sheet for each automation that receives AI answers into fields. The right column is a hypothetical example built on the mock test above: a small parts supplier of eight employees that pulls seven fields from quote-request email into a draft quote. It is not a real customer case, and the card is a DMS.Labs suggestion, not a form tested with customers.
+
+| Box | What to write | Hypothetical example |
+|---|---|---|
+| Response state | Where a response that did not finish normally (refusal, cut-off, error) goes | A cut-off answer is not processed. It waits on a hold list and is requested again once with a higher limit |
+| Format check | What the schema enforces and what code re-checks | Required fields and types stay in the schema; number ranges and enum capitalization are checked in code |
+| Value rules | Whether fields agree with each other and with the source | Total, due date, and whether the company name and unit-price digits appear in the email |
+| Values it cannot fill | What goes in a field when the information is missing | Fields absent from the email are `null`; an advertisement leaves every field empty |
+| Hand-off to a person | Who looks when any rule fails, and how much of what passes is sampled | A failed item goes to the owner with the email beside it, and some passing items are compared too |
+
+With this card written down, someone else can keep applying the same checks when the person who built the automation is away. Choosing that owner is covered in [When the Person Behind the Automation Is Away](/en/works/automation-owner-card), and keeping a one-line record of what the automation did is in [One Line for Every Automation Run](/en/works/automation-run-record).
+
+## What does this guide not tell you?
+
+I did not send real requests to a model. I do not know how often structured outputs are wrong on real business email. The nine mock answers are mine, and the kinds and proportion of mistakes follow from my choices.
+
+Both documents are web pages and can change. What is written above is the version I read on November 27, 2026. The supported schema keywords and model coverage are listed separately on each page, and I have not copied them all here. I did not read structured output documentation from other vendors, such as Google, or for models you run yourself. I did not test how many items a person should sample, or which rules throw false alarms on the job.
+
+## What to read next
+
+If you want to design the format checks, value rules and hand-off conditions for putting AI answers into your own business tables or documents, the [DMS.Labs workplace automation](/automation) page is the place to look. That page is provided in Korean only. For a consultation, use the [contact page](/en/contact). This guide covers two public documents and a hand-made mock test, and it makes no promise about adoption cost, time saved, inquiries or revenue.
+
+The two images in this piece are newly generated scenes for illustration. They are not photographs of real work screens or customer sites.

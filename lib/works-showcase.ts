@@ -8,6 +8,13 @@ export interface ShowcaseWorkItem {
 
 export const SHOWCASE_WORKS: ShowcaseWorkItem[] = [
   {
+    title: "칸은 맞는데 답이 틀릴 때",
+    summary: "AI의 답을 정해 둔 JSON 칸에 맞춰 받는 구조화된 출력이 무엇을 보장하고 무엇을 보장하지 않는지 OpenAI와 Anthropic 공식 문서 두 곳으로 확인하고, 손으로 만든 견적 메일 모의 답 9건으로 형식 검사와 업무 규칙 검사가 각각 어떤 틀림을 잡는지 보여 준 뒤 다섯 칸짜리 칸 점검 카드를 제안하는 업무 자동화 실무 가이드입니다.",
+    tags: ["Work", "업무 자동화", "AX 전환"],
+    image: "/images/works/right-format-wrong-answer/brass-screws-in-parts-tray.webp",
+    link: "/works/right-format-wrong-answer",
+  },
+  {
     title: "로그인이 풀리면 멈춥니다",
     summary: "자동화가 쓰던 쇼핑·제휴 서비스의 로그인이 풀렸을 때 비밀번호를 추측하거나 QR을 시도하지 않고 멈추게 해 둔 설계가 리도의 실제 게시 기록에서 어떻게 움직였는지 따라가고, 서비스마다 로그인을 되살리는 주체가 달랐다는 점과 지난 보고를 오늘의 상태로 옮기면 틀리는 이유, 다섯 칸짜리 로그인 카드를 정리한 업무 자동화 실무 가이드입니다.",
     tags: ["Work", "업무 자동화", "AX 전환"],
