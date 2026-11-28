@@ -1,0 +1,214 @@
+---
+title: "광 기계식 접속자 사양서의 삽입손실 기준·반사 감쇠량 조건·고정력 판독"
+date: "2026-11-28"
+desc: "광 기계식 접속자(mechanical splice) 사양서에서 삽입손실, 반사 감쇠량, 고정력, 사용 온도 줄을 읽는 10분 교안입니다. 제조사·유통사 문서 14건과 ITU-T L.400, 군용 규격, FOA 자료를 비교해 삽입손실 줄이 0.03 dB에서 0.5 dB까지 갈리는 이유와, 접속 6개를 곱했을 때 합격선이 달라지는 계산을 다룹니다."
+coverImage: "/images/education/optical-training/mechanical-splice-datasheet-insertion-loss-basis-return-loss-cleave-condition-fiber-retention-readout/cover.svg"
+readTime: "10 min"
+lang: "ko"
+---
+
+광 기계식 접속자(mechanical splice)는 V 홈과 굴절률 정합 젤로 두 광섬유를 맞물려 이어 주는 부품이며, 사양서에서 가장 먼저 볼 줄은 삽입손실이 평균인지 최대인지입니다. 이번에 읽은 문서는 평균 0.03 dB, 일반 0.1 dB, 한도 0.15 dB, 최대 0.3 dB, 0.5 dB로 기준이 섞여 있었고, 반사 감쇠량은 평탄 절단과 각도 절단, 상온과 사용 온도 전 범위가 한 줄에 섞이거나 빠져 있었습니다. 고정력도 2.2 N에서 58.8 N까지 갈렸습니다. 그래서 기계식 접속자는 삽입손실의 기준, 반사 감쇠량의 절단면 방식과 부호, 고정력의 단위와 잡는 대상을 먼저 옮기고, 접속 개수를 곱한 손실 예산으로 다시 계산한 뒤에 씁니다.
+
+2026년 11월 28일 확인한 자료 기준입니다.
+
+## 학습 목표
+
+- 삽입손실 줄이 평균, 일반, 최대, 보증 중 무엇인지 구분하고, 같은 기준끼리 손실 예산에 넣는 계산을 합니다.
+
+- 반사 감쇠량 줄의 절단면 방식(평탄·각도), 온도 조건, 부호(양수 반사 감쇠량·음수 반사율)를 읽고 용도의 기준과 대조합니다.
+
+- 고정력의 단위(N, kgf, lbf)를 뉴턴으로 통일하고, 광섬유를 잡는 힘과 케이블을 잡는 힘을 구분하며, 사용 온도·재사용·설치 절차 조건을 사양서에서 찾습니다.
+
+## 기계식 접속자 사양서의 삽입손실 줄은 평균과 최대 중 무엇을 적고 있습니까?
+
+삽입손실 줄은 평균, 일반(typical), 최대, 보증이 문서마다 섞여 있어서 같은 칸에 놓고 비교할 수 없습니다. ITU-T L.400/L.12(2022) 표 1은 단일모드 기계식 접속자의 삽입손실을 등급 B 0.25 dB 이하, 등급 C 0.5 dB 이하의 최대값으로 적고, 표 2는 접속 절차를 100개 이상으로 검증할 때 등급 B는 평균 0.12 dB 이하이면서 97 %가 0.25 dB 이하라고 적습니다. 제조사 문서는 이 틀을 따르는 곳이 드뭅니다. 3M Fibrlok II 2529의 2016년 사양 표는 일반 값 0.1 dB 미만만 적고 최대 줄이 없으며, Prysmian은 0.15 dB 미만과 일반 0.1 dB 미만을 함께 적고, Dintek은 일반 0.1 dB와 최대 0.3 dB를 나눠 적습니다. KeyQuick은 평균 0.03 dB와 보증 0.1 dB 미만을 같은 문서에 적습니다. 반대로 Optix America와 Focomm은 0.25 dB 이하라고만 적고 평균인지 최대인지 밝히지 않습니다.
+
+| 문서 | 삽입손실 줄(인쇄된 대로, dB) | 기준 표기 | 파장 |
+| --- | --- | --- | --- |
+| ITU-T L.400/L.12 표 1 | 등급 B 0.25 이하, 등급 C 0.5 이하 | 최대 | 1310·1550·1625 nm |
+| ITU-T L.400/L.12 표 2 (접속 절차 검증, 100개 이상) | 등급 B 평균 0.12 이하·97 %에서 0.25 이하, 등급 C 평균 0.25 이하·97 %에서 0.5 이하 | 평균과 97 % | 1310·1550·1625 nm |
+| 3M Fibrlok II 2529 (2016) | 0.1 미만 | 일반, 최대 줄 없음 | 적혀 있지 않음 |
+| 3M Fibrlok 각도형 2529-AS (2008) | 0.1 미만, 0.25 이하(IEC 61753-131-3) | 일반과 최대 | 1310·1490·1550·1625 nm |
+| Prysmian AC007 (2012) | 0.15 미만(일반 0.1 미만) | 한도와 일반 | 1310·1550 nm |
+| Dintek ezi-FIBER (2021) | 일반 0.1, 최대 0.3 | 일반과 최대 | 적혀 있지 않음 |
+| KeyQuick MS201 (2024) | 평균 0.03, 보증 0.1 미만 | 평균과 보증 | 적혀 있지 않음 |
+| OMC 접속자 2종 (2024년 버전 2.0 표기) | 평균 0.30 이하 | 평균 | 1310·1550 nm |
+| Optix America(날짜 미인쇄)·Focomm F-MS (2025) | 0.25 이하 | 적혀 있지 않음 | 1310·1550 nm |
+| Outline OUT-925 (2018) | 0.15 | 부등호 없음 | 1310·1490·1550 nm |
+| 유통사 Fiber Instrument Sales | Fibrlok II 0.2 미만, ULTRAsplice 평균 0.2, CamSplice는 0.5 미만이 꾸준히 가능 | 혼재 | 적혀 있지 않음 |
+| Corning CamSplice (2026년 7월 21일 판) | 줄 없음 | 없음 | 없음 |
+| MIL-PRF-24623/7A (2013, 항공기용) | 초기 0.5, 환경·기계 시험 뒤 확인 1.0 | 시점별 | 적혀 있지 않음 |
+
+같은 부품 번호도 문서에 따라 갈립니다. Fibrlok II 2529를 3M 사양서는 일반 0.1 dB 미만으로 적지만, 유통사 목록은 0.2 dB 미만으로 적습니다. 어느 쪽이 현행 값인지는 문서만으로 알 수 없습니다(DMS 해석). Corning CamSplice 제품 사양서에는 삽입손실 줄이 아예 없고 인장 강도 2.2 N과 폭 4.2 mm만 있으며, 첫 문단은 혐기성 경화 커넥터를 설명합니다. 유통사 목록은 이 접속자의 손실을 0.5 dB 미만을 꾸준히 달성할 수 있다는 문장으로만 적습니다. 군용 항공기 규격은 단일모드 기계식 접속자의 삽입손실을 초기 0.5 dB와 시험 뒤 확인 값 1.0 dB로 나누고, 이 값이 지정된 제작 절차를 쓴 경우의 성능이라고 밝힙니다. 그래서 줄 이름이 같아도 측정 시점과 절차를 함께 옮겨야 합니다.
+
+## 삽입손실 값은 접속 개수를 곱하면 합격선이 어떻게 달라집니까?
+
+사양서의 값을 접속 개수만큼 곱하면 평균·일반 값의 합은 여유가 남지만 최대값의 합은 허용 손실을 넘길 수 있습니다. 아래는 가상 계산입니다. 한 구간에 기계식 접속 6개가 있고, 접속에 배정한 허용 손실이 1.5 dB라고 가정합니다.
+
+| 문서와 값(접속 한 개) | 한 개 값(dB) | 6개 합(dB) | 허용 1.5 dB 대비 남은 여유(dB) |
+| --- | --- | --- | --- |
+| KeyQuick 평균 | 0.03 | 0.18 | 1.32 |
+| 3M Fibrlok II 2529 일반 | 0.1 | 0.60 | 0.90 |
+| Prysmian 한도 | 0.15 | 0.90 | 0.60 |
+| Optix·Focomm 0.25(기준 미표기) | 0.25 | 1.50 | 0.00 |
+| Dintek 최대 | 0.3 | 1.80 | −0.30 |
+| ITU-T L.400 등급 C 최대 | 0.5 | 3.00 | −1.50 |
+
+평균 0.03 dB와 일반 0.1 dB를 쓰면 합이 0.18 dB와 0.60 dB로 여유가 크지만, Dintek의 최대 0.3 dB를 쓰면 1.80 dB로 허용을 0.30 dB 넘고, L.400 등급 C의 최대 0.5 dB를 쓰면 3.00 dB로 1.50 dB 넘습니다. 기준을 모르는 0.25 dB 줄은 최대로 읽으면 여유가 정확히 0이 됩니다. 평균은 기대값이고 최대는 개별 접속의 합격선이라, 두 값을 같은 줄에 놓고 곱하면 안 됩니다. 접속 6개가 모두 동시에 최대가 될 가능성은 낮지만 그 확률은 문서에 없습니다(DMS 해석). 아래 막대는 이 표를 그린 것입니다.
+
+![기계식 접속자 사양서 값에 접속 6개를 곱한 합과 허용 손실 1.5 dB를 비교한 막대](/images/education/optical-training/mechanical-splice-datasheet-insertion-loss-basis-return-loss-cleave-condition-fiber-retention-readout/bars-ko.svg)
+
+- 막대는 접속 6개의 합이고 점선은 가상의 허용 손실 1.5 dB입니다
+
+- Dintek 최대와 L.400 등급 C 최대는 허용을 넘습니다
+
+- 6개와 1.5 dB는 DMS 가정이며 시험한 값이 아닙니다
+
+표준 쪽 한도도 하나가 아닙니다. FOA의 TIA 568 요약은 융착과 기계식 모두 0.3 dB 이하로 적습니다. MapYourTech(2차 자료, 2026년 7월)는 TIA-568.3-E가 기계식에 0.5 dB를 허용한다고 적지만 조항 번호가 없습니다. 이번에 TIA 본문을 읽지 못했으므로 두 값 모두 확인된 값으로 쓰지 않고, 현장 합격선은 계약 사양에 적힌 값을 따릅니다.
+
+## 반사 감쇠량 줄은 절단면 방식과 온도에 따라 어떻게 읽습니까?
+
+반사 감쇠량 줄은 절단면이 평탄인지 각도인지, 상온 일반 값인지 사용 온도 전 범위 값인지, 부호가 양수인지 음수인지를 함께 읽어야 합니다. L.400 표 1은 평탄 절단이면 등급 3(35 dB 이상)과 등급 2(45 dB 이상), 각도 절단이면 등급 1(60 dB 이상)로 나눕니다. 3M 각도형 Fibrlok의 2008년 문서는 상온 일반 65 dB, 온도 −40 °C에서 +70 °C 전 범위에서 60 dB 초과를 적습니다. 평탄형 2529는 2016년 표에서 일반 −55 dB 미만, 사용 온도 전 범위 −35 dB 미만으로 20 dB 벌어집니다. 같은 2529를 구판 사양서(Fiberworks 사본, 날짜 미인쇄)는 일반 −40 dB 미만으로 적어서, 판에 따라 일반 값도 15 dB 다릅니다.
+
+| 문서 | 반사 줄(인쇄된 대로) | 절단면·조건 | 부호 |
+| --- | --- | --- | --- |
+| ITU-T L.400/L.12 표 1 | 평탄 35 이상(등급 3), 45 이상(등급 2), 각도 60 이상(등급 1) | 절단면으로 구분 | 양수 dB |
+| FOA TIA 568 요약 (2021) | 단일모드 접속 26 이상, CATV 아날로그 영상 55 이상 | 용도로 구분 | 양수 dB |
+| 3M Fibrlok 평탄형 2529 | 2016: 일반 −55 미만, 사용 온도 전 범위 −35 미만 / 구판: 일반 −40 미만 | 평탄, 일반과 전 범위 | 음수 dB |
+| 3M Fibrlok 각도형 2529-AS | 2016: 일반 −65 미만, 전 범위 −60 미만 / 2008: 일반 65, 전 범위 60 초과 | 각도 | 판에 따라 음수·양수 |
+| Prysmian AC007 | 40 초과(일반 55 초과) | 적혀 있지 않음 | 양수 dB |
+| Dintek ezi-FIBER | 일반 −50 | 적혀 있지 않음 | 음수 dB |
+| KeyQuick MS201 | 60 이상, 평균 63 | 평탄 절단, 등급 1이라고 적음 | 양수 dB |
+| OMC 접속자 2종 | 45 이상 | 적혀 있지 않음 | 양수 dB |
+| Focomm F-MS·Outline OUT-925 | Focomm −45 이하(표 이름은 Return loss), Outline −50 | 적혀 있지 않음 | 음수 dB |
+| 유통사 목록의 Fibrlok II | −35 | 적혀 있지 않음 | 음수 dB |
+| Optix America | 줄 없음, 재사용 뒤 변화 5 이하만 | 없음 | 없음 |
+
+KeyQuick은 평탄 절단에서도 등급 1(60 dB 이상, 평균 63 dB)이라고 적지만, L.400은 등급 1을 각도 절단에 둡니다. 용어 정의가 달라서일 수 있으나 문서에 설명이 없으므로 인쇄된 대로 옮기고 확인 필요로 둡니다(DMS 해석). Focomm은 표 이름이 Return loss인데 값이 −45 dB 이하라고 적어서, 양수인 반사 감쇠량과 음수인 반사율이 섞인 줄입니다. 반사율 −45 dB로 읽으면 반사 감쇠량 45 dB이지만 이것도 해석이므로 시험으로 확인합니다.
+
+용도에 맞는 기준은 FOA의 TIA 568 요약이 적습니다. 단일모드 접속은 일반 용도 26 dB, CATV 아날로그 영상은 55 dB 이상이며, 평탄형 2529의 사용 온도 전 범위 값 −35 dB는 이 55 dB에 못 미칩니다. 3M이 각도형을 아날로그 영상 망용이라고 설명하는 이유와 맞습니다. 반사율과 반사 감쇠량의 부호는 [반사율·광반사손실 성적서 판독](/education/optical-training/reflectance-orl-sign-and-scope) 교안에서 다룹니다.
+
+## 고정력 줄은 무엇을 몇 뉴턴으로 잡습니까?
+
+고정력 줄은 값이 2.2 N에서 58.8 N까지 27배 가까이 벌어지고, 광섬유를 잡는 힘인지 케이블을 잡는 힘인지에 따라 다른 값입니다. L.400 표 1의 광섬유 유지(fibre retention) 시험은 1차 2 N과 2차 5 N을 접속 보호부에서 30 cm 떨어진 곳에 60초 동안 거는 조건이며, 시험 중과 시험 뒤에 감쇠 변화와 반사 기준을 만족하라고 적습니다. 1차와 2차가 피복 단계를 가리키는지는 표에 설명이 없습니다(DMS 해석). 제조사 문서는 이 구분이 흐립니다. 3M 구판은 인장 강도 4.4 N(1.0 lbf) 이상이라고만 적고, 3M 각도형 2008년 문서는 IEC 61300-2-4 기준으로 5 N 이상, 일반 10 N 이상이라고 적습니다. Corning CamSplice는 250 µm와 900 µm 케이블에서 2.2 N이라고 적고, Optix·Focomm·Outline 계열은 맨 광섬유 5 N 초과와 타이트 버퍼 8 N 초과로 나눕니다. OMC는 잠금 상태 3 N 초과와 완전 체결 10 N 초과로 나누고, 드롭 케이블용은 40 N 초과로 적습니다.
+
+단위도 섞입니다. Dintek은 kgf로 0.5(900 µm), 6(3.0 mm 케이블), 1(평형 케이블)을 적고, 유통사 목록은 lbf로 7.75(Fibrlok II), 2(ULTRAsplice), 1.5(Lock Jaw)를 적습니다.
+
+| 문서 | 인쇄된 값 | 뉴턴 환산 | 무엇을 잡는 값 |
+| --- | --- | --- | --- |
+| ITU-T L.400/L.12 표 1 | 1차 2 N, 2차 5 N, 30 cm 지점, 60초 | 2와 5 | 표에 설명 없음 |
+| 3M Fibrlok 구판 | 인장 강도 4.4 N(1.0 lbf) 이상 | 4.4 | 적혀 있지 않음 |
+| 3M Fibrlok 각도형 (2008) | 5 N 이상, 일반 10 N 이상 | 5와 10 | 적혀 있지 않음 |
+| Corning CamSplice (2026) | 2.2 N | 2.2 | 250 µm와 900 µm 케이블 |
+| Optix·Focomm·Outline | 5 N 초과, 8 N 초과 | 5와 8 | 맨 광섬유, 타이트 버퍼 |
+| OMC 900 µm용 | 잠금 3 N 초과, 완전 10 N 초과 | 3과 10 | 광섬유 |
+| OMC 2×3 드롭 케이블용 | 잠금 3 N 초과, 완전 40 N 초과 | 3과 40 | 드롭 케이블 |
+| Dintek | 0.5 kgf, 6 kgf, 1 kgf | 4.9, 58.8, 9.8 | 900 µm, 3.0 mm 케이블, 평형 케이블 |
+| 유통사 Fiber Instrument Sales | 7.75 lbf, 2 lbf, 1.5 lbf | 34.5, 8.9, 6.7 | 광섬유 유지력 |
+| Focomm 본문 | 표 5 N 초과, 특징 문구 드롭 케이블 5 KG 초과 | 5와 약 49 | 케이블 |
+
+KeyQuick은 Pull Strength 줄의 값이 2 cores, IP protection level 줄의 값이 5N으로 인쇄돼 값이 칸과 맞지 않습니다(문서 2쪽을 그림으로 확인했습니다). Focomm은 표에는 5 N 초과라고 적으면서 특징 문구에는 드롭 케이블 인장 강도 5 KG 초과라고 적어서, 5 N과 약 49 N으로 10배 가까이 차이가 납니다. 기계식 접속자의 고정력은 접속 지점에서 광섬유가 밀리지 않게 잡는 값이므로, 접속함체에서 케이블과 강선을 고정하는 힘은 [접속함체 케이블 고정과 인장선 체결](/education/optical-training/closure-cable-anchoring-strength-member) 교안에서 따로 봅니다.
+
+## 사용 온도·재사용·설치 절차 조건은 어디에 적혀 있습니까?
+
+사용 온도는 표에 있어도 재사용과 설치 절차 조건은 본문이나 별도 설치 절차서에 있으므로, 사양서 한 장으로 합격선을 정하지 않습니다. 사용 온도는 −40 °C에서 +70 °C부터 +80 °C까지 갈리고, Prysmian은 피복 재질별로 나눠 적어서 나일론 피복 900 µm는 하한이 0 °C입니다. L.400 표 1은 −40 °C와 +70 °C 사이를 1시간씩 머물며 12회 순환하는 시험에서 기계식 접속자의 감쇠 변화를 ±0.2 dB 이내로 요구합니다. 이 변화량은 표에 0 2 dB로 인쇄돼 소수점이 빠져 있어서 ±0.2 dB로 읽었습니다(DMS 해석).
+
+| 문서 | 사용 온도 |
+| --- | --- |
+| 3M Fibrlok 평탄형 / 각도형 | −40 °C에서 +75 °C / −40 °C에서 +70 °C |
+| Prysmian AC007 | 250 µm −40 °C에서 +70 °C, 900 µm PVC −40 °C에서 +75 °C, 나일론 0 °C에서 +75 °C, TPEE −25 °C에서 +75 °C |
+| Dintek ezi-FIBER | −40 °C에서 +70 °C |
+| OMC 접속자 2종 | −40 °C에서 +80 °C |
+| Optix·Focomm·Outline | −40 °C에서 +75 °C |
+| 유통사 목록의 Fibrlok II | −40 °C에서 +80 °C |
+| MIL-PRF-24623/7A (항공기용) | 운용 −55 °C에서 +165 °C |
+
+재사용은 문서마다 정반대로 적습니다. 3M은 영구 접속이라고 설명하고, Optix는 다섯 번까지 재사용할 수 있고 그때 삽입손실 변화 0.2 dB 이하, 반사 변화 5 dB 이하라고 적습니다. Focomm은 같은 변화량을 적으면서 횟수를 10회로 쓰고, Outline은 5회로 씁니다. Corning의 Fibrlok II 설치 절차서(2019년 9월)는 접속 뒤 손실이 높으면 캡 리프터로 광섬유 위치를 다시 잡을 수 있지만 두 번 시도해도 안 되면 새 접속자로 다시 만들라고 적습니다. 다시 만들 때는 접속자 양쪽 광섬유를 잘라 루프에서 1.5 인치(38.1 mm)가 줄고, 새 접속자와 광섬유마다 2 인치(50.8 mm)가 필요합니다. 접속함체를 다시 열 때 여장이 줄어드는 만큼은 [접속함체 케이블 준비와 트레이 고정](/education/optical-training/closure-cable-preparation-tray-reentry) 교안과 함께 계산합니다.
+
+설치 조건은 값의 전제입니다. 이 절차서는 2529의 절단 길이를 12.5 mm ±0.5 mm로 정하고, 광섬유를 두 번보다 많이 닦지 말고 절단 뒤에는 다시 닦지 말라고 하며, 두 광섬유에 같은 휨이 생기게 밀어 넣은 뒤 접속자를 조정해 최적화하지 말라고 적습니다. 이 절차서에는 삽입손실 수치가 없습니다. 트레이에 여장을 한 바퀴 감을 때마다 접속부가 한 바퀴 꼬이고, 900 µm 피복에서 이 영향이 더 크다고도 적습니다. Prysmian은 도구 키트가 필요하다고 적고, Dintek·KeyQuick·OMC는 별도 도구 없이 쓴다고 적으며, 군용 규격은 손실 성능이 지정 제작 절차를 쓴 경우의 값이라고 밝힙니다. 그래서 같은 숫자라도 어떤 절단기와 절차를 전제로 한 값인지 함께 옮깁니다. 일부 문서는 본문 문구가 제품과 맞지 않기도 합니다. Corning CamSplice 사양서의 첫 문단은 커넥터를 설명하고, OMC 두 문서의 특징 목록은 페룰과 부트를 말하는 커넥터 문구를 담고 있으므로, 표 값만 쓰고 본문 문구는 제품과 대조합니다.
+
+![기계식 접속자 사양서를 읽는 순서](/images/education/optical-training/mechanical-splice-datasheet-insertion-loss-basis-return-loss-cleave-condition-fiber-retention-readout/concept-ko.svg)
+
+- 삽입손실은 평균과 최대를 구분해 옮기고 접속 개수를 곱해 허용 손실과 비교합니다
+
+- 반사 감쇠량은 절단면 방식, 온도 조건, 부호를 옮기고 용도의 기준과 대조합니다
+
+- 고정력은 뉴턴으로 통일하고 사용 온도, 재사용 횟수, 절단 길이와 도구 조건을 함께 기록합니다
+
+이번 자료의 한계도 있습니다. IEC 61753-131-3, IEC 61300-3-4, IEC 61300-3-6, IEC 61300-2-4, Telcordia GR-765-CORE, TIA-568.3-E의 본문은 읽지 못했고, 문서가 이 표준을 따른다고 적은 부분은 문서 문장 그대로 옮겼습니다. Corning의 시험 지침(LAN-1561)은 접근 제한으로 열리지 않아 검색 결과 발췌만 보았고 비교 수에는 넣지 않았습니다. Optix 문서, 구판 3M 문서, 유통사 목록은 날짜가 인쇄돼 있지 않고 OMC는 2024년 버전 2.0이라고만 적혀 있어, 어느 문서도 현행 판인지 확인하지 못했습니다. Optix, Focomm, Outline은 같은 표 틀이라 독립된 근거로 세지 않았고 OMC 두 문서도 한 계열입니다. 모든 값은 제조사나 유통사가 공표한 값이며 이번에 시험한 값이 아닙니다.
+
+## 업무 점검표
+
+- 쓰는 기계식 접속자 사양서에서 삽입손실 줄이 평균, 일반, 최대, 보증 중 무엇인지와 측정 파장을 옮기고, 접속 개수를 곱한 합을 허용 손실과 비교했습니까?
+
+- 반사 감쇠량 줄의 절단면 방식(평탄·각도), 온도 조건, 부호를 옮기고, 용도(일반, CATV 아날로그 영상)의 기준과 대조했습니까?
+
+- 고정력 줄의 단위를 뉴턴으로 바꾸고, 광섬유를 잡는 값인지 케이블을 잡는 값인지 확인했습니까?
+
+- 사용 온도가 설치 장소를 덮는지, 피복 재질별 온도 한도가 있는지, 재사용과 재접속 때 여장이 얼마나 줄어드는지 확인했습니까?
+
+- 값의 전제인 절단 길이, 절단기, 조립 도구, 사양서의 판 번호와 날짜를 같이 기록했습니까?
+
+## 확인 문제와 정답
+
+### 1. A 문서는 삽입손실 일반 0.1 dB 미만만 적고, B 문서는 일반 0.1 dB와 최대 0.3 dB를 적습니다. 한 구간에 접속 8개가 있고 허용 손실이 2.0 dB이면 어느 값으로 합격선을 확인해야 합니까?
+
+정답·해설: 최대 0.3 dB가 적힌 B 문서의 값으로 확인합니다. 최대 기준 합은 0.3 × 8 = 2.4 dB로 허용을 0.4 dB 넘고, 일반 기준 합 0.8 dB는 기대값일 뿐 합격선이 아닙니다. A 문서는 최대 줄이 없으므로 합격선으로 쓸 수 없고 시험 기준을 따로 정해야 합니다. 가상 계산(DMS 해석)입니다.
+
+### 2. 평탄형 접속자 사양서가 일반 반사 −55 dB 미만, 사용 온도 전 범위 −35 dB 미만이라고 적었습니다. CATV 아날로그 영상 망의 55 dB 기준에 쓸 수 있습니까?
+
+정답·해설: 그대로는 쓸 수 없습니다. 상온 일반 값은 55 dB를 만족하지만 사용 온도 전 범위 값은 35 dB로 20 dB 모자랍니다. 이런 망에는 각도 절단용 접속자처럼 전 범위 값이 60 dB 안팎으로 적힌 제품을 고르고, 절단면 방식과 온도 조건이 적혀 있는지 확인합니다.
+
+### 3. 고정력이 Dintek 문서에 0.5 kgf, 3M 구판에 4.4 N, Corning CamSplice에 2.2 N으로 적혀 있습니다. 큰 순서로 늘어놓고 바로 비교해도 됩니까?
+
+정답·해설: 0.5 kgf는 약 4.9 N이므로 4.9 N, 4.4 N, 2.2 N 순입니다. 그러나 Dintek 값은 900 µm에 대한 값이고 3M 값은 대상이 적혀 있지 않으며 CamSplice 값은 250 µm와 900 µm 케이블에 대한 값이라서, 잡는 대상과 시험 조건을 확인하기 전에는 바로 비교하지 않습니다.
+
+## 출처와 판본
+
+- [ITU-T Recommendation L.400/L.12 (2022년 2월): 광섬유 접속](https://www.itu.int/rec/dologin_pub.asp?id=T-REC-L.400-202202-I!!PDF-E&lang=e&type=items) · 표 1(문서 11–12쪽), 표 2(13쪽), 부속서 I
+
+- [3M: Fibrlok II 범용 광섬유 접속자 2529 사양서 (2016년)](https://multimedia.3m.com/mws/media/1087105O/3mtm-fibrloktm-ii-universal-optical-fiber-splice-2529-data-sheet.pdf) · 2–3쪽 사양 표
+
+- [3M: Fibrlok 각도형 접속자 2529-AS·2540-AS (2008년, Quante 사본)](https://multimedia.3m.com/mws/media/1379716O/cpes-zubehor-lwl-universal-spleissverbinder-fibrlok-2.pdf) · 2–3쪽 사양 표
+
+- [3M: Fibrlok 광 접속 시스템 (Fiberworks 사본, 날짜 미인쇄)](https://www.fiberworks.no/proddoc/3m/3m_fibrlok_optical_splice_system.pdf) · 3쪽 사양 표
+
+- [Corning: Fibrlok II 범용 접속자 2529와 Easy Cleaver 설치 절차서 (2019년 9월)](https://storageacctecomptt.blob.core.windows.net/containerblobecomptt/files/2529/datasheet/ficha-tecnica-corning-2529.pdf) · 4–11쪽
+
+- [Corning: CamSplice 기계식 접속자 제품 사양서 95-000-04 (2026년 7월 21일)](https://www.telenco.uk/documents/95-000-04_NAFTA_AEN.pdf) · 1–2쪽
+
+- [Dintek: ezi-FIBER 기계식 접속자 데이터시트 (2021년 5월 24일, 개정 35)](https://www.dintek.eu/wp-content/uploads/2021/03/datasheet-N6100-00012_24052021.pdf) · 2쪽
+
+- [Prysmian: Universal Mechanical Splice AC007 (2012년 4월, 발행 04)](https://www.prysmian.com/sites/default/files/business_markets/markets/downloads/datasheets/AC007-04_Universal_Mechanical_Splice.pdf) · 2쪽
+
+- [Keyfibre: KeyQuick MS201 데이터시트 (2024년 5월 24일)](https://comtestnetworks.com/storage/datasheets/FT_EN_V1_KF_MS01.pdf) · 1–2쪽
+
+- [OMC: 900 µm 케이블용 기계식 접속자 (2024년 버전 2.0 표기)](https://www.omcftth.com/wp-content/uploads/2023/11/Fiber-Mechanical-Splicer-for-900um-cable.pdf) · 2–3쪽
+
+- [OMC: 2×3 드롭 케이블용 기계식 접속자 (2024년 버전 2.0 표기)](https://www.omcftth.com/wp-content/uploads/2023/11/Fiber-Mechanical-Splicer-for-2x3-Drop-cable.pdf) · 2쪽
+
+- [Optix America: 기계식 접속 커플러](https://optixamerica.com/wp-content/uploads/2023/11/Mechancial-Splice-Couplers.pdf) · 1쪽
+
+- [Focomm: F-MS 기계식 접속자 (2025년 3월 17일)](https://www.focomm-cabling.com/wp-content/uploads/2025/04/F-MS.pdf) · 1쪽
+
+- [Outline: OUT-925 기계식 접속자 (2018년 10월 개정 0)](https://outline.company/wp-content/uploads/2019/02/OUT-925.pdf) · 1쪽
+
+- [Fiber Instrument Sales: 기계식 접속 목록](https://www.fiberinstrumentsales.com/catalog-mechanical-splicing) · Fibrlok II·CamSplice·ULTRAsplice 항목
+
+- [MIL-PRF-24623/7A (2013년 7월 3일): 항공기용 단심 기계식 접속자](https://weaponssupportapps.dla.mil/Downloads/MilSpec/Docs/MIL-PRF-24623/prf24623ss7.pdf) · 1–3쪽 표 I과 요구사항
+
+- [FOA: TIA 568 광섬유 요약 (2021년)](https://thefoa.org/tech/tia568b3.htm) · 접속 절
+
+- [MapYourTech: 커넥터·접속 손실 현장 안내 (2026년 7월 11일, 2차 자료)](https://mapyourtech.com/connector-and-splice-loss-a-field-engineering-reference) · 3절
+
+## 다음에 볼 교안
+
+- [광통신 교육 목차](/education/optical-training)
+
+- [현장 조립형 광커넥터 사양서의 삽입손실 기준·적용 케이블·재조립 횟수·인장 판독](/education/optical-training/field-installable-connector-datasheet-loss-basis-cable-range-reterminations-pull-strength-readout)
+
+- [융착 추정 손실과 OTDR 값 판독](/education/optical-training/splicer-estimated-loss-vs-otdr-readout)
+
+- [접속함체 데이터시트의 융착 용량·트레이 수·케이블 포트 지름 판독](/education/optical-training/splice-closure-datasheet-splice-capacity-tray-count-cable-port-readout)
+
+- [접속함체 케이블 준비와 트레이 고정](/education/optical-training/closure-cable-preparation-tray-reentry)

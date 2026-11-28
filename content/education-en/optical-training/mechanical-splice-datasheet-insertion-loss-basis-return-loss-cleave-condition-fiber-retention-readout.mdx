@@ -1,0 +1,214 @@
+---
+title: "Reading Mechanical Splice Datasheets: Insertion Loss Basis, Return Loss Conditions and Fiber Retention"
+date: "2026-11-28"
+desc: "A 10-minute lesson on reading the insertion loss, return loss, fiber retention and operating temperature lines of optical mechanical splice datasheets. It compares 14 manufacturer and distributor documents with ITU-T L.400, a military specification and FOA material, explains why the insertion loss line runs from 0.03 dB to 0.5 dB, and calculates how the pass line changes when six splices are multiplied."
+coverImage: "/images/education/optical-training/mechanical-splice-datasheet-insertion-loss-basis-return-loss-cleave-condition-fiber-retention-readout/cover.svg"
+readTime: "10 min"
+lang: "en"
+---
+
+An optical mechanical splice joins two fibers with a V-groove and an index matching gel, and the first line to read on its datasheet is whether the insertion loss is an average or a maximum. The documents read here mixed an average of 0.03 dB, a typical 0.1 dB, a limit of 0.15 dB and maximums of 0.3 dB and 0.5 dB, while the return loss line mixed flat and angled cleaves, room temperature and the full operating range, or left the condition out. Fiber retention also ran from 2.2 N to 58.8 N. So copy the basis of the insertion loss, the cleave type and sign of the return loss, and the unit and the held item of the retention first, then recalculate with a loss budget multiplied by the number of splices before using the splice.
+
+Based on the documents checked on November 28, 2026.
+
+## Learning objectives
+
+- Tell whether an insertion loss line is an average, a typical, a maximum or a guarantee, and add only same-basis values to a loss budget.
+
+- Read the cleave type (flat or angled), the temperature condition and the sign (positive return loss or negative reflectance) of a return loss line, and check it against the standard for the application.
+
+- Convert retention values (N, kgf, lbf) to newtons, separate the force on the fiber from the force on the cable, and find the operating temperature, reuse and installation procedure conditions in the documents.
+
+## What does the insertion loss line of a mechanical splice datasheet state, an average or a maximum?
+
+The insertion loss line mixes averages, typicals, maximums and guarantees by document, so the figures cannot go in one column for comparison. Table 1 of ITU-T L.400/L.12 (2022) gives the insertion loss of single-mode mechanical splices as maximums of 0.25 dB for grade B and 0.5 dB for grade C, and Table 2 says that when a splicing procedure is validated with at least 100 splices, grade B means an average of 0.12 dB or less with 97 percent of the splices at 0.25 dB or less. Few manufacturer documents follow that frame. The 2016 specification table of the 3M Fibrlok II 2529 gives only a typical value of below 0.1 dB and has no maximum line, Prysmian gives below 0.15 dB together with a typical of below 0.1 dB, and Dintek separates a typical 0.1 dB from a maximum of 0.3 dB. KeyQuick prints an average of 0.03 dB and a guarantee of under 0.1 dB in the same document. Optix America and Focomm, by contrast, print only 0.25 dB or less and do not say whether it is an average or a maximum.
+
+| Document | Insertion loss line (as printed, dB) | Basis stated | Wavelength |
+| --- | --- | --- | --- |
+| ITU-T L.400/L.12 Table 1 | Grade B at most 0.25, grade C at most 0.5 | Maximum | 1310, 1550 and 1625 nm |
+| ITU-T L.400/L.12 Table 2 (procedure validation, 100 splices or more) | Grade B average at most 0.12 and 0.25 in 97 %, grade C average at most 0.25 and 0.5 in 97 % | Average and 97 % | 1310, 1550 and 1625 nm |
+| 3M Fibrlok II 2529 (2016) | Below 0.1 | Typical, no maximum line | Not stated |
+| 3M Fibrlok angled 2529-AS (2008) | Below 0.1 and at most 0.25 (IEC 61753-131-3) | Typical and maximum | 1310, 1490, 1550 and 1625 nm |
+| Prysmian AC007 (2012) | Below 0.15 (typical below 0.1) | Limit and typical | 1310 and 1550 nm |
+| Dintek ezi-FIBER (2021) | Typical 0.1, maximum 0.3 | Typical and maximum | Not stated |
+| KeyQuick MS201 (2024) | Average 0.03, guaranteed under 0.1 | Average and guarantee | Not stated |
+| OMC, two splices (printed as 2024 version 2.0) | Average at most 0.30 | Average | 1310 and 1550 nm |
+| Optix America (undated) and Focomm F-MS (2025) | At most 0.25 | Not stated | 1310 and 1550 nm |
+| Outline OUT-925 (2018) | 0.15 | No inequality sign | 1310, 1490 and 1550 nm |
+| Distributor Fiber Instrument Sales | Fibrlok II below 0.2, ULTRAsplice average 0.2, CamSplice below 0.5 said to be consistently achievable | Mixed | Not stated |
+| Corning CamSplice (revision of July 21, 2026) | No line | None | None |
+| MIL-PRF-24623/7A (2013, aircraft) | Initial 0.5, after environmental and mechanical tests 1.0 | By time of measurement | Not stated |
+
+The same part number also differs by document. The 3M datasheet gives the Fibrlok II 2529 a typical of below 0.1 dB, while the distributor list gives below 0.2 dB, and the documents alone do not show which is the current value (DMS interpretation). The Corning CamSplice product specification has no insertion loss line at all, only a tensile strength of 2.2 N and a width of 4.2 mm, and its opening paragraph describes an anaerobic-cured connector. The distributor list describes this splice only with a sentence saying losses below 0.5 dB are consistently achievable. The military aircraft specification splits the insertion loss of single-mode mechanical splices into an initial 0.5 dB and a post-test verification of 1.0 dB, and says the values describe performance when the specified fabrication procedure is used. So even when the line name is the same, copy the time of measurement and the procedure with it.
+
+## How does the pass line change when the insertion loss is multiplied by the number of splices?
+
+Multiplying a datasheet value by the number of splices leaves room when you use averages and typicals, but the sum of maximums can exceed the allowed loss. The calculation below is hypothetical. Assume six mechanical splices in one span and an allowed loss of 1.5 dB assigned to the splices.
+
+| Document and value (one splice) | Value for one (dB) | Sum for six (dB) | Margin left against 1.5 dB (dB) |
+| --- | --- | --- | --- |
+| KeyQuick average | 0.03 | 0.18 | 1.32 |
+| 3M Fibrlok II 2529 typical | 0.1 | 0.60 | 0.90 |
+| Prysmian limit | 0.15 | 0.90 | 0.60 |
+| Optix and Focomm 0.25 (basis not stated) | 0.25 | 1.50 | 0.00 |
+| Dintek maximum | 0.3 | 1.80 | −0.30 |
+| ITU-T L.400 grade C maximum | 0.5 | 3.00 | −1.50 |
+
+An average of 0.03 dB or a typical of 0.1 dB gives sums of 0.18 dB and 0.60 dB with plenty of room, but the Dintek maximum of 0.3 dB gives 1.80 dB, which exceeds the allowance by 0.30 dB, and the L.400 grade C maximum of 0.5 dB gives 3.00 dB, which exceeds it by 1.50 dB. A 0.25 dB line whose basis is unknown leaves exactly zero margin if it is read as a maximum. An average is an expectation and a maximum is the pass line for an individual splice, so the two must not be multiplied in the same row. It is unlikely that all six splices reach their maximum at once, but the documents give no probability for it (DMS interpretation). The bars below draw this table.
+
+![Bars comparing the sum of six splices from mechanical splice datasheet values with a 1.5 dB allowed loss](/images/education/optical-training/mechanical-splice-datasheet-insertion-loss-basis-return-loss-cleave-condition-fiber-retention-readout/bars-en.svg)
+
+- Each bar is the sum for six splices and the dashed line is a hypothetical allowed loss of 1.5 dB
+
+- The Dintek maximum and the L.400 grade C maximum exceed the allowance
+
+- Six splices and 1.5 dB are a DMS assumption and not a tested value
+
+The limits in the standards are not a single value either. The FOA summary of TIA 568 gives 0.3 dB or less for both fusion and mechanical splices. MapYourTech (a secondary source, July 2026) says TIA-568.3-E allows 0.5 dB for mechanical splices but gives no clause number. The body of TIA was not read for this lesson, so neither value is treated as confirmed, and the field pass line follows the value written in the contract specification.
+
+## How is the return loss line read against the cleave type and temperature?
+
+A return loss line has to be read together with whether the cleave is flat or angled, whether the value is a typical at room temperature or one across the operating temperature range, and whether the sign is positive or negative. Table 1 of L.400 splits the requirement into grade 3 (35 dB or more) and grade 2 (45 dB or more) for a straight cleave and grade 1 (60 dB or more) for an angle cleave. The 2008 document for the angled 3M Fibrlok gives a typical of 65 dB at room temperature and above 60 dB across −40 °C to +70 °C. The flat 2529 in the 2016 table gives a typical of below −55 dB and below −35 dB across the operating temperature range, which is a 20 dB spread. An older specification of the same 2529 (a Fiberworks copy, no date printed) gives a typical of below −40 dB, so even the typical value differs by 15 dB between editions.
+
+| Document | Reflection line (as printed) | Cleave and condition | Sign |
+| --- | --- | --- | --- |
+| ITU-T L.400/L.12 Table 1 | Flat at least 35 (grade 3), at least 45 (grade 2), angled at least 60 (grade 1) | Split by cleave type | Positive dB |
+| FOA TIA 568 summary (2021) | Single-mode splice at least 26, CATV analog video at least 55 | Split by application | Positive dB |
+| 3M Fibrlok flat 2529 | 2016: typical below −55, full operating range below −35 / older: typical below −40 | Flat, typical and full range | Negative dB |
+| 3M Fibrlok angled 2529-AS | 2016: typical below −65, full range below −60 / 2008: typical 65, full range above 60 | Angled | Negative or positive by edition |
+| Prysmian AC007 | Above 40 (typical above 55) | Not stated | Positive dB |
+| Dintek ezi-FIBER | Typical −50 | Not stated | Negative dB |
+| KeyQuick MS201 | At least 60, average 63 | Flat cleave, called grade 1 | Positive dB |
+| OMC, two splices | At least 45 | Not stated | Positive dB |
+| Focomm F-MS and Outline OUT-925 | Focomm at most −45 (table title is Return loss), Outline −50 | Not stated | Negative dB |
+| Distributor list, Fibrlok II | −35 | Not stated | Negative dB |
+| Optix America | No line, only a change of at most 5 after reuse | None | None |
+
+KeyQuick says that even a flat cleave reaches grade 1 (60 dB or more, average 63 dB), but L.400 puts grade 1 under angle cleaving. The terms may be defined differently, but the document does not explain, so copy it as printed and mark it as needing confirmation (DMS interpretation). Focomm titles the line Return loss but prints at most −45 dB, so the line mixes a positive return loss and a negative reflectance. Read as a reflectance of −45 dB it is a return loss of 45 dB, but that is also an interpretation, so confirm it by testing.
+
+The standard for the application comes from the FOA summary of TIA 568. A single-mode splice needs 26 dB for general use and at least 55 dB for CATV analog video, and the full-range value of −35 dB for the flat 2529 does not reach that 55 dB. This fits 3M describing its angled version as made for analog video networks. The signs of reflectance and return loss are covered in the lesson [Reading Reflectance and ORL Test Reports](/en/education/optical-training/reflectance-orl-sign-and-scope).
+
+## What does the retention line hold, and in how many newtons?
+
+The retention line runs from 2.2 N to 58.8 N, nearly a 27-fold spread, and it is a different value depending on whether it holds the fiber or the cable. The fibre retention test in Table 1 of L.400 applies 2 N primary and 5 N secondary at 30 cm from the splice protector for 60 seconds, and requires the change in attenuation and the return loss to stay within the requirement during and after the test. The table does not explain whether primary and secondary refer to coating stages (DMS interpretation). Manufacturer documents blur this distinction. The older 3M document prints only a tensile strength of at least 4.4 N (1.0 lbf), the 2008 3M angled document prints at least 5 N and a typical of at least 10 N under IEC 61300-2-4, and Corning CamSplice prints 2.2 N for 250 µm and 900 µm cable. The Optix, Focomm and Outline family splits it into above 5 N for bare fiber and above 8 N for tight buffer, and OMC splits it into above 3 N when locked and above 10 N when fully closed, with above 40 N for the drop cable version.
+
+The units also mix. Dintek prints kgf values of 0.5 (900 µm), 6 (3.0 mm cable) and 1 (flat cable), and the distributor list prints lbf values of 7.75 (Fibrlok II), 2 (ULTRAsplice) and 1.5 (Lock Jaw).
+
+| Document | Printed value | In newtons | What it holds |
+| --- | --- | --- | --- |
+| ITU-T L.400/L.12 Table 1 | 2 N primary, 5 N secondary, 30 cm point, 60 s | 2 and 5 | Not explained in the table |
+| 3M Fibrlok older sheet | Tensile strength at least 4.4 N (1.0 lbf) | 4.4 | Not stated |
+| 3M Fibrlok angled (2008) | At least 5 N, typical at least 10 N | 5 and 10 | Not stated |
+| Corning CamSplice (2026) | 2.2 N | 2.2 | 250 µm and 900 µm cable |
+| Optix, Focomm and Outline | Above 5 N, above 8 N | 5 and 8 | Bare fiber, tight buffer |
+| OMC for 900 µm | Locked above 3 N, fully closed above 10 N | 3 and 10 | Fiber |
+| OMC for 2×3 drop cable | Locked above 3 N, fully closed above 40 N | 3 and 40 | Drop cable |
+| Dintek | 0.5 kgf, 6 kgf, 1 kgf | 4.9, 58.8, 9.8 | 900 µm, 3.0 mm cable, flat cable |
+| Distributor Fiber Instrument Sales | 7.75 lbf, 2 lbf, 1.5 lbf | 34.5, 8.9, 6.7 | Fiber retention |
+| Focomm text | Table above 5 N, feature text drop cable above 5 KG | 5 and about 49 | Cable |
+
+The KeyQuick table prints 2 cores as the value of the Pull Strength line and 5N as the value of the IP protection level line, so the values do not fit their rows (page 2 was checked as an image). Focomm prints above 5 N in its table but above 5 KG of drop cable tensile strength in its feature text, which is 5 N against about 49 N, almost a tenfold difference. The retention of a mechanical splice is the force that keeps the fiber from slipping at the splice, so the force that anchors the cable and strength members in a closure is read separately in [Anchoring Cables and Terminating Strength Members in Closures](/en/education/optical-training/closure-cable-anchoring-strength-member).
+
+## Where are the operating temperature, reuse and installation procedure conditions written?
+
+The operating temperature is in the table, but the reuse and installation conditions are in body text or a separate installation procedure, so a pass line is not set from a single datasheet page. The operating temperature runs from −40 °C to +70 °C up to +80 °C, and Prysmian splits it by coating material, so the lower limit for a 900 µm nylon coating is 0 °C. Table 1 of L.400 requires the change in attenuation of a mechanical splice to stay within ±0.2 dB in a test that cycles 12 times between −40 °C and +70 °C with one hour at each extreme. The table prints the change as 0 2 dB with the decimal point missing, so it was read as ±0.2 dB (DMS interpretation).
+
+| Document | Operating temperature |
+| --- | --- |
+| 3M Fibrlok flat / angled | −40 °C to +75 °C / −40 °C to +70 °C |
+| Prysmian AC007 | 250 µm −40 °C to +70 °C, 900 µm PVC −40 °C to +75 °C, nylon 0 °C to +75 °C, TPEE −25 °C to +75 °C |
+| Dintek ezi-FIBER | −40 °C to +70 °C |
+| OMC, two splices | −40 °C to +80 °C |
+| Optix, Focomm and Outline | −40 °C to +75 °C |
+| Distributor list, Fibrlok II | −40 °C to +80 °C |
+| MIL-PRF-24623/7A (aircraft) | Operating −55 °C to +165 °C |
+
+Reuse is described in opposite ways. 3M describes a permanent splice, while Optix says the splice can be reused up to five times with a change in insertion loss of at most 0.2 dB and a change in reflection of at most 5 dB. Focomm prints the same changes but gives ten times, and Outline gives five. The Corning installation procedure for the Fibrlok II (September 2019) says that if the loss is high after actuation the fibers can be repositioned with a cap lifter, but that after two attempts the splice must be made again with a new splice. Making it again means cutting the fibers on both sides of the splice, which takes 1.5 inches (38.1 mm) of fiber out of the loop, and it needs a new splice and 2 inches (50.8 mm) on each fiber. The slack consumed when a closure is reopened is calculated together with [Closure Cable Preparation and Tray Securing](/en/education/optical-training/closure-cable-preparation-tray-reentry).
+
+The installation conditions are the premise of the values. This procedure sets the cleave length of the 2529 at 12.5 mm plus or minus 0.5 mm, says not to wipe the fiber more than twice and not to clean it again after cleaving, and says to push the fibers in until both have the same bow and then not to tune the splice. The procedure prints no insertion loss figure. It also says each full loop of slack in the tray twists the splice by one full turn, and that the effect is larger on 900 µm coating. Prysmian says a tool kit is required, Dintek, KeyQuick and OMC say no separate tool is needed, and the military specification says its loss performance holds when the specified fabrication procedure is used. So copy which cleaver and procedure the number assumes. Some documents also carry body text that does not match the product. The opening paragraph of the Corning CamSplice specification describes a connector, and the feature lists of both OMC documents contain connector text about ferrules and boots, so use the table values and check body wording against the product.
+
+![The order for reading a mechanical splice datasheet](/images/education/optical-training/mechanical-splice-datasheet-insertion-loss-basis-return-loss-cleave-condition-fiber-retention-readout/concept-en.svg)
+
+- Copy the insertion loss with its average or maximum basis and multiply it by the number of splices to compare with the allowed loss
+
+- Copy the cleave type, temperature condition and sign of the return loss and check them against the standard for the application
+
+- Convert retention to newtons and record the operating temperature, reuse count, cleave length and tool conditions together
+
+The material has limits. The bodies of IEC 61753-131-3, IEC 61300-3-4, IEC 61300-3-6, IEC 61300-2-4, Telcordia GR-765-CORE and TIA-568.3-E were not read, and where a document says it follows one of these standards the document sentence was copied as written. The Corning test guideline (LAN-1561) was blocked, so only a search result excerpt was seen and it is not counted in the comparison. The Optix document, the older 3M document and the distributor list carry no date, and OMC only says 2024 version 2.0, so currency could not be confirmed for any of them. Optix, Focomm and Outline share one table frame and are not counted as independent evidence, and the two OMC documents are one family. All values are published by manufacturers or distributors and were not tested for this lesson.
+
+## Checklist
+
+- Did you copy whether the insertion loss line of your mechanical splice datasheet is an average, a typical, a maximum or a guarantee, together with the wavelength, and compare the sum multiplied by the number of splices with the allowed loss?
+
+- Did you copy the cleave type (flat or angled), the temperature condition and the sign of the return loss line, and check it against the standard for the application (general, CATV analog video)?
+
+- Did you convert the unit of the retention line to newtons and check whether it holds the fiber or the cable?
+
+- Did you check that the operating temperature covers the installation site, whether coating material sets different limits, and how much slack is lost on reuse and re-splicing?
+
+- Did you record the premises of the value, such as cleave length, cleaver, assembly tool, and the edition number and date of the datasheet?
+
+## Review questions
+
+### 1. Document A prints only a typical insertion loss of below 0.1 dB, and document B prints a typical of 0.1 dB and a maximum of 0.3 dB. With eight splices in a span and an allowed loss of 2.0 dB, which value should you check the pass line against?
+
+Answer and explanation: Check it with the maximum of 0.3 dB in document B. The sum at the maximum is 0.3 × 8 = 2.4 dB, which exceeds the allowance by 0.4 dB, and the typical sum of 0.8 dB is only an expectation and not a pass line. Document A has no maximum line, so it cannot be used as a pass line and a test criterion has to be set separately. This is a hypothetical calculation (DMS interpretation).
+
+### 2. A flat-cleave splice datasheet prints a typical reflection of below −55 dB and below −35 dB across the operating temperature range. Can it be used for the 55 dB requirement of a CATV analog video network?
+
+Answer and explanation: Not as it stands. The typical room temperature value meets 55 dB, but the full-range value of 35 dB falls short by 20 dB. For such a network choose a product whose full-range value is printed at around 60 dB, as with angle-cleave splices, and check that the cleave type and temperature condition are stated.
+
+### 3. The retention is printed as 0.5 kgf in a Dintek document, 4.4 N in the older 3M document and 2.2 N for Corning CamSplice. Can you rank them by size and compare them directly?
+
+Answer and explanation: 0.5 kgf is about 4.9 N, so the order is 4.9 N, 4.4 N and 2.2 N. But the Dintek value is for 900 µm, the 3M value does not state what it holds, and the CamSplice value is for 250 µm and 900 µm cable, so do not compare them directly until the held item and the test condition are confirmed.
+
+## Sources and editions
+
+- [ITU-T Recommendation L.400/L.12 (February 2022): Optical fibre splices](https://www.itu.int/rec/dologin_pub.asp?id=T-REC-L.400-202202-I!!PDF-E&lang=e&type=items) · Table 1 (document pages 11–12), Table 2 (page 13), Appendix I
+
+- [3M: Fibrlok II Universal Optical Fiber Splice 2529 datasheet (2016)](https://multimedia.3m.com/mws/media/1087105O/3mtm-fibrloktm-ii-universal-optical-fiber-splice-2529-data-sheet.pdf) · specification tables on pages 2–3
+
+- [3M: Fibrlok Angle Fiber Splices 2529-AS and 2540-AS (2008, Quante copy)](https://multimedia.3m.com/mws/media/1379716O/cpes-zubehor-lwl-universal-spleissverbinder-fibrlok-2.pdf) · specification tables on pages 2–3
+
+- [3M: Fibrlok Optical Splice System (Fiberworks copy, no date printed)](https://www.fiberworks.no/proddoc/3m/3m_fibrlok_optical_splice_system.pdf) · specification table on page 3
+
+- [Corning: Fibrlok II Universal Optical Fiber Splice 2529 and Easy Cleaver standard recommended procedure (September 2019)](https://storageacctecomptt.blob.core.windows.net/containerblobecomptt/files/2529/datasheet/ficha-tecnica-corning-2529.pdf) · pages 4–11
+
+- [Corning: CamSplice mechanical splice product specification 95-000-04 (July 21, 2026)](https://www.telenco.uk/documents/95-000-04_NAFTA_AEN.pdf) · pages 1–2
+
+- [Dintek: ezi-FIBER mechanical splice datasheet (May 24, 2021, revision 35)](https://www.dintek.eu/wp-content/uploads/2021/03/datasheet-N6100-00012_24052021.pdf) · page 2
+
+- [Prysmian: Universal Mechanical Splice AC007 (April 2012, issue 04)](https://www.prysmian.com/sites/default/files/business_markets/markets/downloads/datasheets/AC007-04_Universal_Mechanical_Splice.pdf) · page 2
+
+- [Keyfibre: KeyQuick MS201 datasheet (May 24, 2024)](https://comtestnetworks.com/storage/datasheets/FT_EN_V1_KF_MS01.pdf) · pages 1–2
+
+- [OMC: Fiber mechanical splicer for 900 µm cable (printed as 2024 version 2.0)](https://www.omcftth.com/wp-content/uploads/2023/11/Fiber-Mechanical-Splicer-for-900um-cable.pdf) · pages 2–3
+
+- [OMC: Fiber mechanical splicer for 2×3 drop cable (printed as 2024 version 2.0)](https://www.omcftth.com/wp-content/uploads/2023/11/Fiber-Mechanical-Splicer-for-2x3-Drop-cable.pdf) · page 2
+
+- [Optix America: Mechanical splice couplers](https://optixamerica.com/wp-content/uploads/2023/11/Mechancial-Splice-Couplers.pdf) · page 1
+
+- [Focomm: F-MS mechanical splice (March 17, 2025)](https://www.focomm-cabling.com/wp-content/uploads/2025/04/F-MS.pdf) · page 1
+
+- [Outline: OUT-925 mechanical splice (revision 0, October 2018)](https://outline.company/wp-content/uploads/2019/02/OUT-925.pdf) · page 1
+
+- [Fiber Instrument Sales: mechanical splicing catalog](https://www.fiberinstrumentsales.com/catalog-mechanical-splicing) · Fibrlok II, CamSplice and ULTRAsplice entries
+
+- [MIL-PRF-24623/7A (July 3, 2013): splice, mechanical, simplex fiber optic cable, aircraft](https://weaponssupportapps.dla.mil/Downloads/MilSpec/Docs/MIL-PRF-24623/prf24623ss7.pdf) · Table I and requirements on pages 1–3
+
+- [FOA: TIA 568 for fiber optics (2021)](https://thefoa.org/tech/tia568b3.htm) · splices section
+
+- [MapYourTech: Connector and splice loss, a field engineering reference (July 11, 2026, secondary source)](https://mapyourtech.com/connector-and-splice-loss-a-field-engineering-reference) · section 3
+
+## Continue with
+
+- [Optical training curriculum](/fttx-training)
+
+- [Reading Field-Installable Optical Connector Datasheets: Insertion Loss Basis, Cable Range, Re-termination Count and Pull Strength](/en/education/optical-training/field-installable-connector-datasheet-loss-basis-cable-range-reterminations-pull-strength-readout)
+
+- [Reading Splicer Estimated Loss Against OTDR Results](/en/education/optical-training/splicer-estimated-loss-vs-otdr-readout)
+
+- [Reading Splice Closure Datasheets: Splice Capacity, Tray Count and Cable Port Diameter](/en/education/optical-training/splice-closure-datasheet-splice-capacity-tray-count-cable-port-readout)
+
+- [Closure Cable Preparation and Tray Securing](/en/education/optical-training/closure-cable-preparation-tray-reentry)
