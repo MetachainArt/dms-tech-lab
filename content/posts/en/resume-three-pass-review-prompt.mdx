@@ -1,0 +1,195 @@
+---
+title: "Resume Review With AI: One Request or Three Passes?"
+subtitle: "A single 'fix this' request compared with three separate passes (diagnosis, screening, interview) on a made-up resume"
+excerpt: "If you ask an AI to fix your resume in one go, do you miss anything that a step-by-step review would catch? I ran both approaches once on a made-up resume with six planted problems. Here are the results and three prompts you can copy if you split the work."
+date: "2026-11-28"
+readTime: "9 min"
+coverImage: "/images/resume-three-pass-review-prompt-20261128/cover.webp"
+series: "future-arts"
+tags: ["AI Workflows", "Prompts", "Resume"]
+translationSourceHash: "3f51cccfc961aa28e205dc8073a10ef9180f4124445c3390252718342a552b8b"
+---
+
+If you ask an AI to review your resume, a single line such as "Fix this so I get the job" already catches most problems. In this test on a made-up resume, splitting the work into three passes did not find more. What changed was the output. One request returns a rewritten resume. Three passes leave the resume untouched and return a checklist and questions for you to answer. So the choice depends on whether you want to see intermediate results and fill in the facts yourself.
+
+This guide draws on one public Instagram post and Anthropic's prompt engineering guide, both checked on November 28, 2026. I ran each approach once on one invented resume, so I do not claim that either approach is generally better.
+
+## Which post was the starting point?
+
+The starting point was a [public Instagram post by roy.branding](https://www.instagram.com/p/DgRieifKhcl/), written in Korean. It says to stop pasting your resume into GPT and instead use three Claude skills in order: a diagnosis skill, a recruiter skill and an interview skill. When I checked, it had 18 likes. The caption says that if you comment "Claude" you get an installation guide by DM.
+
+I did not comment on the post and did not receive the guide. I could not check what the skills contain or whether the post's claim of a guaranteed pass holds up, and this guide does not repeat it. I took only the broad order: look at the same resume as a diagnostician, then as a screener, then as an interviewer. The prompts, the resume and the test design are my own.
+
+## What is different between one request and three?
+
+One request puts diagnosis, judgment and rewriting into a single answer. Three requests produce a result at each step, so you can stop and check in between. Anthropic's prompt engineering guide says that current models handle most multistep reasoning internally, but explicit prompt chaining is still useful when you need to inspect intermediate outputs or enforce a specific pipeline structure. That documentation is written for developers and does not promise anything about resume reviews. I used it because "I want to see the middle results" matches the question of this test.
+
+## How was the test run?
+
+I wrote a made-up applicant (Applicant A), a made-up job posting and a short note listing facts the applicant had not yet put on the resume. I planted six problems, then fed the same material to both approaches once. The tests were run not in ChatGPT but by two separate AI sub-tasks, based on Claude Sonnet 5.5, opened by the AI agent that wrote this guide. The person grading knew the answers, so this is not a strict blind test. The prompts and materials were in Korean. The English below is a translation.
+
+The planted problems:
+
+1. The self-introduction is one vague sentence ("I work hard") with no evidence.
+2. Job lines name a task ("Handled inventory management") with no method.
+3. Six months of 2025 (June to December) are empty with no explanation.
+4. Experience that matches the posting (managing stock in Excel, filing lost or damaged parcel claims, showing a new hire the ropes) is only in the applicant's note, not on the resume.
+5. There are no numbers, and the applicant does not remember the counts. Inventing numbers would be wrong.
+6. The posting asks for monthly operations reports, but neither the resume nor the note mentions any. Claiming it would be wrong.
+
+The made-up material, in translation:
+
+```
+[Made-up resume: Applicant A]
+Target job: Logistics operations coordinator
+Self-introduction: I am a responsible person who works hard at whatever I am given.
+Experience
+- 2023.03 - 2025.05 Hanbit Shop (online order desk)
+  - Responsible for order processing and customer support
+  - Performed inventory management
+  - Worked hard to contribute to the team
+- 2026.01 - present Saebom Mart (part-time)
+  - Checkout and shelf stocking
+Skills: Excel (VLOOKUP, pivot tables), word processor, presentation software
+Education: Fictional University, business administration, graduated 2023.02
+
+[Made-up job posting]
+Logistics operations coordinator (new graduates or 1+ year of experience)
+Duties: manage inbound and outbound stock in Excel, handle lost or damaged parcels with the courier, write a monthly operations report, orient new hires
+Requirements: able to use Excel pivot tables, careful
+Preferred: experience filing parcel claims
+
+[Applicant's note: facts not yet on the resume]
+- At Hanbit Shop I filed lost and damaged parcel claims myself, contacting the courier's service center and telling the customer. I do not remember the exact count.
+- I managed stock in an Excel sheet and recounted the real quantities every Monday to correct the sheet.
+- From June to December 2025 I stopped working to care for a family member.
+- I once showed a new part-timer how to enter orders.
+```
+
+![Three small papercraft stages joined by a dotted strip: a document with a magnifying glass, a screening desk with a stamp and a tray, and a table with two chairs for an interview. AI-generated example image](/images/resume-three-pass-review-prompt-20261128/passes.webp)
+
+## Which prompts were actually used?
+
+The single request was this one line, sent with the resume, posting and note:
+
+```
+Fix this resume so I can pass.
+```
+
+The three-pass requests were sent one after another in the same conversation. Pass 1 received the resume and the note but not the posting. The posting was first attached in pass 2. Translated from the Korean originals:
+
+```
+[Pass 1]
+You are a resume diagnostician.
+Do: in the resume below, find the problem in each line and write a table of "quoted line | problem | fact needed to fill it". Under the table, number the questions to ask the applicant.
+Do not: rewrite the resume. Do not invent numbers, jobs or results that were not provided.
+Answer shape: one table and one list of questions.
+
+[Pass 2]
+You are the screener for the job posting below.
+Do: for each requirement in the posting, mark whether the resume or the applicant's note has evidence: "on the resume / only in the note / no evidence". Under the table, give the chance of passing screening as high, medium or low, with one line of reason.
+Do not: rewrite the resume. Do not claim experience that is not there.
+Answer shape: one table and a one-line verdict.
+
+[Pass 3]
+You are the interviewer for the posting above.
+Do: for each experience line on the resume, write one interview question, six at most. For each, add one line "fact needed to answer" and mark "note has it" if the applicant's note contains that fact, or "answer needed" if not.
+Do not: rewrite the resume. Do not invent how the applicant would answer.
+Answer shape: a numbered list of six items or fewer.
+```
+
+All three passes used the three-part layout of what the role does, what it must not do and what shape the answer takes. That layout is covered in [Role Prompts for ChatGPT: Three Slots, Not a Job Title](/en/blog/chatgpt-role-prompt-three-slots).
+
+## What were the results?
+
+I read both sets of answers and checked each planted problem.
+
+| Planted problem | One request | Three passes |
+| --- | --- | --- |
+| 1. Vague self-introduction | Caught; replaced with real experience | Caught in pass 1 |
+| 2. Job lines with no method | Caught; made concrete (weekly Monday recount) | Caught in pass 1 and again in the pass 3 questions |
+| 3. Gap from June to December 2025 | Caught; said whether to mention it is the applicant's call | Caught in pass 1 |
+| 4. Facts only in the note | Moved into the resume body | Marked "only in the note" for four posting items in pass 2 |
+| 5. No numbers, counts unknown | Added no numbers; said to add one only if remembered | Said in pass 1 that numbers cannot be invented and turned it into a question |
+| 6. No report experience | Stated plainly that there is none | Marked "no evidence" in pass 2. Pass 1 could not catch it because it had not seen the posting |
+
+The single request caught all six in one answer. The three passes caught five by the end of pass 1 and the sixth in pass 2. Neither approach invented numbers or jobs. However, the single request's draft introduction contained the phrase "have steadily done this every week". The note only says the applicant recounted stock on Mondays and says nothing about how consistently. That is one small addition.
+
+The shape of the output differed a lot.
+
+- **One request:** a rewritten resume with introduction, experience, skills and education, plus nine notes on why each change was made. It was ready to paste in as a draft.
+- **Three passes:** the resume was not changed at all. Pass 1 returned a thirteen-row table and ten questions, pass 2 a requirements table and a verdict, and pass 3 six interview questions. Pass 3 marked where the applicant still had to supply facts.
+
+The three-pass answers also strayed from the instructions in places. In pass 2 I asked for one of high, medium or low, but the answer was "medium (closer to low based on the current resume)". Pass 3, item 5 quoted "a line not on the resume (note content)" instead of a resume line. Some pass 1 questions, such as company size or certificates, had little to do with the posting, which is probably because the posting had not been shown yet.
+
+![A ruled paper checklist card with one ticked box, one empty box and one box crossed out in pencil. AI-generated example image](/images/resume-three-pass-review-prompt-20261128/checklist.webp)
+
+## When is splitting the work the better choice?
+
+In this test there was no reason to split in order to "find more". The reason to split is to make room for a person to step in.
+
+| Situation | Better fit | Why |
+| --- | --- | --- |
+| You need a rewritten draft fast | The single request | Draft and reasons arrive in one answer |
+| You still need to recall facts that are not on the resume | Pass 1 diagnosis and questions | You get gaps and questions before anything is rewritten |
+| You want to check, requirement by requirement, whether the resume matches the posting | Pass 2 screening | A table shows where the evidence for each requirement lives |
+| You are preparing interview answers | Pass 3 interview questions | It shows whether you can answer from facts you actually have |
+
+You could also take a draft from the single request and run only passes 2 and 3 as a review. I did not test that combination.
+
+## How do you try it yourself?
+
+Four steps:
+
+1. Remove personal details you do not need for the review, such as name, contact details, address and national ID number. This is a suggestion from this guide, not a rule from any service.
+2. Write the facts that are not on the resume as an "applicant's note". For numbers you cannot recall, write "do not remember".
+3. Send the pass 1 prompt, then answer its questions by adding to your note.
+4. In the same conversation, attach the posting and send pass 2, then pass 3. Rewrite the resume yourself afterward, or as a separate request.
+
+Here is a copy-ready template. Replace the bracketed parts. It splits the tested prompts into variables and was not run in exactly this form.
+
+```
+You are a [review role].
+Do: from [material to read], write a table of [what to find] for each [line / requirement].
+Do not: rewrite the resume. Do not invent numbers, jobs or results that were not provided.
+Answer shape: [one table / a numbered list of six items or fewer] and [a one-line verdict / questions to confirm].
+[Resume]: ...
+[Posting]: ...
+[Applicant's note]: ...
+```
+
+You can adjust three things. Pick the review role from diagnostician, screener or interviewer. Fixing the number of items in the answer shape helps keep answers from growing long. Keep the note to facts only, and keep the "Do not" line as it is so that the AI has nowhere to invent numbers you did not give.
+
+## What are the limits?
+
+- It is one made-up resume and one run of each approach. A different resume, model or order of requests could give different results.
+- The person grading knew the answers, and the tested AI was a Claude model, not ChatGPT.
+- A small addition such as "steadily" only gets caught when a person reads the draft. Splitting the review into steps does not remove the need to check the final sentences yourself.
+- The "chance of passing screening" is an AI opinion based only on the posting and the resume. It has no connection to real hiring outcomes.
+- The Claude skills approach described in the original post was not tested here, so this guide does not say it gives the same effect.
+- All images are AI-generated examples and are not photographs of real places.
+
+## Frequently asked questions
+
+### Do I have to split a resume review into three passes?
+
+No. In this test the single request also caught all six planted problems. Split the work only when you want to look at intermediate results and add facts yourself.
+
+### How do I stop an AI from inventing achievements on my resume?
+
+Write "Do not invent numbers, jobs or results that were not provided" into the request, and put "do not remember" in your note for numbers you cannot recall. Neither approach invented numbers here, but the single request's answer added "steadily", which was not in the note, so you still need to read the result yourself.
+
+### Should I mention an employment gap on my resume?
+
+This test cannot answer that. The AI in the single request said it was not required and that the applicant should decide, but that is the opinion of the tested AI and I did not check it against hiring practice.
+
+## Sources and scope
+
+- Original public post: [Instagram post by roy.branding](https://www.instagram.com/p/DgRieifKhcl/). I used only the broad order of diagnosis, recruiter and interview views of one resume. I did not check or reproduce the skill contents, the installation guide or the claim of a guaranteed pass. Checked on November 28, 2026.
+- Anthropic [prompt engineering guide](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/chain-prompts), the "Chain complex prompts" section: explicit prompt chaining is still useful for inspecting intermediate outputs or enforcing a specific pipeline structure. Checked on November 28, 2026.
+- Made-up resume, posting, applicant's note and test prompts: created for this guide and not about any real person or company. Each approach was run once.
+- All images: examples generated with Aside's image generation tool.
+
+## What to read next
+
+To turn prompts like these into a working method for your organization, DMS.Labs' [generative AI course](/education/gen-ai) covers how to structure a prompt and review its result. That course page is in Korean. The three-slot layout used in every prompt above is explained in [Role Prompts for ChatGPT: Three Slots, Not a Job Title](/en/blog/chatgpt-role-prompt-three-slots), and what to decide before asking an AI to break down a task you cannot start is in [A Five-Minute Start Card for Stuck Tasks](/en/blog/task-start-card-prompt).
